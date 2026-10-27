@@ -27,6 +27,12 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 - Fragebögen neu erzeugen (nach Änderung der Fragen in `erzeugen.js`):
   `NODE_PATH=$(npm root -g) node fuehrung/befragung/erzeugen.js`
 
+## Recap anderer Präsentationen
+
+| Sitzung | Thema | Stand | Ort |
+|---|---|---|---|
+| Mo, 26.10.2026 | Prozesse im Unternehmen (abgebrochen) · KI im KMU (ohne Fallbeispiel) | ✅ Transkript | [`recap/2026-10-26-prozessmanagement-und-ki/`](recap/2026-10-26-prozessmanagement-und-ki/) |
+
 ## Online (GitHub Pages)
 
 Startseite: https://yannickoderso.github.io/Management-im-KMU/ (nach dem Einschalten unter Settings → Pages)
