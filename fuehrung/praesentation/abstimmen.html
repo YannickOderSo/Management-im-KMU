@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#1D1D1B">
+<!-- Symbol im Browser-Tab: neutrales Balkendiagramm (kein Markenzeichen) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23FFD007%22/%3E%3Cpath fill=%22%231D1D1B%22 d=%22M13 50V32h10v18zM27 50V14h10v36zM41 50V24h10v26z%22/%3E%3C/svg%3E">
+<title>Live-Abstimmung</title>
+<!--
+  ════════════════════════════════════════════════════════════════════════════
+  abstimmen.html – ABSTIMMSEITE FÜR DAS PUBLIKUM (Live-Umfrage auf Folie 08)
+  ════════════════════════════════════════════════════════════════════════════
+  Das Publikum scannt den QR-Code auf Folie 08 und landet hier:
+    https://yannickoderso.github.io/Unternehmens-Kommunikation/fallstudie-1-brand-persona/praesentation/abstimmen.html?u=tier
+  u = Name der Umfrage in marke.js → umfragen (hier „tier“).
+
+  WAS DIE SEITE AUS marke.js LIEST (nichts hier eintragen!)
+  • name, farben.primaer/sekundaer, unternehmen und hochschule (Einordnung im
+    Kopf und im Fuß). Bewusst KEIN Logo: Die Seite ist öffentlich, ein Logo
+    oben links stünde an der Stelle des Absenders (QUELLEN.md, Abschnitt 4).
+  • umfragen.tier: frage, optionen (Reihenfolge = Nummer der Stimme 0, 1, 2 …),
+    liveQuelle (Adresse der Google-Web-App, …/exec; leer = Abstimmung aus →
+    Hinweis „noch nicht freigeschaltet“), runde (z. B. 'probe' oder
+    'vortrag-2026-10-27'; nur Stimmen dieser Runde erscheinen auf Folie 08),
+    gueltigMinuten (seit 20.10.2026, z. B. 30: Folie 08 zählt nur Stimmen der
+    letzten 30 Minuten; wer früher abgestimmt hat, sieht wieder die Tiere)
+  • anrede ('Sie' oder 'ihr' → Sie- bzw. Du-Form). Optional nur für diese Seite:
+    umfragen.tier.anrede: 'du'.
+
+  ABLAUF: Tier antippen → Stimme geht an die Web-App (JSONP, nur GET) → „Danke!
+  Ihre Stimme: …“ mit „Doch anders entscheiden“ (es zählt nur die letzte Stimme
+  je Handy). Bei Andrang oder Netzproblemen sendet die Seite selbst noch
+  einmal (bis zu 3 Versuche, Hinweis „Gerade stimmen viele ab …“). Erst danach,
+  bei falschen Angaben sofort und ohne Netz: Meldung und „Nochmal versuchen“.
+
+  DATENSCHUTZ: Diese Seite setzt keine Cookies, keine Anmeldung. Die Stimme geht
+  über Google Apps Script in eine private Google-Tabelle der Gruppe; dort stehen
+  nur Zeit, Runde, Umfrage, gewähltes Tier und eine zufällige Geräte-ID (im
+  Browser-Speicher des Handys, je Umfrage und Runde eine eigene, damit jede
+  Stimme nur einmal zählt). Google sieht beim Aufruf technisch die Verbindung
+  (IP-Adresse) – das sagt der Fuß der Seite dem Publikum.
+
+  TESTEN OHNE GOOGLE: Nur wenn die Seite von localhost oder als Datei (file://)
+  läuft, lässt sich die Adresse der Web-App mit ?quelle=… überschreiben, z. B.
+    http://localhost:8080/abstimmen.html?u=tier&quelle=http://localhost:8080/exec
+  Auf GitHub Pages wird ?quelle= ignoriert.
+
+  Gestaltung: css/abstimmen.css · Verhalten: js/abstimmen.js
+  Tier-Zeichnungen: dieselben wie auf Folie 08 (js/folien/08-analogien.js).
+-->
+<link rel="stylesheet" href="css/abstimmen.css">
+<!-- js/abstimmen.js lädt marke.js selbst – über http(s) immer frisch (?v=…),
+     damit eine kurz vor dem Vortrag eingetragene liveQuelle bzw. runde sofort
+     gilt (GitHub Pages lässt Dateien sonst bis zu 10 Minuten im Zwischenspeicher). -->
+</head>
+<body>
+
+<header class="kopf">
+  <!-- Absender ist die Gruppe, nicht die Marke: Einordnung oben, ohne Logo
+       (der Name der Marke steht nur in der Frage). -->
+  <div class="spalte kopf-innen">
+    <p class="kopf-absender">Studentisches Referat</p>
+    <p class="kopf-einordnung"><span data-veranstaltung>Management im KMU</span> · <span data-hochschule>Hochschule Kaiserslautern</span></p>
+    <span class="kopf-live"><span class="live-punkt" aria-hidden="true"></span>Live</span>
+  </div>
+</header>
+
+<main class="haupt">
+  <section class="buehne" aria-labelledby="frage">
+    <div class="spalte">
+      <h1 class="frage" id="frage">Live-Abstimmung</h1>
+      <p class="anleitung" id="anleitung" hidden></p>
+    </div>
+  </section>
+
+  <div class="spalte inhalt">
+    <!-- Die Antworten als Knöpfe (baut js/abstimmen.js aus marke.js → optionen) -->
+    <ul class="auswahl" id="auswahl" aria-labelledby="frage" hidden></ul>
+    <!-- Dank, Fehler oder „noch nicht freigeschaltet“ -->
+    <div class="meldung" id="meldung"></div>
+    <!-- Ansage für Screenreader (Bestätigung, Fehler) -->
+    <p class="nur-sr" id="ansage" role="status" aria-live="polite"></p>
+
+    <noscript>
+      <div class="karte">
+        <p class="karte-titel">Bitte JavaScript einschalten</p>
+        <p class="karte-text">Ohne JavaScript funktioniert die Abstimmung nicht. Sie können per Handzeichen im Hörsaal mitmachen.</p>
+      </div>
+    </noscript>
+  </div>
+</main>
+
+<footer class="fuss">
+  <div class="spalte">
+    <p class="fuss-stark"><svg class="fuss-schloss" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>anonym · ohne&nbsp;Anmeldung · diese Seite setzt keine&nbsp;Cookies</p>
+    <p>Jede Stimme geht über einen Google-Dienst (Apps Script) in eine private Tabelle: gewählte Antwort, Uhrzeit, Abstimmungsrunde und eine zufällige Geräte-ID (nur in diesem Browser gespeichert, damit jedes Handy nur einmal zählt) – kein Name, keine IP-Adresse.</p>
+    <p>Studentisches Referat im Modul <span data-veranstaltung>Management im KMU</span>, <span data-hochschule>Hochschule Kaiserslautern</span>.</p>
+  </div>
+</footer>
+
+<script src="js/abstimmen.js"></script>
+</body>
+</html>

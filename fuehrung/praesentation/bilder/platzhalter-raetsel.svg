@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="Platzhalter-Motiv für das Einstiegsrätsel: gezeichnetes Produkt-Stillleben (Dose und Shaker) vor gelbem Hintergrund">
+  <!-- Platzhalter-Motiv für das Einstiegsrätsel (eigene Gestaltung, Stand 16.10.2026).
+       Gezeichnetes Produkt-Stillleben OHNE Logo, Schrift oder Verpackungsdesign:
+       Dose und Shaker vor einfarbigem Hintergrund mit Früchten und Eiswürfeln –
+       das Motiv beschreibt das Recherche-Dossier, Kap. 6.4 ✔ [1, 5, 73].
+       Farben: Gelb #FFD007 und Schwarz #1D1D1B laut Dossier Kap. 6.3 ✔ [1];
+       Creme #F3EDE1 ebenfalls aus Kap. 6.3. Alle Formen sind frei gezeichnet
+       und bilden keine echte Verpackung nach.
+       ERSETZEN bis Fr, 23.10.: eigenes Foto (z. B. selbst fotografierte Dose mit
+       Shaker) nach bilder/ legen und in marke.js → raetselBild eintragen.
+       Bildaufbau für Folie 01: Das Motiv steht bei ca. 66 % / 42 % (index.html,
+       Folie 01: data-fokus="66% 42%") und bleibt im Schlussbild ganz in der
+       rechten Bildtafel; unten ist die Fläche dunkel, damit die helle Schrift
+       der Folie lesbar bleibt. -->
+  <defs>
+    <radialGradient id="wand" cx="1270" cy="430" r="1050" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFE45C"/>
+      <stop offset="0.5" stop-color="#FFD007"/>
+      <stop offset="1" stop-color="#E3B600"/>
+    </radialGradient>
+    <linearGradient id="tisch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2C2B28"/>
+      <stop offset="1" stop-color="#121211"/>
+    </linearGradient>
+    <linearGradient id="dose" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#D6CDBD"/>
+      <stop offset="0.35" stop-color="#FBF7EF"/>
+      <stop offset="0.7" stop-color="#F3EDE1"/>
+      <stop offset="1" stop-color="#C9BFAE"/>
+    </linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#111110"/>
+      <stop offset="0.35" stop-color="#2E2E2B"/>
+      <stop offset="1" stop-color="#0E0E0D"/>
+    </linearGradient>
+    <linearGradient id="getraenk" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#C92C4E"/>
+      <stop offset="0.4" stop-color="#EC5A7A"/>
+      <stop offset="1" stop-color="#B8213F"/>
+    </linearGradient>
+    <radialGradient id="schatten" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Hintergrund: gelbe Wand, darunter dunkle Tischfläche -->
+  <rect width="1920" height="760" fill="url(#wand)"/>
+  <rect y="752" width="1920" height="328" fill="url(#tisch)"/>
+  <rect y="750" width="1920" height="5" fill="#3D3B37"/>
+
+  <!-- Schatten der Gegenstände -->
+  <ellipse cx="1260" cy="808" rx="380" ry="34" fill="url(#schatten)"/>
+
+  <!-- Dose: Zylinder mit Deckel und breitem Band (ohne Schrift) -->
+  <g>
+    <path d="M990 486 L990 790 A150 24 0 0 0 1290 790 L1290 486 Z" fill="url(#dose)"/>
+    <path d="M990 580 A150 24 0 0 0 1290 580 L1290 700 A150 24 0 0 1 990 700 Z" fill="url(#band)"/>
+    <path d="M990 612 A150 24 0 0 0 1290 612 L1290 622 A150 24 0 0 1 990 622 Z" fill="#FFD007"/>
+    <path d="M980 446 L980 488 A160 26 0 0 0 1300 488 L1300 446 Z" fill="#1D1D1B"/>
+    <ellipse cx="1140" cy="446" rx="160" ry="26" fill="#2F2E2B"/>
+    <ellipse cx="1140" cy="446" rx="128" ry="18" fill="#252422"/>
+    <path d="M1004 500 L1004 776" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round" opacity="0.45"/>
+  </g>
+
+  <!-- Shaker: durchscheinender Becher mit Getränk, schwarzer Deckel -->
+  <g>
+    <path d="M1352 392 L1362 790 A68 13 0 0 0 1498 790 L1508 392 Z" fill="#FFFFFF" opacity="0.5"/>
+    <path d="M1356 488 L1362 790 A68 13 0 0 0 1498 790 L1504 488 A74 13 0 0 1 1356 488 Z" fill="url(#getraenk)"/>
+    <ellipse cx="1430" cy="488" rx="74" ry="13" fill="#F28AA0"/>
+    <path d="M1352 392 L1362 790 A68 13 0 0 0 1498 790 L1508 392" fill="none" stroke="#FFFFFF" stroke-width="4" opacity="0.85"/>
+    <g stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.8">
+      <path d="M1372 540 h22"/><path d="M1373 600 h16"/><path d="M1374 660 h22"/><path d="M1375 720 h16"/>
+    </g>
+    <path d="M1378 410 L1384 770" stroke="#FFFFFF" stroke-width="12" stroke-linecap="round" opacity="0.4"/>
+    <path d="M1344 332 L1344 394 A86 15 0 0 0 1516 394 L1516 332 Z" fill="#1D1D1B"/>
+    <ellipse cx="1430" cy="332" rx="86" ry="15" fill="#2F2E2B"/>
+    <rect x="1396" y="286" width="68" height="48" rx="10" fill="#1D1D1B"/>
+    <ellipse cx="1430" cy="288" rx="34" ry="8" fill="#2F2E2B"/>
+  </g>
+
+  <!-- Früchte und Eiswürfel auf dem Tisch -->
+  <g>
+    <!-- Himbeeren -->
+    <g transform="translate(96 34)">
+      <circle cx="930" cy="790" r="30" fill="#B91F3A"/>
+      <circle cx="922" cy="780" r="7" fill="#E0485E"/><circle cx="940" cy="784" r="6" fill="#E0485E"/>
+      <circle cx="928" cy="800" r="6" fill="#E0485E"/><circle cx="946" cy="798" r="5" fill="#E0485E"/>
+      <circle cx="886" cy="806" r="26" fill="#A81A33"/>
+      <circle cx="880" cy="798" r="6" fill="#D23C55"/><circle cx="895" cy="804" r="5" fill="#D23C55"/>
+      <circle cx="884" cy="815" r="5" fill="#D23C55"/>
+    </g>
+    <!-- Zitronenscheibe (liegend) -->
+    <g>
+      <ellipse cx="1316" cy="830" rx="74" ry="24" fill="#F5B700"/>
+      <ellipse cx="1316" cy="826" rx="66" ry="20" fill="#FFE98A"/>
+      <g stroke="#F5C531" stroke-width="3">
+        <path d="M1316 826 L1260 820"/><path d="M1316 826 L1290 809"/><path d="M1316 826 L1340 809"/>
+        <path d="M1316 826 L1372 820"/><path d="M1316 826 L1352 841"/><path d="M1316 826 L1280 841"/>
+      </g>
+    </g>
+    <!-- Eiswürfel -->
+    <g fill="#DDEFF5" stroke="#FFFFFF" stroke-width="3" opacity="0.92">
+      <rect x="1494" y="770" width="74" height="70" rx="12" transform="rotate(-8 1531 805)"/>
+      <rect x="1560" y="796" width="56" height="52" rx="10" transform="rotate(10 1588 822)"/>
+    </g>
+  </g>
+</svg>

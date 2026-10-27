@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="de" data-thema="editorial" data-modus="hell">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2230%22 fill=%22%230B4F6C%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22Georgia,serif%22 font-size=%2230%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23ffffff%22%3EF%3C/text%3E%3C/svg%3E">
+<title>Führung im KMU</title>
+<!--
+  ════════════════════════════════════════════════════════════════════════════
+  index.html – DIE PRÄSENTATION (alle Folien in Vortragsreihenfolge)
+  ════════════════════════════════════════════════════════════════════════════
+  Referat „Führung – Begriff und Bedeutung im KMU“ · Modul Management im KMU
+  Prof. Dr. Christine Arend-Fuchs · Hochschule Kaiserslautern · Yannick Heisler
+
+  Engine (js/deck.js, js/komponenten.js, css/tokens.css, deck.css, komponenten.css)
+  unverändert aus dem Modul Unternehmenskommunikation übernommen – Bedienung und
+  Bausteine wie dort (AUTOREN.md im Repository Unternehmens-Kommunikation).
+  Eigene Gestaltung: css/folien/fuehrung.css · eigenes Verhalten: js/folien/fuehrung.js
+  Angaben (Datum, Umfrage, Farben): marke.js · Belege: ../../recherche/literaturbasis.md
+  (Nummern [n] in den Fußzeilen = Nummern dort).
+
+  Bedienung: → / Leertaste / Clicker = weiter · ← = zurück · O = Übersicht ·
+  R = Referentenansicht (zweites Fenster) · T = Thema · D = hell/dunkel · ? = Hilfe
+  Prüfen: node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte
+-->
+<script src="marke.js"></script>
+<script>
+(function () {
+  var h = document.documentElement, p = new URLSearchParams(location.search), m = window.MARKE || {};
+  var k = 'deck:' + location.pathname + ':';
+  var s = function (n) { try { return sessionStorage.getItem(k + n); } catch (e) { return null; } };
+  var t = p.get('thema') || s('thema') || m.standardThema || 'editorial';
+  var d = p.get('modus') || s('modus') || m.standardModus || 'hell';
+  if (['editorial', 'bento', 'keynote'].indexOf(t) < 0) t = 'editorial';
+  if (['hell', 'dunkel'].indexOf(d) < 0) d = 'hell';
+  h.setAttribute('data-thema', t);
+  h.setAttribute('data-modus', d);
+  var f = m.farben || {};
+  ['primaer', 'sekundaer'].forEach(function (n) {
+    var w = p.get(n) || s('farbe-' + n) || f[n] || '';
+    if (/^[0-9a-f]{3}([0-9a-f]{3})?$/i.test(w)) w = '#' + w;
+    if (/^#[0-9a-f]{3}([0-9a-f]{3})?$/i.test(w)) h.style.setProperty('--marke-' + n, w);
+  });
+  if (p.has('referent')) h.classList.add('referent');
+  if (p.has('druck')) h.classList.add('druckmodus');
+  window.DECK_BASIS = '';
+})();
+</script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/deck.css">
+<link rel="stylesheet" href="css/komponenten.css">
+<link rel="stylesheet" href="css/folien/fuehrung.css">
+</head>
+<body>
+<div class="nur-ohne-css" role="alert" style="max-width:46em;margin:24px auto;padding:16px 20px;border:4px solid #B00020;background:#FFF4F4;color:#1A1A1A;font:18px/1.5 Arial,sans-serif">
+  <strong>Präsentation unvollständig geöffnet.</strong> Neben <code>index.html</code> fehlen die Ordner
+  <code>css/</code> und <code>js/</code>. ZIP-Datei zuerst vollständig entpacken und dann
+  <code>praesentation/index.html</code> öffnen (Chrome oder Edge).
+</div>
+
+<!-- Icon-Satz (aus dem Modul Unternehmenskommunikation): <svg class="icon"><use href="#i-name"/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-pfeil-rechts" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-pfeil-links" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-pfeil-hoch" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-pfeil-runter" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-raster" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-referent" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4M6 8h7M6 11.5h4"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><circle cx="9" cy="10" r="6"/><circle cx="15" cy="14" r="6"/></symbol>
+    <symbol id="i-mond" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+    <symbol id="i-sonne" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+    <symbol id="i-vollbild" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></symbol>
+    <symbol id="i-hilfe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1.1.9-1.1 1.7v.6M12 17.2h.01"/></symbol>
+    <symbol id="i-steuerrad" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></symbol>
+    <symbol id="i-schliessen" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-start" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
+    <symbol id="i-zuruecksetzen" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></symbol>
+    <symbol id="i-schwarz" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4M4 5l16 11"/></symbol>
+    <symbol id="i-extern" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-stift" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-loeschen" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-haken" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.6h.01"/></symbol>
+    <symbol id="i-lupe" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></symbol>
+    <symbol id="i-gruppe" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 13.6A5 5 0 0 1 21.5 19"/></symbol>
+    <symbol id="i-leiter" viewBox="0 0 24 24"><path d="M8 3v18M16 3v18M8 7h8M8 12h8M8 17h8"/></symbol>
+    <symbol id="i-tabelle" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M3 14.5h18M9 4v16M15 4v16"/></symbol>
+    <symbol id="i-vergleich" viewBox="0 0 24 24"><circle cx="8.5" cy="12" r="5.5"/><circle cx="15.5" cy="12" r="5.5"/></symbol>
+    <symbol id="i-sprechblase" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H10l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-megafon" viewBox="0 0 24 24"><path d="M3 10v4h3l8 5V5L6 10H3zM18 9a4 4 0 0 1 0 6"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></symbol>
+    <symbol id="i-bild" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></symbol>
+    <symbol id="i-daten" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></symbol>
+    <symbol id="i-diagramm" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></symbol>
+    <symbol id="i-ziel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12h.01"/></symbol>
+    <symbol id="i-kompass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></symbol>
+    <symbol id="i-herz" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+    <symbol id="i-stern" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.7-4.4 4 1.2 5.8L12 16.5l-5.3 2.9 1.2-5.8-4.4-4 5.9-.7z"/></symbol>
+    <symbol id="i-zitat" viewBox="0 0 24 24"><path d="M10 7c-3 .8-5 3-5 6.5V17h4.5v-4.5H6.5M19 7c-3 .8-5 3-5 6.5V17h4.5v-4.5h-3"/></symbol>
+    <symbol id="i-uhr" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2M14 18.5V20M18.5 14H20"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+    <symbol id="i-lampe" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.3.3.5.7.5 1.1V16h6v-1c0-.4.2-.8.5-1.1A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-blatt" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15M5 19l7-7"/></symbol>
+    <symbol id="i-dokument" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h6"/></symbol>
+    <symbol id="i-annahme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1.1.9-1.1 1.7v.6M12 17.2h.01"/></symbol>
+  </defs>
+</svg>
+
+<div class="deck" id="deck">
+  <main class="buehne" id="buehne" aria-roledescription="Präsentation">
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 01 · Titel · 40 s
+     Einstieg mit einer Frage an das Publikum, dann Thema nennen.
+     Motiv rechts: Inhaber/in im Zentrum, das Team drumherum (zeichnet sich).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-titel" id="f01" data-titel="Titel" data-feld="leer" data-zeit="40" data-buendel="alle" data-layout="titel" data-modus="dunkel">
+  <header class="folie-kopf">
+    <p class="kicker">Referat · <span data-veranstaltung>Management im KMU</span></p>
+    <h1 class="titel">Führung im <em>KMU</em></h1>
+    <p class="lead">Begriff, Besonderheiten und Praxis – wenn Eigentum und Leitung in einer Hand liegen</p>
+  </header>
+  <div class="folie-inhalt">
+    <div class="angaben">
+      <div><span class="angaben-titel" data-meta>Referent</span><span class="angaben-wert" data-gruppe>Yannick Heisler</span></div>
+      <div><span class="angaben-titel" data-meta>Dozentin</span><span class="angaben-wert" data-dozent>Prof. Dr. Christine Arend-Fuchs</span></div>
+      <div><span class="angaben-titel" data-meta>Termin</span><span class="angaben-wert" data-datum="lang"></span></div>
+    </div>
+    <svg class="f-titel-motiv" viewBox="0 0 600 600" aria-hidden="true" data-animation="zeichnen" data-dauer="1600">
+      <g class="f-titel-speichen">
+        <path d="M300 300 L300 90"/><path d="M300 300 L482 195"/><path d="M300 300 L482 405"/>
+        <path d="M300 300 L300 510"/><path d="M300 300 L118 405"/><path d="M300 300 L118 195"/>
+      </g>
+      <circle class="f-titel-ring" cx="300" cy="300" r="210"/>
+      <g class="f-titel-team">
+        <circle cx="300" cy="90" r="30"/><circle cx="482" cy="195" r="30"/><circle cx="482" cy="405" r="30"/>
+        <circle cx="300" cy="510" r="30"/><circle cx="118" cy="405" r="30"/><circle cx="118" cy="195" r="30"/>
+      </g>
+      <circle class="f-titel-kern" cx="300" cy="300" r="62"/>
+    </svg>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle"><span data-hochschule>Hochschule Kaiserslautern</span> · Campus Zweibrücken · Mittelstandsökonomie</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0"><b>Einstieg (ca. 25 s):</b> „Denken Sie kurz an die beste Chefin oder den besten Chef, den Sie je hatten. Was hat diese Person anders gemacht?“ – 3 bis 5 Sekunden Pause, ein, zwei Zurufe aufgreifen. „Genau darum geht es heute: Was ist Führung – und warum ist sie im Mittelstand etwas Besonderes?“</p>
+    <p class="gesprochen"><b>Thema (ca. 10 s):</b> „Mein Name ist Yannick Heisler, mein Thema: Führung im KMU – Begriff, Besonderheiten und Praxis.“</p>
+    <p>Motiv rechts: Eine Person im Zentrum, das Team drumherum – das Bild für „Führung hängt an einer Person“ (Folie 07).</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 02 · Fahrplan · 30 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-plan" id="f02" data-titel="Fahrplan" data-feld="leer" data-rubrik="Fahrplan" data-zeit="30" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">Fahrplan</p>
+    <h2 class="titel">Vier Fragen führen durch das Referat</h2>
+  </header>
+  <div class="folie-inhalt">
+    <ol class="f-plan-liste" data-staffel="110" data-animation="hoch">
+      <li class="karte"><span class="f-plan-nr">1</span><span class="karte-titel">Was ist Führung?</span><span class="karte-text">Definitionen und eine Arbeitsdefinition</span></li>
+      <li class="karte"><span class="f-plan-nr">2</span><span class="karte-titel">Was ist ein KMU?</span><span class="karte-text">Zahlen und Definitionen</span></li>
+      <li class="karte"><span class="f-plan-nr">3</span><span class="karte-titel">Was ist dort anders?</span><span class="karte-text">Besonderheiten und Live-Umfrage</span></li>
+      <li class="karte"><span class="f-plan-nr">4</span><span class="karte-titel">Was heißt das für die Praxis?</span><span class="karte-text">Befragung, Zahlen, Diskussion</span></li>
+    </ol>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Belege: Literaturbasis (40 frei zugängliche Quellen, Stand 27.10.2026) – Nummern [n] in den Fußzeilen</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Ich gehe in vier Schritten vor: Erst klären wir, was Führung überhaupt ist. Dann, was ein KMU ausmacht. Drittens, was Führung dort anders macht – da sind Sie per Handy gefragt. Und zum Schluss: was das für die Praxis heißt, mit Zahlen, zwei Befragungen und einem Fallbeispiel.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 03 · Definitionen · 75 s
+     Drei Definitionen; pro Schritt wird ein gemeinsames Kernelement markiert
+     und erscheint als Chip unten. Die Chips gleiten (data-morph) in Folie 04.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-def" id="f03" data-titel="Definitionen" data-feld="leer" data-rubrik="1 · Begriff" data-zeit="75" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">1 · Was ist Führung?</p>
+    <h2 class="titel">Drei Definitionen, ein gemeinsamer Kern</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-def-karten" data-staffel="120" data-animation="hoch">
+      <blockquote class="karte f-def-karte">
+        <span class="karte-kicker" data-meta>Gabler: Führung [1]</span>
+        <p class="f-def-text">„durch <mark class="f-kern f-kern--interaktion" data-schritt="3" data-animation="hervorheben">Interaktion</mark> vermittelte <mark class="f-kern f-kern--einfluss" data-schritt="2" data-animation="hervorheben">Ausrichtung des Handelns</mark> … auf die Verwirklichung vorgegebener <mark class="f-kern f-kern--ziel" data-schritt="1" data-animation="hervorheben">Ziele</mark>“</p>
+      </blockquote>
+      <blockquote class="karte f-def-karte">
+        <span class="karte-kicker" data-meta>Gabler: Personalführung [2]</span>
+        <p class="f-def-text">„<mark class="f-kern f-kern--ziel" data-schritt="1" data-animation="hervorheben">zielgerichtetes</mark> <mark class="f-kern f-kern--interaktion" data-schritt="3" data-animation="hervorheben">soziales</mark> <mark class="f-kern f-kern--einfluss" data-schritt="2" data-animation="hervorheben">Einflusshandeln</mark> im Rahmen von <mark class="f-kern f-kern--organisation" data-schritt="4" data-animation="hervorheben">Organisationen</mark>“</p>
+      </blockquote>
+      <blockquote class="karte f-def-karte">
+        <span class="karte-kicker" data-meta>v. Rosenstiel: Mitarbeiterführung [5]</span>
+        <p class="f-def-text">„unmittelbare, absichtliche und <mark class="f-kern f-kern--ziel" data-schritt="1" data-animation="hervorheben">zielbezogene</mark> <mark class="f-kern f-kern--einfluss" data-schritt="2" data-animation="hervorheben">Einflußnahme</mark> … in <mark class="f-kern f-kern--organisation" data-schritt="4" data-animation="hervorheben">Organisationen</mark>“</p>
+      </blockquote>
+    </div>
+    <ul class="f-chips" aria-label="Gemeinsame Kernelemente">
+      <li class="f-chip f-chip--ziel" data-morph="kern-ziel" data-schritt="1" data-animation="hoch">Ziel</li>
+      <li class="f-chip f-chip--einfluss" data-morph="kern-einfluss" data-schritt="2" data-animation="hoch">Einfluss</li>
+      <li class="f-chip f-chip--interaktion" data-morph="kern-interaktion" data-schritt="3" data-animation="hoch">Interaktion</li>
+      <li class="f-chip f-chip--organisation" data-morph="kern-organisation" data-schritt="4" data-animation="hoch">Organisation</li>
+    </ul>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[1] Gabler Wirtschaftslexikon „Führung“ · [2] Gabler „Personalführung“ · [5] v. Rosenstiel (2000), Lexikon der Psychologie – gekürzt (…)</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Führung ist ein Alltagswort – und trotzdem nicht einheitlich definiert, sagt selbst das Gabler-Lexikon. Hier drei Definitionen aus frei zugänglichen Quellen. Wenn man sie nebeneinanderlegt, fällt auf: Sie teilen vier Bausteine.“</p>
+    <p data-schritt="1">„Erstens: ein <b>Ziel</b>. Führung ist nie Selbstzweck – es geht um ‚vorgegebene Ziele‘, ‚zielgerichtet‘, ‚zielbezogen‘.“</p>
+    <p data-schritt="2">„Zweitens: <b>Einfluss</b>. Jemand richtet das Handeln anderer aus – und zwar absichtlich.“</p>
+    <p data-schritt="3">„Drittens: <b>Interaktion</b>. Führung passiert zwischen Menschen, im Gespräch – nicht per Organigramm.“</p>
+    <p data-schritt="4">„Und viertens: Sie findet in einer <b>Organisation</b> statt, mit Über- und Unterordnung. Aus diesen vier Bausteinen baue ich jetzt eine Arbeitsdefinition.“</p>
+    <p>Hintergrund: Gabler „Leadership“ [3]: Leadership „bezeichnet nicht einheitlich definiert …“. Wunderer wird bewusst nicht zitiert (kein frei zugänglicher Originalwortlaut, siehe Literaturbasis). Wortlaut vollständig: Backup B2.</p>
+    <p>Mögliche Rückfragen: „Ist ‚Interaktion‘ bei Gabler wirklich gemeint?“ – Ja, wörtlich „durch Interaktion vermittelte Ausrichtung“; dazu „asymmetrische soziale Beziehungen der Über- und Unterordnung“ (Organisation).</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 04 · Arbeitsdefinition · 45 s
+     Die vier Chips kommen per Morph aus Folie 03 und rahmen den Satz.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-arbeit" id="f04" data-titel="Arbeitsdefinition" data-feld="leer" data-rubrik="1 · Begriff" data-zeit="45" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">1 · Was ist Führung?</p>
+    <h2 class="titel">Arbeitsdefinition für dieses Referat</h2>
+  </header>
+  <div class="folie-inhalt">
+    <ul class="f-chips f-chips--oben" aria-label="Kernelemente">
+      <li class="f-chip f-chip--ziel" data-morph="kern-ziel">Ziel</li>
+      <li class="f-chip f-chip--einfluss" data-morph="kern-einfluss">Einfluss</li>
+      <li class="f-chip f-chip--interaktion" data-morph="kern-interaktion">Interaktion</li>
+      <li class="f-chip f-chip--organisation" data-morph="kern-organisation">Organisation</li>
+    </ul>
+    <p class="f-arbeit-satz" data-morph="arbeitsdefinition" data-animation="hoch" data-verzoegerung="200">
+      Führung ist die <span class="f-wort f-wort--ziel">zielbezogene</span>, <span class="f-wort f-wort--einfluss">absichtliche Einflussnahme</span> auf das Handeln anderer – vermittelt durch <span class="f-wort f-wort--interaktion">Interaktion</span> in einer <span class="f-wort f-wort--organisation">Organisation</span>.
+    </p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Eigene Synthese aus [1], [2], [5]</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">Satz einmal ruhig vorlesen. „Das ist meine Arbeitsdefinition: Führung ist die zielbezogene, absichtliche Einflussnahme auf das Handeln anderer – vermittelt durch Interaktion in einer Organisation. Merken Sie sich den Satz – am Ende kommt er zurück, mit einem Zusatz für das KMU.“</p>
+    <p>Rückfragen: „Warum nicht Wunderer?“ – Seine Definition ist in Lehrbüchern verbreitet, aber nicht frei zugänglich im Wortlaut belegt; die Elemente decken sich (zielorientiert, sozial, Einflussnahme).</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 05 · Zwei Ebenen · 60 s
+     Schritt 1: Die Kreise „Unternehmensführung“ und „Mitarbeiterführung“
+     schieben sich zusammen; in der Schnittmenge steht „Inhaber/in“.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-ebenen" id="f05" data-titel="Zwei Ebenen" data-feld="leer" data-rubrik="1 · Begriff" data-zeit="60" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">1 · Was ist Führung?</p>
+    <h2 class="titel">Zwei Ebenen der Führung – im KMU bei einer Person</h2>
+  </header>
+  <div class="folie-inhalt">
+    <span class="f-ebenen-zustand" data-schritt="1" data-animation="zustand" aria-hidden="true"></span>
+    <div class="f-ebenen-buehne">
+      <div class="f-kreis f-kreis--links">
+        <span class="f-kreis-kicker" data-meta>Management</span>
+        <span class="f-kreis-titel">Unternehmens­führung</span>
+        <span class="f-kreis-text">Ziele, Planung, Organisation, Kontrolle</span>
+      </div>
+      <div class="f-kreis f-kreis--rechts">
+        <span class="f-kreis-kicker" data-meta>Personalführung</span>
+        <span class="f-kreis-titel">Mitarbeiter­führung</span>
+        <span class="f-kreis-text">Motivieren, Feedback, Zusammenhalt</span>
+      </div>
+      <div class="f-ebenen-mitte" data-schritt="1" data-animation="zoom" data-verzoegerung="500">
+        <svg class="icon" aria-hidden="true"><use href="#i-person"/></svg>
+        <span>Inhaber/in</span>
+      </div>
+    </div>
+    <p class="f-ebenen-satz" data-schritt="1" data-animation="hoch" data-verzoegerung="700">Im Konzern getrennt – im Mittelstand fallen beide zusammen.</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[4] Gabler „Management“: Trennung von Eigentum und Geschäftsführung als Merkmal des Managements als Institution · [5] v. Rosenstiel (2000)</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Von Rosenstiel unterscheidet zwei Ebenen. Links die Unternehmensführung – das, was Gabler ‚Management‘ nennt: Ziele setzen, planen, organisieren, kontrollieren. Rechts die Mitarbeiterführung: Menschen motivieren, Feedback geben, das Team zusammenhalten.“</p>
+    <p data-schritt="1">„Im Konzern sind das oft verschiedene Personen: Vorstand und Teamleitung. Gabler nennt die Trennung von Eigentum und Geschäftsführung sogar ein Merkmal des Managements. Im Mittelstand ist es genau umgekehrt: Beide Ebenen liegen bei einer Person – der Inhaberin oder dem Inhaber.“</p>
+    <p>Hintergrund: Im Gabler online leitet „Unternehmensführung“ auf „Management“ weiter, „Mitarbeiterführung“ auf „Führung“ [4][1]. Mitarbeiterführung ist im Managementzyklus eine von neun Aufgaben [4].</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 06 · KMU und Mittelstand · 60 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-kmu" id="f06" data-titel="KMU und Mittelstand" data-feld="leer" data-rubrik="2 · KMU" data-zeit="60" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">2 · Was ist ein KMU?</p>
+    <h2 class="titel">Mittelstand heißt: Eigentum und Leitung in einer Hand</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-kmu-raster">
+      <div class="f-kmu-def">
+        <article class="karte karte--akzent f-kmu-kern" data-animation="hoch">
+          <span class="karte-kicker" data-meta>IfM Bonn: qualitativ [10]</span>
+          <span class="karte-titel">„Einheit von Eigentum und Leitung“</span>
+        </article>
+        <div class="f-kmu-grenzen" data-schritt="1" data-staffel="100" data-animation="hoch">
+          <p class="f-grenze"><span class="chip chip--rahmen">EU</span><span>unter 250 Beschäftigte, bis 50 Mio. € Umsatz [8]</span></p>
+          <p class="f-grenze"><span class="chip chip--rahmen">IfM</span><span>unter 500 Beschäftigte, bis 50 Mio. € Umsatz [9]</span></p>
+        </div>
+      </div>
+      <div class="f-kmu-zahlen" data-schritt="2" data-staffel="160" data-animation="hoch">
+        <div class="kennzahl">
+          <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="99.3" data-dezimalen="1" data-einheit=" %">99,3 %</span>
+          <span class="kennzahl-text">aller Unternehmen</span>
+        </div>
+        <div class="kennzahl">
+          <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="53.7" data-dezimalen="1" data-einheit=" %">53,7 %</span>
+          <span class="kennzahl-text">der tätigen Personen</span>
+        </div>
+        <div class="kennzahl">
+          <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="68.4" data-dezimalen="1" data-einheit=" %">68,4 %</span>
+          <span class="kennzahl-text">der Auszubildenden</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">KMU-Anteile 2024 (EU-Definition): Destatis [12] · Auszubildende Ende 2024 (Betriebe &lt; 250 SV-Beschäftigte): IfM Bonn [11] · [8] EU-Kommission · [9][10] IfM Bonn</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Was ist ein KMU? Für das Thema Führung ist die wichtigste Definition nicht die mit Zahlen, sondern die qualitative des IfM Bonn: Mittelstand ist die Einheit von Eigentum und Leitung – wem das Unternehmen gehört, der führt es auch.“</p>
+    <p data-schritt="1">„Dazu kommen die Größengrenzen: Die EU zieht die Linie bei 250 Beschäftigten, das IfM für Deutschland bei 500.“</p>
+    <p data-schritt="2">„Und die Bedeutung: 99,3 Prozent aller Unternehmen in Deutschland sind KMU, sie stellen über die Hälfte der tätigen Personen und bilden gut zwei Drittel aller Azubis aus. Wenn wir über Führung im KMU reden, reden wir also über den Arbeitsplatz der meisten Menschen.“</p>
+    <p>Hintergrund Definitionseffekt (Backup B3): Je nach Abgrenzung arbeiten 54 % (IfM/Destatis) oder 72 % (KfW, Mittelstand bis 500 Mio. € Umsatz) der Erwerbstätigen im Mittelstand [11][12][13]. Das IfM betont, dass die qualitativen Merkmale „aus den amtlichen Statistiken nicht ablesbar sind“.</p>
+    <p>Rückfragen: „Ist TLT ein KMU?“ – Hängt von Beschäftigtenzahl und Eigentümerstruktur ab (Fragebogen A2); nach IfM nur, wenn Eigentum und Leitung zusammenfallen und das Unternehmen nicht abhängig ist [10].</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 07 · Besonderheiten · 75 s
+     Schritt 1: Das Konzern-Organigramm schrumpft zur flachen Struktur mit der
+     Inhaberin/dem Inhaber in der Mitte (js/folien/fuehrung.js setzt nur die
+     Klasse, die Bewegung macht CSS). Schritte 2–5: vier Besonderheiten.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-bes" id="f07" data-titel="Besonderheiten im KMU" data-feld="leer" data-rubrik="3 · Führung im KMU" data-zeit="75" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">3 · Was ist im KMU anders?</p>
+    <h2 class="titel">Im KMU ist Führung persönlich</h2>
+  </header>
+  <div class="folie-inhalt">
+    <span class="f-bes-zustand" data-schritt="1" data-animation="zustand" aria-hidden="true"></span>
+    <div class="f-bes-raster">
+      <figure class="f-org" aria-label="Organigramm: Konzern mit vier Ebenen wird zur flachen Struktur mit der Inhaberin oder dem Inhaber in der Mitte">
+        <svg viewBox="0 0 640 520" aria-hidden="true">
+          <g class="f-org-linien-konzern">
+            <path d="M320 70 V130 M170 130 H470 M170 130 V190 M470 130 V190 M170 230 V290 M90 290 H250 M90 290 V350 M250 290 V350 M470 230 V290 M390 290 H550 M390 290 V350 M550 290 V350"/>
+          </g>
+          <g class="f-org-linien-kmu">
+            <path d="M320 260 L320 110 M320 260 L462 200 M320 260 L462 340 M320 260 L320 420 M320 260 L178 340 M320 260 L178 200"/>
+          </g>
+          <g class="f-org-knoten">
+            <circle class="f-org-chef" style="--x0:320px;--y0:50px;--x1:320px;--y1:260px" r="30"/>
+            <circle style="--x0:170px;--y0:210px;--x1:320px;--y1:110px" r="22"/>
+            <circle style="--x0:470px;--y0:210px;--x1:462px;--y1:200px" r="22"/>
+            <circle style="--x0:90px;--y0:370px;--x1:462px;--y1:340px" r="18"/>
+            <circle style="--x0:250px;--y0:370px;--x1:320px;--y1:420px" r="18"/>
+            <circle style="--x0:390px;--y0:370px;--x1:178px;--y1:340px" r="18"/>
+            <circle style="--x0:550px;--y0:370px;--x1:178px;--y1:200px" r="18"/>
+          </g>
+        </svg>
+        <figcaption class="f-org-text" data-meta><span class="f-org-text-konzern">Konzern: viele Ebenen</span><span class="f-org-text-kmu">KMU: eine zentrale Beziehung</span></figcaption>
+      </figure>
+      <div class="f-bes-rechts">
+        <blockquote class="zitat f-bes-zitat" data-schritt="1" data-animation="hoch" data-verzoegerung="600">
+          <p class="zitat-text">„Letztlich gibt es nur eine wirklich wichtige Führungsbeziehung und das ist die zum Inhaber“</p>
+          <cite class="zitat-quelle">Wimmer (2021) [14]</cite>
+        </blockquote>
+        <ul class="liste f-bes-liste">
+          <li data-schritt="2" data-animation="hoch"><b>Nähe:</b> kurze Wege, flache Hierarchien</li>
+          <li data-schritt="3" data-animation="hoch"><b>Informell:</b> Aufgaben folgen Personen</li>
+          <li data-schritt="4" data-animation="hoch"><b>Generalisten:</b> Führung neben dem Tagesgeschäft</li>
+          <li data-schritt="5" data-animation="hoch"><b>Risiko:</b> oft persönliche Haftung</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[14] Wimmer (2021), Gruppe. Interaktion. Organisation 52(4), Open Access · [15] Bijedić u. a. (2018), IfM-Materialien 272, S. 6, 9 · Grafik: eigene Darstellung</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„So sieht Führung im Lehrbuch oft aus: ein Organigramm mit vielen Ebenen.“</p>
+    <p data-schritt="1">„Im KMU klappt das zusammen. Der Organisationsforscher Rudolf Wimmer schreibt über Familienunternehmen: ‚Letztlich gibt es nur eine wirklich wichtige Führungsbeziehung und das ist die zum Inhaber.‘“</p>
+    <p data-schritt="2">„Daraus folgen vier Besonderheiten. Erstens Nähe: Flache Hierarchien sind laut Wimmer der Normalzustand, die Wege sind kurz.“</p>
+    <p data-schritt="3">„Zweitens: Es ist informell. Oft gibt es keine festgelegten Organigramme – die Aufgaben folgen den Personen, nicht umgekehrt.“</p>
+    <p data-schritt="4">„Drittens: Inhaber sind Generalisten. Eine IfM-Studie zeigt, dass Führungsaufgaben im Mittelstand weniger spezialisiert sind als im Großunternehmen – geführt wird nebenbei.“</p>
+    <p data-schritt="5">„Und viertens: Wer führt, haftet oft persönlich für Kredite – deshalb ist die Risikoscheu tendenziell höher.“</p>
+    <p>Belege: Wimmer [14]: „in einer Hand vereint“, „keine formell festgelegten […] Organigramme“, „Flache Hierarchien bilden hier üblicherweise den Normalzustand“, Aufgaben „folgen den Personen und nicht umgekehrt“. IfM [15, S. 9]: „tendenziell niedrigeren Spezialisierungsgrad“; [15, S. 6]: haften „oftmals für Investitionskredite persönlich“.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 08 · Live-Umfrage · 70 s
+     Baustein .umfrage (js/komponenten.js), Daten: marke.js → umfragen.fuehrung.
+     Schritt 1: Aussagezahl „x % von Ihnen werden an Entscheidungen beteiligt“.
+     Plan B ohne Netz: Handzeichen, Klick auf eine Antwort = +1.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-umfrage" id="f08" data-titel="Live-Umfrage: Wie werden Sie geführt?" data-feld="leer" data-rubrik="Live-Umfrage" data-zeit="70" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">3 · Live-Umfrage</p>
+    <h2 class="titel" data-umfrage-frage="fuehrung">Wie werden Sie in Ihrem (Neben-)Job geführt?</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="umfrage" data-umfrage="fuehrung" data-aufloesung="aus" data-aussage="1" data-qr-groesse="400"></div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Anonym · Antworten von links nach rechts = mehr Entscheidungsspielraum für das Team (vereinfacht nach Tannenbaum/Schmidt [6])</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Jetzt sind Sie dran: Wie werden Sie in Ihrem Job oder Nebenjob geführt? Scannen Sie den QR-Code – anonym, ohne Anmeldung. Entscheidet Ihr Chef allein, erklärt er, fragt er vorher, oder entscheidet das Team?“ – ca. 40 Sekunden laufen lassen, Ergebnis kommentieren.</p>
+    <p data-schritt="1">„Das heißt: [Zahl] Prozent von Ihnen werden an Entscheidungen beteiligt. Schauen wir, was die Forschung über den typischen Stil im KMU sagt.“</p>
+    <p>Technik: Ergebnis aktualisiert sich alle 2 s. Ohne Netz: Handzeichen, Klick auf eine Antwort = +1, Umschalt+Klick = −1, Ziffern 1–5. Vor dem Vortrag in marke.js runde auf den Vortragstag stellen (z. B. 'vortrag-2026-10-30'). Voraussetzung für den QR-Code: GitHub Pages ist für das Repository eingeschaltet.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 09 · Führungsstil-Kontinuum · 60 s
+     Sieben Stufen nach Tannenbaum/Schmidt; die Fläche zeigt, wie der
+     Entscheidungsspielraum von der Führungskraft zum Team wandert.
+     Marker: Schritt 1 Wimmer, Schritt 2 IfM, Schritt 3 Stärke/Risiko.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-stil" id="f09" data-titel="Führungsstil im KMU" data-feld="leer" data-rubrik="3 · Führung im KMU" data-zeit="60" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">3 · Was ist im KMU anders?</p>
+    <h2 class="titel">Patriarchalisch oder kooperativ? Der KMU-Stil ist umstritten</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-stil-skala">
+      <svg class="f-stil-flaeche" viewBox="0 0 1680 120" preserveAspectRatio="none" aria-hidden="true" data-animation="zeichnen" data-dauer="1200">
+        <path class="f-stil-fk" d="M0 0 H1680 L0 120 Z"/>
+        <path class="f-stil-team" d="M1680 0 V120 H0 Z"/>
+      </svg>
+      <p class="f-stil-achse" data-meta><span>Entscheidungsspielraum der Führungskraft</span><span>des Teams</span></p>
+      <ol class="f-stil-stufen" data-staffel="60" data-animation="hoch">
+        <li>autoritär</li><li>patriarchalisch</li><li>informierend</li><li>beratend</li><li>kooperativ</li><li>delegativ</li><li>autonom</li>
+      </ol>
+      <div class="f-stil-marker f-stil-marker--wimmer" data-schritt="1" data-animation="hoch">
+        <span class="f-stil-pin" aria-hidden="true"></span>
+        <p><b>Wimmer:</b> in über zwei Dritteln kleinerer Familien­unternehmen <span class="f-klein" data-meta>(Einschätzung)</span></p>
+      </div>
+      <div class="f-stil-marker f-stil-marker--ifm" data-schritt="2" data-animation="hoch">
+        <span class="f-stil-pin" aria-hidden="true"></span>
+        <p><b>IfM:</b> kleinere KMU „eher … kooperativ“ <span class="f-klein" data-meta>(Interviews)</span></p>
+      </div>
+    </div>
+    <div class="f-stil-bilanz" data-schritt="3" data-staffel="120" data-animation="hoch">
+      <p class="f-plus"><b>Stärke:</b> kurze Entscheidungswege, hohes Tempo</p>
+      <p class="f-minus"><b>Risiko:</b> bei Wachstum droht „Existenzgefährdung“</p>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Stufen nach Tannenbaum/Schmidt (1958), dt. Lehrbuchfassung [6][32] · [14] Wimmer (2021) · [15] Bijedić u. a. (2018), S. 21 · [17] Gabler „Patriarchalischer Führungsstil“</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Das Führungsstil-Kontinuum von Tannenbaum und Schmidt ordnet Stile danach, wer entscheidet: links die Führungskraft allein, rechts das Team. Patriarchalisch heißt laut Gabler: Der Chef entscheidet, erwartet Loyalität – und sorgt dafür für seine Leute.“</p>
+    <p data-schritt="1">„Wimmer schätzt, dass dieser patriarchalische Stil in über zwei Dritteln der kleineren Familienunternehmen anzutreffen ist – und meint das ausdrücklich ohne negativen Beigeschmack.“</p>
+    <p data-schritt="2">„Eine IfM-Studie kommt aus Interviews zu einem anderen Bild: In kleineren Unternehmen sei der Stil eher partizipativ bzw. kooperativ – möglich durch die überschaubare Größe.“</p>
+    <p data-schritt="3">„Beides kann stimmen. Die Stärke: kurze Wege, hohes Tempo. Das Risiko: Wächst das Unternehmen, kann das Muster laut Wimmer ‚in eine Existenzgefährdung umschlagen‘. Wie sehen das zwei Führungskräfte aus der Praxis?“</p>
+    <p>Wichtig: Wimmers „mehr als zwei Drittel“ ist eine Einschätzung in einem Theoriebeitrag, keine Erhebung. IfM-Aussage aus qualitativen Interviews. Die Bezeichnungen der sieben Stufen schwanken je nach Lehrbuch.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 10 · Praxisstimmen (Befragung) · 75 s
+     TODO bis Do, 29.10.2026: Antworten aus den Fragebögen eintragen
+     (fuehrung/befragung/fragebogen-*.docx). Je Spalte: Frage 5 („Führung ist …“),
+     Frage 17 (Stil 1–7) und eine Kernaussage zu D/E. Danach die Pille
+     „Antworten folgen“ entfernen und die Einverständnis-Angaben beachten
+     (Name oder anonym).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-stimmen" id="f10" data-titel="Praxisstimmen: Befragung" data-feld="leer" data-rubrik="4 · Praxis" data-zeit="75" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">4 · Befragung · n = 2 <span class="beispiel kennzeichnung">Antworten folgen</span></p>
+    <h2 class="titel">Zwei Unternehmen, zwei Blicke auf Führung</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-stimmen-raster" data-staffel="160" data-animation="hoch">
+      <article class="karte f-stimme">
+        <span class="karte-kicker" data-meta>Software · jung, wachsend</span>
+        <span class="karte-titel">SimpleAct</span>
+        <p class="f-stimme-zitat">„Führung ist …“ <span class="f-offen">Antwort folgt</span></p>
+        <p class="f-stimme-stil"><span class="f-klein" data-meta>Stil (Selbsteinschätzung):</span> <b>– von 7</b></p>
+      </article>
+      <article class="karte f-stimme">
+        <span class="karte-kicker" data-meta>Industrie · Tradition</span>
+        <span class="karte-titel">TLT</span>
+        <p class="f-stimme-zitat">„Führung ist …“ <span class="f-offen">Antwort folgt</span></p>
+        <p class="f-stimme-stil"><span class="f-klein" data-meta>Stil (Selbsteinschätzung):</span> <b>– von 7</b></p>
+      </article>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Schriftliche Befragung (Fragebogen, 20 Fragen), Rücklauf bis 29.10.2026 · n = 2, nicht repräsentativ · Methode: Backup B4</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Ich habe zwei Führungskräfte schriftlich befragt: bei SimpleAct, einem jungen Software-Unternehmen für KI-Compliance, und bei TLT, einem Industrieunternehmen mit langer Tradition.“ – Danach je Unternehmen: Definition, Stil, eine Kernaussage. Abschluss: „Gemeinsam ist beiden …, verschieden ist …“</p>
+    <p>TODO: Antworten eintragen, sobald die Fragebögen zurück sind (bis Do, 29.10.2026, 12 Uhr). Einverständnis beachten: anonym = nur „Software-Unternehmen“ bzw. „Industrieunternehmen“.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 11 · Herausforderungen · 70 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-zahlen" id="f11" data-titel="Herausforderungen" data-feld="leer" data-rubrik="4 · Praxis" data-zeit="70" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">4 · Was heißt das für die Praxis?</p>
+    <h2 class="titel">Bindung, Fachkräfte, Nachfolge, KI: alles Führungsthemen</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-zahlen-raster">
+      <div class="kennzahl f-zahl" data-schritt="1" data-animation="hoch">
+        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="77" data-einheit=" %">77 %</span>
+        <span class="kennzahl-text">der Beschäftigten mit nur geringer Bindung</span>
+        <span class="f-zahl-quelle" data-meta>Gallup 2025 [21]</span>
+      </div>
+      <div class="kennzahl f-zahl" data-schritt="2" data-animation="hoch">
+        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="92" data-einheit=" %">92 %</span>
+        <span class="kennzahl-text">der Mittelständler erwarten Folgen des Fachkräfte­mangels</span>
+        <span class="f-zahl-quelle" data-meta>DIHK 2025, 20–999 Beschäftigte [19]</span>
+      </div>
+      <div class="kennzahl f-zahl" data-schritt="3" data-animation="hoch">
+        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="569000" data-start="0">569.000</span>
+        <span class="kennzahl-text">Inhaber planen bis 2029 Stilllegung statt Nachfolge</span>
+        <span class="f-zahl-quelle" data-meta>KfW 2026 [24]</span>
+      </div>
+      <div class="kennzahl f-zahl" data-schritt="4" data-animation="hoch">
+        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="21" data-einheit=" %">21 %</span>
+        <span class="kennzahl-text">erleben volle Unterstützung ihrer Führungskraft beim KI-Einsatz</span>
+        <span class="f-zahl-quelle" data-meta>Gallup 2025 [21]</span>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[21] Gallup, Engagement Index Deutschland 2025 (keine KMU-Werte) · [19] DIHK-Fachkräftereport 2025/2026 · [24] KfW Research, Nachfolge-Monitoring Mittelstand 2025</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="1">„Erstens Bindung: 77 Prozent der Beschäftigten in Deutschland haben nur eine geringe emotionale Bindung an ihren Arbeitgeber. Gallup sagt dazu: ‚Kein Einstellungs-, sondern ein Führungsproblem.‘“</p>
+    <p data-schritt="2">„Zweitens Fachkräfte: 92 Prozent der Mittelständler erwarten negative Folgen des Fachkräftemangels. Wer Leute halten will, muss gut führen.“</p>
+    <p data-schritt="3">„Drittens Nachfolge: 569.000 Inhaberinnen und Inhaber planen bis Ende 2029, ihr Unternehmen stillzulegen statt es zu übergeben. Wenn Führung an einer Person hängt, hängt auch das Unternehmen an ihr.“</p>
+    <p data-schritt="4">„Und viertens KI: Nur 21 Prozent erleben, dass ihre Führungskraft den KI-Einsatz voll unterstützt. Neue Technik braucht jemanden, der sie vorlebt.“</p>
+    <p>Einordnung: Gallup weist keine Werte nach Unternehmensgröße aus. Weitere Zahlen (Backup/Literaturbasis): Inhaber im Schnitt über 54 Jahre (2003: 45), 57 % ab 55 Jahren [24]; Homeoffice klein 19 % vs. groß 35 % [27]; nur 40 % der Führungskräfte hatten im letzten Jahr ein Coaching [22].</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 12 · Fallbeispiel · 45 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-fall" id="f12" data-titel="Fallbeispiel Pflegedienst" data-feld="leer" data-rubrik="4 · Praxis" data-zeit="45" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">4 · Fallbeispiel · Pflegedienst Jahnke, Neuenhaus</p>
+    <h2 class="titel">Wachstum zwingt zu Struktur</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-fall-raster">
+      <div class="f-fall-zahl">
+        <span class="kennzahl-wert" data-animation="zaehlen" data-start="18" data-ziel="43">43</span>
+        <span class="kennzahl-text">Beschäftigte statt 18</span>
+      </div>
+      <ol class="f-fall-weg">
+        <li data-schritt="1" data-animation="hoch"><span class="f-fall-marke" data-meta>Problem</span>neue Teamleitungen, schwierige Konfliktgespräche, mehr Fluktuation</li>
+        <li data-schritt="2" data-animation="hoch"><span class="f-fall-marke" data-meta>Lösung</span>gemeinsamer Leitfaden für Feedbackgespräche, Notfallkette</li>
+        <li data-schritt="3" data-animation="hoch"><span class="f-fall-marke" data-meta>Nachfolge</span>der Sohn übernimmt das operative Geschäft</li>
+      </ol>
+    </div>
+    <blockquote class="zitat f-fall-zitat" data-schritt="1" data-animation="einblenden" data-verzoegerung="400">
+      <p class="zitat-text">„Wie führe ich? Das war eine der zentralen Fragen“</p>
+      <cite class="zitat-quelle">Inhaberin Gabriele Jahnke [36]</cite>
+    </blockquote>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[36] INQA (04.02.2025): Gute Personalführung und digitale Tools für den Pflegedienst Jahnke – Darstellung eines Förderprogramms, keine unabhängige Fallstudie</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Ein Beispiel aus der Praxis: der ambulante Pflegedienst Jahnke in Niedersachsen, ein Familienunternehmen. Mit einer Betriebserweiterung wuchs das Personal von 18 auf 43 Beschäftigte.“</p>
+    <p data-schritt="1">„Plötzlich gab es neue Teams mit neuen Teamleitungen – und die taten sich schwer mit Konfliktgesprächen, die Fluktuation stieg. Die Inhaberin sagt: ‚Wie führe ich? Das war eine der zentralen Fragen.‘“</p>
+    <p data-schritt="2">„Die Lösung war keine neue Hierarchie, sondern Struktur: ein gemeinsam erarbeiteter Leitfaden für Feedbackgespräche und eine Notfallkette für Ausfälle.“</p>
+    <p data-schritt="3">„Und genau das hat die Nachfolge möglich gemacht: Der Sohn hat das operative Geschäft übernommen. Führung wurde von der Person gelöst.“</p>
+    <p>Beleg [36], wörtlich u. a.: „das Personal von 18 auf 43 Mitarbeitende aufgestockt“, „die neuen Teamleads Probleme mit anlassbezogenen Gesprächen hatten“, „höhere Personal-Fluktuation“, „Leitfaden für die Feedbackgespräche“, Sohn „hat das operative Geschäft inzwischen komplett übernommen“.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 13 · Kernbotschaft · 40 s
+     Die Arbeitsdefinition kommt per Morph aus Folie 04 zurück; Schritt 1 ergänzt
+     sie um den KMU-Zusatz.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-kern-folie" id="f13" data-titel="Kernbotschaft" data-feld="leer" data-rubrik="Kernbotschaft" data-zeit="40" data-buendel="alle" data-modus="dunkel">
+  <header class="folie-kopf">
+    <p class="kicker">Kernbotschaft</p>
+    <h2 class="titel">Von der Person zur Struktur – ohne die Nähe zu verlieren</h2>
+  </header>
+  <div class="folie-inhalt">
+    <p class="f-arbeit-satz f-arbeit-satz--klein" data-morph="arbeitsdefinition">
+      Führung ist die <span class="f-wort f-wort--ziel">zielbezogene</span>, <span class="f-wort f-wort--einfluss">absichtliche Einflussnahme</span> auf das Handeln anderer – vermittelt durch <span class="f-wort f-wort--interaktion">Interaktion</span> in einer <span class="f-wort f-wort--organisation">Organisation</span>.
+    </p>
+    <p class="f-kern-zusatz" data-schritt="1" data-animation="hoch"><b>Im KMU</b> liegt sie meist bei der Person, der das Unternehmen gehört: Nähe und Tempo – aber Fachkräfte, Nachfolge und KI verlangen Struktur.</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Eigene Synthese aus [1][5][10][14][21][24]</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Erinnern Sie sich an die Arbeitsdefinition? Sie gilt für jedes Unternehmen.“</p>
+    <p data-schritt="1">„Im KMU kommt etwas dazu: Führung liegt meist bei der Person, der das Unternehmen gehört. Das ist die große Stärke – Nähe und Tempo. Aber Fachkräftemangel, Nachfolge und KI verlangen, Führung von dieser einen Person zu lösen: mehr Struktur, Delegation, Feedback. Die Kunst ist, dabei die Nähe nicht zu verlieren.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 14 · Diskussion · 30 s (+ Diskussion)
+     Fragen wie im Diskussionspapier (fuehrung/diskussionspapier).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-disk" id="f14" data-titel="Diskussion" data-feld="leer" data-rubrik="Diskussion" data-zeit="30" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">Diskussion · Danke für Ihre Aufmerksamkeit</p>
+    <h2 class="titel">Was meinen Sie?</h2>
+  </header>
+  <div class="folie-inhalt">
+    <ol class="f-disk-liste" data-staffel="140" data-animation="hoch">
+      <li class="karte"><span class="f-disk-nr">1</span><span class="f-disk-text">Ist der patriarchalische Inhaberstil eine Stärke – oder ein Risiko, sobald der Betrieb wächst?</span></li>
+      <li class="karte"><span class="f-disk-nr">2</span><span class="f-disk-text">Ersetzt die Nähe im KMU eine professionelle Führungskräfte­entwicklung?</span></li>
+      <li class="karte"><span class="f-disk-nr">3</span><span class="f-disk-text">569.000 geplante Stilllegungen: Versagt hier die Führung – oder ist das rational?</span></li>
+    </ol>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Diskussionspapier mit allen Fragen und Quellen: im Kursraum · Belege [14][21][24]</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Vielen Dank! Ich habe drei Fragen mitgebracht, über die wir diskutieren können.“ – Mit der Frage beginnen, die zur Live-Umfrage passt: Viele erleben Beteiligung, aber der typische Inhaberstil gilt als patriarchalisch – wie passt das zusammen?</p>
+    <p class="sprechzettel">Sprünge für Rückfragen: Ziffern + Enter (z. B. „7 Enter“ = Besonderheiten), O = Übersicht. Backup: B1 Quellen, B2 Definitionen im Wortlaut, B3 Definitionseffekt KMU, B4 Methode der Befragung.</p>
+    <p>Mögliche Rückfragen: „Gilt Gallup auch für KMU?“ – Gallup weist keine Werte nach Größe aus (Folie 11, Fußzeile). „Warum Stilllegung?“ – Hauptgründe: Rentenalter (52 %), fehlendes Familieninteresse (47 %) [24].</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B1 · Quellen
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-backup" id="b1" data-titel="Backup: Quellen" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup">
+  <header class="folie-kopf">
+    <p class="kicker">Backup</p>
+    <h2 class="titel">Quellen der Folien (alle frei zugänglich, Abruf 27.10.2026)</h2>
+  </header>
+  <div class="folie-inhalt">
+    <ol class="f-quellen">
+      <li><b>[1]</b> Maier/Bartscher/Nissen: „Führung“, Gabler Wirtschaftslexikon</li>
+      <li><b>[2]</b> Bartscher/Nissen: „Personalführung“, Gabler</li>
+      <li><b>[4]</b> Haric: „Management“, Gabler</li>
+      <li><b>[5]</b> v. Rosenstiel (2000): „Führung“, Lexikon der Psychologie</li>
+      <li><b>[6]</b> Maier/Bartscher/Nissen: „Führungsstil“, Gabler</li>
+      <li><b>[8]</b> EU-Kommission: SME definition</li>
+      <li><b>[9][10][11]</b> IfM Bonn: KMU-/Mittelstandsdefinition, Bedeutung der KMU</li>
+      <li><b>[12]</b> Destatis: KMU-Anteile 2024</li>
+      <li><b>[13]</b> KfW-Mittelstandspanel 2025</li>
+      <li><b>[14]</b> Wimmer (2021): Leadership in and of Family Companies, GIO 52(4)</li>
+      <li><b>[15]</b> Bijedić u. a. (2018): IfM-Materialien Nr. 272</li>
+      <li><b>[17]</b> Bartscher/Nissen: „Patriarchalischer Führungsstil“, Gabler</li>
+      <li><b>[19]</b> DIHK-Fachkräftereport 2025/2026</li>
+      <li><b>[21]</b> Gallup: Engagement Index Deutschland 2025</li>
+      <li><b>[24]</b> KfW Research: Nachfolge-Monitoring Mittelstand 2025</li>
+      <li><b>[32]</b> Wikipedia: „Führungskontinuum“ (nur Hilfsbeleg)</li>
+      <li><b>[36]</b> INQA (2025): Pflegedienst Jahnke</li>
+    </ol>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Vollständige Angaben mit Adressen: recherche/literaturbasis.md (Quellenverzeichnis, Nummern identisch)</p>
+  </footer>
+  <aside class="notizen">
+    <p>Bei Rückfrage „Woher stammt Zahl X?“: Nummer auf der Folie nennen, hier zeigen. Adressen und Seitenzahlen in der Literaturbasis.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B2 · Definitionen im Wortlaut
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-backup" id="b2" data-titel="Backup: Definitionen im Wortlaut" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup">
+  <header class="folie-kopf">
+    <p class="kicker">Backup</p>
+    <h2 class="titel">Definitionen im Wortlaut</h2>
+  </header>
+  <div class="folie-inhalt">
+    <dl class="f-wortlaut">
+      <dt>Führung (Gabler) [1]</dt>
+      <dd>„durch Interaktion vermittelte Ausrichtung des Handelns von Individuen und Gruppen auf die Verwirklichung vorgegebener Ziele; beinhaltet asymmetrische soziale Beziehungen der Über- und Unterordnung.“</dd>
+      <dt>Personalführung (Gabler) [2]</dt>
+      <dd>„zielgerichtetes soziales Einflusshandeln im Rahmen von Profit- oder Non-Profit-Organisationen. Beteiligte sind neben einer Führungskraft mind. ein dieser weisungsmäßig unterstellter Mitarbeiter“</dd>
+      <dt>Mitarbeiterführung (v. Rosenstiel) [5]</dt>
+      <dd>„eine unmittelbare, absichtliche und zielbezogene Einflußnahme von bestimmten Personen – in der Regel Vorgesetzte – auf andere Personen – in der Regel Untergebene – in Organisationen“</dd>
+      <dt>Mittelstand (IfM Bonn) [10]</dt>
+      <dd>„Das IfM Bonn definiert Mittelstand durch die Einheit von Eigentum und Leitung.“ Bis zu zwei natürliche Personen oder ihre Familien halten mind. 50 % der Anteile und gehören der Geschäftsführung an.</dd>
+    </dl>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[1][2] Gabler Wirtschaftslexikon online · [5] Lexikon der Psychologie, Spektrum (2000) · [10] IfM Bonn</p>
+  </footer>
+  <aside class="notizen">
+    <p>Für Rückfragen zum Wortlaut der Definitionen (Folie 03/04/06).</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B3 · Definitionseffekt
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-backup" id="b3" data-titel="Backup: Definitionseffekt KMU" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup">
+  <header class="folie-kopf">
+    <p class="kicker">Backup</p>
+    <h2 class="titel">Die Definition bestimmt die Zahl: 54 % oder 72 %</h2>
+  </header>
+  <div class="folie-inhalt">
+    <table class="tabelle f-tabelle">
+      <thead><tr><th>Abgrenzung</th><th>Grenze</th><th class="zahl">Unternehmen</th><th class="zahl">Beschäftigte</th><th>Jahr · Quelle</th></tr></thead>
+      <tbody>
+        <tr><td>KMU (EU)</td><td>&lt; 250 Beschäftigte</td><td class="zahl">99,3 %</td><td class="zahl">53,7 % der tätigen Personen</td><td>2024 · Destatis [12]</td></tr>
+        <tr><td>KMU (IfM)</td><td>&lt; 500 Beschäftigte</td><td class="zahl">99,2 %</td><td class="zahl">54,4 % der abhängig Beschäftigten</td><td>2024 · IfM [11]</td></tr>
+        <tr class="ist-markiert"><td>Mittelstand (KfW)</td><td>≤ 500 Mio. € Umsatz</td><td class="zahl">99,95 %</td><td class="zahl">71,6 % der Erwerbstätigen</td><td>2024 · KfW [13]</td></tr>
+      </tbody>
+    </table>
+    <p class="f-backup-text">Die qualitativen Merkmale (Einheit von Eigentum und Leitung) sind „aus den amtlichen Statistiken nicht ablesbar“ [11].</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[11] IfM Bonn · [12] Destatis (Stand 12.08.2026) · [13] KfW-Mittelstandspanel 2025, S. 1, 28</p>
+  </footer>
+  <aside class="notizen">
+    <p>Für Rückfragen zu Folie 06: Wer „Mittelstand“ sagt, sollte die Abgrenzung nennen.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B4 · Methode der Befragung
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-backup" id="b4" data-titel="Backup: Methode der Befragung" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup">
+  <header class="folie-kopf">
+    <p class="kicker">Backup</p>
+    <h2 class="titel">Methode: schriftliche Befragung, n = 2</h2>
+  </header>
+  <div class="folie-inhalt">
+    <ul class="liste f-methode">
+      <li><b>Instrument:</b> Fragebogen mit 20 offenen und geschlossenen Fragen (Word), selbst ausgefüllt</li>
+      <li><b>Aufbau:</b> Person/Unternehmen · Begriff · Alltag · Mittelstand · Wandel · Vertiefung · Selbsteinschätzung (Kontinuum 1–7)</li>
+      <li><b>Befragte:</b> je eine Führungskraft aus einem jungen Software-Unternehmen und einem Industrieunternehmen</li>
+      <li><b>Grenzen:</b> nicht repräsentativ, Selbstauskunft, persönliche Nähe zum Befragenden</li>
+    </ul>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Fragebögen: fuehrung/befragung/ · Rücklauf bis 29.10.2026</p>
+  </footer>
+  <aside class="notizen">
+    <p>Offen ansprechen: Beide Befragte stehen mir persönlich nahe (Arbeitgeber, Vater) – das erleichtert den Zugang, kann aber Antworten färben.</p>
+  </aside>
+</section>
+
+  </main>
+</div>
+
+<noscript>
+  <p style="position:fixed;inset:auto 0 0 0;padding:16px;background:#fff;color:#111;font:20px/1.4 sans-serif">
+    Diese Präsentation braucht JavaScript. Bitte in Chrome, Edge, Firefox oder Safari öffnen.
+  </p>
+</noscript>
+
+<script src="js/vendor/qrcode-generator.js"></script>
+<script src="js/deck.js"></script>
+<script src="js/komponenten.js"></script>
+<script src="js/folien/fuehrung.js"></script>
+</body>
+</html>

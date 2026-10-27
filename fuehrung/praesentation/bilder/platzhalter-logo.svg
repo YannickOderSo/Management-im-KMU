@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 180" width="480" height="180" role="img" aria-label="Logo-Platzhalter">
+  <!-- Neutraler Platzhalter (eigene Gestaltung, kein echtes Logo). Ersetzen: marke.js → logo -->
+  <rect x="2" y="2" width="476" height="176" rx="16" fill="#F3F1EC" stroke="#8F877C" stroke-width="3" stroke-dasharray="10 8"/>
+  <circle cx="98" cy="90" r="42" fill="#34506B"/>
+  <rect x="104" y="58" width="62" height="62" rx="8" fill="#8F877C" opacity="0.85"/>
+  <text x="200" y="104" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="44" font-weight="700" letter-spacing="6" fill="#2A2A2A">LOGO</text>
+  <text x="202" y="136" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" fill="#5A5650">Platzhalter</text>
+</svg>

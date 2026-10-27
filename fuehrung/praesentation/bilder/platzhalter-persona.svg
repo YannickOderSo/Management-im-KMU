@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-label="Platzhalter für ein Persona-Foto">
+  <!-- Neutraler Platzhalter (eigene Gestaltung). Nur Bilder verwenden, deren Nutzung erlaubt ist. -->
+  <rect width="800" height="1000" fill="#E9E5DD"/>
+  <circle cx="400" cy="380" r="150" fill="#34506B"/>
+  <path d="M130 1000 C 140 760, 260 620, 400 620 S 660 760, 670 1000 Z" fill="#34506B"/>
+  <rect x="24" y="24" width="752" height="952" fill="none" stroke="#8F877C" stroke-width="4" stroke-dasharray="14 10"/>
+  <text x="400" y="110" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="600" fill="#4A4743">Persona-Foto (Platzhalter)</text>
+</svg>

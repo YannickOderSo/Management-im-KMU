@@ -1,0 +1,42 @@
+Schriften in diesem Ordner
+==========================
+Alle Dateien: Format woff2, variabel, nur die Zeichensätze „latin“ und „latin-ext“
+(deckt Deutsch inkl. ä, ö, ü, ß, „ “ – € ab). Eingebunden in ../css/tokens.css per
+@font-face – es wird keine Internetverbindung benötigt. Der Browser lädt nur die
+Schriften, die das gerade aktive Thema wirklich verwendet.
+
+Alle Schriften stehen unter der SIL Open Font License 1.1 (Lizenztexte: LIZENZ-*-OFL.txt).
+Herkunft jeweils: npm-Pakete von Fontsource (https://fontsource.org), Version 5.3.0,
+Originalquelle Google Fonts.
+
+Thema „Editorial“ (Standard)
+  Fraunces (normal: Achsen wght 100–900, opsz 9–144;
+            kursiv: alle Achsen wght, opsz, SOFT, WONK)          – @fontsource-variable/fraunces
+    fraunces-latin-opsz-normal.woff2, fraunces-latin-ext-opsz-normal.woff2,
+    fraunces-latin-full-italic.woff2, fraunces-latin-ext-full-italic.woff2
+    (Kursive seit 16.10.2026 aus der „full“-Datei: nur dort lassen sich mit
+    "WONK" 0 die verspielten Formen b, h, k, l abschalten – css/tokens.css.
+    Die bisherigen Dateien fraunces-latin-opsz-italic.woff2 und
+    fraunces-latin-ext-opsz-italic.woff2 bleiben liegen: Die Startseite der
+    Webseite (index.html im Hauptverzeichnis des Repositorys) bindet sie ein.)
+    Original: github.com/undercasetype/Fraunces
+  Inter (Achsen wght 100–900, opsz 14–32; normal + kursiv)     – @fontsource-variable/inter
+    inter-latin-opsz-normal.woff2, inter-latin-ext-opsz-normal.woff2,
+    inter-latin-opsz-italic.woff2, inter-latin-ext-opsz-italic.woff2
+    Original: github.com/rsms/inter
+
+Thema „Keynote“
+  Inter Tight (wght 100–900)    – @fontsource-variable/inter-tight
+    inter-tight-latin-wght-normal.woff2, inter-tight-latin-ext-wght-normal.woff2
+  Space Grotesk (wght 300–700)  – @fontsource-variable/space-grotesk
+    space-grotesk-latin-wght-normal.woff2, space-grotesk-latin-ext-wght-normal.woff2
+    Original: github.com/floriankarsten/space-grotesk
+  Inter (siehe oben)
+
+Thema „Bento“
+  Bricolage Grotesque (wght 200–800, wdth 75–100)  – @fontsource-variable/bricolage-grotesque
+    bricolage-grotesque-latin-standard-normal.woff2, bricolage-grotesque-latin-ext-standard-normal.woff2
+    Original: github.com/ateliertriay/bricolage
+  Plus Jakarta Sans (wght 200–800)                 – @fontsource-variable/plus-jakarta-sans
+    plus-jakarta-sans-latin-wght-normal.woff2, plus-jakarta-sans-latin-ext-wght-normal.woff2
+    Original: github.com/tokotype/PlusJakartaSans

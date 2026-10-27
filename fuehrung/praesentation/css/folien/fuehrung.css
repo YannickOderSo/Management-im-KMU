@@ -1,0 +1,272 @@
+/* =============================================================================
+   fuehrung.css – Gestaltung der Folien „Führung im KMU“
+   Nur Tokens aus css/tokens.css verwenden (dann stimmen alle Themen und
+   hell/dunkel). Jede Regel beginnt mit der Klasse ihrer Folie (.f-…).
+   Bühne: 1920 × 1080 px, alle Maße in Bühnen-Pixeln.
+   ============================================================================= */
+
+/* ---------- gemeinsame Kleinteile ---------- */
+.folie .f-klein { font-size: var(--groesse-meta); color: var(--f-text-2); font-weight: 400; }
+
+/* Chips der vier Kernelemente (Folie 03 → 04, gleiten per data-morph) */
+.folie .f-chips {
+  display: flex; gap: var(--abstand-4); margin: 0; padding: 0; list-style: none;
+}
+.folie .f-chip {
+  padding: 12px 28px; border-radius: var(--radius-pille);
+  font-family: var(--schrift-kicker); font-size: var(--groesse-gross); font-weight: var(--gewicht-fett);
+  border: var(--linie-stark) solid currentColor;
+}
+.folie .f-chip--ziel, .folie .f-chip--interaktion { color: var(--f-akzent); background: var(--f-akzent-flaeche); }
+.folie .f-chip--einfluss, .folie .f-chip--organisation { color: var(--f-hart); background: var(--f-hart-flaeche); }
+
+/* ---------- Folie 01: Titel ---------- */
+.f-titel .folie-kopf { max-width: 1060px; }
+.f-titel .folie-inhalt { position: static; }
+.f-titel .lead { max-width: 980px; }
+.f-titel .f-titel-motiv {
+  position: absolute; right: 150px; top: 150px; width: 520px; height: 520px;
+  fill: none; stroke: var(--f-akzent); stroke-width: 4; stroke-linecap: round;
+}
+.f-titel .f-titel-ring { stroke: var(--f-linie); stroke-dasharray: 6 14; }
+.f-titel .f-titel-team circle { fill: var(--f-hintergrund); }
+.f-titel .f-titel-kern { fill: var(--f-akzent); stroke: none; }
+
+/* ---------- Folie 02: Fahrplan ---------- */
+.f-plan .f-plan-liste {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--abstand-5);
+  margin: auto 0; padding: 0; list-style: none;
+}
+.f-plan .f-plan-liste .karte { gap: var(--abstand-4); min-height: 460px; }
+.f-plan .f-plan-nr {
+  font-family: var(--schrift-zahl); font-size: 96px; line-height: 1; font-weight: var(--gewicht-zahl);
+  color: var(--f-akzent);
+}
+.f-plan .karte-titel { font-size: var(--groesse-untertitel); }
+
+/* ---------- Folie 03: Definitionen ---------- */
+.f-def .f-def-karten {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-5);
+  margin-top: var(--abstand-5);
+}
+.f-def .f-def-karte { margin: 0; display: flex; flex-direction: column; gap: var(--abstand-4); }
+.f-def .f-def-text { margin: 0; font-size: 38px; line-height: 1.45; }
+.f-def mark.f-kern {
+  background: transparent; color: inherit; padding: 0 4px; border-radius: var(--radius-s);
+  box-shadow: none;
+}
+.f-def mark.f-kern.ist-hervor { box-shadow: none; font-weight: var(--gewicht-fett); }
+.f-def mark.f-kern--ziel.ist-hervor, .f-def mark.f-kern--interaktion.ist-hervor {
+  background: var(--f-akzent-flaeche); color: var(--f-akzent);
+  text-decoration: underline var(--linie-stark) var(--f-akzent); text-underline-offset: 6px;
+}
+.f-def mark.f-kern--einfluss.ist-hervor, .f-def mark.f-kern--organisation.ist-hervor {
+  background: var(--f-hart-flaeche); color: var(--f-hart);
+  text-decoration: underline var(--linie-stark) var(--f-hart); text-underline-offset: 6px;
+}
+.f-def .f-chips { margin-top: auto; justify-content: center; }
+
+/* ---------- Folie 04 und 13: Arbeitsdefinition ---------- */
+.f-arbeit .f-chips--oben { justify-content: center; margin-top: var(--abstand-5); }
+.folie .f-arbeit-satz {
+  margin: auto 0; max-width: 1560px; align-self: center;
+  font-family: var(--schrift-display); font-size: 60px; line-height: 1.3;
+  font-weight: var(--gewicht-display); text-align: center;
+}
+.folie .f-arbeit-satz--klein { font-size: 44px; margin: var(--abstand-5) 0 0; color: var(--f-text-2); }
+.folie .f-wort { padding: 0 6px; border-radius: var(--radius-s); }
+.folie .f-wort--ziel, .folie .f-wort--interaktion { background: var(--f-akzent-flaeche); color: var(--f-akzent); }
+.folie .f-wort--einfluss, .folie .f-wort--organisation { background: var(--f-hart-flaeche); color: var(--f-hart); }
+
+/* ---------- Folie 05: zwei Ebenen ---------- */
+.f-ebenen .f-ebenen-buehne { position: relative; flex: 1; min-height: 0; }
+.f-ebenen .f-kreis {
+  position: absolute; top: 50%; width: 520px; height: 520px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  text-align: center; padding: 0 70px;
+  transition: transform var(--dauer-lang) var(--kurve), padding var(--dauer-lang) var(--kurve);
+}
+.f-ebenen .f-kreis--links {
+  left: 50%; transform: translate(calc(-100% - 90px), -50%);
+  background: color-mix(in oklab, var(--f-hart-flaeche) 85%, transparent);
+  border: var(--linie-stark) solid var(--f-hart);
+}
+.f-ebenen .f-kreis--rechts {
+  left: 50%; transform: translate(90px, -50%);
+  background: color-mix(in oklab, var(--f-akzent-flaeche) 85%, transparent);
+  border: var(--linie-stark) solid var(--f-akzent);
+}
+.f-ebenen .f-kreis-kicker { font-size: var(--groesse-meta); color: var(--f-text-2); text-transform: uppercase; letter-spacing: 0.08em; }
+.f-ebenen .f-kreis-titel { font-family: var(--schrift-display); font-size: 42px; hyphens: manual; line-height: 1.1; font-weight: var(--gewicht-display); }
+.f-ebenen .f-kreis-text { font-size: var(--groesse-text-min); color: var(--f-text-2); line-height: 1.3; }
+.f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-kreis--links { transform: translate(calc(-100% + 90px), -50%); padding: 0 240px 0 40px; }
+.f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-kreis--rechts { transform: translate(-90px, -50%); padding: 0 40px 0 240px; }
+.f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-kreis-text { opacity: 0; }
+.f-ebenen .f-kreis-text { transition: opacity var(--dauer-kurz) var(--kurve); }
+.f-ebenen .f-ebenen-mitte {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 16px 24px; border-radius: var(--radius-l);
+  background: var(--f-akzent); color: var(--f-auf-akzent);
+  font-size: var(--groesse-text); font-weight: var(--gewicht-fett);
+}
+.f-ebenen .f-ebenen-mitte .icon { width: 44px; height: 44px; stroke: currentColor; }
+.f-ebenen .f-ebenen-satz { margin: 0; text-align: center; font-size: var(--groesse-gross); font-weight: var(--gewicht-fett); }
+
+/* ---------- Folie 06: KMU ---------- */
+.f-kmu .f-kmu-raster {
+  display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--abstand-7);
+  margin: auto 0; align-items: center;
+}
+.f-kmu .f-kmu-def { display: flex; flex-direction: column; gap: var(--abstand-5); }
+.f-kmu .f-kmu-kern .karte-titel { font-family: var(--schrift-display); font-size: 56px; line-height: 1.15; }
+.f-kmu .f-kmu-grenzen { display: flex; flex-direction: column; gap: var(--abstand-3); }
+.f-kmu .f-grenze { margin: 0; display: flex; align-items: center; gap: var(--abstand-4); font-size: var(--groesse-text); }
+.f-kmu .f-grenze .chip { min-width: 84px; justify-content: center; }
+.f-kmu .f-kmu-zahlen { display: flex; flex-direction: column; gap: var(--abstand-5); }
+.f-kmu .f-kmu-zahlen .kennzahl { flex-direction: row; align-items: baseline; gap: var(--abstand-4); }
+.f-kmu .f-kmu-zahlen .kennzahl-wert { font-size: 104px; min-width: 380px; text-align: right; color: var(--f-akzent); }
+.f-kmu .f-kmu-zahlen .kennzahl-text { font-size: var(--groesse-text); }
+
+/* ---------- Folie 07: Besonderheiten ---------- */
+.f-bes .f-bes-raster {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--abstand-7);
+  flex: 1; min-height: 0; align-items: center;
+}
+.f-bes .f-org { margin: 0; display: flex; flex-direction: column; align-items: center; gap: var(--abstand-3); }
+.f-bes .f-org svg { width: 620px; height: auto; overflow: visible; }
+.f-bes .f-org-linien-konzern path, .f-bes .f-org-linien-kmu path {
+  fill: none; stroke: var(--f-linie-stark); stroke-width: 4; stroke-linecap: round;
+  transition: opacity var(--dauer-mittel) var(--kurve);
+}
+.f-bes .f-org-linien-kmu path { stroke: var(--f-akzent); stroke-dasharray: 400; stroke-dashoffset: 400; opacity: 0;
+  transition: stroke-dashoffset var(--dauer-lang) var(--kurve) 500ms, opacity var(--dauer-kurz) var(--kurve) 500ms; }
+.f-bes .f-org-knoten circle {
+  fill: var(--f-flaeche); stroke: var(--f-text-2); stroke-width: 4;
+  transform: translate(var(--x0), var(--y0));
+  transition: transform var(--dauer-lang) var(--kurve);
+}
+.f-bes .f-org-knoten .f-org-chef { fill: var(--f-akzent); stroke: var(--f-akzent); }
+.f-bes:has(.f-bes-zustand.schritt-an) .f-org-knoten circle { transform: translate(var(--x1), var(--y1)); }
+.f-bes:has(.f-bes-zustand.schritt-an) .f-org-linien-konzern path { opacity: 0; }
+.f-bes:has(.f-bes-zustand.schritt-an) .f-org-linien-kmu path { stroke-dashoffset: 0; opacity: 1; }
+.f-bes .f-org-text { display: grid; font-size: var(--groesse-meta); color: var(--f-text-2); }
+.f-bes .f-org-text > span { grid-area: 1 / 1; text-align: center; transition: opacity var(--dauer-mittel) var(--kurve); }
+.f-bes .f-org-text-kmu { opacity: 0; }
+.f-bes:has(.f-bes-zustand.schritt-an) .f-org-text-konzern { opacity: 0; }
+.f-bes:has(.f-bes-zustand.schritt-an) .f-org-text-kmu { opacity: 1; }
+.f-bes .f-bes-rechts { display: flex; flex-direction: column; gap: var(--abstand-6); }
+.f-bes .f-bes-zitat .zitat-text { font-size: 40px; }
+
+/* ---------- Folie 08: Live-Umfrage ---------- */
+.f-umfrage .umfrage { flex: 1; min-height: 0; }
+
+/* ---------- Folie 09: Führungsstil-Kontinuum ---------- */
+.f-stil .f-stil-skala { position: relative; margin-top: var(--abstand-6); }
+.f-stil .f-stil-flaeche { display: block; width: 100%; height: 120px; }
+.f-stil .f-stil-fk { fill: var(--f-hart-flaeche); stroke: var(--f-hart); stroke-width: 3; }
+.f-stil .f-stil-team { fill: var(--f-akzent-flaeche); stroke: var(--f-akzent); stroke-width: 3; }
+.f-stil .f-stil-achse {
+  display: flex; justify-content: space-between; margin: var(--abstand-2) 0 0;
+  font-size: var(--groesse-meta); color: var(--f-text-2);
+}
+.f-stil .f-stil-stufen {
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); margin: var(--abstand-3) 0 0; padding: 0;
+  list-style: none; text-align: center; font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett);
+}
+.f-stil .f-stil-stufen li { padding-top: var(--abstand-3); border-top: var(--linie-fein) solid var(--f-linie); }
+.f-stil .f-stil-marker { position: absolute; top: 330px; width: 640px; display: flex; gap: var(--abstand-3); align-items: flex-start; }
+.f-stil .f-stil-marker::before {
+  content: ""; position: absolute; left: 13px; bottom: 100%; height: 150px; border-left: var(--linie-fein) dashed var(--f-linie-stark);
+}
+.f-stil .f-stil-marker p { margin: 0; font-size: var(--groesse-text-min); line-height: 1.3; }
+/* Mitte der 2. Stufe (patriarchalisch) bzw. der 5. Stufe (kooperativ) */
+.f-stil .f-stil-marker--wimmer { left: calc(100% * 1.5 / 7 - 14px); }
+.f-stil .f-stil-marker--ifm { left: calc(100% * 4.5 / 7 - 14px); }
+.f-stil .f-stil-pin {
+  flex: none; width: 28px; height: 28px; margin-top: 2px; border-radius: 50%;
+  background: var(--f-akzent); box-shadow: 0 0 0 6px var(--f-akzent-flaeche);
+}
+.f-stil .f-stil-marker--wimmer .f-stil-pin { background: var(--f-hart); box-shadow: 0 0 0 6px var(--f-hart-flaeche); }
+.f-stil .f-stil-bilanz {
+  margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--abstand-5);
+}
+.f-stil .f-stil-bilanz p {
+  margin: 0; padding: var(--abstand-4) var(--abstand-5); border-radius: var(--radius-m);
+  font-size: var(--groesse-text); background: var(--f-flaeche); border-left: 8px solid var(--f-akzent);
+}
+.f-stil .f-stil-bilanz .f-minus { border-left-color: var(--f-hart); }
+
+/* ---------- Folie 10: Praxisstimmen ---------- */
+.f-stimmen .f-stimmen-raster {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--abstand-6); margin: auto 0;
+}
+.f-stimmen .f-stimme { display: flex; flex-direction: column; gap: var(--abstand-4); min-height: 440px; }
+.f-stimmen .f-stimme .karte-titel { font-size: 56px; font-family: var(--schrift-display); }
+.f-stimmen .f-stimme-zitat { margin: 0; font-family: var(--schrift-display); font-size: 40px; line-height: 1.3; }
+.f-stimmen .f-offen {
+  display: inline-block; margin-left: 8px; padding: 2px 14px; border-radius: var(--radius-pille);
+  border: var(--linie-fein) dashed var(--f-linie-stark); font-family: var(--schrift-text);
+  font-size: var(--groesse-text-min); color: var(--f-text-2); vertical-align: middle;
+}
+.f-stimmen .f-stimme-stil { margin: auto 0 0; font-size: var(--groesse-text); }
+
+/* ---------- Folie 11: Herausforderungen ---------- */
+.f-zahlen .f-zahlen-raster {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--abstand-5); margin: auto 0;
+}
+.f-zahlen .f-zahl {
+  padding: var(--abstand-5); border-radius: var(--radius-l); background: var(--f-flaeche);
+  border-top: 8px solid var(--f-akzent); min-height: 470px;
+}
+.f-zahlen .f-zahl:nth-child(even) { border-top-color: var(--f-hart); }
+.f-zahlen .f-zahl .kennzahl-wert { font-size: 92px; color: var(--f-text); }
+.f-zahlen .f-zahl .kennzahl-text { font-size: var(--groesse-text-min); color: var(--f-text); }
+.f-zahlen .f-zahl-quelle { margin-top: auto; font-size: var(--groesse-meta); color: var(--f-text-2); }
+
+/* ---------- Folie 12: Fallbeispiel ---------- */
+.f-fall .f-fall-raster {
+  display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: var(--abstand-7);
+  align-items: center; margin-top: var(--abstand-6);
+}
+.f-fall .f-fall-zahl { display: flex; flex-direction: column; gap: 8px; }
+.f-fall .f-fall-zahl .kennzahl-wert { font-size: 200px; color: var(--f-akzent); }
+.f-fall .f-fall-zahl .kennzahl-text { font-size: var(--groesse-gross); }
+.f-fall .f-fall-weg { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--abstand-5); }
+.f-fall .f-fall-weg li { display: grid; grid-template-columns: 200px 1fr; gap: var(--abstand-4); align-items: baseline; font-size: var(--groesse-text); line-height: 1.3; }
+.f-fall .f-fall-marke {
+  font-family: var(--schrift-kicker); font-size: var(--groesse-meta); font-weight: var(--gewicht-fett);
+  text-transform: uppercase; letter-spacing: 0.08em; color: var(--f-akzent);
+}
+.f-fall .f-fall-zitat { margin-top: auto; }
+.f-fall .f-fall-zitat .zitat-text { font-size: 40px; }
+
+/* ---------- Folie 13: Kernbotschaft ---------- */
+.f-kern-folie .f-kern-zusatz {
+  margin: var(--abstand-6) auto 0; max-width: 1500px; text-align: center;
+  font-size: 40px; line-height: 1.35;
+}
+.f-kern-folie .f-kern-zusatz b { color: var(--f-akzent); }
+
+/* ---------- Folie 14: Diskussion ---------- */
+.f-disk .f-disk-liste { margin: auto 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--abstand-4); }
+.f-disk .f-disk-liste .karte { flex-direction: row; align-items: center; gap: var(--abstand-5); }
+.f-disk .f-disk-nr {
+  flex: none; width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--f-akzent); color: var(--f-auf-akzent);
+  font-family: var(--schrift-zahl); font-size: 40px; font-weight: var(--gewicht-zahl);
+}
+.f-disk .f-disk-text { font-size: var(--groesse-gross); line-height: 1.3; }
+
+/* ---------- Backup ---------- */
+.f-backup .f-quellen {
+  margin: 0; padding: 0; list-style: none; columns: 2; column-gap: var(--abstand-7);
+  font-size: var(--groesse-text-min); line-height: 1.35;
+}
+.f-backup .f-quellen li { break-inside: avoid; margin-bottom: 10px; }
+.f-backup .f-wortlaut { margin: 0; display: grid; grid-template-columns: 420px 1fr; gap: var(--abstand-4) var(--abstand-5); font-size: var(--groesse-tabelle); line-height: 1.4; }
+.f-backup .f-wortlaut dt { font-weight: var(--gewicht-fett); color: var(--f-akzent); }
+.f-backup .f-wortlaut dd { margin: 0; }
+.f-backup .f-tabelle { width: 100%; }
+.f-backup .f-backup-text { margin-top: var(--abstand-5); font-size: var(--groesse-text-min); color: var(--f-text-2); }
+.f-backup .f-methode { font-size: var(--groesse-text-min); }
