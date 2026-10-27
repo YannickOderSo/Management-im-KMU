@@ -96,13 +96,14 @@ Stand: 27.10.2026. **Nur frei zugängliche Quellen**, alle am 27.10.2026 aufgeru
   - Gabler [17]: streng hierarchisch, keine Beteiligung an Entscheidungen; die Führungskraft erwartet Loyalität und gibt dafür Fürsorge.
   - Wimmer [14] nutzt den Begriff ohne „negativen bzw. kritischen Beigeschmack“. Das Muster sei „bei mehr als zwei Drittel vor allem der kleineren und mittelgroßen Familienunternehmen anzutreffen“. Das ist eine Einschätzung, keine Erhebung.
   - Stärken: kurze Entscheidungswege, hohes Umsetzungstempo.
-  - Risiko: Bei Wachstum kann es „in eine Existenzgefährdung umschlagen“. Der Ausweg sind „postpatriarchale“ Führungsteams.
+  - Risiko: Was erfolgreich war, „kann unter veränderten Rahmenbedingungen in eine Existenzgefährdung umschlagen“; die Voraussetzungen seien „gerade bei wachstumsstarken Familienunternehmen vielfach nicht mehr gegeben“. Der Ausweg sind „postpatriarchale“ Führungsteams.
 - **Generalisten statt Spezialisten** [15, S. 9]
   - „In mittelständischen, d.h. eigentümergeführten Unternehmen nimmt die Unternehmerpersönlichkeit eine zentrale Stellung ein“.
   - Führungsaufgaben haben dort einen „tendenziell niedrigeren Spezialisierungsgrad“.
-- **Trotzdem oft kooperativ** [15, S. 21]
-  - In kleineren Unternehmen werden Mitarbeitende eingebunden. Der Stil sei „eher als partizipativ bzw. kooperativ anzusehen“, mit „informelle[n] Rituale[n]“.
-  - Möglich macht das „die überschaubare Größe“. Beleg aus qualitativen Interviews.
+- **Auch kooperativ** [15, S. 21]
+  - In Interviews zu Digitalisierungsprojekten: „Sind jedoch entsprechende Kompetenzen im Unternehmen vorhanden, ist der Führungsstil durch die Einbindung der Mitarbeiter eher als partizipativ bzw. kooperativ anzusehen“, mit „informelle[n] Rituale[n]“.
+  - Der kooperative Stil werde „durch die überschaubare Größe der Unternehmen“ ermöglicht.
+  - **Achtung (geprüft 27.10.2026):** Die Aussage gilt in der Studie für einen Führungstyp und unter der genannten Bedingung, nicht für KMU allgemein.
 - **Persönliches Risiko** [15, S. 6]: Mittelständische Unternehmer haften „oftmals für Investitionskredite persönlich“, deshalb ist ihre Risikoaversion „tendenziell höher“.
 - **Mitbestimmung** [16]: 29 % der Unternehmen mit 20–499 Beschäftigten haben einen Betriebsrat. Wo die Alleinverantwortung des Inhabers einer arbeitsteiligen Führung weicht, gibt es weniger Widerstand. Daten von 2007.
 - **Forschungslücke** [14]: Die Führungsforschung hat Familienunternehmen „bislang weitestgehend ignoriert“.
