@@ -28,9 +28,25 @@
   position: absolute; right: 150px; top: 150px; width: 520px; height: 520px;
   fill: none; stroke: var(--f-akzent); stroke-width: 4; stroke-linecap: round;
 }
-.f-titel .f-titel-ring { stroke: var(--f-linie); stroke-dasharray: 6 14; }
-.f-titel .f-titel-team circle { fill: var(--f-hintergrund); }
-.f-titel .f-titel-kern { fill: var(--f-akzent); stroke: none; }
+/* Motiv: Punkte sammeln sich um die Mitte (js/folien/fuehrung.js setzt .ist-gesammelt) */
+.f-titel .f-titel-ring { stroke: var(--f-linie); stroke-dasharray: 6 14; opacity: 0; transition: opacity var(--dauer-lang) var(--kurve) 1500ms; }
+.f-titel .f-titel-team circle {
+  fill: var(--f-hintergrund); opacity: 0; transform: translate(var(--dx), var(--dy));
+  transition: transform 1300ms var(--kurve) calc(var(--i) * 90ms), opacity 500ms var(--kurve) calc(var(--i) * 90ms);
+}
+.f-titel .f-titel-kern {
+  fill: var(--f-akzent); stroke: none; opacity: 0; transform-box: fill-box; transform-origin: center; transform: scale(0.3);
+  transition: transform var(--dauer-lang) var(--kurve-feder), opacity var(--dauer-kurz) var(--kurve);
+}
+.f-titel .f-titel-speichen path { stroke-dasharray: 220; stroke-dashoffset: 220; transition: stroke-dashoffset 900ms var(--kurve) 1100ms; }
+.f-titel .f-titel-motiv.ist-gesammelt .f-titel-team circle { opacity: 1; transform: none; }
+.f-titel .f-titel-motiv.ist-gesammelt .f-titel-kern { opacity: 1; transform: none; }
+.f-titel .f-titel-motiv.ist-gesammelt .f-titel-speichen path { stroke-dashoffset: 0; }
+.f-titel .f-titel-motiv.ist-gesammelt .f-titel-ring { opacity: 1; }
+html.druckmodus .f-titel .f-titel-motiv *, html.aufnahme .f-titel .f-titel-motiv * { transition: none !important; }
+html.druckmodus .f-titel .f-titel-motiv circle, html.aufnahme .f-titel .f-titel-motiv circle,
+html.druckmodus .f-titel .f-titel-ring, html.aufnahme .f-titel .f-titel-ring { opacity: 1; transform: none; }
+html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel-speichen path { stroke-dashoffset: 0; }
 
 /* ---------- Folie 02: Fahrplan als Weg mit vier Stationen ---------- */
 .f-plan .f-weg { position: relative; margin: auto 0; }
@@ -88,7 +104,18 @@
   background: var(--f-hart-flaeche); color: var(--f-hart);
   text-decoration: underline var(--linie-stark) var(--f-hart); text-underline-offset: 6px;
 }
-.f-def .f-chips { margin-top: auto; justify-content: center; }
+.f-def .f-chips { margin-top: auto; justify-content: center; position: relative; z-index: 1; }
+.f-def .f-def-karten { position: relative; z-index: 1; }
+.f-def .f-def-karte { background: var(--f-hintergrund); }
+.f-def .f-def-linien { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 0; }
+.f-def .f-def-linien path {
+  fill: none; stroke-width: 4; stroke-linecap: round; opacity: 0.75;
+  stroke-dasharray: var(--laenge); stroke-dashoffset: var(--laenge);
+  transition: stroke-dashoffset 800ms var(--kurve) 150ms;
+}
+.f-def .f-def-linien path.ist-an { stroke-dashoffset: 0; }
+.f-def .f-def-linien .f-linie--ziel, .f-def .f-def-linien .f-linie--interaktion { stroke: var(--f-akzent); }
+.f-def .f-def-linien .f-linie--einfluss, .f-def .f-def-linien .f-linie--organisation { stroke: var(--f-hart); }
 
 /* ---------- Folie 04 und 13: Arbeitsdefinition ---------- */
 .folie .f-arbeit-satz {
@@ -126,8 +153,18 @@
 .f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-kreis--rechts { transform: translate(-90px, -50%); padding: 0 40px 0 240px; }
 .f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-kreis-text { opacity: 0; }
 .f-ebenen .f-kreis-text { transition: opacity var(--dauer-kurz) var(--kurve); }
+.f-ebenen .f-ebenen-person {
+  position: absolute; top: calc(50% + 135px); transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--f-text-2);
+  font-size: var(--groesse-meta);
+  transition: left var(--dauer-lang) var(--kurve), opacity var(--dauer-mittel) var(--kurve) 500ms;
+}
+.f-ebenen .f-ebenen-person .icon { width: 52px; height: 52px; stroke: currentColor; }
+.f-ebenen .f-ebenen-person--links { left: calc(50% - 350px); }
+.f-ebenen .f-ebenen-person--rechts { left: calc(50% + 350px); }
+.f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-ebenen-person { left: 50%; opacity: 0; }
 .f-ebenen .f-ebenen-mitte {
-  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  position: absolute; left: 50%; top: calc(50% + 125px); transform: translate(-50%, -50%);
   display: flex; flex-direction: column; align-items: center; gap: 4px;
   padding: 16px 24px; border-radius: var(--radius-l);
   background: var(--f-akzent); color: var(--f-auf-akzent);
@@ -168,11 +205,15 @@
 
 /* ---------- Folie 07: Besonderheiten ---------- */
 .f-bes .f-bes-raster {
-  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--abstand-7);
+  display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: var(--abstand-7);
   flex: 1; min-height: 0; align-items: center;
 }
 .f-bes .f-org { margin: 0; display: flex; flex-direction: column; align-items: center; gap: var(--abstand-3); }
-.f-bes .f-org svg { width: 620px; height: auto; overflow: visible; }
+.f-bes .f-org svg { width: 100%; max-width: 780px; height: auto; overflow: visible; }
+.f-bes .f-org-beschriftung text { font-family: var(--schrift-text); font-size: 28px; fill: var(--f-text-2); transition: opacity var(--dauer-mittel) var(--kurve); }
+.f-bes .f-org-beschriftung--kmu text { fill: var(--f-akzent); font-weight: var(--gewicht-fett); opacity: 0; transition-delay: 900ms; }
+.f-bes:has(.f-bes-zustand.schritt-an) .f-org-beschriftung--konzern text { opacity: 0; transition-delay: 0ms; }
+.f-bes:has(.f-bes-zustand.schritt-an) .f-org-beschriftung--kmu text { opacity: 1; }
 .f-bes .f-org-linien-konzern path, .f-bes .f-org-linien-kmu path {
   fill: none; stroke: var(--f-linie-stark); stroke-width: 4; stroke-linecap: round;
   transition: opacity var(--dauer-mittel) var(--kurve);
@@ -265,15 +306,20 @@
 
 /* ---------- Folie 11: Herausforderungen ---------- */
 .f-zahlen .f-zahlen-raster {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--abstand-5); margin: auto 0;
+  display: grid; grid-template-columns: 1fr 1fr 1.45fr 1fr; gap: var(--abstand-5); margin: auto 0; align-items: stretch;
 }
 .f-zahlen .f-zahl {
   padding: var(--abstand-5); border-radius: var(--radius-l); background: var(--f-flaeche);
-  border-top: 8px solid var(--f-akzent); min-height: 470px;
+  border-top: 8px solid var(--f-akzent); min-height: 500px;
 }
 .f-zahlen .f-zahl:nth-child(even) { border-top-color: var(--f-hart); }
+.f-zahlen .f-zahl-icon { width: 60px; height: 60px; stroke: var(--f-akzent); stroke-width: 1.8; margin-bottom: var(--abstand-3); }
+.f-zahlen .f-zahl:nth-child(even) .f-zahl-icon { stroke: var(--f-hart); }
 .f-zahlen .f-zahl .kennzahl-wert { font-size: 92px; color: var(--f-text); }
 .f-zahlen .f-zahl .kennzahl-text { font-size: var(--groesse-text-min); color: var(--f-text); }
+.f-zahlen .f-zahl--held { background: var(--f-hart-flaeche); border-top-color: var(--f-hart); }
+.f-zahlen .f-zahl--held .kennzahl-wert { font-size: 132px; color: var(--f-hart); }
+.f-zahlen .f-zahl--held .kennzahl-text { font-size: var(--groesse-gross); }
 .f-zahlen .f-zahl-quelle { margin-top: auto; font-size: var(--groesse-meta); color: var(--f-text-2); }
 
 /* ---------- Folie 12: Fallbeispiel ---------- */
@@ -305,10 +351,8 @@
 .f-fall .f-fall-zitat .zitat-text { font-size: 40px; }
 
 /* ---------- Folie 13: Kernbotschaft ---------- */
-.f-kern-folie .f-kern-zusatz {
-  margin: var(--abstand-6) auto 0; max-width: 1500px; text-align: center;
-  font-size: 40px; line-height: 1.35;
-}
+.f-kern-folie .f-arbeit-satz--klein { margin: auto 0; max-width: 1600px; }
+.f-kern-folie .f-kern-zusatz { color: var(--f-text); }
 .f-kern-folie .f-kern-zusatz b { color: var(--f-akzent); }
 
 /* ---------- Folie 14: Diskussion (je Klick eine Frage im Fokus) ---------- */

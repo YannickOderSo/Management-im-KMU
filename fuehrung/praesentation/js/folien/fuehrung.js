@@ -31,6 +31,76 @@
   if (Deck.bereit && Deck.bereit.then) Deck.bereit.then(leisteEinfuegen);
   document.addEventListener('deck:bereit', leisteEinfuegen);
 
+  /* ---------- Folie 01: Punkte sammeln sich um die Mitte ---------- */
+  function motiv(ctx) { return ctx.folie.querySelector('.f-titel-motiv'); }
+  Deck.registriere('f01', {
+    betreten: function (ctx) {
+      var m = motiv(ctx);
+      if (!m) return;
+      if (ctx.bewegungReduziert || ctx.druckmodus) { m.classList.add('ist-gesammelt'); return; }
+      m.classList.remove('ist-gesammelt');
+      util.warte(ctx.sofort ? 600 : 350).then(function () { m.classList.add('ist-gesammelt'); });
+    },
+    verlassen: function (ctx) { var m = motiv(ctx); if (m) m.classList.remove('ist-gesammelt'); },
+    druck: function (ctx) { var m = motiv(ctx); if (m) m.classList.add('ist-gesammelt'); },
+    vorschau: function (ctx, klon) { var m = klon.querySelector('.f-titel-motiv'); if (m) m.classList.add('ist-gesammelt'); }
+  });
+
+  /* ---------- Folie 03: Linien von den markierten Wörtern zu den Chips ----------
+     Start = Unterkante der Karte unter dem Wort, Ziel = Oberkante des Chips.
+     Gemessen in Bühnen-Pixeln (Bühne ist skaliert: Faktor aus der Folienbreite). */
+  var ARTEN = ['ziel', 'einfluss', 'interaktion', 'organisation'];
+  function linienBauen(ctx) {
+    var svg = ctx.folie.querySelector('.f-def-linien');
+    if (!svg) return null;
+    var basis = svg.getBoundingClientRect();
+    var faktor = ctx.folie.getBoundingClientRect().width / ctx.folie.offsetWidth || 1;
+    if (!basis.width) return null;
+    svg.setAttribute('viewBox', '0 0 ' + (basis.width / faktor) + ' ' + (basis.height / faktor));
+    svg.textContent = '';
+    ARTEN.forEach(function (art, i) {
+      var chip = ctx.folie.querySelector('.f-chip--' + art);
+      if (!chip) return;
+      var c = chip.getBoundingClientRect();
+      var zx = (c.left + c.width / 2 - basis.left) / faktor, zy = (c.top - basis.top) / faktor;
+      util.alle('mark.f-kern--' + art, ctx.folie).forEach(function (mark) {
+        var w = mark.getClientRects()[0] || mark.getBoundingClientRect();
+        var karte = mark.closest('.karte').getBoundingClientRect();
+        var sx = (w.left + w.width / 2 - basis.left) / faktor, sy = (karte.bottom - basis.top) / faktor;
+        var mitte = (sy + zy) / 2;
+        var pfad = util.svg('path', {
+          class: 'f-linie--' + art,
+          d: 'M' + sx.toFixed(1) + ' ' + sy.toFixed(1) + ' C' + sx.toFixed(1) + ' ' + mitte.toFixed(1) + ' ' + zx.toFixed(1) + ' ' + mitte.toFixed(1) + ' ' + zx.toFixed(1) + ' ' + zy.toFixed(1),
+          'data-n': i + 1
+        }, svg);
+        pfad.style.setProperty('--laenge', Math.ceil(pfad.getTotalLength() + 2));
+      });
+    });
+    return svg;
+  }
+  function linienZeigen(ctx, n) {
+    var svg = ctx.folie.querySelector('.f-def-linien');
+    if (!svg) return;
+    if (n >= 1 && (ctx.druckmodus || !svg.childElementCount)) svg = linienBauen(ctx) || svg;   /* einmal messen, wenn Schriften und Auftritte fertig sind */
+    util.alle('path', svg).forEach(function (pfad) {
+      var an = Number(pfad.getAttribute('data-n')) <= n;
+      if (an && !pfad.classList.contains('ist-an')) {
+        pfad.getBoundingClientRect();              /* Ausgangszustand festhalten, damit der Strich gezeichnet wird */
+        if (ctx.bewegungReduziert || ctx.druckmodus) pfad.style.transition = 'none';
+      }
+      pfad.classList.toggle('ist-an', an);
+    });
+  }
+  Deck.registriere('f03', {
+    betreten: function (ctx, schritt) {
+      var n = typeof schritt === 'number' ? schritt : ctx.schritt;
+      if (n >= 1) util.warte(80).then(function () { linienZeigen(ctx, n); });
+      else linienZeigen(ctx, 0);
+    },
+    schritt: function (ctx, n) { linienZeigen(ctx, n); },
+    druck: function (ctx) { linienZeigen(ctx, ARTEN.length); }
+  });
+
   /* ---------- Folie 05 und 07: Endzustand im Druck ---------- */
   function zustandAn(ctx) {
     util.alle('[data-animation="zustand"]', ctx.folie).forEach(function (el) { el.classList.add('schritt-an'); });
