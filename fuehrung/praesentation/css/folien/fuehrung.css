@@ -8,6 +8,18 @@
 /* ---------- gemeinsame Kleinteile ---------- */
 .folie .f-klein { font-size: var(--groesse-meta); color: var(--f-text-2); font-weight: 400; }
 
+/* Handgezeichnete Markierung (Unterstreichung, Kreis) – zeichnet sich per data-animation="zeichnen" */
+.folie .f-stift { position: relative; display: inline-block; }
+.folie .f-stift--kreis { width: max-content; align-self: flex-start; margin: 10px 0 6px 18px; }
+.folie .f-stift > svg { position: absolute; overflow: visible; max-width: none; pointer-events: none; fill: none; stroke: var(--f-hart); stroke-width: 5; stroke-linecap: round; }
+.folie .f-stift--linie > svg { left: -2%; width: 104%; bottom: -12px; height: 18px; }
+.folie .f-stift--kreis > svg { left: -44px; top: -22px; width: calc(100% + 88px); height: calc(100% + 46px); }
+
+/* Zitate Wort für Wort (js/folien/fuehrung.js teilt [data-woerter] in Wörter) */
+.folie [data-woerter] .f-w { opacity: 0; transition: opacity 320ms var(--kurve); transition-delay: calc(var(--i) * 75ms + 500ms); }
+.folie .schritt-an [data-woerter] .f-w, .folie [data-woerter].ist-an .f-w { opacity: 1; }
+html.druckmodus .folie [data-woerter] .f-w, html.aufnahme .folie [data-woerter] .f-w { opacity: 1; transition: none; }
+
 /* Chips der vier Kernelemente (Folie 03 → 04, gleiten per data-morph) */
 .folie .f-chips {
   display: flex; gap: var(--abstand-4); margin: 0; padding: 0; list-style: none;
@@ -51,11 +63,11 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
 /* ---------- Folie 02: Fahrplan als Weg mit vier Stationen ---------- */
 .f-plan .f-weg { position: relative; margin: auto 0; }
 .f-plan .f-weg-linie {
-  position: absolute; top: 56px; left: 12.5%; right: 12.5%; height: 6px; border-radius: 3px;
+  position: absolute; top: 56px; left: 10%; right: 10%; height: 6px; border-radius: 3px;
   background: linear-gradient(90deg, var(--f-akzent), var(--f-hart)); transform-origin: left center;
 }
 .f-plan .f-weg-stationen {
-  position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--abstand-5);
+  position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--abstand-4);
   margin: 0; padding: 0; list-style: none; text-align: center;
 }
 .f-plan .f-weg-stationen li { display: flex; flex-direction: column; align-items: center; gap: var(--abstand-3); }
@@ -64,9 +76,9 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
   background: var(--f-hintergrund); border: 6px solid var(--f-akzent); color: var(--f-akzent);
   font-family: var(--schrift-zahl); font-size: 60px; font-weight: var(--gewicht-zahl);
 }
-.f-plan .f-weg-stationen li:nth-child(3) .f-weg-punkt,
-.f-plan .f-weg-stationen li:nth-child(4) .f-weg-punkt { border-color: var(--f-hart); color: var(--f-hart); }
-.f-plan .f-weg-titel { font-family: var(--schrift-display); font-size: 44px; line-height: 1.15; font-weight: var(--gewicht-display); }
+.f-plan .f-weg-stationen li:nth-child(4) .f-weg-punkt,
+.f-plan .f-weg-stationen li:nth-child(5) .f-weg-punkt { border-color: var(--f-hart); color: var(--f-hart); }
+.f-plan .f-weg-titel { font-family: var(--schrift-display); font-size: 40px; line-height: 1.15; font-weight: var(--gewicht-display); }
 .f-plan .f-weg-text { font-size: var(--groesse-text-min); color: var(--f-text-2); line-height: 1.3; max-width: 340px; }
 
 /* ---------- Fahrplan-Leiste in der Kopfzeile (js/folien/fuehrung.js, data-station) ---------- */
@@ -128,45 +140,30 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
 .folie .f-wort--ziel, .folie .f-wort--interaktion { background: var(--f-akzent-flaeche); color: var(--f-akzent); }
 .folie .f-wort--einfluss, .folie .f-wort--organisation { background: var(--f-hart-flaeche); color: var(--f-hart); }
 
-/* ---------- Folie 05: zwei Ebenen ---------- */
+/* ---------- Folie 05: drei Rollen ---------- */
 .f-ebenen .f-ebenen-buehne { position: relative; flex: 1; min-height: 0; }
-.f-ebenen .f-kreis {
-  position: absolute; top: 50%; width: 520px; height: 520px; border-radius: 50%;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
-  text-align: center; padding: 0 70px;
-  transition: transform var(--dauer-lang) var(--kurve), padding var(--dauer-lang) var(--kurve);
+.f-ebenen .f-rolle, .f-ebenen .f-rolle-text {
+  position: absolute; left: calc(50% + var(--x0)); top: calc(50% + var(--y0)); transform: translate(-50%, -50%);
+  transition: left var(--dauer-lang) var(--kurve), top var(--dauer-lang) var(--kurve), opacity var(--dauer-mittel) var(--kurve);
 }
-.f-ebenen .f-kreis--links {
-  left: 50%; transform: translate(calc(-100% - 90px), -50%);
-  background: color-mix(in oklab, var(--f-hart-flaeche) 85%, transparent);
-  border: var(--linie-stark) solid var(--f-hart);
+.f-ebenen .f-rolle { width: 340px; height: 340px; border-radius: 50%; border: var(--linie-stark) solid; }
+.f-ebenen .f-rolle--eigentum { background: color-mix(in oklab, var(--f-hart-flaeche) 80%, transparent); border-color: var(--f-hart); }
+.f-ebenen .f-rolle--unternehmen { background: color-mix(in oklab, var(--f-flaeche) 70%, transparent); border-color: var(--f-text-2); }
+.f-ebenen .f-rolle--mitarbeiter { background: color-mix(in oklab, var(--f-akzent-flaeche) 80%, transparent); border-color: var(--f-akzent); }
+.f-ebenen .f-rolle-text {
+  width: 300px; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center;
 }
-.f-ebenen .f-kreis--rechts {
-  left: 50%; transform: translate(90px, -50%);
-  background: color-mix(in oklab, var(--f-akzent-flaeche) 85%, transparent);
-  border: var(--linie-stark) solid var(--f-akzent);
-}
-.f-ebenen .f-kreis-kicker { font-size: var(--groesse-meta); color: var(--f-text-2); text-transform: uppercase; letter-spacing: 0.08em; }
-.f-ebenen .f-kreis-titel { font-family: var(--schrift-display); font-size: 42px; hyphens: manual; line-height: 1.1; font-weight: var(--gewicht-display); }
-.f-ebenen .f-kreis-text { font-size: var(--groesse-text-min); color: var(--f-text-2); line-height: 1.3; }
-.f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-kreis--links { transform: translate(calc(-100% + 90px), -50%); padding: 0 240px 0 40px; }
-.f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-kreis--rechts { transform: translate(-90px, -50%); padding: 0 40px 0 240px; }
-.f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-kreis-text { opacity: 0; }
-.f-ebenen .f-kreis-text { transition: opacity var(--dauer-kurz) var(--kurve); }
-.f-ebenen .f-ebenen-person {
-  position: absolute; top: calc(50% + 135px); transform: translateX(-50%);
-  display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--f-text-2);
-  font-size: var(--groesse-meta);
-  transition: left var(--dauer-lang) var(--kurve), opacity var(--dauer-mittel) var(--kurve) 500ms;
-}
-.f-ebenen .f-ebenen-person .icon { width: 52px; height: 52px; stroke: currentColor; }
-.f-ebenen .f-ebenen-person--links { left: calc(50% - 350px); }
-.f-ebenen .f-ebenen-person--rechts { left: calc(50% + 350px); }
-.f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-ebenen-person { left: 50%; opacity: 0; }
+.f-ebenen .f-rolle-titel { font-family: var(--schrift-display); font-size: 40px; line-height: 1.1; font-weight: var(--gewicht-display); }
+.f-ebenen .f-rolle-person { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; font-size: var(--groesse-meta); color: var(--f-text-2); transition: opacity var(--dauer-kurz) var(--kurve); }
+.f-ebenen .f-rolle-person .icon { width: 48px; height: 48px; stroke: currentColor; }
+.f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-rolle,
+.f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-rolle-text { left: calc(50% + var(--x1)); top: calc(50% + var(--y1)); }
+.f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-rolle-text { align-items: var(--ausrichtung); text-align: var(--ausrichtung); }
+.f-ebenen:has(.f-ebenen-zustand.schritt-an) .f-rolle-person { opacity: 0; }
 .f-ebenen .f-ebenen-mitte {
-  position: absolute; left: 50%; top: calc(50% + 125px); transform: translate(-50%, -50%);
+  position: absolute; left: 50%; top: calc(50% + 10px); transform: translate(-50%, -50%);
   display: flex; flex-direction: column; align-items: center; gap: 4px;
-  padding: 16px 24px; border-radius: var(--radius-l);
+  padding: 14px 22px; border-radius: var(--radius-l);
   background: var(--f-akzent); color: var(--f-auf-akzent);
   font-size: var(--groesse-text); font-weight: var(--gewicht-fett);
 }
@@ -264,9 +261,20 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
   background-image: repeating-linear-gradient(90deg, transparent 0 calc(100% / 7 - 2px), var(--f-linie) calc(100% / 7 - 2px) calc(100% / 7));
   border-top: var(--linie-fein) solid var(--f-linie-stark);
 }
-.f-stil .f-stil-spur { position: relative; height: 62px; border-bottom: 1px dashed var(--f-linie); }
+.f-stil .f-stil-spur { position: relative; height: 56px; border-bottom: 1px dashed var(--f-linie); }
+.f-stil .f-stil-spur--gross { height: 128px; }
+.f-stil .f-stil-punkte { position: absolute; left: 0; right: 0; top: 50px; bottom: 6px; }
+.f-stil .f-stil-punkte > span {
+  position: absolute; width: 11px; height: 11px; border-radius: 50%; background: var(--f-akzent); opacity: 0.85;
+  left: calc((var(--pos) - 0.5) / 7 * 100% + var(--dx) - 5.5px); bottom: var(--dy);
+}
+.f-stil .f-stil-punkte > span.ist-beispiel { background: transparent; border: 2px solid var(--f-akzent); }
+.f-stil .f-stil-marker--publikum .f-stil-pin { position: relative; }
+.f-stil .f-stil-marker--publikum .f-stil-pin::after {
+  content: ""; position: absolute; left: 50%; top: 100%; height: 86px; border-left: 3px solid var(--f-akzent); transform: translateX(-1.5px);
+}
 .f-stil .f-stil-marker {
-  position: absolute; top: 10px; left: calc((var(--pos) - 0.5) / 7 * 100% - 15px);
+  position: absolute; top: 8px; left: calc((var(--pos) - 0.5) / 7 * 100% - 15px);
   display: flex; align-items: center; gap: var(--abstand-3); white-space: nowrap;
   transition: left var(--dauer-lang) var(--kurve);
 }
@@ -290,19 +298,32 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
 }
 .f-stil .f-stil-bilanz .f-minus { border-left-color: var(--f-hart); }
 
-/* ---------- Folie 10: Praxisstimmen ---------- */
-.f-stimmen .f-stimmen-raster {
-  display: grid; grid-template-columns: 1fr 1fr; gap: var(--abstand-6); margin: auto 0;
+/* ---------- Folie 10: Praxisstimmen als Gegenüberstellung mit Schnittmenge ---------- */
+.f-stimmen .f-venn { position: relative; flex: 1; min-height: 0; margin-top: var(--abstand-4); }
+.f-stimmen .f-venn-kreis {
+  position: absolute; top: 0; bottom: 0; width: 62%; border-radius: 50%; border: var(--linie-stark) solid;
 }
-.f-stimmen .f-stimme { display: flex; flex-direction: column; gap: var(--abstand-4); min-height: 440px; }
-.f-stimmen .f-stimme .karte-titel { font-size: 56px; font-family: var(--schrift-display); }
-.f-stimmen .f-stimme-zitat { margin: 0; font-family: var(--schrift-display); font-size: 40px; line-height: 1.3; }
+.f-stimmen .f-venn-kreis--links { left: 0; background: color-mix(in oklab, var(--f-akzent-flaeche) 75%, transparent); border-color: var(--f-akzent); }
+.f-stimmen .f-venn-kreis--rechts { right: 0; background: color-mix(in oklab, var(--f-hart-flaeche) 75%, transparent); border-color: var(--f-hart); }
+.f-stimmen .f-venn-seite {
+  position: absolute; top: 50%; transform: translateY(-50%); width: 30%;
+  display: flex; flex-direction: column; gap: var(--abstand-3);
+}
+.f-stimmen .f-venn-seite--links { left: 6%; }
+.f-stimmen .f-venn-seite--rechts { right: 6%; text-align: right; align-items: flex-end; }
+.f-stimmen .f-venn-name { font-family: var(--schrift-display); font-size: 52px; line-height: 1.1; }
+.f-stimmen .f-venn-zitat { margin: 0; font-family: var(--schrift-display); font-style: italic; font-size: 36px; line-height: 1.3; }
+.f-stimmen .f-venn-punkt { margin: 0; font-size: var(--groesse-text-min); line-height: 1.3; }
+.f-stimmen .f-venn-mitte {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 22%;
+  display: flex; flex-direction: column; align-items: center; gap: var(--abstand-2); text-align: center;
+}
+.f-stimmen .f-venn-mitte p { margin: 0; font-size: var(--groesse-text); font-weight: var(--gewicht-fett); line-height: 1.3; }
 .f-stimmen .f-offen {
-  display: inline-block; margin-left: 8px; padding: 2px 14px; border-radius: var(--radius-pille);
-  border: var(--linie-fein) dashed var(--f-linie-stark); font-family: var(--schrift-text);
-  font-size: var(--groesse-text-min); color: var(--f-text-2); vertical-align: middle;
+  display: inline-block; padding: 2px 14px; border-radius: var(--radius-pille);
+  border: var(--linie-fein) dashed var(--f-linie-stark); font-family: var(--schrift-text); font-style: normal;
+  font-size: var(--groesse-text-min); font-weight: 400; color: var(--f-text-2); vertical-align: middle;
 }
-.f-stimmen .f-stimme-stil { margin: auto 0 0; font-size: var(--groesse-text); }
 
 /* ---------- Folie 11: Herausforderungen ---------- */
 .f-zahlen .f-zahlen-raster {
@@ -318,7 +339,7 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
 .f-zahlen .f-zahl .kennzahl-wert { font-size: 92px; color: var(--f-text); }
 .f-zahlen .f-zahl .kennzahl-text { font-size: var(--groesse-text-min); color: var(--f-text); }
 .f-zahlen .f-zahl--held { background: var(--f-hart-flaeche); border-top-color: var(--f-hart); }
-.f-zahlen .f-zahl--held .kennzahl-wert { font-size: 132px; color: var(--f-hart); }
+.f-zahlen .f-zahl--held .kennzahl-wert { font-size: 116px; color: var(--f-hart); }
 .f-zahlen .f-zahl--held .kennzahl-text { font-size: var(--groesse-gross); }
 .f-zahlen .f-zahl-quelle { margin-top: auto; font-size: var(--groesse-meta); color: var(--f-text-2); }
 

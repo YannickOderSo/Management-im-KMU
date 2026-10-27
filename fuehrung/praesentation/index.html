@@ -168,16 +168,17 @@
 <section class="folie f-plan" id="f02" data-titel="Fahrplan" data-feld="leer" data-rubrik="Fahrplan" data-zeit="30" data-buendel="alle">
   <header class="folie-kopf">
     <p class="kicker">Fahrplan</p>
-    <h2 class="titel">Vier Fragen führen durch das Referat</h2>
+    <h2 class="titel">Fünf Fragen führen durch das Referat</h2>
   </header>
   <div class="folie-inhalt">
     <div class="f-weg">
       <span class="f-weg-linie" data-animation="zeichnen" data-dauer="1400" aria-hidden="true"></span>
-      <ol class="f-weg-stationen" data-staffel="180" data-animation="hoch">
-        <li><span class="f-weg-punkt">1</span><span class="f-weg-titel">Was ist Führung?</span><span class="f-weg-text">Definitionen und eine Arbeitsdefinition</span></li>
+      <ol class="f-weg-stationen" data-staffel="160" data-animation="hoch">
+        <li><span class="f-weg-punkt">1</span><span class="f-weg-titel">Was ist Führung?</span><span class="f-weg-text">Definitionen und Arbeitsdefinition</span></li>
         <li><span class="f-weg-punkt">2</span><span class="f-weg-titel">Was ist ein KMU?</span><span class="f-weg-text">Zahlen und Definitionen</span></li>
         <li><span class="f-weg-punkt">3</span><span class="f-weg-titel">Was ist dort anders?</span><span class="f-weg-text">Besonderheiten und Live-Umfrage</span></li>
-        <li><span class="f-weg-punkt">4</span><span class="f-weg-titel">Was heißt das für die Praxis?</span><span class="f-weg-text">Befragung, Zahlen, Diskussion</span></li>
+        <li><span class="f-weg-punkt">4</span><span class="f-weg-titel">Womit führt man?</span><span class="f-weg-text">Führungsinstrumente im KMU</span></li>
+        <li><span class="f-weg-punkt">5</span><span class="f-weg-titel">Was zeigt die Praxis?</span><span class="f-weg-text">Befragung, Zahlen, Fälle</span></li>
       </ol>
     </div>
   </div>
@@ -185,7 +186,7 @@
     <p class="quelle">Belege: Literaturbasis (40 frei zugängliche Quellen, Stand 27.10.2026) – Nummern [n] in den Fußzeilen</p>
   </footer>
   <aside class="notizen">
-    <p class="gesprochen">„Ich gehe in vier Schritten vor: Erst klären wir, was Führung überhaupt ist. Dann, was ein KMU ausmacht. Drittens, was Führung dort anders macht – da sind Sie per Handy gefragt. Und zum Schluss: was das für die Praxis heißt, mit Zahlen, zwei Befragungen und einem Fallbeispiel.“</p>
+    <p class="gesprochen">„Ich gehe in fünf Schritten vor: Erst klären wir, was Führung überhaupt ist. Dann, was ein KMU ausmacht. Drittens, was Führung dort anders macht – da sind Sie per Handy gefragt. Viertens: Mit welchen Instrumenten wird im KMU geführt? Und zum Schluss: was die Praxis zeigt – zwei Befragungen, Zahlen und mehrere Fälle aus echten Betrieben. Danach diskutieren wir.“</p>
   </aside>
 </section>
 
@@ -264,40 +265,46 @@
      Schritt 1: Die Kreise „Unternehmensführung“ und „Mitarbeiterführung“
      schieben sich zusammen; in der Schnittmenge steht „Inhaber/in“.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie f-ebenen" id="f05" data-titel="Zwei Ebenen" data-feld="leer" data-station="1" data-zeit="60" data-buendel="alle">
+<section class="folie f-ebenen" id="f05" data-titel="Drei Rollen" data-feld="leer" data-station="1" data-zeit="90" data-buendel="alle">
   <header class="folie-kopf">
     <p class="kicker">1 · Was ist Führung?</p>
-    <h2 class="titel">Zwei Ebenen der Führung – im KMU bei einer Person</h2>
+    <h2 class="titel">Drei Rollen – im KMU bei einer Person</h2>
   </header>
   <div class="folie-inhalt">
     <span class="f-ebenen-zustand" data-schritt="1" data-animation="zustand" aria-hidden="true"></span>
+    <!-- Schritt 0: drei getrennte Kreise (Konzern). Schritt 1: Die Kreise schieben sich
+         übereinander, die Beschriftungen wandern nach außen, in der Mitte „Inhaber/in“.
+         Positionen: --x0/--y0 (getrennt) und --x1/--y1 (überlagert), relativ zur Mitte. -->
     <div class="f-ebenen-buehne">
-      <div class="f-kreis f-kreis--links">
-        <span class="f-kreis-kicker" data-meta>Management</span>
-        <span class="f-kreis-titel">Unternehmens­führung</span>
-        <span class="f-kreis-text">Ziele, Planung, Organisation, Kontrolle</span>
+      <div class="f-rolle f-rolle--eigentum" style="--x0:-560px;--y0:0px;--x1:-110px;--y1:-60px"></div>
+      <div class="f-rolle f-rolle--unternehmen" style="--x0:0px;--y0:0px;--x1:110px;--y1:-60px"></div>
+      <div class="f-rolle f-rolle--mitarbeiter" style="--x0:560px;--y0:0px;--x1:0px;--y1:130px"></div>
+      <div class="f-rolle-text" style="--x0:-560px;--y0:-10px;--x1:-470px;--y1:-110px;--ausrichtung:end">
+        <span class="f-rolle-titel">Eigentum</span>
+        <span class="f-rolle-person" data-meta><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg>Aktionäre</span>
       </div>
-      <div class="f-kreis f-kreis--rechts">
-        <span class="f-kreis-kicker" data-meta>Personalführung</span>
-        <span class="f-kreis-titel">Mitarbeiter­führung</span>
-        <span class="f-kreis-text">Motivieren, Feedback, Zusammenhalt</span>
+      <div class="f-rolle-text" style="--x0:0px;--y0:-10px;--x1:470px;--y1:-110px;--ausrichtung:start">
+        <span class="f-rolle-titel">Unternehmens­führung</span>
+        <span class="f-rolle-person" data-meta><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg>Vorstand</span>
       </div>
-      <div class="f-ebenen-person f-ebenen-person--links"><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg><span data-meta>Vorstand</span></div>
-      <div class="f-ebenen-person f-ebenen-person--rechts"><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg><span data-meta>Teamleitung</span></div>
-      <div class="f-ebenen-mitte" data-schritt="1" data-animation="zoom" data-verzoegerung="700">
+      <div class="f-rolle-text" style="--x0:560px;--y0:-10px;--x1:400px;--y1:200px;--ausrichtung:start">
+        <span class="f-rolle-titel">Mitarbeiter­führung</span>
+        <span class="f-rolle-person" data-meta><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg>Teamleitung</span>
+      </div>
+      <div class="f-ebenen-mitte" data-schritt="1" data-animation="zoom" data-verzoegerung="800">
         <svg class="icon" aria-hidden="true"><use href="#i-person"/></svg>
         <span>Inhaber/in</span>
       </div>
     </div>
-    <p class="f-ebenen-satz" data-schritt="1" data-animation="hoch" data-verzoegerung="700">Im Konzern getrennt – im Mittelstand fallen beide zusammen.</p>
+    <p class="f-ebenen-satz" data-schritt="1" data-animation="hoch" data-verzoegerung="1000">Im Konzern drei Rollen, drei Personen – im Mittelstand eine.</p>
   </div>
   <footer class="folie-fuss">
-    <p class="quelle">[4] Gabler „Management“: Trennung von Eigentum und Geschäftsführung als Merkmal des Managements als Institution · [5] v. Rosenstiel (2000)</p>
+    <p class="quelle">[10] IfM Bonn: Mittelstand = „Einheit von Eigentum und Leitung“ · [4] Gabler „Management“: Trennung von Eigentum und Geschäftsführung · [5] v. Rosenstiel (2000)</p>
   </footer>
   <aside class="notizen">
-    <p data-schritt="0">„Von Rosenstiel unterscheidet zwei Ebenen. Links die Unternehmensführung – das, was Gabler ‚Management‘ nennt: Ziele setzen, planen, organisieren, kontrollieren. Rechts die Mitarbeiterführung: Menschen motivieren, Feedback geben, das Team zusammenhalten.“</p>
-    <p data-schritt="1">„Im Konzern sind das oft verschiedene Personen: Vorstand und Teamleitung. Gabler nennt die Trennung von Eigentum und Geschäftsführung sogar ein Merkmal des Managements. Im Mittelstand ist es genau umgekehrt: Beide Ebenen liegen bei einer Person – der Inhaberin oder dem Inhaber.“</p>
-    <p>Hintergrund: Im Gabler online leitet „Unternehmensführung“ auf „Management“ weiter, „Mitarbeiterführung“ auf „Führung“ [4][1]. Mitarbeiterführung ist im Managementzyklus eine von neun Aufgaben [4].</p>
+    <p data-schritt="0">„Führung hat zwei Ebenen, sagt von Rosenstiel: die Unternehmensführung – Ziele setzen, planen, organisieren, kontrollieren – und die Mitarbeiterführung – motivieren, Feedback geben, das Team zusammenhalten. Dazu kommt eine dritte Rolle, die für das KMU entscheidend ist: das Eigentum. Im Konzern sind das drei verschiedene Gruppen: Aktionäre besitzen, der Vorstand führt das Unternehmen, Teamleitungen führen die Menschen. Gabler nennt die Trennung von Eigentum und Geschäftsführung sogar ein Merkmal des Managements.“</p>
+    <p data-schritt="1">„Im Mittelstand schieben sich alle drei Rollen übereinander – auf eine Person, die Inhaberin oder den Inhaber. Genau so definiert das IfM Bonn den Mittelstand: als Einheit von Eigentum und Leitung. Das ist der Schlüssel für alles, was jetzt kommt.“</p>
+    <p>Hintergrund: Im Gabler online leitet „Unternehmensführung“ auf „Management“ weiter, „Mitarbeiterführung“ auf „Führung“ [4][1]. Mitarbeiterführung ist im Managementzyklus eine von neun Aufgaben [4]. Im KMU mit wachsender Größe übernehmen oft Teamleitungen die Mitarbeiterführung (Fallbeispiel Pflegedienst, später).</p>
   </aside>
 </section>
 
@@ -390,7 +397,7 @@
       </figure>
       <div class="f-bes-rechts">
         <blockquote class="zitat f-bes-zitat" data-schritt="1" data-animation="hoch" data-verzoegerung="600">
-          <p class="zitat-text">„Letztlich gibt es nur eine wirklich wichtige Führungsbeziehung und das ist die zum Inhaber“</p>
+          <p class="zitat-text" data-woerter>„Letztlich gibt es nur eine wirklich wichtige Führungsbeziehung und das ist die <span class="f-stift f-stift--linie">zum Inhaber“<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true" data-schritt="1" data-animation="zeichnen" data-verzoegerung="2300" data-dauer="700"><path d="M3 13 C 45 7, 110 16, 197 8"/></svg></span></p>
           <cite class="zitat-quelle">Wimmer (2021) [14]</cite>
         </blockquote>
         <ul class="liste f-bes-liste">
@@ -474,7 +481,8 @@
             <p><b>IfM:</b> dank kleiner Größe <span class="f-klein" data-meta>(Interviews)</span></p>
           </div>
         </div>
-        <div class="f-stil-spur" style="--spur:1">
+        <div class="f-stil-spur f-stil-spur--gross" style="--spur:1">
+          <div class="f-stil-punkte" data-publikum-punkte data-schritt="3" data-animation="einblenden" aria-hidden="true"></div>
           <div class="f-stil-marker f-stil-marker--publikum" style="--pos:4" data-schritt="3" data-animation="hoch" data-publikum>
             <span class="f-stil-pin" aria-hidden="true"></span>
             <p><b>Sie:</b> <span data-publikum-text>Ergebnis der Live-Umfrage</span></p>
@@ -509,7 +517,7 @@
     <p data-schritt="3">„Und hier landen Sie: Im Schnitt liegt Ihre Antwort aus der Umfrage etwa hier.“ – Position kommentieren (eher Chef- oder eher Teamseite?).</p>
     <p data-schritt="4">„Und so schätzen sich meine beiden Befragten selbst ein: SimpleAct … und TLT …“ – Unterschied kurz deuten (jung/wachsend vs. traditionsreich).</p>
     <p data-schritt="5">„Beides kann stimmen. Die Stärke: kurze Wege, hohes Tempo. Das Risiko: Unter veränderten Rahmenbedingungen – gerade bei starkem Wachstum – kann das Muster laut Wimmer ‚in eine Existenzgefährdung umschlagen‘.“</p>
-    <p>Publikum: Die Umfrage hat 5 Antworten, sie liegen auf den Stufen 1 (Chef entscheidet allein), 2,5 (… und erklärt), 4 (fragt vorher nach), 5 (Team schlägt vor) und 6,5 (Team entscheidet selbst); der Marker zeigt den Durchschnitt. Ohne Stimmen steht dort „Beispieldaten“.</p>
+    <p>Publikum: Jeder Punkt ist eine Stimme aus Folie 08. Die 5 Antworten liegen auf den Stufen 1 (Chef entscheidet allein), 2,5 (… und erklärt), 4 (fragt vorher nach), 5 (Team schlägt vor) und 6,5 (Team entscheidet selbst); der Marker mit Linie zeigt den Durchschnitt. Ohne Stimmen steht dort „Beispieldaten“.</p>
     <p>Wichtig: Wimmers „mehr als zwei Drittel“ ist eine Einschätzung in einem Theoriebeitrag, keine Erhebung. Die IfM-Aussage stammt aus qualitativen Interviews zu Digitalisierungsprojekten und gilt dort für einen Führungstyp – „Sind jedoch entsprechende Kompetenzen im Unternehmen vorhanden, ist der Führungsstil … eher als partizipativ bzw. kooperativ anzusehen“ [15, S. 21] –, nicht für KMU allgemein.</p>
   </aside>
   <!-- TODO bis Do, 29.10.2026: „stufe“ = Antwort auf Frage 17 im Fragebogen (1–7), „anzeige“ = Name laut Einverständnis -->
@@ -530,32 +538,44 @@
      „Antworten folgen“ entfernen und die Einverständnis-Angaben beachten
      (Name oder anonym).
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie f-stimmen" id="f10" data-titel="Praxisstimmen: Befragung" data-feld="leer" data-station="4" data-zeit="75" data-buendel="alle">
+<section class="folie f-stimmen" id="f10" data-titel="Praxisstimmen: Befragung" data-feld="leer" data-station="5" data-zeit="120" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">4 · Befragung · n = 2 <span class="beispiel kennzeichnung">Antworten folgen</span></p>
+    <p class="kicker">5 · Befragung · n = 2 <span class="beispiel kennzeichnung">Antworten folgen</span></p>
     <h2 class="titel">Zwei Unternehmen, zwei Blicke auf Führung</h2>
   </header>
   <div class="folie-inhalt">
-    <div class="f-stimmen-raster" data-staffel="160" data-animation="hoch">
-      <article class="karte f-stimme">
+    <!-- TODO bis Do, 29.10.2026: Antworten eintragen (Fragebogen Frage 5 „Führung ist …“,
+         Frage 13 bzw. D „größte Herausforderung“, Gemeinsamkeit in der Mitte). Danach die
+         Pille „Antworten folgen“ oben entfernen. Namen nur laut Einverständnis. -->
+    <div class="f-venn">
+      <span class="f-venn-kreis f-venn-kreis--links" aria-hidden="true"></span>
+      <span class="f-venn-kreis f-venn-kreis--rechts" aria-hidden="true"></span>
+      <div class="f-venn-seite f-venn-seite--links" data-schritt="1" data-animation="hoch">
         <span class="karte-kicker" data-meta>Software · jung, wachsend</span>
-        <span class="karte-titel">SimpleAct</span>
-        <p class="f-stimme-zitat">„Führung ist …“ <span class="f-offen">Antwort folgt</span></p>
-        <p class="f-stimme-stil"><span class="f-klein" data-meta>Stil (Selbsteinschätzung):</span> <b>– von 7</b></p>
-      </article>
-      <article class="karte f-stimme">
+        <span class="f-venn-name">SimpleAct</span>
+        <p class="f-venn-zitat" data-woerter>„Führung ist … <span class="f-offen">Antwort folgt</span>“</p>
+        <p class="f-venn-punkt"><b>Größte Herausforderung:</b> <span class="f-offen">folgt</span></p>
+      </div>
+      <div class="f-venn-seite f-venn-seite--rechts" data-schritt="2" data-animation="hoch">
         <span class="karte-kicker" data-meta>Industrie · Tradition</span>
-        <span class="karte-titel">TLT</span>
-        <p class="f-stimme-zitat">„Führung ist …“ <span class="f-offen">Antwort folgt</span></p>
-        <p class="f-stimme-stil"><span class="f-klein" data-meta>Stil (Selbsteinschätzung):</span> <b>– von 7</b></p>
-      </article>
+        <span class="f-venn-name">TLT</span>
+        <p class="f-venn-zitat" data-woerter>„Führung ist … <span class="f-offen">Antwort folgt</span>“</p>
+        <p class="f-venn-punkt"><b>Größte Herausforderung:</b> <span class="f-offen">folgt</span></p>
+      </div>
+      <div class="f-venn-mitte" data-schritt="3" data-animation="zoom">
+        <span class="karte-kicker" data-meta>Gemeinsam</span>
+        <p><span class="f-offen">folgt</span></p>
+      </div>
     </div>
   </div>
   <footer class="folie-fuss">
-    <p class="quelle">Schriftliche Befragung (Fragebogen, 20 Fragen), Rücklauf bis 29.10.2026 · n = 2, nicht repräsentativ · Methode: Backup B4</p>
+    <p class="quelle">Schriftliche Befragung (Fragebogen, 20 Fragen), Rücklauf bis 29.10.2026 · n = 2, nicht repräsentativ · Methode: Backup B4 · Stil-Selbsteinschätzung: Folie 09</p>
   </footer>
   <aside class="notizen">
-    <p class="gesprochen">„Ich habe zwei Führungskräfte schriftlich befragt: bei SimpleAct, einem jungen Software-Unternehmen für KI-Compliance, und bei TLT, einem Industrieunternehmen mit langer Tradition.“ – Danach je Unternehmen: Definition, Stil, eine Kernaussage. Abschluss: „Gemeinsam ist beiden …, verschieden ist …“</p>
+    <p data-schritt="0">„Ich habe zwei Führungskräfte schriftlich befragt: bei SimpleAct, einem jungen Software-Unternehmen für KI-Compliance, und bei TLT, einem Industrieunternehmen mit langer Tradition.“</p>
+    <p data-schritt="1">SimpleAct: Definition vorlesen, größte Herausforderung nennen.</p>
+    <p data-schritt="2">TLT: Definition vorlesen, größte Herausforderung nennen.</p>
+    <p data-schritt="3">„Gemeinsam ist beiden … – verschieden ist …“ Brücke zu den Führungsinstrumenten bzw. Zahlen.</p>
     <p>TODO: Antworten eintragen, sobald die Fragebögen zurück sind (bis Do, 29.10.2026, 12 Uhr). Einverständnis beachten: anonym = nur „Software-Unternehmen“ bzw. „Industrieunternehmen“.</p>
   </aside>
 </section>
@@ -563,9 +583,9 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 11 · Herausforderungen · 70 s
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie f-zahlen" id="f11" data-titel="Herausforderungen" data-feld="leer" data-station="4" data-zeit="70" data-buendel="alle">
+<section class="folie f-zahlen" id="f11" data-titel="Herausforderungen" data-feld="leer" data-station="5" data-zeit="70" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">4 · Was heißt das für die Praxis?</p>
+    <p class="kicker">5 · Was heißt das für die Praxis?</p>
     <h2 class="titel">Bindung, Fachkräfte, Nachfolge, KI: alles Führungsthemen</h2>
   </header>
   <div class="folie-inhalt">
@@ -584,7 +604,7 @@
       </div>
       <div class="kennzahl f-zahl f-zahl--held" data-schritt="3" data-animation="hoch">
         <svg class="icon f-zahl-icon" aria-hidden="true"><use href="#i-uebergabe"/></svg>
-        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="569000" data-start="0">569.000</span>
+        <span class="f-stift f-stift--kreis"><span class="kennzahl-wert" data-animation="zaehlen" data-ziel="569000" data-start="0">569.000</span><svg viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true" data-schritt="3" data-animation="zeichnen" data-verzoegerung="1500" data-dauer="900"><path d="M70 20 C 170 2, 330 4, 382 40 C 406 72, 384 120, 262 132 C 150 142, 18 130, 8 84 C 0 44, 48 18, 140 10"/></svg></span>
         <span class="kennzahl-text">Inhaber planen bis 2029 Stilllegung statt Nachfolge</span>
         <span class="f-zahl-quelle" data-meta>KfW 2026 [24]</span>
       </div>
@@ -611,9 +631,9 @@
 <!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 12 · Fallbeispiel · 45 s
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie f-fall" id="f12" data-titel="Fallbeispiel Pflegedienst" data-feld="leer" data-station="4" data-zeit="45" data-buendel="alle">
+<section class="folie f-fall" id="f12" data-titel="Fallbeispiel Pflegedienst" data-feld="leer" data-station="5" data-zeit="45" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">4 · Fallbeispiel · Pflegedienst Jahnke, Neuenhaus</p>
+    <p class="kicker">5 · Fallbeispiel · Pflegedienst Jahnke, Neuenhaus</p>
     <h2 class="titel">Wachstum zwingt zu Struktur</h2>
   </header>
   <div class="folie-inhalt">
@@ -630,7 +650,7 @@
       </ol>
     </div>
     <blockquote class="zitat f-fall-zitat" data-schritt="1" data-animation="einblenden" data-verzoegerung="400">
-      <p class="zitat-text">„Wie führe ich? Das war eine der zentralen Fragen“</p>
+      <p class="zitat-text" data-woerter>„Wie führe ich? Das war eine der zentralen Fragen“</p>
       <cite class="zitat-quelle">Inhaberin Gabriele Jahnke [36]</cite>
     </blockquote>
   </div>
@@ -658,7 +678,7 @@
   </header>
   <div class="folie-inhalt">
     <p class="f-arbeit-satz f-arbeit-satz--klein" data-morph="arbeitsdefinition">
-      Führung ist die <span class="f-wort f-wort--ziel" data-morph="kern-ziel">zielbezogene</span>, <span class="f-wort f-wort--einfluss" data-morph="kern-einfluss">absichtliche Einflussnahme</span> auf das Handeln anderer – vermittelt durch <span class="f-wort f-wort--interaktion" data-morph="kern-interaktion">Interaktion</span> in einer <span class="f-wort f-wort--organisation" data-morph="kern-organisation">Organisation</span>.<span class="f-kern-zusatz" data-schritt="1" data-animation="einblenden" data-dauer="900"> <b>Im KMU</b> liegt sie meist bei der Person, der das Unternehmen gehört: Nähe und Tempo – aber Fachkräfte, Nachfolge und KI verlangen Struktur.</span>
+      Führung ist die <span class="f-wort f-wort--ziel" data-morph="kern-ziel">zielbezogene</span>, <span class="f-wort f-wort--einfluss" data-morph="kern-einfluss">absichtliche Einflussnahme</span> auf das Handeln anderer – vermittelt durch <span class="f-wort f-wort--interaktion" data-morph="kern-interaktion">Interaktion</span> in einer <span class="f-wort f-wort--organisation" data-morph="kern-organisation">Organisation</span>.<span class="f-kern-zusatz" data-schritt="1" data-animation="einblenden" data-dauer="900"> <b class="f-stift f-stift--linie">Im KMU<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true" data-schritt="1" data-animation="zeichnen" data-verzoegerung="1000" data-dauer="600"><path d="M3 12 C 50 6, 120 15, 197 9"/></svg></b> liegt sie meist bei der Person, der das Unternehmen gehört: Nähe und Tempo – aber Fachkräfte, Nachfolge und KI verlangen Struktur.</span>
     </p>
   </div>
   <footer class="folie-fuss">

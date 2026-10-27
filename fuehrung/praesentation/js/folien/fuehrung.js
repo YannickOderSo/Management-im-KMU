@@ -11,13 +11,13 @@
   var util = Deck.util;
 
   /* ---------- Fahrplan-Leiste ---------- */
-  var STATIONEN = ['Begriff', 'KMU', 'Besonderheiten', 'Praxis'];
+  var STATIONEN = ['Begriff', 'KMU', 'Besonderheiten', 'Instrumente', 'Praxis'];
   function leisteEinfuegen() {
     util.alle('section.folie[data-station]').forEach(function (folie) {
       var rechts = folie.querySelector(':scope > .laufkopf .laufkopf-rechts');
       if (!rechts || rechts.querySelector('.f-leiste')) return;
       var aktuell = Number(folie.getAttribute('data-station'));
-      var leiste = util.element('span', { class: 'f-leiste', 'aria-label': 'Fahrplan: Teil ' + aktuell + ' von 4 – ' + STATIONEN[aktuell - 1] });
+      var leiste = util.element('span', { class: 'f-leiste', 'aria-label': 'Fahrplan: Teil ' + aktuell + ' von ' + STATIONEN.length + ' – ' + STATIONEN[aktuell - 1] });
       STATIONEN.forEach(function (name, i) {
         var n = i + 1;
         util.element('span', {
@@ -101,6 +101,27 @@
     druck: function (ctx) { linienZeigen(ctx, ARTEN.length); }
   });
 
+  /* ---------- Zitate Wort für Wort: Textknoten in Wörter teilen, Elemente (z. B. die
+     Unterstreichung) bleiben als Ganzes ein „Wort“ ---------- */
+  util.alle('[data-woerter]').forEach(function (absatz) {
+    var i = 0;
+    Array.prototype.slice.call(absatz.childNodes).forEach(function (knoten) {
+      if (knoten.nodeType === 3) {
+        var teile = knoten.textContent.split(/(\s+)/), frag = document.createDocumentFragment();
+        teile.forEach(function (t) {
+          if (!t) return;
+          if (/^\s+$/.test(t)) { frag.appendChild(document.createTextNode(t)); return; }
+          var w = util.element('span', { class: 'f-w' }, t, frag);
+          w.style.setProperty('--i', i++);
+        });
+        absatz.replaceChild(frag, knoten);
+      } else if (knoten.nodeType === 1) {
+        knoten.classList.add('f-w');
+        knoten.style.setProperty('--i', i++);
+      }
+    });
+  });
+
   /* ---------- Folie 05 und 07: Endzustand im Druck ---------- */
   function zustandAn(ctx) {
     util.alle('[data-animation="zustand"]', ctx.folie).forEach(function (el) { el.classList.add('schritt-an'); });
@@ -174,7 +195,24 @@
     var stufen = daten.publikumStufen || [1, 2.5, 4, 5, 6.5];
     var n = 0, summe = 0;
     werte.forEach(function (w, i) { w = Number(w) || 0; n += w; summe += w * (stufen[i] || 0); });
-    return n ? { pos: summe / n, n: n, beispiel: beispiel } : null;
+    return n ? { pos: summe / n, n: n, beispiel: beispiel, werte: werte, stufen: stufen } : null;
+  }
+
+  /* Ein Punkt je Stimme, gestapelt über der Stufe der Antwort (6 nebeneinander, höchstens 6 Reihen) */
+  function punkteZeichnen(ctx, p) {
+    var box = ctx.folie.querySelector('[data-publikum-punkte]');
+    if (!box) return;
+    box.textContent = '';
+    if (!p) return;
+    p.werte.forEach(function (w, i) {
+      var anzahl = Math.min(36, Math.max(0, Math.round(Number(w) || 0)));
+      for (var k = 0; k < anzahl; k++) {
+        var punkt = util.element('span', { class: p.beispiel ? 'ist-beispiel' : null }, null, box);
+        punkt.style.setProperty('--pos', p.stufen[i]);
+        punkt.style.setProperty('--dx', ((k % 6) - 2.5) * 14 + 'px');
+        punkt.style.setProperty('--dy', Math.floor(k / 6) * 12 + 'px');
+      }
+    });
   }
 
   function publikumZeigen(ctx) {
@@ -182,6 +220,7 @@
     if (!marker) return;
     var p = publikum(ctx.daten || {});
     var text = marker.querySelector('[data-publikum-text]');
+    punkteZeichnen(ctx, p);
     marker.classList.toggle('ist-offen', !p);
     if (!p) { markerSetzen(marker, 1); text.textContent = 'noch keine Stimmen'; return; }
     markerSetzen(marker, p.pos);
