@@ -8,6 +8,7 @@ Aufgabe: Den Begriff **Führung** im Kontext des Moduls definieren. Dazu gehöre
 | Teil | Status | Ort |
 |---|---|---|
 | Schriftliche Befragung (2 Fragebögen) | ✅ versandbereit | [`fuehrung/befragung/`](fuehrung/befragung/) |
+| Recherche (Tools + Literaturbasis) | ✅ fertig | [`recherche/`](recherche/) |
 | HTML-Präsentation | ⏳ geplant | `fuehrung/praesentation/` |
 | Diskussionspapier (max. 2 Seiten, Abgabe Fr, 30.10.2026) | ⏳ geplant | `fuehrung/diskussionspapier/` |
 
