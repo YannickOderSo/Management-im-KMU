@@ -2,7 +2,7 @@
 
 Stand: 27.10.2026. Ergänzt `literaturbasis.md` ([1]–[40]); neue Quellen ab [41]. **Nur frei zugängliche Quellen**, alle am 27.10.2026 im Original abgerufen. Zitate wörtlich aus dem Original kopiert. „S.“ = PDF-Seite. Kennzeichnung wie in der Literaturbasis: **[frei]** / **[Sekundär]**.
 
-**Wichtigste Einschränkung vorab:** Die einzige große Zeitreihe nach Betriebsgröße, das Linked Personnel Panel (LPP), erfasst nur **privatwirtschaftliche Betriebe ab 50 sozialversicherungspflichtig Beschäftigten** [53, S. 2]. Die „kleinste“ LPP-Klasse (50–99) ist also kein Kleinbetrieb im Sinne der EU-Definition. Werte für Unternehmen unter 50 Beschäftigten liefert hier nur das IW-Personalpanel (Unternehmen ab 1 Beschäftigtem) [54][55].
+**Wichtigste Einschränkung vorab:** Die einzige große Zeitreihe nach Betriebsgröße, das Linked Personnel Panel (LPP), erfasst nur **privatwirtschaftliche Betriebe ab 50 sozialversicherungspflichtig Beschäftigten** [53, S. 2]. Die „kleinste“ LPP-Klasse (50–99) ist also kein Kleinbetrieb im Sinne der EU-Definition. Werte für Unternehmen unter 50 Beschäftigten liefern das IW-Personalpanel (Unternehmen ab 1 Beschäftigtem) [54][55] sowie – laut Ergänzung `literaturbasis-ergaenzung.md` – Randstad-ifo [70][71], CVTS [72] und der DGB-Index [66] (Korrektur 27.10.2026).
 
 ---
 

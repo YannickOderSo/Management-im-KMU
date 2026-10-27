@@ -481,8 +481,9 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
 .f-beteil .f-beteil-text { font-size: var(--groesse-text); max-width: 1100px; line-height: 1.3; }
 .f-beteil .f-beteil-faelle { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-5); margin-top: auto; }
 .f-beteil .f-beteil-faelle .karte { min-height: 300px; gap: var(--abstand-3); }
-.f-beteil .f-beteil-faelle .karte-titel { font-family: var(--schrift-display); font-size: 38px; line-height: 1.1; }
-.f-beteil .f-beteil-faelle .karte-text { font-family: var(--schrift-display); font-style: italic; font-size: 30px; color: var(--f-text); }
+.f-beteil .f-beteil-faelle .karte-titel { font-family: var(--schrift-display); font-size: 34px; line-height: 1.1; }
+.f-beteil .f-beteil-faelle .karte-text { font-family: var(--schrift-display); font-style: italic; font-size: 28px; color: var(--f-text); }
+.f-beteil .f-beteil-faelle .karte { padding: var(--abstand-4) var(--abstand-5); }
 
 /* ---------- Folie 18: sechs Betriebe, ein Muster ---------- */
 .f-muster .f-muster-raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-4); margin-top: var(--abstand-5); }
@@ -502,3 +503,29 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
 .f-muster .f-muster-kette li:first-child { background: var(--f-hart); clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 50%, calc(100% - 40px) 100%, 0 100%); padding-left: var(--abstand-5); }
 .f-muster .f-muster-kette li:nth-child(2) { background: color-mix(in oklab, var(--f-hart) 45%, var(--f-akzent)); }
 .f-muster .f-muster-kette li span { display: block; font-size: var(--groesse-meta); font-weight: 400; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.9; }
+
+/* ---------- Folie 14: Vergleiche klein vs. groß und Gegenstimme ---------- */
+.f-beteil .f-beteil-vergleiche { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-5); margin-top: var(--abstand-4); }
+.f-beteil .f-vergleich { display: flex; flex-direction: column; gap: 6px; padding-left: var(--abstand-4); border-left: 6px solid var(--f-akzent); }
+.f-beteil .f-vergleich-zahlen { font-family: var(--schrift-zahl); font-size: 60px; line-height: normal; }
+.f-beteil .f-vergleich-zahlen b { color: var(--f-akzent); font-weight: var(--gewicht-zahl); }
+.f-beteil .f-vergleich-gegen { font-size: 36px; color: var(--f-text-2); }
+.f-beteil .f-vergleich-text { font-size: var(--groesse-text-min); line-height: 1.25; }
+.f-beteil .f-vergleich-quelle { font-size: var(--groesse-meta); color: var(--f-text-2); }
+.f-beteil .f-beteil-faelle .karte { min-height: 0; }
+.f-beteil .f-beteil-faelle { margin-top: var(--abstand-4); }
+.f-beteil .f-beteil-aber { margin-top: var(--abstand-4) !important; }
+.f-beteil .f-beteil-aber {
+  margin: auto 0 0; padding: var(--abstand-3) var(--abstand-5); border-radius: var(--radius-m);
+  background: var(--f-hart-flaeche); border-left: 8px solid var(--f-hart); font-size: var(--groesse-text-min); line-height: 1.3;
+}
+.f-beteil .f-beteil-aber b { color: var(--f-hart); }
+
+/* ---------- Folie 11: Zitat und Führungsschulungen nebeneinander ---------- */
+.f-hr .f-hr-unten { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: var(--abstand-6); margin-top: auto; align-items: end; }
+.f-hr .f-hr-unten .f-hr-zitat { margin: 0; }
+.f-hr .f-hr-schulung { display: flex; flex-direction: column; gap: 6px; padding-left: var(--abstand-4); border-left: 6px solid var(--f-hart); }
+.f-hr .f-hr-schulung-zahlen { font-family: var(--schrift-zahl); font-size: 72px; line-height: normal; color: var(--f-text-2); }
+.f-hr .f-hr-schulung-zahlen b { color: var(--f-hart); font-weight: var(--gewicht-zahl); }
+.f-hr .f-hr-schulung-zahlen .f-gegen { font-size: 36px; }
+.f-hr .f-hr-schulung-text { font-size: var(--groesse-text-min); line-height: 1.25; }
