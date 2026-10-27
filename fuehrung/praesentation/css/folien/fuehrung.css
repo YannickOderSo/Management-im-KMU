@@ -32,17 +32,41 @@
 .f-titel .f-titel-team circle { fill: var(--f-hintergrund); }
 .f-titel .f-titel-kern { fill: var(--f-akzent); stroke: none; }
 
-/* ---------- Folie 02: Fahrplan ---------- */
-.f-plan .f-plan-liste {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--abstand-5);
-  margin: auto 0; padding: 0; list-style: none;
+/* ---------- Folie 02: Fahrplan als Weg mit vier Stationen ---------- */
+.f-plan .f-weg { position: relative; margin: auto 0; }
+.f-plan .f-weg-linie {
+  position: absolute; top: 56px; left: 12.5%; right: 12.5%; height: 6px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--f-akzent), var(--f-hart)); transform-origin: left center;
 }
-.f-plan .f-plan-liste .karte { gap: var(--abstand-4); min-height: 460px; }
-.f-plan .f-plan-nr {
-  font-family: var(--schrift-zahl); font-size: 96px; line-height: 1; font-weight: var(--gewicht-zahl);
-  color: var(--f-akzent);
+.f-plan .f-weg-stationen {
+  position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--abstand-5);
+  margin: 0; padding: 0; list-style: none; text-align: center;
 }
-.f-plan .karte-titel { font-size: var(--groesse-untertitel); }
+.f-plan .f-weg-stationen li { display: flex; flex-direction: column; align-items: center; gap: var(--abstand-3); }
+.f-plan .f-weg-punkt {
+  width: 118px; height: 118px; border-radius: 50%; display: grid; place-items: center; margin-bottom: var(--abstand-3);
+  background: var(--f-hintergrund); border: 6px solid var(--f-akzent); color: var(--f-akzent);
+  font-family: var(--schrift-zahl); font-size: 60px; font-weight: var(--gewicht-zahl);
+}
+.f-plan .f-weg-stationen li:nth-child(3) .f-weg-punkt,
+.f-plan .f-weg-stationen li:nth-child(4) .f-weg-punkt { border-color: var(--f-hart); color: var(--f-hart); }
+.f-plan .f-weg-titel { font-family: var(--schrift-display); font-size: 44px; line-height: 1.15; font-weight: var(--gewicht-display); }
+.f-plan .f-weg-text { font-size: var(--groesse-text-min); color: var(--f-text-2); line-height: 1.3; max-width: 340px; }
+
+/* ---------- Fahrplan-Leiste in der Kopfzeile (js/folien/fuehrung.js, data-station) ---------- */
+.folie .f-leiste { display: flex; align-items: center; gap: 6px; font-family: var(--schrift-kicker); font-size: var(--groesse-meta); }
+.folie .f-leiste-station {
+  display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; border-radius: var(--radius-pille);
+  color: var(--f-text-2); letter-spacing: 0.04em;
+}
+.folie .f-leiste-station::before {
+  content: ""; width: 10px; height: 10px; border-radius: 50%; border: 2px solid currentColor;
+}
+.folie .f-leiste-station.ist-erledigt::before { background: currentColor; }
+.folie .f-leiste-station.ist-aktuell {
+  color: var(--f-auf-akzent); background: var(--f-akzent); font-weight: var(--gewicht-fett);
+}
+.folie .f-leiste-station.ist-aktuell::before { background: currentColor; }
 
 /* ---------- Folie 03: Definitionen ---------- */
 .f-def .f-def-karten {
@@ -67,7 +91,6 @@
 .f-def .f-chips { margin-top: auto; justify-content: center; }
 
 /* ---------- Folie 04 und 13: Arbeitsdefinition ---------- */
-.f-arbeit .f-chips--oben { justify-content: center; margin-top: var(--abstand-5); }
 .folie .f-arbeit-satz {
   margin: auto 0; max-width: 1560px; align-self: center;
   font-family: var(--schrift-display); font-size: 60px; line-height: 1.3;
@@ -124,9 +147,24 @@
 .f-kmu .f-grenze { margin: 0; display: flex; align-items: center; gap: var(--abstand-4); font-size: var(--groesse-text); }
 .f-kmu .f-grenze .chip { min-width: 84px; justify-content: center; }
 .f-kmu .f-kmu-zahlen { display: flex; flex-direction: column; gap: var(--abstand-5); }
-.f-kmu .f-kmu-zahlen .kennzahl { flex-direction: row; align-items: baseline; gap: var(--abstand-4); }
-.f-kmu .f-kmu-zahlen .kennzahl-wert { font-size: 104px; min-width: 380px; text-align: right; color: var(--f-akzent); }
-.f-kmu .f-kmu-zahlen .kennzahl-text { font-size: var(--groesse-text); }
+.f-kmu .f-waffel-block { display: flex; align-items: center; gap: var(--abstand-5); }
+.f-kmu .f-waffel { display: grid; grid-template-columns: repeat(10, 28px); gap: 5px; flex: none; }
+.f-kmu .f-waffel > span {
+  width: 28px; height: 28px; border-radius: 5px; background: var(--f-linie);
+  opacity: 0; transform: scale(0.4);
+  transition: opacity var(--dauer-kurz) var(--kurve), transform var(--dauer-mittel) var(--kurve-feder);
+  transition-delay: calc(var(--i) * 7ms);
+}
+.f-kmu .f-waffel > span.ist-voll { background: var(--f-akzent); }
+.f-kmu .f-waffel > span.ist-teil { background: linear-gradient(90deg, var(--f-akzent) calc(var(--anteil) * 100%), var(--f-linie) 0); }
+.f-kmu .f-kmu-zahlen.schritt-an .f-waffel > span { opacity: 1; transform: none; }
+.f-kmu .f-waffel-block .kennzahl-wert { font-size: 104px; color: var(--f-akzent); }
+.f-kmu .f-waffel-block .kennzahl-text { font-size: var(--groesse-text); }
+.f-kmu .f-balken-zeile { display: grid; grid-template-columns: 170px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: var(--abstand-4); align-items: center; }
+.f-kmu .f-balken-wert { grid-row: 1 / 3; font-family: var(--schrift-zahl); font-size: 56px; font-weight: var(--gewicht-zahl); color: var(--f-akzent); text-align: right; }
+.f-kmu .f-balken { height: 22px; border-radius: 11px; background: var(--f-flaeche-2, var(--f-flaeche)); overflow: hidden; }
+.f-kmu .f-balken-fuell { display: block; height: 100%; width: calc(var(--wert) * 1%); background: var(--f-akzent); border-radius: 11px; transform-origin: left center; }
+.f-kmu .f-balken-text { font-size: var(--groesse-text-min); color: var(--f-text-2); margin-top: 6px; }
 
 /* ---------- Folie 07: Besonderheiten ---------- */
 .f-bes .f-bes-raster {
@@ -158,41 +196,55 @@
 .f-bes .f-bes-rechts { display: flex; flex-direction: column; gap: var(--abstand-6); }
 .f-bes .f-bes-zitat .zitat-text { font-size: 40px; }
 
-/* ---------- Folie 08: Live-Umfrage ---------- */
+/* ---------- Folie 08: Live-Umfrage – Balken in den Farben des Kontinuums ---------- */
 .f-umfrage .umfrage { flex: 1; min-height: 0; }
+.f-umfrage .umfrage-zeile:nth-child(1) .umfrage-balken { background: var(--f-hart); }
+.f-umfrage .umfrage-zeile:nth-child(2) .umfrage-balken { background: color-mix(in oklab, var(--f-hart) 75%, var(--f-akzent)); }
+.f-umfrage .umfrage-zeile:nth-child(3) .umfrage-balken { background: color-mix(in oklab, var(--f-hart) 50%, var(--f-akzent)); }
+.f-umfrage .umfrage-zeile:nth-child(4) .umfrage-balken { background: color-mix(in oklab, var(--f-hart) 25%, var(--f-akzent)); }
+.f-umfrage .umfrage-zeile:nth-child(5) .umfrage-balken { background: var(--f-akzent); }
 
-/* ---------- Folie 09: Führungsstil-Kontinuum ---------- */
-.f-stil .f-stil-skala { position: relative; margin-top: var(--abstand-6); }
-.f-stil .f-stil-flaeche { display: block; width: 100%; height: 120px; }
+/* ---------- Folie 09: Führungsstil-Kontinuum mit vier Spuren ---------- */
+.f-stil .f-stil-skala { position: relative; margin-top: var(--abstand-4); }
+.f-stil .f-stil-flaeche { display: block; width: 100%; height: 84px; }
 .f-stil .f-stil-fk { fill: var(--f-hart-flaeche); stroke: var(--f-hart); stroke-width: 3; }
 .f-stil .f-stil-team { fill: var(--f-akzent-flaeche); stroke: var(--f-akzent); stroke-width: 3; }
 .f-stil .f-stil-achse {
-  display: flex; justify-content: space-between; margin: var(--abstand-2) 0 0;
+  display: flex; justify-content: space-between; margin: var(--abstand-1) 0 0;
   font-size: var(--groesse-meta); color: var(--f-text-2);
 }
 .f-stil .f-stil-stufen {
-  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); margin: var(--abstand-3) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); margin: var(--abstand-2) 0 0; padding: 0;
   list-style: none; text-align: center; font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett);
 }
-.f-stil .f-stil-stufen li { padding-top: var(--abstand-3); border-top: var(--linie-fein) solid var(--f-linie); }
-.f-stil .f-stil-marker { position: absolute; top: 330px; width: 640px; display: flex; gap: var(--abstand-3); align-items: flex-start; }
-.f-stil .f-stil-marker::before {
-  content: ""; position: absolute; left: 13px; bottom: 100%; height: 150px; border-left: var(--linie-fein) dashed var(--f-linie-stark);
+/* Spuren: Zeilen (Literatur, Publikum, SimpleAct, TLT) × Spalten (7 Stufen) */
+.f-stil .f-stil-spuren {
+  margin-top: var(--abstand-2);
+  background-image: repeating-linear-gradient(90deg, transparent 0 calc(100% / 7 - 2px), var(--f-linie) calc(100% / 7 - 2px) calc(100% / 7));
+  border-top: var(--linie-fein) solid var(--f-linie-stark);
 }
-.f-stil .f-stil-marker p { margin: 0; font-size: var(--groesse-text-min); line-height: 1.3; }
-/* Mitte der 2. Stufe (patriarchalisch) bzw. der 5. Stufe (kooperativ) */
-.f-stil .f-stil-marker--wimmer { left: calc(100% * 1.5 / 7 - 14px); }
-.f-stil .f-stil-marker--ifm { left: calc(100% * 4.5 / 7 - 14px); }
+.f-stil .f-stil-spur { position: relative; height: 62px; border-bottom: 1px dashed var(--f-linie); }
+.f-stil .f-stil-marker {
+  position: absolute; top: 10px; left: calc((var(--pos) - 0.5) / 7 * 100% - 15px);
+  display: flex; align-items: center; gap: var(--abstand-3); white-space: nowrap;
+  transition: left var(--dauer-lang) var(--kurve);
+}
+.f-stil .f-stil-marker.ist-links { flex-direction: row-reverse; transform: translateX(calc(-100% + 30px)); }
+.f-stil .f-stil-marker p { margin: 0; font-size: var(--groesse-text-min); line-height: 1.2; }
 .f-stil .f-stil-pin {
-  flex: none; width: 28px; height: 28px; margin-top: 2px; border-radius: 50%;
-  background: var(--f-akzent); box-shadow: 0 0 0 6px var(--f-akzent-flaeche);
+  flex: none; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--f-text-2); box-shadow: 0 0 0 6px var(--f-flaeche);
 }
-.f-stil .f-stil-marker--wimmer .f-stil-pin { background: var(--f-hart); box-shadow: 0 0 0 6px var(--f-hart-flaeche); }
+.f-stil .f-stil-marker--literatur .f-stil-pin { background: var(--f-text-2); }
+.f-stil .f-stil-marker--publikum .f-stil-pin { background: var(--f-akzent); box-shadow: 0 0 0 6px var(--f-akzent-flaeche); }
+.f-stil .f-stil-marker--praxis .f-stil-pin { background: var(--f-hart); box-shadow: 0 0 0 6px var(--f-hart-flaeche); }
+.f-stil .f-stil-marker.ist-offen .f-stil-pin { background: transparent; border: 3px dashed var(--f-linie-stark); box-shadow: none; }
+.f-stil .f-stil-marker.ist-offen p { color: var(--f-text-2); }
 .f-stil .f-stil-bilanz {
   margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--abstand-5);
 }
 .f-stil .f-stil-bilanz p {
-  margin: 0; padding: var(--abstand-4) var(--abstand-5); border-radius: var(--radius-m);
+  margin: 0; padding: var(--abstand-3) var(--abstand-5); border-radius: var(--radius-m);
   font-size: var(--groesse-text); background: var(--f-flaeche); border-left: 8px solid var(--f-akzent);
 }
 .f-stil .f-stil-bilanz .f-minus { border-left-color: var(--f-hart); }
@@ -229,9 +281,20 @@
   display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: var(--abstand-7);
   align-items: center; margin-top: var(--abstand-6);
 }
-.f-fall .f-fall-zahl { display: flex; flex-direction: column; gap: 8px; }
-.f-fall .f-fall-zahl .kennzahl-wert { font-size: 200px; color: var(--f-akzent); }
-.f-fall .f-fall-zahl .kennzahl-text { font-size: var(--groesse-gross); }
+.f-fall .f-fall-zahl { display: flex; flex-direction: column; gap: var(--abstand-3); }
+.f-fall .f-fall-zahlen { margin: 0; display: flex; align-items: center; gap: var(--abstand-3); }
+.f-fall .f-fall-alt { font-family: var(--schrift-zahl); font-size: 88px; font-weight: var(--gewicht-zahl); color: var(--f-text-2); }
+.f-fall .f-fall-pfeil { width: 56px; height: 56px; stroke: var(--f-text-2); }
+.f-fall .f-fall-zahl .kennzahl-wert { font-size: 140px; color: var(--f-akzent); }
+.f-fall .f-fall-zahl .kennzahl-text { font-size: var(--groesse-text-min); }
+.f-fall .f-personen { display: grid; grid-template-columns: repeat(11, 40px); gap: 6px 4px; }
+.f-fall .f-personen .icon { width: 40px; height: 40px; stroke: var(--f-text-2); stroke-width: 2.4; }
+.f-fall .f-personen .ist-neu {
+  stroke: var(--f-akzent); opacity: 0; transform: translateY(10px) scale(0.6);
+  transition: opacity var(--dauer-kurz) var(--kurve), transform var(--dauer-mittel) var(--kurve-feder);
+  transition-delay: calc(var(--i) * 40ms + 200ms);
+}
+.f-fall .f-personen.ist-gewachsen .ist-neu { opacity: 1; transform: none; }
 .f-fall .f-fall-weg { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--abstand-5); }
 .f-fall .f-fall-weg li { display: grid; grid-template-columns: 200px 1fr; gap: var(--abstand-4); align-items: baseline; font-size: var(--groesse-text); line-height: 1.3; }
 .f-fall .f-fall-marke {
@@ -248,8 +311,9 @@
 }
 .f-kern-folie .f-kern-zusatz b { color: var(--f-akzent); }
 
-/* ---------- Folie 14: Diskussion ---------- */
-.f-disk .f-disk-liste { margin: auto 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--abstand-4); }
+/* ---------- Folie 14: Diskussion (je Klick eine Frage im Fokus) ---------- */
+.f-disk .f-disk-raster { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--abstand-6); align-items: center; margin: auto 0; }
+.f-disk .f-disk-liste { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--abstand-4); }
 .f-disk .f-disk-liste .karte { flex-direction: row; align-items: center; gap: var(--abstand-5); }
 .f-disk .f-disk-nr {
   flex: none; width: 72px; height: 72px; border-radius: 50%; display: grid; place-items: center;
@@ -257,6 +321,7 @@
   font-family: var(--schrift-zahl); font-size: 40px; font-weight: var(--gewicht-zahl);
 }
 .f-disk .f-disk-text { font-size: var(--groesse-gross); line-height: 1.3; }
+.f-disk .f-disk-qr { margin: 0; }
 
 /* ---------- Backup ---------- */
 .f-backup .f-quellen {
