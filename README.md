@@ -7,21 +7,21 @@ Aufgabe: Den Begriff **Führung** im Kontext des Moduls definieren. Dazu gehöre
 
 | Teil | Status | Ort |
 |---|---|---|
-| Interviewbogen (2 Praxisinterviews) | ✅ Entwurf | [`fuehrung/interviews/`](fuehrung/interviews/) |
+| Schriftliche Befragung (2 Fragebögen) | ✅ versandbereit | [`fuehrung/befragung/`](fuehrung/befragung/) |
 | HTML-Präsentation | ⏳ geplant | `fuehrung/praesentation/` |
 | Diskussionspapier (max. 2 Seiten, Abgabe Fr, 30.10.2026) | ⏳ geplant | `fuehrung/diskussionspapier/` |
 
-## Interviews
+## Schriftliche Befragung
 
-| Nr. | Gesprächspartner | Unternehmen | Perspektive |
+| Fragebogen | Gesprächspartner | Unternehmen | Perspektive |
 |---|---|---|---|
-| 1 | Kamill | SimpleAct (KI- und DSGVO-Compliance-Software) | junges, wachsendes Software-Unternehmen |
-| 2 | Jörg Heisler | TLT | etabliertes Industrieunternehmen |
+| `fragebogen-simpleact.docx` | Kamill | SimpleAct (KI- und DSGVO-Compliance-Software) | junges, wachsendes Software-Unternehmen |
+| `fragebogen-tlt.docx` | Jörg Heisler | TLT | etabliertes Industrieunternehmen |
 
-Der Interviewbogen ist ein halbstrukturiertes Leitfadeninterview (ca. 30–40 Min.) mit den Blöcken
-A Person/Unternehmen · B Begriffsverständnis · C Führung im Alltag · D Besonderheiten KMU ·
-E Wandel · F Abschluss mit Selbsteinschätzung (Führungsstil-Kontinuum nach Tannenbaum/Schmidt)
-sowie einem Nachbereitungsteil.
+Beide füllen den Word-Fragebogen selbst aus (ca. 20–30 Min.) und schicken ihn bis Do, 29.10.2026, 12 Uhr zurück.
+Aufbau: Einverständnis · A Person/Unternehmen · B Was ist Führung? · C Führung im Alltag ·
+D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbsteinschätzung
+(Führungsstil-Kontinuum nach Tannenbaum/Schmidt) · Abschluss. 20 Fragen, gleiche Fragen A–E für den Vergleich.
 
-- Ansehen/Drucken: `fuehrung/interviews/interviewbogen.html` (Strg+P, A4)
-- PDF neu erzeugen: `node fuehrung/interviews/pdf.mjs`
+- Fragebögen neu erzeugen (nach Änderung der Fragen in `erzeugen.js`):
+  `NODE_PATH=$(npm root -g) node fuehrung/befragung/erzeugen.js`
