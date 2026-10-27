@@ -153,7 +153,7 @@
       if (i >= alt) s.style.setProperty('--i', i - alt);
     }
   }
-  Deck.registriere('f12', {
+  Deck.registriere('f17', {
     einrichten: function (ctx) { util.alle('[data-personen]', ctx.folie).forEach(personenBauen); },
     betreten: function (ctx) {
       var box = ctx.folie.querySelector('[data-personen]');

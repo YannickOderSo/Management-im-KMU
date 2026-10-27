@@ -400,3 +400,105 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
 .f-backup .f-tabelle { width: 100%; }
 .f-backup .f-backup-text { margin-top: var(--abstand-5); font-size: var(--groesse-text-min); color: var(--f-text-2); }
 .f-backup .f-methode { font-size: var(--groesse-text-min); }
+
+/* =============================================================================
+   ABSCHNITT 4 · FÜHRUNGSINSTRUMENTE (Folien 10–14) und Folie 18 (Muster)
+   ============================================================================= */
+
+/* ---------- Folie 10: fünf Werkzeuge ---------- */
+.f-werkzeug .f-werkzeug-liste {
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--abstand-4);
+  margin: auto 0 0; padding: 0; list-style: none;
+}
+.f-werkzeug .f-werkzeug-liste .karte { gap: var(--abstand-3); min-height: 400px; }
+.f-werkzeug .f-werkzeug-liste .icon { width: 64px; height: 64px; stroke: var(--f-akzent); stroke-width: 1.8; }
+.f-werkzeug .f-werkzeug-liste li:nth-child(even) .icon { stroke: var(--f-hart); }
+.f-werkzeug .karte-titel { font-family: var(--schrift-display); font-size: 38px; line-height: 1.1; }
+.f-werkzeug .f-werkzeug-quelle { margin-top: auto; font-size: var(--groesse-meta); color: var(--f-text-2); }
+.f-werkzeug .f-werkzeug-frage { margin: var(--abstand-5) 0 auto; font-size: var(--groesse-gross); text-align: center; }
+.f-werkzeug .f-werkzeug-frage b { color: var(--f-akzent); }
+
+/* ---------- Folie 11: Zuständigkeit für Personalarbeit ---------- */
+.f-hr .f-hr-legende { display: flex; align-items: center; gap: var(--abstand-3); margin: var(--abstand-5) 0 var(--abstand-4); font-size: var(--groesse-meta); color: var(--f-text-2); }
+.f-hr .f-hr-farbe { display: inline-block; width: 22px; height: 22px; border-radius: 5px; margin-left: var(--abstand-3); }
+.f-hr .f-hr-farbe--gf, .f-hr .f-hr-teil--gf { background: var(--f-hart); }
+.f-hr .f-hr-farbe--hr, .f-hr .f-hr-teil--hr { background: var(--f-akzent); }
+.f-hr .f-hr-farbe--sonst, .f-hr .f-hr-teil--sonst { background: var(--f-linie-stark); }
+.f-hr .f-hr-balken { display: flex; flex-direction: column; gap: var(--abstand-4); }
+.f-hr .f-hr-zeile { display: grid; grid-template-columns: 280px minmax(0, 1fr) 300px; gap: var(--abstand-4); align-items: center; }
+.f-hr .f-hr-name { font-size: var(--groesse-text); font-weight: var(--gewicht-fett); text-align: right; }
+.f-hr .f-hr-spur { display: flex; height: 72px; border-radius: var(--radius-m); overflow: hidden; transform-origin: left center; }
+.f-hr .f-hr-teil {
+  width: calc(var(--w) * 1%); display: flex; align-items: center; padding-left: 16px;
+  font-family: var(--schrift-zahl); font-size: 36px; font-weight: var(--gewicht-zahl); color: var(--f-auf-akzent); white-space: nowrap; overflow: hidden;
+}
+.f-hr .f-hr-teil--gf { color: #fff; }
+.f-hr .f-hr-wert { font-size: var(--groesse-text-min); color: var(--f-text-2); }
+.f-hr .f-hr-zitat { margin: auto 0 0 300px; }
+.f-hr .f-hr-zitat .zitat-text { font-size: 40px; }
+
+/* ---------- Folie 12: Gespräche und Zielvereinbarungen ---------- */
+.f-gespraech .f-gespraech-raster { display: grid; grid-template-columns: 1fr 1fr; gap: var(--abstand-7); margin-top: var(--abstand-5); }
+.f-gespraech .f-gespraech-block { display: flex; flex-direction: column; gap: var(--abstand-4); }
+.f-gespraech .f-gespraech-kopf { margin: 0; display: flex; align-items: center; gap: var(--abstand-3); font-size: var(--groesse-text); font-weight: var(--gewicht-fett); }
+.f-gespraech .f-gespraech-kopf .icon { width: 44px; height: 44px; stroke: var(--f-akzent); flex: none; }
+.f-gespraech .f-saeulen { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--abstand-5); align-items: end; height: 300px; }
+.f-gespraech .f-saeule { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 8px; height: 100%; }
+.f-gespraech .f-saeule-wert { font-family: var(--schrift-zahl); font-size: 48px; font-weight: var(--gewicht-zahl); color: var(--f-akzent); }
+.f-gespraech .f-saeule-balken { width: 100%; height: calc(var(--w) * 2.4px); background: var(--f-akzent); border-radius: var(--radius-m) var(--radius-m) 0 0; transform-origin: bottom center; }
+.f-gespraech .f-saeule:first-child .f-saeule-balken { background: var(--f-hart); }
+.f-gespraech .f-saeule:first-child .f-saeule-wert { color: var(--f-hart); }
+.f-gespraech .f-saeule-name { font-size: var(--groesse-meta); color: var(--f-text-2); }
+.f-gespraech .f-gespraech-notiz { margin: 0; font-size: var(--groesse-text-min); color: var(--f-text-2); }
+.f-gespraech .f-gespraech-notiz b { color: var(--f-text); }
+.f-gespraech .f-ziel-vergleich { display: grid; grid-template-columns: 1fr 1fr; gap: var(--abstand-4); height: 300px; align-content: center; }
+.f-gespraech .f-ziel-vergleich > div { display: flex; flex-direction: column; gap: 6px; padding: var(--abstand-5); border-radius: var(--radius-l); background: var(--f-flaeche); border-top: 8px solid var(--f-hart); }
+.f-gespraech .f-ziel-vergleich > div + div { border-top-color: var(--f-akzent); }
+.f-gespraech .f-ziel-zahl { font-family: var(--schrift-zahl); font-size: 80px; line-height: 1; font-weight: var(--gewicht-zahl); }
+.f-gespraech .f-ziel-text { font-size: var(--groesse-text-min); color: var(--f-text-2); }
+.f-gespraech .f-gespraech-kern {
+  margin: auto 0 0; padding: var(--abstand-4) var(--abstand-5); border-radius: var(--radius-m);
+  background: var(--f-akzent-flaeche); border-left: 8px solid var(--f-akzent); font-size: var(--groesse-gross);
+}
+
+/* ---------- Folie 13: Delegation ---------- */
+.f-deleg .f-deleg-raster { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--abstand-7); margin: auto 0; align-items: center; }
+.f-deleg .f-deleg-weg { margin: 0; padding: 0 0 0 var(--abstand-5); list-style: none; display: flex; flex-direction: column; gap: var(--abstand-5); border-left: 6px solid var(--f-linie); }
+.f-deleg .f-deleg-weg li { position: relative; font-size: var(--groesse-text); line-height: 1.3; }
+.f-deleg .f-deleg-weg li::before {
+  content: ""; position: absolute; left: calc(-1 * var(--abstand-5) - 17px); top: 6px; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--f-hintergrund); border: 5px solid var(--f-hart);
+}
+.f-deleg .f-deleg-weg li:last-child::before { background: var(--f-akzent); border-color: var(--f-akzent); }
+.f-deleg .f-deleg-marke { display: block; font-family: var(--schrift-kicker); font-size: var(--groesse-meta); font-weight: var(--gewicht-fett); text-transform: uppercase; letter-spacing: 0.08em; color: var(--f-hart); margin-bottom: 4px; }
+.f-deleg .f-deleg-weg li:last-child .f-deleg-marke { color: var(--f-akzent); }
+.f-deleg .f-deleg-zitate { display: flex; flex-direction: column; gap: var(--abstand-6); }
+.f-deleg .zitat-text { font-size: 40px; }
+
+/* ---------- Folie 14: Feedback und Beteiligung ---------- */
+.f-beteil .f-beteil-kopf { display: flex; align-items: center; gap: var(--abstand-5); margin-top: var(--abstand-5); }
+.f-beteil .f-beteil-zahl { font-size: 112px; color: var(--f-akzent); }
+.f-beteil .f-beteil-text { font-size: var(--groesse-text); max-width: 1100px; line-height: 1.3; }
+.f-beteil .f-beteil-faelle { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-5); margin-top: auto; }
+.f-beteil .f-beteil-faelle .karte { min-height: 300px; gap: var(--abstand-3); }
+.f-beteil .f-beteil-faelle .karte-titel { font-family: var(--schrift-display); font-size: 38px; line-height: 1.1; }
+.f-beteil .f-beteil-faelle .karte-text { font-family: var(--schrift-display); font-style: italic; font-size: 30px; color: var(--f-text); }
+
+/* ---------- Folie 18: sechs Betriebe, ein Muster ---------- */
+.f-muster .f-muster-raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-4); margin-top: var(--abstand-5); }
+.f-muster .f-fallkarte {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: var(--abstand-4) var(--abstand-5);
+  border-radius: var(--radius-l); background: var(--f-flaeche); border-left: 8px solid var(--f-akzent);
+}
+.f-muster .f-fallkarte:nth-child(even) { border-left-color: var(--f-hart); }
+.f-muster .f-fallkarte-name { font-family: var(--schrift-display); font-size: 36px; line-height: 1.1; }
+.f-muster .f-fallkarte-info { font-size: var(--groesse-meta); color: var(--f-text-2); }
+.f-muster .f-muster-kette { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: auto 0 0; padding: 0; list-style: none; }
+.f-muster .f-muster-kette li {
+  position: relative; padding: var(--abstand-4) var(--abstand-6) var(--abstand-4) var(--abstand-7);
+  background: var(--f-akzent); color: var(--f-auf-akzent); font-size: var(--groesse-gross); font-weight: var(--gewicht-fett);
+  clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 50%, calc(100% - 40px) 100%, 0 100%, 40px 50%);
+}
+.f-muster .f-muster-kette li:first-child { background: var(--f-hart); clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 50%, calc(100% - 40px) 100%, 0 100%); padding-left: var(--abstand-5); }
+.f-muster .f-muster-kette li:nth-child(2) { background: color-mix(in oklab, var(--f-hart) 45%, var(--f-akzent)); }
+.f-muster .f-muster-kette li span { display: block; font-size: var(--groesse-meta); font-weight: 400; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.9; }

@@ -1,5 +1,7 @@
 # Literaturbasis: Führung – Begriff und Bedeutung im KMU
 
+> Ergänzung zu Führungsinstrumenten und weiteren Praxisfällen (Quellen [41]–[62]): `literaturbasis-instrumente.md`.
+
 Stand: 27.10.2026. **Nur frei zugängliche Quellen**, alle am 27.10.2026 aufgerufen (HTTP 200). Zahlen und Zitate am Originaltext geprüft.
 „S.“ = PDF-Seite. Kennzeichnung im Quellenverzeichnis: **[frei]** = Volltext frei · **[Sekundär]** = nur Abstract/Sekundärbeleg.
 
@@ -182,16 +184,16 @@ Einschränkung: Das sind Erfolgsdarstellungen eines Förderprogramms, keine unab
    - Neue Teamleitungen taten sich mit Konfliktgesprächen schwer, die Fluktuation stieg, die Übergabe an den Sohn stand an.
    - Ergebnis: ein Leitfaden für Feedbackgespräche. *Wachstum erzwingt formale Führung.*
 2. **Karl Eck GmbH (Malerbetrieb), Heidelberg** [37]
-   - Rund 40 Beschäftigte, 4. Generation.
+   - „knapp 40“ Beschäftigte, 4. Generation (korrigiert 27.10.2026; vorher „rund 40“).
    - Gegen Wissensverlust: Intranet und Videointerviews mit älteren Beschäftigten.
    - Geschäftsführer: „im Tagesgeschäft fehlte mir einfach die Zeit“. *Generalisten-Engpass.*
-3. **up to data GmbH, Wörrstadt** [38]: Silo-Denken überwunden mit OKR als „agile Führungsmethode“ und KI-Workshops von Beschäftigten für Beschäftigte.
+3. **up to data GmbH, Wörrstadt** [38]: gegen Silo-Denken; OKR als „agile Führungsmethode“ war erst **geplant** („Im Laufe des Jahres 2025 soll sie nun implementiert werden“), dazu KI-Workshops von Beschäftigten für Beschäftigte (korrigiert 27.10.2026).
 4. **Wöhlke Möbelmanufaktur, Stuhr** [39]
    - 25 Beschäftigte, KI für Angebote, Arbeitsgruppen nach Scrum.
    - „Scheitern muss erlaubt sein.“ Aber das Coaching „kostet erstmal Zeit und Geld“.
 5. **Steuerhaus Kiel** [40]
    - Generationendialog zwischen Geschäftsführer (55) und Werkstudent (29).
-   - „Lernkultur ist kein Luxus und gerade für KMU mit begrenzten Ressourcen […] oft ein entscheidender Hebel.“
+   - „Lernkultur ist kein Luxus …“ ist **Redaktionstext von INQA**, kein Zitat einer Person (korrigiert 27.10.2026). Teamgröße 14 laut [61].
 
 ---
 

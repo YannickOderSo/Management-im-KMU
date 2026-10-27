@@ -38,7 +38,7 @@ window.MARKE = {
   unternehmen: '',
   gruppe: ['Yannick Heisler'],
   datum: '2026-11-02',            // Vortrag Mo, 2. November 2026 (Yannick, 27.10.2026)
-  dauerMinuten: 15,               // genaue Vortragszeit noch offen (Sollzeiten der Folien: ca. 12:35 min)
+  dauerMinuten: 35,               // Vortrag 35 Min. + 10 Min. Diskussion (Yannick, 27.10.2026); Sollzeiten der Folien ca. 32:30
   anrede: 'Sie',
 
   /* 5. LIVE-UMFRAGE (Baustein <div class="umfrage" data-umfrage="fuehrung">, Folie 08)
