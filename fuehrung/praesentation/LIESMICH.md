@@ -34,7 +34,7 @@ Belege: Die Nummern `[n]` in den Fußzeilen entsprechen dem Quellenverzeichnis i
 
 ## Vor dem Vortrag
 
-1. `marke.js`: `datum` und `dauerMinuten` prüfen, `runde` von `'probe'` auf z. B. `'vortrag-2026-10-30'` stellen.
+1. `marke.js`: `datum` und `dauerMinuten` prüfen, `runde` von `'probe'` auf `'vortrag-2026-11-02'` (Vortrag Mo, 2.11.2026) stellen.
 2. Folie 10: Antworten der beiden Fragebögen eintragen (Kasten „FOLIE 10“ in `index.html`).
 3. GitHub Pages einschalten (Repository → Settings → Pages), damit der QR-Code auf Folie 08 funktioniert;
    Abstimmseite einmal mit dem Handy testen.

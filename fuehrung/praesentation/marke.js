@@ -37,8 +37,8 @@ window.MARKE = {
   hochschule: 'Hochschule Kaiserslautern',
   unternehmen: '',
   gruppe: ['Yannick Heisler'],
-  datum: '2026-10-30',            // TODO: Vortragstermin eintragen (Jahr-Monat-Tag)
-  dauerMinuten: 15,               // TODO: Vortragsdauer bestätigen (Referentenuhr)
+  datum: '2026-11-02',            // Vortrag Mo, 2. November 2026 (Yannick, 27.10.2026)
+  dauerMinuten: 15,               // genaue Vortragszeit noch offen (Sollzeiten der Folien: ca. 12:35 min)
   anrede: 'Sie',
 
   /* 5. LIVE-UMFRAGE (Baustein <div class="umfrage" data-umfrage="fuehrung">, Folie 08)
@@ -49,7 +49,7 @@ window.MARKE = {
      VORAUSSETZUNG: GitHub Pages für dieses Repository ist eingeschaltet und
      der Ordner liegt auf dem veröffentlichten Branch – sonst öffnet der QR-Code
      eine 404-Seite (dann Plan B: Handzeichen, Klick auf die Balken zählt).
-     runde: 'probe' für Tests, am Vortragstag z. B. 'vortrag-2026-10-30'.
+     runde: 'probe' für Tests, am Vortragstag 'vortrag-2026-11-02'.
      Antwort 1 = Chef entscheidet allein … Antwort 5 = Team entscheidet
      (Führungsstil-Kontinuum nach Tannenbaum/Schmidt, vereinfacht auf 5 Stufen). */
   umfragen: {
