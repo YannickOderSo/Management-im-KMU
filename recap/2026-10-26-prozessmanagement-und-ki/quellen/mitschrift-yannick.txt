@@ -1,0 +1,327 @@
+Protokoll 26.10.26:
+
+Prozesse und Künstliche Intelligenz:
+ • Nutzen viel dort wo Prozesse dokumentiert/erfasst sind
+    ◦ Immer noch durch Menschen unterstützt
+ • Ki übernehmen nie den ganzen Prozess
+
+ • Prozesse im unternehmen
+    ◦ Prozess als Begriff
+    ◦ Vor und Nachteile
+    ◦ Trends und Ausblick
+
+ • Was ist ein Prozess:
+   ◦ „“ von Folien
+
+ • Ein gewisser Prozess wird durch eine Aktion angestoßen
+ • Ist Wiederhlbar
+ • Bildet einen Geschäftsprozess ab
+
+Relevanz und Problemstellung:
+ • Wettbewerb Bewegungs statt stellungskrieg (schnelle Reaktion)
+ • Wettbewerbsvorteil
+ • Komplexität falle (höhere Kordinationskosten = Geringere gewinne)
+
+Prozesse Quer zur Hierarchie :
+ • Weitergabe von aufgaben an andere Abteilungen und nur wenig gesamt
+   Beteiligung an aufgaben,
+
+Arbeitsteilung zum Prozessmanagement:
+„Von Folie“
+
+Grundelemente und Prozessarten:
+Teilung zwischen Außen(was bekommt der Kunde), Innen(Abildung des
+Prozesse in der Firma(wer macht was wie)) und Personaliesierung (Welche
+Hilfsmittel werden verwendet )
+Prozessarten (nach Porter):
+ • Managmentprozesse
+ • Lernprozesse
+ • Supportprozesse
+
+=> Der Sinn dahinter: Aufteilen der ganzen Wertschöpfung in seine einzelnen
+Bestandteile (Planung, Arbeitsablauf und was arbeitet zu)
+
+Zentralregulierung => z.b. gemeinsamer Einkauf und bezahlen für
+unternehmen!
+
+Lebenszyklus => Wie entsteht das Projekt Management über die mehreren
+Phasen
+
+Methoden:
+Modellierung
+
+Einmal die Sechs Grundsätze (GoM)
+„“
+
+So wie
+
+Modellierungssprachen
+„“
+
+(Ende von dem teil „Abbruch“)
+
+Zweiter teil:
+KI:
+
+Aufteilung in drei Teile
+Sand und Theori Praxis in KMU
+„“
+Datengrundlage:
+KFW, bitkom und Statistisches Bundesamt als Quellen für umfragen
+
+Was heiß KI im KMU-Alltag?
+• 2022-2024 Hauptsächliche Nutzung für die Erstellung von texten und
+  ähnlichem
+• nur 20% haben KI genutzt
+   ◦ Ab 2026 dann 57% /mehr als 20 Mitarbeitern)
+   ◦ 59% denken sie könnten es noch mehr nutzen
+
+• 2025 Nutzung von KI
+   ◦ Je größer die Firmen desso mehr KI Nutzung
+      ▪ Grund ist hauptsächlich das know-how der Mitarbeiter
+
+Theorie 1: Das TOE-Modell
+ • Technologie
+ • Organisation
+ • Umfeld
+=> dadurch können wir herausfinden ob wir eine Technologie wie KI
+überhaupt nutzen können / sollten
+
+• Je digitaler des so einfacher ist z.b. der umstieg
+• Haben wir die Ressourcen um den umstieg zu schaffen
+• Gibt es die Branche her oder fordert sie es sogar
+
+Hürden:
+Technologie:
+große kosten
+Organisation:
+Vielen fehlt das know-how, oder hohe kosten
+Theorie 2:
+Wahrgenommene Benutzerfreundlichkeit
+=>
+Wahrgenommener Nutzen
+=>
+Direkter nutzen
+
+Akzeptanz:
+Wichtig ist erst mal den Nutzen zu erklären und dann die Schulung darauf
+aufzubauen damit die Leute auch nicht nur wissen wie es geht sondern was
+es ihnen überhaupt bringt
+
+Anderst herum kann es zu Verwirrung kommen wenn erst geschult und dann
+ein nutzen gezeigt wird
+
+Einsatzfelder:
+72% Für Kundenkontakt
+54% Morketing
+25% Controlling und Rechnungswesen
+22% Wissensmanagement
+=> Wichtig ist es werden Abläufe automatisiert und nicht direkt erstellt
+
+Die Größten Kostenpunkte laut Anwender:
+ • Infrastruktur (51%)
+=> Auch Sachen wie rechtlicher rahmen
+
+(Auch Pause)
+Herr Knopper (Gast Referent):
+
+Thema:
+KI-Begriffe, die man heute kennen sollte
+  Ein Überblick für Einsteiger
+
+
+OLAT Kurs: KI-Kompetenz
+=> Gibt auch ein zertifkat nach bestehen
+
+Begriffe:
+LLM = Large Languag Model
+GPT = Generative Pre-Trained Transformers
+
+AI Videos lassen sich mittlerweile mit nur wenigen Sekunden Sprach
+aufnahmen schon selbst erstellen
+
+GPT => LLM =nicht jedes LLM = GPT
+
+LLM ist eine Art neuronales Nets = lernen vongewichtungen
+
+Generierte texte sind kein Wissen sondern nur die Logik der Gewichtung
+
+LLM lernen nicht durch eigene Prompts (sie weden insgesamt nicht schlauer)
+=> Das „Lernen“ findet nicht stat es macht sich nur vermerke zu erarbeiteten
+Lösungen
+
+Wie entstehen antworten:
+Eingabe texte werden in Token umgewandelt
+Forward Pass
+Wahrscheinlichkeitsverteilung
+Sampling
+Wiederholung
+ChatBot: Ist nur ein Fenster zum interagieren
+
+Halluzinationen:
+Es „weiß nix“ daher bei wichtigen Sachen immer alles überprüfen
+
+Diffusionsmodel:
+Bilder werden wie beim Bildhauer erzeugt (Pixel werden immer weiter und
+weiter entfernt
+
+
+Prompt ist die Eingabe an die KI
+
+Prompt Engineering = Prompts für die KI optimieren
+
+Kontext =
+
+Token = kleinste Einheit die ein Model verarbeitet
+=> Oft wortteile, Silben oder Zeichen
+
+Anzahl benötigter Tokens, maximale Länge einer Anfrage und der Antworten
+bestimmen Rechenaufwand und Kosten
+
+KI-Agent = Programm mit eigenständigem Handeln
+   ◦ Arbeitet in mehreren Schritten interaktiv, bis das Gewünscht Ergebnis
+     erreicht ist
+   ◦ Plan => Werkzeug Aufrufen => Zwischen-Ergebnis=> Prüfung =>
+     Aufgabe =zurück zum Anfang=> Plan
+
+KI-Agenten interagieren nach außen mit Tool Calling
+ • Bei erkennen das es nur mit externer Hilfe gelöst werden kann ruft er ein
+   passendes Toll oder APIs auf => für jeden schritt einer Iteration
+
+Ermöglicht auch Aktionen jenseits von Text, erlaubt fehlertolerantes
+Abarbeiten komplexer Aufgabenstellungen
+!! Wenn man zu viele Tools erlaubt kann er gefährlich selbstständig werden
+=> Nur so viel macht wie nötig so wenig wie möglich
+Websearch / Deep Search
+KI recherchiert über eine API oder ein Werkzeug eigenständig im Internet
+
+Deep Search: mehrstufige, mit echten Quellen belegte Recherche, Links zu
+Docs werden gefunden
+
+RAG:
+ • Retrieval-Augmented Generation
+ • KI greift auf vom Benutzer gestellte Dokumente zu, statt im Internet zu
+   suchen/recherchieren
+
+ • gut für sensible Daten
+
+ • Orchestrierer
+    ◦ Verbindet und koordiniert selbstständig mit mehreren vorgaben
+       ▪ aufgaben werden dem Tool gegeben welches am besten geeignet ist
+
+Harnes:
+Infrastruktur um das KI-Modell herum
+ • Stellt Tolls Speicher etc. Zur Verfügung
+
+Weiter mit:
+
+Erarbeiten des Badges:
+
+Definition KI-Systeme
+
+Verschiedene Arten von KI
+
+Generative KI
+ • Systemprompt => Wie soll sich die KI verhalten oder welche rolle nimmt
+   sie ein
+    ◦ Bsp.: Nice- und EvilGPT => Gleiche Chat Basis andere Systempropmts
+KI- Kompetenz test (Grundlagen)
+__
+
+KI-Verordnung
+ • KI-Kompetenz muss nachgewiesen werden (wer KI nutzt muss sie auch
+   verstehen)
+—
+Datenschutz und IT-Sicherheit
+
+—
+Gesellschaftliche Aspekte:
+ • Bias => LLM bekommt Meinung durch lernen vorgegeben
+ • Arbeitsbedingungen
+ • Ressourcen
+ • Zugang
+
+—-
+KI an der HS-KL
+—
+Fertig
+
+Weiter mit Gast-Redner:
+Thema : Managment und Führug bei der Bundeswehr im Vergleich zur Privat
+Wirtschaft
+
+Arbeit, Job im Priv. VS Dienst beim Bund
+
+Sozialisation (wichtiger Punkt zum umsetzen)
+
+Bund immer noch sehr hiearaschisch organisiert
+ • Befehle von oben, anträge von unten
+ • Ziele werden gegeben aber wie sie erreicht werden ist mittlerweile eher
+   frei
+Kleine Firmen eher flach (hiearaschich)
+
+ • Führung heute eher lockerer gewünscht
+Befehlstaktik = Aufgaben werden direkt vorgegeben (wenig bis keine
+Freiheit)
+
+Autonomie soll beim Bund gefördert werden (schon ab dem ersten Tag)
+
+Kernprozess = Soldaten/Menschen sollen befehle im Sinne des Staates
+ausüben
+
+Führungskräfte werden immer (schon) auf die danach kommende Ebene
+ausgebildet beim Bund
+ • Nutzen : Es soll immer jemand „als Ersatz“ bereit stehen bei Ausfall (Tod)
+
+Purpose:
+ • Schutz der Bevölkerung (Sicherheit)
+    ◦ Wichtigser Motivation (wenig Motivation durch andere Sachen
+      möglich)
+
+Bindung ist in der Wirtschaft ehr gering zum Unternehemen (nur 10%)
+ • Je kleiner des so eher Bindung
+ • Je eher man gehört wird
+ • Je persönlicher
+
+Je größer der betrieb/konzern ist des so eher kann er anreize schaffen
+Und so Bindung schaffen
+
+Bindung ist auch eher bei Verantwortung größer als jetzt beim normalen
+Angestellten (muss aber nicht so sein)
+
+Die 10% halten auch irgendwo die kleinen betriebe am laufen
+=> Dagegen ist eine hohe Austauschbarkeit bei der Bundeswehr (solange
+man die Ausbildung hat)
+
+Bund => weniger digital um Sicherheit zu wahren!
+ • KI eigentlich null vertreten
+
+Branche und Größe entscheiden wie gefährlich Ki Nutzung ist oder sein kann
+ • Je sensibler die Daten werden oder sind des so gefährlicher ist die falsche
+   Nutzung
+Umstellen auf neue Technologien:
+ • Erst mal schauen wie weit ein umstieg möglich ist
+ • Intrapreneurship durch Hubs gefördert (jeder kann dort auch teilnehmen)
+    ◦ Darüber werden neue Ideen und Sachen entwickelt (nach dem Bund
+      oder dadurch eigene Firma möglich)
+ • Inovationszentrum in erding (ähnlich)
+
+Wenn das eigene personal nicht reicht oder geeignet ist muss das Problem
+über externe gelöst werden
+
+Wo ist die Gefahr wenn ich mehrere Projekt Organisationen habe?
+• Kompetenzen können zu viel gestreut werden
+• Übersicht kann verloren gehen
+• Projekte können sich überschneiden und so Ressourcen kosten
+
+Mitarbeiter Alter:
+• Lang im Job bring viel Erfahrung aber vieleicht auch Blindheit
+   ◦ Zusammenarbeit mit neuen ist trotzdem wichtig für Input
+   ◦ denken zusammenbringen und den unterschied auch verstehen
+
+
+Viele jungen gehen auch aus gründen des Geldes zum Bund (viel Geld schon
+von Anfang an)
+ • Fühlt sich nicht richtig verbunden (bleibt vieleicht nicht lange oder nur
+   bedingt)
+
