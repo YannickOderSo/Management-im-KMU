@@ -157,14 +157,14 @@ Stand: 28.10.2026 · Referat „Führung – Begriff und Bedeutung im KMU“ · 
 
 ## Anhang A: Quellenverzeichnis
 
-*Automatisch übernommen aus den drei Literaturdateien (Nummern identisch).*
+*Automatisch übernommen aus den Quellenverzeichnissen der drei Literaturdateien (Nummern identisch; korrigiert 28.10.2026 – vorher standen bei [1]–[6] versehentlich Einträge aus einem anderen Abschnitt).*
 
-1. **Pflegedienst Jahnke, Neuenhaus** [36]
-2. **Karl Eck GmbH (Malerbetrieb), Heidelberg** [37]
-3. **up to data GmbH, Wörrstadt** [38]: gegen Silo-Denken; OKR als „agile Führungsmethode“ war erst **geplant** („Im Laufe des Jahres 2025 soll sie nun implementiert werden“), dazu KI-Workshops von Beschäftigten für Beschäftigte (korrigiert 27.10.2026).
-4. **Wöhlke Möbelmanufaktur, Stuhr** [39]
-5. **Steuerhaus Kiel** [40]
-6. Lohnt sich Führungskräfteentwicklung für KMU ohne HR-Abteilung, oder reichen Förderprogramme wie INQA-Coaching? [22][30][39]
+1. Maier, G. W.; Bartscher, T.; Nissen, R.: „Führung“. In: Gabler Wirtschaftslexikon online. https://wirtschaftslexikon.gabler.de/definition/fuehrung-33168 **[frei]**
+2. Bartscher, T.; Nissen, R.: „Personalführung“. Gabler Wirtschaftslexikon. https://wirtschaftslexikon.gabler.de/definition/personalfuehrung-42698 **[frei]**
+3. Lies, J.: „Leadership“. Gabler Wirtschaftslexikon. https://wirtschaftslexikon.gabler.de/definition/leadership-54083 **[frei]**
+4. Haric, P.: „Management“. Gabler Wirtschaftslexikon. https://wirtschaftslexikon.gabler.de/definition/management-37609 **[frei]**
+5. von Rosenstiel, L. (2000): „Führung“. Lexikon der Psychologie, Spektrum. https://www.spektrum.de/lexikon/psychologie/fuehrung/5385 **[frei]**
+6. Maier, G. W.; Bartscher, T.; Nissen, R.: „Führungsstil“. Gabler Wirtschaftslexikon. https://wirtschaftslexikon.gabler.de/definition/fuehrungsstil-35479 **[frei]**
 7. Klodt, H.: „Mittelstand“. Gabler Wirtschaftslexikon. https://wirtschaftslexikon.gabler.de/definition/mittelstand-40165 **[frei]**
 8. Europäische Kommission: SME definition. https://single-market-economy.ec.europa.eu/smes/sme-fundamentals/sme-definition_en **[frei]**
 9. IfM Bonn: KMU-Definition des IfM Bonn. https://www.ifm-bonn.org/definitionen-/kmu-definition-des-ifm-bonn **[frei]**
