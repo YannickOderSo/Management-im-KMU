@@ -21,13 +21,13 @@
 .folie .r-pille--offen { color: var(--f-akzent); background: var(--f-akzent-flaeche); }
 
 /* Zeile mit Ergänzung der Dozentin bzw. Beispiel */
-.folie .r-doz-zeile,
+.folie .r-kern-zeile,
 .folie .r-beispiel {
   display: flex; align-items: baseline; gap: var(--abstand-4); margin-top: auto;
   padding: var(--abstand-4) var(--abstand-5); border-left: var(--linie-stark) solid var(--f-akzent);
   background: var(--f-akzent-flaeche); font-size: var(--groesse-gross); line-height: 1.3;
 }
-.folie .r-doz-zeile > [data-meta],
+.folie .r-kern-zeile > [data-meta],
 .folie .r-beispiel > [data-meta] {
   flex: none; font-size: var(--groesse-meta); font-weight: var(--gewicht-fett);
   letter-spacing: 0.06em; text-transform: uppercase; color: var(--f-akzent);
@@ -129,9 +129,6 @@ html.aufnahme .r-titel .r-titel-motiv circle { animation: none; }
 }
 .r-plan .r-these-kicker { grid-column: 1; grid-row: 1 / 3; align-self: center; font-size: var(--groesse-meta); font-weight: var(--gewicht-fett); letter-spacing: 0.06em; text-transform: uppercase; color: var(--f-text-2); max-width: 170px; }
 .r-plan .r-these-text { grid-column: 2; font-family: var(--schrift-display); font-size: 40px; line-height: 1.2; font-weight: var(--gewicht-display); }
-.r-plan .r-these-text s { color: var(--f-text-2); text-decoration-thickness: 3px; text-decoration-color: var(--f-akzent); }
-.r-plan .r-these-neu { color: var(--f-akzent); font-style: italic; }
-.r-plan .r-these-hinweis { grid-column: 2; font-size: var(--groesse-meta); color: var(--f-akzent); font-weight: var(--gewicht-fett); }
 
 /* ---------- Folie 03: Begriff ---------- */
 .r-begriff .r-begriff-links { gap: var(--abstand-6); }
@@ -145,14 +142,12 @@ html.aufnahme .r-titel .r-titel-motiv circle { animation: none; }
 .r-fluss li + li::before {
   content: "→"; position: absolute; left: -40px; top: 50%; translate: 0 -50%; color: var(--f-hart); font-weight: 400;
 }
-.r-begriff .r-doz { gap: var(--abstand-4); }
-.r-begriff .r-doz .karte-titel { font-size: 38px; }
-.r-lk { display: grid; grid-template-columns: auto auto auto auto auto; align-items: center; justify-content: start; gap: 10px; }
-.r-lk-box { padding: 12px 18px; border-radius: var(--radius-m); border: var(--linie-stark) solid var(--f-weich); font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett); background: var(--f-hintergrund); }
-.r-lk-box--mitte { background: var(--f-weich); color: var(--f-auf-akzent); border-color: var(--f-weich); }
-.r-lk-pfeil { position: relative; padding-bottom: 18px; font-size: var(--groesse-meta); color: var(--f-weich); text-align: center; }
-.r-lk-pfeil::after { content: "→"; position: absolute; left: 50%; bottom: -14px; translate: -50% 0; font-size: 32px; line-height: 1; }
-.r-begriff .r-doz .karte-text { color: var(--f-text); }
+.r-begriff .r-instanz { gap: var(--abstand-4); }
+.r-begriff .r-instanz .karte-titel { font-size: 38px; }
+.r-begriff .r-instanz .karte-text { color: var(--f-text); }
+.r-modell { position: relative; display: flex; flex-direction: column; gap: var(--abstand-3); padding: var(--abstand-2) 0; }
+.r-modell-vorlage { align-self: flex-start; padding: 14px 22px; border: var(--linie-stark) dashed var(--f-weich); border-radius: var(--radius-m); font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett); color: var(--f-weich); }
+.r-modell-fall { align-self: flex-start; margin-left: 48px; padding: 14px 22px; border-radius: var(--radius-m); background: var(--f-weich); color: var(--f-auf-akzent); font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett); }
 
 /* ---------- Folie 04: Relevanz ---------- */
 .r-relevanz .folie-inhalt { gap: var(--abstand-5); }
@@ -192,15 +187,13 @@ html.aufnahme .r-titel .r-titel-motiv circle { animation: none; }
 .r-porter li { display: flex; flex-direction: column; gap: 4px; padding: var(--abstand-4) var(--abstand-5); border-radius: var(--radius-l); background: var(--f-flaeche); }
 .r-porter b { font-family: var(--schrift-display); font-size: 40px; font-weight: var(--gewicht-display); line-height: 1.1; }
 .r-porter span { font-size: var(--groesse-text-min); color: var(--f-text-2); }
-.r-porter li.r-porter-support.ist-hervor { background: var(--f-akzent-flaeche); }
-.r-porter li.r-porter-support.ist-hervor b { color: var(--f-akzent); }
-.r-arten .r-arten-rechts { gap: var(--abstand-5); }
-.r-frage { font-size: var(--groesse-text-min) !important; font-weight: var(--gewicht-fett); color: var(--f-text); }
-.r-skala { display: flex; flex-direction: column; gap: var(--abstand-3); }
-.r-skala li { display: grid; grid-template-columns: 200px minmax(0, 1fr) 220px; align-items: center; gap: var(--abstand-3); font-size: var(--groesse-text-min); }
-.r-skala-balken { height: 26px; width: var(--w); background: var(--f-hart); border-radius: 0 4px 4px 0; }
-.r-skala li > [data-meta] { color: var(--f-text-2); font-size: var(--groesse-meta); }
-.r-arten .zitat-text { font-size: 36px; }
+.r-porter li.r-porter-kern { background: var(--f-akzent-flaeche); }
+.r-porter li.r-porter-kern b { color: var(--f-akzent); }
+.r-sichten { gap: var(--abstand-5); }
+.r-sichten p { display: flex; flex-direction: column; gap: 4px; padding-left: var(--abstand-4); border-left: var(--linie-stark) solid var(--f-hart); }
+.r-sichten b { font-family: var(--schrift-display); font-size: 40px; font-weight: var(--gewicht-display); line-height: 1.1; }
+.r-sichten span { font-size: var(--groesse-text-min); color: var(--f-text-2); }
+.r-arten .r-arten-grenze { margin-top: var(--abstand-5); }
 
 /* ---------- Folie 07: Lebenszyklus ---------- */
 .r-zyklus .folie-inhalt { gap: var(--abstand-6); }
