@@ -11,8 +11,8 @@ steht, ist von mir ergänzt; sonst ist inhaltlich nichts hinzugefügt.
 
 | Kürzel | Wer |
 |---|---|
-| **R1** | Referent Teil 1 – Prozessmanagement |
-| **R2** | Referent:in Teil 2 – KI im KMU |
+| **R1** | Maximilian Büchele, Teil 1 – Prozessmanagement |
+| **R2** | Elbrus Tschekuev, Teil 2 – KI im KMU |
 | **Doz.** | Dozentin |
 | **Stud.** | Wortmeldung aus dem Publikum |
 

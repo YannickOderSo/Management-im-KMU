@@ -1,0 +1,57 @@
+# Recap-Präsentation „Sitzung vom 26.10.2026“
+
+Web-Präsentation (HTML) für die Recap im Modul Management im KMU, vorgetragen von Elias Knauber und Yannick Heisler.
+Öffnen: `index.html` in Chrome oder Edge (läuft offline per Doppelklick). Engine und Bedienung wie im Führungs-Referat
+(`fuehrung/praesentation/`), aber mit eigener Farbe (Brombeer/Tannengrün).
+
+## Bedienung
+
+| Taste | Wirkung |
+|---|---|
+| → / Leertaste / Clicker | weiter (auch Schritte innerhalb einer Folie) |
+| ← | zurück |
+| R | Referentenansicht mit Sprechtext, Uhr und nächster Folie (zweites Fenster) |
+| O | Übersicht aller Folien |
+| Ziffern + Enter | Sprung, z. B. `7 Enter` |
+| T / D | Thema / hell–dunkel |
+| B | Schwarzbild |
+
+**Notfall-PDF** (Plan B): `export/recap-notfall.pdf` (eine Seite je Folie, Endzustand).
+
+## Aufbau (ca. 15 Min., Sollzeiten zusammen 15:25)
+
+| Block | Folien | Grundlage |
+|---|---|---|
+| Einstieg | 01 Titel · 02 Vier Blöcke + These | – |
+| 1 Prozesse (Maximilian Büchele) | 03 Begriff · 04 Übergaben · 05 Zeitstrahl · 06 Prozessarten und KI · 07 Lebenszyklus | Folien 6–11 der Referenten, Transkript |
+| 2 KI im KMU (Elbrus Tschekuev) | 08 Verbreitung · 09 Größe vs. Know-how · 10 TOE · 11 TAM · 12 Einsatz und Kosten · 13 Recht | Folien 31–41 der Referenten, Transkript |
+| 3 KI-Begriffe (Klaus Knopper) | 14 Wie ein LLM antwortet · 15 Agenten | `../quellen/knopper-ki-begriffe.md` |
+| 4 Gastvortrag Bundeswehr | 16 Führen beim Bund · 17 Bindung und Technik | `../quellen/mitschrift-yannick.txt` (keine Folien) |
+| Schluss | 18 Fazit · B1 Quellen (Backup) | – |
+
+Nur vorgetragene Inhalte: Bei Max endete Teil 1 nach der Folie Modellierung, bei Elbrus vor dem Fallbeispiel energis.
+Beides steht auf den Folien 02, 07 und 13.
+
+Die Folien zeigen keine Namen der Vortragenden (Aufteilung offen). Der Sprechtext steht je Folie in `aside.notizen`
+und ist in der Referentenansicht (Taste R) zu sehen.
+
+## Was steht wo
+
+| Datei | Inhalt |
+|---|---|
+| `index.html` | alle Folien mit Sprechtext |
+| `marke.js` | Namen, Farben, Dauer; **`datum`** für den Vortragstermin (noch leer) |
+| `css/folien/recap.css`, `js/folien/recap.js` | eigene Gestaltung, Fahrplan-Leiste in der Kopfzeile |
+| `js/deck.js`, `js/komponenten.js`, `css/tokens.css`, `deck.css`, `komponenten.css`, `schriften/` | Engine (unverändert aus `fuehrung/praesentation/`) |
+| `werkzeuge/pruefen.mjs` | automatische Prüfung (Überlauf, Schriftgrößen, Kontrast, Screenshots) |
+
+## Prüfen
+
+```
+CHROME_PFAD=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome \
+PLAYWRIGHT_CORE=/opt/node-tools/node_modules/playwright-core \
+node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte --druck export/recap-notfall.pdf
+```
+
+Stand 28.10.2026: 0 Fehler. Warnungen nur zum Wortbudget (einige Folien knapp über 40 Wörter) und zur
+Schriftgröße im Backup (Quellen 24 px).

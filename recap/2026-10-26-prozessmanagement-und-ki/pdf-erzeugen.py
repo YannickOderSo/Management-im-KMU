@@ -16,8 +16,8 @@ ORDNER = Path(__file__).resolve().parent
 SCHRIFTEN = (ORDNER.parent.parent / "fuehrung" / "praesentation" / "schriften").as_uri()
 
 SPRECHER = {
-    "R1": ("R1", "r1", "Referent Teil 1 – Prozessmanagement"),
-    "R2": ("R2", "r2", "Referent:in Teil 2 – KI im KMU"),
+    "R1": ("R1", "r1", "Maximilian Büchele – Prozessmanagement"),
+    "R2": ("R2", "r2", "Elbrus Tschekuev – KI im KMU"),
     "Doz.": ("Doz.", "doz", "Dozentin"),
     "Stud.": ("Stud.", "stud", "Wortmeldung aus dem Publikum"),
     "Stud./R1": ("Stud./R1", "stud", None),

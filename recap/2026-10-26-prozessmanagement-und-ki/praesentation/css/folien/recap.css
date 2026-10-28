@@ -1,0 +1,344 @@
+/* =============================================================================
+   recap.css – Gestaltung der Folien „Recap 26.10.2026“
+   Nur Tokens aus css/tokens.css verwenden (dann stimmen alle Themen und
+   hell/dunkel). Gemeinsame Bausteine beginnen mit .r-, folienspezifische
+   Regeln mit der Klasse ihrer Folie. Bühne: 1920 × 1080 px.
+   ============================================================================= */
+
+/* ---------- gemeinsame Bausteine ---------- */
+.folie .r-zwei { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--abstand-7); align-items: start; }
+.folie .r-zwei--breit { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
+.folie .r-zwei--schmal-breit { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: center; }
+.folie .r-klein { font-size: var(--groesse-text-min); color: var(--f-text-2); }
+.folie b { font-weight: var(--gewicht-fett); }
+
+/* Pille für den Stand eines Blocks */
+.folie .r-pille {
+  align-self: flex-start; padding: 4px 14px; border-radius: var(--radius-pille);
+  font-size: var(--groesse-meta); font-weight: var(--gewicht-fett); letter-spacing: 0.02em;
+  color: var(--f-hart); background: var(--f-hart-flaeche);
+}
+.folie .r-pille--offen { color: var(--f-akzent); background: var(--f-akzent-flaeche); }
+
+/* Zeile mit Ergänzung der Dozentin bzw. Beispiel */
+.folie .r-doz-zeile,
+.folie .r-beispiel {
+  display: flex; align-items: baseline; gap: var(--abstand-4); margin-top: auto;
+  padding: var(--abstand-4) var(--abstand-5); border-left: var(--linie-stark) solid var(--f-akzent);
+  background: var(--f-akzent-flaeche); font-size: var(--groesse-gross); line-height: 1.3;
+}
+.folie .r-doz-zeile > [data-meta],
+.folie .r-beispiel > [data-meta] {
+  flex: none; font-size: var(--groesse-meta); font-weight: var(--gewicht-fett);
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--f-akzent);
+}
+
+/* Hinweis mit Icon */
+.folie .r-hinweis {
+  display: flex; align-items: center; gap: var(--abstand-4);
+  padding: var(--abstand-4) var(--abstand-5); border-radius: var(--radius-l);
+  background: var(--f-flaeche); font-size: var(--groesse-text-min); line-height: 1.3;
+}
+.folie .r-hinweis .icon { flex: none; width: 48px; height: 48px; stroke: var(--f-hart); stroke-width: 1.8; fill: none; }
+.folie .r-hinweis--offen { background: var(--f-akzent-flaeche); }
+.folie .r-hinweis--offen .icon { stroke: var(--f-akzent); }
+
+/* Warnfarbe für „Achtung“-Begriffe */
+.folie .r-warnung b { color: var(--f-akzent); }
+
+/* Jahreszahlen */
+.folie .r-jahr {
+  font-family: var(--schrift-zahl); font-size: var(--groesse-meta); font-weight: var(--gewicht-fett);
+  letter-spacing: 0.04em; color: var(--f-akzent); font-variant-numeric: lining-nums tabular-nums;
+}
+
+/* Horizontale Balken (eine Reihe, direkt beschriftet) */
+.folie .r-diagramm { margin: 0; display: flex; flex-direction: column; gap: var(--abstand-4); }
+.folie .r-diagramm figcaption {
+  font-size: var(--groesse-meta); font-weight: var(--gewicht-fett); letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--f-text-2);
+}
+.folie .r-balken { display: flex; flex-direction: column; gap: var(--abstand-4); }
+.folie .r-balken li { display: grid; grid-template-columns: 230px minmax(0, 1fr); align-items: center; gap: var(--abstand-3); }
+.folie .r-balken-name { font-size: var(--groesse-text-min); color: var(--f-text); }
+.folie .r-balken-spur { min-height: 48px; display: flex; align-items: center; gap: var(--abstand-3); border-left: var(--linie-fein) solid var(--f-linie); }
+.folie .r-balken-wert { height: 40px; width: calc(var(--w) * 0.8); background: var(--f-akzent); border-radius: 0 4px 4px 0; }
+.folie .r-balken--hart .r-balken-wert { background: var(--f-hart); }
+.folie .r-balken .r-balken-leise .r-balken-wert { background: var(--f-balken); }
+.folie .r-balken-zahl { line-height: 1.2; font-family: var(--schrift-zahl); font-size: var(--groesse-gross); font-weight: var(--gewicht-zahl); font-variant-numeric: lining-nums tabular-nums; color: var(--f-text); }
+
+/* Kennzahlen-Reihe (wie im Führungs-Referat) */
+.folie .r-zahl { padding: var(--abstand-5); border-top: var(--linie-stark) solid var(--f-akzent); background: var(--f-flaeche); border-radius: 0 0 var(--radius-l) var(--radius-l); }
+.folie .r-zahl .kennzahl-wert { font-size: 108px; color: var(--f-text); }
+.folie .r-zahl .kennzahl-text { font-size: var(--groesse-text-min); color: var(--f-text); }
+.folie .r-zahl-quelle { margin-top: auto; padding-top: var(--abstand-3); font-size: var(--groesse-meta); color: var(--f-text-2); }
+.folie .r-zahl--held { background: var(--f-akzent-flaeche); }
+.folie .r-zahl--held .kennzahl-wert { color: var(--f-akzent); }
+
+/* Inhalt vertikal in die Mitte, damit unten keine Leerfläche bleibt */
+.folie:is(.r-begriff, .r-zeit, .r-arten, .r-zahlen, .r-groesse, .r-tam, .r-einsatz, .r-recht, .r-llm, .r-agent, .r-bund, .r-bindung, .r-fazit) > .folie-inhalt { justify-content: center; }
+
+/* ---------- Fahrplan-Leiste in der Kopfzeile (js/folien/recap.js) ---------- */
+.folie .r-leiste { display: flex; align-items: center; gap: 6px; font-family: var(--schrift-kicker); font-size: var(--groesse-meta); }
+.folie .r-leiste-station {
+  display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; border-radius: var(--radius-pille);
+  color: var(--f-text-2); letter-spacing: 0.04em;
+}
+.folie .r-leiste-station::before { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 2px solid currentColor; }
+.folie .r-leiste-station.ist-erledigt::before { background: currentColor; }
+.folie .r-leiste-station.ist-aktuell { color: var(--f-auf-akzent); background: var(--f-akzent); font-weight: var(--gewicht-fett); }
+.folie .r-leiste-station.ist-aktuell::before { background: currentColor; }
+
+/* ---------- Folie 01: Titel ---------- */
+.r-titel .folie-kopf { max-width: 1100px; }
+.r-titel .folie-inhalt { position: static; }
+.r-titel .lead { max-width: 1000px; }
+.r-titel .angaben { grid-template-columns: 1.25fr 1.25fr 0.8fr; max-width: 1450px; }
+.r-titel .r-titel-motiv { position: absolute; right: 140px; top: 170px; width: 520px; height: 520px; overflow: visible; }
+.r-titel .r-titel-faden { fill: none; stroke: var(--f-linie); stroke-width: 4; stroke-dasharray: 8 14; }
+.r-titel .r-titel-motiv circle {
+  fill: var(--f-hintergrund); stroke: var(--f-akzent); stroke-width: 4;
+  transform-box: fill-box; transform-origin: center;
+  animation: r-auftauchen 700ms var(--kurve-feder) both; animation-delay: calc(400ms + var(--i) * 180ms);
+}
+.r-titel .r-titel-motiv .r-titel-kern { fill: var(--f-akzent); }
+.r-titel .r-titel-motiv text {
+  font-family: var(--schrift-zahl); font-size: 34px; font-weight: var(--gewicht-zahl); text-anchor: middle; fill: var(--f-text);
+}
+.r-titel .r-titel-motiv text:last-of-type { fill: var(--f-auf-akzent); }
+@keyframes r-auftauchen { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: none; } }
+html.druckmodus .r-titel .r-titel-motiv circle,
+html.aufnahme .r-titel .r-titel-motiv circle { animation: none; }
+@media (prefers-reduced-motion: reduce) { .r-titel .r-titel-motiv circle { animation: none; } }
+
+/* ---------- Folie 02: Überblick ---------- */
+.r-plan .r-bloecke { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--abstand-5); }
+.r-plan .r-block {
+  display: flex; flex-direction: column; gap: var(--abstand-3); min-height: 340px;
+  padding: var(--abstand-5); border-top: var(--linie-stark) solid var(--f-text); background: var(--f-flaeche);
+  border-radius: 0 0 var(--radius-l) var(--radius-l);
+}
+.r-plan .r-block-nr { font-family: var(--schrift-zahl); font-size: 80px; line-height: 1; font-weight: var(--gewicht-zahl); color: var(--f-akzent); }
+.r-plan .r-block-titel { font-family: var(--schrift-display); font-size: 42px; line-height: 1.12; font-weight: var(--gewicht-display); }
+.r-plan .r-block-wer { font-size: var(--groesse-meta); color: var(--f-text-2); }
+.r-plan .r-block .r-pille { margin-top: auto; }
+.r-plan .r-these {
+  display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: var(--abstand-5); row-gap: 6px;
+  margin-top: auto; padding: var(--abstand-5); border-radius: var(--radius-l);
+  border: var(--linie-fein) solid var(--f-linie); background: var(--f-hintergrund);
+}
+.r-plan .r-these-kicker { grid-column: 1; grid-row: 1 / 3; align-self: center; font-size: var(--groesse-meta); font-weight: var(--gewicht-fett); letter-spacing: 0.06em; text-transform: uppercase; color: var(--f-text-2); max-width: 170px; }
+.r-plan .r-these-text { grid-column: 2; font-family: var(--schrift-display); font-size: 40px; line-height: 1.2; font-weight: var(--gewicht-display); }
+.r-plan .r-these-text s { color: var(--f-text-2); text-decoration-thickness: 3px; text-decoration-color: var(--f-akzent); }
+.r-plan .r-these-neu { color: var(--f-akzent); font-style: italic; }
+.r-plan .r-these-hinweis { grid-column: 2; font-size: var(--groesse-meta); color: var(--f-akzent); font-weight: var(--gewicht-fett); }
+
+/* ---------- Folie 03: Begriff ---------- */
+.r-begriff .r-begriff-links { gap: var(--abstand-6); }
+.r-begriff .zitat-text { font-size: 40px; }
+.r-fluss { display: flex; align-items: center; gap: var(--abstand-3); flex-wrap: nowrap; }
+.r-fluss li {
+  position: relative; padding: 14px 22px; border-radius: var(--radius-m);
+  background: var(--f-hart-flaeche); color: var(--f-text); font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett); white-space: nowrap;
+}
+.r-fluss li + li { margin-left: 34px; }
+.r-fluss li + li::before {
+  content: "→"; position: absolute; left: -40px; top: 50%; translate: 0 -50%; color: var(--f-hart); font-weight: 400;
+}
+.r-begriff .r-doz { gap: var(--abstand-4); }
+.r-begriff .r-doz .karte-titel { font-size: 38px; }
+.r-lk { display: grid; grid-template-columns: auto auto auto auto auto; align-items: center; justify-content: start; gap: 10px; }
+.r-lk-box { padding: 12px 18px; border-radius: var(--radius-m); border: var(--linie-stark) solid var(--f-weich); font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett); background: var(--f-hintergrund); }
+.r-lk-box--mitte { background: var(--f-weich); color: var(--f-auf-akzent); border-color: var(--f-weich); }
+.r-lk-pfeil { position: relative; padding-bottom: 18px; font-size: var(--groesse-meta); color: var(--f-weich); text-align: center; }
+.r-lk-pfeil::after { content: "→"; position: absolute; left: 50%; bottom: -14px; translate: -50% 0; font-size: 32px; line-height: 1; }
+.r-begriff .r-doz .karte-text { color: var(--f-text); }
+
+/* ---------- Folie 04: Relevanz ---------- */
+.r-relevanz .folie-inhalt { gap: var(--abstand-5); }
+.r-gruende { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-5); }
+.r-gruende li { display: flex; flex-direction: column; gap: 6px; padding-top: var(--abstand-3); border-top: var(--linie-stark) solid var(--f-hart); }
+.r-gruende b { font-family: var(--schrift-display); font-size: 38px; font-weight: var(--gewicht-display); }
+.r-gruende span { font-size: var(--groesse-text-min); color: var(--f-text-2); }
+.r-kette { display: flex; align-items: center; margin-top: var(--abstand-3); }
+.r-kette-glied {
+  flex: 1; padding: 22px 0; text-align: center; border-radius: var(--radius-m);
+  background: var(--f-flaeche-2); font-size: var(--groesse-gross); font-weight: var(--gewicht-fett);
+}
+.r-kette-bruch { position: relative; flex: none; width: 70px; height: 4px; background: repeating-linear-gradient(90deg, var(--f-akzent) 0 10px, transparent 10px 18px); }
+.r-kette-bruch::after {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 30px; height: 30px; translate: -50% -50%; rotate: 45deg;
+  border: var(--linie-stark) solid var(--f-akzent); border-radius: 4px; background: var(--f-hintergrund);
+}
+.r-kette-folgen { text-align: center; font-size: var(--groesse-text-min); color: var(--f-akzent); font-weight: var(--gewicht-fett); }
+
+/* ---------- Folie 05: Zeitstrahl ---------- */
+.r-zeit .folie-inhalt { gap: var(--abstand-7); }
+.r-strahl { position: relative; padding-top: 30px; }
+.r-strahl-linie { position: absolute; left: 0; right: 0; top: 41px; height: var(--linie-stark); background: var(--f-text); transform-origin: left center; }
+.r-strahl-punkte { position: relative; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--abstand-4); }
+.r-strahl-punkte li { display: flex; flex-direction: column; gap: 8px; }
+.r-strahl-punkte li::before { content: ""; width: 26px; height: 26px; border-radius: 50%; background: var(--f-hintergrund); border: 4px solid var(--f-text); margin-bottom: var(--abstand-2); }
+.r-strahl-punkte li.r-heute::before { background: var(--f-akzent); border-color: var(--f-akzent); }
+.r-strahl-punkte b { font-family: var(--schrift-display); font-size: 34px; line-height: 1.12; font-weight: var(--gewicht-display); }
+.r-strahl-punkte li > span:last-child { font-size: var(--groesse-text-min); color: var(--f-text-2); }
+.r-merk { display: flex; align-items: center; justify-content: space-between; gap: var(--abstand-6); padding: var(--abstand-5); border-radius: var(--radius-l); background: var(--f-flaeche); font-size: var(--groesse-gross); line-height: 1.3; }
+.r-merk-xy { display: flex; align-items: center; gap: var(--abstand-3); flex: none; font-family: var(--schrift-display); font-size: 40px; }
+.r-merk-xy span:last-child { color: var(--f-akzent); font-style: italic; }
+.r-merk-pfeil { color: var(--f-text-2); }
+
+/* ---------- Folie 06: Prozessarten ---------- */
+.r-porter { display: flex; flex-direction: column; gap: var(--abstand-3); }
+.r-porter li { display: flex; flex-direction: column; gap: 4px; padding: var(--abstand-4) var(--abstand-5); border-radius: var(--radius-l); background: var(--f-flaeche); }
+.r-porter b { font-family: var(--schrift-display); font-size: 40px; font-weight: var(--gewicht-display); line-height: 1.1; }
+.r-porter span { font-size: var(--groesse-text-min); color: var(--f-text-2); }
+.r-porter li.r-porter-support.ist-hervor { background: var(--f-akzent-flaeche); }
+.r-porter li.r-porter-support.ist-hervor b { color: var(--f-akzent); }
+.r-arten .r-arten-rechts { gap: var(--abstand-5); }
+.r-frage { font-size: var(--groesse-text-min) !important; font-weight: var(--gewicht-fett); color: var(--f-text); }
+.r-skala { display: flex; flex-direction: column; gap: var(--abstand-3); }
+.r-skala li { display: grid; grid-template-columns: 200px minmax(0, 1fr) 220px; align-items: center; gap: var(--abstand-3); font-size: var(--groesse-text-min); }
+.r-skala-balken { height: 26px; width: var(--w); background: var(--f-hart); border-radius: 0 4px 4px 0; }
+.r-skala li > [data-meta] { color: var(--f-text-2); font-size: var(--groesse-meta); }
+.r-arten .zitat-text { font-size: 36px; }
+
+/* ---------- Folie 07: Lebenszyklus ---------- */
+.r-zyklus .folie-inhalt { gap: var(--abstand-6); }
+.r-phasen { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; counter-reset: phase; }
+.r-phasen li {
+  position: relative; counter-increment: phase; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; min-height: 150px;
+  padding: var(--abstand-3); background: var(--f-flaeche); border-radius: var(--radius-m);
+  font-size: var(--groesse-text-min); line-height: 1.15; font-weight: var(--gewicht-fett); hyphens: auto;
+}
+.r-phasen li::before { content: counter(phase); font-family: var(--schrift-zahl); font-size: 44px; line-height: 1; color: var(--f-akzent); font-weight: var(--gewicht-zahl); margin-bottom: auto; }
+.r-phasen li.r-phasen-dauer { background: var(--f-akzent); color: var(--f-auf-akzent); }
+.r-phasen li.r-phasen-dauer::before { content: "↻"; color: var(--f-auf-akzent); }
+.r-zyklus-karten .karte p { font-size: var(--groesse-gross); }
+.r-dmaic b { color: var(--f-akzent); }
+.r-abbruch { display: flex; align-items: center; gap: var(--abstand-3); margin-top: auto; font-size: var(--groesse-gross); font-weight: var(--gewicht-fett); color: var(--f-akzent); }
+.r-abbruch .icon { width: 44px; height: 44px; stroke: currentColor; stroke-width: 2.4; fill: none; }
+
+/* ---------- Folie 08: Zahlen ---------- */
+.r-zahlen-raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-5); align-items: stretch; }
+
+/* ---------- Folie 09: Größe ---------- */
+.r-groesse .r-zwei { align-items: center; }
+.r-ursache .r-icons { display: flex; flex-direction: column; gap: var(--abstand-4); }
+.r-ursache .r-icons li { display: flex; align-items: center; gap: var(--abstand-4); font-size: var(--groesse-gross); font-weight: var(--gewicht-fett); }
+.r-ursache .r-icons .icon { width: 52px; height: 52px; flex: none; stroke: var(--f-weich); stroke-width: 1.8; fill: none; }
+.r-ursache .karte-text { color: var(--f-text); font-size: var(--groesse-text); }
+
+/* ---------- Folie 10: TOE ---------- */
+.r-toe .folie-inhalt { gap: var(--abstand-5); }
+.r-toe-raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-5); }
+.r-toe-spalte { display: flex; flex-direction: column; gap: var(--abstand-3); padding: var(--abstand-5); border-top: var(--linie-stark) solid var(--f-hart); background: var(--f-flaeche); border-radius: 0 0 var(--radius-l) var(--radius-l); }
+.r-toe-spalte--held { border-top-color: var(--f-akzent); background: var(--f-akzent-flaeche); }
+.r-toe-titel { font-family: var(--schrift-display); font-size: 40px; font-weight: var(--gewicht-display); margin-bottom: var(--abstand-2); }
+.r-toe-spalte p { display: flex; align-items: baseline; gap: var(--abstand-3); font-size: var(--groesse-text-min); }
+.r-toe-spalte p b { flex: none; min-width: 120px; font-family: var(--schrift-zahl); font-size: 52px; line-height: 1; font-weight: var(--gewicht-zahl); font-variant-numeric: lining-nums tabular-nums; }
+.r-toe-spalte--held p b { color: var(--f-akzent); }
+.r-toe-wer { margin-top: auto; padding-top: var(--abstand-2); font-size: var(--groesse-meta); color: var(--f-text-2); }
+
+/* ---------- Folie 11: TAM ---------- */
+.r-tam-modell { position: relative; width: 900px; height: 460px; }
+.r-tam-pfeile { position: absolute; inset: 0; width: 900px; height: 460px; overflow: visible; fill: none; }
+.r-tam-pfeile marker path { fill: var(--f-text-2); }
+.r-tam-pfeile #r-spitze-stark path { fill: var(--f-akzent); }
+.r-tam-stark { stroke: var(--f-akzent); stroke-width: 12; stroke-linejoin: round; }
+.r-tam-mittel { stroke: var(--f-text-2); stroke-width: 5; }
+.r-tam-schwach { stroke: var(--f-text-2); stroke-width: 4; stroke-dasharray: 12 10; }
+.r-tam-box {
+  position: absolute; display: grid; place-items: center; text-align: center; padding: 12px 20px; border-radius: var(--radius-l);
+  font-family: var(--schrift-display); font-size: 34px; line-height: 1.12; font-weight: var(--gewicht-display);
+  background: var(--f-flaeche); border: var(--linie-stark) solid var(--f-linie);
+}
+.r-tam-box--bf { left: 0; top: 0; width: 370px; height: 120px; }
+.r-tam-box--nutzen { left: 0; top: 340px; width: 370px; height: 120px; border-color: var(--f-akzent); background: var(--f-akzent-flaeche); color: var(--f-akzent); }
+.r-tam-box--nutzung { left: 590px; top: 170px; width: 260px; height: 120px; background: var(--f-text); color: var(--f-hintergrund); border-color: var(--f-text); }
+.r-tam-label { position: absolute; left: 400px; top: 14px; font-size: var(--groesse-meta); color: var(--f-text-2); }
+.r-tam-rechts { gap: var(--abstand-5); }
+.r-tam-zahl { font-size: var(--groesse-text-min); line-height: 1.3; }
+.r-tam-zahl b { display: block; font-family: var(--schrift-zahl); font-size: 64px; line-height: 1; font-weight: var(--gewicht-zahl); color: var(--f-text); }
+.r-tam-folgerung { padding: var(--abstand-4) var(--abstand-5); border-left: var(--linie-stark) solid var(--f-akzent); background: var(--f-akzent-flaeche); font-family: var(--schrift-display); font-size: 38px; line-height: 1.2; }
+
+/* ---------- Folie 13: Recht ---------- */
+.r-recht .folie-inhalt { gap: var(--abstand-7); }
+.r-recht-strahl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--abstand-6); }
+.r-recht-strahl li { display: flex; flex-direction: column; gap: 8px; padding-top: var(--abstand-4); border-top: var(--linie-stark) solid var(--f-akzent); }
+.r-recht-strahl b { font-family: var(--schrift-display); font-size: 44px; line-height: 1.1; font-weight: var(--gewicht-display); }
+.r-recht-strahl li > span:last-child { font-size: var(--groesse-gross); color: var(--f-text); }
+.r-recht-unten { margin-top: var(--abstand-4); }
+
+/* ---------- Folie 14: LLM ---------- */
+.r-llm .folie-inhalt { gap: var(--abstand-5); }
+.r-schleife { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 46px; padding-bottom: 46px; }
+.r-schleife li {
+  position: relative; display: flex; flex-direction: column; gap: 10px; padding: var(--abstand-4); min-height: 160px;
+  border-radius: var(--radius-l); background: var(--f-flaeche); font-size: var(--groesse-text-min); line-height: 1.2; font-weight: var(--gewicht-fett);
+}
+.r-schleife li + li::before { content: "→"; position: absolute; left: -38px; top: 50%; translate: 0 -50%; font-size: 32px; color: var(--f-text-2); font-weight: 400; }
+.r-schleife-nr { font-family: var(--schrift-zahl); font-size: 40px; line-height: 1; color: var(--f-akzent); font-weight: var(--gewicht-zahl); }
+.r-schleife-zurueck { background: var(--f-akzent-flaeche) !important; }
+.r-schleife::after {
+  content: ""; position: absolute; left: 10%; right: 10%; bottom: 8px; height: 30px;
+  border: 3px dashed var(--f-akzent); border-top: 0; border-radius: 0 0 18px 18px;
+}
+.r-beispiel-satz { display: flex; align-items: center; gap: var(--abstand-3); font-family: var(--schrift-display); font-size: 38px; }
+.r-token { padding: 6px 16px; border-radius: var(--radius-m); background: var(--f-akzent); color: var(--f-auf-akzent); font-family: var(--schrift-text); font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett); }
+.r-token--leise { background: var(--f-flaeche-2); color: var(--f-text); }
+.r-llm-begriffe { margin-top: var(--abstand-4); }
+.r-llm-begriffe p { display: flex; flex-direction: column; gap: 4px; padding-top: var(--abstand-3); border-top: var(--linie-stark) solid var(--f-hart); font-size: var(--groesse-text-min); line-height: 1.25; color: var(--f-text-2); }
+.r-llm-begriffe p b { font-family: var(--schrift-display); font-size: 36px; font-weight: var(--gewicht-display); color: var(--f-text); }
+.r-llm-begriffe p.r-warnung { border-top-color: var(--f-akzent); }
+.r-llm-begriffe p.r-warnung b { color: var(--f-akzent); }
+
+/* ---------- Folie 15: Agenten ---------- */
+.r-agent .r-zwei { align-items: center; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
+.r-kreis { position: relative; width: 520px; height: 520px; justify-self: center; }
+.r-kreis svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--f-akzent); stroke-width: 4; stroke-dasharray: 14 12; }
+.r-kreis-mitte {
+  position: absolute; left: 50%; top: 50%; translate: -50% -50%; display: grid; place-items: center; width: 150px; height: 150px; border-radius: 50%;
+  background: var(--f-akzent); color: var(--f-auf-akzent); font-family: var(--schrift-zahl); font-size: 40px; font-weight: var(--gewicht-zahl);
+}
+.r-kreis-punkt {
+  position: absolute; translate: -50% -50%; padding: 10px 18px; border-radius: var(--radius-pille);
+  background: var(--f-hintergrund); border: var(--linie-stark) solid var(--f-text); font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett); white-space: nowrap;
+}
+.r-kreis-punkt--o { left: 50%; top: 13%; }
+.r-kreis-punkt--r { left: 87%; top: 50%; }
+.r-kreis-punkt--u { left: 50%; top: 87%; }
+.r-kreis-punkt--l { left: 13%; top: 50%; }
+.r-agent-liste { display: flex; flex-direction: column; gap: var(--abstand-4); }
+.r-agent-liste li { display: flex; flex-direction: column; gap: 2px; padding-left: var(--abstand-4); border-left: var(--linie-stark) solid var(--f-hart); font-size: var(--groesse-text-min); line-height: 1.25; color: var(--f-text-2); }
+.r-agent-liste li b { font-family: var(--schrift-display); font-size: 36px; font-weight: var(--gewicht-display); color: var(--f-text); }
+.r-agent-liste li.r-warnung { border-left-color: var(--f-akzent); }
+
+/* ---------- Folie 16: Bundeswehr ---------- */
+.r-vergleich { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: var(--abstand-6); }
+.r-vergleich-spalte { display: flex; flex-direction: column; gap: var(--abstand-4); padding: var(--abstand-5); border-radius: var(--radius-l); background: var(--f-hart-flaeche); }
+.r-vergleich-spalte--wirtschaft { background: var(--f-flaeche); }
+.r-vergleich-titel { font-family: var(--schrift-display); font-size: 44px; font-weight: var(--gewicht-display); padding-bottom: var(--abstand-2); border-bottom: var(--linie-stark) solid var(--f-hart); }
+.r-vergleich-spalte--wirtschaft .r-vergleich-titel { border-bottom-color: var(--f-text-2); }
+.r-vergleich-spalte p { position: relative; padding-left: 34px; font-size: var(--groesse-gross); line-height: 1.3; }
+.r-vergleich-spalte p::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 18px; height: var(--linie-stark); background: var(--f-hart); }
+.r-vergleich-spalte--wirtschaft p { color: var(--f-text-2); }
+.r-vergleich-spalte--wirtschaft p::before { background: var(--f-text-2); }
+
+/* ---------- Folie 17: Bindung ---------- */
+.r-bindung-zahl .kennzahl-wert { font-size: 180px; color: var(--f-akzent); }
+.r-bindung-zahl .kennzahl-text { font-size: var(--groesse-gross); color: var(--f-text); line-height: 1.25; }
+.r-bindung-rechts { gap: var(--abstand-6); }
+.r-pfeile { display: flex; flex-direction: column; gap: var(--abstand-5); }
+.r-pfeile li { position: relative; padding-left: 52px; font-size: 38px; line-height: 1.3; }
+.r-pfeile li::before { content: "→"; position: absolute; left: 0; top: 0; color: var(--f-akzent); font-weight: var(--gewicht-fett); }
+
+/* ---------- Folie 18: Fazit ---------- */
+.r-fazit-liste { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-6); margin-top: var(--abstand-5); }
+.r-fazit-liste li { display: flex; flex-direction: column; gap: var(--abstand-3); padding-top: var(--abstand-4); border-top: var(--linie-stark) solid var(--f-akzent); }
+.r-fazit-nr { font-family: var(--schrift-zahl); font-size: 120px; line-height: 1; font-weight: var(--gewicht-zahl); color: var(--f-akzent); }
+.r-fazit-liste b { font-family: var(--schrift-display); font-size: 52px; line-height: 1.12; font-weight: var(--gewicht-display); }
+.r-fazit-liste li > span:last-child { font-size: var(--groesse-text); color: var(--f-text-2); }
+
+/* ---------- Backup ---------- */
+.r-quellen { display: flex; flex-direction: column; gap: 10px; font-size: var(--groesse-tabelle); line-height: 1.3; }
+.r-quellen li { padding-left: 1.2em; text-indent: -1.2em; }
