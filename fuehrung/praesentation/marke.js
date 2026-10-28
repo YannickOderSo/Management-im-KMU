@@ -68,7 +68,7 @@ window.MARKE = {
       liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
       runde: 'probe',
       gueltigMinuten: 30,
-      // „Beteiligt“ = Stufen 3–5 (Chef fragt vorher, Team schlägt vor, Team entscheidet)
+      // „Beteiligt“ = Antworten 3–5 (Chef fragt vorher, Team schlägt vor, Team entscheidet)
       unsereAntwort: ['Chef fragt vorher nach', 'Team schlägt vor, Chef wählt', 'Team entscheidet selbst'],
       aussage: '{prozent} von Ihnen werden an Entscheidungen beteiligt',
       aussageLeer: 'Noch keine Stimmen',

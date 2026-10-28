@@ -1,6 +1,6 @@
 # Recherche-Dossier: Führung im KMU – geprüftes Faktenregister
 
-Stand: 28.10.2026 · Referat „Führung – Begriff und Bedeutung im KMU“ · Modul Management im KMU (Prof. Dr. Christine Arend-Fuchs) · Yannick Heisler
+Stand: 28.10.2026, gegengeprüft (Abschnitt 11) · Referat „Führung – Begriff und Bedeutung im KMU“ · Modul Management im KMU (Prof. Dr. Christine Arend-Fuchs) · Yannick Heisler
 
 **Zweck:** Einzige verbindliche Faktengrundlage für Präsentation, Sprechtexte und Diskussionspapier. Jede Zahl, jedes Zitat und jede Tatsachenbehauptung, die verwendet wird, steht hier mit ID, Quelle und Fundstelle. Was hier nicht steht, wird nicht behauptet.
 
@@ -20,126 +20,130 @@ Stand: 28.10.2026 · Referat „Führung – Begriff und Bedeutung im KMU“ · 
 
 | ID | Aussage (so verwenden) | Beleg (wörtlich / Fundstelle) | Quelle | Verwendet | Status |
 |---|---|---|---|---|---|
-| B-01 | Gabler definiert Führung als „durch Interaktion vermittelte Ausrichtung des Handelns von Individuen und Gruppen auf die Verwirklichung vorgegebener Ziele; beinhaltet asymmetrische soziale Beziehungen der Über- und Unterordnung.“ | Stichwort „Führung“ | [1] | F03, B2, Papier §2 | ✔ |
-| B-02 | Personalführung ist „zielgerichtetes soziales Einflusshandeln im Rahmen von Profit- oder Non-Profit-Organisationen. Beteiligte sind neben einer Führungskraft mind. ein dieser weisungsmäßig unterstellter Mitarbeiter“. | Stichwort „Personalführung“ | [2] | F03, B2 | ✔ |
-| B-03 | Mitarbeiterführung ist „eine unmittelbare, absichtliche und zielbezogene Einflußnahme von bestimmten Personen – in der Regel Vorgesetzte – auf andere Personen – in der Regel Untergebene – in Organisationen“. | Lexikon der Psychologie, „Führung“ | [5] | F03, B2, Papier §2 | ✔ |
-| B-04 | v. Rosenstiel unterscheidet „Unternehmensführung und Mitarbeiterführung“. | ebd. | [5] | F05 | ✔ |
-| B-05 | Leadership „bezeichnet nicht einheitlich definiert die menschen-, verhaltens-, eigenschafts-, interaktions- und/oder motivationsorientierten Aufgaben des Managements.“ | Stichwort „Leadership“ | [3] | F03 (Sprechtext), Papier §1 | ✔ |
-| B-06 | Gabler nennt die „Trennung von Eigentum und Geschäftsführung als konstitutives Merkmal des Managements als Institution“. | Stichwort „Management“ | [4] | F05, Papier §2 | ✔ |
-| B-07 | Im Managementzyklus ist Mitarbeiterführung eine von neun Aufgaben (Analyse, Ziele, Planung, Entscheidung, Organisation, Delegation, Koordination, Mitarbeiterführung, Kontrolle). | Stichwort „Management“ | [4] | F05 (Notiz) | ✔ |
-| B-08 | Gemeinsame Kernelemente der Definitionen: Ziel, (absichtliche) Einflussnahme, Interaktion, Organisation (Über-/Unterordnung). | Eigene Synthese aus B-01–B-03 | [1][2][5] | F03, F04 | ✔ (Synthese) |
-| B-09 | Arbeitsdefinition: „Führung ist die zielbezogene, absichtliche Einflussnahme auf das Handeln anderer – vermittelt durch Interaktion in einer Organisation.“ | Eigene Synthese, als solche kennzeichnen | [1][2][5] | F04, F19, Papier §2 | ✔ (Synthese) |
-| B-10 | Gabler „Führungstechniken“: „Vorgehensweisen und Maßnahmen der Personalführung zur Verwirklichung vorgegebener Ziele, der Gestaltung der Führungssituation und der Behandlung der Untergebenen.“ (kein eigenes Stichwort „Führungsinstrumente“) | Stichwort „Führungstechniken“ | [41] | F10 (Notiz) | ✔ |
-| B-11 | Wunderer-Definition wird **nicht** zitiert (kein frei zugänglicher Originalwortlaut). | – | – | – | ✖ |
+| B-01 | Gabler definiert Führung als „durch Interaktion vermittelte Ausrichtung des Handelns von Individuen und Gruppen auf die Verwirklichung vorgegebener Ziele; beinhaltet asymmetrische soziale Beziehungen der Über- und Unterordnung.“ | Stichwort „Führung“ | [1] | F03, B2, Papier §2 | ✔✔ |
+| B-02 | Personalführung ist „zielgerichtetes soziales Einflusshandeln im Rahmen von Profit- oder Non-Profit-Organisationen. Beteiligte sind neben einer Führungskraft mind. ein dieser weisungsmäßig unterstellter Mitarbeiter“. | Stichwort „Personalführung“ | [2] | F03, B2 | ✔✔ |
+| B-03 | Mitarbeiterführung ist „eine unmittelbare, absichtliche und zielbezogene Einflußnahme von bestimmten Personen – in der Regel Vorgesetzte – auf andere Personen – in der Regel Untergebene – in Organisationen“. | Lexikon der Psychologie, „Führung“ | [5] | F03, B2, Papier §2 | ✔✔ |
+| B-04 | v. Rosenstiel unterscheidet „Unternehmensführung und Mitarbeiterführung“. | ebd. | [5] | F05 | ✔✔ |
+| B-05 | Leadership „bezeichnet nicht einheitlich definiert die menschen-, verhaltens-, eigenschafts-, interaktions- und/oder motivationsorientierten Aufgaben des Managements.“ | Stichwort „Leadership“ | [3] | F03 (Sprechtext), Papier §1 | ✔✔ |
+| B-06 | Gabler nennt die „Trennung von Eigentum und Geschäftsführung als konstitutives Merkmal des Managements als Institution“. | Stichwort „Management“ | [4] | F05, Papier §2 | ✔✔ |
+| B-07 | Im Managementzyklus ist Mitarbeiterführung eine von neun Aufgaben (Analyse, Ziele, Planung, Entscheidung, Organisation, Delegation, Koordination, Mitarbeiterführung, Kontrolle). | Stichwort „Management“ | [4] | F05 (Notiz) | ✔✔ |
+| B-08 | Gemeinsame Kernelemente der Definitionen: Ziel, (absichtliche) Einflussnahme, Interaktion, Organisation (Über-/Unterordnung). | Eigene Synthese aus B-01–B-03 | [1][2][5] | F03, F04 | ✔✔ (Synthese) |
+| B-09 | Arbeitsdefinition: „Führung ist die zielbezogene, absichtliche Einflussnahme auf das Handeln anderer – vermittelt durch Interaktion in einer Organisation.“ | Eigene Synthese, als solche kennzeichnen | [1][2][5] | F04, F19, Papier §2 | ✔✔ (Synthese) |
+| B-10 | Gabler „Führungstechniken“: „Vorgehensweisen und Maßnahmen der Personalführung zur Verwirklichung vorgegebener Ziele, der Gestaltung der Führungssituation und der Behandlung der Untergebenen.“ (kein eigenes Stichwort „Führungsinstrumente“) | Stichwort „Führungstechniken“ | [41] | F10 (Notiz) | ✔✔ |
+| B-12 | Gabler „Management“: Management bezeichnet „in funktionaler Perspektive – die Tätigkeit der Unternehmensführung“, in institutioneller Perspektive das geschäftsführende Organ. | Stichwort „Management“ | [4] | F05 (Notiz) | ✔ (Bearbeiter, 28.10.) |
+| B-11 | Wunderer-Definition wird **nicht** zitiert (kein frei zugänglicher Originalwortlaut). | – | – | – | ✖ (Negativaussage, nicht prüfbar) |
 
 ## 2 KMU und Mittelstand: Definitionen
 
 | ID | Aussage | Beleg | Quelle | Verwendet | Status |
 |---|---|---|---|---|---|
-| K-01 | EU: KMU = weniger als 250 Beschäftigte **und** Jahresumsatz höchstens 50 Mio. € **oder** Jahresbilanzsumme höchstens 43 Mio. €. Klein: < 50 / ≤ 10 Mio. €; Kleinst: < 10 / ≤ 2 Mio. €. | Empfehlung 2003/361/EG, Anhang Art. 2 | [8][79] | F06, B3 | ✔ |
-| K-02 | Beschäftigte werden in Jahresarbeitseinheiten gezählt; mitarbeitende Eigentümer zählen mit, Auszubildende nicht. | Anhang Art. 5 | [79] | B3 (Notiz) | ✔ |
-| K-03 | IfM Bonn (seit 2016): KMU = bis 499 Beschäftigte und bis 50 Mio. € Umsatz – soll „die deutsche Besonderheit herauszustellen“. | KMU-Definition des IfM | [9] | F06 | ✔ |
-| K-04 | „Das IfM Bonn definiert Mittelstand durch die Einheit von Eigentum und Leitung.“ Operationalisierung: bis zu zwei natürliche Personen oder ihre Familienangehörigen halten mind. 50 % der Anteile und gehören der Geschäftsführung an. | Mittelstandsdefinition des IfM | [10] | F05, F06, B2, Papier §2 | ✔ |
-| K-05 | Gabler: keine allgemein akzeptierten statistischen Kriterien; charakteristisch „die Einheit von Eigentum und unternehmerischer Verantwortung“. | Stichwort „Mittelstand“ | [7] | Notiz | ✔ |
-| K-06 | KfW zählt zum Mittelstand alle Unternehmen bis 500 Mio. € Jahresumsatz; KfW nennt Unternehmen mit weniger als 5 Beschäftigten „Kleinstunternehmen“ (EU: weniger als 10). | Panel 2025, S. 28; Panel 2026 | [13][78] | B3 | ✔ |
+| K-01 | EU: KMU = weniger als 250 Beschäftigte **und** Jahresumsatz höchstens 50 Mio. € **oder** Jahresbilanzsumme höchstens 43 Mio. €. Klein: < 50 / ≤ 10 Mio. €; Kleinst: < 10 / ≤ 2 Mio. €. | Empfehlung 2003/361/EG, Anhang Art. 2 | [8][79] | F06, B3 | ✔✔ |
+| K-02 | Beschäftigte werden in Jahresarbeitseinheiten gezählt; mitarbeitende Eigentümer zählen mit, Auszubildende nicht. | Anhang Art. 5 | [79] | B3 (Notiz) | ✔✔ |
+| K-03 | IfM Bonn (seit 2016): KMU = bis 499 Beschäftigte und bis 50 Mio. € Umsatz – soll „die deutsche Besonderheit herauszustellen“. | KMU-Definition des IfM | [9] | F06 | ✔✔ |
+| K-04 | „Das IfM Bonn definiert Mittelstand durch die Einheit von Eigentum und Leitung.“ Operationalisierung: bis zu zwei natürliche Personen oder ihre Familienangehörigen halten mind. 50 % der Anteile und gehören der Geschäftsführung an. | Mittelstandsdefinition des IfM | [10] | F05, F06, B2, Papier §2 | ✔✔ |
+| K-05 | Gabler: keine allgemein akzeptierten statistischen Kriterien; charakteristisch „die Einheit von Eigentum und unternehmerischer Verantwortung“. | Stichwort „Mittelstand“ | [7] | Notiz | ✔✔ |
+| K-06 | KfW zählt zum Mittelstand alle Unternehmen bis 500 Mio. € Jahresumsatz; in der Strukturauswertung der KfW heißen Unternehmen mit weniger als 5 Beschäftigten „Kleinstunternehmen“ (uneinheitlich; EU: weniger als 10). | Panel 2025, S. 28; Panel 2026 | [13][78] | B3 | ✔✔ |
 
 ## 3 KMU: Kennzahlen
 
 | ID | Aussage | Beleg | Quelle | Verwendet | Status |
 |---|---|---|---|---|---|
-| Z-01 | 2024 waren 99,3 % aller Unternehmen KMU (EU-Definition); sie stellten 53,7 % der tätigen Personen, 27,2 % des Nettoumsatzes, 41,3 % der Bruttowertschöpfung. | Destatis-Tabelle, Stand 12.08.2026 | [12] | F06, B3, Papier §1 | ✔ |
-| Z-02 | IfM: rund 3,52 Mio. KMU (99,2 %); 54,4 % der abhängig Beschäftigten (rund 21,8 Mio.); 28,6 % des Umsatzes (2024). | IfM-Statistik | [11] | B3 | ✔ |
-| Z-03 | 68,4 % aller Auszubildenden fanden sich Ende 2024 in Betrieben mit weniger als 250 sozialversicherungspflichtig Beschäftigten. | IfM-Statistik | [11] | F06, Papier §1 | ✔ |
-| Z-04 | KfW 2024: 3,87 Mio. Mittelständler (99,95 %), 33,01 Mio. Erwerbstätige (71,6 %). Nur mit Jahr 2024 verwenden. | Panel 2025, S. 1 | [13] | B3 | ✔ ⚠ (veraltet → Z-05) |
-| Z-05 | KfW 2026 (Bezugsjahr 2025): 3,94 Mio. Mittelständler (99,96 %), rund 33,4 Mio. Beschäftigungsverhältnisse – wegen neuer Zählweise nicht direkt mit 2024 vergleichbar. | Panel 2026 | [78] | B3 (Notiz) | ✔ (Prüfagent) |
-| Z-06 | Qualitative Mittelstandsmerkmale sind „aus den amtlichen Statistiken nicht ablesbar“. | IfM-Statistik | [11] | B3 | ✔ |
+| Z-01 | 2024 waren 99,3 % aller Unternehmen KMU (EU-Definition); sie stellten 53,7 % der tätigen Personen, 27,2 % des Nettoumsatzes, 41,3 % der Bruttowertschöpfung. | Destatis-Tabelle, Stand 12.08.2026; Wirtschaftsabschnitte B–S (ohne O, S94) | [12] | F06, B3, Papier §1 | ✔✔ |
+| Z-02 | IfM (KMU nach **EU-Definition**, Unternehmensregister 2024): rund 3,52 Mio. KMU (99,2 % aller Unternehmen mit Umsatz und/oder Beschäftigten); 54,4 % der abhängig Beschäftigten (rund 21,8 Mio.); 28,6 % des Umsatzes. Das IfM nutzt für diese Kennzahlen selbst die EU-Definition, nicht seine eigene (K-03). | IfM-Statistik | [11] | B3, F06 (Notiz) | ✔✔ (korrigiert) |
+| Z-03 | 68,4 % aller Auszubildenden fanden sich Ende 2024 in Betrieben mit weniger als 250 sozialversicherungspflichtig Beschäftigten. | IfM-Statistik | [11] | F06, Papier §1 | ✔✔ |
+| Z-04 | KfW 2024: 3,87 Mio. Mittelständler (99,95 %), 33,01 Mio. Erwerbstätige (71,6 %). Nur mit Jahr 2024 verwenden. | Panel 2025, PDF S. 3 und 28 (gedr. S. 1 und 26) | [13] | B3, F06 (Notiz) | ✔✔ (korrigiert) ⚠ (veraltet → Z-05) |
+| Z-05 | KfW 2026 (Bezugsjahr 2025): 3,94 Mio. Mittelständler (99,96 %), rund 33,4 Mio. Beschäftigungsverhältnisse – wegen neuer Zählweise nicht direkt mit 2024 vergleichbar. | Panel 2026, PDF S. 3, 12, 30 | [78] | B3 (Notiz) | ✔✔ |
+| Z-06 | Qualitative Mittelstandsmerkmale sind „aus den amtlichen Statistiken nicht ablesbar“. | IfM-Statistik | [11] | B3 | ✔✔ |
 
 ## 4 Besonderheiten der Führung im KMU
 
 | ID | Aussage | Beleg | Quelle | Verwendet | Status |
 |---|---|---|---|---|---|
-| S-01 | „Letztlich gibt es nur eine wirklich wichtige Führungsbeziehung und das ist die zum Inhaber“ (über Familienunternehmen). | Abschnitt „Patriarchale Führungsmuster …“ | [14] | F07 | ✔ |
-| S-02 | Eigentum, Führung und Familienoberhaupt sind „in einer Hand vereint“; das verschafft „eine außergewöhnliche Autoritätsposition“. | ebd. | [14] | F07 (Notiz) | ✔ |
-| S-03 | Es gibt „keine formell festgelegten […] Organigramme“; „Flache Hierarchien bilden hier üblicherweise den Normalzustand“; Aufgaben „folgen den Personen und nicht umgekehrt“. | ebd. | [14] | F07, Papier §3 | ✔ |
-| S-04 | Patriarchale Konstellation „nach wie vor bei mehr als zwei Drittel vor allem der kleineren und mittelgroßen Familienunternehmen anzutreffen“ – **Einschätzung** in einem Theoriebeitrag, keine Erhebung; ausdrücklich ohne „negativen bzw. kritischen Beigeschmack“. | ebd. | [14] | F09, Papier §3 | ✔ ⚠ |
-| S-05 | Was erfolgreich war, „kann unter veränderten Rahmenbedingungen in eine Existenzgefährdung umschlagen“; die Erfolgsvoraussetzungen seien „gerade bei wachstumsstarken Familienunternehmen vielfach nicht mehr gegeben“. | ebd. | [14] | F09, Papier §3 | ✔ |
-| S-06 | Die Führungsforschung hat Familienunternehmen „bislang weitestgehend ignoriert“. | ebd. | [14] | Notiz | ✔ |
-| S-07 | „In mittelständischen, d.h. eigentümergeführten Unternehmen nimmt die Unternehmerpersönlichkeit eine zentrale Stellung ein“; Führungsaufgaben haben „zumindest in kleineren mittelständischen Unternehmen“ einen „tendenziell niedrigeren Spezialisierungsgrad“ als in managementgeführten Großunternehmen. | S. 9 | [15] | F07, Papier §3 | ✔ |
-| S-08 | Mittelständische Unternehmer haften „oftmals für Investitionskredite persönlich“; Risikoaversion „tendenziell höher“. | S. 6 | [15] | F07, Papier §3 | ✔ |
-| S-09 | IfM-Interviews (Digitalisierungsprojekte, **ein Führungstyp**): „Sind jedoch entsprechende Kompetenzen im Unternehmen vorhanden, ist der Führungsstil durch die Einbindung der Mitarbeiter eher als partizipativ bzw. kooperativ anzusehen“; der kooperative Stil werde „durch die überschaubare Größe der Unternehmen“ ermöglicht. **Nicht** auf alle KMU verallgemeinern. | S. 21 | [15] | F09, Papier §3 | ✔ ⚠ |
-| S-10 | Gabler, patriarchalischer Führungsstil: streng hierarchisch, keine Beteiligung an Entscheidungen, Loyalität gegen Fürsorge. | Stichwort | [17] | F09 (Notiz) | ✔ |
-| S-11 | Nur 13 % der Kleinstbetriebe haben eine zweite Führungsebene (alle Betriebe: 27 %) – **nur Sachsen-Anhalt 2022**. | S. 28, Fußnote | [56] | F11 (Notiz) | ✔ ⚠ |
+| S-01 | „Letztlich gibt es nur eine wirklich wichtige Führungsbeziehung und das ist die zum Inhaber, zur Inhaberin an der Unternehmensspitze, auch wenn es da in der Praxis je nach Unternehmensgröße natürlich große Abstufungen gibt.“ Bezug: eignergeführte Familienunternehmen (Einheit von Eigentum, Führung und Familienoberhaupt). Bei Kürzung „…“ setzen und die Größenabstufung erwähnen. | Abschnitt „Patriarchale Führungsmuster …“ | [14] | F07, Papier §3 | ✔✔ (korrigiert) |
+| S-02 | Eigentum, Führung und Familienoberhaupt sind „in einer Hand vereint“; das verschafft „eine außergewöhnliche Autoritätsposition“. | ebd. | [14] | F07 (Notiz) | ✔✔ |
+| S-03 | Es gibt „keine formell festgelegten und allgemein verbindlich kommunizierten Organigramme“; „Flache Hierarchien bilden hier üblicherweise den Normalzustand“; Aufgaben „folgen den Personen und nicht umgekehrt“. | ebd. | [14] | F07, Papier §3 | ✔✔ |
+| S-04 | Patriarchale Konstellation „nach wie vor bei mehr als zwei Drittel vor allem der kleineren und mittelgroßen Familienunternehmen anzutreffen“ – **Einschätzung** in einem Theoriebeitrag, keine Erhebung; ausdrücklich ohne „negativen bzw. kritischen Beigeschmack“. | ebd. | [14] | F09, Papier §3 | ✔✔ ⚠ |
+| S-05 | Was erfolgreich war, „kann unter veränderten Rahmenbedingungen in eine Existenzgefährdung umschlagen“; die Erfolgsvoraussetzungen seien „gerade bei wachstumsstarken Familienunternehmen vielfach nicht mehr gegeben“. | ebd. | [14] | F09, Papier §3 | ✔✔ |
+| S-06 | Ausgangsthese Wimmers: Die etablierte Führungsforschung hat die spezifische Führungspraxis in familiengeführten Unternehmen „bislang weitestgehend ignoriert“. | Abstract | [14] | Notiz | ✔✔ (korrigiert) |
+| S-07 | „In mittelständischen, d.h. eigentümergeführten Unternehmen nimmt die Unternehmerpersönlichkeit eine zentrale Stellung ein“; Führungsaufgaben haben „zumindest in kleineren mittelständischen Unternehmen“ einen „tendenziell niedrigeren Spezialisierungsgrad“ als in managementgeführten Großunternehmen. | gedr. S. 8 (PDF S. 17) | [15] | F07, Papier §3 | ✔✔ (korrigiert) |
+| S-08 | Mittelständische Unternehmer haften „oftmals für Investitionskredite persönlich“; ihre Risikoaversion ist im Vergleich zu Nicht-Familienunternehmen „tendenziell höher“ (mit Verweis auf Ulrich 2018). | gedr. S. 5 (PDF S. 14) | [15] | F07, Papier §3 | ✔✔ (korrigiert) |
+| S-09 | IfM-Interviews (qualitative Studie, 11 Telefoninterviews, Digitalisierungsprojekte, **ein Führungstyp „Interaktive“**): „Sind jedoch entsprechende Kompetenzen im Unternehmen vorhanden, ist der Führungsstil durch die Einbindung der Mitarbeiter eher als partizipativ bzw. kooperativ anzusehen“; der kooperative Stil werde „durch die überschaubare Größe der Unternehmen“ ermöglicht. **Nicht** auf alle KMU verallgemeinern. | gedr. S. 20 (PDF S. 29) | [15] | F09, Papier §3 | ✔✔ (korrigiert) ⚠ |
+| S-10 | Gabler, patriarchalischer Führungsstil: streng hierarchisch, keine Beteiligung an Entscheidungen, Loyalität gegen Fürsorge. | Stichwort | [17] | F09 (Notiz) | ✔✔ |
+| S-12 | Leistungsvorteile der Einheit von Eigentum und Führung: „Kurze Entscheidungswege, … eine hohe Umsetzungsgeschwindigkeit bei erkannten Handlungsnotwendigkeiten“. | Abschnitt „Patriarchale Führungsmuster …“ | [14] | F07, F09, F19, Papier §3, §5 | ✔ (Bearbeiter, 28.10.) |
+| S-11 | Nur 13 % der Kleinstbetriebe haben eine zweite Führungsebene (alle Betriebe: 27 %) – **nur Sachsen-Anhalt 2022**. | S. 28, Fußnote | [56] | F11 (Notiz) | ✔✔ ⚠ |
 
 ## 5 Führungsstile
 
 | ID | Aussage | Beleg | Quelle | Verwendet | Status |
 |---|---|---|---|---|---|
-| L-01 | Tannenbaum/Schmidt (1958): Kontinuum nach dem Grad der Beteiligung an Entscheidungen; deutsche Lehrbuchfassungen mit sieben Stufen, Bezeichnungen variieren (verwendet: autoritär, patriarchalisch, informierend, beratend, kooperativ, delegativ, autonom). | Gabler „Führungsstil“; Wikipedia nur Hilfsbeleg; Original Paywall | [6][31][32] | F08, F09, Fragebogen | ✔ ⚠ |
-| L-02 | Stilmodelle sind „zu idealtypisch und schlicht, um die Komplexität des Führungsalltags adäquat abzubilden“. | Stichwort „Führungsstil“ | [6] | Notiz | ✔ |
-| L-03 | KPMG/FIF 2016 (ca. 100 Familienunternehmen): 6 % autoritär, 85 % partizipativ – nur über Presseberichte, misst anderes als S-04. | Sekundär | [80][81] | – | ✖ |
+| L-01 | Tannenbaum/Schmidt (1958): eindimensionales Kontinuum nach dem Grad der Beteiligung an Entscheidungen (Gabler [6] belegt nur Kontinuum und Jahr, **nicht** sieben Stufen). Belegte Siebener-Reihe (nur Hilfsbeleg [32]): autoritär, patriarchalisch, konsultativ, beratend, partizipativ, delegativ, demokratisch. **Verwendet** wird eine Lehrbuch-Variante (autoritär, patriarchalisch, informierend, beratend, kooperativ, delegativ, autonom) → auf Folie und Fragebogen als „eigene Bezeichnungen in Anlehnung an Tannenbaum/Schmidt (1958)“ kennzeichnen. | Gabler „Führungsstil“; Wikipedia nur Hilfsbeleg; Original Paywall | [6][31][32] | F08, F09, Fragebogen | ✔✔ (korrigiert) ⚠ |
+| L-02 | Gabler referiert als zentrale Kritik an den **frühen** Führungsstilmodellen, sie seien „zu idealtypisch und schlicht, um die Komplexität des Führungsalltags adäquat abzubilden“. | Stichwort „Führungsstil“ | [6] | Notiz | ✔✔ (korrigiert) |
+| L-03 | KPMG/FIF 2016 (ca. 100 Familienunternehmen): 6 % autoritär, 85 % partizipativ – nur über Presseberichte, misst anderes als S-04. | Sekundär | [80][81] | – | ✖ (bestätigt) |
 
 ## 6 Führungsinstrumente
 
 | ID | Aussage | Beleg | Quelle | Verwendet | Status |
 |---|---|---|---|---|---|
-| I-01 | Mitarbeitergespräch: „Instrument der Personalführung; findet in regelmäßigen und unregelmäßigen Abständen, geplant/vereinbart oder ungeplant zwischen Führungskraft und Mitarbeiter statt.“ | Stichwort | [42] | F10 | ✔ |
-| I-02 | MbO: „Führung durch Zielvereinbarung; mehrdimensionales Führungskonzept, das auf Peter Drucker (1954) zurückgeht“. | Stichwort | [43] | F10 | ✔ |
-| I-03 | Delegation: „Übertragung von Kompetenz (und Verantwortung) auf hierarchisch nachgeordnete organisatorische Einheiten“; Bedingung Kompetenz und Motivation des Delegationsnehmers. | Stichwort | [44] | F10, F13 | ✔ |
-| I-04 | Führungsgrundsätze: „generelle Verhaltensempfehlungen für das Zusammenleben und -arbeiten von Menschen in Unternehmungen“. | Stichwort | [46] | F10 | ✔ |
-| I-05 | OKR: Rahmenwerk für agiles Management, Teilziele aus der Strategie, Fokus auf das nächste Quartal. | Stichwort | [48] | F10 | ✔ |
-| I-06 | Rückmeldung ist „entscheidender Wirkfaktor für das Erreichen von Zielen“; Wirkung hängt u. a. ab von „der erlebten Glaubwürdigkeit oder der ‚psychologischen Nähe‘ zur handelnden Person“. | Lexikon der Psychologie | [49] | F10, F14 | ✔ |
-| I-07 | In 91 % der Unternehmen mit weniger als 50 Mitarbeitenden liegt das Personalmanagement bei der Geschäftsführung; nur 7,2 % haben eine Personalabteilung (50–249: 36,4 % / 61,9 %; ab 250: 74,5 % / 23,1 %). IW-Personalpanel 2020, N = 1.431. | KOFA 4/2021, Abb. 1 und Text | [54] | F11, Papier §3 | ✔ |
-| I-08 | „Denn häufig fehlt es an Zeit und an spezifischem Know-how, um die Personalprozesse an das veränderte Umfeld eines Arbeitnehmermarkts anzupassen.“ | KOFA 4/2021 | [54] | F11, Papier §3 | ✔ |
-| I-09 | „Wir führen regelmäßig Mitarbeitergespräche durch“: 74,3 % (1–49), 81,0 % (50–249), 82,3 % (ab 250) der Unternehmen, 2020. | KOFA 4/2021 | [54] | F12, Papier §3 | ✔ |
-| I-10 | 2024: 82,0 % der Unternehmen führen Mitarbeitergespräche (2020: 74,6 %); Größenunterschiede „weiter verringert“. | KOFA 4/2025 | [55] | F12 | ✔ |
-| I-11 | LPP 2014: Zielvereinbarungen in neun von zehn Großbetrieben (ab 500 SVB), aber nur 57 % der Betriebe mit 50–99 Beschäftigten. **LPP erfasst nur Betriebe ab 50 Beschäftigten.** | BMAS-FB 469, Abschnitt 4.2 | [50] | F12 | ✔ |
-| I-12 | Schriftliche Zielvereinbarungen 60 % (2012) → 50 % (2023); Mitarbeitergespräche „in etwas mehr als 70 Prozent der Betriebe“ (Betriebe ab 50). | IAB-KB 11/2025, S. 2 f. | [53] | F12, Papier §3 | ✔ |
-| I-13 | „Selbst, wenn diese ohne formale Zielvereinbarung stattfinden, lassen sich positive Veränderungen der Arbeits- und Lohnzufriedenheit sowie des Engagements der Beschäftigten beobachten.“ (Panelanalyse, nicht streng kausal) | IAB-KB 11/2025, S. 5 | [53] | F12 | ✔ |
-| I-14 | Führungsschulungen (als Maßnahme für Gemeinschaftsgefühl): bis 49 Beschäftigte 15 %, 50–249: 33 %, 250–499: 51 %, ab 500: 64 % der Unternehmen (HR-Verantwortliche, n = 615). | Randstad-ifo Q1/2025, S. 7 | [70] | F11, Papier §3 | ✔ |
-| I-15 | CVTS 2020: Führungskompetenzen gehören bei 5,2 % (10–19) bzw. 10,4 % (20–49) der Unternehmen mit Kursen zu den drei Themen mit den meisten Kursstunden, ab 1.000 bei 50,7 %. **Rangfolge der Kursstunden, nicht Angebot.** | Destatis CVTS6, Tab. 4.2, S. 45 | [72] | F11 (Notiz) | ✔ (Prüfagent) ⚠ |
-| I-16 | OKR in KMU: „kaum ein KMU“ arbeite damit – **Einschätzung ohne Datenbasis** (FIR 2021). | Pressemitteilung | [57] | F10 (Notiz) | ✔ ⚠ |
+| I-01 | Mitarbeitergespräch: „Instrument der Personalführung; findet in regelmäßigen und unregelmäßigen Abständen, geplant/vereinbart oder ungeplant zwischen Führungskraft und Mitarbeiter statt.“ | Stichwort | [42] | F10 | ✔✔ |
+| I-02 | MbO: „Führung durch Zielvereinbarung; mehrdimensionales Führungskonzept, das auf Peter Drucker (1954) zurückgeht“. | Stichwort | [43] | F10 | ✔✔ |
+| I-03 | Delegation: „Übertragung von Kompetenz (und Verantwortung) auf hierarchisch nachgeordnete organisatorische Einheiten“; Bedingung Kompetenz und Motivation des Delegationsnehmers. | Stichwort | [44] | F10, F13 | ✔✔ |
+| I-04 | Führungsgrundsätze: „generelle Verhaltensempfehlungen für das Zusammenleben und -arbeiten von Menschen in Unternehmungen“. | Stichwort | [46] | F10 | ✔✔ |
+| I-05 | OKR: Rahmenwerk für agiles Management, Teilziele aus der Strategie, Fokus auf das nächste Quartal. | Stichwort | [48] | F10 | ✔✔ |
+| I-06 | Rückmeldung ist „entscheidender Wirkfaktor für das Erreichen von Zielen“; Wirkung hängt u. a. ab von „der erlebten Glaubwürdigkeit oder der ‚psychologischen Nähe‘ zur handelnden Person“. | Lexikon der Psychologie | [49] | F10, F14 | ✔✔ |
+| I-07 | In 91 % der Unternehmen mit weniger als 50 Mitarbeitenden liegt das Personalmanagement bei der Geschäftsführung; nur 7,2 % haben eine Personalabteilung. Reihenfolge Geschäftsführung / Personalabteilung: 1–49: 91,0 / 7,2 · 50–249: 61,9 / 36,4 · ab 250: 23,1 / 74,5 (Rest: anderer Bereich). Frage: „Wer ist in Ihrem Unternehmen federführend für die Personalarbeit zuständig?“ IW-Personalpanel 2020, N = 1.431. | KOFA 4/2021, Abb. 1, S. 9 | [54] | F11, Papier §3 | ✔✔ |
+| I-08 | „Denn häufig fehlt es an Zeit und an spezifischem Know-how, um die Personalprozesse an das veränderte Umfeld eines Arbeitnehmermarkts anzupassen.“ | KOFA 4/2021, S. 10 (Einschätzung der Autoren) | [54] | F11, Papier §3 | ✔✔ |
+| I-17 | Personalarbeit ist in KMU „eine von zahlreichen Aufgaben, die die Geschäftsführung im Alltag leisten muss“. | KOFA 4/2021, S. 10 | [54] | F11 (Sprechtext) | ✔ ⚠ (Wortlaut aus Literaturbasis; Original am 28.10. wegen Bot-Sperre nicht erneut abrufbar) |
+| I-09 | „Wir führen regelmäßig Mitarbeitergespräche durch“: 74,3 % (1–49), 81,0 % (50–249), 82,3 % (ab 250) der Unternehmen, 2020. | KOFA 4/2021, Abb. 13, S. 21 | [54] | F12, Papier §3 | ✔✔ |
+| I-10 | 2024: 82,0 % der Unternehmen führen Mitarbeitergespräche (2020: 74,6 %); Größenunterschiede „weiter verringert“ (n = 812; Frage gegenüber 2020 leicht geändert). | KOFA 4/2025, S. 18 | [55] | F12 | ✔✔ |
+| I-11 | LPP 2014: Zielvereinbarungen in neun von zehn Großbetrieben (ab 500 SVB), aber nur 57 % der Betriebe mit 50–99 Beschäftigten. **LPP erfasst nur Betriebe ab 50 Beschäftigten.** | BMAS-FB 469, Abschnitt 4.2 | [50] | F12 | ✔✔ |
+| I-12 | Schriftliche Zielvereinbarungen 60 % (2012) → 50 % (2023); Mitarbeitergespräche „in etwas mehr als 70 Prozent der Betriebe“ (Betriebe der Privatwirtschaft ab 50 Beschäftigten). | IAB-KB 11/2025, S. 2 f. | [53] | F12, Papier §3 | ✔✔ |
+| I-13 | „Selbst, wenn diese ohne formale Zielvereinbarung stattfinden, lassen sich positive Veränderungen der Arbeits- und Lohnzufriedenheit sowie des Engagements der Beschäftigten beobachten.“ (Panelanalyse, nicht streng kausal) | IAB-KB 11/2025, S. 5 | [53] | F12 | ✔✔ |
+| I-14 | Führungsschulungen (abgefragt als Maßnahme, um das Gemeinschaftsgefühl zu stärken): bis 49 Beschäftigte 15 %, 50–249: 33 %, 250–499: 51 %, ab 500: 64 % der Unternehmen (HR-Verantwortliche, n = 615, gewichtet). Werte nach Größe nur im Text S. 7, Abb. 6 zeigt nur den Gesamtwert 35 %. | Randstad-ifo Q1/2025, S. 2, 7 | [70] | F11, Papier §3 | ✔✔ |
+| I-15 | CVTS 2020: Führungskompetenzen gehören bei 5,2 % (10–19) bzw. 10,4 % (20–49) der Unternehmen mit Kursen zu den drei Themen mit den meisten Kursstunden, ab 1.000 bei 50,7 %. **Rangfolge der Kursstunden, nicht Angebot.** | Destatis CVTS6, Tab. 4.2, S. 45 | [72] | F11 (Notiz) | ✔✔ ⚠ |
+| I-16 | OKR in KMU: „kaum ein KMU“ arbeite damit – **Einschätzung ohne Datenbasis** (FIR 2021). | Pressemitteilung | [57] | F10 (Notiz) | ✔✔ ⚠ |
 
 ## 7 Feedback, Beteiligung, Führungskultur nach Größe
 
 | ID | Aussage | Beleg | Quelle | Verwendet | Status |
 |---|---|---|---|---|---|
-| C-01 | Einbindung der Mitarbeitenden bei Veränderungen als „besonders erfolgreiche“ Bindungsstrategie: kleine 47,8 %, mittlere 38,4 %, große 28,9 % (jeweils Anteil der Nutzer der Strategie). | KOFA 4/2025, S. 19 | [55] | F14 | ✔ |
-| C-02 | Verhältnis Mitarbeitende–Führungskräfte „offen und vertrauensvoll“: Kleinunternehmen (bis 49) 53 %, ab 500: 20 %; gesamt 43 % (Angaben von HR-Verantwortlichen, n = 469). | Randstad-ifo Q3/2026, Abb. 6 | [71] | F14 | ✔ |
-| C-03 | Fehler werden „offen angesprochen“: Kleinunternehmen 62 %, Großunternehmen 28 % (HR-Angaben). | Randstad-ifo Q3/2026, Abb. 7 | [71] | F14 (Notiz) | ✔ |
-| C-04 | „Unsere Beschäftigten geben sich gegenseitig Feedback und lernen voneinander“: 90,8 % der KMU vs. 55,2 % der großen Unternehmen (eher/voll zustimmend). | KOFA 1/2024 | [74] | F14 | ✔ |
-| C-05 | Wenig oder keine Wertschätzung durch Vorgesetzte (Beschäftigtensicht, Mittel 2022–2025): unter 20 Beschäftigte 25 %, 20–49: 32 %, 50–199: 32 %, 200–1.999: 30 %, ab 2.000: 25 %. | DGB-Index 2025, Tab. 6 | [66] | F14, Papier §3 | ✔ |
-| C-06 | BAuA 2024 (abhängig Beschäftigte): 62 % erleben häufig Unterstützung, 40 % häufig Lob durch die Führungskraft – **keine Werte nach Größe**. | baua: Fakten 62 | [63] | – (nur Hintergrund) | ✔ (Prüfagent) |
-| C-07 | Agilität im Mittelstand (2019, n = 271 Führungskräfte): 68,3 % Teil der Strategie, 15,5 % kennen das Konzept nicht. | S. 16 | [35] | Notiz | ✔ |
+| C-01 | Einbindung der Mitarbeitenden bei Veränderungen als „besonders erfolgreiche“ Bindungsstrategie: kleine (1–49) 47,8 %, mittlere (50–249) 38,4 %, große (über 250) 28,9 % (jeweils Anteil der Nutzer der Strategie; 2024, n = 812). | KOFA 4/2025, S. 19 | [55] | F14 | ✔✔ |
+| C-02 | Verhältnis Mitarbeitende–Führungskräfte „offen und vertrauensvoll“: Kleinunternehmen (bis 49) 53 %, ab 500: 20 %; gesamt 43 % (Angaben von HR-Verantwortlichen, n = 469). | Randstad-ifo Q3/2026, Abb. 6 | [71] | F14 | ✔✔ |
+| C-03 | Fehler werden „offen angesprochen“: Kleinunternehmen (bis 49) 62 %, Großunternehmen (ab 500) 28 % (HR-Angaben, n = 469). **Gegenbefund:** Großunternehmen sehen Fehler häufiger als Lernchance (19 % vs. 5 %); „eher zurückgehalten“ 18 % vs. 3 %. | Randstad-ifo Q3/2026, Abb. 7 | [71] | F14 (Notiz) | ✔✔ |
+| C-04 | „Unsere Beschäftigten geben sich gegenseitig Feedback und lernen voneinander“: 90,8 % der **weiterbildungsaktiven** KMU (1–249) vs. 55,2 % der weiterbildungsaktiven großen Unternehmen (ab 250) stimmen „eher“ oder „voll und ganz“ zu („voll und ganz“: 37,8 % vs. 6,1 %). IW-Weiterbildungserhebung 2023, Personalverantwortliche, n = 222 / 166. | KOFA 1/2024, Abb. 3.1, S. 9 f. | [74] | F14 | ✔✔ (korrigiert) |
+| C-05 | Wenig oder keine Wertschätzung durch Vorgesetzte (Beschäftigtensicht, Mittel 2022–2025): unter 20 Beschäftigte 25 %, 20–49: 32 %, 50–199: 32 %, 200–1.999: 30 %, ab 2.000: 25 %. Verlauf U-förmig – **nicht** als „je kleiner, desto wertschätzender“ formulieren. | DGB-Index 2025, Tab. 6 | [66] | F14, Papier §3 | ✔✔ |
+| C-06 | BAuA 2024 (abhängig Beschäftigte): 62 % erleben häufig Unterstützung, 40 % häufig Lob durch die Führungskraft – **keine Werte nach Größe**. | baua: Fakten 62 | [63] | – (nur Hintergrund) | ✔✔ |
+| C-07 | Agilität im „Mittelstand“ (Online-Befragung Mitte 2018, veröffentlicht 2019, n = 271 Führungskräfte; Stichprobe überwiegend größere Unternehmen: 46 % ab 500 MA, nur 5 % unter 50): 68,3 % verfolgen Agilität als Teil der Strategie, 15,5 % kennen das Konzept nicht. **Nicht als KMU-Befund verwenden.** | PDF S. 16 / gedr. S. 5, Abb. 2; Anhang Tab. 2 | [35] | – | ✔✔ (korrigiert) ⚠ |
 
 ## 8 Herausforderungen
 
 | ID | Aussage | Beleg | Quelle | Verwendet | Status |
 |---|---|---|---|---|---|
-| H-01 | Emotionale Bindung 2025: hoch 10 %, gering 77 %, keine 13 %. | Gallup-PM, S. 1 | [21] | F16, Papier §3 | ✔ |
-| H-02 | „Geringe emotionale Bindung ist kein Einstellungs-, sondern ein Führungsproblem“ (Studienleiter Marco Nink). | Gallup-PM, S. 1 | [21] | F16, Papier §3 | ✔ |
-| H-03 | Nur 21 % stimmen vollständig zu, dass ihre Führungskraft den KI-Einsatz aktiv unterstützt. | Gallup-PM, S. 3 | [21] | F16, Papier §3 | ✔ |
-| H-04 | Gallup weist keine Werte nach Unternehmensgröße aus (auch nicht 2018/2024). | – | [21][22] | F16 (Fuß) | ✔ |
-| H-05 | Nur 40 % der Führungskräfte erhielten in den letzten 12 Monaten ein Coaching zu ihrer Führungsaufgabe (alle Größen). | Gallup-Bericht, S. 14 | [22] | Notiz | ✔ |
-| H-06 | 92 % der Mittelständler (20–999 Beschäftigte) erwarten negative Folgen des Fachkräftemangels (alle: 83 %). | DIHK-Report, S. 4, 15 | [19] | F16, Papier §3 | ✔ |
-| H-07 | Fachkräftemangel behindert 22,0 % der KMU, 19,3 % der Großunternehmen (April 2026). | KfW-ifo-Barometer, S. 2 | [18] | Notiz | ✔ |
-| H-08 | 569.000 Inhaberinnen/Inhaber planen bis Ende 2029 eine Stilllegung statt Fortführung (ca. 114.000/Jahr); Gründe u. a. Rentenalter (52 %), fehlendes Familieninteresse (47 %). | KfW Fokus 526, S. 2 | [24] | F16, F20, Papier §3, §6 | ✔ |
-| H-09 | Inhaber im Schnitt über 54 Jahre (2003: 45); 57 % ab 55 Jahren. | KfW Fokus 526, S. 2 | [24] | Notiz | ✔ |
-| H-10 | Homeoffice 2025 nach Unternehmensgröße: klein (bis 49) 19 %, mittel 23 %, groß 35 % (gesamt 25 %). | Destatis PM N024 | [27] | Notiz | ✔ |
-| H-11 | KI-Nutzung 2025: 10–49 Beschäftigte 23 %, 50–249: 36 %, ab 250: 57 %. | Destatis-Tabelle | [26] | Notiz | ✔ |
-| H-12 | Für den KI-Einsatz entscheidend ist „weniger die Unternehmensgröße, sondern vor allem der Digitalisierungsgrad, vorhandenes digitales Knowhow und die generelle Innovativität“. | KfW Fokus 554, S. 1 | [25] | Notiz | ✔ |
+| H-01 | Emotionale Bindung 2025: hoch 10 %, gering 77 %, keine 13 %. | Gallup-PM, S. 1 | [21] | F16, Papier §3 | ✔✔ |
+| H-02 | Kernaussage der Pressemitteilung: „Geringe emotionale Bindung ist kein Einstellungs-, sondern ein Führungsproblem“. Wortlaut Marco Nink (Studienleiter): „Das ist weniger ein Einstellungs- als vielmehr ein Führungsproblem.“ | PM S. 1; Bericht S. 4 | [21][22] | F16, Papier §3 | ✔✔ |
+| H-03 | Nur 21 % der Beschäftigten, **deren Unternehmen KI nutzt**, stimmen vollständig zu, dass ihre Führungskraft den KI-Einsatz aktiv unterstützt. | Bericht S. 9, 37; PM S. 3 | [21][22] | F16, Papier §3 | ✔✔ (korrigiert) |
+| H-04 | Gallup weist keine Werte nach Unternehmensgröße aus (geprüft: Berichte 2023, 2024, 2025; 2018 nicht mehr frei abrufbar). | – | [21][22] | F16 (Fuß), Papier §3 | ✔✔ |
+| H-05 | Nur 40 % der Führungskräfte erhielten in den letzten 12 Monaten ein Coaching zu ihrer Führungsaufgabe (alle Größen). | Gallup-Bericht, S. 14 | [22] | Notiz | ✔✔ |
+| H-06 | 92 % der Mittelständler (20–999 Beschäftigte) erwarten negative Folgen des Fachkräftemangels (alle: 83 %). | DIHK-Report, S. 4, 15 | [19] | F16, Papier §3 | ✔✔ |
+| H-07 | Fachkräftemangel behindert 22,0 % der KMU, 19,3 % der Großunternehmen (April 2026). KMU-Definition des Barometers: ≤ 500 Beschäftigte und ≤ 50 Mio. € Umsatz (sektoral enger) – nicht EU-Definition. | KfW-ifo-Barometer, S. 2 | [18] | Notiz | ✔✔ |
+| H-08 | 569.000 Inhaberinnen/Inhaber streben bis Ende 2029 nach ihrem Rückzug keine Fortführung an (Stilllegung definitiv geplant oder als ernsthafte Option; ca. 114.000/Jahr). Gründe (Anteile unter Unternehmen mit Stilllegungsplänen, Mehrfachnennung): Rentenalter 52 %, fehlendes Familieninteresse 47 %. Wortlaut: „streben somit 569.000 Unternehmenslenkerinnen und -lenker nach dem eigenen Rückzug keine Fortführung des Unternehmens an“. | KfW Fokus 526, S. 2 | [24] | F16, F20, Papier §3, §6 | ✔✔ |
+| H-09 | Inhaber im Schnitt über 54 Jahre (2003: 45); 57 % ab 55 Jahren. | KfW Fokus 526, S. 2 | [24] | Notiz | ✔✔ |
+| H-10 | Homeoffice 2025 (Anteil der **Erwerbstätigen**, zumindest gelegentlich) nach Unternehmensgröße: klein (bis 49) 19 %, mittel 23 %, groß 35 % (gesamt 25 %). | Destatis PM N024 | [27] | Notiz | ✔✔ |
+| H-11 | KI-Nutzung 2025 (Unternehmen ab 10 Beschäftigten, gesamt 26 %; Reihenbruch durch EU-Unternehmensbegriff): 10–49 Beschäftigte 23 %, 50–249: 36 %, ab 250: 57 %. Vor dem Vortrag auf Berichtsjahr 2026 prüfen (ab Ende November). | Destatis-Tabelle | [26] | Notiz | ✔✔ |
+| H-12 | Für den KI-Einsatz entscheidend ist „weniger die Unternehmensgröße, sondern vor allem der Digitalisierungsgrad, vorhandenes digitales Knowhow und die generelle Innovativität“ – Ergebnis einer Regressionsanalyse (andere Merkmale konstant); deskriptiv steigt die Nutzung mit der Größe. | KfW Fokus 554, S. 1, 4, 7 | [25] | Notiz | ✔✔ |
 
 ## 9 Praxisfälle (INQA-Coaching – Erfolgsberichte eines Förderprogramms, Angaben der Betriebe)
 
 | ID | Aussage | Beleg | Quelle | Verwendet | Status |
 |---|---|---|---|---|---|
-| P-01 | Pflegedienst Jahnke (Neuenhaus, Familienbetrieb): Personal „von 18 auf 43 Mitarbeitende aufgestockt“; neue Teamleads hatten „Probleme mit anlassbezogenen Gesprächen“, „höhere Personal-Fluktuation“; „Leitfaden für die Feedbackgespräche“, Notfallkette; Sohn „hat das operative Geschäft inzwischen komplett übernommen“. Zitat Inhaberin Gabriele Jahnke: „Wie führe ich? Das war eine der zentralen Fragen, vor allem für die, die auf einmal Personalverantwortung hatten“. | Seite vom 04.02.2025 | [36] | F17, F18, Papier §3 | ✔ |
-| P-02 | Malerbetrieb Karl Eck (Heidelberg, 4. Generation): „knapp 40 Mitarbeiter*innen“; Feedback-System per Fragebögen, Intranet, Videointerviews. Zitat GF Sebastian Eck: „Aber im Tagesgeschäft fehlte mir einfach die Zeit, mich diesen wichtigen Zukunftsthemen zu widmen“. | Seite vom 11.03.2025 | [37] | F14, F18 | ✔ |
-| P-03 | Wöhlke Möbelmanufaktur (Stuhr): „Handwerksbetrieb mit 25 Mitarbeitenden“; Arbeitsgruppen aus Beschäftigten und Geschäftsführung nach Scrum; Zitat Stephan Wöhlke: „Scheitern muss erlaubt sein. Fehler passieren, um daraus zu lernen.“ Seite ohne Datum. | Seite o. J. | [39] | F14, F18 | ✔ |
-| P-04 | Steuerhaus Kiel: „14-köpfige Team“; Fusion zweier Kanzleien; gemeinsames Leitbild. Zitat GF Anika Päpcke: „Alle Mitarbeitenden schrieben auf: Wie wünschen wir uns die Zusammenarbeit? Was läuft gut, was muss sich ändern?“ | Seite vom 14.07.2025 | [61] | F14, F18 | ✔ |
-| P-05 | „Lernkultur ist kein Luxus …“ ist Redaktionstext von INQA, kein Personenzitat. | – | [40] | – | ✖ (als Zitat) |
-| P-06 | veloCenter Kiel (Fahrradhandel): „Team von 19 Mitarbeitenden“; GF Philipp Mikloweit „zu stark ins operative Geschäft eingebunden“, „fiel ein halbes Jahr aus“; Zitate: „Ich habe immer gedacht, ich muss überall mitmachen und dabei sein“; „Ich konnte viele Aufgaben abgeben. Dadurch ist es auch für die Beschäftigten leichter geworden, weil ich nicht mehr dazwischenfunke“; „Regelmäßige Feedbackrunden“. Seite ohne Datum. | Seite o. J. | [60] | F13, F18 | ✔ |
-| P-07 | ELBS (Leckortung/Bautrocknung, Handwerk): Zitat GF Rocco Funke: „… Ich musste mich damit beschäftigen und loslassen lernen“. Erfolgszahlen (z. B. Umsatz) = Selbstauskunft, durch Vier-Tage-Woche überlagert → nicht verwenden. Keine Beschäftigtenzahl. | Seite o. J. | [59] | F13, F18 | ✔ ⚠ |
-| P-08 | up to data: OKR war erst **geplant** („Im Laufe des Jahres 2025 soll sie nun implementiert werden“), Silo-Denken nicht „überwunden“. | Seite vom 30.04.2025 | [38] | – | ✔ ⚠ |
+| P-01 | Ambulanter Pflegedienst Jahnke (Neuenhaus, familiengeführt): „Als vor vier Jahren eine Betriebserweiterung anstand und das Personal von 18 auf 43 Mitarbeitende aufgestockt wurde“; neue Teamleads hatten „Probleme mit anlassbezogenen Gesprächen“, „höhere Personal-Fluktuation“; „Mit agilen Methoden entwickelte das Projektteam einen passgenauen Leitfaden für die Feedbackgespräche“; „Der Leitfaden bietet den neuen Führungskräften eine klare Struktur“; Notfallkette. Nachfolge war schon Ausgangslage („sollte der Sohn … Schritt für Schritt das operative Geschäft übernehmen“); Redaktionstext: Sohn Bruno Zwick „hat das operative Geschäft inzwischen komplett übernommen“ – **kein** belegter Zusammenhang mit dem Leitfaden. Zitat Inhaberin Gabriele Jahnke: „Wie führe ich? Das war eine der zentralen Fragen, vor allem für die, die auf einmal Personalverantwortung hatten“. | Seite vom 04.02.2025 | [36] | F17, F18, Papier §3 | ✔✔ |
+| P-02 | Malerbetrieb Karl Eck (Heidelberg, 4. Generation): „knapp 40 Mitarbeiter*innen“; Anlass: Wissenssicherung beim Ruhestand älterer Beschäftigter; Feedback-System per Fragebögen (dritte Maßnahme), Intranet, Videointerviews (noch nicht abgeschlossen). Zitat GF Sebastian Eck: „Aber im Tagesgeschäft fehlte mir einfach die Zeit, mich diesen wichtigen Zukunftsthemen zu widmen“ – gemeint: Wissenstransfer und Digitalisierung. | Seite vom 11.03.2025 | [37] | F14, F18 | ✔✔ |
+| P-03 | Wöhlke Möbelmanufaktur (Stuhr): „Handwerksbetrieb mit 25 Mitarbeitenden“; KI-Einführung; Kick-off-Workshop mit allen Mitarbeitenden; „Arbeitsgruppen bestehend aus Beschäftigten und Geschäftsführung“ nach Scrum; Zitat Stephan Wöhlke (Geschäftsführer): „Scheitern muss erlaubt sein. Fehler passieren, um daraus zu lernen.“ Seite ohne Datum. | Seite o. J. | [39] | F14, F18 | ✔✔ |
+| P-04 | Steuerhaus Kiel: „14-köpfige Team“ (Stand heute, nach der Fusion zweier Kanzleien 2023); gemeinsames Leitbild. Zitat GF Anika Päpcke: „Alle Mitarbeitenden schrieben auf: Wie wünschen wir uns die Zusammenarbeit? Was läuft gut, was muss sich ändern?“ | Seite vom 14.07.2025 | [61] | F14, F18 | ✔✔ |
+| P-05 | „Lernkultur ist kein Luxus …“ ist Redaktionstext von INQA, kein Personenzitat. | – | [40] | – | ✖ (als Zitat) (bestätigt) |
+| P-06 | veloCenter Kiel (Fahrradhandel): „ein Team von 19 Mitarbeitenden“ (Standort ab 2020; 2016: fünf); „Philipp Mikloweit, einer der beiden Geschäftsführer“ (mit Oliver Bahtke) „war zu stark ins operative Geschäft eingebunden“; „Dies führte zu Mehrarbeit und schließlich zu persönlicher Überlastung: Mikloweit fiel ein halbes Jahr aus.“; „Mikloweit und Bahtke führten eine Werkstatt- und Teamleitung ein. Dadurch wurden die Führungsaufgaben im Team verteilt und die Geschäftsführer entlastet.“ Zitate Mikloweit: „Ich habe immer gedacht, ich muss überall mitmachen und dabei sein“; „Ich konnte viele Aufgaben abgeben. Dadurch ist es auch für die Beschäftigten leichter geworden, weil ich nicht mehr dazwischenfunke“. Redaktionstext (kein Zitat): „Regelmäßige Feedbackrunden sorgen dafür …“. | Seite o. J. | [60] | F13, F18 | ✔✔ (korrigiert) |
+| P-07 | ELBS (Leckortung/Bautrocknung, Leinefelde-Worbis, Thüringen; Handwerk; Coaching Frühjahr 2024): Zitat GF Rocco Funke: „Während des Coachings kam heraus: Meine Mitarbeiter*innen möchten mehr Verantwortung, sie möchten sich einbringen, sie haben Ideen und Talente. Ich musste mich damit beschäftigen und loslassen lernen“. Erfolgszahlen = Selbstauskunft, widersprüchlich (Teaser 100 %, Text „bis zu 50 Prozent“) und durch Vier-Tage-Woche überlagert → nicht verwenden. Keine Beschäftigtenzahl. | Seite o. J. | [59] | F13, F18 | ✔✔ ⚠ |
+| P-09 | Gemeinsamkeiten der sechs Fälle (eigene Auswertung): Engpass Inhaber belegt bei P-06, P-07, eingeschränkt P-02; Auslöser bei P-01, P-03, P-04 woanders. Ergebnis laut Betrieben: Entlastung. Alle Fälle aus dem Förderprogramm INQA-Coaching → Auswahlverzerrung (nur Erfolge). | Synthese | [36][37][39][59][60][61] | F18 | ✔ (Synthese) |
+| P-08 | up to data: OKR war erst **geplant** („Im Laufe des Jahres 2025 soll sie nun implementiert werden“), Silo-Denken nicht „überwunden“. Die Seite widerspricht sich im Schlussabsatz („Die Einführung der OKR-Methode … legte die Grundlage“); Sprecherin der Zitate: Sabrina Maiherzyk (nicht Geschäftsführung). | Seite vom 30.04.2025 | [38] | – | ✔✔ ⚠ |
 
 ## 10 Nicht verwenden / keine Quelle gefunden
 
@@ -151,7 +155,30 @@ Stand: 28.10.2026 · Referat „Führung – Begriff und Bedeutung im KMU“ · 
 
 ## 11 Gegenprüfung durch unabhängige Agenten
 
-*Wird nach Abschluss der Prüfung ergänzt (Prüfberichte in `recherche/pruefung/`).*
+Am 28.10.2026 haben fünf unabhängige Prüf-Agenten jeden Eintrag am Original nachgeschlagen (Wortlaut, Zahl, Fundstelle, Bezugsgröße). Die Berichte liegen in `recherche/pruefung/`. Jeder Befund wurde in Dossier, Folien, Sprechtexte und Diskussionspapier übernommen oder unten begründet abgelehnt.
+
+| Prüfer | Umfang | Ergebnis | Bericht |
+|---|---|---|---|
+| 1 | Begriff, KMU-Definitionen, Kennzahlen, Besonderheiten, Führungsstile (B, K, Z, S, L) | 37 geprüft · 27 bestätigt · 9 Abweichungen (Z-02, Z-04, S-01, S-06–S-09, L-01, L-02) · 1 nicht prüfbar (B-11, Negativaussage) | `pruefer-1-begriff-kmu.md` |
+| 2 | Führungsinstrumente, Feedback, Kultur (I, C) | 23 geprüft · 21 bestätigt · 2 Abweichungen (C-04 Bezugsgröße, C-07 Jahr/Stichprobe) | `pruefer-2-instrumente-kultur.md` |
+| 3 | Herausforderungen (H) | 12 geprüft · 11 bestätigt · 1 Abweichung (H-03 Bezugsgröße); keine neueren Ausgaben der Reihen | `pruefer-3-herausforderungen.md` |
+| 4 | Praxisfälle (P) und Folien f13, f14, f17, f18 | 8 geprüft · 7 bestätigt · 1 geringe Abweichung (P-06); Kausalität und Zuspitzungen auf den Folien | `pruefer-4-praxisfaelle.md` |
+| 5 | Konsistenz: jede Aussage in Präsentation und Papier gegen das Dossier | 17 Fehler, 18 Überdehnungen, 14 fehlende Dossier-Einträge, 13 innere Widersprüche | `pruefer-5-konsistenz.md` |
+
+**Wichtigste Korrekturen**
+- **Zitate:** f03 Gabler-Zitat wieder vollständig („Profit- oder Non-Profit-Organisationen“); Wimmer-Zitat (S-01) mit „…“ und Größenabstufung; Endkürzungen überall mit „…“; Nink im eigenen Wortlaut (H-02).
+- **Bezugsgrößen:** 21 % KI-Unterstützung nur für Unternehmen mit KI (H-03); 90,8 % nur weiterbildungsaktive KMU (C-04); Führungsschulungen als HR-Angabe zum Zusammenhalt (I-14); Zielvereinbarungen nur Betriebe ab 50 (I-11, I-12); 569.000 = „keine Fortführung“ statt „geplante Stilllegung“ (H-08); Kennzahlen mit Jahr 2024 und EU-Definition (Z-01–Z-03).
+- **Überdehnungen zurückgenommen:** IfM-„kooperativ“ gilt nur für einen Führungstyp (S-09); Wimmer-„zwei Drittel“ ist eine Einschätzung (S-04); „tendenziell“/„zumindest in kleineren“ (S-07, S-08); Mittelstand statt pauschal KMU, „in einer Hand“ statt „eine Person“ (K-04); keine Kausalität Leitfaden → Nachfolge bei Jahnke (P-01); veloCenter: einer von zwei Geschäftsführern (P-06).
+- **Seiten und Quellen:** IfM-Studie [15] mit gedruckten Seiten 5, 8, 20; fehlende Nummern [17], [19], [22], [79] in Fußzeilen ergänzt; Anhang A [1]–[6] repariert.
+- **Kontinuum:** Stufenbezeichnungen als „eigene Bezeichnungen in Anlehnung an Tannenbaum/Schmidt (1958)“ gekennzeichnet (L-01).
+- **Neue Einträge:** B-12, S-12, I-17, P-09; erweitert: P-01–P-04, P-06, P-07.
+
+**Bewusst nicht übernommen**
+- „Überlastung“ bei veloCenter (Einwand Prüfer 5): Die Quelle sagt wörtlich „persönlicher Überlastung“ (am Original geprüft, P-06) – bleibt.
+- Siebener-Reihe aus Wikipedia (Prüfer 1, Option 1): Der Fragebogen ist schon verschickt; die verwendete Reihe bleibt und wird gekennzeichnet.
+- Restanteile „anderer Bereich“ auf f11 (1,7 / 1,7 / 2,3): nicht erneut prüfbar (Bot-Sperre bei EconStor) → auf der Folie ohne Zahl, im Dossier nicht ausgewiesen.
+
+**Statuslogik nach der Prüfung:** ✔✔ = bestätigt; „✔✔ (korrigiert)“ = Abweichung gefunden, Eintrag nach dem Original berichtigt; ✔ allein = nach der Prüfung neu aufgenommen, nur vom Bearbeiter geprüft.
 
 ---
 
