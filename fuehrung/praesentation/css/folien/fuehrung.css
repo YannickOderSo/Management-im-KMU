@@ -432,7 +432,7 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
   width: calc(var(--w) * 1%); display: flex; align-items: center; padding-left: 16px;
   font-family: var(--schrift-zahl); font-size: 36px; font-weight: var(--gewicht-zahl); color: var(--f-auf-akzent); white-space: nowrap; overflow: hidden;
 }
-.f-hr .f-hr-teil--gf { color: #fff; }
+.f-hr .f-hr-teil--gf { color: var(--f-hintergrund); }
 .f-hr .f-hr-wert { font-size: var(--groesse-text-min); color: var(--f-text-2); }
 .f-hr .f-hr-zitat { margin: auto 0 0 300px; }
 .f-hr .f-hr-zitat .zitat-text { font-size: 40px; }
