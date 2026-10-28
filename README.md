@@ -36,3 +36,7 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 ## Online (GitHub Pages)
 
 Startseite: https://yannickoderso.github.io/Management-im-KMU/ (nach dem Einschalten unter Settings → Pages)
+
+GitHub Pages zeigt den Branch `claude/exciting-meitner-w27zwy` (Standard-Branch des Repos).
+
+- Recap 26.10.2026: https://yannickoderso.github.io/Management-im-KMU/recap/2026-10-26-prozessmanagement-und-ki/praesentation/index.html
