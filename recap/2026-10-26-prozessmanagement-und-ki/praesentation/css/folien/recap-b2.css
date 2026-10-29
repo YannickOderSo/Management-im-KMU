@@ -1,0 +1,47 @@
+/* =============================================================================
+   recap-b2.css – Folien f08–f13 (Block 2: KI im KMU)
+   Gehört dem Folien-Agenten für Block 2. Fundament (Tokens, Rahmen,
+   Laufleiste, Faden, Komponenten r-…) steht in recap.css – dort NICHT ändern;
+   Bausteine und Markup-Muster: werk/KATALOG.md.
+   Regeln je Folie mit der Folienklasse beginnen, nur Tokens verwenden.
+   f08 und f11 sind aus Prototyp A portiert (Fundament) und dürfen verfeinert werden.
+   ============================================================================= */
+
+/* ---------- Folie 08: drei Kennzahlen (r-zahl) mit Strichskala, Spotlight ---------- */
+.r-zahlen .folie-inhalt { justify-content: flex-start; }
+.r-anteile { display: flex; flex-direction: column; gap: 22px; }
+
+/* ---------- Folie 11: TAM als Pfaddiagramm ----------
+   SVG im Bühnenmaß (viewBox 1060 × 560 = Pixel); Knoten als Wörter an festen
+   Ankern, Pfeilspitzen als eigene Dreiecke (siehe recap.css 5.10). */
+.r-tam .folie-inhalt { justify-content: flex-start; }
+.r-tam-raster { display: grid; grid-template-columns: var(--r-raster); column-gap: var(--r-rinne); align-items: start; }
+.r-tam-modell { position: relative; grid-column: 1 / 9; width: 1060px; height: 560px; margin: 0; }
+.r-tam-name { position: absolute; left: 0; top: 0; }
+.r-tam-pfeile { position: absolute; inset: 0; width: 1060px; height: 560px; overflow: visible; }
+.r-tam-knoten { position: absolute; }
+.r-tam-knoten--bf { left: 0; top: 84px; }
+.r-tam-knoten--nutzen { left: 0; top: 470px; }
+.r-tam-knoten--nutzung { left: 900px; top: 270px; translate: -50% 0; }
+.r-tam-label { position: absolute; left: 560px; top: 130px; }
+.r-tam-rechts { grid-column: 9 / 13; display: flex; flex-direction: column; gap: 40px; padding-top: 76px; }
+.r-tam-zahl b {
+  display: block;
+  font-family: var(--schrift-zahl);
+  font-size: 84px;
+  font-weight: 470;
+  line-height: 0.82;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 72, var(--achsen-ruhig);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.r-tam-zahl > span { display: block; margin-top: 14px; font-size: 30px; line-height: 1.3; }
+.r-tam-folgerung {
+  font-family: var(--schrift-display);
+  font-size: 46px;
+  font-weight: 450;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  color: var(--r-faden-text);
+}

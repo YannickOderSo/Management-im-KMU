@@ -1,337 +1,1100 @@
 /* =============================================================================
-   recap.css – Gestaltung der Folien „Recap 26.10.2026“
-   Nur Tokens aus css/tokens.css verwenden (dann stimmen alle Themen und
-   hell/dunkel). Gemeinsame Bausteine beginnen mit .r-, folienspezifische
-   Regeln mit der Klasse ihrer Folie. Bühne: 1920 × 1080 px.
+   recap.css – FUNDAMENT der Gestaltung „Der rote Faden“
+   Recap der Sitzung vom 26.10.2026 (Management im KMU). Bühne 1920 × 1080 px.
+   -----------------------------------------------------------------------------
+   IDEE
+   Die gemeinsame These der Referate ist der rote Faden – und er ist das EINE
+   gestalterische Ereignis: eine Karminlinie durch die ganze Präsentation
+   (Titel, Überblick, Trennfolien, Laufleiste, Fazit). Auf Titel- und
+   Trennfolien läuft sie wie eine Grundlinie knapp UNTER der Schrift; nur wo
+   Unterlängen (g, p, j, y …) sie kreuzen, ist sie gewebt. Alles andere ist
+   Magazin-Disziplin: Tinte auf kühlem Kreidepapier, Satz-Titel, Weißraum,
+   asymmetrisches 12er-Raster, keine Kästen, keine Pillen, keine Versalien.
+
+   WEM GEHÖRT WAS (parallele Arbeit, siehe werk/KATALOG.md)
+     recap.css       Fundament: Tokens, Rahmen, Laufleiste, Faden, Komponenten,
+                     Folien f01, f02, t1–t4 (nur hier ändern, wer das Fundament betreut)
+     recap-b1.css    Folien f03–f07           recap-b2.css   Folien f08–f13
+     recap-b34.css   Folien f14–f18 und b1
+   Folienspezifisches gehört in die Datei der Folie, nie hierher.
+
+   RASTER  12 Spalten à 109,33 px, Rinne 32 px, Rand 128 px links/rechts,
+           52 px oben, 44 px unten. Spalte n beginnt bei x = 128 + (n − 1) · 141,33
+           (Sp. 1: 128 · Sp. 2: 269,33 · Sp. 4: 552 · Sp. 8: 1117,33 · Sp. 9: 1258,67)
+           Breiten: 1–3 = 392 · 1–7 = 957,33 · 1–8 = 1098,67 · 1–9 = 1240 · 9–12 = 533,33
+   SENKRECHT  Laufleiste (44) → 60 → Titel (88/1,05) → 56 → Inhalt → Quelle (22)
+
+   Aufbau dieser Datei
+     1. Schrift Libre Franklin
+     2. Tokens: Farben hell/dunkel · Zuordnung zur Engine · Typografie · Maße
+     3. Folienrahmen: Titel, Quelle, Laufleiste
+     4. Der rote Faden: Linie, Hof, Weben, Knoten, offenes Ende
+     5. Komponenten (Präfix r-): Raster/Felder, Bezeichner, These, Zitat,
+        Hinweiszeile, Haarlinie, %-Einheit, Strichskala, Kompaktbalken,
+        Kennzahl, Spotlight, Pfaddiagramm, Ablauf/Kette, Kreislauf, Zeitstrahl,
+        Vergleich, Liste
+     6. Fundament-Folien: f01 Titel, f02 Überblick, t1–t4 Trennfolien
+     7. Bewegung, Druck, Aufnahme, „Bewegung reduzieren“
    ============================================================================= */
 
-/* ---------- gemeinsame Bausteine ---------- */
-.folie .r-zwei { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--abstand-7); align-items: start; }
-.folie .r-zwei--breit { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); }
-.folie .r-zwei--schmal-breit { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: center; }
-.folie .r-klein { font-size: var(--groesse-text-min); color: var(--f-text-2); }
-.folie b { font-weight: var(--gewicht-fett); }
 
-/* Pille für den Stand eines Blocks */
-.folie .r-pille {
-  align-self: flex-start; padding: 4px 14px; border-radius: var(--radius-pille);
-  font-size: var(--groesse-meta); font-weight: var(--gewicht-fett); letter-spacing: 0.02em;
-  color: var(--f-hart); background: var(--f-hart-flaeche);
+/* -----------------------------------------------------------------------------
+   1. SCHRIFT: Libre Franklin (OFL, lokal; schriften/HERKUNFT.txt)
+   ----------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Franklin Deck";
+  src: url("../../schriften/libre-franklin-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-.folie .r-pille--offen { color: var(--f-akzent); background: var(--f-akzent-flaeche); }
-
-/* Zeile mit Ergänzung der Dozentin bzw. Beispiel */
-.folie .r-kern-zeile,
-.folie .r-beispiel {
-  display: flex; align-items: baseline; gap: var(--abstand-4); margin-top: auto;
-  padding: var(--abstand-4) var(--abstand-5); border-left: var(--linie-stark) solid var(--f-akzent);
-  background: var(--f-akzent-flaeche); font-size: var(--groesse-gross); line-height: 1.3;
-}
-.folie .r-kern-zeile > [data-meta],
-.folie .r-beispiel > [data-meta] {
-  flex: none; font-size: var(--groesse-meta); font-weight: var(--gewicht-fett);
-  letter-spacing: 0.06em; text-transform: uppercase; color: var(--f-akzent);
+@font-face {
+  font-family: "Franklin Deck";
+  src: url("../../schriften/libre-franklin-latin-ext-wght-normal.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
-/* Hinweis mit Icon */
-.folie .r-hinweis {
-  display: flex; align-items: center; gap: var(--abstand-4);
-  padding: var(--abstand-4) var(--abstand-5); border-radius: var(--radius-l);
-  background: var(--f-flaeche); font-size: var(--groesse-text-min); line-height: 1.3;
-}
-.folie .r-hinweis .icon { flex: none; width: 48px; height: 48px; stroke: var(--f-hart); stroke-width: 1.8; fill: none; }
-.folie .r-hinweis--offen { background: var(--f-akzent-flaeche); }
-.folie .r-hinweis--offen .icon { stroke: var(--f-akzent); }
 
-/* Warnfarbe für „Achtung“-Begriffe */
-.folie .r-warnung b { color: var(--f-akzent); }
-
-/* Jahreszahlen */
-.folie .r-jahr {
-  font-family: var(--schrift-zahl); font-size: var(--groesse-meta); font-weight: var(--gewicht-fett);
-  letter-spacing: 0.04em; color: var(--f-akzent); font-variant-numeric: lining-nums tabular-nums;
+/* -----------------------------------------------------------------------------
+   2. TOKENS
+   2a. Farbwerte je Modus – am <html> und an jeder Folie mit eigenem
+       data-modus (auch in Übersicht, Referenten-Vorschau, Druck mit Notizen).
+       Die Werte gelten in ALLEN Themen (Taste T wechselt nur die Schriften).
+       Kontraste gegen das Papier des Modus:
+         hell   Tinte 15,4 · Schiefer 5,7 · Mittel 3,8 · Nebel 1,6 · Karmin 5,6
+         dunkel Kreide 15,6 · Schiefer hell 8,5 · Mittel 3,1 · Leer 1,8 ·
+                Faden (Linie) 4,4 · Faden-Text 6,3
+       Abweichung von der Spec: „Mittel dunkel“ #566076 erreicht auf Nacht nur
+       2,75 : 1 (Grafik mit Information braucht ≥ 3 : 1) → #5E687E (3,1 : 1).
+   ----------------------------------------------------------------------------- */
+html[data-modus],
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-modus="hell"] {
+  --r-papier: #F2F3EF;        /* Kreide: Papier */
+  --r-schrift: #161B27;       /* Tinte: Schrift, Titel, Daten, Pfeile */
+  --r-schrift-2: #586070;     /* Schiefer: Nebentext, Meta, Quellen, zurückgetretene Spotlight-Texte */
+  --r-mittel: #737B8B;        /* Mittel: Grafik „gering/sekundär“, zurückgetretene Striche */
+  --r-leer: #BCC2CB;          /* Nebel: NUR leere Reststriche, Haarlinien, kommende Laufleiste – nie Daten */
+  --r-faden: #C0132D;         /* Karmin: Faden (Linie, Webung, aktueller Block), Schlüssel-Grafik */
+  --r-faden-text: #C0132D;    /* Karmin als Schrift: die EINE Schlüsselzahl/-aussage je Folie */
+  --r-letterbox: #D7DAD4;     /* Rand um die Bühne (Fenster nicht 16 : 9) */
+  --r-ui-flaeche: #E5E7E2;    /* nur Bedienleiste/Übersicht der Engine – nie auf Folien */
+}
+html[data-modus="dunkel"],
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-modus="dunkel"] {
+  --r-papier: #141A29;        /* Nacht */
+  --r-schrift: #F2F3EF;       /* Kreide */
+  --r-schrift-2: #AEB6C4;     /* Schiefer hell */
+  --r-mittel: #5E687E;        /* Mittel dunkel (3,1 : 1, siehe oben) */
+  --r-leer: #3A4359;          /* Leer */
+  --r-faden: #EE3A4F;         /* Faden (Linie) */
+  --r-faden-text: #FF6B79;    /* Faden als Schrift (6,3 : 1) */
+  --r-letterbox: #090C13;
+  --r-ui-flaeche: #1E2536;
 }
 
-/* Horizontale Balken (eine Reihe, direkt beschriftet) */
-.folie .r-diagramm { margin: 0; display: flex; flex-direction: column; gap: var(--abstand-4); }
-.folie .r-diagramm figcaption {
-  font-size: var(--groesse-meta); font-weight: var(--gewicht-fett); letter-spacing: 0.06em;
-  text-transform: uppercase; color: var(--f-text-2);
+/* 2b. Zuordnung zu den Engine-Tokens (--f-…) für alle drei Themen.
+   Am <html> (Bedienung, Prüfsonde) UND an jeder Folie neu, weil eigene
+   Eigenschaften mit var() dort aufgelöst werden, wo sie stehen – sonst erbte
+   eine Folie mit eigenem data-modus die Werte des <html>. Spezifität bewusst
+   höher als in tokens.css ([data-thema] [data-modus] = 0,2,0).
+   Getönte Flächen gibt es nicht mehr: alle Flächen-Tokens = Papier. */
+html[data-thema][data-modus],
+[data-thema] :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie {
+  --f-hintergrund: var(--r-papier);
+  --f-hintergrund-bild: none;
+  --f-flaeche: var(--r-papier);
+  --f-flaeche-2: var(--r-papier);
+  --f-letterbox: var(--r-letterbox);
+  --f-text: var(--r-schrift);
+  --f-text-2: var(--r-schrift-2);
+  --f-linie: var(--r-leer);
+  --f-linie-stark: var(--r-schrift);
+  --f-akzent: var(--r-faden-text);
+  --f-akzent-flaeche: var(--r-papier);
+  --f-auf-akzent: var(--r-papier);
+  --f-weich: var(--r-faden-text);
+  --f-weich-flaeche: var(--r-papier);
+  --f-hart: var(--r-schrift-2);
+  --f-hart-flaeche: var(--r-papier);
+  --f-kern: var(--r-faden-text);
+  --f-auf-kern: var(--r-papier);
+  --f-rahmen: var(--r-schrift);
+  --f-fokus: var(--r-faden-text);
+  --f-karte: var(--r-papier);
+  --f-karte-rand: var(--r-leer);
+  --f-balken: var(--r-mittel);
+  --f-diagramm-marke: var(--r-faden);
+  --f-diagramm-wettbewerb: var(--r-schrift-2);
+  --f-diagramm-ideal: var(--r-mittel);
 }
-.folie .r-balken { display: flex; flex-direction: column; gap: var(--abstand-4); }
-.folie .r-balken li { display: grid; grid-template-columns: 230px minmax(0, 1fr); align-items: center; gap: var(--abstand-3); }
-.folie .r-balken-name { font-size: var(--groesse-text-min); color: var(--f-text); }
-.folie .r-balken-spur { min-height: 48px; display: flex; align-items: center; gap: var(--abstand-3); border-left: var(--linie-fein) solid var(--f-linie); }
-.folie .r-balken-wert { height: 40px; width: calc(var(--w) * 0.8); background: var(--f-akzent); border-radius: 0 4px 4px 0; }
-.folie .r-balken--hart .r-balken-wert { background: var(--f-hart); }
-.folie .r-balken .r-balken-leise .r-balken-wert { background: var(--f-balken); }
-.folie .r-balken-zahl { line-height: 1.2; font-family: var(--schrift-zahl); font-size: var(--groesse-gross); font-weight: var(--gewicht-zahl); font-variant-numeric: lining-nums tabular-nums; color: var(--f-text); }
+/* Bedienleiste und Übersicht (außerhalb der Folien) dürfen eine ruhige Fläche zeigen */
+html[data-thema][data-modus] {
+  --f-flaeche: var(--r-ui-flaeche);
+  --f-flaeche-2: var(--r-ui-flaeche);
+}
 
-/* Kennzahlen-Reihe (wie im Führungs-Referat) */
-.folie .r-zahl { padding: var(--abstand-5); border-top: var(--linie-stark) solid var(--f-akzent); background: var(--f-flaeche); border-radius: 0 0 var(--radius-l) var(--radius-l); }
-.folie .r-zahl .kennzahl-wert { font-size: 108px; color: var(--f-text); }
-.folie .r-zahl .kennzahl-text { font-size: var(--groesse-text-min); color: var(--f-text); }
-.folie .r-zahl-quelle { margin-top: auto; padding-top: var(--abstand-3); font-size: var(--groesse-meta); color: var(--f-text-2); }
-.folie .r-zahl--held { background: var(--f-akzent-flaeche); }
-.folie .r-zahl--held .kennzahl-wert { color: var(--f-akzent); }
+/* 2c. Typografie des Themas „editorial“: Fraunces (alles Große) + Libre
+   Franklin (Text, Daten, Meta). Bento und Keynote behalten ihre Schriften. */
+html[data-thema="editorial"] {
+  --schrift-text: "Franklin Deck", "Inter Deck", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --schrift-kicker: var(--schrift-text);
+  --gewicht-text: 400;
+  --gewicht-fett: 600;
+  --gewicht-titel: 450;
+  --gewicht-display: 450;
+  --gewicht-zahl: 480;
+  --opsz-titel: 72;
+}
 
-/* Inhalt vertikal in die Mitte, damit unten keine Leerfläche bleibt */
-.folie:is(.r-begriff, .r-zeit, .r-arten, .r-zahlen, .r-groesse, .r-tam, .r-einsatz, .r-recht, .r-llm, .r-agent, .r-bund, .r-bindung, .r-fazit) > .folie-inhalt { justify-content: center; }
+/* 2d. Raster, Maße, Faden – in allen Themen gleich */
+html[data-thema] {
+  --rand-x: 128px;
+  --rand-oben: 52px;
+  --rand-unten: 44px;
+  --rinne: 32px;
+  --groesse-titel: 88px;
+  --groesse-text: 30px;
+  --groesse-gross: 34px;
+  --groesse-meta: 22px;
+  --zeilenhoehe-titel: 1.05;
+  --kicker-versalien: none;
+  --kicker-laufweite: 0;
+  --kicker-gewicht: 500;
 
-/* ---------- Fahrplan-Leiste in der Kopfzeile (js/folien/recap.js) ---------- */
-.folie .r-leiste { display: flex; align-items: center; gap: 6px; font-family: var(--schrift-kicker); font-size: var(--groesse-meta); }
-.folie .r-leiste-station {
-  display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px; border-radius: var(--radius-pille);
-  color: var(--f-text-2); letter-spacing: 0.04em;
-}
-.folie .r-leiste-station::before { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 2px solid currentColor; }
-.folie .r-leiste-station.ist-erledigt::before { background: currentColor; }
-.folie .r-leiste-station.ist-aktuell { color: var(--f-auf-akzent); background: var(--f-akzent); font-weight: var(--gewicht-fett); }
-.folie .r-leiste-station.ist-aktuell::before { background: currentColor; }
+  --r-raster: repeat(12, minmax(0, 1fr));   /* grid-template-columns für 12 Spalten */
+  --r-spalte: 109.333px;
+  --r-rinne: 32px;
+  --r-randspalte: 392px;                    /* Spalten 1–3: hängende Zahlen */
+  --r-hauptfeld: 1098.667px;                /* Spalten 1–8 */
+  --r-seitenfeld: 533.333px;                /* Spalten 9–12 */
 
-/* ---------- Folie 01: Titel ---------- */
-.r-titel .folie-kopf { max-width: 1100px; }
-.r-titel .folie-inhalt { position: static; }
-.r-titel .lead { max-width: 1000px; }
-.r-titel .angaben { grid-template-columns: 1.25fr 1.25fr 0.8fr; max-width: 1450px; }
-.r-titel .r-titel-motiv { position: absolute; right: 140px; top: 170px; width: 520px; height: 520px; overflow: visible; }
-.r-titel .r-titel-faden { fill: none; stroke: var(--f-linie); stroke-width: 4; stroke-dasharray: 8 14; }
-.r-titel .r-titel-motiv circle {
-  fill: var(--f-hintergrund); stroke: var(--f-akzent); stroke-width: 4;
-  transform-box: fill-box; transform-origin: center;
-  animation: r-auftauchen 700ms var(--kurve-feder) both; animation-delay: calc(400ms + var(--i) * 180ms);
-}
-.r-titel .r-titel-motiv .r-titel-kern { fill: var(--f-akzent); }
-.r-titel .r-titel-motiv text {
-  font-family: var(--schrift-zahl); font-size: 34px; font-weight: var(--gewicht-zahl); text-anchor: middle; fill: var(--f-text);
-}
-.r-titel .r-titel-motiv text:last-of-type { fill: var(--f-auf-akzent); }
-@keyframes r-auftauchen { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: none; } }
-html.druckmodus .r-titel .r-titel-motiv circle,
-html.aufnahme .r-titel .r-titel-motiv circle { animation: none; }
-@media (prefers-reduced-motion: reduce) { .r-titel .r-titel-motiv circle { animation: none; } }
+  --r-faden-dicke: 6px;                     /* Laufleiste, offene Enden */
+  --r-faden-dicke-gross: 8px;               /* Titel, Überblick, Trennfolien */
+  --r-faden-tief: 0.12em;                   /* Fadenmitte unter der Grundlinie */
+  --r-hof: 11px;                            /* Papierhof beim Weben (10–12 px) */
+  --r-strich-daten: 6px;                    /* Datenpfeile, Ablauflinien */
+  --r-strich-kern: 16px;                    /* Kernpfad (Karmin) */
+  --r-strich-schwach: 4px;                  /* gestrichelt */
+  --r-haar: 2px;                            /* Haarlinien (Nebel) */
 
-/* ---------- Folie 02: Überblick ---------- */
-.r-plan .r-bloecke { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--abstand-5); }
-.r-plan .r-block {
-  display: flex; flex-direction: column; gap: var(--abstand-3); min-height: 340px;
-  padding: var(--abstand-5); border-top: var(--linie-stark) solid var(--f-text); background: var(--f-flaeche);
-  border-radius: 0 0 var(--radius-l) var(--radius-l);
+  --r-trenner-groesse: 320px;               /* Kurzname auf t1–t4 (einheitlich, ≤ 330) */
+  --r-trenner-nr: 160px;                    /* Blocknummer als Knoten (120–160) */
 }
-.r-plan .r-block-nr { font-family: var(--schrift-zahl); font-size: 80px; line-height: 1; font-weight: var(--gewicht-zahl); color: var(--f-akzent); }
-.r-plan .r-block-titel { font-family: var(--schrift-display); font-size: 42px; line-height: 1.12; font-weight: var(--gewicht-display); }
-.r-plan .r-block-wer { font-size: var(--groesse-meta); color: var(--f-text-2); }
-.r-plan .r-block .r-pille { margin-top: auto; }
-.r-plan .r-these {
-  display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: var(--abstand-5); row-gap: 6px;
-  margin-top: auto; padding: var(--abstand-5); border-radius: var(--radius-l);
-  border: var(--linie-fein) solid var(--f-linie); background: var(--f-hintergrund);
+/* Breitere Grotesken unter Taste T: Kurznamen und Titel etwas kleiner, damit
+   „Bundeswehr“ im Raster bleibt */
+html[data-thema="keynote"],
+html[data-thema="bento"] {
+  --r-trenner-groesse: 260px;
+  --groesse-titel: 80px;
 }
-.r-plan .r-these-kicker { grid-column: 1; grid-row: 1 / 3; align-self: center; font-size: var(--groesse-meta); font-weight: var(--gewicht-fett); letter-spacing: 0.06em; text-transform: uppercase; color: var(--f-text-2); max-width: 170px; }
-.r-plan .r-these-text { grid-column: 2; font-family: var(--schrift-display); font-size: 40px; line-height: 1.2; font-weight: var(--gewicht-display); }
 
-/* ---------- Folie 03: Begriff ---------- */
-.r-begriff .r-begriff-links { gap: var(--abstand-6); }
-.r-begriff .zitat-text { font-size: 40px; }
-.r-fluss { display: flex; align-items: center; gap: var(--abstand-3); flex-wrap: nowrap; }
-.r-fluss li {
-  position: relative; padding: 14px 22px; border-radius: var(--radius-m);
-  background: var(--f-hart-flaeche); color: var(--f-text); font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett); white-space: nowrap;
-}
-.r-fluss li + li { margin-left: 34px; }
-.r-fluss li + li::before {
-  content: "→"; position: absolute; left: -40px; top: 50%; translate: 0 -50%; color: var(--f-hart); font-weight: 400;
-}
-.r-begriff .r-instanz { gap: var(--abstand-4); }
-.r-begriff .r-instanz .karte-titel { font-size: 38px; }
-.r-begriff .r-instanz .karte-text { color: var(--f-text); }
-.r-modell { position: relative; display: flex; flex-direction: column; gap: var(--abstand-3); padding: var(--abstand-2) 0; }
-.r-modell-vorlage { align-self: flex-start; padding: 14px 22px; border: var(--linie-stark) dashed var(--f-weich); border-radius: var(--radius-m); font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett); color: var(--f-weich); }
-.r-modell-fall { align-self: flex-start; margin-left: 48px; padding: 14px 22px; border-radius: var(--radius-m); background: var(--f-weich); color: var(--f-auf-akzent); font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett); }
 
-/* ---------- Folie 04: Relevanz ---------- */
-.r-relevanz .folie-inhalt { gap: var(--abstand-5); }
-.r-gruende { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-5); }
-.r-gruende li { display: flex; flex-direction: column; gap: 6px; padding-top: var(--abstand-3); border-top: var(--linie-stark) solid var(--f-hart); }
-.r-gruende b { font-family: var(--schrift-display); font-size: 38px; font-weight: var(--gewicht-display); }
-.r-gruende span { font-size: var(--groesse-text-min); color: var(--f-text-2); }
-.r-kette { display: flex; align-items: center; margin-top: var(--abstand-3); }
-.r-kette-glied {
-  flex: 1; padding: 22px 0; text-align: center; border-radius: var(--radius-m);
-  background: var(--f-flaeche-2); font-size: var(--groesse-gross); font-weight: var(--gewicht-fett);
+/* -----------------------------------------------------------------------------
+   3. FOLIENRAHMEN
+   ----------------------------------------------------------------------------- */
+.folie { font-feature-settings: "kern" 1; }
+.folie b,
+.folie strong { font-weight: var(--gewicht-fett); }
+
+/* Senkrechter Rhythmus: Laufleiste → 60 → Titel → 56 → Inhalt */
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .r-laufkopf ~ .folie-kopf { margin-top: 60px; }
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .folie-kopf ~ .folie-inhalt { margin-top: 56px; }
+
+/* Titel = Kernaussage als Satz: 88 px, höchstens 2 Zeilen, höchstens 9 Spalten.
+   Gezielter Zeilenumbruch: <span class="r-zeile">zweite Zeile</span> */
+.folie .titel {
+  font-size: var(--groesse-titel);
+  line-height: var(--zeilenhoehe-titel);
+  max-width: 1240px;
 }
-.r-kette-bruch { position: relative; flex: none; width: 70px; height: 4px; background: repeating-linear-gradient(90deg, var(--f-akzent) 0 10px, transparent 10px 18px); }
+.folie .titel .r-zeile { display: block; }
+
+/* Übergang: Kicker der noch nicht umgestellten Folien ruhig statt Versalien
+   (auf umgestellten Inhaltsfolien gibt es keinen Kicker mehr) */
+.folie .kicker { font-size: 24px; font-weight: 500; color: var(--r-schrift-2); }
+.folie .lead { color: var(--r-schrift-2); }
+
+/* Quelle: 22 px Schiefer unten links */
+.folie .quelle { font-size: 22px; line-height: 1.35; color: var(--r-schrift-2); }
+
+/* Laufleiste (js/folien/recap.js baut sie beim Laden in jede Folie mit
+   data-station="1…4"): vier Blocknamen über ihren Fadenabschnitten, Breite
+   nach Redezeit des Blocks (Summe data-zeit); rechts die Foliennummer.
+   data-station="alle" (Fazit): die vier Abschnitte schließen sich zu einer
+   durchgehenden Karminlinie. */
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .laufkopf.r-laufkopf {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: 40px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  color: var(--r-schrift-2);
+}
+.r-lauf { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.r-lauf-namen,
+.r-lauf-faden { display: flex; gap: 8px; }
+.r-lauf-name {
+  flex: var(--anteil, 1) 1 0;
+  min-width: 0;
+  white-space: nowrap;
+  font-family: var(--schrift-text);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--r-schrift-2);
+}
+.r-lauf-name.ist-aktuell { color: var(--r-schrift); font-weight: 600; }
+.r-lauf-faden { height: var(--r-faden-dicke); align-items: center; }
+.r-lauf-teil { flex: var(--anteil, 1) 1 0; height: var(--r-haar); background: var(--r-leer); }
+.r-lauf-teil.ist-erledigt { background: var(--r-schrift-2); }
+.r-lauf-teil.ist-aktuell { height: var(--r-faden-dicke); background: var(--r-faden); }
+.r-lauf--geschlossen .r-lauf-faden { gap: 0; }
+.r-lauf--geschlossen .r-lauf-teil { height: var(--r-faden-dicke); background: var(--r-faden); }
+.r-lauf--geschlossen .r-lauf-name { color: var(--r-schrift); }
+.r-lauf-nummer {
+  font-family: var(--schrift-zahl);
+  font-size: 30px;
+  font-weight: 450;
+  line-height: 1;
+  font-variation-settings: "opsz" 36, var(--achsen-ruhig);
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--r-schrift);
+}
+
+
+/* -----------------------------------------------------------------------------
+   4. DER ROTE FADEN
+   Markup (Wort steht auf dem Faden, der Faden läuft randabfallend):
+     <span class="r-webe" style="--faden-x: 128px">
+       <span class="r-faden" aria-hidden="true"><span class="r-faden-linie" data-morph="faden" data-ueberlauf-ok></span></span>Die Sitzung
+     </span>
+   • .r-faden ist ein Anker der Höhe 0 auf der GRUNDLINIE der Zeile. Die Linie
+     hängt daran: Mitte bei Grundlinie + --r-faden-tief (0,12 em). Das klappt
+     ohne Skript in jeder Schrift (Rückfall: gerade Linie unter dem Wort).
+   • --faden-x = Abstand des Ankers vom linken Folienrand (Raster-x der
+     Zeile); recap.js misst ihn nach und setzt Linke Kante/Breite exakt.
+   • .r-webe: einzeilig. recap.js tastet jede Glyphe im Fadenband ab (Canvas)
+     und webt NUR an Unterlängen-Kreuzungen: abwechselnd ein Stück „vorne“
+     (.r-webe-vorne, Papierhof oben/unten schneidet den Strich) und eine
+     Papierlücke „hinten“ (.r-webe-luecke: der Faden setzt 11 px vor und nach
+     dem Strich aus). Wörter ohne Unterlängen stehen schlicht auf dem Faden.
+     Geometrische Höfe statt text-shadow: keine Streifen an Haarstrichen.
+   • Jeder Faden braucht einen Stapelkontext (.r-webe oder .r-faden-rahmen):
+     die Linie liegt (z-index −1) über dem Papier, aber hinter der Schrift.
+   ----------------------------------------------------------------------------- */
+.r-webe,
+.r-faden-rahmen { position: relative; isolation: isolate; }
+.r-webe { display: block; white-space: nowrap; }
+.r-faden {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  vertical-align: baseline;
+}
+.r-faden-linie {
+  --dicke: var(--faden-dicke, var(--r-faden-dicke));
+  position: absolute;
+  z-index: -1;
+  top: calc(var(--r-faden-tief) - var(--dicke) / 2);
+  left: calc(-1 * var(--faden-x, var(--rand-x)));
+  width: var(--faden-breite, 1920px);
+  height: var(--dicke);
+  background: var(--r-faden);
+  pointer-events: none;
+}
+/* große Kompositionen (Titel, Überblick, Trennfolien): Faden 8 px */
+.r-faden--gross { --faden-dicke: var(--r-faden-dicke-gross); }
+
+/* Lücke „hinten“ (recap.js): Papier über dem Faden, unter der Schrift
+   (gleicher Stapel z-index −1, später im DOM = darüber) */
+.r-webe-luecke {
+  position: absolute;
+  z-index: -1;
+  background: var(--r-papier);
+  pointer-events: none;
+}
+/* Stück „vorne“ (recap.js): liegt über der Glyphe, Papierhof oben und unten
+   schneidet ihre Striche */
+.r-webe-vorne {
+  position: absolute;
+  z-index: 1;
+  /* ein Element: Hof oben | Faden | Hof unten (recap.js setzt top = Faden − Hof,
+     height = Faden + 2 · Hof) */
+  background: linear-gradient(var(--r-papier) 0 var(--r-hof), var(--r-faden) var(--r-hof) calc(100% - var(--r-hof)), var(--r-papier) calc(100% - var(--r-hof)));
+  pointer-events: none;
+  transition: opacity 420ms var(--kurve);
+}
+/* Während eines Folienwechsels gleitet der Faden als eigene Morph-Ebene
+   (data-morph="faden"); die Stücke „vorne“ blieben sonst im alten Bild
+   zurück. Sie verschwinden sofort und weben sich danach wieder ein. */
+html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
+
+/* Knoten: Zahl, die AUF dem Faden sitzt (Mitte der Versalhöhe = Fadenmitte).
+   Ein Papierkasten (Hof 11 px links und rechts) unterbricht den Faden; die
+   Zahl liegt darüber (z-index 1, auch über dem Stapel des Wortes). */
+.r-knoten {
+  position: relative;
+  z-index: 1;
+  justify-self: start;                   /* im Raster nur so breit wie die Zahl */
+  align-self: baseline;
+  padding-inline: var(--r-hof);
+  margin-inline-start: calc(-1 * var(--r-hof));
+  background: var(--r-papier);
+}
+
+/* Offenes Fadenende: der Faden kommt randabfallend von links und bricht vor
+   einer Hinweiszeile offen ab (zwei kurze Reste). Element mit .r-faden-ende
+   bekommt die Linie links von sich; Abstand zur Schrift 24 px. */
+.r-faden-ende { position: relative; }
+.r-faden-ende::before {
+  content: "";
+  position: absolute;
+  right: calc(100% + 24px);
+  top: 50%;
+  width: 1920px;
+  height: var(--r-faden-dicke);
+  translate: 0 -50%;
+  background: linear-gradient(90deg,
+    var(--r-faden) 0 calc(100% - 52px),
+    transparent calc(100% - 52px) calc(100% - 40px),
+    var(--r-faden) calc(100% - 40px) calc(100% - 22px),
+    transparent calc(100% - 22px) calc(100% - 12px),
+    var(--r-faden) calc(100% - 12px) calc(100% - 6px),
+    transparent calc(100% - 6px));
+  pointer-events: none;
+}
+
+
+/* -----------------------------------------------------------------------------
+   5. KOMPONENTEN
+   Farben nur über Tokens. Spotlight-fähige Teile lesen --spot-text,
+   --spot-strich, --spot-akzent, --spot-akzent-strich (5.9).
+   ----------------------------------------------------------------------------- */
+
+/* 5.0 Raster und Felder (12 Spalten, Rinne 32 px, keine Zeilenlücke):
+   <div class="r-raster"><div class="r-feld-haupt">…</div><div class="r-feld-seite">…</div></div>
+   Felder: rand 1–3 (hängende Zahlen) · text 4–12 · haupt 1–8 · seite 9–12 ·
+   links 1–7 · rechts 8–12 (Vergleich). Dreier/Vierer: .r-raster--3 / --4. */
+.r-raster { display: grid; grid-template-columns: var(--r-raster); column-gap: var(--r-rinne); align-items: start; }
+.r-raster--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.r-raster--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.r-feld-rand { grid-column: 1 / 4; }
+.r-feld-text { grid-column: 4 / 13; }
+.r-feld-haupt { grid-column: 1 / 9; }
+.r-feld-seite { grid-column: 9 / 13; }
+.r-feld-links { grid-column: 1 / 8; }
+.r-feld-rechts { grid-column: 8 / 13; }
+.r-feld-voll { grid-column: 1 / -1; }
+
+/* 5.1 Bezeichner: ruhige Zeile, die ein Diagramm benennt (statt Kicker),
+   z. B. „Technology Acceptance Model (Davis 1989)“. Immer mit data-meta. */
+.r-bezeichner {
+  font-family: var(--schrift-text);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--r-schrift-2);
+}
+
+/* 5.2 These/Aussage: Fraunces 50–56 px, höchstens 9 Spalten */
+.r-these {
+  max-width: 1240px;
+  font-family: var(--schrift-display);
+  font-size: 52px;
+  font-weight: 430;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  text-wrap: balance;
+  color: var(--spot-text, var(--r-schrift));
+}
+.r-these--faden { color: var(--spot-akzent, var(--r-faden-text)); }
+
+/* 5.2b Zitat: Fraunces 40 px, Quelle als Meta-Zeile darunter.
+   <blockquote class="r-zitat"><p class="r-zitat-text">„inhaltlich abgeschlossene … Folge von Aktivitäten“</p>
+     <footer class="r-zitat-quelle" data-meta>Becker/Kugeler/Rosemann 2012</footer></blockquote> */
+.r-zitat { margin: 0; max-width: 1098.667px; }
+.r-zitat-text {
+  font-family: var(--schrift-display);
+  font-size: 40px;
+  font-weight: 430;
+  line-height: 1.18;
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  text-wrap: pretty;
+  color: var(--spot-text, var(--r-schrift));
+}
+.r-zitat-quelle { display: block; margin-top: 14px; font-size: 22px; line-height: 1.3; color: var(--r-schrift-2); }
+
+/* 5.3 Hinweiszeile (statt Hinweiskasten): Meta-Zeile 24–28 px ohne Fläche.
+   Mit .r-faden-ende am offenen Fadenende. */
+.r-hinweis {
+  font-family: var(--schrift-text);
+  font-size: 26px;
+  line-height: 1.3;
+  color: var(--r-schrift-2);
+}
+.r-hinweis b { font-weight: 600; color: var(--r-schrift); }
+
+/* 5.4 Haarlinie: 2 px Nebel (Struktur, nie Information) */
+.r-haarlinie { height: 0; margin: 0; border: 0; border-top: var(--r-haar) solid var(--r-leer); }
+.r-mit-haarlinie { padding-top: 20px; border-top: var(--r-haar) solid var(--r-leer); }
+
+/* 5.5 %-Einheit: Prozentzeichen 0,5 em mit schmalem Abstand hinter der Zahl.
+   <span class="r-wert"><span data-animation="zaehlen" data-ziel="59">59</span><span class="r-einheit">%</span></span> */
+.r-einheit {
+  margin-left: 0.1em;
+  font-size: max(0.5em, 28px);           /* Inhalt: nie unter 28 px … */
+  letter-spacing: 0;
+  font-variant-numeric: lining-nums;
+}
+:is([data-meta], figcaption, .quelle, [class*="legende"]) .r-einheit { font-size: max(0.5em, 22px); }   /* … Meta: 22 px */
+
+/* 5.6 Strichskala: 100 Striche = 100 %, Breite = 100 × Takt (mind. 900 px).
+   Einzelwert:  <span class="r-skala" style="--wert:57" role="img" aria-label="57 von 100">
+                  <span class="r-skala-wert" data-animation="zeichnen"></span></span>
+   Teile:       <span class="r-skala r-skala--teile" role="img" aria-label="…">
+                  <span class="r-skala-teil r-skala-teil--faden" style="--anteil:10"></span>
+                  <span class="r-skala-teil r-skala-teil--mittel" style="--anteil:77"></span>
+                  <span class="r-skala-teil r-skala-teil--umriss" style="--anteil:13"></span></span>
+   Wert in Tinte, Rest in Nebel. Teile: Karmin/Tinte/Mittel, „leer/keine“ als
+   Umriss-Striche; zwischen Teilen eine Strichbreite Lücke. */
+.r-skala {
+  --takt: 12px;                         /* Strich + Lücke */
+  --strich: 8px;
+  --hoehe: 40px;
+  --rest: var(--r-leer);
+  --wert-farbe: var(--spot-strich, var(--r-schrift));
+  position: relative;
+  display: block;
+  flex: none;
+  width: calc(var(--takt) * 100);
+  height: var(--hoehe);
+  background: repeating-linear-gradient(90deg, var(--rest) 0 var(--strich), transparent var(--strich) var(--takt));
+}
+.r-skala--schmal { --takt: 9px; --strich: 6px; }          /* 900 px */
+.r-skala--faden { --wert-farbe: var(--spot-akzent-strich, var(--r-faden)); }
+.r-skala-wert {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(var(--wert) * var(--takt));
+  background: repeating-linear-gradient(90deg, var(--wert-farbe) 0 var(--strich), transparent var(--strich) var(--takt));
+}
+.r-skala--teile {
+  display: flex;
+  gap: var(--strich);
+  width: max-content;
+  background: none;
+}
+.r-skala-teil {
+  --teil-farbe: var(--spot-strich, var(--r-schrift));
+  flex: none;
+  width: calc(var(--anteil) * var(--takt));
+  height: 100%;
+  background: repeating-linear-gradient(90deg, var(--teil-farbe) 0 var(--strich), transparent var(--strich) var(--takt));
+}
+.r-skala-teil--faden { --teil-farbe: var(--spot-akzent-strich, var(--r-faden)); }
+.r-skala-teil--mittel { --teil-farbe: var(--r-mittel); }
+.r-skala-teil--umriss {
+  --umriss: var(--r-schrift-2);
+  background:
+    repeating-linear-gradient(90deg, var(--umriss) 0 var(--strich), transparent var(--strich) var(--takt)) top / 100% 2px no-repeat,
+    repeating-linear-gradient(90deg, var(--umriss) 0 var(--strich), transparent var(--strich) var(--takt)) bottom / 100% 2px no-repeat,
+    repeating-linear-gradient(90deg, var(--umriss) 0 2px, transparent 2px calc(var(--strich) - 2px), var(--umriss) calc(var(--strich) - 2px) var(--strich), transparent var(--strich) var(--takt));
+}
+
+/* 5.7 Kompaktbalken (dichte Diagramme, alles unter 900 px): durchgehender
+   Balken 16 px, Rest als Haarlinie bis 100 %, Zahl rechts in Fraunces.
+   <ul class="r-balken" style="--spur: 520px">
+     <li class="r-balken-zeile" style="--wert:72"><span class="r-balken-name">Kundenkontakt</span>
+       <span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen"></span></span>
+       <span class="r-balken-zahl">72<span class="r-einheit">%</span></span></li>
+     <li class="r-balken-zeile r-balken-zeile--faden" style="--wert:21">…</li></ul>
+   Skala 0–100 % einheitlich innerhalb einer Folie (gleiche --spur). */
+.r-balken {
+  --spur: 520px;
+  --name: max-content;
+  --hoehe: 16px;
+  display: grid;
+  grid-template-columns: var(--name) var(--spur) auto;
+  column-gap: 24px;
+  row-gap: 18px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.r-balken-zeile {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: center;
+  --balken-farbe: var(--spot-strich, var(--r-schrift));
+}
+.r-balken-zeile--faden { --balken-farbe: var(--spot-akzent-strich, var(--r-faden)); }
+.r-balken-name { font-size: 30px; line-height: 1.2; color: var(--spot-text, var(--r-schrift)); }
+.r-balken-spur {
+  position: relative;
+  display: block;
+  height: var(--hoehe);
+  background: linear-gradient(var(--r-leer), var(--r-leer)) left center / 100% var(--r-haar) no-repeat;
+}
+.r-balken-wert {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: calc(var(--wert) * 1%);
+  background: var(--balken-farbe);
+}
+.r-balken-zahl {
+  justify-self: end;
+  min-width: 2.6em;
+  text-align: right;
+  font-family: var(--schrift-zahl);
+  font-size: 36px;
+  font-weight: 480;
+  line-height: 1;
+  font-variation-settings: "opsz" 36, var(--achsen-ruhig);
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--spot-text, var(--r-schrift));
+  white-space: nowrap;
+}
+.r-balken-zeile--faden .r-balken-zahl,
+.r-balken-zeile--faden .r-balken-name { color: var(--spot-akzent, var(--r-faden-text)); }
+.r-balken-zeile--faden .r-balken-zahl { font-weight: 560; }
+
+/* 5.8 Kennzahl mit Zahl in der Randspalte (Spalten 1–3, rechtsbündig),
+   Aussage 32 px ab Spalte 4, Quelle 22 px Schiefer je Zeile.
+   <div class="r-zahl">
+     <span class="r-zahl-wert"><span data-animation="zaehlen" data-ziel="20">20</span><span class="r-einheit">%</span></span>
+     <p class="r-zahl-text">des Mittelstands …</p>
+     <span class="r-skala" style="--wert:20">…</span>   (optional)
+     <span class="r-zahl-quelle" data-meta>KfW-Mittelstandspanel</span></div>
+   .r-zahl--faden: die EINE Schlüsselzahl in Karmin (mit Zusatzabstand). */
+.r-zahl {
+  display: grid;
+  grid-template-columns: var(--r-randspalte) minmax(0, 1fr);
+  column-gap: var(--r-rinne);
+  align-items: end;
+}
+.r-zahl-wert {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  justify-self: end;
+  align-self: end;
+  font-family: var(--schrift-zahl);
+  font-size: 172px;
+  font-weight: 470;
+  line-height: 0.7;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144, var(--achsen-ruhig);
+  font-variant-numeric: lining-nums tabular-nums;
+  white-space: nowrap;
+  color: var(--spot-text, var(--r-schrift));
+}
+.r-zahl > :not(.r-zahl-wert) { grid-column: 2; min-width: 0; }
+.r-zahl-text { margin-bottom: 12px; font-size: 32px; line-height: 1.25; color: var(--spot-text, var(--r-schrift)); }
+.r-zahl-quelle { margin-top: 8px; font-size: 22px; line-height: 1.2; color: var(--r-schrift-2); }
+.r-zahl--faden { margin-top: 28px; }
+.r-zahl--faden .r-zahl-wert { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 540; }
+
+/* 5.9 Spotlight (Helligkeitsstufe): Kinder mit data-schritt. Solange noch
+   ein späterer Schritt folgt, treten die schon gezeigten Kinder zurück –
+   Text auf Schiefer, Striche auf Mittel, auch Karmin. Im Endzustand (letzter
+   Schritt), im Druck (html.druckmodus), in der Aufnahme (html.aufnahme) und in
+   der Übersicht steht alles wieder in Tinte, die Schlüsselzahl in Karmin.
+   <div class="r-spot"><div data-schritt="1">…</div><div data-schritt="2">…</div></div>
+   Voraussetzung: DOM-Reihenfolge = Schrittfolge. Komponenten lesen
+   --spot-text / --spot-strich / --spot-akzent / --spot-akzent-strich.
+   Nur auf der Bühne und in der Referenten-Vorschau – nie in Übersicht,
+   Druck (html.druckmodus) und Aufnahme (html.aufnahme). */
+html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:has(> .schritt-aktuell ~ [data-schritt]) > [data-schritt].schritt-an:not(.schritt-aktuell) {
+  --spot-text: var(--r-schrift-2);
+  --spot-strich: var(--r-mittel);
+  --spot-akzent: var(--r-schrift-2);
+  --spot-akzent-strich: var(--r-mittel);
+  color: var(--r-schrift-2);
+}
+.r-spot > [data-schritt],
+.r-spot > [data-schritt] * {
+  transition: color 360ms var(--kurve), background-color 360ms var(--kurve), stroke 360ms var(--kurve), fill 360ms var(--kurve);
+}
+.r-spot > [data-schritt] :is(.r-skala-wert, .r-skala-teil, .r-skala) { transition: none; }
+
+/* 5.10 Pfaddiagramm: Knoten sind Wörter (Fraunces 46–64 px), keine Kästen.
+   Linien als SVG im Bühnenmaß (viewBox = Pixelgröße des SVG), Pfeilspitzen
+   als eigene Dreiecke an festen Ankern (keine <marker>: deren IDs werden in
+   Übersicht/Vorschau umbenannt). Kernpfad 16 Karmin, Nebenpfad 6 Tinte,
+   schwacher Pfad 4 gestrichelt Schiefer. Linie endet an der Basis der Spitze. */
+.r-pfad { fill: none; stroke-linejoin: miter; stroke-linecap: butt; }
+.r-pfad--kern { stroke: var(--spot-akzent-strich, var(--r-faden)); stroke-width: var(--r-strich-kern); }
+.r-pfad--neben { stroke: var(--spot-strich, var(--r-schrift)); stroke-width: var(--r-strich-daten); }
+.r-pfad--schwach { stroke: var(--r-schrift-2); stroke-width: var(--r-strich-schwach); stroke-dasharray: 12 10; }
+.r-spitze { stroke: none; }
+.r-spitze--kern { fill: var(--spot-akzent-strich, var(--r-faden)); }
+.r-spitze--neben { fill: var(--spot-strich, var(--r-schrift)); }
+.r-spitze--schwach { fill: var(--r-schrift-2); }
+.r-knoten-wort {
+  font-family: var(--schrift-display);
+  font-size: 46px;
+  font-weight: 450;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  white-space: nowrap;
+  color: var(--spot-text, var(--r-schrift));
+}
+.r-knoten-wort--ziel { font-size: 64px; font-weight: 560; font-variation-settings: "opsz" 72, var(--achsen-ruhig); }
+.r-pfad-label { font-size: 24px; line-height: 1.2; color: var(--r-schrift-2); white-space: nowrap; }
+
+/* 5.11 Ablauf/Kette: Wörter stehen auf einer Tintenlinie (6 px) mit
+   Pfeilspitze am Ende. Die Kette ist so breit wie ihre Wörter;
+   .r-kette--breit verteilt sie über die ganze Zeile (space-between).
+   <ol class="r-kette"><li>Ereignis</li><li>abgestimmtes Handeln</li><li>Ergebnis</li></ol>
+   .r-kette--bruch: die Linie reißt an jeder Übergabe; zwischen die <li>
+   gehört <li class="r-kette-bruch" aria-label="Übergabe"></li> (kleines
+   Bruchzeichen in Tinte; .r-kette-bruch--faden = Karmin, nur wenn es die
+   EINE Karmin-Betonung der Folie ist). */
+.r-kette {
+  --strich: var(--r-strich-daten);
+  --spitze: 26px;
+  --farbe: var(--spot-strich, var(--r-schrift));
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 48px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0;
+  padding: 0 calc(var(--spitze) + 8px) calc(var(--strich) + 20px) 0;
+  list-style: none;
+}
+.r-kette--breit { width: auto; justify-content: space-between; }
+.r-kette::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: var(--spitze);
+  bottom: calc(var(--spitze) / 2 - var(--strich) / 2);
+  height: var(--strich);
+  background: var(--farbe);
+}
+.r-kette::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: var(--spitze);
+  height: var(--spitze);
+  background: var(--farbe);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+.r-kette > li {
+  font-family: var(--schrift-display);
+  font-size: 40px;
+  font-weight: 450;
+  line-height: 1.1;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  white-space: nowrap;
+  color: var(--spot-text, var(--r-schrift));
+}
+.r-kette--bruch { gap: 0; }
+.r-kette--bruch::after { display: none; }
+.r-kette--bruch > li:not(.r-kette-bruch) { position: relative; padding: 0 28px; }
+.r-kette--bruch > li:not(.r-kette-bruch):first-child { padding-left: 0; }
+.r-kette--bruch > li:not(.r-kette-bruch)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(-20px - var(--strich) + var(--spitze) / 2 - var(--strich) / 2);
+  height: var(--strich);
+  background: var(--farbe);
+}
+.r-kette--bruch > li:not(.r-kette-bruch):last-child::after { right: calc(-1 * var(--spitze) - 8px); }
+.r-kette-bruch {
+  position: relative;
+  flex: none;
+  align-self: stretch;
+  width: 36px;
+}
+.r-kette-bruch::before,
 .r-kette-bruch::after {
-  content: ""; position: absolute; left: 50%; top: 50%; width: 30px; height: 30px; translate: -50% -50%; rotate: 45deg;
-  border: var(--linie-stark) solid var(--f-akzent); border-radius: 4px; background: var(--f-hintergrund);
+  content: "";
+  position: absolute;
+  bottom: calc(-20px - var(--strich) + var(--spitze) / 2 - 14px);
+  width: 4px;
+  height: 30px;
+  background: var(--farbe);
+  rotate: 24deg;
 }
-.r-kette-folgen { text-align: center; font-size: var(--groesse-text-min); color: var(--f-akzent); font-weight: var(--gewicht-fett); }
+.r-kette-bruch::before { left: 10px; }
+.r-kette-bruch::after { left: 22px; }
+.r-kette-bruch--faden::before,
+.r-kette-bruch--faden::after { background: var(--spot-akzent-strich, var(--r-faden)); }
 
-/* ---------- Folie 05: Zeitstrahl ---------- */
-.r-zeit .folie-inhalt { gap: var(--abstand-7); }
-.r-strahl { position: relative; padding-top: 30px; }
-.r-strahl-linie { position: absolute; left: 0; right: 0; top: 41px; height: var(--linie-stark); background: var(--f-text); transform-origin: left center; }
-.r-strahl-punkte { position: relative; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--abstand-4); }
-.r-strahl-punkte li { display: flex; flex-direction: column; gap: 8px; }
-.r-strahl-punkte li::before { content: ""; width: 26px; height: 26px; border-radius: 50%; background: var(--f-hintergrund); border: 4px solid var(--f-text); margin-bottom: var(--abstand-2); }
-.r-strahl-punkte li.r-heute::before { background: var(--f-akzent); border-color: var(--f-akzent); }
-.r-strahl-punkte b { font-family: var(--schrift-display); font-size: 34px; line-height: 1.12; font-weight: var(--gewicht-display); }
-.r-strahl-punkte li > span:last-child { font-size: var(--groesse-text-min); color: var(--f-text-2); }
-.r-merk { display: flex; align-items: center; justify-content: space-between; gap: var(--abstand-6); padding: var(--abstand-5); border-radius: var(--radius-l); background: var(--f-flaeche); font-size: var(--groesse-gross); line-height: 1.3; }
-.r-merk-xy { display: flex; align-items: center; gap: var(--abstand-3); flex: none; font-family: var(--schrift-display); font-size: 40px; }
-.r-merk-xy span:last-child { color: var(--f-akzent); font-style: italic; }
-.r-merk-pfeil { color: var(--f-text-2); }
-
-/* ---------- Folie 06: Prozessarten ---------- */
-.r-porter { display: flex; flex-direction: column; gap: var(--abstand-3); }
-.r-porter li { display: flex; flex-direction: column; gap: 4px; padding: var(--abstand-4) var(--abstand-5); border-radius: var(--radius-l); background: var(--f-flaeche); }
-.r-porter b { font-family: var(--schrift-display); font-size: 40px; font-weight: var(--gewicht-display); line-height: 1.1; }
-.r-porter span { font-size: var(--groesse-text-min); color: var(--f-text-2); }
-.r-porter li.r-porter-kern { background: var(--f-akzent-flaeche); }
-.r-porter li.r-porter-kern b { color: var(--f-akzent); }
-.r-sichten { gap: var(--abstand-5); }
-.r-sichten p { display: flex; flex-direction: column; gap: 4px; padding-left: var(--abstand-4); border-left: var(--linie-stark) solid var(--f-hart); }
-.r-sichten b { font-family: var(--schrift-display); font-size: 40px; font-weight: var(--gewicht-display); line-height: 1.1; }
-.r-sichten span { font-size: var(--groesse-text-min); color: var(--f-text-2); }
-.r-arten .r-arten-grenze { margin-top: var(--abstand-5); }
-
-/* ---------- Folie 07: Lebenszyklus ---------- */
-.r-zyklus .folie-inhalt { gap: var(--abstand-6); }
-.r-phasen { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; counter-reset: phase; }
-.r-phasen li {
-  position: relative; counter-increment: phase; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; min-height: 150px;
-  padding: var(--abstand-3); background: var(--f-flaeche); border-radius: var(--radius-m);
-  font-size: var(--groesse-text-min); line-height: 1.15; font-weight: var(--gewicht-fett); hyphens: auto;
+/* Bogen zurück (Schleife, z. B. „anhängen, von vorn“): unter der Kette von
+   der letzten zur ersten Station, Pfeilspitze nach oben am Anfang.
+   <div class="r-schleife"><ol class="r-kette">…</ol><span class="r-schleife-bogen" aria-hidden="true"></span></div> */
+.r-schleife { position: relative; width: fit-content; max-width: 100%; padding-bottom: 72px; }
+.r-schleife-bogen {
+  position: absolute;
+  left: var(--bogen-von, 40px);
+  right: var(--bogen-bis, 120px);
+  bottom: 0;
+  height: 64px;
+  border: var(--r-strich-schwach) solid var(--spot-strich, var(--r-schrift));
+  border-top: 0;
+  border-radius: 0 0 32px 32px;
 }
-.r-phasen li::before { content: counter(phase); font-family: var(--schrift-zahl); font-size: 44px; line-height: 1; color: var(--f-akzent); font-weight: var(--gewicht-zahl); margin-bottom: auto; }
-.r-phasen li.r-phasen-dauer { background: var(--f-akzent); color: var(--f-auf-akzent); }
-.r-phasen li.r-phasen-dauer::before { content: "↻"; color: var(--f-auf-akzent); }
-.r-zyklus-karten .karte p { font-size: var(--groesse-gross); }
-.r-dmaic b { color: var(--f-akzent); }
-.r-abbruch { display: flex; align-items: center; gap: var(--abstand-3); margin-top: auto; font-size: var(--groesse-gross); font-weight: var(--gewicht-fett); color: var(--f-akzent); }
-.r-abbruch .icon { width: 44px; height: 44px; stroke: currentColor; stroke-width: 2.4; fill: none; }
-
-/* ---------- Folie 08: Zahlen ---------- */
-.r-zahlen-raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-5); align-items: stretch; }
-
-/* ---------- Folie 09: Größe ---------- */
-.r-groesse .r-zwei { align-items: center; }
-.r-ursache .r-icons { display: flex; flex-direction: column; gap: var(--abstand-4); }
-.r-ursache .r-icons li { display: flex; align-items: center; gap: var(--abstand-4); font-size: var(--groesse-gross); font-weight: var(--gewicht-fett); }
-.r-ursache .r-icons .icon { width: 52px; height: 52px; flex: none; stroke: var(--f-weich); stroke-width: 1.8; fill: none; }
-.r-ursache .karte-text { color: var(--f-text); font-size: var(--groesse-text); }
-
-/* ---------- Folie 10: TOE ---------- */
-.r-toe .folie-inhalt { gap: var(--abstand-5); }
-.r-toe-raster { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-5); }
-.r-toe-spalte { display: flex; flex-direction: column; gap: var(--abstand-3); padding: var(--abstand-5); border-top: var(--linie-stark) solid var(--f-hart); background: var(--f-flaeche); border-radius: 0 0 var(--radius-l) var(--radius-l); }
-.r-toe-spalte--held { border-top-color: var(--f-akzent); background: var(--f-akzent-flaeche); }
-.r-toe-titel { font-family: var(--schrift-display); font-size: 40px; font-weight: var(--gewicht-display); margin-bottom: var(--abstand-2); }
-.r-toe-spalte p { display: flex; align-items: baseline; gap: var(--abstand-3); font-size: var(--groesse-text-min); }
-.r-toe-spalte p b { flex: none; min-width: 120px; font-family: var(--schrift-zahl); font-size: 52px; line-height: 1; font-weight: var(--gewicht-zahl); font-variant-numeric: lining-nums tabular-nums; }
-.r-toe-spalte--held p b { color: var(--f-akzent); }
-.r-toe-wer { margin-top: auto; padding-top: var(--abstand-2); font-size: var(--groesse-meta); color: var(--f-text-2); }
-
-/* ---------- Folie 11: TAM ---------- */
-.r-tam-modell { position: relative; width: 900px; height: 460px; }
-.r-tam-pfeile { position: absolute; inset: 0; width: 900px; height: 460px; overflow: visible; fill: none; }
-.r-tam-pfeile marker path { fill: var(--f-text-2); }
-.r-tam-pfeile #r-spitze-stark path { fill: var(--f-akzent); }
-.r-tam-stark { stroke: var(--f-akzent); stroke-width: 12; stroke-linejoin: round; }
-.r-tam-mittel { stroke: var(--f-text-2); stroke-width: 5; }
-.r-tam-schwach { stroke: var(--f-text-2); stroke-width: 4; stroke-dasharray: 12 10; }
-.r-tam-box {
-  position: absolute; display: grid; place-items: center; text-align: center; padding: 12px 20px; border-radius: var(--radius-l);
-  font-family: var(--schrift-display); font-size: 34px; line-height: 1.12; font-weight: var(--gewicht-display);
-  background: var(--f-flaeche); border: var(--linie-stark) solid var(--f-linie);
+.r-schleife-bogen::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--r-strich-schwach) / 2 - 11px);
+  top: -14px;
+  width: 22px;
+  height: 18px;
+  background: var(--spot-strich, var(--r-schrift));
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
 }
-.r-tam-box--bf { left: 0; top: 0; width: 370px; height: 120px; }
-.r-tam-box--nutzen { left: 0; top: 340px; width: 370px; height: 120px; border-color: var(--f-akzent); background: var(--f-akzent-flaeche); color: var(--f-akzent); }
-.r-tam-box--nutzung { left: 590px; top: 170px; width: 260px; height: 120px; background: var(--f-text); color: var(--f-hintergrund); border-color: var(--f-text); }
-.r-tam-label { position: absolute; left: 400px; top: 14px; font-size: var(--groesse-meta); color: var(--f-text-2); }
-.r-tam-rechts { gap: var(--abstand-5); }
-.r-tam-zahl { font-size: var(--groesse-text-min); line-height: 1.3; }
-.r-tam-zahl b { display: block; font-family: var(--schrift-zahl); font-size: 64px; line-height: 1; font-weight: var(--gewicht-zahl); color: var(--f-text); }
-.r-tam-folgerung { padding: var(--abstand-4) var(--abstand-5); border-left: var(--linie-stark) solid var(--f-akzent); background: var(--f-akzent-flaeche); font-family: var(--schrift-display); font-size: 38px; line-height: 1.2; }
 
-/* ---------- Folie 13: Recht ---------- */
-.r-recht .folie-inhalt { gap: var(--abstand-7); }
-.r-recht-strahl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--abstand-6); }
-.r-recht-strahl li { display: flex; flex-direction: column; gap: 8px; padding-top: var(--abstand-4); border-top: var(--linie-stark) solid var(--f-akzent); }
-.r-recht-strahl b { font-family: var(--schrift-display); font-size: 44px; line-height: 1.1; font-weight: var(--gewicht-display); }
-.r-recht-strahl li > span:last-child { font-size: var(--groesse-gross); color: var(--f-text); }
-.r-recht-unten { margin-top: var(--abstand-4); }
-
-/* ---------- Folie 14: LLM ---------- */
-.r-llm .folie-inhalt { gap: var(--abstand-5); }
-.r-schleife { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 46px; padding-bottom: 46px; }
-.r-schleife li {
-  position: relative; display: flex; flex-direction: column; gap: 10px; padding: var(--abstand-4); min-height: 160px;
-  border-radius: var(--radius-l); background: var(--f-flaeche); font-size: var(--groesse-text-min); line-height: 1.2; font-weight: var(--gewicht-fett);
+/* 5.12 Kreislauf: feiner Tintenkreis (4 px), Stationen als Wörter auf dem
+   Kreis (Papierhof schneidet die Linie), Zentrum als Fraunces-Wort.
+   <figure class="r-kreis" style="--d: 520px">
+     <svg class="r-kreis-linie" viewBox="0 0 520 520" aria-hidden="true" data-animation="zeichnen"><circle cx="260" cy="260" r="208"/></svg>
+     <span class="r-kreis-mitte">LLM</span>
+     <span class="r-kreis-station" style="--winkel: -90deg">Plan</span> …
+     <span class="r-kreis-pfeil" style="--winkel: -45deg" aria-hidden="true"></span></figure>
+   Radius der Stationen = 0,4 · --d (wie r = 208 bei 520). */
+.r-kreis {
+  --d: 520px;
+  --r: calc(var(--d) * 0.4);
+  position: relative;
+  isolation: isolate;
+  width: var(--d);
+  height: var(--d);
+  margin: 0;
 }
-.r-schleife li + li::before { content: "→"; position: absolute; left: -38px; top: 50%; translate: 0 -50%; font-size: 32px; color: var(--f-text-2); font-weight: 400; }
-.r-schleife-nr { font-family: var(--schrift-zahl); font-size: 40px; line-height: 1; color: var(--f-akzent); font-weight: var(--gewicht-zahl); }
-.r-schleife-zurueck { background: var(--f-akzent-flaeche) !important; }
-.r-schleife::after {
-  content: ""; position: absolute; left: 10%; right: 10%; bottom: 8px; height: 30px;
-  border: 3px dashed var(--f-akzent); border-top: 0; border-radius: 0 0 18px 18px;
+.r-kreis-linie {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  rotate: -90deg;                        /* Zeichnen beginnt oben */
 }
-.r-beispiel-satz { display: flex; align-items: center; gap: var(--abstand-3); font-family: var(--schrift-display); font-size: 38px; }
-.r-token { padding: 6px 16px; border-radius: var(--radius-m); background: var(--f-akzent); color: var(--f-auf-akzent); font-family: var(--schrift-text); font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett); }
-.r-token--leise { background: var(--f-flaeche-2); color: var(--f-text); }
-.r-llm-begriffe { margin-top: var(--abstand-4); }
-.r-llm-begriffe p { display: flex; flex-direction: column; gap: 4px; padding-top: var(--abstand-3); border-top: var(--linie-stark) solid var(--f-hart); font-size: var(--groesse-text-min); line-height: 1.25; color: var(--f-text-2); }
-.r-llm-begriffe p b { font-family: var(--schrift-display); font-size: 36px; font-weight: var(--gewicht-display); color: var(--f-text); }
-.r-llm-begriffe p.r-warnung { border-top-color: var(--f-akzent); }
-.r-llm-begriffe p.r-warnung b { color: var(--f-akzent); }
-
-/* ---------- Folie 15: Agenten ---------- */
-.r-agent .r-zwei { align-items: center; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); }
-.r-kreis { position: relative; width: 520px; height: 520px; justify-self: center; }
-.r-kreis svg { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: var(--f-akzent); stroke-width: 4; stroke-dasharray: 14 12; }
+.r-kreis-linie circle { fill: none; stroke: var(--spot-strich, var(--r-schrift)); stroke-width: var(--r-strich-schwach); }
 .r-kreis-mitte {
-  position: absolute; left: 50%; top: 50%; translate: -50% -50%; display: grid; place-items: center; width: 150px; height: 150px; border-radius: 50%;
-  background: var(--f-akzent); color: var(--f-auf-akzent); font-family: var(--schrift-zahl); font-size: 40px; font-weight: var(--gewicht-zahl);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  font-family: var(--schrift-display);
+  font-size: 64px;
+  font-weight: 480;
+  line-height: 1;
+  font-variation-settings: "opsz" 72, var(--achsen-ruhig);
+  white-space: nowrap;
+  color: var(--spot-text, var(--r-schrift));
 }
-.r-kreis-punkt {
-  position: absolute; translate: -50% -50%; padding: 10px 18px; border-radius: var(--radius-pille);
-  background: var(--f-hintergrund); border: var(--linie-stark) solid var(--f-text); font-size: var(--groesse-text-min); font-weight: var(--gewicht-fett); white-space: nowrap;
+.r-kreis-station {
+  position: absolute;
+  left: calc(50% + cos(var(--winkel)) * var(--r));
+  top: calc(50% + sin(var(--winkel)) * var(--r));
+  translate: -50% -50%;
+  font-family: var(--schrift-display);
+  font-size: 40px;
+  font-weight: 450;
+  line-height: 1;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  white-space: nowrap;
+  color: var(--spot-text, var(--r-schrift));
 }
-.r-kreis-punkt--o { left: 50%; top: 13%; }
-.r-kreis-punkt--r { left: 87%; top: 50%; }
-.r-kreis-punkt--u { left: 50%; top: 87%; }
-.r-kreis-punkt--l { left: 13%; top: 50%; }
-.r-agent-liste { display: flex; flex-direction: column; gap: var(--abstand-4); }
-.r-agent-liste li { display: flex; flex-direction: column; gap: 2px; padding-left: var(--abstand-4); border-left: var(--linie-stark) solid var(--f-hart); font-size: var(--groesse-text-min); line-height: 1.25; color: var(--f-text-2); }
-.r-agent-liste li b { font-family: var(--schrift-display); font-size: 36px; font-weight: var(--gewicht-display); color: var(--f-text); }
-.r-agent-liste li.r-warnung { border-left-color: var(--f-akzent); }
+.r-kreis-station { padding: 2px 14px; background: var(--r-papier); }   /* unterbricht den Kreis */
+.r-kreis-pfeil {
+  position: absolute;
+  left: calc(50% + cos(var(--winkel)) * var(--r));
+  top: calc(50% + sin(var(--winkel)) * var(--r));
+  width: 22px;
+  height: 22px;
+  translate: -50% -50%;
+  rotate: calc(var(--winkel) + 90deg);
+  background: var(--spot-strich, var(--r-schrift));
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
 
-/* ---------- Folie 16: Bundeswehr ---------- */
-.r-vergleich { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: var(--abstand-6); }
-.r-vergleich-spalte { display: flex; flex-direction: column; gap: var(--abstand-4); padding: var(--abstand-5); border-radius: var(--radius-l); background: var(--f-hart-flaeche); }
-.r-vergleich-spalte--wirtschaft { background: var(--f-flaeche); }
-.r-vergleich-titel { font-family: var(--schrift-display); font-size: 44px; font-weight: var(--gewicht-display); padding-bottom: var(--abstand-2); border-bottom: var(--linie-stark) solid var(--f-hart); }
-.r-vergleich-spalte--wirtschaft .r-vergleich-titel { border-bottom-color: var(--f-text-2); }
-.r-vergleich-spalte p { position: relative; padding-left: 34px; font-size: var(--groesse-gross); line-height: 1.3; }
-.r-vergleich-spalte p::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 18px; height: var(--linie-stark); background: var(--f-hart); }
-.r-vergleich-spalte--wirtschaft p { color: var(--f-text-2); }
-.r-vergleich-spalte--wirtschaft p::before { background: var(--f-text-2); }
+/* 5.13 Zeitstrahl: randabfallende Tintenlinie (zeichnet sich), Stationen auf
+   je 2 Spalten (Jahr Fraunces 40 px, Name 34 px, Stichwort 30 px Schiefer),
+   „heute“ als einziger Karmin-Knoten (li.ist-heute, allgemein li.ist-faden).
+   Andere Zahl von Stationen: style="--stationen: 2" am <ol>.
+   <div class="r-zeitstrahl">
+     <span class="r-zeitstrahl-linie" data-animation="zeichnen" data-ueberlauf-ok aria-hidden="true"></span>
+     <ol class="r-zeitstrahl-stationen" data-staffel="120" data-animation="hoch">
+       <li><span class="r-zeit-jahr">1776</span><b class="r-zeit-name">Smith</b><span class="r-zeit-wort">Arbeitsteilung</span></li> …
+       <li class="ist-heute">…</li></ol></div> */
+.r-zeitstrahl { position: relative; padding-top: 14px; }
+.r-zeitstrahl-linie {
+  position: absolute;
+  left: calc(-1 * var(--rand-x));
+  width: 1920px;
+  top: 25px;
+  height: var(--r-strich-daten);
+  background: var(--r-schrift);
+}
+.r-zeitstrahl-stationen {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--stationen, 6), minmax(0, 1fr));
+  column-gap: var(--r-rinne);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.r-zeitstrahl-stationen > li { display: flex; flex-direction: column; min-width: 0; }
+.r-zeitstrahl-stationen > li::before {
+  content: "";
+  width: 28px;
+  height: 28px;
+  margin-bottom: 26px;
+  border: 5px solid var(--r-schrift);
+  border-radius: 50%;
+  background: var(--r-papier);
+}
+.r-zeitstrahl-stationen > li:is(.ist-heute, .ist-faden)::before { border-color: var(--r-faden); background: var(--r-faden); }
+.r-zeit-jahr {
+  font-family: var(--schrift-zahl);
+  font-size: 40px;
+  font-weight: 470;
+  line-height: 1.05;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--r-schrift);
+}
+:is(.ist-heute, .ist-faden) > .r-zeit-jahr { color: var(--r-faden-text); }
+.r-zeit-name { margin-top: 8px; font-size: 34px; font-weight: 600; line-height: 1.15; color: var(--r-schrift); }
+.r-zeit-wort { margin-top: 6px; font-size: 30px; line-height: 1.25; color: var(--r-schrift-2); }
 
-/* ---------- Folie 17: Bindung ---------- */
-.r-bindung-zahl .kennzahl-wert { font-size: 180px; color: var(--f-akzent); }
-.r-bindung-zahl .kennzahl-text { font-size: var(--groesse-gross); color: var(--f-text); line-height: 1.25; }
-.r-bindung-rechts { gap: var(--abstand-6); }
-.r-pfeile { display: flex; flex-direction: column; gap: var(--abstand-5); }
-.r-pfeile li { position: relative; padding-left: 52px; font-size: 38px; line-height: 1.3; }
-.r-pfeile li::before { content: "→"; position: absolute; left: 0; top: 0; color: var(--f-akzent); font-weight: var(--gewicht-fett); }
+/* 5.14 Vergleich: zwei Spalten asymmetrisch (1–7 / 8–12), Kopf Fraunces 44 px
+   über 2-px-Linie, Zeilen auf gemeinsamen Grundlinien mit Haarlinien;
+   betonte Seite Tinte, Gegenseite Schiefer. Kinder paarweise (links, rechts);
+   leere Zelle: <p class="r-vergleich-leer" aria-hidden="true"></p>
+   <div class="r-vergleich">
+     <h3 class="r-vergleich-kopf">Bundeswehr</h3><h3 class="r-vergleich-kopf">Kleine Unternehmen</h3>
+     <p>Befehle von oben …</p><p data-schritt="1">Eher flach organisiert</p> …</div> */
+.r-vergleich {
+  display: grid;
+  grid-template-columns: var(--r-raster);
+  column-gap: var(--r-rinne);
+  align-items: baseline;
+}
+.r-vergleich > :nth-child(odd) { grid-column: 1 / 8; }
+.r-vergleich > :nth-child(even) { grid-column: 8 / 13; color: var(--r-schrift-2); }
+.r-vergleich > p {
+  margin: 0;
+  padding: 16px 0 18px;
+  border-top: var(--r-haar) solid var(--r-leer);
+  font-size: 32px;
+  line-height: 1.25;
+}
+.r-vergleich-kopf {
+  margin: 0 0 4px;
+  padding-bottom: 14px;
+  border-bottom: var(--r-haar) solid currentColor;
+  font-family: var(--schrift-display);
+  font-size: 44px;
+  font-weight: 450;
+  line-height: 1.08;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  color: var(--r-schrift);
+}
+.r-vergleich > .r-vergleich-kopf:nth-child(even) { color: var(--r-schrift-2); }
+.r-vergleich > p.r-vergleich-leer { border-top-color: transparent; }
 
-/* ---------- Folie 18: Fazit ---------- */
-.r-fazit-liste { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--abstand-6); margin-top: var(--abstand-5); }
-.r-fazit-liste li { display: flex; flex-direction: column; gap: var(--abstand-3); padding-top: var(--abstand-4); border-top: var(--linie-stark) solid var(--f-akzent); }
-.r-fazit-nr { font-family: var(--schrift-zahl); font-size: 120px; line-height: 1; font-weight: var(--gewicht-zahl); color: var(--f-akzent); }
-.r-fazit-liste b { font-family: var(--schrift-display); font-size: 52px; line-height: 1.12; font-weight: var(--gewicht-display); }
-.r-fazit-liste li > span:last-child { font-size: var(--groesse-text); color: var(--f-text-2); }
+/* 5.15 Liste (nur ohne Struktur, höchstens 4 Punkte): Stichwort Fraunces
+   36–40 px + Erklärung 30 px Schiefer, Haarlinien. .r-liste--reihe: 3–4
+   Spalten nebeneinander. .ist-faden: die EINE Karmin-Aussage.
+   <ul class="r-liste"><li><b class="r-liste-wort">Inferenz</b><span class="r-liste-text">…</span></li></ul> */
+.r-liste { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
+.r-liste > li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 18px 0 20px;
+  border-top: var(--r-haar) solid var(--r-leer);
+}
+.r-liste-wort {
+  font-family: var(--schrift-display);
+  font-size: 38px;
+  font-weight: 450;
+  line-height: 1.1;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  color: var(--spot-text, var(--r-schrift));
+}
+.r-liste-text { font-size: 30px; line-height: 1.3; color: var(--r-schrift-2); }
+.r-liste > li.ist-faden .r-liste-wort { color: var(--spot-akzent, var(--r-faden-text)); }
+.r-liste--reihe { display: grid; grid-template-columns: repeat(var(--spalten, 3), minmax(0, 1fr)); column-gap: var(--r-rinne); }
 
-/* ---------- Backup ---------- */
-.r-quellen { display: flex; flex-direction: column; gap: 10px; font-size: var(--groesse-tabelle); line-height: 1.3; }
-.r-quellen li { padding-left: 1.2em; text-indent: -1.2em; }
+
+/* -----------------------------------------------------------------------------
+   6. FUNDAMENT-FOLIEN
+   ----------------------------------------------------------------------------- */
+
+/* ---------- f01 Titel: „Die Sitzung“ steht auf dem Faden, das g webt ---------- */
+.folie.r-titel {
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  grid-template-areas: "kopf" "inhalt" "fuss";
+}
+.r-titel .folie-kopf { display: flex; flex-direction: column; max-width: none; }
+.r-titel-reihe {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--abstand-6);
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--r-schrift-2);
+}
+.r-titel-reihe > :first-child { color: var(--r-schrift); font-weight: 600; }
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie.r-titel .r-titel-satz {
+  margin-top: auto;
+  max-width: none;
+  font-size: 248px;
+  font-weight: 410;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  font-variation-settings: "opsz" 144, var(--achsen-ruhig);
+  text-wrap: nowrap;
+}
+.r-titel-satz > .r-webe,
+.r-titel-satz > .r-titel-zeile { display: block; }
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie.r-titel .lead {
+  margin-top: 48px;
+  max-width: none;
+  font-size: 36px;
+  line-height: 1.3;
+  color: var(--r-schrift);
+}
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie.r-titel > .folie-kopf ~ .folie-inhalt { margin-top: 64px; }
+.r-angaben { display: grid; grid-template-columns: var(--r-raster); column-gap: var(--r-rinne); margin: 0; }
+.r-angaben > div:nth-child(1) { grid-column: 1 / 4; }
+.r-angaben > div:nth-child(2) { grid-column: 4 / 8; }
+.r-angaben > div:nth-child(3) { grid-column: 8 / 11; }
+.r-angaben dt { font-size: 22px; line-height: 1.3; color: var(--r-schrift-2); }
+.r-angaben dd { margin: 6px 0 0; font-size: 30px; line-height: 1.25; color: var(--r-schrift); }
+.r-titel .folie-fuss { margin-top: 40px; }
+/* Breitere Grotesken (Taste T): Titel kleiner, damit beide Zeilen passen */
+html:is([data-thema="keynote"], [data-thema="bento"]) :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie.r-titel .r-titel-satz { font-size: 200px; }
+
+/* ---------- f02 Überblick: vier Nummern stehen auf dem Faden ----------
+   Ohne Laufleiste; der Titel steht trotzdem auf der Höhe der Inhaltsfolien
+   (52 + Laufleiste 44 + 60). Der Faden ist schon in Schritt 0 da (gleitet
+   von f01 herein) und läuft UNTER den Nummern – nichts wirkt durchgestrichen. */
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie.r-plan > .folie-kopf { margin-top: 104px; }
+.r-plan .folie-inhalt { justify-content: flex-start; gap: 84px; }
+.r-bloecke {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--r-rinne);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.r-block { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.r-block-nr {
+  font-family: var(--schrift-zahl);
+  font-size: 176px;
+  font-weight: 420;
+  line-height: 0.8;
+  font-variation-settings: "opsz" 144, var(--achsen-ruhig);
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--r-schrift);
+}
+.r-block-titel {
+  margin-top: 64px;
+  max-width: 360px;
+  font-family: var(--schrift-display);
+  font-size: 44px;
+  font-weight: 450;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+}
+.r-block-wer { margin-top: 18px; font-size: 26px; line-height: 1.25; color: var(--r-schrift); }
+.r-block-stand { margin-top: 4px; font-size: 24px; line-height: 1.25; color: var(--r-schrift-2); }
+/* These 50 px: bei opsz 48 bräche sie dreizeilig um (Fraunces wird mit
+   kleiner optischer Größe breiter); opsz 60 hält sie zweizeilig in 9 Spalten */
+.r-plan .r-these { margin-top: 14px; font-size: 50px; letter-spacing: -0.015em; font-variation-settings: "opsz" 60, var(--achsen-ruhig); }
+
+/* ---------- Trennfolien t1–t4: Fahrplan der vier Blöcke ----------
+   Der aktuelle Block: Kurzname (einheitlich --r-trenner-groesse) steht auf
+   dem Faden, die Blocknummer sitzt als Knoten auf dem Faden (mit Papierhof),
+   darunter Wer/Was 34 px. Die übrigen Blöcke klein in Schiefer.
+   Beim Weiterschalten gleiten Faden und Kurzname in die Laufleiste. */
+.folie.r-trenner {
+  grid-template-rows: minmax(0, 1fr);
+  grid-template-areas: "inhalt";
+}
+.r-trenner .folie-inhalt { justify-content: center; }
+.r-fahrplan { display: flex; flex-direction: column; gap: 18px; margin: 0; padding: 0; list-style: none; }
+.r-fahrplan-eintrag {
+  display: grid;
+  grid-template-columns: 141.333px minmax(0, 1fr);
+  align-items: baseline;
+  color: var(--r-schrift-2);
+}
+.r-fahrplan-nr,
+.r-fahrplan-name {
+  font-family: var(--schrift-display);
+  font-size: 40px;
+  font-weight: 450;
+  line-height: 1.1;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  font-variant-numeric: lining-nums;
+}
+.r-fahrplan-nr { font-family: var(--schrift-zahl); }
+.r-fahrplan-eintrag.ist-aktuell { margin: 36px 0 44px; color: var(--r-schrift); }
+.r-fahrplan-eintrag.ist-aktuell .r-fahrplan-name {
+  --faden-x: 269.333px;
+  font-size: var(--r-trenner-groesse);
+  font-weight: 400;
+  line-height: 0.86;
+  letter-spacing: -0.025em;
+  font-variation-settings: "opsz" 144, var(--achsen-ruhig);
+}
+/* Knoten: Mitte der Versalhöhe (≈ 0,72 em der Zahl) auf die Fadenmitte
+   (Grundlinie des Namens + --r-faden-tief) – reine CSS-Rechnung */
+.r-fahrplan-eintrag.ist-aktuell .r-fahrplan-nr {
+  font-size: var(--r-trenner-nr);
+  font-weight: 460;
+  line-height: 1;
+  font-variation-settings: "opsz" 144, var(--achsen-ruhig);
+  translate: 0 calc(var(--r-trenner-groesse) * 0.12 + var(--r-trenner-nr) * 0.36);
+}
+.r-fahrplan-wer {
+  grid-column: 2;
+  margin-top: 84px;
+  font-size: 34px;
+  line-height: 1.2;
+  color: var(--r-schrift);
+}
+
+
+/* -----------------------------------------------------------------------------
+   7. BEWEGUNG, DRUCK, AUFNAHME
+   Eigene Bewegung gibt es nur in drei Formen: Stücke „vorne“ weben sich
+   nach einem Folienwechsel ein, Spotlight-Farbwechsel, Morph des Fadens
+   (Engine). Druck, Aufnahme und „Bewegung reduzieren“ zeigen sofort den
+   Endzustand; im Druck und in der Aufnahme gibt es keine Abblendung.
+   ----------------------------------------------------------------------------- */
+html.druckmodus .r-webe-vorne,
+html.aufnahme .r-webe-vorne { transition: none; }
+html.bewegung-reduziert .r-webe-vorne,
+html.bewegung-reduziert .r-spot > [data-schritt],
+html.bewegung-reduziert .r-spot > [data-schritt] * { transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .r-webe-vorne,
+  .r-spot > [data-schritt],
+  .r-spot > [data-schritt] * { transition: none !important; }
+}

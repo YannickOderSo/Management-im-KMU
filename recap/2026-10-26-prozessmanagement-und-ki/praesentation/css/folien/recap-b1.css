@@ -1,0 +1,8 @@
+/* =============================================================================
+   recap-b1.css – Folien f03–f07 (Block 1: Prozesse im Unternehmen)
+   Gehört dem Folien-Agenten für Block 1. Fundament (Tokens, Rahmen,
+   Laufleiste, Faden, Komponenten r-…) steht in recap.css – dort NICHT ändern;
+   Bausteine und Markup-Muster: werk/KATALOG.md.
+   Regeln je Folie mit der Folienklasse beginnen (z. B. .r-begriff …), nur
+   Tokens verwenden (var(--r-…)), keine getönten Flächen, keine Versalien.
+   ============================================================================= */

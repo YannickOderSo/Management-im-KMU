@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2230%22 fill=%22%237A2E4D%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22Georgia,serif%22 font-size=%2230%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23ffffff%22%3ER%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2230%22 fill=%22%23C0132D%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22Georgia,serif%22 font-size=%2230%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23ffffff%22%3ER%3C/text%3E%3C/svg%3E">
 <title>Recap 26.10.2026</title>
 <!--
   ════════════════════════════════════════════════════════════════════════════
@@ -19,7 +19,8 @@
 
   Engine (js/deck.js, js/komponenten.js, css/tokens.css, deck.css, komponenten.css)
   unverändert aus fuehrung/praesentation übernommen.
-  Eigene Gestaltung: css/folien/recap.css · eigenes Verhalten: js/folien/recap.js
+  Eigene Gestaltung: css/folien/recap.css (Fundament) + recap-b1.css, recap-b2.css,
+  recap-b34.css (Folien je Block); Verhalten: js/folien/recap.js (+ recap-b1/b2/b34.js)
   Angaben (Datum, Farben, Namen): marke.js
 
   Bedienung: → / Leertaste / Clicker = weiter · ← = zurück · O = Übersicht ·
@@ -53,6 +54,9 @@
 <link rel="stylesheet" href="css/deck.css">
 <link rel="stylesheet" href="css/komponenten.css">
 <link rel="stylesheet" href="css/folien/recap.css">
+<link rel="stylesheet" href="css/folien/recap-b1.css">
+<link rel="stylesheet" href="css/folien/recap-b2.css">
+<link rel="stylesheet" href="css/folien/recap-b34.css">
 </head>
 <body>
 <div class="nur-ohne-css" role="alert" style="max-width:46em;margin:24px auto;padding:16px 20px;border:4px solid #B00020;background:#FFF4F4;color:#1A1A1A;font:18px/1.5 Arial,sans-serif">
@@ -120,57 +124,57 @@
 <div class="deck" id="deck">
   <main class="buehne" id="buehne" aria-roledescription="Präsentation">
 
+
 <!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 01 · Titel · 30 s
+     „Die Sitzung“ steht auf dem roten Faden (Grundlinie + 0,12 em); nur das
+     g webt (js/folien/recap.js). Der Faden läuft randabfallend und gleitet
+     beim Weiterschalten in den Faden unter den Nummern von Folie 02.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-titel" id="f01" data-titel="Titel" data-feld="leer" data-zeit="30" data-buendel="alle" data-layout="titel" data-modus="dunkel">
+<section class="folie r-titel" id="f01" data-titel="Titel" data-feld="leer" data-zeit="30" data-buendel="alle" data-layout="titel" data-laufkopf="aus">
   <header class="folie-kopf">
-    <p class="kicker">Recap · <span data-veranstaltung>Management im KMU</span></p>
-    <h1 class="titel">Die Sitzung vom <em>26. Oktober</em></h1>
+    <p class="r-titel-reihe"><span data-meta>Recap</span><span data-meta data-veranstaltung>Management im KMU</span></p>
+    <h1 class="titel r-titel-satz">
+      <span class="r-webe" style="--faden-x: 128px"><span class="r-faden" aria-hidden="true"><span class="r-faden-linie r-faden--gross" data-morph="faden" data-ueberlauf-ok></span></span>Die Sitzung</span>
+      <span class="r-titel-zeile">vom 26. Oktober</span>
+    </h1>
     <p class="lead">Prozesse, KI im KMU, KI-Begriffe und Führung bei der Bundeswehr</p>
   </header>
   <div class="folie-inhalt">
-    <div class="angaben">
-      <div><span class="angaben-titel" data-meta>Recap</span><span class="angaben-wert">Elias Knauber · Yannick Heisler</span></div>
-      <div><span class="angaben-titel" data-meta>Dozentin</span><span class="angaben-wert" data-dozent>Prof. Dr. Christine Arend-Fuchs</span></div>
-      <div><span class="angaben-titel" data-meta>Sitzung</span><span class="angaben-wert">Mo, 26.10.2026</span></div>
-    </div>
-    <svg class="r-titel-motiv" viewBox="0 0 560 560" aria-hidden="true">
-      <path class="r-titel-faden" d="M70 430 C 150 300, 220 470, 290 330 S 420 170, 490 120"/>
-      <circle cx="70" cy="430" r="34" style="--i:0"/>
-      <circle cx="205" cy="390" r="34" style="--i:1"/>
-      <circle cx="340" cy="250" r="34" style="--i:2"/>
-      <circle class="r-titel-kern" cx="490" cy="120" r="44" style="--i:3"/>
-      <text x="70" y="441">1</text><text x="205" y="401">2</text><text x="340" y="261">3</text><text x="490" y="133">4</text>
-    </svg>
+    <dl class="r-angaben">
+      <div><dt data-meta>Von</dt><dd>Elias Knauber<br>Yannick Heisler</dd></div>
+      <div><dt data-meta>Dozentin</dt><dd data-dozent>Prof. Dr. Christine Arend-Fuchs</dd></div>
+      <div><dt data-meta>Sitzung</dt><dd>Mo, 26.10.2026</dd></div>
+    </dl>
   </div>
   <footer class="folie-fuss">
-    <p class="quelle"><span data-hochschule>Hochschule Kaiserslautern</span> · Campus Zweibrücken · Mittelstandsökonomie</p>
+    <p class="quelle"><span data-hochschule>Hochschule Kaiserslautern</span>, Campus Zweibrücken, Mittelstandsökonomie</p>
   </footer>
   <aside class="notizen">
     <p class="gesprochen">„Wir fassen die Sitzung vom 26. Oktober zusammen. Das waren vier Blöcke: zwei Referate zu Prozessen und zu KI im KMU, das Video von Herrn Knopper zu KI-Begriffen und der Gastvortrag zur Führung bei der Bundeswehr.“</p>
-    <p>Die vier Punkte im Motiv stehen für die vier Blöcke, die Linie für den roten Faden (Fazit, Folie 18).</p>
+    <p>Die rote Linie ist der rote Faden der Präsentation: Sie läuft durch alle Folien (oben als Leiste mit den vier Blöcken) und verbindet am Ende die drei Gedanken des Fazits (Folie 18).</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 02 · Überblick · 50 s
+     FOLIE 02 · Überblick · 45 s
+     Vier Nummern stehen auf dem roten Faden (er ist schon in Schritt 0 da
+     und gleitet von Folie 01 herein, data-morph="faden"); Schritt 1: These.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-plan" id="f02" data-titel="Überblick" data-feld="leer" data-rubrik="Überblick" data-zeit="50" data-buendel="alle">
+<section class="folie r-plan" id="f02" data-titel="Überblick" data-feld="leer" data-zeit="45" data-buendel="alle" data-laufkopf="aus">
   <header class="folie-kopf">
-    <p class="kicker">Überblick</p>
     <h2 class="titel">Vier Blöcke, ein roter Faden</h2>
   </header>
   <div class="folie-inhalt">
-    <ol class="r-bloecke" data-staffel="140" data-animation="hoch">
-      <li class="r-block"><span class="r-block-nr">1</span><span class="r-block-titel">Prozesse im Unternehmen</span><span class="r-block-wer" data-meta>Maximilian Büchele</span><span class="r-pille r-pille--offen" data-meta>unterbrochen</span></li>
-      <li class="r-block"><span class="r-block-nr">2</span><span class="r-block-titel">KI im KMU</span><span class="r-block-wer" data-meta>Elbrus Tschekuev</span><span class="r-pille r-pille--offen" data-meta>ohne Fallbeispiel</span></li>
-      <li class="r-block"><span class="r-block-nr">3</span><span class="r-block-titel">KI-Begriffe</span><span class="r-block-wer" data-meta>Klaus Knopper</span><span class="r-pille" data-meta>Video</span></li>
-      <li class="r-block"><span class="r-block-nr">4</span><span class="r-block-titel">Führung bei der Bundeswehr</span><span class="r-block-wer" data-meta>Gastvortrag</span><span class="r-pille" data-meta>ohne Folien</span></li>
+    <ol class="r-bloecke r-faden-rahmen">
+      <li class="r-block"><span class="r-block-nr"><span class="r-faden" aria-hidden="true"><span class="r-faden-linie r-faden--gross" data-morph="faden" data-ueberlauf-ok></span></span>1</span><span class="r-block-titel">Prozesse im Unternehmen</span><span class="r-block-wer" data-meta>Maximilian Büchele</span><span class="r-block-stand" data-meta>unterbrochen</span></li>
+      <li class="r-block"><span class="r-block-nr">2</span><span class="r-block-titel">KI im KMU</span><span class="r-block-wer" data-meta>Elbrus Tschekuev</span><span class="r-block-stand" data-meta>ohne Fallbeispiel</span></li>
+      <li class="r-block"><span class="r-block-nr">3</span><span class="r-block-titel">KI-Begriffe</span><span class="r-block-wer" data-meta>Klaus Knopper</span><span class="r-block-stand" data-meta>Video</span></li>
+      <li class="r-block"><span class="r-block-nr">4</span><span class="r-block-titel">Führung bei der Bundeswehr</span><span class="r-block-wer" data-meta>Gastvortrag</span><span class="r-block-stand" data-meta>ohne Folien</span></li>
     </ol>
-    <div class="r-these" data-schritt="1" data-animation="hoch">
-      <span class="r-these-kicker" data-meta>Gemeinsame These beider Referate</span>
-      <p class="r-these-text">In KMU nützt KI vor allem dort, wo Abläufe dokumentiert sind und von den Beschäftigten mitgetragen werden.</p>
+    <div class="r-plan-these" data-schritt="1" data-animation="hoch">
+      <p class="r-bezeichner" data-meta>Gemeinsame These beider Referate</p>
+      <p class="r-these">In KMU nützt KI vor allem dort, wo Abläufe dokumentiert sind und von den Beschäftigten mitgetragen werden.</p>
     </div>
   </div>
   <footer class="folie-fuss">
@@ -180,6 +184,31 @@
     <p class="gesprochen" data-schritt="0">„Die Sitzung hatte vier Blöcke. Maximilian Büchele hat über Prozesse gesprochen, sein Vortrag wurde aber unterbrochen. Elbrus Tschekuev hat KI im KMU vorgestellt, bis kurz vor sein Fallbeispiel. Dann kam das Video von Klaus Knopper zu KI-Begriffen und zum Schluss ein Gastvortrag zur Führung bei der Bundeswehr, ohne Folien.“</p>
     <p class="gesprochen" data-schritt="1">„Beide Referate hatten eine gemeinsame These: In KMU nützt KI vor allem dort, wo Abläufe dokumentiert sind und von den Beschäftigten mitgetragen werden. Prozesse liefern die Abläufe und die Daten, KI übernimmt einzelne Schritte darin, und die Menschen entscheiden, ob das im Alltag wirklich genutzt wird. Diesen Faden nehmen wir am Ende wieder auf.“</p>
     <p>Hintergrund: Bei Max war nach Folie 11 (Modellierung) Schluss, die Praxisbeispiele kommen später. Bei Elbrus endete der Teil vor dem Fallbeispiel energis.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     TRENNFOLIE T1 · Block 1: Prozesse · 5 s
+     Fahrplan der vier Blöcke; der aktuelle Block groß: Kurzname steht auf dem
+     roten Faden, die Blocknummer sitzt als Knoten darauf. Beim Weiterschalten
+     gleiten Faden und Kurzname in die Laufleiste von Folie 03.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie r-trenner" id="t1" data-titel="Block 1: Prozesse" data-feld="leer" data-block="1" data-zeit="5" data-buendel="alle" data-laufkopf="aus" data-nummer="T1">
+  <div class="folie-inhalt">
+    <ol class="r-fahrplan" aria-label="Die vier Blöcke der Sitzung">
+      <li class="r-fahrplan-eintrag ist-aktuell" aria-current="step">
+        <span class="r-fahrplan-nr r-hof r-knoten">1</span>
+        <h2 class="r-fahrplan-name r-webe"><span class="r-faden" aria-hidden="true"><span class="r-faden-linie r-faden--gross" data-morph="faden" data-ueberlauf-ok></span></span><span data-morph="station-1">Prozesse</span></h2>
+        <p class="r-fahrplan-wer">Referat von Maximilian Büchele</p>
+      </li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">2</span><span class="r-fahrplan-name">KI im KMU</span></li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">3</span><span class="r-fahrplan-name">KI-Begriffe</span></li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">4</span><span class="r-fahrplan-name">Führung bei der Bundeswehr</span></li>
+    </ol>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen">„Zuerst Block 1, das Referat von Maximilian Büchele über Prozesse im Unternehmen: was ein Prozess ist, warum das Thema für Unternehmen wichtig ist und wie man Prozesse über ihren Lebenszyklus steuert.“</p>
+    <p>Trennfolie: nur kurz stehen lassen und weiterschalten. Faden und Blockname gleiten dabei in die Leiste oben auf Folie 03.</p>
   </aside>
 </section>
 
@@ -351,28 +380,58 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
+     TRENNFOLIE T2 · Block 2: KI im KMU · 5 s
+     Fahrplan der vier Blöcke; der aktuelle Block groß: Kurzname steht auf dem
+     roten Faden, die Blocknummer sitzt als Knoten darauf. Beim Weiterschalten
+     gleiten Faden und Kurzname in die Laufleiste von Folie 08.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie r-trenner" id="t2" data-titel="Block 2: KI im KMU" data-feld="leer" data-block="2" data-zeit="5" data-buendel="alle" data-laufkopf="aus" data-nummer="T2">
+  <div class="folie-inhalt">
+    <ol class="r-fahrplan" aria-label="Die vier Blöcke der Sitzung">
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">1</span><span class="r-fahrplan-name">Prozesse im Unternehmen</span></li>
+      <li class="r-fahrplan-eintrag ist-aktuell" aria-current="step">
+        <span class="r-fahrplan-nr r-hof r-knoten">2</span>
+        <h2 class="r-fahrplan-name r-webe"><span class="r-faden" aria-hidden="true"><span class="r-faden-linie r-faden--gross" data-morph="faden" data-ueberlauf-ok></span></span><span data-morph="station-2">KI im KMU</span></h2>
+        <p class="r-fahrplan-wer">Referat von Elbrus Tschekuev</p>
+      </li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">3</span><span class="r-fahrplan-name">KI-Begriffe</span></li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">4</span><span class="r-fahrplan-name">Führung bei der Bundeswehr</span></li>
+    </ol>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen">„Damit zu Block 2, dem Referat von Elbrus Tschekuev über KI im KMU. Er hat mit Zahlen zur Verbreitung angefangen und danach zwei Theorien vorgestellt: das TOE-Modell, das auf das Unternehmen zielt, und das TAM-Modell, das auf die einzelne Person zielt.“</p>
+    <p>Trennfolie: nur kurz stehen lassen und weiterschalten. Faden und Blockname gleiten dabei in die Leiste oben auf Folie 08.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 08 · Verbreitung · 50 s
+     Drei Kennzahlen mit hängender Zahl in der Randspalte und Strichskala
+     (100 Striche = 100 %); Spotlight: die schon gezeigten Zahlen treten
+     zurück, solange noch eine folgt. 59 % ist die Wende (Karmin + Abstand).
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-zahlen" id="f08" data-titel="Verbreitung von KI" data-feld="leer" data-station="2" data-zeit="50" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">2 · KI im KMU</p>
-    <h2 class="titel">Viele nutzen KI, kaum jemand schöpft sie aus</h2>
+    <h2 class="titel">Viele nutzen KI, <span class="r-zeile">kaum jemand schöpft sie aus</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-zahlen-raster">
-      <div class="kennzahl r-zahl" data-schritt="1" data-animation="hoch">
-        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="20" data-einheit=" %">20 %</span>
-        <span class="kennzahl-text">des Mittelstands nutzten KI 2022–2024 – fünfmal so viele wie 2016–2018</span>
+    <div class="r-anteile r-spot">
+      <div class="r-zahl" data-schritt="1" data-animation="einblenden">
+        <span class="r-zahl-wert"><span data-animation="zaehlen" data-ziel="20">20</span><span class="r-einheit">%</span></span>
+        <p class="r-zahl-text">des Mittelstands nutzten KI 2022–2024 – fünfmal so viele wie 2016–2018</p>
+        <span class="r-skala" style="--wert:20" role="img" aria-label="20 von 100"><span class="r-skala-wert" data-animation="zeichnen"></span></span>
         <span class="r-zahl-quelle" data-meta>KfW-Mittelstandspanel</span>
       </div>
-      <div class="kennzahl r-zahl" data-schritt="2" data-animation="hoch">
-        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="57" data-einheit=" %">57 %</span>
-        <span class="kennzahl-text">der Unternehmen ab 20 Beschäftigten nutzen KI</span>
+      <div class="r-zahl" data-schritt="2" data-animation="einblenden">
+        <span class="r-zahl-wert"><span data-animation="zaehlen" data-ziel="57">57</span><span class="r-einheit">%</span></span>
+        <p class="r-zahl-text">der Unternehmen ab 20 Beschäftigten nutzen KI</p>
+        <span class="r-skala" style="--wert:57" role="img" aria-label="57 von 100"><span class="r-skala-wert" data-animation="zeichnen"></span></span>
         <span class="r-zahl-quelle" data-meta>Bitkom 2026</span>
       </div>
-      <div class="kennzahl r-zahl r-zahl--held" data-schritt="3" data-animation="hoch">
-        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="59" data-einheit=" %">59 %</span>
-        <span class="kennzahl-text">der Anwender schöpfen das Potenzial überhaupt nicht aus</span>
+      <div class="r-zahl r-zahl--faden" data-schritt="3" data-animation="einblenden">
+        <span class="r-zahl-wert"><span data-animation="zaehlen" data-ziel="59">59</span><span class="r-einheit">%</span></span>
+        <p class="r-zahl-text">der Anwender schöpfen das Potenzial überhaupt nicht aus</p>
+        <span class="r-skala r-skala--faden" style="--wert:59" role="img" aria-label="59 von 100"><span class="r-skala-wert" data-animation="zeichnen"></span></span>
         <span class="r-zahl-quelle" data-meta>Bitkom 2026</span>
       </div>
     </div>
@@ -455,32 +514,39 @@
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 11 · TAM · 55 s
+     Pfaddiagramm: Knoten sind Wörter, Strichstärke = Stärke des
+     Zusammenhangs (Kernpfad 16 Karmin, Nebenpfad 6 Tinte, schwach 4
+     gestrichelt). Linien zeichnen sich in der Reihenfolge des Arguments,
+     die Pfeilspitzen folgen (eigene Dreiecke an festen Ankern).
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-tam" id="f11" data-titel="Technology Acceptance Model" data-feld="leer" data-station="2" data-zeit="55" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">2 · KI im KMU · Theorie 2: TAM</p>
-    <h2 class="titel">Der Nutzen zählt mehr als die Bedienung</h2>
+    <h2 class="titel">Der Nutzen zählt mehr <span class="r-zeile">als die Bedienung</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-zwei r-zwei--breit">
-      <div class="r-tam-modell">
-        <svg class="r-tam-pfeile" viewBox="0 0 900 460" aria-hidden="true">
-          <defs>
-            <marker id="r-spitze-stark" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0 L10 5 L0 10 z"/></marker>
-            <marker id="r-spitze-leise" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z"/></marker>
-          </defs>
-          <path class="r-tam-stark" d="M370 400 L700 400 L700 305" marker-end="url(#r-spitze-stark)" data-schritt="1" data-animation="zeichnen"/>
-          <path class="r-tam-mittel" d="M185 120 L185 325" marker-end="url(#r-spitze-leise)" data-schritt="2" data-animation="zeichnen"/>
-          <path class="r-tam-schwach" d="M370 60 L700 60 L700 158" marker-end="url(#r-spitze-leise)" data-schritt="2" data-animation="zeichnen"/>
+    <div class="r-tam-raster">
+      <figure class="r-tam-modell">
+        <figcaption class="r-bezeichner r-tam-name" data-meta>Technology Acceptance Model (Davis 1989)</figcaption>
+        <svg class="r-tam-pfeile" viewBox="0 0 1060 560" aria-hidden="true">
+          <g data-schritt="1" data-animation="keine">
+            <path class="r-pfad r-pfad--kern" d="M575 498 H900 V386" data-animation="zeichnen"/>
+            <path class="r-spitze r-spitze--kern" d="M878 386 L922 386 L900 350 Z" data-animation="einblenden" data-verzoegerung="760"/>
+          </g>
+          <g data-schritt="2" data-animation="keine">
+            <path class="r-pfad r-pfad--neben" d="M100 142 V434" data-animation="zeichnen"/>
+            <path class="r-spitze r-spitze--neben" d="M89 434 L111 434 L100 456 Z" data-animation="einblenden" data-verzoegerung="700"/>
+            <path class="r-pfad r-pfad--schwach" d="M507 112 H900 V244" data-animation="zeichnen"/>
+            <path class="r-spitze r-spitze--schwach" d="M891 244 L909 244 L900 262 Z" data-animation="einblenden" data-verzoegerung="500"/>
+          </g>
         </svg>
-        <span class="r-tam-box r-tam-box--bf">Benutzer&shy;freundlichkeit</span>
-        <span class="r-tam-box r-tam-box--nutzen">Wahrgenommener Nutzen</span>
-        <span class="r-tam-box r-tam-box--nutzung">Nutzung</span>
-        <span class="r-tam-label" data-meta data-schritt="2" data-animation="einblenden">direkt, aber schwächer</span>
-      </div>
-      <div class="stapel r-tam-rechts" data-schritt="3" data-animation="hoch">
-        <p class="r-tam-zahl"><b>42 %</b> der Anwender: Beschäftigte akzeptieren KI nicht</p>
-        <p class="r-tam-zahl"><b>70 %</b> schulen, jedes vierte Unternehmen gar nicht</p>
+        <span class="r-knoten-wort r-tam-knoten r-tam-knoten--bf">Benutzerfreundlichkeit</span>
+        <span class="r-knoten-wort r-tam-knoten r-tam-knoten--nutzen">Wahrgenommener Nutzen</span>
+        <span class="r-knoten-wort r-knoten-wort--ziel r-tam-knoten r-tam-knoten--nutzung">Nutzung</span>
+        <span class="r-pfad-label r-tam-label" data-meta data-schritt="2" data-animation="einblenden">direkt, aber schwächer</span>
+      </figure>
+      <div class="r-tam-rechts" data-schritt="3" data-animation="hoch">
+        <p class="r-tam-zahl"><b>42<span class="r-einheit">%</span></b><span>der Anwender: Beschäftigte akzeptieren KI nicht</span></p>
+        <p class="r-tam-zahl"><b>70<span class="r-einheit">%</span></b><span>schulen, jedes vierte Unternehmen gar nicht</span></p>
         <p class="r-tam-folgerung">Erst den Nutzen zeigen, dann schulen.</p>
       </div>
     </div>
@@ -565,6 +631,31 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
+     TRENNFOLIE T3 · Block 3: KI-Begriffe · 5 s
+     Fahrplan der vier Blöcke; der aktuelle Block groß: Kurzname steht auf dem
+     roten Faden, die Blocknummer sitzt als Knoten darauf. Beim Weiterschalten
+     gleiten Faden und Kurzname in die Laufleiste von Folie 14.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie r-trenner" id="t3" data-titel="Block 3: KI-Begriffe" data-feld="leer" data-block="3" data-zeit="5" data-buendel="alle" data-laufkopf="aus" data-nummer="T3">
+  <div class="folie-inhalt">
+    <ol class="r-fahrplan" aria-label="Die vier Blöcke der Sitzung">
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">1</span><span class="r-fahrplan-name">Prozesse im Unternehmen</span></li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">2</span><span class="r-fahrplan-name">KI im KMU</span></li>
+      <li class="r-fahrplan-eintrag ist-aktuell" aria-current="step">
+        <span class="r-fahrplan-nr r-hof r-knoten">3</span>
+        <h2 class="r-fahrplan-name r-webe"><span class="r-faden" aria-hidden="true"><span class="r-faden-linie r-faden--gross" data-morph="faden" data-ueberlauf-ok></span></span><span data-morph="station-3">KI-Begriffe</span></h2>
+        <p class="r-fahrplan-wer">Video von Klaus Knopper</p>
+      </li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">4</span><span class="r-fahrplan-name">Führung bei der Bundeswehr</span></li>
+    </ol>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen">„Block 3 war ein Video von Klaus Knopper: KI-Begriffe, die man heute kennen sollte. Wir greifen zwei Teile heraus: wie ein Sprachmodell eine Antwort erzeugt und was KI-Agenten sind.“</p>
+    <p>Trennfolie: nur kurz stehen lassen und weiterschalten. Faden und Blockname gleiten dabei in die Leiste oben auf Folie 14.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 14 · Wie ein LLM antwortet · 60 s
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-llm" id="f14" data-titel="Wie ein LLM antwortet" data-feld="leer" data-station="3" data-zeit="60" data-buendel="alle">
@@ -635,6 +726,31 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
+     TRENNFOLIE T4 · Block 4: Bundeswehr · 5 s
+     Fahrplan der vier Blöcke; der aktuelle Block groß: Kurzname steht auf dem
+     roten Faden, die Blocknummer sitzt als Knoten darauf. Beim Weiterschalten
+     gleiten Faden und Kurzname in die Laufleiste von Folie 16.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie r-trenner" id="t4" data-titel="Block 4: Bundeswehr" data-feld="leer" data-block="4" data-zeit="5" data-buendel="alle" data-laufkopf="aus" data-nummer="T4">
+  <div class="folie-inhalt">
+    <ol class="r-fahrplan" aria-label="Die vier Blöcke der Sitzung">
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">1</span><span class="r-fahrplan-name">Prozesse im Unternehmen</span></li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">2</span><span class="r-fahrplan-name">KI im KMU</span></li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">3</span><span class="r-fahrplan-name">KI-Begriffe</span></li>
+      <li class="r-fahrplan-eintrag ist-aktuell" aria-current="step">
+        <span class="r-fahrplan-nr r-hof r-knoten">4</span>
+        <h2 class="r-fahrplan-name r-webe"><span class="r-faden" aria-hidden="true"><span class="r-faden-linie r-faden--gross" data-morph="faden" data-ueberlauf-ok></span></span><span data-morph="station-4">Bundeswehr</span></h2>
+        <p class="r-fahrplan-wer">Gastvortrag: Führung bei der Bundeswehr</p>
+      </li>
+    </ol>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen">„Block 4 war ein Gastvortrag ohne Folien: Führung bei der Bundeswehr im Vergleich zur Privatwirtschaft. Die nächsten beiden Folien beruhen auf unserer Mitschrift.“</p>
+    <p>Trennfolie: nur kurz stehen lassen und weiterschalten. Faden und Blockname gleiten dabei in die Leiste oben auf Folie 16.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 16 · Führen bei der Bundeswehr · 60 s
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-bund" id="f16" data-titel="Führen bei der Bundeswehr" data-feld="leer" data-station="4" data-zeit="60" data-buendel="alle">
@@ -671,31 +787,40 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 17 · Bindung und neue Technik · 55 s
+     FOLIE 17 · Bindung und neue Technik · 50 s
+     10 % als Zahl und als Teil EINER Skala aus 100 Strichen (Gallup 2025):
+     hohe Bindung Karmin, geringe Mittel, keine als Umriss-Striche; zwischen
+     den Teilen eine Strichbreite Lücke. Schritt 1: Technik beim Bund.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-bindung" id="f17" data-titel="Bindung und neue Technik" data-feld="leer" data-station="4" data-zeit="55" data-buendel="alle">
+<section class="folie r-bindung" id="f17" data-titel="Bindung und neue Technik" data-feld="leer" data-station="4" data-zeit="50" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">4 · Gastvortrag: Führung bei der Bundeswehr</p>
-    <h2 class="titel">Bindung entsteht durch Nähe und Gehör</h2>
+    <h2 class="titel">Bindung entsteht <span class="r-zeile">durch Nähe und Gehör</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-zwei r-zwei--schmal-breit">
-      <div class="kennzahl r-bindung-zahl" data-animation="hoch">
-        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="10" data-einheit=" %">10 %</span>
-        <span class="kennzahl-text">der Beschäftigten sind eng an ihr Unternehmen gebunden</span>
-        <span class="r-zahl-quelle" data-meta>Gastredner; Gallup 2025</span>
+    <div class="r-bindung-raster">
+      <div class="r-bindung-links">
+        <p class="r-bindung-zahl">
+          <span class="r-bindung-wert"><span data-animation="zaehlen" data-ziel="10">10</span><span class="r-einheit">%</span></span>
+          <span class="r-bindung-text">der Beschäftigten sind eng an ihr Unternehmen gebunden</span>
+        </p>
+        <figure class="r-gallup">
+          <span class="r-skala r-skala--teile" role="img" aria-label="Gallup Engagement Index 2025: hohe Bindung 10 Prozent, geringe 77 Prozent, keine 13 Prozent">
+            <span class="r-skala-teil r-skala-teil--faden" style="--anteil:10" data-animation="zeichnen"></span><span class="r-skala-teil r-skala-teil--mittel" style="--anteil:77" data-animation="zeichnen" data-verzoegerung="160"></span><span class="r-skala-teil r-skala-teil--umriss" style="--anteil:13" data-animation="zeichnen" data-verzoegerung="320"></span>
+          </span>
+          <figcaption class="r-gallup-legende">
+            <span class="r-gallup-hoch"><b>10<span class="r-einheit">%</span></b> hohe Bindung</span><span class="r-gallup-gering"><b>77<span class="r-einheit">%</span></b> geringe Bindung</span><span class="r-gallup-keine"><b>13<span class="r-einheit">%</span></b> keine Bindung</span>
+          </figcaption>
+        </figure>
       </div>
-      <div class="stapel r-bindung-rechts">
-        <ul class="r-pfeile" data-staffel="120" data-animation="hoch">
-          <li>Kleiner, persönlicher, gehört werden: mehr Bindung</li>
-          <li>Beim Bund: leicht austauschbar, viele kommen wegen des Geldes</li>
-        </ul>
-        <p class="r-hinweis" data-schritt="1" data-animation="hoch"><svg class="icon" aria-hidden="true"><use href="#i-chip"/></svg><span>Beim Bund kaum KI – Sicherheit geht vor</span></p>
+      <div class="r-bindung-rechts">
+        <p class="r-aussage">Kleiner, persönlicher, gehört werden: mehr Bindung</p>
+        <p class="r-aussage">Beim Bund: leicht austauschbar, viele kommen wegen des Geldes</p>
+        <p class="r-bindung-technik" data-schritt="1" data-animation="hoch">Beim Bund kaum KI&nbsp;– Sicherheit geht vor</p>
       </div>
     </div>
   </div>
   <footer class="folie-fuss">
-    <p class="quelle">Gastvortrag (Mitschrift) · Gallup Engagement Index Deutschland 2025: hohe Bindung 10 %, geringe 77 %, keine 13 %</p>
+    <p class="quelle">Gastvortrag in der Sitzung vom 26.10.2026 (Mitschrift); Gallup Engagement Index Deutschland 2025</p>
   </footer>
   <aside class="notizen">
     <p class="gesprochen" data-schritt="0">„Ein zweites Thema war Bindung. In der Wirtschaft sind laut Gastredner nur rund 10 Prozent der Beschäftigten wirklich an ihr Unternehmen gebunden, das deckt sich mit dem Gallup-Index 2025. Bindung ist stärker, je kleiner der Betrieb, je persönlicher und je eher man gehört wird. Große Konzerne binden eher über Anreize. Diese 10 Prozent halten kleine Betriebe am Laufen. Bei der Bundeswehr ist die Austauschbarkeit dagegen hoch, solange jemand die Ausbildung hat. Viele Junge kommen auch wegen des guten Gehalts, fühlen sich aber nicht richtig verbunden.“</p>
@@ -755,6 +880,7 @@
   </aside>
 </section>
 
+
   </main>
 </div>
 
@@ -768,5 +894,8 @@
 <script src="js/deck.js"></script>
 <script src="js/komponenten.js"></script>
 <script src="js/folien/recap.js"></script>
+<script src="js/folien/recap-b1.js"></script>
+<script src="js/folien/recap-b2.js"></script>
+<script src="js/folien/recap-b34.js"></script>
 </body>
 </html>

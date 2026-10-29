@@ -1,0 +1,52 @@
+/* =============================================================================
+   recap-b34.css – Folien f14–f18 und b1 (Block 3 KI-Begriffe, Block 4
+   Bundeswehr, Fazit, Backup Quellen)
+   Gehört dem Folien-Agenten für diese Folien. Fundament (Tokens, Rahmen,
+   Laufleiste, Faden, Komponenten r-…) steht in recap.css – dort NICHT ändern;
+   Bausteine und Markup-Muster: werk/KATALOG.md.
+   Regeln je Folie mit der Folienklasse beginnen, nur Tokens verwenden.
+   f17 ist aus Prototyp A portiert (Fundament) und darf verfeinert werden.
+   ============================================================================= */
+
+/* ---------- Folie 17: Bindung – 10 % als Zahl und als Teil einer Skala ---------- */
+.r-bindung .folie-inhalt { justify-content: flex-start; }
+.r-bindung-raster { display: grid; grid-template-columns: var(--r-raster); column-gap: var(--r-rinne); align-items: start; }
+.r-bindung-links { grid-column: 1 / 9; }
+.r-bindung-zahl { display: flex; align-items: baseline; gap: 40px; }
+.r-bindung-wert {
+  flex: none;
+  font-family: var(--schrift-zahl);
+  font-size: 220px;
+  font-weight: 520;
+  line-height: 0.8;
+  letter-spacing: -0.025em;
+  font-variation-settings: "opsz" 144, var(--achsen-ruhig);
+  font-variant-numeric: lining-nums tabular-nums;
+  white-space: nowrap;
+  color: var(--r-faden-text);
+}
+.r-bindung-text { max-width: 520px; font-size: 32px; line-height: 1.25; }
+.r-gallup { margin: 56px 0 0; }
+.r-gallup .r-skala { --takt: 10px; --strich: 7px; --hoehe: 88px; }
+.r-gallup-legende { position: relative; width: 1014px; height: 44px; margin-top: 18px; font-size: 28px; line-height: 1.2; }
+.r-gallup-legende > span { position: absolute; top: 0; white-space: nowrap; }
+.r-gallup-legende b {
+  font-family: var(--schrift-zahl);
+  font-size: 34px;
+  font-weight: 500;
+  font-variation-settings: "opsz" 36, var(--achsen-ruhig);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.r-gallup-hoch { left: 0; color: var(--r-faden-text); }
+.r-gallup-gering { left: 492px; translate: -50% 0; }   /* Mitte des Teils „gering“ (107 + 770 / 2) */
+.r-gallup-keine { right: 0; color: var(--r-schrift-2); }
+.r-bindung-rechts { grid-column: 9 / 13; display: flex; flex-direction: column; gap: 36px; padding-top: 18px; }
+.r-aussage {
+  font-family: var(--schrift-display);
+  font-size: 40px;
+  font-weight: 450;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+}
+.r-bindung-technik { margin-top: 20px; font-size: 30px; line-height: 1.3; color: var(--r-schrift-2); text-wrap: balance; }
