@@ -27,6 +27,12 @@
       = vorne; data-webe-start="hinten" am .r-webe kehrt das um.
       Neu gemessen wird bei deck:bereit, nach document.fonts.ready, bei
       deck:thema und deck:groesse (Taste T lädt andere Schriften).
+   3. SCHLEIFE
+      Der Bogen einer .r-schleife (Kette mit Bogen zurück, f14) beginnt unter
+      der Mitte des letzten und endet unter der Mitte des ersten Worts: das
+      Skript setzt --bogen-von/--bogen-bis nach den echten Wortbreiten (sonst
+      verrutschten die Enden unter Taste T mit breiteren Schriften). Gemessen
+      wird zusammen mit dem Faden.
    Schnittstelle: window.Recap.weben() misst alles neu (z. B. nach einer
    Layoutänderung durch ein Folien-Skript).
    ============================================================================= */
@@ -245,6 +251,23 @@
     });
   }
 
+  /* ---------- 3. Schleife: Bogenenden an die Wortmitten ---------- */
+  function schleifeMessen(schleife) {
+    var folie = schleife.closest('section.folie');
+    if (!folie || schleife.closest('.ist-klon')) return;
+    util.messen(schleife, function () {
+      var woerter = util.alle(':scope > .r-kette > li', schleife);
+      if (woerter.length < 2) return;
+      var s = stufe(folie);
+      var sr = schleife.getBoundingClientRect();
+      var a = woerter[0].getBoundingClientRect();
+      var e = woerter[woerter.length - 1].getBoundingClientRect();
+      if (!sr.width || !a.width || !e.width) return;
+      schleife.style.setProperty('--bogen-von', ((a.left + a.width / 2 - sr.left) / s).toFixed(1) + 'px');
+      schleife.style.setProperty('--bogen-bis', ((sr.right - e.left - e.width / 2) / s).toFixed(1) + 'px');
+    });
+  }
+
   function allesWeben() {
     util.alle('.buehne .r-faden-linie').forEach(function (linie) {
       if (linie.closest('.ist-klon') || linie.closest('.r-webe')) return;
@@ -253,6 +276,7 @@
       util.messen(linie, function () { linieAusrichten(linie, folie, stufe(folie)); });
     });
     util.alle('.buehne .r-webe').forEach(weben);
+    util.alle('.buehne .r-schleife').forEach(schleifeMessen);
   }
 
   var geplant = 0;

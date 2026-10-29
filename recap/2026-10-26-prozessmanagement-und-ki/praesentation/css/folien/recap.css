@@ -199,6 +199,12 @@ html[data-thema="bento"] {
 /* Senkrechter Rhythmus: Laufleiste → 60 → Titel → 56 → Inhalt */
 :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .r-laufkopf ~ .folie-kopf { margin-top: 60px; }
 :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .folie-kopf ~ .folie-inhalt { margin-top: 56px; }
+/* Folien ohne Laufleiste, aber mit Titel (f02 Überblick, b1 Quellen): Titel
+   auf derselben Höhe wie auf den Inhaltsfolien. Die Laufleiste ist 48,4 px
+   hoch (Grundlinie der Namen auf die der Foliennummer ausgerichtet) → Titel
+   bei y = 52 + 48,4 + 60 = 160,4. Titelfolie f01 und Trennfolien haben
+   eigene Kompositionen. */
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-laufkopf="aus"]:not(.r-titel) > .folie-kopf { margin-top: 108.4px; }
 
 /* Titel = Kernaussage als Satz: 88 px, höchstens 2 Zeilen, höchstens 9 Spalten.
    Gezielter Zeilenumbruch: <span class="r-zeile">zweite Zeile</span> */
@@ -283,6 +289,9 @@ html[data-thema="bento"] {
      Geometrische Höfe statt text-shadow: keine Streifen an Haarstrichen.
    • Jeder Faden braucht einen Stapelkontext (.r-webe oder .r-faden-rahmen):
      die Linie liegt (z-index −1) über dem Papier, aber hinter der Schrift.
+   • Weben nur für große Schrift (ab ca. 120 px: f01, t1–t4). Darunter würden
+     die festen 11-px-Höfe die Unterlängen zerschneiden – dort den Faden
+     ohne Weben hinter die Schrift legen (.r-faden-rahmen, wie f02 und f18).
    ----------------------------------------------------------------------------- */
 .r-webe,
 .r-faden-rahmen { position: relative; isolation: isolate; }
@@ -513,13 +522,20 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
        <span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen"></span></span>
        <span class="r-balken-zahl">72<span class="r-einheit">%</span></span></li>
      <li class="r-balken-zeile r-balken-zeile--faden" style="--wert:21">…</li></ul>
-   Skala 0–100 % einheitlich innerhalb einer Folie (gleiche --spur). */
+   Skala 0–100 % einheitlich innerhalb einer Folie (gleiche --spur).
+   Spalten werden nicht auf die Breite des Containers gedehnt (justify-content:
+   start): die Zahl bleibt am Ende der Spur, auch wenn die Liste schmaler ist
+   als ihr Feld (zwei Gruppen nebeneinander, f12).
+   Ohne Liste (Kennzahl mit Kompaktbalken darunter, f10): .r-balken-spur und
+   .r-balken-wert funktionieren auch allein (Höhe 16 px, Tinte); Karmin über
+   --balken-farbe: var(--spot-akzent-strich, var(--r-faden)) am Vorfahren. */
 .r-balken {
   --spur: 520px;
   --name: max-content;
   --hoehe: 16px;
   display: grid;
   grid-template-columns: var(--name) var(--spur) auto;
+  justify-content: start;
   column-gap: 24px;
   row-gap: 18px;
   align-items: center;
@@ -539,18 +555,17 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
 .r-balken-spur {
   position: relative;
   display: block;
-  height: var(--hoehe);
+  height: var(--hoehe, 16px);
   background: linear-gradient(var(--r-leer), var(--r-leer)) left center / 100% var(--r-haar) no-repeat;
 }
 .r-balken-wert {
   position: absolute;
   inset: 0 auto 0 0;
   width: calc(var(--wert) * 1%);
-  background: var(--balken-farbe);
+  background: var(--balken-farbe, var(--spot-strich, var(--r-schrift)));
 }
 .r-balken-zahl {
   justify-self: end;
-  min-width: 2.6em;
   text-align: right;
   font-family: var(--schrift-zahl);
   font-size: 36px;
@@ -599,6 +614,11 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
 .r-zahl-quelle { margin-top: 8px; font-size: 22px; line-height: 1.2; color: var(--r-schrift-2); }
 .r-zahl--faden { margin-top: 28px; }
 .r-zahl--faden .r-zahl-wert { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 540; }
+/* .r-zahl--schmal: Kennzahl im Hauptfeld neben einem Seitenfeld (f09).
+   Randspalte 166 px, Zahl 104 px – mit Rinne und r-skala--schmal (900 px)
+   füllt die Zeile genau Spalten 1–8 (166 + 32 + 900 = 1098). */
+.r-zahl--schmal { grid-template-columns: 166px minmax(0, 1fr); }
+.r-zahl--schmal .r-zahl-wert { font-size: 104px; font-variation-settings: "opsz" 96, var(--achsen-ruhig); }
 
 /* 5.9 Spotlight (Helligkeitsstufe): Kinder mit data-schritt. Solange noch
    ein späterer Schritt folgt, treten die schon gezeigten Kinder zurück –
@@ -647,24 +667,42 @@ html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:
   color: var(--spot-text, var(--r-schrift));
 }
 .r-knoten-wort--ziel { font-size: 64px; font-weight: 560; font-variation-settings: "opsz" 72, var(--achsen-ruhig); }
+/* Andocklinie (Zielknoten, f11): das Wort steht auf einer Tintenlinie (6 px,
+   so breit wie das Wort, 16 px unter der Box – unterhalb der Unterlängen);
+   die Kernspitze endet an der Unterkante der Linie. Der Knoten ist im
+   Diagramm absolut gesetzt (Bezugskasten für die Linie). */
+.r-knoten-wort--andock::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 16px);
+  height: var(--r-strich-daten);
+  background: var(--spot-strich, var(--r-schrift));
+}
 .r-pfad-label { font-size: 24px; line-height: 1.2; color: var(--r-schrift-2); white-space: nowrap; }
 
 /* 5.11 Ablauf/Kette: Wörter stehen auf einer Tintenlinie (6 px) mit
    Pfeilspitze am Ende. Die Kette ist so breit wie ihre Wörter;
    .r-kette--breit verteilt sie über die ganze Zeile (space-between).
    <ol class="r-kette"><li>Ereignis</li><li>abgestimmtes Handeln</li><li>Ergebnis</li></ol>
+   --abstand: Abstand zwischen den Wörtern (Std. 48 px; f14: 36 px für fünf
+   Stationen im Hauptfeld). .r-kette--gross: die Kette als Held einer Folie
+   (Wörter 64 px, f03).
    .r-kette--bruch: die Linie reißt an jeder Übergabe; zwischen die <li>
    gehört <li class="r-kette-bruch" aria-label="Übergabe"></li> (kleines
    Bruchzeichen in Tinte; .r-kette-bruch--faden = Karmin, nur wenn es die
-   EINE Karmin-Betonung der Folie ist). */
+   EINE Karmin-Betonung der Folie ist). Mit .r-kette--breit wachsen die
+   Abschnitte mit, die Bruchzeichen bleiben schmal (f04). */
 .r-kette {
   --strich: var(--r-strich-daten);
   --spitze: 26px;
+  --abstand: 48px;
   --farbe: var(--spot-strich, var(--r-schrift));
   position: relative;
   display: flex;
   align-items: flex-end;
-  gap: 48px;
+  gap: var(--abstand);
   width: fit-content;
   max-width: 100%;
   margin: 0;
@@ -700,9 +738,17 @@ html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:
   white-space: nowrap;
   color: var(--spot-text, var(--r-schrift));
 }
+.r-kette--gross { --spitze: 32px; }
+.r-kette--gross > li {
+  font-size: 64px;
+  font-weight: 440;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 60, var(--achsen-ruhig);
+}
 .r-kette--bruch { gap: 0; }
 .r-kette--bruch::after { display: none; }
 .r-kette--bruch > li:not(.r-kette-bruch) { position: relative; padding: 0 28px; }
+.r-kette--bruch.r-kette--breit > li:not(.r-kette-bruch) { flex: 1 1 auto; }
 .r-kette--bruch > li:not(.r-kette-bruch):first-child { padding-left: 0; }
 .r-kette--bruch > li:not(.r-kette-bruch)::after {
   content: "";
@@ -737,7 +783,10 @@ html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:
 
 /* Bogen zurück (Schleife, z. B. „anhängen, von vorn“): unter der Kette von
    der letzten zur ersten Station, Pfeilspitze nach oben am Anfang.
-   <div class="r-schleife"><ol class="r-kette">…</ol><span class="r-schleife-bogen" aria-hidden="true"></span></div> */
+   <div class="r-schleife"><ol class="r-kette">…</ol><span class="r-schleife-bogen" aria-hidden="true"></span></div>
+   recap.js setzt --bogen-von/--bogen-bis auf die Mitte des ersten bzw.
+   letzten Worts (auch nach Taste T); die Werte hier sind nur der Rückfall
+   ohne Skript. */
 .r-schleife { position: relative; width: fit-content; max-width: 100%; padding-bottom: 72px; }
 .r-schleife-bogen {
   position: absolute;
@@ -876,6 +925,19 @@ html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:
 :is(.ist-heute, .ist-faden) > .r-zeit-jahr { color: var(--r-faden-text); }
 .r-zeit-name { margin-top: 8px; font-size: 34px; font-weight: 600; line-height: 1.15; color: var(--r-schrift); }
 .r-zeit-wort { margin-top: 6px; font-size: 30px; line-height: 1.25; color: var(--r-schrift-2); }
+/* Zeitstrahl mit wenigen Stationen (f13: zwei): statt des Stichworts ein
+   Fraunces-Satz unter dem Namen */
+.r-zeit-satz {
+  margin-top: 18px;
+  font-family: var(--schrift-display);
+  font-size: 52px;
+  font-weight: 430;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  text-wrap: balance;
+  color: var(--r-schrift);
+}
 
 /* 5.14 Vergleich: zwei Spalten asymmetrisch (1–7 / 8–12), Kopf Fraunces 44 px
    über 2-px-Linie, Zeilen auf gemeinsamen Grundlinien mit Haarlinien;
@@ -915,7 +977,10 @@ html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:
 
 /* 5.15 Liste (nur ohne Struktur, höchstens 4 Punkte): Stichwort Fraunces
    36–40 px + Erklärung 30 px Schiefer, Haarlinien. .r-liste--reihe: 3–4
-   Spalten nebeneinander. .ist-faden: die EINE Karmin-Aussage.
+   Spalten nebeneinander. .ist-faden: die EINE Karmin-Aussage – Stichwort UND
+   Erklärung (Merksatz) in Karmin, zusätzlich kräftiger (Karmin und Schiefer
+   sind fast gleich hell). Erklärungen brechen ausgeglichen um (keine
+   einzelnen Wörter in der letzten Zeile).
    <ul class="r-liste"><li><b class="r-liste-wort">Inferenz</b><span class="r-liste-text">…</span></li></ul> */
 .r-liste { display: flex; flex-direction: column; margin: 0; padding: 0; list-style: none; }
 .r-liste > li {
@@ -933,8 +998,9 @@ html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:
   font-variation-settings: "opsz" 48, var(--achsen-ruhig);
   color: var(--spot-text, var(--r-schrift));
 }
-.r-liste-text { font-size: 30px; line-height: 1.3; color: var(--r-schrift-2); }
-.r-liste > li.ist-faden .r-liste-wort { color: var(--spot-akzent, var(--r-faden-text)); }
+.r-liste-text { font-size: 30px; line-height: 1.3; color: var(--r-schrift-2); text-wrap: balance; }
+.r-liste > li.ist-faden .r-liste-wort { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 540; }
+.r-liste > li.ist-faden .r-liste-text { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 500; }
 .r-liste--reihe { display: grid; grid-template-columns: repeat(var(--spalten, 3), minmax(0, 1fr)); column-gap: var(--r-rinne); }
 
 
@@ -989,9 +1055,9 @@ html:is([data-thema="keynote"], [data-thema="bento"]) :is(.buehne, .ue-bild, .r-
 
 /* ---------- f02 Überblick: vier Nummern stehen auf dem Faden ----------
    Ohne Laufleiste; der Titel steht trotzdem auf der Höhe der Inhaltsfolien
-   (52 + Laufleiste 44 + 60). Der Faden ist schon in Schritt 0 da (gleitet
-   von f01 herein) und läuft UNTER den Nummern – nichts wirkt durchgestrichen. */
-:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie.r-plan > .folie-kopf { margin-top: 104px; }
+   (Regel „Folien ohne Laufleiste“ in Abschnitt 3). Der Faden ist schon in
+   Schritt 0 da (gleitet von f01 herein) und läuft UNTER den Nummern – nichts
+   wirkt durchgestrichen. */
 .r-plan .folie-inhalt { justify-content: flex-start; gap: 84px; }
 .r-bloecke {
   display: grid;

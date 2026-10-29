@@ -18,19 +18,12 @@
 
 /* ---------- f03 Was ist ein Prozess? -------------------------------------------
    Die Kette ist der Held: über die ganze Breite (.r-kette--breit), Wörter
-   64 px; Titel und Kette bilden die obere Gruppe. Die untere Gruppe sitzt
-   168 px tiefer: links Zitat (Sp. 1–6) und „Wiederholbar …“, rechts
-   (Sp. 8–12) zweimal dasselbe Formular „Bestellung“ – Modell mit
-   gestrichelten Leerfeldern (Schiefer), Instanz in Tinte ausgefüllt
-   (Schritt 1). */
+   64 px (.r-kette--gross, recap.css); Titel und Kette bilden die obere
+   Gruppe. Die untere Gruppe sitzt 168 px tiefer: links Zitat (Sp. 1–6) und
+   „Wiederholbar …“, rechts (Sp. 8–12) zweimal dasselbe Formular
+   „Bestellung“ – Modell mit gestrichelten Leerfeldern (Schiefer), Instanz in
+   Tinte ausgefüllt (Schritt 1). */
 .r-begriff .folie-inhalt { gap: 168px; }
-.r-begriff .r-begriff-kette { --spitze: 32px; }
-.r-begriff .r-begriff-kette > li {
-  font-size: 64px;
-  font-weight: 440;
-  letter-spacing: -0.01em;
-  font-variation-settings: "opsz" 60, var(--achsen-ruhig);
-}
 .r-begriff-unten { align-items: start; grid-template-rows: auto auto; }
 .r-begriff-zitat { grid-column: 1 / 7; grid-row: 1; }
 /* Formular-Raster für Modell UND Instanz: gemeinsame Zeilen, damit Feldname,
@@ -90,15 +83,11 @@
 
 /* ---------- f04 Relevanz und Schnittstellen ------------------------------------
    Drei Gründe (Liste als Reihe), die gerissene Kette über die ganze Breite
-   (Abschnitte wachsen mit, Bruchzeichen bleiben schmal), Kernaussage als
-   These in Karmin. */
+   (.r-kette--bruch.r-kette--breit: Abschnitte wachsen mit, Bruchzeichen
+   bleiben schmal), Wörter 48 px; Kernaussage als These in Karmin. */
 .r-relevanz .folie-inhalt { gap: 64px; }
-/* keine einzelnen Wörter in der letzten Zeile („… als sie / bringt“) */
-:is(.r-relevanz, .r-arten, .r-zyklus) .r-liste-text { text-wrap: balance; }
 .r-relevanz-kette { display: flex; flex-direction: column; gap: 14px; }
-.r-relevanz .r-kette--bruch { width: auto; }
 .r-relevanz .r-kette--bruch > li:not(.r-kette-bruch) {
-  flex: 1 1 auto;
   font-size: 48px;
   font-variation-settings: "opsz" 48, var(--achsen-ruhig);
 }
