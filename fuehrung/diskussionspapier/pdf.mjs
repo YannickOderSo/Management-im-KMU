@@ -19,7 +19,7 @@ await seite.evaluate(() => document.fonts.ready);
 const klein = 'font: 7px Arial, sans-serif; color: #6b6b66; width: 100%; padding: 0 18mm;';
 await seite.pdf({
   path: ziel, format: 'A4', preferCSSPageSize: true, printBackground: true, displayHeaderFooter: true,
-  headerTemplate: `<div style="${klein}">Führung im KMU – Handout · Yannick Heisler</div>`,
+  headerTemplate: `<div style="${klein}">Führung im KMU · Handout · Yannick Heisler</div>`,
   footerTemplate: `<div style="${klein} text-align: right;">Seite <span class="pageNumber"></span> von <span class="totalPages"></span></div>`
 });
 await browser.close();
