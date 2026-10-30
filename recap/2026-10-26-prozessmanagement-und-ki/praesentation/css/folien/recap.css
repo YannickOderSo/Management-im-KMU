@@ -15,7 +15,7 @@
      recap.css       Fundament: Tokens, Rahmen, Laufleiste, Faden, Komponenten,
                      Folien f01, f02, t1–t4 (nur hier ändern, wer das Fundament betreut)
      recap-b1.css    Folien f03–f07           recap-b2.css   Folien f08–f13
-     recap-b34.css   Folien f14–f18 und b1
+     recap-b34.css   Folien f14–f19 und b1
    Folienspezifisches gehört in die Datei der Folie, nie hierher.
 
    RASTER  12 Spalten à 109,33 px, Rinne 32 px, Rand 128 px links/rechts,
@@ -293,7 +293,7 @@ html[data-thema="bento"] {
      die Linie liegt (z-index −1) über dem Papier, aber hinter der Schrift.
    • Weben nur für große Schrift (ab ca. 120 px: f01, t1–t4). Darunter würden
      die festen 11-px-Höfe die Unterlängen zerschneiden – dort den Faden
-     ohne Weben hinter die Schrift legen (.r-faden-rahmen, wie f02 und f18).
+     ohne Weben hinter die Schrift legen (.r-faden-rahmen, wie f02 und f19).
    ----------------------------------------------------------------------------- */
 .r-webe,
 .r-faden-rahmen { position: relative; isolation: isolate; }

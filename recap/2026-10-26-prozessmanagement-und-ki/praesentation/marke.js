@@ -21,7 +21,7 @@ window.MARKE = {
      und markiert je Folie genau EINE Schlüsselzahl. Tinte ist die Schrift- und
      Datenfarbe. Die genauen Töne stehen in css/folien/recap.css (Abschnitt 2,
      für alle drei Themen, hell und dunkel: Kreide #F2F3EF, Schiefer #586070,
-     Mittel #737B8B, Nebel #BCC2CB) – die Werte hier dienen der Engine nur als
+     Mittel #737B8B, Nebel #A9B0BB) – die Werte hier dienen der Engine nur als
      Ausgangspunkt. Bewusst anders als das Führungs-Referat (Petrol/Bernstein). */
   farben: {
     primaer: '#C0132D',           // Karmin: der rote Faden, Schlüsselzahl
@@ -42,7 +42,7 @@ window.MARKE = {
   unternehmen: '',
   gruppe: ['Elias Knauber', 'Yannick Heisler'],
   datum: '',                      // Vortragstermin der Recap eintragen (JJJJ-MM-TT), dann steht er auf der Titelfolie
-  dauerMinuten: 15,               // ca. 15 Minuten (Yannick, 28.10.2026)
+  dauerMinuten: 16,               // ca. 16 Minuten (Knopper-Block um eine Folie erweitert, 30.10.2026)
   anrede: 'Sie',
 
   /* 5./6. LIVE-UMFRAGE, WORTWOLKEN – nicht genutzt */

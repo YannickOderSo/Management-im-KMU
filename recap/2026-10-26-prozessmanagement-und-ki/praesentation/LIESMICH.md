@@ -18,16 +18,16 @@ Web-Präsentation (HTML) für die Recap im Modul Management im KMU, vorgetragen 
 
 **Notfall-PDF** (Plan B): `export/recap-notfall.pdf` (eine Seite je Folie, Endzustand).
 
-## Aufbau (ca. 15 Min., Sollzeiten zusammen 15:15)
+## Aufbau (ca. 16 Min., Sollzeiten zusammen 16:05)
 
 | Block | Folien | Grundlage |
 |---|---|---|
 | Einstieg | 01 Titel · 02 Vier Blöcke + These | – |
 | 1 Prozesse (Maximilian Büchele) | 03 Begriff · 04 Übergaben · 05 Zeitstrahl · 06 Sichten und Prozessarten · 07 Lebenszyklus | Folien 6–11 der Referenten, Transkript |
 | 2 KI im KMU (Elbrus Tschekuev) | 08 Verbreitung · 09 Größe vs. Know-how · 10 TOE · 11 TAM · 12 Einsatz und Kosten · 13 Recht | Folien 31–41 der Referenten, Transkript |
-| 3 KI-Begriffe (Klaus Knopper) | 14 Wie ein LLM antwortet · 15 Agenten | `../quellen/knopper-ki-begriffe.md` |
-| 4 Gastvortrag Bundeswehr | 16 Führen beim Bund · 17 Bindung und Technik | `../quellen/mitschrift-yannick.txt` (keine Folien) |
-| Schluss | 18 Fazit · B1 Quellen (Backup) | – |
+| 3 KI-Begriffe (Klaus Knopper) | 14 Wie ein LLM antwortet · 15 Chatbot, Prompt, Modellfamilien · 16 Agenten | `../quellen/knopper-ki-begriffe.md` |
+| 4 Gastvortrag Bundeswehr | 17 Führen beim Bund · 18 Bindung und Technik | `../quellen/mitschrift-yannick.txt` (keine Folien) |
+| Schluss | 19 Fazit · B1 Quellen (Backup) | – |
 
 Nur vorgetragene Inhalte: Bei Max endete Teil 1 nach der Folie Modellierung, bei Elbrus vor dem Fallbeispiel energis.
 Beides steht auf den Folien 02, 07 und 13.

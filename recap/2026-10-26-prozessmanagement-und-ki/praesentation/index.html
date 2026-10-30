@@ -152,7 +152,7 @@
   </footer>
   <aside class="notizen">
     <p class="gesprochen">„Wir fassen die Sitzung vom 26. Oktober zusammen. Das waren vier Blöcke: zwei Referate zu Prozessen und zu KI im KMU, das Video von Herrn Knopper zu KI-Begriffen und der Gastvortrag zur Führung bei der Bundeswehr.“</p>
-    <p>Die rote Linie ist der rote Faden der Präsentation: Sie läuft durch alle Folien (oben als Leiste mit den vier Blöcken) und verbindet am Ende die drei Gedanken des Fazits (Folie 18).</p>
+    <p>Die rote Linie ist der rote Faden der Präsentation: Sie läuft durch alle Folien (oben als Leiste mit den vier Blöcken) und verbindet am Ende die drei Gedanken des Fazits (Folie 19).</p>
   </aside>
 </section>
 
@@ -794,17 +794,55 @@
     <p class="gesprochen" data-schritt="0">„Herr Knopper hat in einem neunminütigen Video die wichtigsten KI-Begriffe erklärt. Ein LLM, ein großes Sprachmodell wie ChatGPT, Claude oder Gemini, ist ein künstliches neuronales Netz. Eine Antwort entsteht in fünf Schritten: Der Text wird in Token zerlegt, die Token laufen Schicht für Schicht durch das Netz, das Modell berechnet, welches Token als Nächstes am wahrscheinlichsten ist, wählt eines aus, hängt es an und beginnt von vorn.“</p>
     <p class="gesprochen" data-schritt="1">„Sein Beispiel: Der Satz ‚Ich gehe heute ins Kino‘ besteht aus etwa sechs bis acht Token, denn ein Token ist oft nur ein Wortteil oder eine Silbe.“</p>
     <p class="gesprochen" data-schritt="2">„Drei Folgen davon: Erstens lernt das Modell im Betrieb, der Inferenz, nichts dazu, auch nicht durch Lösungen im Prompt. Zweitens bestimmen die Token, wie lang Anfrage und Antwort sein dürfen und was es kostet. Drittens Halluzination: Das Modell hat kein Wissen und keinen Reality-Check, es gibt falsche Antworten scheinbar selbstbewusst. Besonders bei Zahlen, Namen und Quellen. Sein wichtigster Merksatz: wichtige Fakten immer nachprüfen.“</p>
-    <p>Die fünf Stationen ausführlich: Text in Token zerlegen, durchs Netz rechnen, Wahrscheinlichkeiten berechnen, ein Token wählen, anhängen und von vorn. Weitere Begriffe aus dem Video: Chatbot = nur das Fenster vor dem Modell; Prompt = Eingabe, Prompt Engineering = Eingabe gut planen (Kontext, Format, Beispiele); Bildmodelle (Diffusion) entfernen Rauschen Schritt für Schritt; multimodale Modelle verarbeiten Text und Bild.</p>
+    <p>Die fünf Stationen ausführlich: Text in Token zerlegen, durchs Netz rechnen, Wahrscheinlichkeiten berechnen, ein Token wählen, anhängen und von vorn. Chatbot, Prompt und Modellfamilien folgen auf der nächsten Folie.</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 15 · KI-Agenten · 50 s
+     FOLIE 15 · Chatbot, Prompt, Modellfamilien · 50 s
+     Schritt 0: Kette Prompt → Chatbot → Modell, „Chatbot“ als einziges
+     Karmin (nur das Fenster). Schritt 1: Knoppers Beispiel-Prompt als Zitat.
+     Schritt 2: zwei weitere Modellfamilien im Seitenfeld.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie r-fenster" id="f15" data-titel="Chatbot, Prompt, Modelle" data-feld="leer" data-station="3" data-zeit="50" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Der Chatbot ist nur das Fenster, <span class="r-zeile">dahinter rechnet das Modell</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="r-raster r-fenster-raster">
+      <div class="r-feld-haupt r-fenster-haupt">
+        <ol class="r-kette r-fenster-kette" data-staffel="140" data-animation="hoch" aria-label="Der Prompt geht in den Chatbot, der Chatbot gibt ihn an das Modell weiter"><li>Prompt</li><li class="ist-faden">Chatbot</li><li>Modell</li></ol>
+        <p class="r-hinweis r-fenster-wo" data-meta>Chatbot = Browser, App oder Terminal</p>
+        <figure class="r-fenster-prompt" data-schritt="1" data-animation="hoch">
+          <figcaption class="r-bezeichner" data-meta>Guter Prompt</figcaption>
+          <blockquote class="r-zitat"><p class="r-zitat-text">„Schreibe eine höfliche Absage in drei Sätzen.“</p></blockquote>
+          <p class="r-hinweis r-fenster-regel" data-meta>mit Kontext, Format, Beispielen</p>
+        </figure>
+      </div>
+      <ul class="r-feld-seite r-liste r-fenster-familien" data-schritt="2" data-staffel="140" data-animation="hoch">
+        <li><b class="r-liste-wort">Diffusion</b><span class="r-liste-text">Bild und Video: Rauschen entfernen</span></li>
+        <li><b class="r-liste-wort">Multimodal</b><span class="r-liste-text">Text und Bild zugleich</span></li>
+      </ul>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Knopper, K. (2026): KI-Begriffe, die man heute kennen sollte. Video, Hochschule Kaiserslautern, CC-Lizenz</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Dazu drei Grundbegriffe aus dem Video. Der Chatbot ist nur die Benutzeroberfläche, also Browser, App oder Terminal. Er ist nicht das Modell selbst, sondern das Fenster davor.“</p>
+    <p class="gesprochen" data-schritt="1">„Was man dort eingibt, ist der Prompt, mehr nicht. Prompt Engineering heißt, diese Eingabe geschickt zu planen: mit Kontext, Formatvorgaben und Beispielen. Ein guter Prompt nach Herrn Knopper: ‚Schreibe eine höfliche Absage in drei Sätzen.‘ Seine Randbemerkung: Auch Prompt Engineering ist heute schon weitgehend automatisierbar.“</p>
+    <p class="gesprochen" data-schritt="2">„Und Sprachmodelle sind nur eine Familie. Bild- und Videomodelle arbeiten meist mit Diffusion: Sie entfernen Bildrauschen Schritt für Schritt, bis das gewünschte Bild übrig bleibt. Multimodale Modelle verarbeiten mehrere Formate, etwa ein Foto mit der Frage: Was ist hier kaputt?“</p>
+    <p>Beispiele aus dem Video (bei Rückfragen): Bildmodelle Stable Diffusion und Flux; Musik- und Audiomodelle arbeiten mit autoregressiven Transformern oder Diffusion.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 16 · KI-Agenten · 50 s
      Schritt 0: Agentenschleife als feiner Tintenkreis (Plan, Werkzeug,
      Ergebnis, Prüfung), „LLM“ in der Mitte. Schritt 1: vier Begriffe auf
      Haarlinien, „Tool Calling“ mit Merksatz als einziges Karmin.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-agent" id="f15" data-titel="KI-Agenten" data-feld="leer" data-station="3" data-zeit="50" data-buendel="alle">
+<section class="folie r-agent" id="f16" data-titel="KI-Agenten" data-feld="leer" data-station="3" data-zeit="50" data-buendel="alle">
   <header class="folie-kopf">
     <h2 class="titel">Agenten handeln selbst, <span class="r-zeile">mit Werkzeugen und Risiko</span></h2>
   </header>
@@ -844,7 +882,7 @@
      TRENNFOLIE T4 · Block 4: Bundeswehr · 5 s
      Fahrplan der vier Blöcke; der aktuelle Block groß: Kurzname steht auf dem
      roten Faden, die Blocknummer sitzt als Knoten darauf. Beim Weiterschalten
-     gleiten Faden und Kurzname in die Laufleiste von Folie 16.
+     gleiten Faden und Kurzname in die Laufleiste von Folie 17.
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-trenner" id="t4" data-titel="Block 4: Bundeswehr" data-feld="leer" data-block="4" data-zeit="5" data-buendel="alle" data-laufkopf="aus" data-nummer="T4">
   <div class="folie-inhalt">
@@ -861,18 +899,18 @@
   </div>
   <aside class="notizen">
     <p class="gesprochen">„Block 4: der Gastvortrag zur Führung bei der Bundeswehr, ohne Folien, deshalb nach unserer Mitschrift.“</p>
-    <p>Trennfolie: nur kurz stehen lassen und weiterschalten. Faden und Blockname gleiten dabei in die Leiste oben auf Folie 16.</p>
+    <p>Trennfolie: nur kurz stehen lassen und weiterschalten. Faden und Blockname gleiten dabei in die Leiste oben auf Folie 17.</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 16 · Führen bei der Bundeswehr · 55 s
+     FOLIE 17 · Führen bei der Bundeswehr · 55 s
      Über der linken Spalte ein kleines Liniendiagramm: ein Ziel oben, drei
      frei gewählte Wege vom selben Start, einer in Karmin (die eine
      Betonung). Darunter der Vergleich: Bundeswehr (Spalten 1–7, Tinte),
      Schritt 1: Kleine Unternehmen (8–12, Schiefer) auf gemeinsamen Haarlinien.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-bund" id="f16" data-titel="Führen bei der Bundeswehr" data-feld="leer" data-station="4" data-zeit="55" data-buendel="alle">
+<section class="folie r-bund" id="f17" data-titel="Führen bei der Bundeswehr" data-feld="leer" data-station="4" data-zeit="55" data-buendel="alle">
   <header class="folie-kopf">
     <h2 class="titel">Das Ziel kommt von oben, <span class="r-zeile">der Weg ist frei</span></h2>
   </header>
@@ -905,14 +943,14 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 17 · Bindung und neue Technik · 50 s
+     FOLIE 18 · Bindung und neue Technik · 50 s
      10 % als Zahl (Karmin, 220 px) und als Teil EINER Skala aus 100 Strichen
      (Gallup 2025): hohe Bindung Karmin, geringe Mittel, keine als
      Umriss-Striche; zwischen den Teilen eine Strichbreite Lücke; Etiketten
      parallel darunter. Rechts Aussage-Paare (Fraunces-Stichwort + Satz);
      Schritt 1: Technik beim Bund.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-bindung" id="f17" data-titel="Bindung und neue Technik" data-feld="leer" data-station="4" data-zeit="50" data-buendel="alle">
+<section class="folie r-bindung" id="f18" data-titel="Bindung und neue Technik" data-feld="leer" data-station="4" data-zeit="50" data-buendel="alle">
   <header class="folie-kopf">
     <h2 class="titel">Bindung entsteht <span class="r-zeile">durch Nähe und Gehör</span></h2>
   </header>
@@ -949,7 +987,7 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 18 · Fazit · 45 s
+     FOLIE 19 · Fazit · 45 s
      HELL. Laufleiste geschlossen (data-station="alle"). Der Faden kehrt
      randabfallend zurück (zeichnet sich von links) und verbindet drei
      Gedanken: Jeder steht mit seiner zweiten Zeile auf ihm. Faden ohne
@@ -958,7 +996,7 @@
      Nummern zeigt jeder Gedanke seine Herkunft (Blocknamen).
      Schritte 0–2: ein Gedanke je Schritt.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-fazit" id="f18" data-titel="Fazit" data-feld="leer" data-station="alle" data-zeit="45" data-buendel="alle">
+<section class="folie r-fazit" id="f19" data-titel="Fazit" data-feld="leer" data-station="alle" data-zeit="45" data-buendel="alle">
   <header class="folie-kopf">
     <h2 class="titel">Drei Gedanken, die alle <span class="r-zeile">vier Blöcke verbinden</span></h2>
   </header>

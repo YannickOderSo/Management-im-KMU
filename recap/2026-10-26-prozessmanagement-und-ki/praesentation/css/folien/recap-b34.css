@@ -1,5 +1,5 @@
 /* =============================================================================
-   recap-b34.css – Folien f14–f18 und b1 (Block 3 KI-Begriffe, Block 4
+   recap-b34.css – Folien f14–f19 und b1 (Block 3 KI-Begriffe, Block 4
    Bundeswehr, Fazit, Backup Quellen)
    Gehört dem Folien-Agenten für diese Folien. Fundament (Tokens, Rahmen,
    Laufleiste, Faden, Komponenten r-…) steht in recap.css – dort NICHT ändern;
@@ -8,10 +8,12 @@
 
      f14 .r-llm      Schleife (Kette + Bogen), Beispielsatz mit Kandidaten,
                      drei Folgen im Seitenfeld (Halluzination = Karmin)
-     f15 .r-agent    Kreislauf links, vier Begriffe rechts (Tool Calling = Karmin)
-     f16 .r-bund     Wegediagramm (ein Ziel, drei Wege, einer Karmin) + Vergleich
-     f17 .r-bindung  10 % + Teil-Skala (Gallup), Aussage-Paare rechts
-     f18 .r-fazit    Faden kehrt zurück, drei Gedanken stehen auf ihm
+     f15 .r-fenster  Kette Prompt → Chatbot → Modell (Chatbot = Karmin), Beispiel-
+                     Prompt als Zitat, zwei Modellfamilien im Seitenfeld
+     f16 .r-agent    Kreislauf links, vier Begriffe rechts (Tool Calling = Karmin)
+     f17 .r-bund     Wegediagramm (ein Ziel, drei Wege, einer Karmin) + Vergleich
+     f18 .r-bindung  10 % + Teil-Skala (Gallup), Aussage-Paare rechts
+     f19 .r-fazit    Faden kehrt zurück, drei Gedanken stehen auf ihm
      b1  .r-backup   Quellen in zwei Spalten, hängender Einzug
    ============================================================================= */
 
@@ -48,7 +50,21 @@
 /* die eine Karmin-Aussage (Halluzination): li.ist-faden, recap.css 5.15 */
 
 
-/* ---------- f15 KI-Agenten ----------------------------------------------------
+/* ---------- f15 Chatbot, Prompt, Modellfamilien --------------------------------
+   Hauptfeld: Kette (drei Wörter, „Chatbot“ Karmin), darunter wo man ihn
+   sieht; dann der Beispiel-Prompt als Zitat. Seitenfeld: zwei Familien. */
+.r-fenster .folie-inhalt { justify-content: flex-start; }
+.r-fenster-haupt { display: flex; flex-direction: column; align-items: flex-start; }
+.r-fenster-kette { margin-top: 22px; --abstand: 64px; }
+.r-fenster-kette > li.ist-faden { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 540; }
+.r-fenster-wo { margin-top: 10px; }
+.r-fenster-prompt { margin: 64px 0 0; }
+.r-fenster-prompt .r-zitat { margin-top: 14px; }
+.r-fenster-regel { margin-top: 14px; }
+/* die eine Karmin-Aussage: „Chatbot“ in der Kette */
+
+
+/* ---------- f16 KI-Agenten ----------------------------------------------------
    Kreislauf in Spalten 1–6 (Etikett „Prüfung“ bündig am Inhaltsrand),
    Begriffe in Spalten 7–12 auf Haarlinien. */
 .r-agent .folie-inhalt { justify-content: flex-start; }
@@ -58,7 +74,7 @@
 /* die eine Karmin-Aussage (Tool Calling): li.ist-faden, recap.css 5.15 */
 
 
-/* ---------- f16 Führen bei der Bundeswehr -------------------------------------
+/* ---------- f17 Führen bei der Bundeswehr -------------------------------------
    Wegediagramm (SVG im Bühnenmaß 640 × 200): drei Wege vom selben Start zum
    Ziel, zwei in Tinte (4 px), einer in Karmin (8 px); darunter der Vergleich. */
 .r-bund .folie-inhalt { justify-content: flex-start; gap: 36px; }
@@ -83,7 +99,7 @@
 }
 
 
-/* ---------- f17 Bindung – 10 % als Zahl und als Teil einer Skala ------------- */
+/* ---------- f18 Bindung – 10 % als Zahl und als Teil einer Skala ------------- */
 .r-bindung .folie-inhalt { justify-content: flex-start; }
 .r-bindung-raster { display: grid; grid-template-columns: var(--r-raster); column-gap: var(--r-rinne); align-items: start; }
 .r-bindung-links { grid-column: 1 / 9; }
@@ -119,7 +135,7 @@
 .r-bindung-paare { grid-column: 9 / 13; }
 
 
-/* ---------- f18 Fazit: der Faden kehrt zurück ---------------------------------
+/* ---------- f19 Fazit: der Faden kehrt zurück ---------------------------------
    Drei Gedanken (Dreier 4/4/4, Zeilen per Subgrid bündig): Herkunft (Meta),
    Aussage 52 px, Erläuterung 30 px. Die zweite Zeile jeder Aussage steht auf
    EINEM randabfallenden Faden: Anker in der zweiten Zeile des ersten
