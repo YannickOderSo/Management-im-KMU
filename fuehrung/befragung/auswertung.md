@@ -8,7 +8,7 @@ und Abschnitt 4 des Diskussionspapiers. Zitate stehen wörtlich (Schreibweise wi
 | Befragt | Kamill Jarzebowski, Gründer und Geschäftsführer | Jörg Heisler, Head of Contract & License Management (Leiter Vertrags- und Lizenzmanagement) |
 | Unternehmen | SimpleAct UG (haftungsbeschränkt), Recklinghausen | TLT-Turbo GmbH, Hauptsitz Zweibrücken |
 | Rücklauf | 29.10.2026 (PDF) | 28.10.2026 (Word) |
-| Einverständnis | alle vier Kästchen angekreuzt (Name **und** anonym **und** Zitatfreigabe). **Festlegung: Nennung mit Name, wörtliche Zitate vorab zur Freigabe** | Antworten verwenden, mit Name, Funktion und Unternehmen; keine Zitatfreigabe gewünscht |
+| Einverständnis | im Fragebogen widersprüchlich (alle vier Kästchen angekreuzt); **telefonisch geklärt am 30.10.2026: Nennung mit Name, Funktion und Unternehmen, Zitate ohne Vorabprüfung** | Antworten verwenden, mit Name, Funktion und Unternehmen; keine Zitatfreigabe gewünscht |
 
 ## Kurzprofil (Frage 1–3)
 
@@ -52,13 +52,3 @@ und Abschnitt 4 des Diskussionspapiers. Zitate stehen wörtlich (Schreibweise wi
 4. **Gemeinsam:** klare Erwartungen und Nachfragen (Frage 19), Ergebnisse statt Anwesenheit (Frage 13/15),
    KI und die Sinn-Erwartung Jüngerer als Treiber des Wandels (Frage 13).
 5. **Grenzen:** n = 2, Selbstauskunft, beide Befragte stehen dem Befragenden persönlich nahe.
-
-## Freigabe der Zitate (Kamill Jarzebowski)
-
-Vor dem Vortrag am 2.11.2026 freigeben lassen. Verwendet in Folie 15 (Folie und Sprechtext) und Diskussionspapier:
-
-- [ ] Frage 5: „Führung ist, ein Ziel klar zu machen und den Leuten den Raum und die Werkzeuge zu geben, es selbst zu erreichen. Und dann dafür geradezustehen, wenn etwas schiefgeht.“
-- [ ] Frage 12: „Sehr stark, vor allem an mir.“ / „Neue Verträge, Preise und strategische Entscheidungen blieben aber liegen.“
-- [ ] Frage 15: „Ich vertraue auf Ergebnisse statt auf Anwesenheit.“
-- [ ] Frage 19: „Sag klar, was du erwartest, und frag öfter nach, als du denkst.“
-- [ ] Frage 16 (nur Sprechtext Folie 09, Rückfrage): „gleichzeitig Verkäufer, Entwickler und Chef“, „am liebsten alles selbst machen“
