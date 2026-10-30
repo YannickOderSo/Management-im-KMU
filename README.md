@@ -31,7 +31,7 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 
 | Sitzung | Thema | Stand | Ort |
 |---|---|---|---|
-| Mo, 26.10.2026 | Prozesse (Büchele) · KI im KMU (Tschekuev) · KI-Begriffe (Knopper, Video) · Gastvortrag Bundeswehr | ✅ Transkript (MD + PDF) · ✅ Recap-Präsentation (18 Folien, ca. 15 Min., Elias Knauber + Yannick Heisler) | [`recap/2026-10-26-prozessmanagement-und-ki/`](recap/2026-10-26-prozessmanagement-und-ki/) · Folien: [`praesentation/`](recap/2026-10-26-prozessmanagement-und-ki/praesentation/) |
+| Mo, 26.10.2026 | Prozesse (Büchele) · KI im KMU (Tschekuev) · KI-Begriffe (Knopper, Video) · Gastvortrag Bundeswehr | ✅ Transkript (MD + PDF) · ✅ Recap-Präsentation (23 Folien: 18 Inhaltsfolien, 4 Trennfolien, Quellen; ca. 15 Min., Elias Knauber + Yannick Heisler) | [`recap/2026-10-26-prozessmanagement-und-ki/`](recap/2026-10-26-prozessmanagement-und-ki/) · Folien: [`praesentation/`](recap/2026-10-26-prozessmanagement-und-ki/praesentation/) |
 
 ## Online (GitHub Pages)
 
