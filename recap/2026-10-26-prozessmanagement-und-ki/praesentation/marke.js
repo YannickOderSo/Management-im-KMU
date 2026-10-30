@@ -42,7 +42,7 @@ window.MARKE = {
   unternehmen: '',
   gruppe: ['Elias Knauber', 'Yannick Heisler'],
   datum: '',                      // Vortragstermin der Recap eintragen (JJJJ-MM-TT), dann steht er auf der Titelfolie
-  dauerMinuten: 16,               // ca. 16 Minuten (Knopper-Block um eine Folie erweitert, 30.10.2026)
+  dauerMinuten: 17,               // ca. 17 Minuten (Knopper-Block um zwei Folien erweitert, 30.10.2026)
   anrede: 'Sie',
 
   /* 5./6. LIVE-UMFRAGE, WORTWOLKEN – nicht genutzt */
