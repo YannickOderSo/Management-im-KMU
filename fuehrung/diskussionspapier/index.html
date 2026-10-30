@@ -4,135 +4,89 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Diskussionspapier Führung im KMU</title>
+<title>Führung im KMU – Handout</title>
 <!--
-  Diskussionspapier (max. 2 Seiten A4) zum Referat „Führung im KMU“
+  Handout (Diskussionspapier, max. 2 Seiten A4) zum Referat „Führung im KMU“
   Modul Management im KMU · Prof. Dr. Christine Arend-Fuchs · Yannick Heisler
+  Aufbau wie das Handout von Elias Knauber: Thema zusammengefasst, keine Quellenangaben,
+  am Ende die Diskussionsfragen von Folie 20.
+  Belege der Zahlen: ../../recherche/dossier-fakten.md, Befragung: ../befragung/auswertung.md
   PDF erzeugen: node fuehrung/diskussionspapier/pdf.mjs  (prüft: höchstens 2 Seiten)
-  Belege: ../../recherche/literaturbasis.md
-  Abschnitt 4: Auswertung der Fragebögen in ../befragung/auswertung.md
 -->
 <style>
-  :root {
-    --text: #1d1d1b; --leise: #55554f; --linie: #cfcbc1; --flaeche: #f3f1eb;
-    --akzent: #0b4f6c; --akzent-hell: #e4eef3; --hart: #8a3f06; --papier: #fff;
-  }
+  @font-face { font-family: "Fraunces Handout"; src: url("../praesentation/schriften/fraunces-latin-opsz-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; }
+  @font-face { font-family: "Fraunces Handout"; src: url("../praesentation/schriften/fraunces-latin-ext-opsz-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; unicode-range: U+0100-024F, U+1E00-1EFF; }
+  @font-face { font-family: "Inter Handout"; src: url("../praesentation/schriften/inter-latin-opsz-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; }
+  @font-face { font-family: "Inter Handout"; src: url("../praesentation/schriften/inter-latin-ext-opsz-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; unicode-range: U+0100-024F, U+1E00-1EFF; }
+  @font-face { font-family: "Inter Handout"; src: url("../praesentation/schriften/inter-latin-opsz-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; }
+
+  :root { --text: #1d1d1b; --leise: #6b6b66; --papier: #fff; }
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --text: #ecebe6; --leise: #aeada6; --linie: #4a4a46; --flaeche: #232327;
-      --akzent: #7cc3e0; --akzent-hell: #1c3440; --hart: #f0a868; --papier: #161618;
-    }
+    :root:not([data-theme="light"]) { --text: #ecebe6; --leise: #a5a49e; --papier: #161618; }
   }
-  :root[data-theme="dark"] {
-    --text: #ecebe6; --leise: #aeada6; --linie: #4a4a46; --flaeche: #232327;
-    --akzent: #7cc3e0; --akzent-hell: #1c3440; --hart: #f0a868; --papier: #161618;
-  }
+  :root[data-theme="dark"] { --text: #ecebe6; --leise: #a5a49e; --papier: #161618; }
   * { box-sizing: border-box; }
-  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   body {
     margin: 0; background: var(--papier); color: var(--text);
-    font: 10pt/1.42 "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    font: 10.2pt/1.5 "Inter Handout", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
     hyphens: auto;
   }
-  main { max-width: 184mm; margin: 0 auto; padding: 16px; }
-  h1, h2 { font-family: Georgia, "Times New Roman", serif; line-height: 1.2; margin: 0; color: var(--akzent); }
-  h1 { font-size: 19pt; }
-  h2 { font-size: 11.5pt; margin: 11px 0 4px; break-after: avoid; }
-  p { margin: 0 0 5px; text-align: justify; }
-  .kopf { border-bottom: 2px solid var(--akzent); padding-bottom: 6px; margin-bottom: 8px; }
-  .kopf .meta { font-size: 8.5pt; color: var(--leise); margin-bottom: 4px; }
-  .kopf .unter { font-size: 10.5pt; color: var(--leise); margin-top: 2px; }
-  .kasten { background: var(--flaeche); border-left: 4px solid var(--akzent); padding: 6px 10px; margin: 6px 0; break-inside: avoid; }
-  .kasten p:last-child { margin-bottom: 0; }
-  .kasten-titel { font-size: 8pt; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--akzent); margin-bottom: 2px; }
-  .kasten--kern { background: var(--akzent-hell); }
-  .kasten--kern p { font-family: Georgia, serif; font-size: 11pt; text-align: left; }
-  .kasten--offen { border-left-color: var(--hart); border-left-style: dashed; }
-  .kasten--offen .kasten-titel { color: var(--hart); }
-  .definition { font-family: Georgia, serif; font-size: 10.5pt; text-align: left; }
-  .thesen { margin: 0; padding-left: 0; list-style: none; }
-  .thesen li { margin: 0 0 5px; text-align: justify; }
-  .thesen b:first-child { color: var(--akzent); }
-  .fragen { margin: 4px 0 0; padding-left: 20px; }
-  .fragen li { margin: 0 0 4px; padding-left: 2px; }
-  .fragen li::marker { font-weight: 700; color: var(--akzent); }
-  .quellen { margin: 4px 0 0; padding: 0; list-style: none; font-size: 7.6pt; line-height: 1.33; color: var(--leise); columns: 2; column-gap: 16px; }
-  .quellen li { break-inside: avoid; margin-bottom: 2px; padding-left: 10px; text-indent: -10px; }
-  .klein { font-size: 8.5pt; color: var(--leise); }
-  @page { size: A4; margin: 13mm 14mm 12mm 14mm; }
+  main { max-width: 170mm; margin: 0 auto; padding: 24px 16px; }
+  h1, h2 { font-family: "Fraunces Handout", Georgia, "Times New Roman", serif; font-weight: 340; line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+  h1 { font-size: 25pt; margin-bottom: 9px; }
+  h2 { font-size: 14.5pt; margin: 15px 0 5px; break-after: avoid; }
+  p { margin: 0 0 6px; }
+  .einstieg { margin-bottom: 4px; }
+  .definition { font-style: italic; }
+  ol { margin: 4px 0 0; padding-left: 20px; }
+  ol li { margin: 0 0 3px; padding-left: 2px; }
+  @page { size: A4; margin: 15mm 18mm 14mm 18mm; }
   @media print {
-    :root { --text: #1d1d1b; --leise: #55554f; --linie: #cfcbc1; --flaeche: #f3f1eb; --akzent: #0b4f6c; --akzent-hell: #e4eef3; --hart: #8a3f06; --papier: #fff; }
+    :root { --text: #1d1d1b; --leise: #6b6b66; --papier: #fff; }
     main { max-width: none; padding: 0; }
   }
-  @media (max-width: 600px) { .quellen { columns: 1; } p, .thesen li { text-align: left; } }
 </style>
 </head>
 <body>
 <main>
 
-<header class="kopf">
-  <p class="meta">Hochschule Kaiserslautern · Campus Zweibrücken · Mittelstandsökonomie · Modul Management im KMU · Prof. Dr. Christine Arend-Fuchs · WiSe 2026/27</p>
-  <h1>Führung im KMU: Begriff, Besonderheiten und Praxis</h1>
-  <p class="unter">Diskussionspapier zum Referat · Yannick Heisler · 30. Oktober 2026</p>
-</header>
+<h1>Führung im KMU</h1>
+<p class="einstieg">Führung ist ein Alltagswort, für das es viele Definitionen gibt. In kleinen und mittleren Unternehmen (KMU) kommt eine Besonderheit hinzu: Wem der Betrieb gehört, der führt ihn meist auch selbst. Der Vortrag klärt, was Führung ist, was sie im KMU anders macht, mit welchen Werkzeugen dort geführt wird und was die Praxis zeigt.</p>
 
-<h2>1 Ausgangslage</h2>
-<p>Führung ist ein Alltagsbegriff mit vielen Definitionen; schon „Leadership“ gilt als „nicht einheitlich definiert“ (Lies o. J.). Für kleine und mittlere Unternehmen (KMU) ist die Frage nach gutem Führen besonders wichtig: 2024 waren nach EU-Definition 99,3 % aller Unternehmen in Deutschland KMU mit 53,7 % der tätigen Personen (Destatis 2026), und 68,4 % aller Auszubildenden lernten Ende 2024 in Betrieben mit weniger als 250 sozialversicherungspflichtig Beschäftigten (IfM Bonn o. J.-b). Dieses Papier leitet eine Arbeitsdefinition her, zeigt, was Führung im KMU besonders macht, und stellt Fragen zur Diskussion.</p>
+<h2>Was ist Führung?</h2>
+<p>Lexika und Lehrbücher definieren Führung unterschiedlich, teilen aber vier Bausteine: ein Ziel, absichtlichen Einfluss, Interaktion zwischen Menschen und den Rahmen einer Organisation. Daraus ergibt sich die Arbeitsdefinition des Vortrags: <span class="definition">Führung ist die zielbezogene, absichtliche Einflussnahme auf das Handeln anderer – vermittelt durch Interaktion in einer Organisation.</span></p>
+<p>Dabei gibt es zwei Ebenen: die Unternehmensführung mit Zielen, Planung, Organisation und Kontrolle und die Mitarbeiterführung, also den Umgang mit den einzelnen Menschen. Im Konzern liegen diese Rollen und das Eigentum bei verschiedenen Personen, etwa bei Aktionären, Vorstand und Teamleitungen. Im Mittelstand liegen sie oft in einer Hand.</p>
 
-<h2>2 Begriff: Arbeitsdefinition und zwei Ebenen</h2>
-<p>Das Gabler Wirtschaftslexikon versteht unter Führung die „durch Interaktion vermittelte Ausrichtung des Handelns von Individuen und Gruppen auf die Verwirklichung vorgegebener Ziele“ (Maier/Bartscher/Nissen o. J.). Von Rosenstiel (2000) beschreibt Mitarbeiterführung als „unmittelbare, absichtliche und zielbezogene Einflußnahme“ von Vorgesetzten auf Mitarbeitende „in Organisationen“. Aus diesen und weiteren Definitionen lassen sich vier Elemente verdichten: <b>Ziel</b>, <b>Einfluss</b>, <b>Interaktion</b> und <b>Organisation</b>.</p>
-<div class="kasten">
-  <p class="kasten-titel">Arbeitsdefinition</p>
-  <p class="definition">Führung ist die zielbezogene, absichtliche Einflussnahme auf das Handeln anderer – vermittelt durch Interaktion in einer Organisation.</p>
-</div>
-<p>Zu unterscheiden sind zwei Ebenen (v. Rosenstiel 2000): die <b>Unternehmensführung</b> (Management im funktionalen Sinn: Ziele, Planung, Organisation, Kontrolle) und die <b>Mitarbeiterführung</b> (Haric o. J.). Gabler nennt die „Trennung von Eigentum und Geschäftsführung“ ein konstitutives Merkmal des Managements als Institution (Haric o. J.). Im Mittelstand gilt das Gegenteil: Das IfM Bonn definiert ihn gerade „durch die Einheit von Eigentum und Leitung“ (IfM Bonn o. J.-a). Beide Führungsebenen liegen dann in einer Hand – bei höchstens zwei Personen oder deren Familien.</p>
+<h2>KMU und Mittelstand</h2>
+<p>Nach der Definition der EU hat ein KMU weniger als 250 Beschäftigte und höchstens 50 Millionen Euro Umsatz oder 43 Millionen Euro Bilanzsumme. 2024 gehörten 99,3 Prozent aller Unternehmen in Deutschland dazu, und sie stellten 53,7 Prozent der tätigen Personen. Wer über Führung im KMU spricht, spricht also über den Arbeitsplatz gut der Hälfte der Menschen.</p>
+<p>Für das Thema Führung wichtiger ist die Definition des Instituts für Mittelstandsforschung (IfM) Bonn: Mittelstand ist die Einheit von Eigentum und Leitung. Wem das Unternehmen gehört, der führt es auch.</p>
 
-<h2>3 Besonderheiten der Führung im KMU – vier Thesen</h2>
-<ol class="thesen">
-  <li><b>These 1 – Führung ist personengebunden.</b> In Familienunternehmen gibt es „nur eine wirklich wichtige Führungsbeziehung und das ist die zum Inhaber …“; flache Hierarchien sind der Normalzustand, und Aufgaben folgen „den Personen und nicht umgekehrt“ (Wimmer 2021).</li>
-  <li><b>These 2 – Der typische Stil ist umstritten.</b> Wimmer (2021) schätzt, dass patriarchale Führungsmuster in mehr als zwei Dritteln der kleineren und mittelgroßen Familienunternehmen anzutreffen sind – mit kurzen Entscheidungswegen und hoher Umsetzungsgeschwindigkeit als Stärken, aber dem Risiko, dass das Muster „unter veränderten Rahmenbedingungen in eine Existenzgefährdung umschlagen“ kann – gerade bei wachstumsstarken Unternehmen. Interviews des IfM zu Digitalisierungsprojekten zeigen dagegen für einen Führungstyp auch kooperative Führung, ermöglicht „durch die überschaubare Größe der Unternehmen“ (Bijedić et al. 2018, S. 20). Nähe ist aber kein Automatismus: Wenig oder keine Wertschätzung durch Vorgesetzte erleben in Betrieben mit 20 bis 49 Beschäftigten 32 % der Beschäftigten – ebenso viele wie bei 50 bis 199, unter 20 Beschäftigten 25 % (DGB-Index Gute Arbeit 2025, Mittel 2022–2025).</li>
-  <li><b>These 3 – Führung und Personalarbeit geschehen neben dem Tagesgeschäft.</b> Führungsaufgaben sind zumindest in kleineren mittelständischen Unternehmen tendenziell weniger spezialisiert als in Großunternehmen (Bijedić et al. 2018, S. 8); oft haften Inhaber persönlich, ihre Risikoaversion ist tendenziell höher (ebd., S. 5). In 91 % der Unternehmen unter 50 Beschäftigten liegt auch die Personalarbeit bei der Geschäftsführung, nur 7,2 % haben eine Personalabteilung; „häufig fehlt es an Zeit und an spezifischem Know-how“ (Koneberg et al. 2021). Regelmäßige Mitarbeitergespräche sind trotzdem verbreitet (74,3 % der Unternehmen mit 1–49 Beschäftigten, 2020, ebd.) – schriftliche Zielvereinbarungen gehen in Betrieben ab 50 Beschäftigten dagegen zurück (Grunau/Kampkötter/Ruf 2025). Laut Personalverantwortlichen setzen nur 15 % der Unternehmen bis 49 Beschäftigte auf Führungsschulungen, aber 64 % ab 500 (Randstad/ifo 2025).</li>
-  <li><b>These 4 – Die großen Herausforderungen sind Führungsthemen.</b> 77 % der Beschäftigten haben nur eine geringe emotionale Bindung – laut Gallup „kein Einstellungs-, sondern ein Führungsproblem“; in Unternehmen mit KI stimmen nur 21 % voll zu, dass ihre Führungskraft den Einsatz aktiv unterstützt (Gallup 2026; keine KMU-Werte). 92 % der Mittelständler mit 20 bis 999 Beschäftigten erwarten negative Folgen des Fachkräftemangels (DIHK 2025, S. 15), und 569.000 Inhaber streben bis Ende 2029 nach ihrem Rückzug keine Fortführung an (Schwartz 2026, S. 2). Wie Struktur hilft, zeigt der Pflegedienst Jahnke: Nach dem Wachstum von 18 auf 43 Beschäftigte erhielten die neuen Teamleitungen einen im Projektteam entwickelten Leitfaden für Feedbackgespräche; die geplante Übergabe an den Sohn ist inzwischen vollzogen (INQA 2025).</li>
+<h2>Im Mittelstand ist Führung persönlich</h2>
+<p>Der Organisationsforscher Rudolf Wimmer beschreibt Familienunternehmen so: Es gibt im Grunde nur eine wirklich wichtige Führungsbeziehung, die zur Inhaberin oder zum Inhaber. Die Hierarchien sind flach, die Wege kurz, und Aufgaben folgen den Personen statt einem Organigramm. Die Chefin oder der Chef macht vieles selbst und haftet oft persönlich.</p>
+<p>Welcher Führungsstil dort typisch ist, ist umstritten. Wimmer schätzt, dass in mehr als zwei Dritteln der kleineren und mittleren Familienunternehmen patriarchalisch geführt wird: Die Führungskraft entscheidet allein, erwartet Loyalität und sorgt dafür für ihre Leute. Interviews des IfM zeigen aber auch kooperative Führung, die gerade durch die überschaubare Größe möglich wird. Die Stärke des Inhaberstils sind kurze Entscheidungswege und Tempo. Das Risiko: Was lange erfolgreich war, kann zur Gefahr werden, wenn der Betrieb wächst.</p>
+
+<h2>Womit im KMU geführt wird</h2>
+<p>Die wichtigsten Werkzeuge sind Mitarbeitergespräche, Zielvereinbarungen, Delegation, Feedback und Führungsgrundsätze. Im KMU ist die Frage weniger, ob man sie kennt, sondern wer sie einsetzt und dafür Zeit hat. In Unternehmen mit weniger als 50 Beschäftigten liegt die Personalarbeit in 91 Prozent der Fälle bei der Geschäftsführung, eine eigene Personalabteilung haben nur gut 7 Prozent. Auf Führungsschulungen setzen nur 15 Prozent der Unternehmen bis 49 Beschäftigte, bei Unternehmen ab 500 Beschäftigten sind es 64 Prozent.</p>
+<p>Regelmäßige Mitarbeitergespräche sind trotzdem verbreitet: 2020 führten sie 74 Prozent der kleinen Unternehmen, bei den großen waren es 82 Prozent. Am schwersten fällt oft das Delegieren. Ein Fahrradhändler aus Kiel mit 19 Beschäftigten war so stark ins Tagesgeschäft eingebunden, dass er nach Überlastung ein halbes Jahr ausfiel. Gelöst hat er das mit einer neuen Werkstatt- und Teamleitung und regelmäßigen Feedbackrunden.</p>
+<p>Bei Feedback und Beteiligung können kleine Betriebe ihre Nähe nutzen. In Unternehmen bis 49 Beschäftigte beschreiben Personalverantwortliche das Verhältnis zu den Führungskräften zu 53 Prozent als offen und vertrauensvoll, in Unternehmen ab 500 Beschäftigten nur zu 20 Prozent. Nähe ist aber kein Selbstläufer: Auch in kleinen Betrieben erleben ein Viertel bis ein Drittel der Beschäftigten wenig oder keine Wertschätzung durch Vorgesetzte.</p>
+
+<h2>Was die Praxis zeigt</h2>
+<p>Die großen Herausforderungen sind Führungsthemen. 77 Prozent der Beschäftigten in Deutschland fühlen sich ihrem Arbeitgeber kaum verbunden; das Beratungsunternehmen Gallup nennt das kein Einstellungs-, sondern ein Führungsproblem. 92 Prozent der Mittelständler erwarten Folgen des Fachkräftemangels, und rund 569.000 Inhaberinnen und Inhaber streben bis Ende 2029 keine Fortführung ihres Unternehmens an. In Firmen, die KI einsetzen, sieht nur jeder Fünfte seine Führungskraft voll hinter dem Einsatz.</p>
+<p>Wie Struktur hilft, zeigen Praxisbeispiele aus einem Förderprogramm. Ein Pflegedienst wuchs von 18 auf 43 Beschäftigte; die neuen Teamleitungen bekamen einen gemeinsam entwickelten Leitfaden für Feedbackgespräche, und die Übergabe an den Sohn ist inzwischen vollzogen. In sechs solchen Betrieben zeigt sich dasselbe Muster: Der Engpass ist oft die Inhaberin oder der Inhaber, der Hebel sind Struktur und Beteiligung. Es sind allerdings Erfolgsberichte der Betriebe, keine unabhängigen Studien.</p>
+
+<h2>Zwei Führungskräfte befragt</h2>
+<p>Für den Vortrag habe ich zwei Führungskräfte mit demselben Fragebogen befragt: Kamill Jarzebowski, Gründer und Geschäftsführer des Software-Start-ups SimpleAct mit vier Personen, und Jörg Heisler, Abteilungsleiter beim Ventilatorenhersteller TLT-Turbo mit rund 300 Beschäftigten. TLT gehört zu einem Konzern und ist damit formal kein KMU, eignet sich aber gut als Gegenbild.</p>
+<p>Der deutlichste Unterschied zeigt sich bei der Frage, was passiert, wenn die Geschäftsführung drei Monate ausfällt. Bei SimpleAct blieben neue Verträge, Preise und strategische Entscheidungen liegen; die Führung hängt „sehr stark, vor allem an mir“. Bei TLT fangen eine Doppelspitze, Prokuristen und der Konzern den Ausfall ab. Gemeinsam ist beiden der Rat, klar zu sagen, was man erwartet, und über Ergebnisse statt über Anwesenheit zu führen. Zwei Fälle sind Beispiele, keine Statistik.</p>
+
+<h2>Kernbotschaft</h2>
+<p>Im Mittelstand liegt Führung oft bei der Person, der das Unternehmen gehört. Das schafft Nähe und Tempo. Fachkräftemangel, Nachfolge und KI verlangen aber mehr Struktur – ohne die Nähe zu verlieren, die den Mittelstand stark macht.</p>
+
+<h2>Fragen für die Diskussion</h2>
+<ol>
+  <li>Ist der patriarchalische Inhaberstil eine Stärke – oder ein Risiko, sobald der Betrieb wächst?</li>
+  <li>Ersetzt die Nähe im KMU eine professionelle Führungskräfteentwicklung?</li>
+  <li>569.000 Inhaber ohne Fortführungsabsicht: Versagt hier die Führung – oder ist das rational?</li>
 </ol>
-
-<h2>4 Praxisstimmen: schriftliche Befragung (n = 2)</h2>
-<p>Befragt wurden per Fragebogen Kamill Jarzebowski, Gründer und Geschäftsführer der inhabergeführten SimpleAct UG (Software, 2026 gegründet, vier Personen), und Jörg Heisler, Abteilungsleiter bei der TLT-Turbo GmbH (Ventilatorenbau, ca. 300 Beschäftigte, konzernzugehörig, also formal kein KMU). Für Jarzebowski ist Führung, „ein Ziel klar zu machen und den Leuten den Raum und die Werkzeuge zu geben, es selbst zu erreichen. Und dann dafür geradezustehen, wenn etwas schiefgeht.“ Heislers Definition („zielgerichtete, bewusste Einflussnahme auf das Verhalten von Mitarbeitenden“) gleicht der Arbeitsdefinition. Auf dem Kontinuum sehen sie sich bei Stufe 4 (beratend) bzw. 6 (delegativ). Fiele die Geschäftsführung drei Monate aus, blieben bei SimpleAct neue Verträge, Preise und Strategie liegen – Führung hängt „vor allem an mir“ (These 1); bei TLT fingen Doppelspitze, Prokuristen und Konzern das ab. Gemeinsam: klare Erwartungen, Führung über Ergebnisse statt Anwesenheit. Selbstauskunft nahestehender Personen, nicht repräsentativ.</p>
-
-<h2>5 Kernbotschaft</h2>
-<div class="kasten kasten--kern">
-  <p>Im Mittelstand ist Führung oft die Person der Inhaberin oder des Inhabers. Das schafft Nähe, Tempo und Loyalität. Fachkräftemangel, Nachfolge und KI verlangen aber, Führung von dieser einen Person zu lösen – durch mehr Struktur, Delegation und Feedback –, ohne die Nähe zu verlieren, die den Mittelstand stark macht.</p>
-</div>
-
-<h2>6 Fragen zur Diskussion</h2>
-<ol class="fragen">
-  <li>Ist der patriarchalische Inhaberstil eine Stärke des Mittelstands – oder ein Risiko, sobald der Betrieb wächst oder übergeben wird?</li>
-  <li>Ersetzt die Nähe im KMU eine professionelle Führungskräfteentwicklung – oder verdeckt sie, dass sie fehlt?</li>
-  <li>569.000 Inhaber ohne Fortführungsabsicht bis 2029: Zeigt sich hier ein Versagen der Führung, weil niemand Nachfolger aufgebaut hat, oder ist die Schließung oft eine rationale Entscheidung?</li>
-  <li>Wie viel Struktur – Leitlinien, Feedbackgespräche, Delegation – verträgt ein KMU, bevor es seine Stärken Nähe und Tempo verliert?</li>
-  <li>Müssen Inhaberinnen und Inhaber neue Technologien wie KI selbst vorleben, damit sie im Betrieb ankommen?</li>
-</ol>
-
-<h2>Quellen <span class="klein">(alle frei zugänglich, abgerufen und gegengeprüft am 27./28.10.2026)</span></h2>
-<ul class="quellen">
-  <li>Bijedić, T. et al. (2018): Digitalisierungskompetenzen in der Führungsebene im Mittelstand. IfM-Materialien Nr. 272, Bonn. econstor.eu/bitstream/10419/193769</li>
-  <li>Eigene Befragung (2026): Fragebögen von K. Jarzebowski (SimpleAct UG) und J. Heisler (TLT-Turbo GmbH), 28./29.10.2026</li>
-  <li>Destatis (2026): Anteile kleiner und mittlerer Unternehmen an ausgewählten Merkmalen 2024. destatis.de</li>
-  <li>DGB-Index Gute Arbeit (2025): Jahresbericht 2025, Tab. 6. igbau.de/Binaries/Binary22474</li>
-  <li>DIHK (2025): DIHK-Fachkräftereport 2025/2026. Berlin. dihk.de</li>
-  <li>Gallup (2026): Engagement Index Deutschland 2025, Pressemitteilung vom 12.03.2026. gallup.com/de</li>
-  <li>Haric, P. (o. J.): Management. In: Gabler Wirtschaftslexikon. wirtschaftslexikon.gabler.de</li>
-  <li>Grunau, P.; Kampkötter, P.; Ruf, K. (2025): Performance Management in deutschen Betrieben. IAB-Kurzbericht 11/2025. doku.iab.de</li>
-  <li>IfM Bonn (o. J.-a): Mittelstandsdefinition des IfM Bonn. ifm-bonn.org</li>
-  <li>IfM Bonn (o. J.-b): Volkswirtschaftliche Bedeutung der KMU – Deutschland. ifm-bonn.org</li>
-  <li>INQA (2025): Gute Personalführung und digitale Tools für den Pflegedienst Jahnke, 04.02.2025. inqa.de</li>
-  <li>Koneberg, F. et al. (2021): KOFA-Personalarbeitsindex. KOFA-Studie 4/2021, IW Köln. econstor.eu/bitstream/10419/244729</li>
-  <li>Lies, J. (o. J.): Leadership. In: Gabler Wirtschaftslexikon. wirtschaftslexikon.gabler.de</li>
-  <li>Maier, G. W.; Bartscher, T.; Nissen, R. (o. J.): Führung. In: Gabler Wirtschaftslexikon. wirtschaftslexikon.gabler.de</li>
-  <li>Randstad/ifo (2025): Randstad-ifo-Personalleiterbefragung, 1. Quartal 2025. randstad.de</li>
-  <li>Rosenstiel, L. v. (2000): Führung. In: Lexikon der Psychologie. Heidelberg: Spektrum. spektrum.de/lexikon/psychologie</li>
-  <li>Schwartz, M. (2026): Nachfolge-Monitoring Mittelstand 2025. KfW Research Fokus Nr. 526. kfw.de</li>
-  <li>Wimmer, R. (2021): Leadership in and of Family Companies: A Theoretical Review. Gruppe. Interaktion. Organisation. 52(4), Open Access. pmc.ncbi.nlm.nih.gov/articles/PMC8561354</li>
-</ul>
 
 </main>
 </body>

@@ -1,7 +1,7 @@
 # Auswertung der schriftlichen Befragung „Führung im Mittelstand“
 
 Rücklauf: 2 von 2 Fragebögen, vollständig ausgefüllt. Diese Datei ist der Beleg für Folie 09, Folie 15, Backup B4
-und Abschnitt 4 des Diskussionspapiers. Zitate stehen wörtlich (Schreibweise wie im Original).
+und den Abschnitt „Zwei Führungskräfte befragt“ im Handout (Diskussionspapier). Zitate stehen wörtlich (Schreibweise wie im Original).
 
 | | SimpleAct | TLT |
 |---|---|---|
