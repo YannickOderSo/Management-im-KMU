@@ -9,7 +9,7 @@ Aufgabe: Den Begriff **Führung** im Kontext des Moduls definieren. Dazu gehöre
 |---|---|---|
 | Schriftliche Befragung (2 Fragebögen) | ✅ beide zurück (28./29.10.2026) und ausgewertet; Einverständnis beider vollständig | [`fuehrung/befragung/auswertung.md`](fuehrung/befragung/auswertung.md) |
 | Recherche (Tools + Literaturbasis + Faktendossier) | ✅ fertig, von 5 Prüf-Agenten gegengeprüft (28.10.2026) | [`recherche/dossier-fakten.md`](recherche/dossier-fakten.md), Prüfberichte in [`recherche/pruefung/`](recherche/pruefung/) |
-| HTML-Präsentation (20 Folien + 5 Backup, Vortrag Mo, 2.11.2026, 35 + 10 Min.) | ✅ Befragung eingetragen (Folien 09, 15, B4) | [`fuehrung/praesentation/`](fuehrung/praesentation/) |
+| HTML-Präsentation (20 Folien + 5 Backup, Vortrag Mo, 2.11.2026, 35 + 10 Min.) | ✅ final (30.10.2026): Befragung eingetragen, Prüfung 0 Fehler, Sollzeit 33:05 Min., Live-Umfrage auf Vortragsrunde | [`fuehrung/praesentation/`](fuehrung/praesentation/) |
 | Diskussionspapier als Handout (2 Seiten, Abgabe Fr, 30.10.2026) | ✅ Thema zusammengefasst, ohne Quellenangaben, Fragen wie Folie 20 (Schema wie Handout Elias) | [`fuehrung/diskussionspapier/`](fuehrung/diskussionspapier/) |
 
 ## Schriftliche Befragung

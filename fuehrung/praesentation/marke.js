@@ -66,7 +66,7 @@ window.MARKE = {
       kurzLink: '',
       ergebnisLink: '',
       liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
-      runde: 'probe',
+      runde: 'vortrag-2026-11-02',   // Vortragsrunde (30.10.2026); Stimmen älter als gueltigMinuten erscheinen nicht
       gueltigMinuten: 30,
       // „Beteiligt“ = Antworten 3–5 (Chef fragt vorher, Team schlägt vor, Team entscheidet)
       unsereAntwort: ['Chef fragt vorher nach', 'Team schlägt vor, Chef wählt', 'Team entscheidet selbst'],

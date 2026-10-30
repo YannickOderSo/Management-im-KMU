@@ -49,8 +49,9 @@ Belege: Die Nummern `[n]` in den Fußzeilen entsprechen den Quellenverzeichnisse
 
 ## Vor dem Vortrag
 
-1. `marke.js`: `datum` und `dauerMinuten` prüfen, `runde` von `'probe'` auf `'vortrag-2026-11-02'` (Vortrag Mo, 2.11.2026) stellen.
+1. ✅ `marke.js`: `datum` 2026-11-02, `dauerMinuten` 35, `runde` steht auf `'vortrag-2026-11-02'`. Eine Teststimme vom Handy
+   zählt nur, wenn sie jünger als 30 Minuten ist (`gueltigMinuten`) – also spätestens eine halbe Stunde vor dem Vortrag testen.
 2. ✅ Befragung eingetragen (Folie 09: Stufen im JSON „befragte“, Folie 15, B4; Beleg: `../befragung/auswertung.md`).
-3. GitHub Pages einschalten (Repository → Settings → Pages), damit der QR-Code auf Folie 08 funktioniert;
+3. ✅ GitHub Pages ist eingeschaltet (Branch `claude/exciting-meitner-w27zwy`), QR-Codes auf Folie 08 und 20 führen dorthin.
    Abstimmseite einmal mit dem Handy testen.
 4. Prüfen: `PLAYWRIGHT_CORE=… node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte`
