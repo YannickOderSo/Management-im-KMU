@@ -35,6 +35,7 @@
 .r-groesse-faktoren > li { padding: 20px 0 22px; }
 .r-groesse-faktoren .r-liste-wort { font-size: 40px; }
 .r-groesse-folgerung { margin-top: 26px; font-size: 32px; line-height: 1.25; color: var(--r-schrift); }
+.r-groesse .r-zahl-quelle { font-size: 26px; }   /* Größenklassen sind Inhalt, auf 8 m lesbar */
 
 
 /* ---------- f10 TOE-Modell -------------------------------------------------------
@@ -110,7 +111,7 @@
    der Kernpfeil dockt von unten an ihr an (Spitze bei y = 356 im SVG). */
 .r-tam-knoten--nutzung { left: 900px; top: 270px; translate: -50% 0; }
 .r-tam-label { position: absolute; left: 560px; top: 130px; }
-.r-tam-rechts { grid-column: 9 / 13; display: flex; flex-direction: column; gap: 40px; padding-top: 76px; }
+.r-tam-rechts { grid-column: 9 / 13; display: flex; flex-direction: column; gap: 32px; padding-top: 60px; }
 .r-tam-zahl b {
   display: block;
   font-family: var(--schrift-zahl);

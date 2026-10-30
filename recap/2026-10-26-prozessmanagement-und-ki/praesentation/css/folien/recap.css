@@ -73,7 +73,7 @@ html[data-modus],
   --r-schrift: #161B27;       /* Tinte: Schrift, Titel, Daten, Pfeile */
   --r-schrift-2: #586070;     /* Schiefer: Nebentext, Meta, Quellen, zurückgetretene Spotlight-Texte */
   --r-mittel: #737B8B;        /* Mittel: Grafik „gering/sekundär“, zurückgetretene Striche */
-  --r-leer: #BCC2CB;          /* Nebel: NUR leere Reststriche, Haarlinien, kommende Laufleiste – nie Daten */
+  --r-leer: #A9B0BB;          /* Nebel: NUR leere Reststriche, Haarlinien, kommende Laufleiste – nie Daten */
   --r-faden: #C0132D;         /* Karmin: Faden (Linie, Webung, aktueller Block), Schlüssel-Grafik */
   --r-faden-text: #C0132D;    /* Karmin als Schrift: die EINE Schlüsselzahl/-aussage je Folie */
   --r-letterbox: #D7DAD4;     /* Rand um die Bühne (Fenster nicht 16 : 9) */
@@ -193,8 +193,8 @@ html[data-thema="bento"] {
    3. FOLIENRAHMEN
    ----------------------------------------------------------------------------- */
 .folie { font-feature-settings: "kern" 1; }
-.folie b,
-.folie strong { font-weight: var(--gewicht-fett); }
+/* Spezifität 0, damit Klassenregeln für <b> (Hervorhebung, Listenwörter) greifen */
+:where(.folie) :where(b, strong) { font-weight: var(--gewicht-fett); }
 
 /* Senkrechter Rhythmus: Laufleiste → 60 → Titel → 56 → Inhalt */
 :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .r-laufkopf ~ .folie-kopf { margin-top: 60px; }
@@ -260,6 +260,8 @@ html[data-thema="bento"] {
 .r-lauf--geschlossen .r-lauf-teil { height: var(--r-faden-dicke); background: var(--r-faden); }
 .r-lauf--geschlossen .r-lauf-name { color: var(--r-schrift); }
 .r-lauf-nummer {
+  min-width: 40px;            /* Fraunces-Ziffern ungleich breit: Leiste soll nicht zucken */
+  text-align: right;
   font-family: var(--schrift-zahl);
   font-size: 30px;
   font-weight: 450;
@@ -508,7 +510,7 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
 .r-skala-teil--faden { --teil-farbe: var(--spot-akzent-strich, var(--r-faden)); }
 .r-skala-teil--mittel { --teil-farbe: var(--r-mittel); }
 .r-skala-teil--umriss {
-  --umriss: var(--r-schrift-2);
+  --umriss: var(--r-mittel);
   background:
     repeating-linear-gradient(90deg, var(--umriss) 0 var(--strich), transparent var(--strich) var(--takt)) top / 100% 2px no-repeat,
     repeating-linear-gradient(90deg, var(--umriss) 0 var(--strich), transparent var(--strich) var(--takt)) bottom / 100% 2px no-repeat,
@@ -974,6 +976,8 @@ html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:
 }
 .r-vergleich > .r-vergleich-kopf:nth-child(even) { color: var(--r-schrift-2); }
 .r-vergleich > p.r-vergleich-leer { border-top-color: transparent; }
+/* erste Zeile: Kopf hat schon seine Linie, keine zweite darunter */
+.r-vergleich > p:nth-child(-n+4) { border-top-color: transparent; }
 
 /* 5.15 Liste (nur ohne Struktur, höchstens 4 Punkte): Stichwort Fraunces
    36–40 px + Erklärung 30 px Schiefer, Haarlinien. .r-liste--reihe: 3–4
