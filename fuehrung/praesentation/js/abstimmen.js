@@ -191,10 +191,10 @@
       anleitung: 'Tippen Sie auf eine Antwort. Das Ergebnis erscheint live auf der Leinwand.',
       deine: 'Ihre Stimme',
       leinwand: 'Das Ergebnis sehen Sie gleich auf der Leinwand.',
-      umentscheiden: 'Sie können sich umentscheiden – es zählt nur Ihre letzte Stimme.',
+      umentscheiden: 'Sie können sich umentscheiden. Es zählt nur Ihre letzte Stimme.',
       netz: 'Die Abstimmung ist gerade nicht erreichbar. Bitte in ein paar Sekunden nochmal versuchen.',
       offline: 'Ihr Handy ist gerade offline. Bitte mobiles Internet oder WLAN einschalten und nochmal versuchen.',
-      wiederholung: 'Gerade stimmen viele ab – Ihre Stimme wird gesendet …',
+      wiederholung: 'Gerade stimmen viele ab. Ihre Stimme wird gesendet …',
       geschlossen: 'Sie läuft nur während der Präsentation im Hörsaal.',
       handzeichen: 'Sie können auch per Handzeichen im Hörsaal mitmachen.'
     },
@@ -202,10 +202,10 @@
       anleitung: 'Tipp auf eine Antwort. Das Ergebnis erscheint live auf der Leinwand.',
       deine: 'Deine Stimme',
       leinwand: 'Das Ergebnis siehst du gleich auf der Leinwand.',
-      umentscheiden: 'Du kannst dich umentscheiden – es zählt nur deine letzte Stimme.',
+      umentscheiden: 'Du kannst dich umentscheiden. Es zählt nur deine letzte Stimme.',
       netz: 'Die Abstimmung ist gerade nicht erreichbar. Bitte in ein paar Sekunden nochmal versuchen.',
       offline: 'Dein Handy ist gerade offline. Bitte mobiles Internet oder WLAN einschalten und nochmal versuchen.',
-      wiederholung: 'Gerade stimmen viele ab – deine Stimme wird gesendet …',
+      wiederholung: 'Gerade stimmen viele ab. Deine Stimme wird gesendet …',
       geschlossen: 'Sie läuft nur während der Präsentation im Hörsaal.',
       handzeichen: 'Du kannst auch per Handzeichen im Hörsaal mitmachen.'
     }
@@ -375,7 +375,7 @@
       if (i > 0) element('span', { class: 'frage-marke' }, m.name || 'Marke', ziel);
       if (teil) ziel.appendChild(document.createTextNode(teil));
     });
-    document.title = (m.name ? m.name + ' – ' : '') + 'Live-Abstimmung';
+    document.title = (m.name ? m.name + ' · ' : '') + 'Live-Abstimmung';
   }
 
   /* Adresse der Web-App: marke.js → liveQuelle; Test-Überschreibung ?quelle=

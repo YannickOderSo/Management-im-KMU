@@ -306,11 +306,12 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
 .f-stimmen .f-venn-kreis--links { left: 0; background: color-mix(in oklab, var(--f-akzent-flaeche) 75%, transparent); border-color: var(--f-akzent); }
 .f-stimmen .f-venn-kreis--rechts { right: 0; background: color-mix(in oklab, var(--f-hart-flaeche) 75%, transparent); border-color: var(--f-hart); }
 .f-stimmen .f-venn-seite {
-  position: absolute; top: 50%; transform: translateY(-50%); width: 30%;
+  position: absolute; top: 50%; transform: translateY(-50%); width: 28%;
   display: flex; flex-direction: column; gap: var(--abstand-3);
 }
-.f-stimmen .f-venn-seite--links { left: 6%; }
-.f-stimmen .f-venn-seite--rechts { right: 6%; text-align: right; align-items: flex-end; }
+/* Abstand zum Rand so, dass auch die unteren Zeilen innerhalb der Ellipse bleiben */
+.f-stimmen .f-venn-seite--links { left: 9%; }
+.f-stimmen .f-venn-seite--rechts { right: 9%; text-align: right; align-items: flex-end; }
 .f-stimmen .f-venn-name { font-family: var(--schrift-display); font-size: 52px; line-height: 1.1; }
 .f-stimmen .f-venn-zitat { margin: 0; font-family: var(--schrift-display); font-style: italic; font-size: 36px; line-height: 1.3; }
 .f-stimmen .f-venn-punkt { margin: 0; font-size: var(--groesse-text-min); line-height: 1.3; }
