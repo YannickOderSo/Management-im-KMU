@@ -18,6 +18,10 @@ Web-Präsentation (HTML) für die Recap im Modul Management im KMU, vorgetragen 
 
 **Notfall-PDF** (Plan B): `export/recap-notfall.pdf` (eine Seite je Folie, Endzustand).
 
+**Redeskript** (zum Üben und Ausdrucken): `export/redeskript.pdf` – Sprechtext je Folie mit Klick-Markierungen,
+Soll- und Startzeiten, Hintergrund für Rückfragen. Nach Änderungen am Sprechtext neu erzeugen:
+`python3 recap/2026-10-26-prozessmanagement-und-ki/redeskript-erzeugen.py` (aus dem Repo-Wurzelordner).
+
 ## Aufbau (ca. 17 Min., Sollzeiten zusammen 16:50)
 
 | Block | Folien | Grundlage |
