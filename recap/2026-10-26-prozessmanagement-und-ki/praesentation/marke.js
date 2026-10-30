@@ -16,12 +16,16 @@ window.MARKE = {
   name: 'Recap',
   kurz: 'Recap',
 
-  /* 2. FARBEN – alle übrigen Farben berechnet die Engine daraus (Kontrast
-     automatisch). Bewusst anders als das Führungs-Referat (Petrol/Bernstein),
-     damit die Recap auf den ersten Blick als eigener Vortrag erkennbar ist. */
+  /* 2. FARBEN – Gestaltung „Der rote Faden“.
+     Karmin ist der rote Faden der Präsentation (Laufleiste, Titel, Trennfolien)
+     und markiert je Folie genau EINE Schlüsselzahl. Tinte ist die Schrift- und
+     Datenfarbe. Die genauen Töne stehen in css/folien/recap.css (Abschnitt 2,
+     für alle drei Themen, hell und dunkel: Kreide #F2F3EF, Schiefer #586070,
+     Mittel #737B8B, Nebel #A9B0BB) – die Werte hier dienen der Engine nur als
+     Ausgangspunkt. Bewusst anders als das Führungs-Referat (Petrol/Bernstein). */
   farben: {
-    primaer: '#7A2E4D',           // Brombeer (Akzent)
-    sekundaer: '#2F5D50'          // Tannengrün (Gegenpol, Flächentöne)
+    primaer: '#C0132D',           // Karmin: der rote Faden, Schlüsselzahl
+    sekundaer: '#161B27'          // Tinte: Schrift, Daten, Linien
   },
 
   /* 3. BILDER – keine Logos, keine fremden Bilder (alles eigene SVG im HTML) */
@@ -38,7 +42,7 @@ window.MARKE = {
   unternehmen: '',
   gruppe: ['Elias Knauber', 'Yannick Heisler'],
   datum: '',                      // Vortragstermin der Recap eintragen (JJJJ-MM-TT), dann steht er auf der Titelfolie
-  dauerMinuten: 15,               // ca. 15 Minuten (Yannick, 28.10.2026)
+  dauerMinuten: 17,               // ca. 17 Minuten (Knopper-Block um zwei Folien erweitert, 30.10.2026)
   anrede: 'Sie',
 
   /* 5./6. LIVE-UMFRAGE, WORTWOLKEN – nicht genutzt */
@@ -48,7 +52,10 @@ window.MARKE = {
   /* 7. OPTIONALE FOLIEN – true = zeigen */
   optionaleFolien: {},
 
-  /* 8. DARSTELLUNG – Taste T wechselt das Thema, D hell/dunkel */
+  /* 8. DARSTELLUNG – Taste T wechselt das Thema, D hell/dunkel.
+     Standard: „editorial“ + „hell“ (Beamer im hellen Seminarraum). Unter
+     Taste T wechseln nur die Schriften; Faden, Skalen, Pfeile und Farben
+     bleiben (recap.css). Dunkel nur per Taste D. */
   beispieldatenHinweis: false,
   standardThema: 'editorial',
   standardModus: 'hell'

@@ -9,7 +9,7 @@ Web-Präsentation (HTML) für das Referat im Modul Management im KMU. Öffnen: `
 |---|---|
 | → / Leertaste / Clicker | weiter (auch Schritte innerhalb einer Folie) |
 | ← | zurück |
-| R | Referentenansicht mit Sprechtext, Uhr und nächster Folie (zweites Fenster) |
+| P | Referentenansicht mit Sprechtext, Uhr und nächster Folie (zweites Fenster) |
 | O | Übersicht aller Folien |
 | Ziffern + Enter | Sprung, z. B. `7 Enter` |
 | T / D | Thema / hell–dunkel |

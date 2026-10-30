@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2230%22 fill=%22%237A2E4D%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22Georgia,serif%22 font-size=%2230%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23ffffff%22%3ER%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2230%22 fill=%22%23C0132D%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22Georgia,serif%22 font-size=%2230%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23ffffff%22%3ER%3C/text%3E%3C/svg%3E">
 <title>Recap 26.10.2026</title>
 <!--
   ════════════════════════════════════════════════════════════════════════════
@@ -13,13 +13,14 @@
   Modul Management im KMU · Prof. Dr. Christine Arend-Fuchs · Hochschule Kaiserslautern
   Vortragende: Elias Knauber, Yannick Heisler
 
-  Inhalt: 1 Prozesse (Büchele) · 2 KI im KMU (Tschekuev) · 3 KI-Begriffe (Knopper, Video)
+  Inhalt: 1 Prozesse (Büchele) · 2 KI im KMU (Tschekuev) · 3 KI-Begriffe (Knopper, Video und KI-Führerschein)
           4 Gastvortrag Führung bei der Bundeswehr · Fazit
   Quellen der Inhalte: ../quellen/, ../transkript.md, Folien der Referenten.
 
   Engine (js/deck.js, js/komponenten.js, css/tokens.css, deck.css, komponenten.css)
   unverändert aus fuehrung/praesentation übernommen.
-  Eigene Gestaltung: css/folien/recap.css · eigenes Verhalten: js/folien/recap.js
+  Eigene Gestaltung: css/folien/recap.css (Fundament) + recap-b1.css, recap-b2.css,
+  recap-b34.css (Folien je Block); Verhalten: js/folien/recap.js (+ recap-b1/b2/b34.js)
   Angaben (Datum, Farben, Namen): marke.js
 
   Bedienung: → / Leertaste / Clicker = weiter · ← = zurück · O = Übersicht ·
@@ -53,6 +54,9 @@
 <link rel="stylesheet" href="css/deck.css">
 <link rel="stylesheet" href="css/komponenten.css">
 <link rel="stylesheet" href="css/folien/recap.css">
+<link rel="stylesheet" href="css/folien/recap-b1.css">
+<link rel="stylesheet" href="css/folien/recap-b2.css">
+<link rel="stylesheet" href="css/folien/recap-b34.css">
 </head>
 <body>
 <div class="nur-ohne-css" role="alert" style="max-width:46em;margin:24px auto;padding:16px 20px;border:4px solid #B00020;background:#FFF4F4;color:#1A1A1A;font:18px/1.5 Arial,sans-serif">
@@ -120,265 +124,360 @@
 <div class="deck" id="deck">
   <main class="buehne" id="buehne" aria-roledescription="Präsentation">
 
+
 <!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 01 · Titel · 30 s
+     „Die Sitzung“ steht auf dem roten Faden (Grundlinie + 0,12 em); nur das
+     g webt (js/folien/recap.js). Der Faden läuft randabfallend und gleitet
+     beim Weiterschalten in den Faden unter den Nummern von Folie 02.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-titel" id="f01" data-titel="Titel" data-feld="leer" data-zeit="30" data-buendel="alle" data-layout="titel" data-modus="dunkel">
+<section class="folie r-titel" id="f01" data-titel="Titel" data-feld="leer" data-zeit="30" data-buendel="alle" data-layout="titel" data-laufkopf="aus">
   <header class="folie-kopf">
-    <p class="kicker">Recap · <span data-veranstaltung>Management im KMU</span></p>
-    <h1 class="titel">Die Sitzung vom <em>26. Oktober</em></h1>
+    <p class="r-titel-reihe"><span data-meta>Recap</span><span data-meta data-veranstaltung>Management im KMU</span></p>
+    <h1 class="titel r-titel-satz">
+      <span class="r-webe" style="--faden-x: 128px" data-webe-start="hinten"><span class="r-faden" aria-hidden="true"><span class="r-faden-linie r-faden--gross" data-morph="faden" data-ueberlauf-ok></span></span>Die Sitzung</span>
+      <span class="r-titel-zeile">vom 26. Oktober</span>
+    </h1>
     <p class="lead">Prozesse, KI im KMU, KI-Begriffe und Führung bei der Bundeswehr</p>
   </header>
   <div class="folie-inhalt">
-    <div class="angaben">
-      <div><span class="angaben-titel" data-meta>Recap</span><span class="angaben-wert">Elias Knauber · Yannick Heisler</span></div>
-      <div><span class="angaben-titel" data-meta>Dozentin</span><span class="angaben-wert" data-dozent>Prof. Dr. Christine Arend-Fuchs</span></div>
-      <div><span class="angaben-titel" data-meta>Sitzung</span><span class="angaben-wert">Mo, 26.10.2026</span></div>
-    </div>
-    <svg class="r-titel-motiv" viewBox="0 0 560 560" aria-hidden="true">
-      <path class="r-titel-faden" d="M70 430 C 150 300, 220 470, 290 330 S 420 170, 490 120"/>
-      <circle cx="70" cy="430" r="34" style="--i:0"/>
-      <circle cx="205" cy="390" r="34" style="--i:1"/>
-      <circle cx="340" cy="250" r="34" style="--i:2"/>
-      <circle class="r-titel-kern" cx="490" cy="120" r="44" style="--i:3"/>
-      <text x="70" y="441">1</text><text x="205" y="401">2</text><text x="340" y="261">3</text><text x="490" y="133">4</text>
-    </svg>
+    <dl class="r-angaben">
+      <div><dt data-meta>Von</dt><dd>Elias Knauber<br>Yannick Heisler</dd></div>
+      <div><dt data-meta>Dozentin</dt><dd data-dozent>Prof. Dr. Christine Arend-Fuchs</dd></div>
+      <div><dt data-meta>Sitzung</dt><dd>Mo, 26.10.2026</dd></div>
+    </dl>
   </div>
   <footer class="folie-fuss">
-    <p class="quelle"><span data-hochschule>Hochschule Kaiserslautern</span> · Campus Zweibrücken · Mittelstandsökonomie</p>
+    <p class="quelle"><span data-hochschule>Hochschule Kaiserslautern</span>, Campus Zweibrücken, Mittelstandsökonomie</p>
   </footer>
   <aside class="notizen">
-    <p class="gesprochen">„Wir fassen die Sitzung vom 26. Oktober zusammen. Das waren vier Blöcke: zwei Referate zu Prozessen und zu KI im KMU, das Video von Herrn Knopper zu KI-Begriffen und der Gastvortrag zur Führung bei der Bundeswehr.“</p>
-    <p>Die vier Punkte im Motiv stehen für die vier Blöcke, die Linie für den roten Faden (Fazit, Folie 18).</p>
+    <p class="gesprochen">„Wir fassen die Sitzung vom 26. Oktober zusammen. Das waren vier Blöcke: zwei Referate zu Prozessen und zu KI im KMU, Herr Knopper mit KI-Begriffen und dem KI-Führerschein und der Gastvortrag zur Führung bei der Bundeswehr.“</p>
+    <p>Die rote Linie ist der rote Faden der Präsentation: Sie läuft durch alle Folien (oben als Leiste mit den vier Blöcken) und verbindet am Ende die drei Gedanken des Fazits (Folie 20).</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 02 · Überblick · 50 s
+     FOLIE 02 · Überblick · 45 s
+     Vier Nummern stehen auf dem roten Faden (er ist schon in Schritt 0 da
+     und gleitet von Folie 01 herein, data-morph="faden"); Schritt 1: These.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-plan" id="f02" data-titel="Überblick" data-feld="leer" data-rubrik="Überblick" data-zeit="50" data-buendel="alle">
+<section class="folie r-plan" id="f02" data-titel="Überblick" data-feld="leer" data-zeit="45" data-buendel="alle" data-laufkopf="aus">
   <header class="folie-kopf">
-    <p class="kicker">Überblick</p>
     <h2 class="titel">Vier Blöcke, ein roter Faden</h2>
   </header>
   <div class="folie-inhalt">
-    <ol class="r-bloecke" data-staffel="140" data-animation="hoch">
-      <li class="r-block"><span class="r-block-nr">1</span><span class="r-block-titel">Prozesse im Unternehmen</span><span class="r-block-wer" data-meta>Maximilian Büchele</span><span class="r-pille r-pille--offen" data-meta>unterbrochen</span></li>
-      <li class="r-block"><span class="r-block-nr">2</span><span class="r-block-titel">KI im KMU</span><span class="r-block-wer" data-meta>Elbrus Tschekuev</span><span class="r-pille r-pille--offen" data-meta>ohne Fallbeispiel</span></li>
-      <li class="r-block"><span class="r-block-nr">3</span><span class="r-block-titel">KI-Begriffe</span><span class="r-block-wer" data-meta>Klaus Knopper</span><span class="r-pille" data-meta>Video</span></li>
-      <li class="r-block"><span class="r-block-nr">4</span><span class="r-block-titel">Führung bei der Bundeswehr</span><span class="r-block-wer" data-meta>Gastvortrag</span><span class="r-pille" data-meta>ohne Folien</span></li>
+    <ol class="r-bloecke r-faden-rahmen">
+      <li class="r-block"><span class="r-block-nr"><span class="r-faden" aria-hidden="true"><span class="r-faden-linie r-faden--gross" data-morph="faden" data-ueberlauf-ok></span></span>1</span><span class="r-block-titel">Prozesse im Unternehmen</span><span class="r-block-wer" data-meta>Maximilian Büchele</span><span class="r-block-stand" data-meta>unterbrochen</span></li>
+      <li class="r-block"><span class="r-block-nr">2</span><span class="r-block-titel">KI im KMU</span><span class="r-block-wer" data-meta>Elbrus Tschekuev</span><span class="r-block-stand" data-meta>ohne Fallbeispiel</span></li>
+      <li class="r-block"><span class="r-block-nr">3</span><span class="r-block-titel">KI-Begriffe</span><span class="r-block-wer" data-meta>Klaus Knopper</span><span class="r-block-stand" data-meta>Video, KI-Führerschein</span></li>
+      <li class="r-block"><span class="r-block-nr">4</span><span class="r-block-titel">Führung bei der Bundeswehr</span><span class="r-block-wer" data-meta>Gastvortrag</span><span class="r-block-stand" data-meta>ohne Folien</span></li>
     </ol>
-    <div class="r-these" data-schritt="1" data-animation="hoch">
-      <span class="r-these-kicker" data-meta>These der Referenten</span>
-      <p class="r-these-text">KI nützt im KMU dort, wo Abläufe <s>dokumentiert</s> <span class="r-these-neu">erfasst</span> sind und mitgetragen werden.</p>
-      <span class="r-these-hinweis" data-meta>Korrektur der Dozentin</span>
+    <div class="r-plan-these" data-schritt="1" data-animation="hoch">
+      <p class="r-bezeichner" data-meta>Gemeinsame These beider Referate</p>
+      <p class="r-these">In KMU nützt KI vor allem dort, wo Abläufe dokumentiert sind und von den Beschäftigten mitgetragen werden.</p>
     </div>
   </div>
   <footer class="folie-fuss">
     <p class="quelle">Grundlage: Folien der Referenten, Video Knopper, Mitschnitt und Mitschrift der Sitzung</p>
   </footer>
   <aside class="notizen">
-    <p class="gesprochen" data-schritt="0">„Die Sitzung hatte vier Blöcke. Maximilian Büchele hat über Prozesse gesprochen, sein Vortrag wurde aber unterbrochen. Elbrus Tschekuev hat KI im KMU vorgestellt, bis kurz vor sein Fallbeispiel. Dann kam das Video von Klaus Knopper zu KI-Begriffen und zum Schluss ein Gastvortrag zur Führung bei der Bundeswehr, ohne Folien.“</p>
-    <p class="gesprochen" data-schritt="1">„Beide Referate hatten eine gemeinsame These: KI nützt im KMU vor allem dort, wo Abläufe dokumentiert sind und von den Beschäftigten mitgetragen werden. Die Dozentin hat gleich am Anfang korrigiert: ‚Dokumentiert‘ heißt, jemand schreibt es noch einmal von Hand auf. Gemeint ist ‚erfasst‘. Diesen Faden nehmen wir am Ende wieder auf.“</p>
+    <p class="gesprochen" data-schritt="0">„Die Sitzung hatte vier Blöcke. Maximilian Büchele hat über Prozesse gesprochen, sein Vortrag wurde aber unterbrochen. Elbrus Tschekuev hat KI im KMU vorgestellt, bis kurz vor sein Fallbeispiel. Dann hat Klaus Knopper per Video KI-Begriffe erklärt und mit uns den KI-Führerschein gemacht, zum Schluss kam ein Gastvortrag zur Führung bei der Bundeswehr, ohne Folien.“</p>
+    <p class="gesprochen" data-schritt="1">„Beide Referate hatten eine gemeinsame These: In KMU nützt KI vor allem dort, wo Abläufe dokumentiert sind und von den Beschäftigten mitgetragen werden. Prozesse liefern die Abläufe und die Daten, KI übernimmt einzelne Schritte darin, und die Menschen entscheiden, ob das im Alltag wirklich genutzt wird. Diesen Faden nehmen wir am Ende wieder auf.“</p>
     <p>Hintergrund: Bei Max war nach Folie 11 (Modellierung) Schluss, die Praxisbeispiele kommen später. Bei Elbrus endete der Teil vor dem Fallbeispiel energis.</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
+     TRENNFOLIE T1 · Block 1: Prozesse · 5 s
+     Fahrplan der vier Blöcke; der aktuelle Block groß: Kurzname steht auf dem
+     roten Faden, die Blocknummer sitzt als Knoten darauf. Beim Weiterschalten
+     gleiten Faden und Kurzname in die Laufleiste von Folie 03.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie r-trenner" id="t1" data-titel="Block 1: Prozesse" data-feld="leer" data-block="1" data-zeit="5" data-buendel="alle" data-laufkopf="aus" data-nummer="T1">
+  <div class="folie-inhalt">
+    <ol class="r-fahrplan" aria-label="Die vier Blöcke der Sitzung">
+      <li class="r-fahrplan-eintrag ist-aktuell" aria-current="step">
+        <span class="r-fahrplan-nr r-hof r-knoten">1</span>
+        <h2 class="r-fahrplan-name r-webe"><span class="r-faden" aria-hidden="true"><span class="r-faden-linie r-faden--gross" data-morph="faden" data-ueberlauf-ok></span></span><span data-morph="station-1">Prozesse</span></h2>
+        <p class="r-fahrplan-wer">Referat von Maximilian Büchele</p>
+      </li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">2</span><span class="r-fahrplan-name">KI im KMU</span></li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">3</span><span class="r-fahrplan-name">KI-Begriffe</span></li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">4</span><span class="r-fahrplan-name">Führung bei der Bundeswehr</span></li>
+    </ol>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen">„Block 1: Prozesse im Unternehmen, das Referat von Maximilian Büchele.“</p>
+    <p>Trennfolie: nur kurz stehen lassen und weiterschalten. Faden und Blockname gleiten dabei in die Leiste oben auf Folie 03.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 03 · Was ist ein Prozess? · 60 s
+     Der Ablauf als Held: Ereignis, abgestimmtes Handeln, Ergebnis stehen
+     als Wörter auf einer Tintenlinie mit Pfeil (Kette über die ganze Breite).
+     Darunter links das Becker-Zitat (Sp. 1–6), rechts (Sp. 8–12) Modell und
+     Instanz als dasselbe Formular „Bestellung“: das Modell mit gestrichelten
+     Leerfeldern (Umriss der Daten), die Instanz in Schritt 1 in Tinte
+     ausgefüllt. Zugleich erscheint links unten, auf der Grundlinie der
+     letzten Formularzeile, „Wiederholbar, mit klarem Input und Output“.
+     Keine Karmin-Betonung außer der Laufleiste – die Folie definiert nur.
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-begriff" id="f03" data-titel="Was ist ein Prozess?" data-feld="leer" data-station="1" data-zeit="60" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">1 · Prozesse im Unternehmen</p>
-    <h2 class="titel">Ein Prozess hat Auslöser, Ablauf und Ergebnis</h2>
+    <h2 class="titel">Ein Prozess hat Auslöser, <span class="r-zeile">Ablauf und Ergebnis</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-zwei">
-      <div class="stapel r-begriff-links">
-        <blockquote class="zitat"><p class="zitat-text">„inhaltlich abgeschlossene, zeitliche und sachlogische Folge von Aktivitäten“</p><span class="zitat-quelle" data-meta>Becker/Kugeler/Rosemann 2012</span></blockquote>
-        <ol class="r-fluss" data-staffel="160" data-animation="hoch">
-          <li>Ereignis</li><li>abgestimmtes Handeln</li><li>Ergebnis</li>
-        </ol>
-        <p class="r-klein">Modell = alle Bestellungen · Instanz = die Bestellung von Kunde Huber</p>
-      </div>
-      <div class="karte karte--weich r-doz" data-schritt="1" data-animation="hoch">
-        <span class="karte-kicker" data-meta>Ergänzung der Dozentin</span>
-        <p class="karte-titel">Jeder Prozess hat einen eindeutigen Lieferanten und Kunden</p>
-        <div class="r-lk" aria-label="Beispiel: Produktion fordert an, Einkauf bestellt, liefert an Produktion">
-          <span class="r-lk-box">Produktion</span><span class="r-lk-pfeil" data-meta>Lieferant</span>
-          <span class="r-lk-box r-lk-box--mitte">Einkauf</span><span class="r-lk-pfeil" data-meta>Kunde</span>
-          <span class="r-lk-box">Produktion</span>
-        </div>
-        <p class="karte-text">Heute zählen Abläufe, nicht Organigramme.</p>
+    <ol class="r-kette r-kette--breit r-kette--gross" data-staffel="160" data-animation="hoch" aria-label="Ablauf eines Prozesses: Ereignis, abgestimmtes Handeln, Ergebnis">
+      <li>Ereignis</li><li>abgestimmtes Handeln</li><li>Ergebnis</li>
+    </ol>
+    <div class="r-raster r-begriff-unten">
+      <blockquote class="r-zitat r-begriff-zitat">
+        <p class="r-zitat-text">„inhaltlich abgeschlossene, zeitliche und sachlogische Folge von Aktivitäten“</p>
+        <footer class="r-zitat-quelle" data-meta>Becker/Kugeler/Rosemann 2012</footer>
+      </blockquote>
+      <p class="r-begriff-zeile" data-schritt="1" data-animation="einblenden">Wiederholbar, mit klarem Input und Output</p>
+      <div class="r-begriff-formular" role="group" aria-label="Modell und Instanz: dieselbe Bestellung, einmal mit leeren Feldern, einmal ausgefüllt">
+        <p class="r-begriff-art">Modell</p>
+        <p class="r-begriff-art r-begriff-fall" data-schritt="1" data-animation="hoch">Instanz</p>
+        <p class="r-begriff-kopf">Bestellung</p>
+        <p class="r-begriff-kopf r-begriff-fall" data-schritt="1" data-animation="hoch">Bestellung</p>
+        <span class="r-begriff-feld">Kunde</span><span class="r-begriff-leer" role="img" aria-label="leer"></span>
+        <span class="r-begriff-feld r-begriff-fall" data-schritt="1" data-animation="hoch">Kunde</span><b class="r-begriff-wert" data-schritt="1" data-animation="hoch" data-verzoegerung="240">Huber</b>
+        <span class="r-begriff-feld">Datum</span><span class="r-begriff-leer" role="img" aria-label="leer"></span>
+        <span class="r-begriff-feld r-begriff-fall" data-schritt="1" data-animation="hoch">Datum</span><b class="r-begriff-wert" data-schritt="1" data-animation="hoch" data-verzoegerung="360">20. Mai</b>
       </div>
     </div>
   </div>
   <footer class="folie-fuss">
-    <p class="quelle">Becker/Kugeler/Rosemann 2012; Fleischmann et al. 2018 (Folien Büchele) · Ergänzung: Dozentin in der Sitzung</p>
+    <p class="quelle">Becker/Kugeler/Rosemann 2012; Fleischmann et al. 2018; Seidlmeier 2006 (Folien Büchele)</p>
   </footer>
   <aside class="notizen">
-    <p class="gesprochen" data-schritt="0">„Max hat mit der Definition nach Becker angefangen: Ein Prozess ist eine inhaltlich abgeschlossene, zeitliche und sachlogische Folge von Aktivitäten. Fleischmann betont den Auslöser: Ein Ereignis, etwa eine Bestellung, stößt abgestimmtes Handeln an, am Ende steht ein Ergebnis. Wichtig ist auch der Unterschied zwischen Modell und Instanz: Das Modell gilt für alle Bestellungen, die Instanz ist ein konkreter Fall.“</p>
-    <p class="gesprochen" data-schritt="1">„Die Dozentin hat ergänzt, warum das heute so wichtig ist: Früher stand die Aufbauorganisation im Vordergrund, heute die Ablauforganisation. Jeder Prozess hat einen eindeutigen Lieferanten und einen eindeutigen Kunden. Beispiel: Die Produktion meldet einen Bedarf, der Einkauf bestellt und liefert an die Produktion. Dann ist die Produktion erst Lieferant der Information und danach Kunde des Einkaufs. Ihr Satz dazu: ‚Merken Sie sich das, das ist in den Unternehmen total wichtig.‘“</p>
-    <p>Begriffe von der Folie (bei Rückfragen): Aufbauorganisation = Abteilungen und Stellen; Ablauforganisation = wer macht was, wann, womit; Workflow = Prozess, dessen Übergänge ein Anwendungssystem steuert (z. B. Rechnungsprüfung, Dienstreiseantrag).</p>
+    <p class="gesprochen" data-schritt="0">„Max hat mit der Definition nach Becker angefangen: Ein Prozess ist eine inhaltlich abgeschlossene, zeitliche und sachlogische Folge von Aktivitäten, die zur Bearbeitung eines betriebswirtschaftlich relevanten Objekts nötig sind, zum Beispiel einer Rechnung. Fleischmann und Kollegen betonen den Auslöser: Ein Ereignis, etwa eine Kundenbestellung, stößt abgestimmtes Handeln an, und am Ende steht ein Ergebnis.“</p>
+    <p class="gesprochen" data-schritt="1">„Ein Prozess ist wiederholbar, mit klar definiertem Input und Output. Darum unterscheidet man Modell und Instanz: Das Modell ist die Vorlage für alle Bestellungen, die Instanz ist ein konkreter Fall, etwa die Buchbestellung von Kunde Huber vom 20. Mai. Ein Geschäftsprozess dient dem obersten Ziel des Unternehmens und hat Schnittstellen zu Kunden und Lieferanten.“</p>
+    <p>Begriffe von der Folie (bei Rückfragen): Aufbauorganisation = Abteilungen und Stellen; Ablauforganisation = wer macht was, wann und womit; Prozessmanagement plant, steuert und kontrolliert die Prozesse; Workflow = Prozess, dessen Übergänge ein Anwendungssystem steuert (z.&nbsp;B. Rechnungsprüfung, Dienstreiseantrag).</p>
+    <p>Zur Grafik: Die Feldnamen „Kunde“ und „Datum“ gliedern nur das Beispiel „Kunde Huber, 20. Mai“ von der Originalfolie.</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 04 · Relevanz und Schnittstellen · 55 s
+     Schritt 0: drei Gründe als Dreierreihe auf Haarlinien. Schritt 1: vier
+     Abteilungen als Wörter auf einer Linie, die an jeder Übergabe reißt
+     (Bruchzeichen in Tinte), Folgen als Meta-Zeile. Schritt 2: Kernaussage
+     als Fraunces-Satz – die eine Karmin-Betonung der Folie.
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-relevanz" id="f04" data-titel="Relevanz und Schnittstellen" data-feld="leer" data-station="1" data-zeit="55" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">1 · Prozesse im Unternehmen</p>
-    <h2 class="titel">An jeder Übergabe gehen Zeit und Wissen verloren</h2>
+    <h2 class="titel">An jeder Übergabe gehen <span class="r-zeile">Zeit und Wissen verloren</span></h2>
   </header>
   <div class="folie-inhalt">
-    <ul class="r-gruende" data-staffel="140" data-animation="hoch">
-      <li><b>Tempo</b><span>Bewegungs- statt Stellungskrieg</span></li>
-      <li><b>Prozessgüte</b><span>Amazon: Suche bis Lieferung</span></li>
-      <li><b>Komplexitätsfalle</b><span>Koordination kostet mehr, als sie bringt</span></li>
+    <ul class="r-liste r-liste--reihe r-relevanz-gruende" style="--spalten: 3" data-staffel="140" data-animation="hoch">
+      <li><b class="r-liste-wort">Tempo</b><span class="r-liste-text">Bewegungs- statt Stellungskrieg</span></li>
+      <li><b class="r-liste-wort">Prozessgüte</b><span class="r-liste-text">Amazon: Suche bis Lieferung</span></li>
+      <li><b class="r-liste-wort">Komplexitätsfalle</b><span class="r-liste-text">Koordinationskosten wachsen schneller als die Erlöse</span></li>
     </ul>
-    <div class="r-kette" data-schritt="1" data-animation="einblenden">
-      <span class="r-kette-glied">Einkauf</span><span class="r-kette-bruch" aria-label="Übergabe"></span>
-      <span class="r-kette-glied">Produktion</span><span class="r-kette-bruch" aria-label="Übergabe"></span>
-      <span class="r-kette-glied">Vertrieb</span><span class="r-kette-bruch" aria-label="Übergabe"></span>
-      <span class="r-kette-glied">Finanzen</span>
+    <div class="r-relevanz-kette" data-schritt="1" data-animation="einblenden">
+      <ol class="r-kette r-kette--bruch r-kette--breit" aria-label="Ein Prozess läuft durch vier Abteilungen und reißt an jeder Übergabe">
+        <li>Einkauf</li><li class="r-kette-bruch" aria-label="Übergabe"></li><li>Produktion</li><li class="r-kette-bruch" aria-label="Übergabe"></li><li>Vertrieb</li><li class="r-kette-bruch" aria-label="Übergabe"></li><li>Finanzen</li>
+      </ol>
+      <p class="r-hinweis r-relevanz-folgen" data-meta>Folgen: Medienbrüche, Doppelarbeit, keine Gesamtverantwortung</p>
     </div>
-    <p class="r-kette-folgen" data-schritt="1" data-animation="einblenden">Medienbrüche · Doppelarbeit · keine Gesamtverantwortung</p>
-    <p class="r-doz-zeile" data-schritt="2" data-animation="hoch"><span data-meta>Dozentin</span><span>Nicht quer zur Hierarchie, sondern quer durch die <b>Value Chain</b>.</span></p>
+    <p class="r-these r-these--faden r-relevanz-kern" data-schritt="2" data-animation="hoch">Mehr IT löst das Strukturproblem nicht, sie lindert nur die Symptome.</p>
   </div>
   <footer class="folie-fuss">
-    <p class="quelle">Stalk/Evans/Shulman, zitiert nach Becker et al. 2012; Fleischmann et al. 2018 (Folien Büchele)</p>
+    <p class="quelle">Stalk/Evans/Shulman 1992, zitiert nach Becker/Kugeler/Rosemann 2012; Fleischmann et al. 2018 (Folien Büchele)</p>
   </footer>
   <aside class="notizen">
     <p class="gesprochen" data-schritt="0">„Warum ist das Thema relevant? Drei Gründe. Erstens Tempo: Der Wettbewerb ist vom Stellungskrieg zum Bewegungskrieg geworden, wer schnell auf Kundenwünsche reagiert, gewinnt. Zweitens die Prozessgüte, Beispiel Amazon: Der reibungslose Ablauf von der Suche bis zur Lieferung macht den Unterschied. Drittens die Komplexitätsfalle: Mit wachsender Variantenvielfalt steigen die Koordinationskosten stärker als die Erlöse.“</p>
-    <p class="gesprochen" data-schritt="1">„Das Kernproblem: Ein Prozess läuft durch mehrere Abteilungen. An jeder Übergabe entstehen Medienbrüche, Doppelarbeit, lange Durchlaufzeiten, und am Ende fühlt sich niemand für das Ganze verantwortlich. Mehr IT löst das nicht, sie verkürzt nur die Symptome.“</p>
-    <p class="gesprochen" data-schritt="2">„Auf der Folie stand ‚Prozesse quer zur Hierarchie‘. Die Dozentin hat das korrigiert: Einkauf, Produktion, Vertrieb, das ist die Value Chain oder Supply Chain. Hierarchie wäre es erst, wenn darüber noch Ebenen stehen.“</p>
+    <p class="gesprochen" data-schritt="1">„Das Kernproblem: Ein Prozess läuft durch mehrere Abteilungen. An jeder Übergabe entstehen Medienbrüche, Doppelarbeit und lange Durchlaufzeiten, und am Ende fühlt sich niemand für das Ganze verantwortlich.“</p>
+    <p class="gesprochen" data-schritt="2">„Dazu kommen die mentalen Modelle: Jeder Beteiligte hat ein eigenes Bild seiner Arbeit, und die Aufgabe ist, diese Bilder zusammenzuführen. Max’ Kernaussage: Mehr IT löst dieses Strukturproblem nicht, sie lindert nur Symptome wie die Dauer einer Abstimmung.“</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 05 · Von der Arbeitsteilung zum Prozessmanagement · 45 s
+     Zeitstrahl (Komponente): randabfallende Tintenlinie, sechs Stationen auf
+     je zwei Spalten, „heute“ als einziger Karmin-Knoten. Schritt 1: der
+     Kulturwandel als zweite, parallele Spur unter dem Strahl – Theorie X
+     steht unter Taylor, Theorie Y unter „heute“, dazwischen ein Tintenpfeil.
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-zeit" id="f05" data-titel="Von der Arbeitsteilung zum Prozessmanagement" data-feld="leer" data-station="1" data-zeit="45" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">1 · Prozesse im Unternehmen</p>
-    <h2 class="titel">Von der Arbeitsteilung zum Prozessmanagement</h2>
+    <h2 class="titel">Arbeitsteilung macht produktiv, <span class="r-zeile">aber zerschneidet den Ablauf</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-strahl">
-      <span class="r-strahl-linie" data-animation="zeichnen" data-dauer="1400" aria-hidden="true"></span>
-      <ol class="r-strahl-punkte" data-staffel="120" data-animation="hoch">
-        <li><span class="r-jahr" data-meta>1776</span><b>Smith</b><span>Arbeitsteilung</span></li>
-        <li><span class="r-jahr" data-meta>um 1900</span><b>Taylor</b><span>Planen ≠ Ausführen</span></li>
-        <li><span class="r-jahr" data-meta>1913</span><b>Ford</b><span>Fließband</span></li>
-        <li><span class="r-jahr" data-meta>1934</span><b>Nordsieck</b><span>Leistungskette</span></li>
-        <li><span class="r-jahr" data-meta>1980/90er</span><b>Porter, Scheer, Hammer</b><span>Reengineering</span></li>
-        <li class="r-heute"><span class="r-jahr" data-meta>heute</span><b>BPMN 2.0</b><span>Lean Six Sigma</span></li>
+    <div class="r-zeitstrahl">
+      <span class="r-zeitstrahl-linie" data-animation="zeichnen" data-dauer="1400" data-ueberlauf-ok aria-hidden="true"></span>
+      <ol class="r-zeitstrahl-stationen" data-staffel="120" data-animation="hoch">
+        <li><span class="r-zeit-jahr">1776</span><b class="r-zeit-name">Smith</b><span class="r-zeit-wort">Arbeitsteilung</span></li>
+        <li><span class="r-zeit-jahr">um 1900</span><b class="r-zeit-name">Taylor</b><span class="r-zeit-wort">Planen ≠ Ausführen</span></li>
+        <li><span class="r-zeit-jahr">1913</span><b class="r-zeit-name">Ford</b><span class="r-zeit-wort">Fließband</span></li>
+        <li><span class="r-zeit-jahr">1934</span><b class="r-zeit-name">Nordsieck</b><span class="r-zeit-wort">Leistungskette</span></li>
+        <li><span class="r-zeit-jahr">1980er/90er</span><b class="r-zeit-name">Porter, Scheer, Hammer</b><span class="r-zeit-wort">Reengineering</span></li>
+        <li class="ist-heute"><span class="r-zeit-jahr">heute</span><b class="r-zeit-name">BPMN 2.0</b><span class="r-zeit-wort">Lean Six Sigma</span></li>
       </ol>
     </div>
-    <div class="r-merk" data-schritt="1" data-animation="hoch">
-      <p>Arbeitsteilung steigert die Produktivität – und schafft das <b>Koordinationsproblem</b>.</p>
-      <p class="r-merk-xy"><span>Theorie X</span><span class="r-merk-pfeil" aria-hidden="true">→</span><span>Theorie Y</span></p>
+    <div class="r-zeit-kultur" data-schritt="1" data-animation="keine" aria-label="Kulturwandel von Theorie X (Kontrolle) zu Theorie Y (Beteiligung)">
+      <div class="r-zeit-von">
+        <p class="r-zeit-theorie" data-animation="einblenden"><span class="r-zeit-theorie-name">Theorie X</span><span class="r-zeit-theorie-text">Kontrolle</span></p>
+        <span class="r-zeit-pfeil" data-animation="zeichnen" data-verzoegerung="200" data-dauer="900" aria-hidden="true"></span>
+      </div>
+      <p class="r-zeit-theorie r-zeit-theorie--y" data-animation="einblenden" data-verzoegerung="900"><span class="r-zeit-theorie-name">Theorie Y</span><span class="r-zeit-theorie-text">Beteiligung</span></p>
     </div>
   </div>
   <footer class="folie-fuss">
-    <p class="quelle">Starbatty 2009; Fleischmann et al. 2018; Becker et al. 2012; Seidlmeier 2006 (Folien Büchele) · Jahr Ford: Einführung des Fließbands 1913</p>
+    <p class="quelle">Starbatty 2009; Fleischmann et al. 2018; Becker/Kugeler/Rosemann 2012; Seidlmeier 2006 (Folien Büchele); Jahr Ford: Einführung des Fließbands 1913</p>
   </footer>
   <aside class="notizen">
     <p class="gesprochen" data-schritt="0">„Die Wurzeln liegen in der Arbeitsteilung: Adam Smith 1776, dann Taylor, der um 1900 das Planen vom Ausführen trennt, und Ford mit dem Fließband. 1934 beschreibt Nordsieck den Betrieb als ununterbrochene Leistungskette. Der Durchbruch kommt in den 80er- und 90er-Jahren mit Porter, Scheer und Hammer und Champy, zuerst als einmaliges, radikales Reengineering. Heute sind BPMN 2.0, Lean Six Sigma und Industrie 4.0 aktuell.“</p>
     <p class="gesprochen" data-schritt="1">„Die Kernaussage: Arbeitsteilung macht produktiv, aber sie zerschneidet den Ablauf, das ist das Koordinationsproblem. Kulturell geht es von Theorie X, der Mensch braucht Kontrolle, wie bei Taylor, zu Theorie Y: Beteiligung und Selbstorganisation.“</p>
-    <p>Hinweis: Im Vortrag wurde Scheer zuerst „Scherer“ genannt und dann korrigiert. Ford steht auf den Folien als „frühes 20. Jahrhundert“; 1913 ist das Jahr der Fließband-Einführung (Allgemeinwissen, nicht aus den Folien).</p>
+    <p>Hinweis: Ford steht auf den Folien als „frühes 20. Jahrhundert“; 1913 ist das Jahr der Fließband-Einführung (Allgemeinwissen, nicht aus den Folien).</p>
+    <p>Originalfolie: „Arbeitsteilung steigert die Produktivität – und schafft das Koordinationsproblem.“ Der Titel fasst das mit den Worten des Sprechtexts; „Kontrolle“ und „Beteiligung“ unter Theorie X und Y stammen ebenfalls aus dem Sprechtext.</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 06 · Prozessarten und KI · 60 s
+     FOLIE 06 · Prozessarten und Sichten · 55 s
+     Hauptfeld: Porters drei Prozessarten als Schichtung zwischen
+     Haarlinien – Management oben (steuert), Kern in der Mitte (groß,
+     Fraunces 64 px, die eine Karmin-Betonung), Support unten (trägt).
+     Schritt 1: drei Sichten als ruhige Liste im Seitenfeld. Schritt 2:
+     Zentralregulierung als Hinweiszeile direkt unter der Schichtung.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-arten" id="f06" data-titel="Prozessarten und KI" data-feld="leer" data-station="1" data-zeit="60" data-buendel="alle">
+<section class="folie r-arten" id="f06" data-titel="Sichten und Prozessarten" data-feld="leer" data-station="1" data-zeit="55" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">1 · Prozesse im Unternehmen</p>
-    <h2 class="titel">KI setzt zuerst bei Support-Prozessen an</h2>
+    <h2 class="titel">Kern schafft Wert, <span class="r-zeile">Support macht ihn möglich</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-zwei">
-      <ol class="r-porter">
-        <li><b>Management</b><span>Strategie, Planung, Steuerung</span></li>
-        <li><b>Kern</b><span>Logistik, Produktion, Vertrieb</span></li>
-        <li class="r-porter-support" data-schritt="2" data-animation="hervorheben" data-hervor-stil="rahmen"><b>Support</b><span>Personal, Rechnungswesen, IT</span></li>
-      </ol>
-      <div class="stapel r-arten-rechts">
-        <p class="r-frage" data-meta>Frage der Dozentin: Zara oder Supermarkt – wo ähneln sie sich?</p>
-        <ul class="r-skala" data-schritt="1" data-animation="hoch">
-          <li><span>Kern</span><span class="r-skala-balken" style="--w:100%"></span><span data-meta>sehr verschieden</span></li>
-          <li><span>Management</span><span class="r-skala-balken" style="--w:60%"></span><span data-meta>teils ähnlich</span></li>
-          <li><span>Support</span><span class="r-skala-balken" style="--w:28%"></span><span data-meta>sehr ähnlich</span></li>
+    <div class="r-raster r-arten-raster">
+      <figure class="r-arten-porter">
+        <figcaption class="r-bezeichner" data-meta>Prozessarten nach Porter</figcaption>
+        <ol class="r-arten-schichten" data-staffel="140" data-animation="hoch">
+          <li><b class="r-arten-name">Management</b><span class="r-arten-text">Strategie, Planung, Steuerung</span></li>
+          <li class="r-arten-kern"><b class="r-arten-name">Kern</b><span class="r-arten-text">Logistik, Produktion, Vertrieb</span></li>
+          <li><b class="r-arten-name">Support</b><span class="r-arten-text">Personal, Rechnungswesen, IT</span></li>
+        </ol>
+        <p class="r-hinweis r-arten-grenze" data-meta data-schritt="2" data-animation="hoch"><b>Kernprozess je Branche:</b> Zentralregulierung im Handel, Kreditvergabe in der Bank</p>
+      </figure>
+      <div class="r-arten-sichten" data-schritt="1" data-animation="keine">
+        <p class="r-bezeichner" data-meta>Drei Sichten auf einen Prozess</p>
+        <ul class="r-liste" data-staffel="120" data-animation="hoch">
+          <li><b class="r-liste-wort">Außen</b><span class="r-liste-text">Was bekommt der Kunde?</span></li>
+          <li><b class="r-liste-wort">Innen</b><span class="r-liste-text">Wer macht was, in welcher Reihenfolge?</span></li>
+          <li><b class="r-liste-wort">Umsetzung</b><span class="r-liste-text">Menschen, Maschinen, Software – gemessen mit KPIs und PPIs</span></li>
         </ul>
-        <blockquote class="zitat" data-schritt="2" data-animation="hoch"><p class="zitat-text">„Software setzt dort an, wo die Standards am größten sind.“</p><span class="zitat-quelle" data-meta>Dozentin in der Diskussion</span></blockquote>
       </div>
     </div>
   </div>
   <footer class="folie-fuss">
-    <p class="quelle">Prozessarten nach Porter 1980, zitiert nach Becker/Kugeler/Rosemann 2012 · Diskussion: Mitschnitt der Sitzung (Einschätzung der Studierenden)</p>
+    <p class="quelle">Fleischmann et al. 2018; Prozessarten nach Porter 1985, zitiert nach Becker/Kugeler/Rosemann 2012 (Folien Büchele)</p>
   </footer>
   <aside class="notizen">
-    <p class="gesprochen" data-schritt="0">„Ein Prozess lässt sich von außen ansehen, also was bekommt der Kunde, von innen, wer macht was in welcher Reihenfolge, und in der Umsetzung mit Menschen, Maschinen und Software, gemessen mit Kennzahlen. Nach Porter gibt es drei Prozessarten: Management-, Kern- und Support-Prozesse. Der Sinn dahinter, so die Diskussion: Die gesamte Wertschöpfung wird in ihre Einzelteile zerlegt.“</p>
-    <p class="gesprochen" data-schritt="1">„Dann die Frage der Dozentin: Ein Modehändler wie Zara und ein Supermarkt, wo unterscheiden sie sich am stärksten? Antwort aus dem Kurs: in den Kernprozessen. Die Textilproduktion hat eine viel längere Kette als Lebensmittel.“</p>
-    <p class="gesprochen" data-schritt="2">„Im Management, also bei der Strategie, können sie sich schon ähneln. Am ähnlichsten sind die Support-Prozesse, Personal funktioniert überall ähnlich. Und genau dort setzt KI zuerst an. Die Dozentin: ‚Software setzt dort an, wo die Standards am größten sind.‘ In Zukunft wird KI aber in allen drei Prozessarten stecken.“</p>
-    <p>Rückfrage Zentralregulierung (stand auf Max' Folie, er konnte sie nicht erklären): Ein Verband wie Intersport kauft für seine selbstständigen Händler ein und bezahlt für sie, die Händler zahlen an den Verband zurück. Im Handel ein Kernprozess. Die Dozentin dazu: „Man setzt nur Dinge auf die Folien, zu denen man Fragen beantworten kann.“</p>
+    <p class="gesprochen" data-schritt="0">„Nach Porter gibt es drei Prozessarten. Managementprozesse steuern: Strategie, Planung und Steuerung. Kernprozesse schaffen direkte Wertschöpfung, etwa Logistik, Produktion, Marketing und Vertrieb. Supportprozesse wie Personal, Rechnungswesen oder IT schaffen keinen direkten Kundenwert, sind aber die Voraussetzung dafür.“</p>
+    <p class="gesprochen" data-schritt="1">„Außerdem hat Max drei Sichten auf einen Prozess unterschieden: die Außensicht, also was der Kunde bekommt, die Innensicht, also wer was in welcher Reihenfolge macht, und die Umsetzung mit Menschen, Maschinen und Software. Gemessen wird ein Prozess mit Kennzahlen: KPIs für den Erfolg des Unternehmens, PPIs für die Leistung eines einzelnen Prozesses.“</p>
+    <p class="gesprochen" data-schritt="2">„Was ein Kernprozess ist, hängt von der Branche ab: Im Handel nannte Max die Zentralregulierung, in einer Bank die Kreditvergabe.“</p>
+    <p>Reihenfolge: Im Referat kamen die drei Sichten vor den Prozessarten; auf der Folie stehen die Prozessarten zuerst, weil der Titel von ihnen handelt.</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 07 · Lebenszyklus und Modellierung · 50 s
+     Sechs Phasen als Stationen auf einer Tintenlinie, die am Ende in eine
+     Schleife übergeht: „kontinuierlich verbessern“ (Schleife und Wort in
+     Karmin – die eine Betonung). Schritt 1: Modellierungssprachen und
+     DMAIC als zwei ruhige Textspalten, DMAIC unter der Schleife (Kreislauf
+     im Dauerbetrieb). Schritt 2: „Hier endete Teil 1“ als Meta-Zeile am
+     offen abbrechenden Fadenende.
+     Geometrie (Inhaltsbreite 1664 px): Phasen-Spalten 204 px, Rinne 24 px
+     → Punkt i bei x = 228·i + 14; letzte Spalte ab x = 1368. Linie und
+     Schleife liegen auf y = 136 (Mitte der Punkte); Schleife r = 64 um
+     (1436 | 72), unten tangential an der Linie.
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-zyklus" id="f07" data-titel="Lebenszyklus und Modellierung" data-feld="leer" data-station="1" data-zeit="50" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">1 · Prozesse im Unternehmen</p>
-    <h2 class="titel">Nach dem Projekt ist vor dem Projekt</h2>
+    <h2 class="titel">Nach dem Projekt <span class="r-zeile">ist vor dem Projekt</span></h2>
   </header>
   <div class="folie-inhalt">
-    <ol class="r-phasen" data-staffel="100" data-animation="hoch">
-      <li>Vorbereiten</li><li>Ordnungs&shy;rahmen</li><li>Ist-Analyse</li><li>Soll-Modell</li><li>Organisation</li><li>Roll-out</li><li class="r-phasen-dauer">kontinuierlich verbessern</li>
-    </ol>
-    <div class="raster-2 r-zyklus-karten" data-schritt="1" data-staffel="140" data-animation="hoch">
-      <div class="karte karte--linie"><span class="karte-kicker" data-meta>Kreislauf</span><p class="r-dmaic"><b>D</b>efine <b>M</b>easure <b>A</b>nalyze <b>I</b>mprove <b>C</b>ontrol</p></div>
-      <div class="karte karte--linie"><span class="karte-kicker" data-meta>Modellieren</span><p>Flowchart · EPK · BPMN 2.0</p></div>
-    </div>
-    <p class="r-abbruch" data-schritt="2" data-animation="hoch"><svg class="icon" aria-hidden="true"><use href="#i-pause"/></svg>Hier endete Teil 1 – Praxisbeispiele folgen</p>
+    <figure class="r-zyklus-bahn" aria-label="Phasenmodell: Vorbereiten, Ordnungsrahmen, Ist-Analyse, Soll-Modell, Organisation, Roll-out, danach kontinuierlich verbessern">
+      <svg class="r-zyklus-linie" viewBox="0 0 1664 150" aria-hidden="true">
+        <path class="r-zyklus-strich" d="M14 136 H1436" data-animation="zeichnen" data-dauer="1100"/>
+        <path class="r-zyklus-schleife" d="M1436 136 A64 64 0 0 0 1436 8 A64 64 0 0 0 1436 136" data-animation="zeichnen" data-verzoegerung="1000" data-dauer="800"/>
+        <path class="r-zyklus-spitze" d="M1418 8 L1442 -4 L1442 20 Z" data-animation="einblenden" data-verzoegerung="1700"/>
+      </svg>
+      <ol class="r-zyklus-phasen" data-staffel="110" data-animation="hoch">
+        <li>Vorbereiten</li><li>Ordnungs&shy;rahmen</li><li>Ist-Analyse</li><li>Soll-Modell</li><li>Organisation</li><li>Roll-out</li><li class="r-zyklus-dauer">kontinuierlich verbessern</li>
+      </ol>
+    </figure>
+    <ul class="r-liste r-liste--reihe r-zyklus-spalten" data-schritt="1" data-staffel="140" data-animation="hoch">
+      <li><b class="r-liste-wort">Modellierungssprachen</b><span class="r-liste-text">Flowchart, EPK, BPMN 2.0</span></li>
+      <li><b class="r-liste-wort">DMAIC-Kreislauf</b><span class="r-liste-text">Define, Measure, Analyze, Improve, Control</span></li>
+    </ul>
+    <p class="r-hinweis r-faden-ende r-zyklus-ende" data-meta data-schritt="2" data-animation="hoch">Hier endete Teil 1 – Praxisbeispiele folgen</p>
   </div>
   <footer class="folie-fuss">
     <p class="quelle">Phasenmodell nach Becker/Kugeler/Rosemann 2012; DMAIC aus Lean Six Sigma (Folien Büchele)</p>
   </footer>
   <aside class="notizen">
     <p class="gesprochen" data-schritt="0">„Das Phasenmodell nach Becker: Modellierung vorbereiten, Strategie und Ordnungsrahmen, Ist-Analyse, Soll-Modell, Aufbauorganisation, Roll-out, und dann geht es in die kontinuierliche Verbesserung über. Das Projektmanagement begleitet alle Phasen.“</p>
-    <p class="gesprochen" data-schritt="1">„Für den Dauerbetrieb gibt es Kreisläufe, zum Beispiel DMAIC aus Lean Six Sigma: Define, Measure, Analyze, Improve, Control. Zum Modellieren gibt es sechs Grundsätze ordnungsmäßiger Modellierung, etwa Richtigkeit, Relevanz und Wirtschaftlichkeit, und Sprachen wie Flowchart, EPK und BPMN 2.0, den internationalen Standard.“</p>
+    <p class="gesprochen" data-schritt="1">„Zum Modellieren gibt es sechs Grundsätze ordnungsmäßiger Modellierung, etwa Richtigkeit, Relevanz und Wirtschaftlichkeit, und Sprachen wie Flowchart, EPK und BPMN 2.0, den internationalen Standard. Für den Dauerbetrieb gibt es Kreisläufe, zum Beispiel DMAIC aus Lean Six Sigma: Define, Measure, Analyze, Improve, Control.“</p>
     <p class="gesprochen" data-schritt="2">„An dieser Stelle wurde Teil 1 unterbrochen. Die Praxisbeispiele, eine Kundenausschreibung im Lebensmittelhandel und die Dienstplanung in einer JVA, sowie Chancen, Risiken und Trends kommen in einer späteren Sitzung.“</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
+     TRENNFOLIE T2 · Block 2: KI im KMU · 5 s
+     Fahrplan der vier Blöcke; der aktuelle Block groß: Kurzname steht auf dem
+     roten Faden, die Blocknummer sitzt als Knoten darauf. Beim Weiterschalten
+     gleiten Faden und Kurzname in die Laufleiste von Folie 08.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie r-trenner" id="t2" data-titel="Block 2: KI im KMU" data-feld="leer" data-block="2" data-zeit="5" data-buendel="alle" data-laufkopf="aus" data-nummer="T2">
+  <div class="folie-inhalt">
+    <ol class="r-fahrplan" aria-label="Die vier Blöcke der Sitzung">
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">1</span><span class="r-fahrplan-name">Prozesse im Unternehmen</span></li>
+      <li class="r-fahrplan-eintrag ist-aktuell" aria-current="step">
+        <span class="r-fahrplan-nr r-hof r-knoten">2</span>
+        <h2 class="r-fahrplan-name r-webe"><span class="r-faden" aria-hidden="true"><span class="r-faden-linie r-faden--gross" data-morph="faden" data-ueberlauf-ok></span></span><span data-morph="station-2">KI im KMU</span></h2>
+        <p class="r-fahrplan-wer">Referat von Elbrus Tschekuev</p>
+      </li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">3</span><span class="r-fahrplan-name">KI-Begriffe</span></li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">4</span><span class="r-fahrplan-name">Führung bei der Bundeswehr</span></li>
+    </ol>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen">„Block 2: KI im KMU, das Referat von Elbrus Tschekuev.“</p>
+    <p>Trennfolie: nur kurz stehen lassen und weiterschalten. Faden und Blockname gleiten dabei in die Leiste oben auf Folie 08.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 08 · Verbreitung · 50 s
+     Drei Kennzahlen mit hängender Zahl in der Randspalte und Strichskala
+     (100 Striche = 100 %); Spotlight: die schon gezeigten Zahlen treten
+     zurück, solange noch eine folgt. 59 % ist die Wende (Karmin + Abstand).
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-zahlen" id="f08" data-titel="Verbreitung von KI" data-feld="leer" data-station="2" data-zeit="50" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">2 · KI im KMU</p>
-    <h2 class="titel">Viele nutzen KI, kaum jemand schöpft sie aus</h2>
+    <h2 class="titel">Viele nutzen KI, <span class="r-zeile">kaum jemand schöpft sie aus</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-zahlen-raster">
-      <div class="kennzahl r-zahl" data-schritt="1" data-animation="hoch">
-        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="20" data-einheit=" %">20 %</span>
-        <span class="kennzahl-text">des Mittelstands nutzten KI 2022–2024 – fünfmal so viele wie 2016–2018</span>
+    <div class="r-anteile r-spot">
+      <div class="r-zahl" data-schritt="1" data-animation="einblenden">
+        <span class="r-zahl-wert"><span data-animation="zaehlen" data-ziel="20">20</span><span class="r-einheit">%</span></span>
+        <p class="r-zahl-text">des Mittelstands nutzten KI 2022–2024 – fünfmal so viele wie 2016–2018</p>
+        <span class="r-skala" style="--wert:20" role="img" aria-label="20 von 100"><span class="r-skala-wert" data-animation="zeichnen"></span></span>
         <span class="r-zahl-quelle" data-meta>KfW-Mittelstandspanel</span>
       </div>
-      <div class="kennzahl r-zahl" data-schritt="2" data-animation="hoch">
-        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="57" data-einheit=" %">57 %</span>
-        <span class="kennzahl-text">der Unternehmen ab 20 Beschäftigten nutzen KI</span>
+      <div class="r-zahl" data-schritt="2" data-animation="einblenden">
+        <span class="r-zahl-wert"><span data-animation="zaehlen" data-ziel="57">57</span><span class="r-einheit">%</span></span>
+        <p class="r-zahl-text">der Unternehmen ab 20 Beschäftigten nutzen KI</p>
+        <span class="r-skala" style="--wert:57" role="img" aria-label="57 von 100"><span class="r-skala-wert" data-animation="zeichnen"></span></span>
         <span class="r-zahl-quelle" data-meta>Bitkom 2026</span>
       </div>
-      <div class="kennzahl r-zahl r-zahl--held" data-schritt="3" data-animation="hoch">
-        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="59" data-einheit=" %">59 %</span>
-        <span class="kennzahl-text">der Anwender schöpfen das Potenzial überhaupt nicht aus</span>
+      <div class="r-zahl r-zahl--faden" data-schritt="3" data-animation="einblenden">
+        <span class="r-zahl-wert"><span data-animation="zaehlen" data-ziel="59">59</span><span class="r-einheit">%</span></span>
+        <p class="r-zahl-text">der Anwender schöpfen das Potenzial nicht aus</p>
+        <span class="r-skala r-skala--faden" style="--wert:59" role="img" aria-label="59 von 100"><span class="r-skala-wert" data-animation="zeichnen"></span></span>
         <span class="r-zahl-quelle" data-meta>Bitkom 2026</span>
       </div>
     </div>
@@ -390,37 +489,55 @@
     <p class="gesprochen" data-schritt="0">„Elbrus hat mit drei Datenquellen gearbeitet: dem KfW-Mittelstandspanel, der Bitkom-Befragung vom Sommer 2026 und dem Statistischen Bundesamt. Die Zahlen weichen voneinander ab, weil unterschiedliche Unternehmen zu unterschiedlichen Zeiten befragt wurden.“</p>
     <p class="gesprochen" data-schritt="1">„Laut KfW haben 2022 bis 2024 20 Prozent des Mittelstands KI genutzt, fünfmal so viele wie 2016 bis 2018. Am häufigsten Sprach-KI zum Texteschreiben mit 14 Prozent, echte Datenanalyse nur 3 Prozent.“</p>
     <p class="gesprochen" data-schritt="2">„Bei Bitkom, nur Unternehmen ab 20 Beschäftigten, sind es 2026 schon 57 Prozent, also erstmals die Mehrheit.“</p>
-    <p class="gesprochen" data-schritt="3">„Aber: 59 Prozent der Anwender sagen, sie schöpfen das Potenzial überhaupt nicht aus. Vollständig ausschöpfen tut es kein einziges befragtes Unternehmen. Viele nutzen KI, wenige nutzen sie gut.“</p>
+    <p class="gesprochen" data-schritt="3">„Aber: 59 Prozent der Anwender sagen, sie schöpfen das Potenzial nicht aus. Vollständig ausschöpfen tut es kein einziges befragtes Unternehmen. Viele nutzen KI, wenige nutzen sie gut.“</p>
     <p>Warum 20 und 57 % so weit auseinander liegen: KfW = gesamter Mittelstand inkl. Kleinstbetriebe, Zeitraum 2022–2024; Bitkom = ab 20 Beschäftigten, Jahr 2026 (Vorjahr 36 %, vor zwei Jahren 20 %).</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 09 · Größe ist nicht die Ursache · 45 s
+     Hauptfeld (Sp. 1–8): drei Strichskalen groß/mittel/klein in Tinte, die
+     Zahlen hängen links in einer schmalen Randspalte (166 px), damit die
+     Skala ihre Mindestbreite von 900 px behält und das Seitenfeld frei
+     bleibt. Schritt 1, Seitenfeld (Sp. 9–12): drei Faktoren als
+     Fraunces-Wörter, „Know-how im Team“ als einziges Karmin; darunter die
+     Folgerung „Größe ist Treiber, nicht Ursache.“
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-groesse" id="f09" data-titel="Größe und Know-how" data-feld="leer" data-station="2" data-zeit="45" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">2 · KI im KMU</p>
-    <h2 class="titel">Nicht die Größe entscheidet, sondern das Know-how</h2>
+    <h2 class="titel">Nicht die Größe entscheidet, <span class="r-zeile">sondern das Know-how</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-zwei">
-      <figure class="r-diagramm">
-        <figcaption data-meta>KI-Nutzung nach Größe, 2025</figcaption>
-        <ul class="r-balken" data-staffel="160" data-animation="hoch">
-          <li style="--w:57%"><span class="r-balken-name">groß</span><span class="r-balken-spur"><span class="r-balken-wert"></span><span class="r-balken-zahl">57 %</span></span></li>
-          <li style="--w:36%"><span class="r-balken-name">mittel</span><span class="r-balken-spur"><span class="r-balken-wert"></span><span class="r-balken-zahl">36 %</span></span></li>
-          <li style="--w:23%"><span class="r-balken-name">klein</span><span class="r-balken-spur"><span class="r-balken-wert"></span><span class="r-balken-zahl">23 %</span></span></li>
-        </ul>
+    <div class="r-raster r-groesse-raster">
+      <figure class="r-groesse-skalen">
+        <figcaption class="r-bezeichner" data-meta>KI-Nutzung nach Größe, 2025</figcaption>
+        <div class="r-zahl r-zahl--schmal">
+          <span class="r-zahl-wert">57<span class="r-einheit">%</span></span>
+          <p class="r-zahl-text">der großen Unternehmen</p>
+          <span class="r-skala r-skala--schmal" style="--wert:57" role="img" aria-label="57 von 100"><span class="r-skala-wert" data-animation="zeichnen" data-dauer="900"></span></span>
+          <span class="r-zahl-quelle" data-meta>ab 250 Beschäftigten</span>
+        </div>
+        <div class="r-zahl r-zahl--schmal">
+          <span class="r-zahl-wert">36<span class="r-einheit">%</span></span>
+          <p class="r-zahl-text">der mittleren</p>
+          <span class="r-skala r-skala--schmal" style="--wert:36" role="img" aria-label="36 von 100"><span class="r-skala-wert" data-animation="zeichnen" data-dauer="900" data-verzoegerung="180"></span></span>
+          <span class="r-zahl-quelle" data-meta>50–249 Beschäftigte</span>
+        </div>
+        <div class="r-zahl r-zahl--schmal">
+          <span class="r-zahl-wert">23<span class="r-einheit">%</span></span>
+          <p class="r-zahl-text">der kleinen</p>
+          <span class="r-skala r-skala--schmal" style="--wert:23" role="img" aria-label="23 von 100"><span class="r-skala-wert" data-animation="zeichnen" data-dauer="900" data-verzoegerung="360"></span></span>
+          <span class="r-zahl-quelle" data-meta>10–49 Beschäftigte</span>
+        </div>
       </figure>
-      <div class="karte karte--weich r-ursache" data-schritt="1" data-animation="hoch">
-        <span class="karte-kicker" data-meta>Was die Nutzung wirklich erklärt</span>
-        <ul class="r-icons">
-          <li><svg class="icon" aria-hidden="true"><use href="#i-kompass"/></svg>Digitalisierungsstrategie</li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-lampe"/></svg>Know-how im Team</li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-stern"/></svg>Innovationstätigkeit</li>
+      <div class="r-groesse-ursache" data-schritt="1" data-animation="keine">
+        <p class="r-bezeichner" data-meta>Was die Nutzung wirklich erklärt</p>
+        <ul class="r-liste r-groesse-faktoren" data-staffel="140" data-animation="hoch">
+          <li><b class="r-liste-wort">Digitalisierungsstrategie</b></li>
+          <li class="ist-faden"><b class="r-liste-wort">Know-how im Team</b></li>
+          <li><b class="r-liste-wort">Innovationstätigkeit</b></li>
         </ul>
-        <p class="karte-text">Größe ist Treiber, nicht Ursache.</p>
+        <p class="r-groesse-folgerung" data-animation="einblenden" data-verzoegerung="520">Größe ist Treiber, nicht Ursache.</p>
       </div>
     </div>
   </div>
@@ -430,63 +547,96 @@
   <aside class="notizen">
     <p class="gesprochen" data-schritt="0">„Laut Statistischem Bundesamt nutzen 57 Prozent der großen Unternehmen KI, 36 Prozent der mittleren und nur 23 Prozent der kleinen. Auf den ersten Blick heißt das: Die Größe entscheidet, die Kleinen haben kein Geld.“</p>
     <p class="gesprochen" data-schritt="1">„Die KfW hat das genauer geprüft. Sobald man berücksichtigt, ob ein Betrieb eine Digitalisierungsstrategie hat, Hochschulabsolventen beschäftigt und regelmäßig Neues einführt, verliert die Größe stark an Bedeutung. Für KMU ist das eine gute Nachricht: An der eigenen Größe kann man wenig ändern, an Strategie und Wissen schon.“</p>
+    <p>Größenklassen nach Destatis: groß ab 250 Beschäftigten, mittel 50 bis 249, klein 10 bis 49; erfasst sind Unternehmen ab 10 Beschäftigten.</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 10 · TOE-Modell · 60 s
+     FOLIE 10 · TOE-Modell · 55 s
+     Drei Spalten (4/4/4) auf Haarlinien: Kontext (Fraunces 44 px), wer
+     befragt wurde (Meta), je zwei Zahlen (Fraunces 64 px) mit Kompaktbalken
+     auf einer gemeinsamen Skala (Spaltenbreite = 100 %). 85 % (fehlendes
+     Know-how) ist die einzige Karmin-Zahl. Schritt 1: Tanzcafé-Beispiel als
+     ruhige Zeile unter einer Haarlinie.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-toe" id="f10" data-titel="TOE-Modell" data-feld="leer" data-station="2" data-zeit="60" data-buendel="alle">
+<section class="folie r-toe" id="f10" data-titel="TOE-Modell" data-feld="leer" data-station="2" data-zeit="55" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">2 · KI im KMU · Theorie 1: TOE-Modell</p>
-    <h2 class="titel">Technik, Organisation und Umfeld bremsen</h2>
+    <h2 class="titel">Technik, Organisation <span class="r-zeile">und Umfeld bremsen</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-toe-raster" data-staffel="140" data-animation="hoch">
-      <div class="r-toe-spalte"><h3 class="r-toe-titel">Technologie</h3><p><b>50 %</b> Daten aufbereiten</p><p><b>41 %</b> in Systeme einbinden</p><span class="r-toe-wer" data-meta>Kostenpunkte der Anwender</span></div>
-      <div class="r-toe-spalte r-toe-spalte--held"><h3 class="r-toe-titel">Organisation</h3><p><b>85 %</b> fehlt Know-how</p><p><b>63 %</b> Kosten unklar</p><span class="r-toe-wer" data-meta>Gründe der Nicht-Nutzer</span></div>
-      <div class="r-toe-spalte"><h3 class="r-toe-titel">Umfeld</h3><p><b>66 %</b> rechtlich unsicher</p><p><b>57 %</b> nutzen schon KI</p><span class="r-toe-wer" data-meta>Recht und Wettbewerbsdruck</span></div>
+    <figure class="r-toe-modell">
+      <figcaption class="r-bezeichner" data-meta>TOE-Modell (DePietro/Wiarda/Fleischer 1990)</figcaption>
+      <div class="r-raster r-raster--3 r-toe-spalten" data-staffel="160" data-animation="hoch">
+        <div class="r-toe-spalte">
+          <h3 class="r-toe-kopf">Technologie</h3>
+          <p class="r-toe-wer" data-meta>Kostenpunkte der Anwender</p>
+          <p class="r-toe-wert" style="--wert:50"><b class="r-toe-zahl">50<span class="r-einheit">%</span></b><span class="r-toe-was">Daten aufbereiten</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen" data-verzoegerung="200"></span></span></p>
+          <p class="r-toe-wert" style="--wert:41"><b class="r-toe-zahl">41<span class="r-einheit">%</span></b><span class="r-toe-was">in Systeme einbinden</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen" data-verzoegerung="320"></span></span></p>
+        </div>
+        <div class="r-toe-spalte">
+          <h3 class="r-toe-kopf">Organisation</h3>
+          <p class="r-toe-wer" data-meta>Gründe der Nicht-Nutzer</p>
+          <p class="r-toe-wert r-toe-wert--faden" style="--wert:85"><b class="r-toe-zahl">85<span class="r-einheit">%</span></b><span class="r-toe-was">fehlt Know-how</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen" data-verzoegerung="200"></span></span></p>
+          <p class="r-toe-wert" style="--wert:63"><b class="r-toe-zahl">63<span class="r-einheit">%</span></b><span class="r-toe-was">Kosten unklar</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen" data-verzoegerung="320"></span></span></p>
+        </div>
+        <div class="r-toe-spalte">
+          <h3 class="r-toe-kopf">Umfeld</h3>
+          <p class="r-toe-wer" data-meta>Recht und Wettbewerbsdruck</p>
+          <p class="r-toe-wert" style="--wert:66"><b class="r-toe-zahl">66<span class="r-einheit">%</span></b><span class="r-toe-was">rechtlich unsicher</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen" data-verzoegerung="200"></span></span></p>
+          <p class="r-toe-wert" style="--wert:57"><b class="r-toe-zahl">57<span class="r-einheit">%</span></b><span class="r-toe-was">nutzen schon KI</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen" data-verzoegerung="320"></span></span></p>
+        </div>
+      </div>
+    </figure>
+    <div class="r-toe-beispiel r-mit-haarlinie" data-schritt="1" data-animation="hoch">
+      <p class="r-bezeichner" data-meta>Beispiel aus dem Vortrag</p>
+      <p class="r-toe-fall">Tanzcafé mit Minijobbern, alles auf Papier: KI lohnt sich (noch) nicht.</p>
     </div>
-    <p class="r-beispiel" data-schritt="1" data-animation="hoch"><span data-meta>Beispiel aus der Diskussion</span><span>Tanzcafé mit sechs Minijobbern, alles auf Papier: KI lohnt sich (noch) nicht.</span></p>
   </div>
   <footer class="folie-fuss">
     <p class="quelle">DePietro/Wiarda/Fleischer 1990; Bitkom 2026; Zimmermann 2026; Zuordnung zum Modell: Tschekuev</p>
   </footer>
   <aside class="notizen">
-    <p class="gesprochen" data-schritt="0">„Die erste Theorie ist das TOE-Modell: Technology, Organization, Environment. Ob ein Unternehmen eine neue Technik einführt, hängt von diesen drei Kontexten ab. Technik: Für die Hälfte der Anwender ist die Datenaufbereitung ein großer Kostenpunkt, für 41 Prozent die Einbindung in vorhandene Systeme. Organisation: 85 Prozent der Nicht-Nutzer fehlt das Know-how, 63 Prozent halten die Kosten für schwer kalkulierbar. Umfeld: Zwei Drittel nennen rechtliche Unsicherheit, gleichzeitig steigt der Druck, weil schon 57 Prozent KI nutzen.“</p>
-    <p class="gesprochen" data-schritt="1">„Die Dozentin wollte das an einem konkreten Fall sehen. Das Beispiel war ein Tanzcafé mit sechs Leuten, fast alle Minijobber, alles läuft auf Papier, die Miete wird tageweise bezahlt. Technik fehlt, freie Ressourcen fehlen, die Branche verlangt es nicht. Ergebnis: KI lohnt sich dort nicht, höchstens für ein Plakat oder einen Facebook-Post.“</p>
-    <p>Hinweis: Im Vortrag wurden die 41 % als „haben KI schon integriert“ gelesen; laut Folie meint die Zahl die Integration als Kostenpunkt. Am häufigsten genannt wird fehlendes Wissen (Organisation).</p>
+    <p class="gesprochen" data-schritt="0">„Die erste Theorie ist das TOE-Modell: Technology, Organization, Environment. Ob ein Unternehmen eine neue Technik einführt, hängt von diesen drei Kontexten ab. Technik: Für die Hälfte der Anwender ist die Datenaufbereitung ein großer Kostenpunkt, für 41 Prozent die Einbindung in vorhandene Systeme. Organisation: 85 Prozent der Nicht-Nutzer fehlt das Know-how, 63 Prozent halten die Kosten für schwer kalkulierbar. Umfeld: Zwei Drittel nennen rechtliche Unsicherheit, gleichzeitig steigt der Druck, weil laut Bitkom schon 57 Prozent KI nutzen.“</p>
+    <p class="gesprochen" data-schritt="1">„Elbrus hat das Modell an einem Beispiel durchgespielt: ein Tanzcafé mit sechs Leuten, fast alle Minijobber, alles läuft auf Papier, die Miete wird tageweise bezahlt. Technik fehlt, das Geld ist knapp. Ergebnis: KI lohnt sich dort nicht, höchstens für ein Plakat oder einen Facebook-Post.“</p>
+    <p>Hintergrund: Die 41 % meinen die Einbindung in bestehende Systeme als Kostenpunkt (Folie 36 der Referenten). Am häufigsten genannt wird fehlendes Wissen, also die Organisation.</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 11 · TAM · 55 s
+     Pfaddiagramm: Knoten sind Wörter, Strichstärke = Stärke des
+     Zusammenhangs (Kernpfad 16 Karmin, Nebenpfad 6 Tinte, schwach 4
+     gestrichelt). Linien zeichnen sich in der Reihenfolge des Arguments,
+     die Pfeilspitzen folgen (eigene Dreiecke an festen Ankern).
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-tam" id="f11" data-titel="Technology Acceptance Model" data-feld="leer" data-station="2" data-zeit="55" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">2 · KI im KMU · Theorie 2: TAM</p>
-    <h2 class="titel">Der Nutzen zählt mehr als die Bedienung</h2>
+    <h2 class="titel">Der Nutzen zählt mehr <span class="r-zeile">als die Bedienung</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-zwei r-zwei--breit">
-      <div class="r-tam-modell">
-        <svg class="r-tam-pfeile" viewBox="0 0 900 460" aria-hidden="true">
-          <defs>
-            <marker id="r-spitze-stark" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0 L10 5 L0 10 z"/></marker>
-            <marker id="r-spitze-leise" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z"/></marker>
-          </defs>
-          <path class="r-tam-stark" d="M370 400 L700 400 L700 305" marker-end="url(#r-spitze-stark)" data-schritt="1" data-animation="zeichnen"/>
-          <path class="r-tam-mittel" d="M185 120 L185 325" marker-end="url(#r-spitze-leise)" data-schritt="2" data-animation="zeichnen"/>
-          <path class="r-tam-schwach" d="M370 60 L700 60 L700 158" marker-end="url(#r-spitze-leise)" data-schritt="2" data-animation="zeichnen"/>
+    <div class="r-tam-raster">
+      <figure class="r-tam-modell">
+        <figcaption class="r-bezeichner r-tam-name" data-meta>Technology Acceptance Model (Davis 1989)</figcaption>
+        <svg class="r-tam-pfeile" viewBox="0 0 1060 560" aria-hidden="true">
+          <g data-schritt="1" data-animation="keine">
+            <path class="r-pfad r-pfad--kern" d="M575 498 H900 V392" data-animation="zeichnen"/>
+            <path class="r-spitze r-spitze--kern" d="M878 392 L922 392 L900 356 Z" data-animation="einblenden" data-verzoegerung="760"/>
+          </g>
+          <g data-schritt="2" data-animation="keine">
+            <path class="r-pfad r-pfad--neben" d="M100 142 V434" data-animation="zeichnen"/>
+            <path class="r-spitze r-spitze--neben" d="M89 434 L111 434 L100 456 Z" data-animation="einblenden" data-verzoegerung="700"/>
+            <path class="r-pfad r-pfad--schwach" d="M507 112 H900 V244" data-animation="zeichnen"/>
+            <path class="r-spitze r-spitze--schwach" d="M891 244 L909 244 L900 262 Z" data-animation="einblenden" data-verzoegerung="500"/>
+          </g>
         </svg>
-        <span class="r-tam-box r-tam-box--bf">Benutzer&shy;freundlichkeit</span>
-        <span class="r-tam-box r-tam-box--nutzen">Wahrgenommener Nutzen</span>
-        <span class="r-tam-box r-tam-box--nutzung">Nutzung</span>
-        <span class="r-tam-label" data-meta data-schritt="2" data-animation="einblenden">direkt, aber schwächer</span>
-      </div>
-      <div class="stapel r-tam-rechts" data-schritt="3" data-animation="hoch">
-        <p class="r-tam-zahl"><b>42 %</b> der Anwender: Beschäftigte akzeptieren KI nicht</p>
-        <p class="r-tam-zahl"><b>70 %</b> schulen, jedes vierte Unternehmen gar nicht</p>
+        <span class="r-knoten-wort r-tam-knoten r-tam-knoten--bf">Benutzerfreundlichkeit</span>
+        <span class="r-knoten-wort r-tam-knoten r-tam-knoten--nutzen">Wahrgenommener Nutzen</span>
+        <span class="r-knoten-wort r-knoten-wort--ziel r-knoten-wort--andock r-tam-knoten r-tam-knoten--nutzung">Nutzung</span>
+        <span class="r-pfad-label r-tam-label" data-meta data-schritt="2" data-animation="einblenden">direkt, aber schwächer</span>
+      </figure>
+      <div class="r-tam-rechts" data-schritt="3" data-animation="hoch">
+        <p class="r-tam-zahl"><b>42<span class="r-einheit">%</span></b><span>der Anwender sehen fehlende Akzeptanz als Hemmnis</span></p>
+        <p class="r-tam-zahl"><b>70<span class="r-einheit">%</span></b><span>schulen, jedes vierte Unternehmen gar nicht</span></p>
         <p class="r-tam-folgerung">Erst den Nutzen zeigen, dann schulen.</p>
       </div>
     </div>
@@ -495,39 +645,42 @@
     <p class="quelle">Davis 1989 (MIS Quarterly); Bitkom 2026; Schlussfolgerung: Tschekuev</p>
   </footer>
   <aside class="notizen">
-    <p class="gesprochen" data-schritt="0">„Die zweite Theorie schaut auf die einzelne Person: das Technology Acceptance Model von Fred Davis, 1989. Ob jemand ein System nutzt, hängt von zwei Wahrnehmungen ab: Wie leicht ist es zu bedienen, und hilft es mir bei der Arbeit? Elbrus hat gefragt, was wichtiger ist. Im Kurs wurde auf die Benutzerfreundlichkeit getippt.“</p>
+    <p class="gesprochen" data-schritt="0">„Die zweite Theorie schaut auf die einzelne Person: das Technology Acceptance Model von Fred Davis, 1989. Ob jemand ein System nutzt, hängt von zwei Wahrnehmungen ab: Wie leicht ist es zu bedienen, und hilft es mir bei der Arbeit? Elbrus hat gefragt, was wichtiger ist.“</p>
     <p class="gesprochen" data-schritt="1">„Davis zeigt das Gegenteil: Der wahrgenommene Nutzen hängt viel stärker mit der Nutzung zusammen.“</p>
     <p class="gesprochen" data-schritt="2">„Die Benutzerfreundlichkeit wirkt vor allem indirekt, über den Nutzen. Was leicht zu bedienen ist, wird eher als nützlich erlebt.“</p>
-    <p class="gesprochen" data-schritt="3">„In der Praxis: 42 Prozent der Anwender sehen fehlende Akzeptanz als Hemmnis, der Nutzen ist also nicht sichtbar. 70 Prozent der Unternehmen schulen inzwischen, jedes vierte gar nicht. Elbrus' Schluss: Erst den Nutzen im Alltag zeigen, dann schulen. Wer nur die Technik erklärt, lässt die Frage offen: Was habe ich davon?“</p>
+    <p class="gesprochen" data-schritt="3">„In der Praxis: 42 Prozent der Anwender sehen fehlende Akzeptanz als Hemmnis, der Nutzen ist also nicht sichtbar. 70 Prozent der Unternehmen schulen inzwischen, jedes vierte gar nicht. Elbrus’ Schluss: Erst den Nutzen im Alltag zeigen, dann schulen. Wer nur die Technik erklärt, lässt die Frage offen: Was habe ich davon?“</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 12 · Einsatzfelder und Kosten · 50 s
+     Zwei Gruppen Kompaktbalken nebeneinander (Sp. 1–6 und 7–12) auf
+     derselben Skala (gleiche --spur = 100 %): Einsatzfelder (Schritt 0),
+     Kostenpunkte (Schritt 1). „Lizenzen 21 %“ ist die einzige Karmin-Zeile
+     (kleinster Posten: teuer ist das Drumherum).
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-einsatz" id="f12" data-titel="Einsatzfelder und Kosten" data-feld="leer" data-station="2" data-zeit="50" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">2 · KI im KMU</p>
-    <h2 class="titel">KI übernimmt Schritte, nicht ganze Prozesse</h2>
+    <h2 class="titel">KI übernimmt Schritte, <span class="r-zeile">nicht ganze Prozesse</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-zwei">
-      <figure class="r-diagramm">
-        <figcaption data-meta>Wo Anwender KI einsetzen</figcaption>
-        <ul class="r-balken" data-staffel="120" data-animation="hoch">
-          <li style="--w:72%"><span class="r-balken-name">Kundenkontakt</span><span class="r-balken-spur"><span class="r-balken-wert"></span><span class="r-balken-zahl">72 %</span></span></li>
-          <li style="--w:54%"><span class="r-balken-name">Marketing</span><span class="r-balken-spur"><span class="r-balken-wert"></span><span class="r-balken-zahl">54 %</span></span></li>
-          <li style="--w:25%"><span class="r-balken-name">Controlling</span><span class="r-balken-spur"><span class="r-balken-wert"></span><span class="r-balken-zahl">25 %</span></span></li>
-          <li style="--w:22%"><span class="r-balken-name">Wissen</span><span class="r-balken-spur"><span class="r-balken-wert"></span><span class="r-balken-zahl">22 %</span></span></li>
+    <div class="r-raster r-einsatz-raster">
+      <figure class="r-einsatz-gruppe">
+        <figcaption class="r-bezeichner" data-meta>Wo Anwender KI einsetzen</figcaption>
+        <ul class="r-balken r-einsatz-balken" data-staffel="120" data-animation="hoch">
+          <li class="r-balken-zeile" style="--wert:72"><span class="r-balken-name">Kundenkontakt</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen"></span></span><span class="r-balken-zahl">72<span class="r-einheit">%</span></span></li>
+          <li class="r-balken-zeile" style="--wert:54"><span class="r-balken-name">Marketing</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen"></span></span><span class="r-balken-zahl">54<span class="r-einheit">%</span></span></li>
+          <li class="r-balken-zeile" style="--wert:25"><span class="r-balken-name">Controlling</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen"></span></span><span class="r-balken-zahl">25<span class="r-einheit">%</span></span></li>
+          <li class="r-balken-zeile" style="--wert:22"><span class="r-balken-name">Wissen</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen"></span></span><span class="r-balken-zahl">22<span class="r-einheit">%</span></span></li>
         </ul>
       </figure>
-      <figure class="r-diagramm" data-schritt="1" data-animation="hoch">
-        <figcaption data-meta>Große Kostenpunkte der Anwender</figcaption>
-        <ul class="r-balken r-balken--hart">
-          <li style="--w:51%"><span class="r-balken-name">Infrastruktur</span><span class="r-balken-spur"><span class="r-balken-wert"></span><span class="r-balken-zahl">51 %</span></span></li>
-          <li style="--w:50%"><span class="r-balken-name">Daten</span><span class="r-balken-spur"><span class="r-balken-wert"></span><span class="r-balken-zahl">50 %</span></span></li>
-          <li style="--w:41%"><span class="r-balken-name">Integration</span><span class="r-balken-spur"><span class="r-balken-wert"></span><span class="r-balken-zahl">41 %</span></span></li>
-          <li class="r-balken-leise" style="--w:21%"><span class="r-balken-name">Lizenzen</span><span class="r-balken-spur"><span class="r-balken-wert"></span><span class="r-balken-zahl">21 %</span></span></li>
+      <figure class="r-einsatz-gruppe r-einsatz-gruppe--kosten" data-schritt="1" data-animation="keine">
+        <figcaption class="r-bezeichner" data-meta>Große Kostenpunkte der Anwender</figcaption>
+        <ul class="r-balken r-einsatz-balken" data-staffel="120" data-animation="hoch">
+          <li class="r-balken-zeile" style="--wert:51"><span class="r-balken-name">Infrastruktur</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen"></span></span><span class="r-balken-zahl">51<span class="r-einheit">%</span></span></li>
+          <li class="r-balken-zeile" style="--wert:50"><span class="r-balken-name">Daten</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen"></span></span><span class="r-balken-zahl">50<span class="r-einheit">%</span></span></li>
+          <li class="r-balken-zeile" style="--wert:41"><span class="r-balken-name">Integration</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen"></span></span><span class="r-balken-zahl">41<span class="r-einheit">%</span></span></li>
+          <li class="r-balken-zeile r-balken-zeile--faden" style="--wert:21"><span class="r-balken-name">Lizenzen</span><span class="r-balken-spur"><span class="r-balken-wert" data-animation="zeichnen"></span></span><span class="r-balken-zahl">21<span class="r-einheit">%</span></span></li>
         </ul>
       </figure>
     </div>
@@ -544,222 +697,404 @@
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      FOLIE 13 · Rechtlicher Rahmen · 45 s
+     Zeitlinie (Komponente Zeitstrahl, zwei Stationen): Februar 2025 –
+     Art. 4 KI-Verordnung als einziger Karmin-Knoten, Juli 2026 –
+     Digital-Omnibus in Tinte; unter jedem Knoten ein Fraunces-Satz.
+     Schritt 1: zwei Meta-Zeilen; die zweite („Offen: …“) steht am offenen
+     Fadenende – hier bricht Block 2 vor dem Fallbeispiel ab.
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie r-recht" id="f13" data-titel="Rechtlicher Rahmen" data-feld="leer" data-station="2" data-zeit="45" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">2 · KI im KMU</p>
-    <h2 class="titel">KI-Kompetenz ist Pflicht, egal wie groß der Betrieb</h2>
+    <h2 class="titel">KI-Kompetenz fördern ist Pflicht, <span class="r-zeile">egal wie groß der Betrieb</span></h2>
   </header>
   <div class="folie-inhalt">
-    <ol class="r-recht-strahl" data-staffel="160" data-animation="hoch">
-      <li><span class="r-jahr" data-meta>Februar 2025</span><b>Art. 4 KI-Verordnung</b><span>Personal muss KI-kompetent sein</span></li>
-      <li><span class="r-jahr" data-meta>Juli 2026</span><b>Digital-Omnibus</b><span>Pflicht zu Maßnahmen statt Kompetenzniveau</span></li>
-    </ol>
-    <div class="raster-2 r-recht-unten" data-schritt="1" data-staffel="140" data-animation="hoch">
-      <p class="r-hinweis"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><span>Kein festes Zertifikat – z. B. OLAT-Kurs „KI-Kompetenz“ mit Badge</span></p>
-      <p class="r-hinweis r-hinweis--offen"><svg class="icon" aria-hidden="true"><use href="#i-uhr"/></svg><span>Offen: Fallbeispiel energis (Copilot im Energiedaten&shy;management)</span></p>
+    <div class="r-zeitstrahl r-recht-strahl">
+      <span class="r-zeitstrahl-linie" data-animation="zeichnen" data-dauer="1200" data-ueberlauf-ok aria-hidden="true"></span>
+      <ol class="r-zeitstrahl-stationen" style="--stationen: 2" data-staffel="200" data-animation="hoch">
+        <li class="ist-faden"><span class="r-zeit-jahr">Februar 2025</span><b class="r-zeit-name">Art. 4 KI-Verordnung</b><span class="r-zeit-satz">Personal muss <span class="r-recht-wort">KI-kompetent</span> sein</span></li>
+        <li><span class="r-zeit-jahr">Juli 2026</span><b class="r-zeit-name">Digital-Omnibus</b><span class="r-zeit-satz">Pflicht zu Maßnahmen statt Kompetenzniveau</span></li>
+      </ol>
+    </div>
+    <div class="r-recht-offen" data-schritt="1" data-staffel="160" data-animation="hoch">
+      <p class="r-hinweis" data-meta>Nachweis z.&nbsp;B. über den OLAT-Kurs „KI-Kompetenz“ mit Badge</p>
+      <p class="r-hinweis r-faden-ende" data-meta><b>Offen:</b> Fallbeispiel energis (Copilot im Energiedatenmanagement)</p>
     </div>
   </div>
   <footer class="folie-fuss">
-    <p class="quelle">Verordnung (EU) 2024/1689, Art. 4, geändert durch Verordnung (EU) 2026/1744 (Folien Tschekuev) · Kurs-Hinweis: Diskussion und Knopper</p>
+    <p class="quelle">Verordnung (EU) 2024/1689, Art. 4, geändert durch Verordnung (EU) 2026/1744 (Folien Tschekuev); Kurs-Hinweis: Knopper</p>
   </footer>
   <aside class="notizen">
     <p class="gesprochen" data-schritt="0">„Zum rechtlichen Rahmen: Seit Februar 2025 gilt Artikel 4 der europäischen KI-Verordnung. Jedes Unternehmen, das KI beruflich einsetzt, muss für die KI-Kompetenz seines Personals sorgen, und zwar unabhängig von der Größe, also auch der Handwerksbetrieb mit Textassistent. Seit Juli 2026 gilt die Fassung aus dem Digital-Omnibus: Unternehmen müssen Maßnahmen ergreifen, ein bestimmtes Kompetenzniveau müssen sie nicht mehr garantieren. Laut Bitkom schulen 70 Prozent bereits.“</p>
-    <p class="gesprochen" data-schritt="1">„In der Diskussion kam die Frage nach einem Nachweis. Es gibt kein festes Zertifikat und kein Prüfsiegel, jedes Unternehmen setzt eigene Maßnahmen um. Herr Knopper hat auf den OLAT-Kurs ‚KI-Kompetenz‘ hingewiesen, der nach bestandenem Test ein Badge ausstellt. Das Fallbeispiel von Elbrus, Copilot im Energiedatenmanagement bei der energis GmbH, kommt noch.“</p>
-    <p>Präzisierung: Im Vortrag klang die Digital-Omnibus-Änderung nach Datenschutz-Lockerungen. Auf Elbrus' Folie steht zu Art. 4: „Kein bestimmtes Kompetenzniveau mehr vorgeschrieben, aber Maßnahmen, die diese Kompetenz fördern“ (in Kraft seit 27.07.2026).</p>
+    <p class="gesprochen" data-schritt="1">„Einen solchen Nachweis bietet der OLAT-Kurs ‚KI-Kompetenz‘ mit Badge, den wir in Block 3 mit Herrn Knopper gemacht haben. Das Fallbeispiel von Elbrus, Copilot im Energiedatenmanagement bei der energis GmbH, kommt noch.“</p>
+    <p>Hintergrund: Auf Elbrus’ Folie steht zu Art. 4: „Kein bestimmtes Kompetenzniveau mehr vorgeschrieben, aber Maßnahmen, die diese Kompetenz fördern“ (in Kraft seit 27.07.2026).</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 14 · Wie ein LLM antwortet · 60 s
+     TRENNFOLIE T3 · Block 3: KI-Begriffe · 5 s
+     Fahrplan der vier Blöcke; der aktuelle Block groß: Kurzname steht auf dem
+     roten Faden, die Blocknummer sitzt als Knoten darauf. Beim Weiterschalten
+     gleiten Faden und Kurzname in die Laufleiste von Folie 14.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-llm" id="f14" data-titel="Wie ein LLM antwortet" data-feld="leer" data-station="3" data-zeit="60" data-buendel="alle">
+<section class="folie r-trenner" id="t3" data-titel="Block 3: KI-Begriffe" data-feld="leer" data-block="3" data-zeit="5" data-buendel="alle" data-laufkopf="aus" data-nummer="T3">
+  <div class="folie-inhalt">
+    <ol class="r-fahrplan" aria-label="Die vier Blöcke der Sitzung">
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">1</span><span class="r-fahrplan-name">Prozesse im Unternehmen</span></li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">2</span><span class="r-fahrplan-name">KI im KMU</span></li>
+      <li class="r-fahrplan-eintrag ist-aktuell" aria-current="step">
+        <span class="r-fahrplan-nr r-hof r-knoten">3</span>
+        <h2 class="r-fahrplan-name r-webe" data-webe-start="hinten"><span class="r-faden" aria-hidden="true"><span class="r-faden-linie r-faden--gross" data-morph="faden" data-ueberlauf-ok></span></span><span data-morph="station-3">KI-Begriffe</span></h2>
+        <p class="r-fahrplan-wer">Klaus Knopper: Video und KI-Führerschein</p>
+      </li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">4</span><span class="r-fahrplan-name">Führung bei der Bundeswehr</span></li>
+    </ol>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen">„Block 3: Klaus Knopper, mit seinem Video zu KI-Begriffen und dem KI-Führerschein.“</p>
+    <p>Trennfolie: nur kurz stehen lassen und weiterschalten. Faden und Blockname gleiten dabei in die Leiste oben auf Folie 14.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 14 · Wie ein LLM antwortet · 55 s
+     Schritt 0: fünf Stationen auf einer Tintenlinie, Bogen von „anhängen“
+     zurück zu „Token“. Schritt 1: Knoppers Beispielsatz „Ich gehe heute ins
+     Kino“ mit der Tokenzahl darunter (Schiefer). Schritt 2: drei Folgen auf Haarlinien im
+     Seitenfeld, „Halluzination“ als einziges Karmin.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie r-llm" id="f14" data-titel="Wie ein LLM antwortet" data-feld="leer" data-station="3" data-zeit="55" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">3 · KI-Begriffe (Klaus Knopper)</p>
-    <h2 class="titel">Ein Sprachmodell rechnet, es weiß nichts</h2>
+    <h2 class="titel">Ein Sprachmodell rechnet, <span class="r-zeile">es weiß nichts</span></h2>
   </header>
   <div class="folie-inhalt">
-    <ol class="r-schleife" data-staffel="140" data-animation="hoch">
-      <li><span class="r-schleife-nr">1</span>Text in Token zerlegen</li>
-      <li><span class="r-schleife-nr">2</span>durchs Netz rechnen</li>
-      <li><span class="r-schleife-nr">3</span>Wahrschein&shy;lichkeiten</li>
-      <li><span class="r-schleife-nr">4</span>ein Token wählen</li>
-      <li class="r-schleife-zurueck"><span class="r-schleife-nr">5</span>anhängen, von vorn</li>
-    </ol>
-    <p class="r-beispiel-satz" data-schritt="1" data-animation="hoch">„Ein Hund ist ein …“ <span class="r-token">Tier</span> <span class="r-token r-token--leise">Lebewesen</span> <span class="r-token r-token--leise">Vierbeiner</span></p>
-    <div class="raster-3 r-llm-begriffe" data-schritt="2" data-staffel="120" data-animation="hoch">
-      <p><b>Inferenz</b> Im Betrieb lernt es nicht dazu</p>
-      <p><b>Token</b> bestimmen Länge und Kosten</p>
-      <p class="r-warnung"><b>Halluzination</b> Zahlen, Namen, Quellen prüfen</p>
+    <div class="r-raster r-llm-raster">
+      <div class="r-feld-haupt r-llm-haupt">
+        <p class="r-bezeichner" data-meta>Antworten entstehen Token für Token</p>
+        <div class="r-schleife r-llm-schleife">
+          <ol class="r-kette" data-staffel="120" data-animation="hoch" aria-label="Text in Token zerlegen, durchs Netz rechnen, Wahrscheinlichkeiten, ein Token wählen, anhängen und von vorn"><li>Token</li><li>Netz</li><li>Wahrscheinlichkeiten</li><li>wählen</li><li>anhängen</li></ol>
+          <span class="r-schleife-bogen" aria-hidden="true" data-animation="einblenden" data-verzoegerung="760"></span>
+        </div>
+        <figure class="r-llm-beispiel" data-schritt="1" data-animation="hoch">
+          <figcaption class="r-bezeichner" data-meta>Beispiel aus dem Video</figcaption>
+          <p class="r-llm-satz"><span class="r-llm-anfang">„Ich gehe heute ins Kino“</span></p>
+          <p class="r-llm-anzahl">≈ 6–8 Token, oft nur Wortteile</p>
+        </figure>
+      </div>
+      <ul class="r-feld-seite r-liste r-llm-folgen" data-schritt="2" data-staffel="140" data-animation="hoch">
+        <li><b class="r-liste-wort">Inferenz</b><span class="r-liste-text">Im Betrieb lernt es nicht dazu</span></li>
+        <li><b class="r-liste-wort">Token</b><span class="r-liste-text">bestimmen Länge und Kosten</span></li>
+        <li class="ist-faden"><b class="r-liste-wort">Halluzination</b><span class="r-liste-text">Zahlen, Namen, Quellen prüfen</span></li>
+      </ul>
     </div>
   </div>
   <footer class="folie-fuss">
     <p class="quelle">Knopper, K. (2026): KI-Begriffe, die man heute kennen sollte. Video, Hochschule Kaiserslautern, CC-Lizenz</p>
   </footer>
   <aside class="notizen">
-    <p class="gesprochen" data-schritt="0">„Herr Knopper hat in einem neunminütigen Video die wichtigsten KI-Begriffe erklärt. Ein LLM, ein großes Sprachmodell wie ChatGPT, Claude oder Gemini, ist ein künstliches neuronales Netz. Jedes GPT ist ein LLM, aber nicht jedes LLM ein GPT. Eine Antwort entsteht in fünf Schritten: Der Text wird in Token zerlegt, die Token laufen Schicht für Schicht durch das Netz, das Modell berechnet, welches Token als Nächstes am wahrscheinlichsten ist, wählt eines aus, hängt es an und beginnt von vorn. Antworten entstehen also Token für Token.“</p>
-    <p class="gesprochen" data-schritt="1">„Sein Beispiel: ‚Ein Hund ist ein …‘ – das Modell rechnet aus, ob ‚Tier‘, ‚Lebewesen‘ oder ‚Vierbeiner‘ am besten passt.“</p>
+    <p class="gesprochen" data-schritt="0">„Herr Knopper hat in einem neunminütigen Video die wichtigsten KI-Begriffe erklärt. Ein LLM, ein großes Sprachmodell wie ChatGPT, Claude oder Gemini, ist ein künstliches neuronales Netz. Eine Antwort entsteht in fünf Schritten: Der Text wird in Token zerlegt, die Token laufen Schicht für Schicht durch das Netz, das Modell berechnet, welches Token als Nächstes am wahrscheinlichsten ist, wählt eines aus, hängt es an und beginnt von vorn.“</p>
+    <p class="gesprochen" data-schritt="1">„Sein Beispiel: Der Satz ‚Ich gehe heute ins Kino‘ besteht aus etwa sechs bis acht Token, denn ein Token ist oft nur ein Wortteil oder eine Silbe.“</p>
     <p class="gesprochen" data-schritt="2">„Drei Folgen davon: Erstens lernt das Modell im Betrieb, der Inferenz, nichts dazu, auch nicht durch Lösungen im Prompt. Zweitens bestimmen die Token, wie lang Anfrage und Antwort sein dürfen und was es kostet. Drittens Halluzination: Das Modell hat kein Wissen und keinen Reality-Check, es gibt falsche Antworten scheinbar selbstbewusst. Besonders bei Zahlen, Namen und Quellen. Sein wichtigster Merksatz: wichtige Fakten immer nachprüfen.“</p>
-    <p>Weitere Begriffe aus dem Video: Chatbot = nur das Fenster vor dem Modell; Prompt = Eingabe, Prompt Engineering = Eingabe gut planen (Kontext, Format, Beispiele); Bildmodelle (Diffusion) entfernen Rauschen Schritt für Schritt; multimodale Modelle verarbeiten Text und Bild.</p>
+    <p>Die fünf Stationen ausführlich: Text in Token zerlegen, durchs Netz rechnen, Wahrscheinlichkeiten berechnen, ein Token wählen, anhängen und von vorn. Chatbot, Prompt und Modellfamilien folgen auf der nächsten Folie.</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 15 · KI-Agenten · 50 s
+     FOLIE 15 · Chatbot, Prompt, Modellfamilien · 50 s
+     Schritt 0: Kette Prompt → Chatbot → Modell, „Chatbot“ als einziges
+     Karmin (nur das Fenster). Schritt 1: Knoppers Beispiel-Prompt als Zitat.
+     Schritt 2: zwei weitere Modellfamilien im Seitenfeld.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-agent" id="f15" data-titel="KI-Agenten" data-feld="leer" data-station="3" data-zeit="50" data-buendel="alle">
+<section class="folie r-fenster" id="f15" data-titel="Chatbot, Prompt, Modelle" data-feld="leer" data-station="3" data-zeit="50" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">3 · KI-Begriffe (Klaus Knopper)</p>
-    <h2 class="titel">Agenten handeln selbst, mit Werkzeugen und Risiko</h2>
+    <h2 class="titel">Der Chatbot ist nur das Fenster, <span class="r-zeile">dahinter rechnet das Modell</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-zwei">
-      <div class="r-kreis" aria-label="Agenten-Schleife: Plan, Werkzeug, Zwischenergebnis, Prüfung">
-        <svg viewBox="0 0 520 520" aria-hidden="true" data-animation="zeichnen" data-dauer="1200"><circle cx="260" cy="260" r="190"/></svg>
-        <span class="r-kreis-mitte">LLM</span>
-        <span class="r-kreis-punkt r-kreis-punkt--o">Plan</span>
-        <span class="r-kreis-punkt r-kreis-punkt--r">Werkzeug</span>
-        <span class="r-kreis-punkt r-kreis-punkt--u">Ergebnis</span>
-        <span class="r-kreis-punkt r-kreis-punkt--l">Prüfung</span>
+    <div class="r-raster r-fenster-raster">
+      <div class="r-feld-haupt r-fenster-haupt">
+        <ol class="r-kette r-fenster-kette" data-staffel="140" data-animation="hoch" aria-label="Der Prompt geht in den Chatbot, der Chatbot gibt ihn an das Modell weiter"><li>Prompt</li><li class="ist-faden">Chatbot</li><li>Modell</li></ol>
+        <p class="r-hinweis r-fenster-wo" data-meta>Chatbot = Browser, App oder Terminal</p>
+        <figure class="r-fenster-prompt" data-schritt="1" data-animation="hoch">
+          <figcaption class="r-bezeichner" data-meta>Guter Prompt</figcaption>
+          <blockquote class="r-zitat"><p class="r-zitat-text">„Schreibe eine höfliche Absage in drei Sätzen.“</p></blockquote>
+          <p class="r-hinweis r-fenster-regel" data-meta>mit Kontext, Format, Beispielen</p>
+        </figure>
       </div>
-      <ul class="r-agent-liste" data-staffel="140" data-animation="hoch">
-        <li class="r-warnung"><b>Tool Calling</b> So viele Werkzeuge wie nötig, so wenige wie möglich</li>
-        <li><b>Deep Search</b> recherchiert mehrstufig im Netz</li>
-        <li><b>RAG</b> antwortet aus eigenen Dokumenten</li>
-        <li><b>Harness</b> Umgebung mit Werkzeugen und Rechten</li>
+      <ul class="r-feld-seite r-liste r-fenster-familien" data-schritt="2" data-staffel="140" data-animation="hoch">
+        <li><b class="r-liste-wort">Diffusion</b><span class="r-liste-text">Bild und Video: Rauschen entfernen</span></li>
+        <li><b class="r-liste-wort">Multimodal</b><span class="r-liste-text">Text und Bild zugleich</span></li>
       </ul>
     </div>
   </div>
   <footer class="folie-fuss">
-    <p class="quelle">Knopper 2026 (Video) · Merksatz „so wenig wie möglich“: Mitschrift der Sitzung</p>
+    <p class="quelle">Knopper, K. (2026): KI-Begriffe, die man heute kennen sollte. Video, Hochschule Kaiserslautern, CC-Lizenz</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Dazu drei Grundbegriffe aus dem Video. Der Chatbot ist nur die Benutzeroberfläche, also Browser, App oder Terminal. Er ist nicht das Modell selbst, sondern das Fenster davor.“</p>
+    <p class="gesprochen" data-schritt="1">„Was man dort eingibt, ist der Prompt, mehr nicht. Prompt Engineering heißt, diese Eingabe geschickt zu planen: mit Kontext, Formatvorgaben und Beispielen. Ein guter Prompt nach Herrn Knopper: ‚Schreibe eine höfliche Absage in drei Sätzen.‘ Seine Randbemerkung: Auch Prompt Engineering ist heute schon weitgehend automatisierbar.“</p>
+    <p class="gesprochen" data-schritt="2">„Und Sprachmodelle sind nur eine Familie. Bild- und Videomodelle arbeiten meist mit Diffusion: Sie entfernen Bildrauschen Schritt für Schritt, bis das gewünschte Bild übrig bleibt. Multimodale Modelle verarbeiten mehrere Formate, etwa ein Foto mit der Frage: Was ist hier kaputt?“</p>
+    <p>Beispiele aus dem Video (bei Rückfragen): Bildmodelle Stable Diffusion und Flux; Musik- und Audiomodelle arbeiten mit autoregressiven Transformern oder Diffusion.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 16 · KI-Agenten · 50 s
+     Schritt 0: Agentenschleife als feiner Tintenkreis (Plan, Werkzeug,
+     Ergebnis, Prüfung), „LLM“ in der Mitte. Schritt 1: vier Begriffe auf
+     Haarlinien, „Tool Calling“ mit Merksatz als einziges Karmin.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie r-agent" id="f16" data-titel="KI-Agenten" data-feld="leer" data-station="3" data-zeit="50" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Agenten handeln selbst, <span class="r-zeile">mit Werkzeugen und Risiko</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="r-raster r-agent-raster">
+      <figure class="r-kreis r-agent-kreis" style="--d: 500px" aria-label="Agentenschleife: Plan, Werkzeug, Ergebnis, Prüfung – und wieder von vorn">
+        <svg class="r-kreis-linie" viewBox="0 0 500 500" aria-hidden="true" data-animation="zeichnen" data-dauer="1200"><circle cx="250" cy="250" r="200"/></svg>
+        <span class="r-kreis-mitte">LLM</span>
+        <span class="r-kreis-station" style="--winkel: -90deg">Plan</span>
+        <span class="r-kreis-station" style="--winkel: 0deg">Werkzeug</span>
+        <span class="r-kreis-station" style="--winkel: 90deg">Ergebnis</span>
+        <span class="r-kreis-station" style="--winkel: 180deg">Prüfung</span>
+        <span class="r-kreis-pfeil" style="--winkel: -45deg" aria-hidden="true"></span>
+        <span class="r-kreis-pfeil" style="--winkel: 45deg" aria-hidden="true"></span>
+        <span class="r-kreis-pfeil" style="--winkel: 135deg" aria-hidden="true"></span>
+        <span class="r-kreis-pfeil" style="--winkel: 225deg" aria-hidden="true"></span>
+      </figure>
+      <ul class="r-liste r-agent-begriffe" data-schritt="1" data-staffel="140" data-animation="hoch">
+        <li class="ist-faden"><b class="r-liste-wort">Tool Calling</b><span class="r-liste-text">so viele Werkzeuge wie nötig, <span class="r-agent-zeile">so wenige wie möglich</span></span></li>
+        <li><b class="r-liste-wort">Deep Search</b><span class="r-liste-text">recherchiert mehrstufig im Netz</span></li>
+        <li><b class="r-liste-wort">RAG</b><span class="r-liste-text">antwortet aus eigenen Dokumenten</span></li>
+        <li><b class="r-liste-wort">Harness</b><span class="r-liste-text">Umgebung mit Werkzeugen und Rechten</span></li>
+      </ul>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Knopper 2026 (Video); Merksatz „so wenige wie möglich“: Mitschrift der Sitzung</p>
   </footer>
   <aside class="notizen">
     <p class="gesprochen" data-schritt="0">„Spannend wird es bei KI-Agenten: Programme, die selbstständig handeln. Ein Agent plant, ruft ein Werkzeug auf, prüft das Zwischenergebnis und macht so lange weiter, bis das Ziel erreicht ist, manchmal über hundert Durchläufe. Beispiele aus dem Video: ein Buchhaltungs-Agent, der Rechnungen prüft, oder ein Gutachten-Agent, der Quellen in Abschlussarbeiten kontrolliert.“</p>
-    <p class="gesprochen">„Nach außen greift der Agent über Tool Calling. Das ist ein Sicherheitsthema: Je nach erlaubten Werkzeugen kann ein Agent gefährlich selbstständig werden. Deshalb: so viele Werkzeuge wie nötig, so wenige wie möglich. Deep Search recherchiert mehrstufig mit echten Quellen im Internet. RAG ist das Gegenstück: Die KI antwortet aus Dokumenten, die man ihr gibt, ohne Internet. Das ist gut für sensible Daten, Beispiel waren die rund 800 Seiten BSI-Grundschutz. Und das Harness ist die Umgebung um das Modell: Das Modell ist das Gehirn, das Harness stellt Werkzeuge, Speicher und Berechtigungen.“</p>
-    <p>Orchestrierer (falls gefragt): koordiniert mehrere Modelle und Werkzeuge, z. B. n8n oder ComfyUI.</p>
+    <p class="gesprochen" data-schritt="1">„Nach außen greift der Agent über Tool Calling. Das ist ein Sicherheitsthema: Je nach erlaubten Werkzeugen kann ein Agent gefährlich selbstständig werden. Deshalb: so viele Werkzeuge wie nötig, so wenige wie möglich. Deep Search recherchiert mehrstufig mit echten Quellen im Internet. RAG ist das Gegenstück: Die KI antwortet nur aus eigenen Dokumenten, gut für sensible Daten. Und das Harness ist die Umgebung, die dem Modell Werkzeuge und Rechte gibt.“</p>
+    <p>Orchestrierer (falls gefragt): koordiniert mehrere Modelle und Werkzeuge, z.&nbsp;B. n8n oder ComfyUI.</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 16 · Führen bei der Bundeswehr · 60 s
+     FOLIE 17 · KI-Führerschein · 45 s
+     Zeitstrahl (Komponente): fünf Module des OLAT-Kurses „KI-Kompetenz“ und
+     das Badge als einziger Karmin-Knoten. Schritt 1: wie der Kurs in der
+     Sitzung lief (Hinweiszeile).
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-bund" id="f16" data-titel="Führen bei der Bundeswehr" data-feld="leer" data-station="4" data-zeit="60" data-buendel="alle">
+<section class="folie r-fuehrerschein" id="f17" data-titel="KI-Führerschein" data-feld="leer" data-station="3" data-zeit="45" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">4 · Gastvortrag: Führung bei der Bundeswehr</p>
-    <h2 class="titel">Das Ziel kommt von oben, der Weg ist frei</h2>
+    <h2 class="titel">Den KI-Führerschein haben <span class="r-zeile">alle gemeinsam bestanden</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-vergleich">
-      <div class="r-vergleich-spalte" data-staffel="120" data-animation="hoch">
-        <h3 class="r-vergleich-titel">Bundeswehr</h3>
-        <p>Befehle von oben, Anträge von unten</p>
-        <p>Ziel vorgegeben, Weg frei</p>
-        <p>Autonomie ab dem ersten Tag</p>
-        <p>Ausbildung für die nächste Ebene</p>
-        <p>Purpose: Schutz der Bevölkerung</p>
-      </div>
-      <div class="r-vergleich-spalte r-vergleich-spalte--wirtschaft" data-schritt="1" data-staffel="120" data-animation="hoch">
-        <h3 class="r-vergleich-titel">Kleine Unternehmen</h3>
-        <p>Eher flach organisiert</p>
-        <p>Lockere Führung erwünscht</p>
-        <p>Ersatz bei Ausfall oft offen</p>
-      </div>
+    <div class="r-zeitstrahl">
+      <span class="r-zeitstrahl-linie" data-animation="zeichnen" data-dauer="1400" data-ueberlauf-ok aria-hidden="true"></span>
+      <ol class="r-zeitstrahl-stationen" data-staffel="120" data-animation="hoch" aria-label="Fünf Module mit je einem Test, am Ende das Badge KI-Kompetenz 1.0">
+        <li><span class="r-zeit-jahr">1</span><b class="r-zeit-name">Grundlagen KI</b><span class="r-zeit-wort">Systemprompt</span></li>
+        <li><span class="r-zeit-jahr">2</span><b class="r-zeit-name">KI-Verordnung</b><span class="r-zeit-wort">Kompetenzpflicht</span></li>
+        <li><span class="r-zeit-jahr">3</span><b class="r-zeit-name">Datenschutz</b><span class="r-zeit-wort">IT-Sicherheit</span></li>
+        <li><span class="r-zeit-jahr">4</span><b class="r-zeit-name">Gesellschaft</b><span class="r-zeit-wort">Bias</span></li>
+        <li><span class="r-zeit-jahr">5</span><b class="r-zeit-name">HS&nbsp;KL</b><span class="r-zeit-wort">KI-Angebote</span></li>
+        <li class="ist-faden"><span class="r-zeit-jahr">Badge</span><b class="r-zeit-name">KI-Kompetenz</b><span class="r-zeit-wort">alle bestanden</span></li>
+      </ol>
+    </div>
+    <p class="r-hinweis r-fuehrerschein-ablauf" data-meta data-schritt="1" data-animation="hoch"><b>In der Sitzung:</b> Herr Knopper führte durch alle Module, Tests gemeinsam im Plenum</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">OLAT-Selbstlernkurs „KI-Kompetenz“, Hochschule Kaiserslautern; Mitschrift der Sitzung vom 26.10.2026</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Nach dem Video hat Herr Knopper mit uns den KI-Führerschein gemacht, den OLAT-Kurs ‚KI-Kompetenz‘. Er hat fünf Module mit je einem Test: Grundlagen, etwa wie ein Systemprompt die Rolle der KI festlegt; die KI-Verordnung, nach der jeder, der KI nutzt, sie auch verstehen muss; Datenschutz und IT-Sicherheit; gesellschaftliche Aspekte wie Bias; und die Angebote der Hochschule.“</p>
+    <p class="gesprochen" data-schritt="1">„Herr Knopper ist jedes Modul mit uns durchgegangen, hat die Inhalte besprochen und die Tests vorne gemeinsam mit uns gelöst. So haben alle bestanden und das Badge ‚KI-Kompetenz 1.0‘ bekommen, also einen Nachweis für die Kompetenzpflicht aus der KI-Verordnung.“</p>
+    <p>Bei Rückfragen: Der Kurs ist auf etwa 90 Minuten (zwei Arbeitseinheiten) angelegt. Punkte der Tests: Grundlagen 10, KI-VO 8, Datenschutz und IT-Sicherheit 4, gesellschaftliche Aspekte 6, KI an der HS KL 2; bestanden am 26.10.2026 zwischen 15:06 und 15:48 Uhr. Beispiel aus Modul 1: „Nice-“ und „EvilGPT“ – gleiche Basis, anderer Systemprompt. Bias: Das Modell übernimmt Meinungen aus den Trainingsdaten.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     TRENNFOLIE T4 · Block 4: Bundeswehr · 5 s
+     Fahrplan der vier Blöcke; der aktuelle Block groß: Kurzname steht auf dem
+     roten Faden, die Blocknummer sitzt als Knoten darauf. Beim Weiterschalten
+     gleiten Faden und Kurzname in die Laufleiste von Folie 18.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie r-trenner" id="t4" data-titel="Block 4: Bundeswehr" data-feld="leer" data-block="4" data-zeit="5" data-buendel="alle" data-laufkopf="aus" data-nummer="T4">
+  <div class="folie-inhalt">
+    <ol class="r-fahrplan" aria-label="Die vier Blöcke der Sitzung">
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">1</span><span class="r-fahrplan-name">Prozesse im Unternehmen</span></li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">2</span><span class="r-fahrplan-name">KI im KMU</span></li>
+      <li class="r-fahrplan-eintrag"><span class="r-fahrplan-nr">3</span><span class="r-fahrplan-name">KI-Begriffe</span></li>
+      <li class="r-fahrplan-eintrag ist-aktuell" aria-current="step">
+        <span class="r-fahrplan-nr r-hof r-knoten">4</span>
+        <h2 class="r-fahrplan-name r-webe"><span class="r-faden" aria-hidden="true"><span class="r-faden-linie r-faden--gross" data-morph="faden" data-ueberlauf-ok></span></span><span data-morph="station-4">Bundeswehr</span></h2>
+        <p class="r-fahrplan-wer">Gastvortrag: Führung bei der Bundeswehr</p>
+      </li>
+    </ol>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen">„Block 4: der Gastvortrag zur Führung bei der Bundeswehr, ohne Folien, deshalb nach unserer Mitschrift.“</p>
+    <p>Trennfolie: nur kurz stehen lassen und weiterschalten. Faden und Blockname gleiten dabei in die Leiste oben auf Folie 18.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 18 · Führen bei der Bundeswehr · 55 s
+     Über der linken Spalte ein kleines Liniendiagramm: ein Ziel oben, drei
+     frei gewählte Wege vom selben Start, einer in Karmin (die eine
+     Betonung). Darunter der Vergleich: Bundeswehr (Spalten 1–7, Tinte),
+     Schritt 1: Kleine Unternehmen (8–12, Schiefer) auf gemeinsamen Haarlinien.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie r-bund" id="f18" data-titel="Führen bei der Bundeswehr" data-feld="leer" data-station="4" data-zeit="55" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Das Ziel kommt von oben, <span class="r-zeile">der Weg ist frei</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <figure class="r-bund-wege" role="img" aria-label="Ein vorgegebenes Ziel, drei frei gewählte Wege vom selben Start">
+      <svg viewBox="0 0 640 200" aria-hidden="true">
+        <path class="r-bund-weg" d="M10 186 C 330 196 600 200 600 42" data-animation="zeichnen" data-dauer="900"/>
+        <path class="r-bund-weg" d="M10 186 C 30 60 260 26 586 28" data-animation="zeichnen" data-dauer="900" data-verzoegerung="160"/>
+        <path class="r-bund-weg r-bund-weg--faden" d="M10 186 C 140 150 170 96 290 110 C 410 124 470 156 590 38" data-animation="zeichnen" data-dauer="1100" data-verzoegerung="420"/>
+        <circle class="r-bund-start" cx="10" cy="186" r="9"/>
+        <circle class="r-bund-ziel" cx="600" cy="28" r="14"/>
+      </svg>
+      <span class="r-bund-ziel-wort" aria-hidden="true">Ziel</span>
+    </figure>
+    <div class="r-vergleich r-bund-vergleich">
+      <h3 class="r-vergleich-kopf">Bundeswehr</h3><h3 class="r-vergleich-kopf" data-schritt="1" data-animation="hoch">Kleine Unternehmen</h3>
+      <p>Befehle von oben, Anträge von unten</p><p data-schritt="1" data-animation="hoch" data-verzoegerung="120">Eher flach organisiert</p>
+      <p>Autonomie ab dem ersten Tag</p><p data-schritt="1" data-animation="hoch" data-verzoegerung="240">Lockere Führung erwünscht</p>
+      <p>Ausbildung für die nächste Ebene</p><p data-schritt="1" data-animation="hoch" data-verzoegerung="360">Bindung über Nähe und Gehör</p>
     </div>
   </div>
   <footer class="folie-fuss">
-    <p class="quelle">Gastvortrag in der Sitzung vom 26.10.2026, ohne Folien · Grundlage: Mitschrift</p>
+    <p class="quelle">Gastvortrag in der Sitzung vom 26.10.2026, ohne Folien; Grundlage: Mitschrift</p>
   </footer>
   <aside class="notizen">
     <p class="gesprochen" data-schritt="0">„Zum Schluss der Gastvortrag: Management und Führung bei der Bundeswehr im Vergleich zur Privatwirtschaft. Die Bundeswehr ist immer noch streng hierarchisch: Befehle kommen von oben, Anträge von unten. Aber: Vorgegeben wird das Ziel, wie es erreicht wird, ist inzwischen eher frei. Die Befehlstaktik, bei der jeder Schritt vorgegeben ist, tritt zurück. Autonomie soll schon ab dem ersten Tag gefördert werden. Führungskräfte werden immer schon für die nächsthöhere Ebene ausgebildet, damit bei einem Ausfall, im Ernstfall durch Tod, sofort jemand bereitsteht. Und der Purpose ist klar: der Schutz der Bevölkerung, das ist die wichtigste Motivation.“</p>
-    <p class="gesprochen" data-schritt="1">„In kleinen Firmen ist die Struktur eher flach, und Führung soll heute lockerer sein. Ein wichtiger Punkt für die Umsetzung war die Sozialisation, also wie neue Leute in die Organisation hineinwachsen.“</p>
-    <p>Fachbegriff (unsere Ergänzung, nicht vom Gastredner): Das Prinzip „Ziel vorgeben, Weg freilassen“ heißt bei der Bundeswehr Auftragstaktik bzw. „Führen mit Auftrag“. Rechte Spalte = Gegenüberstellung aus dem Vortrag; „Ersatz bei Ausfall oft offen“ ist unsere Zuspitzung.</p>
+    <p class="gesprochen" data-schritt="1">„In kleinen Firmen ist die Struktur eher flach, und Führung soll heute lockerer sein. Bindung entsteht dort über Nähe und darüber, gehört zu werden. Wichtig für die Umsetzung war die Sozialisation, also wie neue Leute hineinwachsen.“</p>
+    <p>Fachbegriff (unsere Ergänzung, nicht vom Gastredner): Das Prinzip „Ziel vorgeben, Weg freilassen“ heißt bei der Bundeswehr Auftragstaktik bzw. „Führen mit Auftrag“. Rechte Spalte = Gegenüberstellung aus dem Vortrag (Mitschrift).</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 17 · Bindung und neue Technik · 55 s
+     FOLIE 19 · Bindung und neue Technik · 50 s
+     10 % als Zahl (Karmin, 220 px) und als Teil EINER Skala aus 100 Strichen
+     (Gallup 2025): hohe Bindung Karmin, geringe Mittel, keine als
+     Umriss-Striche; zwischen den Teilen eine Strichbreite Lücke; Etiketten
+     parallel darunter. Rechts Aussage-Paare (Fraunces-Stichwort + Satz);
+     Schritt 1: Technik beim Bund.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-bindung" id="f17" data-titel="Bindung und neue Technik" data-feld="leer" data-station="4" data-zeit="55" data-buendel="alle">
+<section class="folie r-bindung" id="f19" data-titel="Bindung und neue Technik" data-feld="leer" data-station="4" data-zeit="50" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">4 · Gastvortrag: Führung bei der Bundeswehr</p>
-    <h2 class="titel">Bindung entsteht durch Nähe und Gehör</h2>
+    <h2 class="titel">Bindung entsteht <span class="r-zeile">durch Nähe und Gehör</span></h2>
   </header>
   <div class="folie-inhalt">
-    <div class="r-zwei r-zwei--schmal-breit">
-      <div class="kennzahl r-bindung-zahl" data-animation="hoch">
-        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="10" data-einheit=" %">10 %</span>
-        <span class="kennzahl-text">der Beschäftigten sind eng an ihr Unternehmen gebunden</span>
-        <span class="r-zahl-quelle" data-meta>Gastredner; Gallup 2025</span>
+    <div class="r-bindung-raster">
+      <div class="r-bindung-links">
+        <p class="r-bindung-zahl">
+          <span class="r-bindung-wert"><span data-animation="zaehlen" data-ziel="10">10</span><span class="r-einheit">%</span></span>
+          <span class="r-bindung-text">der Beschäftigten sind eng an ihr Unternehmen gebunden</span>
+        </p>
+        <figure class="r-gallup">
+          <span class="r-skala r-skala--teile" role="img" aria-label="Gallup Engagement Index 2025: hohe Bindung 10 Prozent, geringe 77 Prozent, keine 13 Prozent">
+            <span class="r-skala-teil r-skala-teil--faden" style="--anteil:10" data-animation="zeichnen"></span><span class="r-skala-teil r-skala-teil--mittel" style="--anteil:77" data-animation="zeichnen" data-verzoegerung="160"></span><span class="r-skala-teil r-skala-teil--umriss" style="--anteil:13" data-animation="zeichnen" data-verzoegerung="320"></span>
+          </span>
+          <figcaption class="r-gallup-legende">
+            <span class="r-gallup-hoch"><b>10<span class="r-einheit">%</span></b> hohe Bindung</span><span class="r-gallup-gering"><b>77<span class="r-einheit">%</span></b> geringe Bindung</span><span class="r-gallup-keine"><b>13<span class="r-einheit">%</span></b> keine Bindung</span>
+          </figcaption>
+        </figure>
       </div>
-      <div class="stapel r-bindung-rechts">
-        <ul class="r-pfeile" data-staffel="120" data-animation="hoch">
-          <li>Kleiner, persönlicher, gehört werden: mehr Bindung</li>
-          <li>Beim Bund: leicht austauschbar, viele kommen wegen des Geldes</li>
-        </ul>
-        <p class="r-hinweis" data-schritt="1" data-animation="hoch"><svg class="icon" aria-hidden="true"><use href="#i-chip"/></svg><span>Beim Bund kaum KI – Sicherheit geht vor</span></p>
-      </div>
+      <ul class="r-liste r-bindung-paare">
+        <li><b class="r-liste-wort">Bundeswehr</b><span class="r-liste-text">Leicht austauschbar, viele kommen wegen des Geldes</span></li>
+        <li data-schritt="1" data-animation="hoch"><b class="r-liste-wort">Technik</b><span class="r-liste-text">Beim Bund kaum KI&nbsp;– Sicherheit geht vor</span></li>
+      </ul>
     </div>
   </div>
   <footer class="folie-fuss">
-    <p class="quelle">Gastvortrag (Mitschrift) · Gallup Engagement Index Deutschland 2025: hohe Bindung 10 %, geringe 77 %, keine 13 %</p>
+    <p class="quelle">Gastvortrag in der Sitzung vom 26.10.2026 (Mitschrift); Ergänzung: Gallup Engagement Index Deutschland 2025</p>
   </footer>
   <aside class="notizen">
-    <p class="gesprochen" data-schritt="0">„Ein zweites Thema war Bindung. In der Wirtschaft sind laut Gastredner nur rund 10 Prozent der Beschäftigten wirklich an ihr Unternehmen gebunden, das deckt sich mit dem Gallup-Index 2025. Bindung ist stärker, je kleiner der Betrieb, je persönlicher und je eher man gehört wird. Große Konzerne binden eher über Anreize. Diese 10 Prozent halten kleine Betriebe am Laufen. Bei der Bundeswehr ist die Austauschbarkeit dagegen hoch, solange jemand die Ausbildung hat. Viele Junge kommen auch wegen des guten Gehalts, fühlen sich aber nicht richtig verbunden.“</p>
-    <p class="gesprochen" data-schritt="1">„Bei neuer Technik ist der Bund bewusst zurückhaltend: wenig digital, KI praktisch gar nicht, um die Sicherheit zu wahren. Je sensibler die Daten, desto gefährlicher ist falsche Nutzung. Neue Ideen entstehen über Innovations-Hubs, an denen jeder teilnehmen kann, zum Beispiel im Innovationszentrum in Erding.“</p>
+    <p class="gesprochen" data-schritt="0">„Ein zweites Thema war Bindung. In der Wirtschaft sind laut Gastredner nur rund 10 Prozent der Beschäftigten wirklich an ihr Unternehmen gebunden, das deckt sich mit dem Gallup-Index 2025. Bindung ist stärker, je kleiner der Betrieb, je persönlicher und je eher man gehört wird. Diese 10 Prozent halten kleine Betriebe am Laufen. Bei der Bundeswehr ist die Austauschbarkeit dagegen hoch, solange jemand die Ausbildung hat. Viele Junge kommen auch wegen des guten Gehalts, fühlen sich aber nicht richtig verbunden.“</p>
+    <p class="gesprochen" data-schritt="1">„Bei neuer Technik ist der Bund bewusst zurückhaltend: wenig digital, KI praktisch gar nicht, um die Sicherheit zu wahren. Je sensibler die Daten, desto gefährlicher ist falsche Nutzung. Neue Ideen entstehen über Innovations-Hubs, an denen jeder teilnehmen kann.“</p>
     <p>Weitere Punkte (bei Rückfragen): Gefahr vieler paralleler Projektorganisationen = Kompetenzen streuen, Überblick geht verloren, Projekte überschneiden sich. Alt und Jung: Erfahrung kann betriebsblind machen, darum Denkweisen zusammenbringen. Reicht das eigene Personal nicht, muss das Problem über Externe gelöst werden.</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 18 · Fazit · 45 s
+     FOLIE 20 · Fazit · 45 s
+     HELL. Laufleiste geschlossen (data-station="alle"). Der Faden kehrt
+     randabfallend zurück (zeichnet sich von links) und verbindet drei
+     Gedanken: Jeder steht mit seiner zweiten Zeile auf ihm. Faden ohne
+     Weben (wie f02: Anker im ersten Gedanken, .r-faden-rahmen am <ol>) –
+     bei 52 px würden die Papierhöfe die Unterlängen zerschneiden. Statt
+     Nummern zeigt jeder Gedanke seine Herkunft (Blocknamen).
+     Schritte 0–2: ein Gedanke je Schritt.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-fazit" id="f18" data-titel="Fazit" data-feld="leer" data-rubrik="Fazit" data-zeit="45" data-buendel="alle" data-modus="dunkel">
+<section class="folie r-fazit" id="f20" data-titel="Fazit" data-feld="leer" data-station="alle" data-zeit="45" data-buendel="alle">
   <header class="folie-kopf">
-    <p class="kicker">Fazit</p>
-    <h2 class="titel">Drei Gedanken, die alle vier Blöcke verbinden</h2>
+    <h2 class="titel">Drei Gedanken, die alle <span class="r-zeile">vier Blöcke verbinden</span></h2>
   </header>
   <div class="folie-inhalt">
-    <ol class="r-fazit-liste" data-staffel="160" data-animation="hoch">
-      <li><span class="r-fazit-nr">1</span><b>Erst der Ablauf, dann die KI</b><span>KI dockt an erfasste Prozessschritte an</span></li>
-      <li><span class="r-fazit-nr">2</span><b>Know-how ist der Engpass</b><span>nicht die Lizenz – und Pflicht laut KI-Verordnung</span></li>
-      <li><span class="r-fazit-nr">3</span><b>Menschen tragen die Verantwortung</b><span>prüfen, entscheiden, binden</span></li>
+    <ol class="r-fazit-gedanken r-faden-rahmen">
+      <li class="r-fazit-gedanke">
+        <p class="r-fazit-herkunft" data-meta>Prozesse und KI im KMU</p>
+        <p class="r-fazit-satz"><span class="r-fazit-zeile">Erst der Ablauf,</span><span class="r-fazit-zeile"><span class="r-faden" aria-hidden="true"><span class="r-faden-linie" data-animation="zeichnen" data-dauer="1400" data-ueberlauf-ok></span></span>dann die KI</span></p>
+        <p class="r-fazit-text">KI dockt an dokumentierte Abläufe an</p>
+      </li>
+      <li class="r-fazit-gedanke" data-schritt="1" data-animation="einblenden">
+        <p class="r-fazit-herkunft" data-meta>KI im KMU und KI-Begriffe</p>
+        <p class="r-fazit-satz"><span class="r-fazit-zeile">Know-how ist</span><span class="r-fazit-zeile">der Engpass</span></p>
+        <p class="r-fazit-text">nicht die Lizenz&nbsp;– Kompetenz fördern ist Pflicht</p>
+      </li>
+      <li class="r-fazit-gedanke" data-schritt="2" data-animation="einblenden">
+        <p class="r-fazit-herkunft" data-meta>KI im KMU, KI-Begriffe und Bundeswehr</p>
+        <p class="r-fazit-satz"><span class="r-fazit-zeile">Menschen tragen</span><span class="r-fazit-zeile">die Verantwortung</span></p>
+        <p class="r-fazit-text">prüfen, entscheiden, binden</p>
+      </li>
     </ol>
   </div>
   <footer class="folie-fuss">
     <p class="quelle">Eigene Zusammenfassung der Sitzung vom 26.10.2026</p>
   </footer>
   <aside class="notizen">
-    <p class="gesprochen">„Was verbindet die vier Blöcke? Erstens: Erst der Ablauf, dann die KI. KI übernimmt Schritte in Prozessen, die erfasst sind, das war die These beider Referate und genau die Korrektur der Dozentin. Zweitens: Der Engpass ist das Know-how, nicht die Lizenz. Das zeigen das TOE-Modell und die Kostenzahlen, die KI-Verordnung macht Kompetenz zur Pflicht, und Herrn Knoppers Begriffe sind ein guter Anfang. Drittens: Menschen tragen die Verantwortung. Sie müssen KI-Ergebnisse prüfen, weil Modelle halluzinieren, Akzeptanz entsteht über erlebten Nutzen, und Führung, ob beim Bund oder im KMU, entscheidet über Bindung. Vielen Dank.“</p>
+    <p class="gesprochen" data-schritt="0">„Was verbindet die vier Blöcke? Erstens: Erst der Ablauf, dann die KI. KI übernimmt Schritte in Abläufen, die dokumentiert sind, genau das war die gemeinsame These beider Referate.“</p>
+    <p class="gesprochen" data-schritt="1">„Zweitens: Der Engpass ist das Know-how, nicht die Lizenz. Das zeigt das TOE-Modell: 85 Prozent der Nicht-Nutzer fehlt das Know-how, die Lizenz ist der kleinste Kostenpunkt. Die KI-Verordnung verlangt, Kompetenz zu fördern, und den Nachweis haben wir mit dem KI-Führerschein selbst erbracht.“</p>
+    <p class="gesprochen" data-schritt="2">„Drittens: Menschen tragen die Verantwortung. Sie müssen KI-Ergebnisse prüfen, weil Modelle halluzinieren, Akzeptanz entsteht über erlebten Nutzen, und Führung, ob beim Bund oder im KMU, entscheidet über Bindung. Vielen Dank.“</p>
   </aside>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      BACKUP B1 · Quellen
+     Ohne Faden und Laufleiste. Titel 88 px auf der Höhe der Inhaltsfolien,
+     zwei Spalten, 24 px, hängender Einzug; Autor und Jahr Tinte, Rest Schiefer.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie r-backup" id="b1" data-titel="Backup: Quellen" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup">
+<section class="folie r-backup" id="b1" data-titel="Backup: Quellen" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-laufkopf="aus">
   <header class="folie-kopf">
-    <p class="kicker">Backup</p>
     <h2 class="titel">Quellen</h2>
   </header>
   <div class="folie-inhalt">
-    <ul class="r-quellen">
-      <li>Becker, J.; Kugeler, M.; Rosemann, M. (Hrsg.) (2012): Prozessmanagement. 7. Aufl., Springer Gabler.</li>
-      <li>Bitkom e. V. (2026): Erstmals nutzt die Mehrheit der Unternehmen KI. Presseinformation vom 14.09.2026.</li>
-      <li>Davis, F. D. (1989): Perceived Usefulness, Perceived Ease of Use, and User Acceptance of Information Technology. MIS Quarterly 13(3), 319–340.</li>
-      <li>DePietro, R.; Wiarda, E.; Fleischer, M. (1990): The Context for Change. In: Tornatzky/Fleischer: The Processes of Technological Innovation, 151–175.</li>
-      <li>Destatis (2025): Unternehmen mit Nutzung von KI nach Beschäftigtengrößenklassen. Stand 24.11.2025.</li>
-      <li>Fleischmann, A. et al. (2018): Ganzheitliche Digitalisierung von Prozessen. Springer Vieweg.</li>
-      <li>Gallup (2026): Engagement Index Deutschland 2025, Pressemitteilung vom 12.03.2026.</li>
-      <li>Knopper, K. (2026): KI-Begriffe, die man heute kennen sollte. Video, play.hs-kl.de/ki/KI-Begriffe.mp4.</li>
-      <li>Verordnung (EU) 2024/1689 (KI-Verordnung), Art. 4, geändert durch Verordnung (EU) 2026/1744.</li>
-      <li>Zimmermann, V. (2026): Künstliche Intelligenz im Mittelstand. KfW Research, Fokus Volkswirtschaft Nr. 554.</li>
-      <li>Folien M. Büchele und E. Tschekuev (26.10.2026); Mitschnitt, Transkript und Mitschrift der Sitzung; Gastvortrag Bundeswehr (ohne Folien).</li>
+    <ul class="r-quellen" data-meta>
+      <li><span class="r-quellen-wer">Becker, J.; Kugeler, M.; Rosemann, M. (Hrsg.) (2012):</span> Prozessmanagement. 7. Aufl., Springer Gabler.</li>
+      <li><span class="r-quellen-wer">Bitkom e. V. (2026):</span> Erstmals nutzt die Mehrheit der Unternehmen KI. Presseinformation vom 14.09.2026.</li>
+      <li><span class="r-quellen-wer">Davis, F. D. (1989):</span> Perceived Usefulness, Perceived Ease of Use, and User Acceptance of Information Technology. MIS Quarterly 13(3), 319–340.</li>
+      <li><span class="r-quellen-wer">DePietro, R.; Wiarda, E.; Fleischer, M. (1990):</span> The Context for Change. In: Tornatzky/Fleischer: The Processes of Technological Innovation, 151–175.</li>
+      <li><span class="r-quellen-wer">Destatis (2025):</span> Unternehmen mit Nutzung von KI nach Beschäftigtengrößenklassen. Stand 24.11.2025.</li>
+      <li><span class="r-quellen-wer">Fleischmann, A. et al. (2018):</span> Ganzheitliche Digitalisierung von Prozessen. Springer Vieweg.</li>
+      <li><span class="r-quellen-wer">Gallup (2026):</span> Engagement Index Deutschland 2025, Pressemitteilung vom 12.03.2026.</li>
+      <li><span class="r-quellen-wer">Hochschule Kaiserslautern:</span> OLAT-Selbstlernkurs „KI-Kompetenz“, Badge KI-Kompetenz 1.0.</li>
+      <li><span class="r-quellen-wer">Knopper, K. (2026):</span> KI-Begriffe, die man heute kennen sollte – ein Überblick für Einsteiger. Video, play.hs-kl.de/ki/KI-Begriffe.mp4.</li>
+      <li><span class="r-quellen-wer">Porter, M. E. (1985):</span> Competitive Advantage. Free Press.</li>
+      <li><span class="r-quellen-wer">Stalk, G.; Evans, P.; Shulman, L. E. (1992):</span> Competing on Capabilities. Harvard Business Review 70(2), 57–69.</li>
+      <li><span class="r-quellen-wer">Verordnung (EU) 2024/1689</span> (KI-Verordnung), Art. 4, geändert durch Verordnung (EU) 2026/1744.</li>
+      <li><span class="r-quellen-wer">Zimmermann, V. (2026):</span> Künstliche Intelligenz im Mittelstand. KfW Research, Fokus Volkswirtschaft Nr. 554.</li>
+      <li><span class="r-quellen-wer">Folien M. Büchele und E. Tschekuev (26.10.2026);</span> Mitschnitt, Transkript und Mitschrift der Sitzung; Gastvortrag Bundeswehr (ohne Folien).</li>
     </ul>
   </div>
   <aside class="notizen">
-    <p>Nicht vortragen. Folie für Rückfragen. Weitere Quellen der Referenten (Seidlmeier 2006, Starbatty 2009, Microsoft 2026) im Quellenverzeichnis ihrer Präsentation.</p>
+    <p>Nicht vortragen. Folie für Rückfragen. Seidlmeier 2006 und Starbatty 2009 (in den Fußzeilen) sowie Microsoft 2026 nach dem Quellenverzeichnis der Referenten.</p>
   </aside>
 </section>
+
 
   </main>
 </div>
@@ -774,5 +1109,8 @@
 <script src="js/deck.js"></script>
 <script src="js/komponenten.js"></script>
 <script src="js/folien/recap.js"></script>
+<script src="js/folien/recap-b1.js"></script>
+<script src="js/folien/recap-b2.js"></script>
+<script src="js/folien/recap-b34.js"></script>
 </body>
 </html>

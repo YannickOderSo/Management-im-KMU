@@ -40,3 +40,11 @@ Thema „Bento“
   Plus Jakarta Sans (wght 200–800)                 – @fontsource-variable/plus-jakarta-sans
     plus-jakarta-sans-latin-wght-normal.woff2, plus-jakarta-sans-latin-ext-wght-normal.woff2
     Original: github.com/tokotype/PlusJakartaSans
+
+Recap-Gestaltung „Der rote Faden“ (css/folien/recap.css, seit 29.10.2026)
+  Libre Franklin (wght 100–900, normal)            – @fontsource-variable/libre-franklin 5.3.0
+    libre-franklin-latin-wght-normal.woff2, libre-franklin-latin-ext-wght-normal.woff2
+    Lizenz: SIL Open Font License 1.1 (LIZENZ-libre-franklin-OFL.txt)
+    Original: github.com/googlefonts/Libre-Franklin
+    Rolle: Text-, Daten- und Metaschrift neben Fraunces (Titel, Zahlen). Eingebunden
+    per @font-face in css/folien/recap.css (nicht in der Engine-Datei tokens.css).

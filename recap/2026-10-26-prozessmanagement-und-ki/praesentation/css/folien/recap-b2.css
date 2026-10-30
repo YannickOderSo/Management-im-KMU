@@ -1,0 +1,160 @@
+/* =============================================================================
+   recap-b2.css – Folien f08–f13 (Block 2: KI im KMU)
+   Gehört dem Folien-Agenten für Block 2. Fundament (Tokens, Rahmen,
+   Laufleiste, Faden, Komponenten r-…) steht in recap.css – dort NICHT ändern;
+   Bausteine und Markup-Muster: werk/KATALOG.md.
+   Regeln je Folie mit der Folienklasse beginnen, nur Tokens verwenden.
+
+   Inhalt
+     f08 .r-zahlen   drei Kennzahlen mit Strichskala, Spotlight (portiert)
+     f09 .r-groesse  drei Strichskalen nach Größe, Faktoren im Seitenfeld
+     f10 .r-toe      TOE: drei Spalten mit je zwei Zahlen und Kompaktbalken
+     f11 .r-tam      TAM als Pfaddiagramm (portiert)
+     f12 .r-einsatz  zwei Gruppen Kompaktbalken auf derselben Skala
+     f13 .r-recht    Zeitlinie mit zwei Knoten, offenes Fadenende
+   ============================================================================= */
+
+
+/* ---------- f08 Verbreitung: drei Kennzahlen (r-zahl) mit Strichskala, Spotlight ---------- */
+.r-zahlen .folie-inhalt { justify-content: flex-start; }
+.r-anteile { display: flex; flex-direction: column; gap: 22px; }
+
+
+/* ---------- f09 Größe und Know-how ---------------------------------------------
+   Hauptfeld (Sp. 1–8, 1098,67 px): Kennzahl schmal (.r-zahl--schmal,
+   recap.css: Randspalte 166 px, Zahl 104 px) + Rinne + Strichskala 900 px
+   (r-skala--schmal, Mindestbreite) – so bleibt das Seitenfeld (Sp. 9–12)
+   für die Faktoren frei. Hier ist nicht die Zahl die Pointe, sondern das
+   Know-how. */
+.r-groesse .folie-inhalt { justify-content: flex-start; }
+.r-groesse-skalen { grid-column: 1 / 9; display: flex; flex-direction: column; gap: 30px; margin: 0; }
+/* Seitenfeld eine Rinne eingerückt: sonst stößt es optisch an das Ende der
+   900-px-Skalen (Abstand sonst nur 32 px) */
+.r-groesse-ursache { grid-column: 9 / 13; min-width: 0; padding-left: 32px; }
+.r-groesse-faktoren { margin-top: 18px; border-bottom: var(--r-haar) solid var(--r-leer); }
+.r-groesse-faktoren > li { padding: 20px 0 22px; }
+.r-groesse-faktoren .r-liste-wort { font-size: 40px; }
+.r-groesse-folgerung { margin-top: 26px; font-size: 32px; line-height: 1.25; color: var(--r-schrift); }
+.r-groesse .r-zahl-quelle { font-size: 26px; }   /* Größenklassen sind Inhalt, auf 8 m lesbar */
+
+
+/* ---------- f10 TOE-Modell -------------------------------------------------------
+   Drei Spalten (4/4/4) stehen auf Haarlinien: Kontext (Fraunces 44 px), Meta
+   „wer“, je zwei Werte: Zahl (Fraunces 64 px) + Kurztext auf einer
+   Grundlinie, darunter ein Kompaktbalken über die ganze Spaltenbreite
+   (= 100 %, in allen Spalten gleich). Die Kompaktbalken-Klassen
+   (.r-balken-spur/-wert) werden hier ohne Liste genutzt (Rückfallwerte
+   16 px / Tinte in recap.css); die Karmin-Zeile setzt --balken-farbe. */
+.r-toe .folie-inhalt { justify-content: flex-start; gap: 60px; }
+.r-toe-modell { margin: 0; }
+.r-toe-spalten { margin-top: 22px; }
+.r-toe-spalte {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding-top: 22px;
+  border-top: var(--r-haar) solid var(--r-leer);
+}
+.r-toe-kopf {
+  margin: 0;
+  font-family: var(--schrift-display);
+  font-size: 44px;
+  font-weight: 450;
+  line-height: 1.08;
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  color: var(--r-schrift);
+}
+.r-toe-wer { margin-top: 8px; font-size: 24px; line-height: 1.25; color: var(--r-schrift-2); }
+.r-toe-wert {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
+  column-gap: 18px;
+  row-gap: 16px;
+  margin-top: 34px;
+}
+.r-toe-zahl {
+  font-family: var(--schrift-zahl);
+  font-size: 64px;
+  font-weight: 470;
+  line-height: 0.9;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 72, var(--achsen-ruhig);
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--r-schrift);
+}
+.r-toe-was { font-size: 30px; line-height: 1.2; color: var(--r-schrift); }
+.r-toe-wert > .r-balken-spur { grid-column: 1 / -1; }
+/* die EINE Karmin-Zahl: Zahl und Balken Karmin, Zahl zusätzlich kräftiger */
+.r-toe-wert--faden { --balken-farbe: var(--spot-akzent-strich, var(--r-faden)); }
+.r-toe-wert--faden .r-toe-zahl { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 560; }
+/* Schritt 1: Beispiel als ruhige Zeile unter einer Haarlinie; der Satz
+   beginnt auf der Achse der mittleren Spalte (Sp. 5) */
+.r-toe-beispiel { display: grid; grid-template-columns: var(--r-raster); column-gap: var(--r-rinne); align-items: baseline; }
+.r-toe-beispiel > .r-bezeichner { grid-column: 1 / 5; }
+.r-toe-fall { grid-column: 5 / 13; font-size: 32px; line-height: 1.25; color: var(--r-schrift); }
+
+
+/* ---------- f11 TAM als Pfaddiagramm ----------
+   SVG im Bühnenmaß (viewBox 1060 × 560 = Pixel); Knoten als Wörter an festen
+   Ankern, Pfeilspitzen als eigene Dreiecke (siehe recap.css 5.10). */
+.r-tam .folie-inhalt { justify-content: flex-start; }
+.r-tam-raster { display: grid; grid-template-columns: var(--r-raster); column-gap: var(--r-rinne); align-items: start; }
+.r-tam-modell { position: relative; grid-column: 1 / 9; width: 1060px; height: 560px; margin: 0; }
+.r-tam-name { position: absolute; left: 0; top: 0; }
+.r-tam-pfeile { position: absolute; inset: 0; width: 1060px; height: 560px; overflow: visible; }
+.r-tam-knoten { position: absolute; }
+.r-tam-knoten--bf { left: 0; top: 84px; }
+.r-tam-knoten--nutzen { left: 0; top: 470px; }
+/* „Nutzung“ steht auf der Andocklinie (.r-knoten-wort--andock, recap.css);
+   der Kernpfeil dockt von unten an ihr an (Spitze bei y = 356 im SVG). */
+.r-tam-knoten--nutzung { left: 900px; top: 270px; translate: -50% 0; }
+.r-tam-label { position: absolute; left: 560px; top: 130px; }
+.r-tam-rechts { grid-column: 9 / 13; display: flex; flex-direction: column; gap: 32px; padding-top: 60px; }
+.r-tam-zahl b {
+  display: block;
+  font-family: var(--schrift-zahl);
+  font-size: 84px;
+  font-weight: 470;
+  line-height: 0.82;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 72, var(--achsen-ruhig);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.r-tam-zahl > span { display: block; margin-top: 14px; font-size: 30px; line-height: 1.3; }
+.r-tam-folgerung {
+  font-family: var(--schrift-display);
+  font-size: 46px;
+  font-weight: 450;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  color: var(--r-faden-text);
+}
+
+
+/* ---------- f12 Einsatzfelder und Kosten ------------------------------------------
+   Zwei Gruppen Kompaktbalken nebeneinander (Sp. 1–6 und 7–12), gleiche
+   Namensspalte und gleiche Spur (= gleiche Skala 0–100 %). Größere Zeilen
+   als im Standard, damit die acht Werte die Fläche tragen. */
+.r-einsatz .folie-inhalt { justify-content: flex-start; }
+.r-einsatz-gruppe { grid-column: 1 / 7; min-width: 0; margin: 0; }
+.r-einsatz-gruppe--kosten { grid-column: 7 / 13; }
+/* Die Spalten der Kompaktbalken dehnen sich nicht auf die Gruppenbreite
+   (recap.css): die Zahl steht am Ende der Spur, und zwischen den Zahlen links
+   und den Namen rechts bleibt eine klare Gasse (≈ 120 px) – sonst läse man
+   „72 % Infrastruktur“ als Paar */
+.r-einsatz-balken { --spur: 380px; --name: 220px; --hoehe: 20px; row-gap: 64px; margin-top: 44px; }
+.r-einsatz-balken .r-balken-zahl { font-size: 48px; font-variation-settings: "opsz" 48, var(--achsen-ruhig); }
+
+
+/* ---------- f13 Rechtlicher Rahmen -------------------------------------------------
+   Zeitstrahl mit zwei Stationen (je 6 Spalten); unter Jahr und Name je ein
+   Fraunces-Satz 52 px (.r-zeit-satz, recap.css), auf 740 px begrenzt, damit
+   beide Sätze zweizeilig stehen. Schritt 1: zwei Meta-Zeilen ab Spalte 4
+   (wie das offene Ende in f07), die zweite am offenen Fadenende. */
+.r-recht .folie-inhalt { justify-content: flex-start; gap: 104px; }
+.r-recht .r-zeit-satz { max-width: 740px; }
+.r-recht-wort { white-space: nowrap; }
+.r-recht-offen { display: flex; flex-direction: column; gap: 10px; margin-left: 424px; }
