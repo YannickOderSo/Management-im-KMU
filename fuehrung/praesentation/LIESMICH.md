@@ -44,6 +44,7 @@ PDF: `index.html?druck` öffnen und drucken (eine Seite je Folie, Endzustand).
 | `abstimmen.html`, `js/abstimmen.js` | Abstimmseite für die Handys (QR-Code auf Folie 08) |
 | `live-abstimmung/` | Google-Apps-Script der Live-Abstimmung und Anleitung |
 | `werkzeuge/pruefen.mjs` | automatische Prüfung (Überlauf, Schriftgrößen, Kontrast, Screenshots) |
+| `werkzeuge/redeskript.mjs`, `export/redeskript.pdf` | Redeskript aus den Sprechtexten (gesprochen, Regie, Klicks, Zeiten, Rückfragen); nach Änderungen an den Notizen neu erzeugen |
 
 Belege: Die Nummern `[n]` in den Fußzeilen entsprechen den Quellenverzeichnissen in `../../recherche/literaturbasis.md` ([1]–[40]) und `../../recherche/literaturbasis-instrumente.md` ([41]–[62]).
 
