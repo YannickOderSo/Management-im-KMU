@@ -224,7 +224,7 @@
     marker.classList.toggle('ist-offen', !p);
     if (!p) { markerSetzen(marker, 1); text.textContent = 'noch keine Stimmen'; return; }
     markerSetzen(marker, p.pos);
-    text.textContent = 'Ø ' + util.zahlFormat(p.pos, 1) + ' – eher ' + STUFEN[Math.min(6, Math.max(0, Math.round(p.pos) - 1))] +
+    text.textContent = 'Ø ' + util.zahlFormat(p.pos, 1) + ', eher ' + STUFEN[Math.min(6, Math.max(0, Math.round(p.pos) - 1))] +
       ' (n = ' + p.n + (p.beispiel ? ', Beispieldaten' : '') + ')';
   }
 
@@ -235,15 +235,15 @@
         var b = befragte[Number(spur.getAttribute('data-befragter'))] || {};
         var marker = spur.querySelector('.f-stil-marker');
         var stufe = Number(b.stufe);
-        spur.querySelector('[data-befragter-name]').textContent = b.anzeige || '';
+        spur.querySelector('[data-befragter-name]').textContent = b.anzeige ? b.anzeige + ':' : '';
         var text = spur.querySelector('[data-befragter-text]');
         if (b.stufe === null || b.stufe === undefined || !(stufe >= 1 && stufe <= 7)) {
           marker.classList.add('ist-offen');
           markerSetzen(marker, 1);
-          text.textContent = '– Selbsteinschätzung folgt';
+          text.textContent = 'Selbsteinschätzung folgt';
         } else {
           markerSetzen(marker, stufe);
-          text.textContent = '– Stufe ' + util.zahlFormat(stufe, stufe % 1 ? 1 : 0) + ' (Selbsteinschätzung)';
+          text.textContent = 'Stufe ' + util.zahlFormat(stufe, stufe % 1 ? 1 : 0) + ' (Selbsteinschätzung)';
         }
       });
       publikumZeigen(ctx);
