@@ -20,7 +20,7 @@ PDF: `index.html?druck` öffnen und drucken (eine Seite je Folie, Endzustand).
 **Notfall-PDF** (Plan B, falls Browser oder Beamer streiken): `export/praesentation-notfall.pdf` – neu erzeugen mit
 `node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --druck export/praesentation-notfall.pdf`.
 
-## Aufbau (Vortrag 35 Min. + 10 Min. Diskussion, Sollzeiten zusammen ca. 32:30)
+## Aufbau (Vortrag 35 Min. + 10 Min. Diskussion, Sollzeiten zusammen 34:35)
 
 | Teil | Folien |
 |---|---|
@@ -29,9 +29,9 @@ PDF: `index.html?druck` öffnen und drucken (eine Seite je Folie, Endzustand).
 | 2 KMU | 06 KMU und Mittelstand |
 | 3 Besonderheiten | 07 Führung ist persönlich · 08 Live-Umfrage · 09 Kontinuum |
 | 4 Instrumente | 10 Fünf Werkzeuge · 11 Personalarbeit · 12 Gespräche/Ziele · 13 Delegation · 14 Feedback/Beteiligung |
-| 5 Praxis | 15 Befragung · 16 Herausforderungen · 17 Pflegedienst · 18 Sechs Betriebe |
-| Schluss | 19 Kernbotschaft · 20 Diskussion |
-| Backup | B1 Quellen · B2 Definitionen · B3 Definitionseffekt · B4 Methode · B5 Quellen Instrumente |
+| 5 Praxis | 15 Befragung: zwei Blicke · 16 Befragung: wenn es schwierig wird · 17 Befragung: Gründergeist und Tradition · 18 Herausforderungen · 19 Pflegedienst |
+| Schluss | 20 Kernbotschaft · 21 Diskussion |
+| Backup | B1 Quellen · B2 Definitionen · B3 Definitionseffekt · B4 Methode · B5 Quellen Instrumente · B6 Sechs Betriebe (INQA) |
 
 ## Was steht wo
 
@@ -52,7 +52,7 @@ Belege: Die Nummern `[n]` in den Fußzeilen entsprechen den Quellenverzeichnisse
 
 1. ✅ `marke.js`: `datum` 2026-11-02, `dauerMinuten` 35, `runde` steht auf `'vortrag-2026-11-02'`. Eine Teststimme vom Handy
    zählt nur, wenn sie jünger als 30 Minuten ist (`gueltigMinuten`) – also spätestens eine halbe Stunde vor dem Vortrag testen.
-2. ✅ Befragung eingetragen (Folie 09: Stufen im JSON „befragte“, Folie 15, B4; Beleg: `../befragung/auswertung.md`).
-3. ✅ GitHub Pages ist eingeschaltet (Branch `claude/exciting-meitner-w27zwy`), QR-Codes auf Folie 08 und 20 führen dorthin.
+2. ✅ Befragung eingetragen (Folie 09: Stufen im JSON „befragte“, Folien 15 bis 17, B4; Beleg: `../befragung/auswertung.md`).
+3. ✅ GitHub Pages ist eingeschaltet (Branch `claude/exciting-meitner-w27zwy`), QR-Codes auf Folie 08 und 21 führen dorthin.
    Abstimmseite einmal mit dem Handy testen.
 4. Prüfen: `PLAYWRIGHT_CORE=… node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte`

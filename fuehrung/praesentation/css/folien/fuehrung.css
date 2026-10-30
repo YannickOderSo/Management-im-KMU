@@ -530,3 +530,29 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
 .f-hr .f-hr-schulung-zahlen b { color: var(--f-hart); font-weight: var(--gewicht-zahl); }
 .f-hr .f-hr-schulung-zahlen .f-gegen { font-size: 36px; }
 .f-hr .f-hr-schulung-text { font-size: var(--groesse-text-min); line-height: 1.25; }
+
+/* ---------- Folien 16 und 17: Praxisberichte aus der Befragung (SimpleAct links, TLT rechts) ---------- */
+.f-praxis .f-praxis-raster { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--abstand-7); margin: auto 0; align-items: start; }
+.f-praxis .f-praxis-spalte {
+  display: flex; flex-direction: column; gap: var(--abstand-4);
+  padding-left: var(--abstand-5); border-left: 8px solid var(--f-akzent);
+}
+.f-praxis .f-praxis-spalte--tlt { border-left-color: var(--f-hart); }
+.f-praxis .f-praxis-weg { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--abstand-4); }
+.f-praxis .f-praxis-weg li { font-size: var(--groesse-text); line-height: 1.3; }
+.f-praxis ul.f-praxis-weg li { padding-left: 28px; position: relative; }
+.f-praxis ul.f-praxis-weg li::before {
+  content: ""; position: absolute; left: 0; top: 0.5em; width: 12px; height: 12px; border-radius: 50%; background: var(--f-akzent);
+}
+.f-praxis .f-praxis-spalte--tlt ul.f-praxis-weg li::before { background: var(--f-hart); }
+.f-praxis .f-praxis-marke {
+  display: block; font-family: var(--schrift-kicker); font-size: var(--groesse-meta); font-weight: var(--gewicht-fett);
+  text-transform: uppercase; letter-spacing: 0.08em; color: var(--f-text-2); margin-bottom: 2px;
+}
+.f-praxis .zitat { margin: 0; }
+.f-praxis .zitat-text { font-size: 38px; }
+.f-praxis .f-praxis-fazit {
+  margin: var(--abstand-5) 0 0; padding: var(--abstand-3) var(--abstand-5); border-radius: var(--radius-m);
+  background: var(--f-flaeche); font-size: var(--groesse-text); font-weight: var(--gewicht-fett); text-align: center;
+}
+.f-praxis .f-praxis-spalte--tlt .zitat { border-left-color: var(--f-hart); }
