@@ -108,7 +108,7 @@ window.KLASSIFIZIERER = {
       id: 'K7', spalte: 3,
       kurz: 'Sicherheitsbauteil eines Produkts?',
       frage: 'Ist das System ein Sicherheitsbauteil eines Produkts aus der EU-Produktgesetzgebung (z. B. Maschine, Spielzeug, Aufzug, Medizinprodukt) oder selbst ein solches Produkt, und muss das Produkt von einer unabhängigen Stelle geprüft werden?',
-      erklaerung: 'Beides muss zutreffen. Reine Qualitätskontrolle ist kein Sicherheitsbauteil, außer ihr Ausfall würde Gesundheit oder Sicherheit gefährden. Eine Drittprüfung nur wegen Funk- oder EMV-Risiken zählt nicht. Nach dem Leitlinienentwurf der Kommission zählt auch, wenn die Prüfstelle nur dank harmonisierter Normen entfallen darf, z. B. bei Maschinen aus Anhang I der Maschinenverordnung (Personenerkennung, selbstlernende Sicherheitsfunktion).',
+      erklaerung: 'Beides muss zutreffen. Reine Qualitätskontrolle ist kein Sicherheitsbauteil, außer ihr Ausfall würde Gesundheit oder Sicherheit gefährden. Eine Drittprüfung nur wegen Funk- oder EMV-Risiken zählt nicht. Ob auch Produkte zählen, bei denen die Prüfstelle nur dank angewandter harmonisierter Normen entfällt (z. B. Schutzeinrichtungen, die Personen erkennen), ist noch offen: Der Leitlinienentwurf der Kommission bejaht das, ist aber nicht final. Selbstlernende Sicherheitsfunktionen prüft nach der Maschinenverordnung ohnehin immer eine Prüfstelle.',
       rechtsgrundlage: ['Art. 6 Abs. 1, 1a–1c', 'Anhang I'],
       antworten: [{ text: 'Ja', weiter: 'K11' }, { text: 'Nein', weiter: 'K8' }]
     },
@@ -123,8 +123,8 @@ window.KLASSIFIZIERER = {
     {
       id: 'K8', spalte: 3,
       kurz: 'Hochrisiko-Zweck, z. B. Personal?',
-      frage: 'Wird das System für einen der Zwecke aus Anhang III eingesetzt (Biometrie einschließlich Emotionserkennung, kritische Infrastruktur, Bildung, Beschäftigung und Personal, Zugang zu wesentlichen Diensten wie Kredit oder Lebens- und Krankenversicherung, Strafverfolgung, Migration, Justiz und Wahlen)?',
-      erklaerung: 'Beispiele: Bewerbungen filtern oder bewerten, Aufgaben nach Leistungsdaten zuweisen, Bonität von Privatpersonen bewerten. Emotionserkennung zählt immer dazu. Wer ein allgemeines Werkzeug wie ChatGPT selbst für einen solchen Zweck einsetzt, wird dadurch zum Anbieter (Art. 25).',
+      frage: 'Wird das System für einen der Zwecke aus Anhang III eingesetzt (Biometrie einschließlich Emotionserkennung und Einordnung nach Merkmalen wie Geschlecht oder Alter, kritische Infrastruktur, Bildung, Beschäftigung und Personal, Zugang zu wesentlichen Diensten wie Kredit oder Lebens- und Krankenversicherung, Strafverfolgung, Migration, Justiz und Wahlen)?',
+      erklaerung: 'Beispiele: Bewerbungen filtern oder bewerten, Aufgaben nach Leistungsdaten zuweisen, Bonität von Privatpersonen bewerten. Emotionserkennung zählt immer dazu. Wer ein allgemeines Werkzeug wie ChatGPT selbst für einen solchen Zweck einsetzt, kann dadurch zum Anbieter werden (Art. 25 Abs. 1 lit. c), nämlich wenn das System für diesen Zweck hochriskant wird, also keine Ausnahme nach Art. 6 Abs. 3 greift.',
       rechtsgrundlage: ['Art. 6 Abs. 2', 'Anhang III'],
       automatisch: { wenn: 'emotion', antwort: 'Ja' },
       antworten: [{ text: 'Ja', weiter: 'K9' }, { text: 'Nein', weiter: 'K12' }]
@@ -174,7 +174,7 @@ window.KLASSIFIZIERER = {
       id: 'K15', spalte: 4,
       kurz: 'Deepfake oder KI-Nachricht?',
       frage: 'Erzeugen Sie mit dem System Bilder, Ton oder Videos, die echten Personen, Gegenständen, Orten, Einrichtungen oder Ereignissen ähneln und fälschlich echt wirken (Deepfake), oder veröffentlichen Sie damit Texte, die über Themen von öffentlichem Interesse informieren, ohne dass ein Mensch sie redaktionell verantwortet?',
-      erklaerung: 'Dann muss offengelegt werden, dass der Inhalt künstlich erzeugt ist. Auch erfundene, aber echt wirkende Personen, Produkte oder Orte können Deepfakes sein (Leitlinien der Kommission); offensichtlich Unrealistisches wie eine Comicfigur nicht.',
+      erklaerung: 'Dann muss offengelegt werden, dass der Inhalt künstlich erzeugt ist. Ob frei erfundene, aber echt wirkende Personen darunter fallen, ist nicht abschließend geklärt, denn das Gesetz verlangt Ähnlichkeit mit Wirklichem; ein kurzer Hinweis ist die sichere Variante. Offensichtlich Unrealistisches wie eine Comicfigur zählt nicht.',
       rechtsgrundlage: ['Art. 50 Abs. 4', 'Art. 3 Nr. 60'],
       antworten: [{ text: 'Ja', ergebnis: 'E-TRANSP-DEEPFAKE', weitere_pruefung: ['K16'] }, { text: 'Nein', weiter: 'K16' }]
     },
@@ -182,7 +182,7 @@ window.KLASSIFIZIERER = {
       id: 'K16', spalte: 5,
       kurz: 'Eigenes KI-Modell (GPAI)?',
       frage: 'Bringen Sie selbst ein KI-Modell mit allgemeinem Verwendungszweck (z. B. ein Sprachmodell) in Verkehr, das Sie entwickelt oder erheblich verändert haben?',
-      erklaerung: 'Wer ein Modell nur über eine Schnittstelle nutzt oder leicht anpasst, ist kein Modell-Anbieter. Wer es mit erheblichem eigenem Rechenaufwand verändert (Richtwert der Kommission: mehr als ein Drittel der ursprünglichen Trainingsrechenleistung), wird es in der Regel, mit Pflichten nur für die Änderung.',
+      erklaerung: 'Wer ein Modell nur über eine Schnittstelle nutzt oder leicht anpasst, ist kein Modell-Anbieter. Wer es mit erheblichem eigenem Rechenaufwand verändert (Richtwert aus den Leitlinien der Kommission, nicht verbindlich: mehr als ein Drittel der ursprünglichen Trainingsrechenleistung), wird es in der Regel, mit Pflichten nur für die Änderung.',
       rechtsgrundlage: ['Art. 3 Nr. 3, 63', 'Art. 51–53'],
       antworten: [{ text: 'Ja', ergebnis: 'E-GPAI' }, { text: 'Nein', ergebnis: 'E-MINIMAL' }]
     }
@@ -208,7 +208,7 @@ window.KLASSIFIZIERER = {
         { text: 'Betreiber: Einsatz nach Anleitung, menschliche Aufsicht, Protokolle aufbewahren', kurz: 'Aufsicht, Protokolle', art: 'Art. 26', artikel: 'Art. 26', ab: '2028-08-02' },
         { text: 'Alle: KI-Kompetenz unterstützen', kurz: 'KI-Kompetenz unterstützen', art: 'Art. 4', artikel: 'Art. 4', ab: '2025-02-02', nebensache: true }
       ], weitere_pruefung: ['K8'],
-      hinweis: 'Systeme, die schon vor dem 2.8.2028 auf dem Markt oder in Betrieb sind, fallen nur nach einer erheblichen Änderung ihrer Konzeption unter diese Pflichten (Art. 111 Abs. 2).' },
+      hinweis: 'Systeme, die schon vor dem 2.8.2028 auf dem Markt oder in Betrieb sind, fallen nur nach einer erheblichen Änderung ihrer Konzeption unter diese Pflichten (Art. 111 Abs. 2). Anbieter und Betreiber von Systemen, die Behörden nutzen sollen, müssen bis 2.8.2030 nachziehen.' },
     { id: 'E-HOCH-I-B', klasse: 'hoch', titel: 'Hochriskant über Produktrecht (Anhang I Abschnitt B, z. B. Maschinen)', kurz: 'hochriskant',
       satz: 'Das System ist hochriskant. Die Anforderungen kommen über das jeweilige Produktrecht (bei Maschinen die Maschinenverordnung), nicht direkt aus dem AI Act.',
       pflichten: [
@@ -225,7 +225,7 @@ window.KLASSIFIZIERER = {
         { text: 'Bestimmte Betreiber (u. a. öffentliche Stellen, Bonität, Lebens- und Krankenversicherung): Grundrechte-Folgenabschätzung vor der ersten Verwendung', kurz: 'ggf. Grundrechte-Folgenabschätzung', art: 'Art. 27', artikel: 'Art. 27 Abs. 1', ab: '2027-12-02', optional: true },
         { text: 'Alle: KI-Kompetenz unterstützen', kurz: 'KI-Kompetenz unterstützen', art: 'Art. 4', artikel: 'Art. 4', ab: '2025-02-02', nebensache: true }
       ], weitere_pruefung: ['K12'],
-      hinweis: 'Gilt für Systeme, die ab 2.12.2027 auf den Markt kommen oder danach erheblich geändert werden (Art. 111 Abs. 2). Wer ein allgemeines Werkzeug wie ChatGPT selbst für diesen Zweck einsetzt, wird Anbieter und trägt dann auch die Anbieterpflichten (Art. 25 Abs. 1 lit. c).' },
+      hinweis: 'Gilt für Systeme, die ab 2.12.2027 auf den Markt kommen oder danach erheblich geändert werden (Art. 111 Abs. 2); Systeme, die Behörden nutzen sollen, müssen bis 2.8.2030 nachziehen, und Behörden als Betreiber registrieren sich selbst (Art. 49 Abs. 3). Wer ein allgemeines Werkzeug wie ChatGPT selbst für diesen Zweck einsetzt, gilt als Anbieter dieses Hochrisiko-Systems, wenn er es für diesen Zweck in Betrieb nimmt (Art. 25 Abs. 1 lit. c); der ursprüngliche Anbieter muss dann mitwirken, außer er hat die Umwidmung zum Hochrisiko-System ausgeschlossen (Art. 25 Abs. 2).' },
     { id: 'E-HOCH-III-AUSNAHME', klasse: 'ausnahme', titel: 'Anhang-III-Zweck, aber Ausnahme', kurz: 'Ausnahme',
       satz: 'Das System gilt nicht als hochriskant. Der Anbieter muss das dokumentieren und registrieren; wer es nur einsetzt, sollte sich diese Einschätzung zeigen lassen.',
       pflichten: [
@@ -249,7 +249,7 @@ window.KLASSIFIZIERER = {
         { text: 'Alle: KI-Kompetenz unterstützen', kurz: 'KI-Kompetenz unterstützen', art: 'Art. 4', artikel: 'Art. 4', ab: '2025-02-02', nebensache: true }],
       weitere_pruefung: ['K15'] },
     { id: 'E-TRANSP-DEEPFAKE', klasse: 'transparenz', titel: 'Transparenz: Deepfakes und KI-Texte zu öffentlichen Themen', kurz: 'Transparenz',
-      satz: 'Wer so etwas veröffentlicht, legt offen, dass es künstlich erzeugt ist; bei erkennbar künstlerischen oder fiktionalen Werken in eingeschränkter Form.',
+      satz: 'Wer Deepfakes erzeugt oder verändert, legt offen, dass sie künstlich sind (bei erkennbar künstlerischen oder fiktionalen Werken in eingeschränkter Form). Wer KI-Texte zu Themen von öffentlichem Interesse veröffentlicht, legt das ebenfalls offen, außer ein Mensch prüft sie und trägt die redaktionelle Verantwortung.',
       pflichten: [{ text: 'Betreiber: künstliche Erzeugung offenlegen', kurz: 'künstliche Erzeugung offenlegen', art: 'Art. 50', artikel: 'Art. 50 Abs. 4', ab: '2026-08-02' },
         { text: 'Alle: KI-Kompetenz unterstützen', kurz: 'KI-Kompetenz unterstützen', art: 'Art. 4', artikel: 'Art. 4', ab: '2025-02-02', nebensache: true }],
       weitere_pruefung: ['K16'] },
@@ -258,7 +258,8 @@ window.KLASSIFIZIERER = {
       pflichten: [
         { text: 'Technische Dokumentation und Informationen für nachgelagerte Anbieter (entfällt bei Open Source ohne systemisches Risiko), Urheberrechts-Strategie, Zusammenfassung der Trainingsdaten; bei einem veränderten Modell nur für die Änderung', kurz: 'Modell-Doku, Urheberrecht, Trainingsdaten', art: 'Art. 53', artikel: 'Art. 53 Abs. 1, 2', ab: '2025-08-02' },
         { text: 'Bei systemischem Risiko (vermutet ab mehr als 10^25 FLOP): Meldung an die Kommission und zusätzliche Pflichten', kurz: 'bei systemischem Risiko: mehr Pflichten', art: 'Art. 55', artikel: 'Art. 51, 52, 55', ab: '2025-08-02', optional: true }
-      ], weitere_pruefung: [] },
+      ], weitere_pruefung: [],
+      hinweis: 'Modelle, die schon vor dem 2.8.2025 auf dem Markt waren, haben bis 2.8.2027 Zeit (Art. 111 Abs. 3).' },
     { id: 'E-MINIMAL', klasse: 'minimal', titel: 'Minimales Risiko', kurz: 'minimal',
       satz: 'Keine besonderen Pflichten außer KI-Kompetenz; freiwillige Verhaltenskodizes sind möglich.',
       pflichten: [{ text: 'Alle: KI-Kompetenz unterstützen', kurz: 'KI-Kompetenz unterstützen', art: 'Art. 4', artikel: 'Art. 4', ab: '2025-02-02', nebensache: true }],

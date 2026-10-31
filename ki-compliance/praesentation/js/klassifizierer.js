@@ -417,7 +417,7 @@
     });
     if (fall && fall.rolle && fall.rolle !== '–') el('span', { class: 'kl-erg-rolle' }, 'Rolle: ' + fall.rolle, reihe);
     if (fall && fall.merksatz) el('p', { class: 'kl-erg-merksatz' }, fall.merksatz, links);
-    else if (treffer[0]) el('p', { class: 'kl-erg-merksatz' }, treffer[0].satz, links);
+    else if (treffer[0]) el('p', { class: 'kl-erg-merksatz' }, treffer[0].satz.split(/(?<=\.)\s+(?=[A-ZÄÖÜ])/)[0], links);   /* auf der Folie nur der erste Satz */
 
     /* Pflichten: nur feste (ohne „optional“), Art. 4 zuletzt, je Artikel einmal;
        wer nur Betreiber ist, sieht keine Anbieterpflichten; höchstens drei */
