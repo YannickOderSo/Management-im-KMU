@@ -39,9 +39,9 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 | Teil | Stand | Ort |
 |---|---|---|
 | Plan | ✅ umgesetzt (Abweichungen im Plan vermerkt) | [`ki-compliance/PLAN.md`](ki-compliance/PLAN.md) |
-| Fragebogen an die interne SimpleAct-KI | ✅ beantwortet 31.10.2026; Rohantworten nicht im Repo, Verwendung in der Auswertung | [`ki-compliance/befragung/`](ki-compliance/befragung/) |
+| Fragebogen an die interne SimpleAct-KI | ✅ beantwortet 31.10.2026, Inhalte freigegeben; Rohantworten nicht im Repo, Verwendung in der Auswertung | [`ki-compliance/befragung/`](ki-compliance/befragung/) |
 | Recherche: Rechtsprüfung an Primärquellen, KMU-Zahlen | ✅ 31.10.2026 (Omnibus, KI-MIG, Leitlinien, 51 Zahlen) | [`ki-compliance/recherche/`](ki-compliance/recherche/) |
-| HTML-Präsentation „Welches Risiko hat Ihre KI?“ (25 Folien + 6 Backup, Sollzeit 30:20) mit Klassifizierer, Live-Umfragen, Notfall-PDF, Redeskript | 🟡 erste Fassung, Prüfung 0 Fehler; offen: Termin, Freigabe Kamill, Merge auf den Pages-Branch | [`ki-compliance/praesentation/`](ki-compliance/praesentation/) |
+| HTML-Präsentation „Welches Risiko hat Ihre KI?“ (37 Folien + 6 Backup, Sollzeit 50:45 + Diskussion) mit acht Live-Umfragen, Klassifizierer, Partnerarbeit, Bußgeld-Rechner, Notfall-PDF, Redeskript | 🟡 Stunden-Fassung, Prüfung 0 Fehler, Freigabe SimpleAct erteilt; offen: Termin, Merge auf den Pages-Branch | [`ki-compliance/praesentation/`](ki-compliance/praesentation/) |
 | Klassifizierer zum Mitnehmen (Handy) | ✅ | [`ki-compliance/praesentation/klassifizierer.html`](ki-compliance/praesentation/klassifizierer.html) |
 
 ## Online (GitHub Pages)

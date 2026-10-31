@@ -957,3 +957,285 @@ html.druckmodus .ir-fakt { opacity: 1; translate: 0 0; }
 }
 .inv-tabelle.tabelle th, .inv-tabelle.tabelle td { padding: 12px 10px; }
 .bk-tabelle.tabelle th, .bk-tabelle.tabelle td { padding: 9px 12px; }
+
+
+/* =============================================================================
+   AUSBAU AUF EINE STUNDE (31.10.2026): neue Folien
+   au- Aufsicht · dr- Daumen-Runde · pa- Partnerarbeit · k-uhr Countdown ·
+   br- Bußgeld-Rechner · ko- Kosten · ge- drei Gesetze · wm- Wer macht was
+   ============================================================================= */
+
+/* ---------- 10 Wer kontrolliert? ---------- */
+.au-inhalt {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr);
+  gap: 22px 36px;
+}
+.au-eu {
+  grid-column: 1 / -1;
+  display: flex; align-items: center; gap: 20px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 3px var(--k-linie);
+  font-size: 28px;
+}
+.au-eu b { font-family: var(--schrift-display); font-weight: 600; }
+.au-eu > span:last-child { color: var(--k-tinte-2); }
+.au-marke {
+  padding: 2px 14px; border-radius: 8px;
+  background: var(--k-tinte); color: var(--k-papier);
+  font-family: var(--schrift-display); font-weight: 700;
+}
+.au-bnetza {
+  grid-row: 2;
+  display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 18px 22px; align-content: start;
+  padding: 30px 32px;
+  border-radius: 16px;
+  background: var(--k-tinte); color: var(--k-papier);
+}
+.au-symbol { width: 80px; height: 80px; fill: none; stroke: var(--k-papier); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.au-bnetza b { display: block; font-family: var(--schrift-display); font-size: 44px; font-weight: 600; line-height: 1.1; }
+.au-bnetza div span { display: block; margin-top: 8px; font-size: 28px; line-height: 1.3; opacity: .9; }
+.au-bnetza ul { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 12px; }
+.au-bnetza li { padding: 8px 18px; border-radius: 999px; box-shadow: inset 0 0 0 2px var(--k-papier); font-size: 28px; font-weight: 600; }
+.au-sonder { grid-column: 2; grid-row: 2 / 4; align-self: start; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.au-sonder li { display: grid; gap: 4px; padding: 16px 20px; border-radius: 12px; background: var(--k-flaeche); }
+.au-sonder b { font-family: var(--schrift-display); font-size: 30px; font-weight: 600; }
+.au-sonder span { font-size: 28px; line-height: 1.25; color: var(--k-tinte-2); }
+.au-rechte { grid-column: 1; grid-row: 3; align-self: start; display: grid; gap: 12px; font-size: 28px; line-height: 1.35; }
+.au-daten { color: var(--k-tinte-2); }
+
+/* ---------- 13 Daumen-Runde ---------- */
+.dr-inhalt { justify-content: center; }
+.dr-karten { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 20px; }
+.dr-karten li {
+  display: flex; flex-direction: column; gap: 16px;
+  min-height: 470px;
+  padding: 24px 22px;
+  border-radius: var(--k-radius);
+  background: var(--k-flaeche);
+  transition: background-color .4s, box-shadow .4s;
+}
+.dr-nr {
+  display: grid; place-items: center;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--k-tinte); color: var(--k-papier);
+  font-family: var(--schrift-display); font-size: 28px; font-weight: 700;
+}
+.dr-fall { font-size: 30px; line-height: 1.3; font-weight: 500; }
+.dr-urteil {
+  margin-top: auto !important;
+  display: grid; gap: 10px; justify-items: start;
+  font-size: 28px; line-height: 1.25; color: var(--k-tinte-2);
+  opacity: 0; translate: 0 14px;
+  transition: opacity .45s, translate .45s;
+}
+.dr-urteil .k-etikett { font-size: 30px; }
+.dr-urteil .k-form { width: 26px; height: 26px; }
+.dr-urteil.schritt-an { opacity: 1; translate: 0 0; }
+.dr-karten li:has(.dr-urteil.schritt-an) { background: var(--k-papier); box-shadow: inset 0 0 0 4px var(--k-tinte); }
+html.druckmodus .dr-urteil { opacity: 1; translate: 0 0; }
+
+/* ---------- 24 Partnerarbeit und Countdown ---------- */
+.pa-inhalt {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 420px 440px;
+  gap: 48px;
+  align-items: center;
+}
+.pa-schritte { display: grid; gap: 22px; counter-reset: pa; }
+.pa-schritte li {
+  counter-increment: pa;
+  display: grid; grid-template-columns: 64px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 20px;
+}
+.pa-schritte li::before {
+  content: counter(pa);
+  grid-row: 1 / 3;
+  display: grid; place-items: center;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--k-tinte); color: var(--k-papier);
+  font-family: var(--schrift-display); font-size: 28px; font-weight: 700;
+}
+.pa-schritte b { font-family: var(--schrift-display); font-size: 36px; font-weight: 600; line-height: 1.15; }
+.pa-schritte span { font-size: 28px; color: var(--k-tinte-2); }
+.k-uhr {
+  display: grid; justify-items: center; gap: 10px;
+  padding: 40px 20px;
+  border-radius: 50%;
+  aspect-ratio: 1;
+  align-content: center;
+  box-shadow: inset 0 0 0 10px var(--k-tinte);
+  cursor: pointer;
+  user-select: none;
+}
+.k-uhr-zeit { font-family: var(--schrift-zahl); font-size: 120px; font-weight: 600; line-height: 1; font-variant-numeric: tabular-nums; }
+.k-uhr-text { font-size: 28px; color: var(--k-tinte-2); }
+.k-uhr.ist-laeuft { box-shadow: inset 0 0 0 10px var(--k-orange); }
+.k-uhr.ist-ende { box-shadow: inset 0 0 0 10px var(--k-rot); animation: k-uhr-puls 1s ease-in-out infinite; }
+.k-uhr.ist-ende .k-uhr-zeit { color: var(--k-rot-text); }
+@keyframes k-uhr-puls { 50% { scale: 1.04; } }
+@media (prefers-reduced-motion: reduce) { .k-uhr.ist-ende { animation: none; } }
+.pa-qr { display: grid; justify-items: center; gap: 14px; margin: 0; padding: 28px; border-radius: 18px; background: var(--k-flaeche); }
+.pa-qr figcaption { font-size: 26px; text-align: center; }
+
+/* ---------- 29 Bußgeld-Rechner ---------- */
+.br-inhalt {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 480px;
+  gap: 56px;
+}
+.bussgeldrechner { display: grid; gap: 30px; align-content: start; }
+.br-steuer { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto; gap: 14px 30px; align-items: center; }
+.br-umsatz { grid-row: 1 / 3; display: grid; gap: 4px; margin: 0; }
+.br-label { font-size: 28px; font-weight: 600; color: var(--k-tinte-2); }
+.br-wert { font-size: 64px; min-width: 330px; }
+.br-knoepfe { display: flex; gap: 12px; }
+.br-knopf {
+  height: 60px; padding: 0 22px;
+  border-radius: 12px;
+  border: 3px solid var(--k-tinte);
+  background: var(--k-papier); color: var(--k-tinte);
+  font: 600 28px/1 var(--schrift-display);
+  cursor: pointer;
+}
+.br-knopf.ist-aktiv { background: var(--k-tinte); color: var(--k-papier); }
+.br-knopf:focus-visible, .br-regler:focus-visible { outline: 4px solid var(--k-orange); outline-offset: 3px; }
+.br-regler { width: 100%; height: 36px; accent-color: var(--k-tinte); cursor: pointer; }
+.br-tabelle { display: grid; gap: 22px; }
+.br-legende { display: flex; gap: 28px; margin: 0; font-size: 26px; color: var(--k-tinte-2); }
+.br-leg { display: inline-flex; align-items: center; gap: 10px; }
+.br-leg i { display: inline-block; width: 28px; height: 18px; border-radius: 4px; background: var(--k-tinte); }
+.br-leg--gross i { background: var(--k-linie); }
+.br-zeile { display: grid; grid-template-columns: 300px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 24px; row-gap: 8px; align-items: center; }
+.br-name { grid-row: 1 / 3; display: grid; gap: 2px; margin: 0; }
+.br-name b { font-size: 30px; font-weight: 650; }
+.br-formel { font-size: 24px; color: var(--k-tinte-2); }
+.br-balken { position: relative; height: 44px; border-radius: 8px; background: var(--k-flaeche); overflow: hidden; }
+.br-fuellung { position: absolute; left: 0; top: 0; bottom: 0; background: var(--k); transition: width .7s cubic-bezier(.22, .61, .36, 1); }
+.br-balken--gross .br-fuellung { background: var(--k-linie); }
+.br-betrag {
+  position: absolute; right: 14px; top: 50%; translate: 0 -50%;
+  font-family: var(--schrift-display); font-size: 28px; font-weight: 600;
+  color: var(--k-tinte);
+}
+.br-regel { display: grid; gap: 16px; align-content: start; padding: 30px 32px; border-radius: 16px; background: var(--k-flaeche); font-size: 28px; line-height: 1.35; }
+.br-regel p { margin: 0; }
+.br-regel-kopf { font-family: var(--schrift-display); font-size: 36px; font-weight: 600; }
+.br-hinweis { margin-top: 10px !important; padding-top: 16px; border-top: 2px solid var(--k-linie); color: var(--k-tinte-2); }
+
+/* ---------- 30 Kosten ---------- */
+.ko-inhalt {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 56px;
+}
+.ko-kosten { position: relative; margin: 0; display: grid; gap: 18px; align-content: start; }
+.ko-kosten figcaption { font-size: 28px; font-weight: 600; }
+.ko-achse { position: relative; height: 34px; margin: 0 0 4px 0; border-bottom: 3px solid var(--k-tinte); }
+.ko-achse span {
+  position: absolute; left: calc(var(--x) * 1%); bottom: 6px;
+  translate: -50% 0;
+  font-size: 22px; color: var(--k-tinte-2); white-space: nowrap;
+}
+.ko-achse span:first-child { translate: 0 0; }
+.ko-achse span:last-child { translate: -100% 0; }
+.ko-spannen { display: grid; gap: 22px; }
+.ko-spannen li { position: relative; display: grid; grid-template-rows: auto 26px; gap: 6px; }
+.ko-name { font-size: 28px; line-height: 1.2; }
+.ko-balken {
+  position: relative;
+  margin-left: calc(var(--von) * 1%);
+  width: calc((var(--bis) - var(--von)) * 1%);
+  min-width: 12px;
+  border-radius: 13px;
+  background: var(--k-tinte);
+}
+.ko-wert {
+  position: absolute; bottom: -2px;
+  left: calc(var(--bis) * 1% + 14px);
+  font-family: var(--schrift-display); font-size: 28px; font-weight: 600; white-space: nowrap;
+}
+.ko-spannen li.ko-links .ko-wert { left: auto; right: calc((100 - var(--von)) * 1% + 14px); }
+.ko-spannen li.ko-links:not(.ko-referenz) .ko-balken { background: var(--k-orange-voll); }
+.ko-vergleich { padding-top: 16px; border-top: 2px dashed var(--k-linie); }
+.ko-referenz .ko-balken { background: transparent; box-shadow: inset 0 0 0 4px var(--k-rot); min-width: 26px; }
+.ko-referenz .ko-wert, .ko-referenz .ko-name { color: var(--k-rot-text); }
+.ko-fazit { margin-top: 10px !important; font-size: 28px; line-height: 1.35; }
+.ko-hilfe { display: flex; flex-direction: column; gap: 22px; }
+.ko-kopf { font-family: var(--schrift-display); font-size: 34px; font-weight: 600; }
+
+/* ---------- 31 Drei Gesetze ---------- */
+.ge-inhalt {
+  display: grid !important;
+  grid-template-columns: 820px minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+.ge-bild { position: relative; width: 820px; height: 692px; }
+.ge-kreise { position: absolute; inset: 0; width: 820px; height: 692px; overflow: visible; }
+.ge-kreis { fill-opacity: .14; stroke-width: 5; transform-box: fill-box; transform-origin: center; }
+.ge-kreis--ai { fill: var(--k-orange); stroke: var(--k-orange); }
+.ge-kreis--ds { fill: var(--k-lila); stroke: var(--k-lila); }
+.ge-kreis--bv { fill: var(--k-tinte); stroke: var(--k-tinte); }
+.ge-name { position: absolute; display: grid; margin: 0; text-align: center; }
+.ge-name b { font-family: var(--schrift-display); font-size: 38px; font-weight: 600; }
+.ge-name span { font-size: 28px; color: var(--k-tinte-2); }
+.ge-name--ai { left: 60px; top: 120px; width: 260px; }
+.ge-name--ai b { color: var(--k-orange-text); }
+.ge-name--ds { left: 500px; top: 120px; width: 260px; }
+.ge-name--ds b { color: var(--k-lila-text); }
+.ge-name--bv { left: 280px; top: 535px; width: 260px; }
+.ge-fall {
+  position: absolute; margin: 0;
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 14px; border-radius: 12px;
+  background: var(--k-papier); box-shadow: 0 0 0 3px var(--k-tinte);
+  font-size: 28px; font-weight: 600; line-height: 1.12;
+}
+.ge-fall .vb-stelle { width: 40px; height: 40px; font-size: 22px; }
+/* Positionen nach Kreisgeometrie (SVG 900 × 760 auf 820 × 692): AI (292|246),
+   DSGVO (528|246), BetrVG (410|446), Radius 210 */
+.ge-fall { justify-content: center; text-align: center; }
+.ge-fall--mitte { left: 315px; top: 318px; width: 190px; }
+.ge-fall--ai-ds { left: 325px; top: 148px; width: 170px; }
+.ge-fall--ai-bv { left: 196px; top: 400px; width: 180px; }
+.ge-fall--ds-bv { left: 434px; top: 386px; width: 200px; }
+.ge-erklaerung { display: grid; gap: 22px; }
+.ge-erklaerung li { font-size: 28px; line-height: 1.38; padding-left: 22px; border-left: 5px solid var(--k-linie); }
+
+/* ---------- 32 Wer macht was ---------- */
+.wm-inhalt {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 24px 48px;
+}
+.wm-rollen { display: grid; gap: 12px; align-content: start; }
+.wm-rollen li { display: grid; gap: 2px; padding: 14px 22px; border-radius: 12px; background: var(--k-flaeche); }
+.wm-rollen b { font-family: var(--schrift-display); font-size: 30px; font-weight: 600; }
+.wm-rollen span { font-size: 28px; line-height: 1.25; color: var(--k-tinte-2); }
+.wm-rollen .wm-chef { background: var(--k-tinte); color: var(--k-papier); }
+.wm-rollen .wm-chef span { color: var(--k-papier); opacity: .9; }
+.wm-regeln { align-self: start; display: grid; gap: 14px; align-content: start; padding: 26px 30px; border-radius: 16px; box-shadow: inset 0 0 0 4px var(--k-tinte); }
+.wm-kopf { font-family: var(--schrift-display); font-size: 32px; font-weight: 600; }
+.wm-regeln ul { display: grid; gap: 8px; }
+.wm-regeln li { font-size: 28px; padding-left: 34px; position: relative; }
+.wm-regeln li::before { content: "?"; position: absolute; left: 0; top: 0; font-family: var(--schrift-display); font-weight: 700; color: var(--k-orange-text); }
+.wm-zahl { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; margin-top: 8px !important; padding-top: 14px; border-top: 2px solid var(--k-linie); font-size: 28px; }
+.wm-zahl .k-zahl { font-size: 56px; }
+.wm-quelle { font-size: 22px; color: var(--k-tinte-2); }
+.wm-zitat { grid-column: 1 / -1; margin: 0; display: flex; align-items: baseline; gap: 28px; padding-left: 26px; border-left: 6px solid var(--k-tinte); }
+.wm-zitat p { font-family: var(--schrift-display); font-size: 34px; font-weight: 600; line-height: 1.2; }
+.wm-zitat footer { font-size: 22px; color: var(--k-tinte-2); }
+
+/* ---------- 26 Inventar: Auflösung der Schätzung ---------- */
+.inv-inhalt { grid-template-columns: 780px minmax(0, 1fr) !important; }
+.inv-merksatz { grid-column: 1 !important; }
+.umfrage-aussage.inv-schaetzung {
+  grid-column: 2;
+  flex-direction: row; align-items: baseline; gap: 18px;
+  padding: 12px 0 0;
+}
+.inv-schaetzung .ua-zahl { font-size: 64px; }
+.inv-schaetzung .ua-text { font-size: 30px; max-width: none; }

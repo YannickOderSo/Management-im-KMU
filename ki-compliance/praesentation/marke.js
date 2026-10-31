@@ -39,10 +39,10 @@ window.MARKE = {
   gruppe: ['Yannick Heisler'],
   datum: '',                      // Vortragstermin (JJJJ-MM-TT) – noch offen
   rechtsstand: '31.10.2026',      // erscheint auf Titel- und Methodenfolie
-  dauerMinuten: 32,               // Annahme ca. 30 Min. + Diskussion (PLAN.md, offene Entscheidung 1)
+  dauerMinuten: 51,               // bis zu einer Stunde, interaktiv (Yannick, 31.10.2026): Sollzeiten 50:45 + Diskussion
   anrede: 'Sie',
 
-  /* 5. LIVE-UMFRAGEN (Baustein <div class="umfrage" data-umfrage="…">)
+  /* 5. LIVE-UMFRAGEN, acht Fragen (Baustein <div class="umfrage" data-umfrage="…">)
      Gleiche Web-App wie im Führungs-Referat (fuehrung/praesentation/
      live-abstimmung/ANLEITUNG.md); sie zählt je Umfrage-Name getrennt.
      VORAUSSETZUNG für den QR-Code: Dieser Ordner liegt auf dem Branch, den
@@ -50,7 +50,49 @@ window.MARKE = {
      Handzeichen, Klick auf die Balken zählt.
      runde: 'probe' für Tests, am Vortragstag eine eigene Runde eintragen. */
   umfragen: {
-    'ki-bewerbung': {
+    'ki-nutzung': {                       // Folie 02, Frage 1
+      frage: 'Wie oft nutzen Sie KI für Studium, Job oder Nebenjob?',
+      optionen: ['täglich', 'mehrmals pro Woche', 'selten', 'nie'],
+      link: 'https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/abstimmen.html?u=ki-nutzung',
+      kurzLink: '',
+      ergebnisLink: '',
+      liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
+      runde: 'probe',
+      gueltigMinuten: 30,
+      unsereAntwort: ['täglich', 'mehrmals pro Woche'],
+      aussage: '{prozent} nutzen KI mindestens mehrmals pro Woche',
+      aussageLeer: 'Noch keine Stimmen',
+      beispielwerte: [7, 8, 5, 1]     // BEISPIELDATEN
+    },
+    'ki-schaetzung': {                       // Folie 04, Frage 2; aufgelöst auf Folie 26
+      frage: 'Bei wie vielen der sechs Stellen reicht eine Schulung allein nicht aus?',
+      optionen: ['0 oder 1', '2', '3', '4', '5 oder 6'],
+      link: 'https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/abstimmen.html?u=ki-schaetzung',
+      kurzLink: '',
+      ergebnisLink: '',
+      liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
+      runde: 'probe',
+      gueltigMinuten: 30,
+      unsereAntwort: ['4'],
+      aussage: '{prozent} von Ihnen haben richtig geschätzt',
+      aussageLeer: 'Noch keine Stimmen',
+      beispielwerte: [3, 4, 6, 4, 3]     // BEISPIELDATEN
+    },
+    'ki-rolle': {                       // Folie 09, Frage 3
+      frage: 'Der Betrieb baut auf einer Sprachmodell-Schnittstelle einen eigenen Website-Chatbot. Welche Rolle hat er?',
+      optionen: ['Anbieter', 'Betreiber', 'Anbieter und Betreiber', 'keine Rolle'],
+      link: 'https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/abstimmen.html?u=ki-rolle',
+      kurzLink: '',
+      ergebnisLink: '',
+      liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
+      runde: 'probe',
+      gueltigMinuten: 30,
+      unsereAntwort: ['Anbieter und Betreiber'],
+      aussage: '{prozent} liegen richtig',
+      aussageLeer: 'Noch keine Stimmen',
+      beispielwerte: [5, 9, 6, 1]     // BEISPIELDATEN
+    },
+    'ki-bewerbung': {                       // Folie 20, Frage 4
       frage: 'Ein Tool bewertet Bewerbungen und erstellt ein Ranking. Welche Klasse?',
       optionen: ['verboten', 'hochriskant', 'Transparenz', 'minimal'],
       link: 'https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/abstimmen.html?u=ki-bewerbung',
@@ -64,7 +106,7 @@ window.MARKE = {
       aussageLeer: 'Noch keine Stimmen',
       beispielwerte: [2, 9, 4, 3]     // BEISPIELDATEN – verschwinden mit der ersten echten Stimme
     },
-    'ki-anrufe': {
+    'ki-anrufe': {                          // Folie 22, Frage 5
       frage: 'Stimmungsanalyse nur bei Anrufenden, nicht bei Beschäftigten. Welche Klasse?',
       optionen: ['verboten', 'hochriskant', 'Transparenz', 'minimal'],
       link: 'https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/abstimmen.html?u=ki-anrufe',
@@ -77,6 +119,48 @@ window.MARKE = {
       aussage: '{prozent} von Ihnen liegen richtig',
       aussageLeer: 'Noch keine Stimmen',
       beispielwerte: [8, 5, 6, 1]     // BEISPIELDATEN
+    },
+    'ki-eigener-fall': {                       // Folie 25, Frage 6 (Partnerarbeit)
+      frage: 'Welche Klasse hat Ihr KI-Tool ergeben?',
+      optionen: ['verboten', 'hochriskant', 'Transparenz', 'minimal', 'keine KI'],
+      link: 'https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/abstimmen.html?u=ki-eigener-fall',
+      kurzLink: '',
+      ergebnisLink: '',
+      liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
+      runde: 'probe',
+      gueltigMinuten: 30,
+      unsereAntwort: ['minimal'],
+      aussage: '{prozent} landen bei „minimal“',
+      aussageLeer: 'Noch keine Stimmen',
+      beispielwerte: [0, 3, 4, 10, 2]     // BEISPIELDATEN
+    },
+    'ki-gf-prio': {                       // Folie 33, Frage 7
+      frage: 'Sie sind Geschäftsführung der Muster Metallbau. Was gehen Sie am Montag als Erstes an?',
+      optionen: ['Stimmungsanalyse abschalten', 'KI-Inventar anlegen', 'Team schulen', 'Bewerber-Tool prüfen', 'Chatbot kennzeichnen'],
+      link: 'https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/abstimmen.html?u=ki-gf-prio',
+      kurzLink: '',
+      ergebnisLink: '',
+      liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
+      runde: 'probe',
+      gueltigMinuten: 30,
+      unsereAntwort: ['Stimmungsanalyse abschalten'],
+      aussage: '{prozent} schalten zuerst das Verbotene ab',
+      aussageLeer: 'Noch keine Stimmen',
+      beispielwerte: [7, 6, 3, 2, 2]     // BEISPIELDATEN
+    },
+    'ki-meinung': {                       // Folie 36, Frage 8 (Meinung)
+      frage: 'Bremst der AI Act kleine Unternehmen aus?',
+      optionen: ['eher ja, zu viel Aufwand', 'eher nein, schafft Vertrauen', 'beides', 'kann ich nicht sagen'],
+      link: 'https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/abstimmen.html?u=ki-meinung',
+      kurzLink: '',
+      ergebnisLink: '',
+      liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
+      runde: 'probe',
+      gueltigMinuten: 30,
+      unsereAntwort: ['eher ja, zu viel Aufwand'],
+      aussage: '{prozent} sehen eher eine Bremse',
+      aussageLeer: 'Noch keine Stimmen',
+      beispielwerte: [7, 6, 6, 2]     // BEISPIELDATEN
     }
   },
 
