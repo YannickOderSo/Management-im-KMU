@@ -13,7 +13,9 @@
      • Kontrast Text/Hintergrund (WCAG AA: 4,5 : 1, Großtext 3 : 1), seit 21.10.2026
        mit der Deckkraft der Vorfahren (abgeblendet: Zwischenschritt Warnung, Endzustand Fehler)
      • Wortbudget (Hauptfolie ≤ 40 sichtbare Wörter; am Zeilenende getrennte
-       Wörter wie „Marken-<br>nutzen“ zählen als ein Wort)
+       Wörter wie „Marken-<br>nutzen“ zählen als ein Wort). Ausnahme nur
+       ausdrücklich: data-wortbudget="60" an der Folie (z. B. Tabelle, Rechner,
+       schrittweise aufgedeckte Karten); der Bericht nennt jede Ausnahme.
      • mit --schritte: Überlauf, abgeschnittener Text, Schriftgröße und Kontrast
        in JEDEM Schritt (Befunde, die nur in einem Zwischenschritt auftreten,
        tragen den Zusatz „nur in Schritt n“)
@@ -717,7 +719,8 @@ async function folieUntersuchen(id) {
     ergebnis.notizen = !!(notiz && notiz.textContent.trim());
     ergebnis.attribute = {
       zeit: folie.getAttribute('data-zeit'), titel: folie.getAttribute('data-titel'),
-      feld: folie.getAttribute('data-feld'), buendel: folie.getAttribute('data-buendel')
+      feld: folie.getAttribute('data-feld'), buendel: folie.getAttribute('data-buendel'),
+      wortbudget: folie.getAttribute('data-wortbudget')
     };
     return ergebnis;
   }, id);
@@ -796,7 +799,9 @@ for (const f of folien) {
   };
   melden(u, '');
   zwischen.forEach((z) => melden(z.u, ' (nur in Schritt ' + z.n + ')'));
-  if (!f.backup && u.woerter > 40) warnung(ort, 'Wortbudget: ' + u.woerter + ' sichtbare Wörter (Hauptfolie höchstens ca. 40)');
+  const budget = Number(u.attribute.wortbudget) || 40;
+  if (budget !== 40) { eintrag.wortbudget = budget; (bericht.wortbudgetAusnahmen = bericht.wortbudgetAusnahmen || []).push(f.id + ': ' + u.woerter + ' von ' + budget); }
+  if (!f.backup && u.woerter > budget) warnung(ort, 'Wortbudget: ' + u.woerter + ' sichtbare Wörter (Hauptfolie höchstens ca. ' + budget + (budget !== 40 ? ', Ausnahme per data-wortbudget' : '') + ')');
   if (!u.notizen) warnung(ort, 'Sprechtext fehlt (<aside class="notizen">)');
   if (u.attribute.zeit === null) fehler(ort, 'data-zeit fehlt');
   if (!u.attribute.titel) warnung(ort, 'data-titel fehlt');

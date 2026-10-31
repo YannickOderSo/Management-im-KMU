@@ -82,6 +82,7 @@
       var k = klassen[nr];
       var g = util.svg('g', {
         class: 'w-punkt' + (puls ? ' w-punkt--puls k-endlos' : ''),
+        'aria-hidden': 'true',                      /* das Bild hat ein eigenes aria-label */
         transform: 'translate(' + p[0] + ' ' + p[1] + ')',
         style: puls ? 'animation-delay:' + (i * 0.35) + 's' : null,
         'data-klasse': k ? k.klasse : null,

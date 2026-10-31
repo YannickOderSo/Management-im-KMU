@@ -224,7 +224,7 @@
     daten.knoten.forEach(function (k) {
       var l = lage(k.id);
       var n = el('div', { class: 'kl-knoten', 'data-id': k.id, style: 'left:' + l.x + 'px;top:' + l.y + 'px' }, null, baum);
-      el('span', { class: 'kl-k-text' }, k.kurz, n);
+      el('span', { class: 'kl-k-text', 'data-meta': '' }, k.kurz, n);   /* Beschriftung im Diagramm */
       el('span', { class: 'kl-k-antwort', 'aria-hidden': 'true', 'data-ueberlauf-ok': '' }, null, n);
       el('span', { class: 'kl-k-treffer', 'aria-hidden': 'true', 'data-ueberlauf-ok': '' }, null, n);
       z.knoten[k.id] = n;
