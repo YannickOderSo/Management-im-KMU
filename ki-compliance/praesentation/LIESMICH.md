@@ -77,8 +77,11 @@ internen SimpleAct-KI (Fragebogen `../befragung/fragebogen-interne-ki.md`, Auswe
 
 ## Vor dem Vortrag
 
-1. ✅ `marke.js`: `datum` 2026-11-09, alle acht Umfragen auf Runde `'vortrag-2026-11-09'`. Teststimme vom Handy
-   spätestens 30 Minuten vor Beginn (danach zählt sie nicht mehr).
+**Go-Live-Checkliste mit Terminen, Generalprobe, Raum-Check, Spickzettel und Kürzungsplan: `../GO-LIVE.md`.**
+
+1. ✅ `marke.js`: `datum` 2026-11-09, alle acht Umfragen auf Runde `'vortrag-2026-11-09'`. Stimmen zählen 30 Minuten,
+   die Schätzfrage (Folie 04) 90 Minuten, weil sie erst auf Folie 26 aufgelöst wird. Teststimme am Vortragstag nur bei
+   Folie 02 und spätestens 30 Minuten vor Beginn; die Schätzfrage am Vortragstag nicht testen.
 2. ✅ Auf GitHub Pages veröffentlicht (Branch `claude/exciting-meitner-w27zwy`), QR-Codes geprüft. Plan B ohne Netz:
    Handzeichen, Klick auf die Balken zählt.
 3. ✅ Freigabe der SimpleAct-Inhalte erteilt (laut Yannick, 31.10.2026).

@@ -44,6 +44,7 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 | HTML-Präsentation „Welches Risiko hat Ihre KI?“ (37 Folien + 6 Backup, Sollzeit 50:45 + Diskussion) mit acht Live-Umfragen, Klassifizierer, Partnerarbeit, Bußgeld-Rechner, Notfall-PDF, Redeskript · **Vortrag Mo, 9.11.2026, Elias Knauber und Yannick Heisler** | ✅ online auf GitHub Pages, Prüfung 0 Fehler und 0 Warnungen, Freigabe SimpleAct erteilt | [`ki-compliance/praesentation/`](ki-compliance/praesentation/) |
 | Upgrade auf Kunden-Niveau: GSAP-Choreografie, Phosphor-Icons, isometrisches Wimmelbild, Text-Diät | ✅ 31.10.2026 umgesetzt (Pakete A bis C); Kundenfassung (D) nach dem 9.11.2026 | [`ki-compliance/recherche/gestaltung-upgrade.md`](ki-compliance/recherche/gestaltung-upgrade.md) |
 | Klassifizierer zum Mitnehmen (Handy) | ✅ | [`ki-compliance/praesentation/klassifizierer.html`](ki-compliance/praesentation/klassifizierer.html) |
+| Go-Live-Checkliste (Generalprobe, Raum-Check, Spickzettel, Kürzungsplan, Go/No-Go) | 📋 abzuhaken bis 9.11.2026 | [`ki-compliance/GO-LIVE.md`](ki-compliance/GO-LIVE.md) |
 
 ## Online (GitHub Pages)
 

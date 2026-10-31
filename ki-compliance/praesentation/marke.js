@@ -49,7 +49,9 @@ window.MARKE = {
      GitHub Pages zeigt (claude/exciting-meitner-w27zwy). Sonst Plan B:
      Handzeichen, Klick auf die Balken zählt.
      runde: 'probe' für Tests; Vortragsrunde 'vortrag-2026-11-09' (Stimmen zählen
-     30 Minuten, Teststimme also spätestens eine halbe Stunde vor Beginn). */
+     30 Minuten, Teststimme also spätestens eine halbe Stunde vor Beginn).
+     Ausnahme 'ki-schaetzung': 90 Minuten, weil die Auflösung erst auf Folie 26
+     kommt; diese Frage am Vortragstag NICHT testen (GO-LIVE.md). */
   umfragen: {
     'ki-nutzung': {                       // Folie 02, Frage 1
       frage: 'Wie oft nutzen Sie KI für Studium, Job oder Nebenjob?',
@@ -73,7 +75,7 @@ window.MARKE = {
       ergebnisLink: '',
       liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
       runde: 'vortrag-2026-11-09',
-      gueltigMinuten: 30,
+      gueltigMinuten: 90,             // Auflösung erst auf Folie 26 (Sollzeit ca. 35 Min. nach Folie 04): 30 Min. reichten nicht
       unsereAntwort: ['4'],
       aussage: '{prozent} von Ihnen haben richtig geschätzt',
       aussageLeer: 'Noch keine Stimmen',
