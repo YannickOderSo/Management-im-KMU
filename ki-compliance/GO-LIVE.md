@@ -22,6 +22,9 @@ Legende: `[x]` erledigt · **Y / E / beide** = wer es macht · ⚠ = häufigste 
 - [x] Inhalt final: 37 Folien + 6 Backup, Sprechtext und Rückfragen in den Notizen
 - [x] Rechtsstand 31.10.2026 zweimal am Normtext geprüft; zweite Prüfung mit fünf unabhängigen Durchgängen und
       27 Korrekturen (`recherche/rechtspruefung.md`, Abschnitt „Zweite Prüfung“)
+- [x] Dritte Rechtsprüfung (31.10.2026, nachts): Rechts-KI von SimpleAct, fünf unabhängige Recherchen an
+      Primärquellen und Endprüfung mit Fable 5.1. Ergebnis: rechtlich vortragsreif, 0 Fehler offen; Details in
+      `recherche/rechtspruefung.md`, Abschnitt „Dritte Prüfung“
 - [x] Prüflogik getestet: alle 458 Ja/Nein-Pfade, alle acht Beispielfälle wie erwartet
 - [x] Prüfwerkzeug: 0 Fehler, 0 Warnungen über alle Folien und Klickschritte
 - [x] Notfall-PDF und Redeskript neu erzeugt
@@ -117,9 +120,11 @@ sie bis zum Vortrag verfallen: nach 30 Minuten, bei der Schätzfrage nach 90 Min
       2. Förmliche Annahme der Art.-50-Leitlinien (C(2026) 5054; bisher nur gebilligt am 20.7.2026).
       3. Formular der Kommission für die vereinfachte Doku (Art. 11): bisher nicht veröffentlicht, so steht es auf
          Folie 29 in den Notizen.
-      4. Berichtigungen zur VO 2024/1689 oder 2026/1744 im Amtsblatt, neue harmonisierte Normen (bisher nur
-         EN 18286).
-      5. Mitteilungen der Bundesnetzagentur zum KI-MIG.
+      4. Berichtigungen zur VO 2024/1689 oder 2026/1744 im Amtsblatt; Fundstelle von EN 18286:2026 im Amtsblatt
+         (bisher nur von CEN-CENELEC angenommen, b1).
+      5. Mitteilungen der Bundesnetzagentur zum KI-MIG, Start des KI-Reallabors.
+      6. Leitlinien zu Art. 25 (Rollenwechsel; Folie 08, 20) und zum vereinfachten Qualitätsmanagement (Art. 63; Folie 29).
+      7. Änderung von Art. 22 DSGVO durch den Daten-Omnibus (Folien 20, 30, 32).
 - [ ] Gibt es Neues, Folie und Notiz anpassen. Den Rechtsstand in `marke.js` (`rechtsstand`) und auf Folie 01
       nachziehen; alle Stellen mit „31.10.2026“ suchen. Danach Prüfwerkzeug, PDF und Redeskript neu erzeugen und
       pushen (Befehle in `praesentation/LIESMICH.md`). Oder Claude bitten, das zu übernehmen.

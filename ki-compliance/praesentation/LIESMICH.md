@@ -105,8 +105,8 @@ node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte --druc
 ```
 
 Stand 31.10.2026 (nach dem Upgrade): 0 Fehler und 0 Warnungen über alle Folien und Schritte, Notfall-PDF 43 Seiten,
-Redeskript Sollzeit 50:30. Wortbudget 40 je Hauptfolie; vier ausdrückliche Ausnahmen per `data-wortbudget` (25 Inventar-
-Tabelle, 27 Irrtümer, 28 Rechner, 33 Fünf Schritte mit Praxisblick).
+Redeskript Sollzeit 50:30. Wortbudget 40 je Hauptfolie; Ausnahmen per `data-wortbudget` für Tabellen und Rechner
+(25, 27, 28, 33) und für rechtlich nötige Präzisierungen nach der dritten Rechtsprüfung (08, 10, 12, 16, 29).
 
 5. Probelauf am Präsentationslaptop: Animationen flüssig? Sonst `?bewegung=reduziert` an die Adresse hängen (zeigt
    alles ohne Bewegung, gleicher Inhalt).

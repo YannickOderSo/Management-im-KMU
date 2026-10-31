@@ -100,7 +100,7 @@ window.KLASSIFIZIERER = {
       id: 'K6', spalte: 2,
       kurz: 'Anderes Verbot, z. B. Biometrie?',
       frage: 'Sortiert das System Menschen per Biometrie nach Rasse, politischer Meinung, Gewerkschaftszugehörigkeit, Religion oder Weltanschauung, Sexualleben oder sexueller Ausrichtung, baut es Gesichtsdatenbanken durch wahlloses Auslesen von Internet oder Überwachungskameras auf, sagt es Straftaten allein aus Persönlichkeitsmerkmalen voraus, identifiziert es Menschen live per Biometrie im öffentlichen Raum für die Strafverfolgung oder erzeugt es realistische intime Darstellungen bestimmbarer Personen ohne deren Zustimmung bzw. Darstellungen sexuellen Kindesmissbrauchs?',
-      erklaerung: 'Alles verboten. Die beiden letzten Fälle sind neue Verbote ab 2.12.2026; für Anbieter greifen sie, wenn solche Inhalte Zweck des Systems sind oder ohne zumutbare Schutzvorkehrungen absehbar entstehen, für Nutzer nur, wenn sie das System gezielt dafür einsetzen.',
+      erklaerung: 'Alles verboten; nur das Kennzeichnen rechtmäßig erworbener Bilddatensätze und eng begrenzte Polizeifälle mit Genehmigung sind ausgenommen. Die beiden letzten Fälle sind neue Verbote ab 2.12.2026; für Anbieter greifen sie, wenn solche Inhalte Zweck des Systems sind oder ohne zumutbare Schutzvorkehrungen absehbar entstehen, für Nutzer nur, wenn sie das System gezielt dafür einsetzen.',
       rechtsgrundlage: ['Art. 5 Abs. 1 lit. ba, bb, d, e, g, h'],
       antworten: [{ text: 'Ja', ergebnis: 'E-VERBOTEN' }, { text: 'Nein', weiter: 'K7' }]
     },
@@ -123,7 +123,7 @@ window.KLASSIFIZIERER = {
     {
       id: 'K8', spalte: 3,
       kurz: 'Hochrisiko-Zweck, z. B. Personal?',
-      frage: 'Wird das System für einen der Zwecke aus Anhang III eingesetzt (Biometrie: Fernidentifizierung, Emotionserkennung oder Einordnung nach sensiblen Merkmalen wie ethnischer Herkunft oder Gesundheit; kritische Infrastruktur, Bildung, Beschäftigung und Personal, Zugang zu wesentlichen Diensten wie Kredit oder Lebens- und Krankenversicherung, Strafverfolgung, Migration, Justiz und Wahlen)?',
+      frage: 'Wird das System für einen der Zwecke aus Anhang III eingesetzt (Biometrie: Fernidentifizierung, Emotionserkennung oder Einordnung nach sensiblen Merkmalen wie Gesundheit oder genetischen Merkmalen; kritische Infrastruktur, Bildung, Beschäftigung und Personal, Zugang zu wesentlichen Diensten wie Kredit oder Lebens- und Krankenversicherung, Strafverfolgung, Migration, Justiz und Wahlen)?',
       erklaerung: 'Beispiele: Bewerbungen filtern oder bewerten, Aufgaben nach Leistungsdaten zuweisen, Bonität von Privatpersonen bewerten. Emotionserkennung zählt immer dazu. Alter oder Geschlecht per Kamera zu schätzen, ist kein Hochrisiko-Zweck; die Betroffenen sind aber zu informieren (Art. 50 Abs. 3). Wer ein allgemeines Werkzeug wie ChatGPT selbst für einen solchen Zweck einsetzt, kann dadurch zum Anbieter werden (Art. 25 Abs. 1 lit. c), nämlich wenn das System für diesen Zweck hochriskant wird, also keine Ausnahme nach Art. 6 Abs. 3 greift.',
       rechtsgrundlage: ['Art. 6 Abs. 2', 'Anhang III'],
       automatisch: { wenn: 'emotion', antwort: 'Ja' },
