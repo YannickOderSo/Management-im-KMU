@@ -11,7 +11,7 @@ SimpleAct-Angaben auf den Folien: erteilt (laut Yannick, 31.10.2026).
 
 | Antwort | Verwendung |
 |---|---|
-| B2 Entscheidungsbaum (16 Fragen, 13 Ergebnisse) | `praesentation/js/klassifizierer-daten.js`, Folien 21, 23, Handy-Seite. Knotenbeschriftungen für die Folie gekürzt, Erklärungen nach der Rechtsprüfung präzisiert (Maschinen, Art. 6 Abs. 1c, neue Verbote) |
+| B2 Entscheidungsbaum (17 Fragen nach der zweiten Prüfung, 13 Ergebnisse) | `praesentation/js/klassifizierer-daten.js`, Folien 21, 23, Handy-Seite. Knotenbeschriftungen für die Folie gekürzt, Erklärungen nach der Rechtsprüfung präzisiert (Maschinen, Art. 6 Abs. 1c, neue Verbote) |
 | B1, B3, B12 Prüfreihenfolge, „29 + 4 Fragen“, „unsicher = Ja“ | Folie 21 (Sprechtext), Folie 34 (Praxisblick), B6 |
 | D1–D14 Fallbeispiele | Wimmelbild und Inventar (Folien 03, 26: D1, D2, D4, D6, D8, D9), Fälle der Live-Umfragen (D4, D7), Filter-Folie 15 (D5/D4) |
 | E2 häufige Fehleinschätzungen | Folie 28 „Sechs Irrtümer“ (als Beobachtung, keine Statistik) |

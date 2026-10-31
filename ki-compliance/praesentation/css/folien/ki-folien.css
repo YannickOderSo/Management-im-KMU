@@ -1231,13 +1231,13 @@ html.druckmodus .dr-urteil { opacity: 1; translate: 0 0; }
 }
 .ge-bild .ge-nr { position: absolute; }
 .ge-nr--ai-ds { left: 378px; top: 114px; }
-.ge-nr--ai-bv { left: 241px; top: 369px; }
 .ge-nr--ds-bv { left: 515px; top: 369px; }
-.ge-nr--mitte { left: 378px; top: 280px; background: var(--k-tinte); color: var(--k-papier); }
+.ge-nr--mitte { left: 338px; top: 280px; background: var(--k-tinte); color: var(--k-papier); }
+.ge-nr--mitte2 { left: 418px; top: 280px; background: var(--k-tinte); color: var(--k-papier); }
 .ge-erklaerung { display: grid; gap: 22px; }
 .ge-erklaerung li { display: flex; align-items: flex-start; gap: 22px; font-size: 28px; line-height: 1.38; }
 .ge-erklaerung .ge-nr { width: 48px; height: 48px; font-size: 26px; box-shadow: 0 0 0 3px var(--k-tinte); }
-.ge-erklaerung li:last-child .ge-nr { background: var(--k-tinte); color: var(--k-papier); }
+.ge-erklaerung li:nth-child(n+3) .ge-nr { background: var(--k-tinte); color: var(--k-papier); }
 .ge-erklaerung p { margin: 0; }
 .ge-erklaerung b { display: block; font-family: var(--schrift-display); font-size: 30px; font-weight: 600; }
 

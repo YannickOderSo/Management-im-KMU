@@ -70,3 +70,55 @@ Abkürzungen: VO = Verordnung, ABl. = Amtsblatt der EU, AIA = VO (EU) 2024/1689,
 14. **Art. 2 Abs. 2 und Art. 111 Abs. 2 (11i, 11n):** Nicht in der Fassung von 2024 zitieren, beide wurden durch den Omnibus geändert. Besonders wichtig: Der Stichtag für den Bestandsschutz von Hochrisiko-Systemen ist nicht mehr der 2.8.2026. Maßgeblich ist der neue Anwendungsbeginn, also 2.12.2027 (Anhang III) bzw. 2.8.2028 (Anhang I).
 15. **Maschinen (12):** Datum 20.1.2027 bleibt. Ergänzen: Seit dem Omnibus steht die MVO in Anhang I Abschnitt B. KI-Anforderungen für Maschinen kommen über delegierte Rechtsakte nach der MVO, anwendbar ab 2.8.2028. Für den Maschinenbau-Mittelstand ist das eine zentrale Änderung.
 16. **EN 18286 (9):** Ergänzen, dass die Norm nur das QMS nach Art. 17 abdeckt. Für die übrigen Anforderungen (Art. 9–15) gibt es noch keine harmonisierte Norm. Weitere Normen sind angekündigt.
+
+## Zweite Prüfung: Prüflogik und alle Rechtsaussagen (31.10.2026, abends)
+
+**Anlass:** Hinweis von Yannick, die Rechtslogik sei „nicht ganz korrekt“. **Methode:** fünf voneinander unabhängige
+Prüfungen mit eigenem Schwerpunkt, jeweils am Normtext (VO 2024/1689 und VO 2026/1744 samt Berichtigung vom 29.9.2026
+über Cellar, MVO 2023/1230, KI-MIG im BGBl., BetrVG, RDG, DSGVO, EuGH C-634/21, RL 2024/2853) und an den
+Kommissionsleitlinien C(2025) 5052, C(2025) 5053, C(2025) 7719, C(2026) 5054 sowie dem Entwurf der Hochrisiko-
+Leitlinien vom 19.5.2026: (1) Anwendungsbereich und Verbote, (2) Hochrisiko, (3) Transparenz, GPAI, Art. 4,
+(4) Pfadlogik mit allen Ja/Nein-Pfaden und den acht Beispielfällen, (5) alle übrigen Folien, Notizen und Backups.
+Widersprüche zwischen den Prüfungen wurden am Normtext entschieden.
+
+### Was falsch oder irreführend war und wie es jetzt ist
+
+| Nr. | Stelle | Problem | Korrektur | Beleg |
+|---|---|---|---|---|
+| 1 | Baum K12 „Spricht es mit Menschen?“; Fall ChatGPT | Fragte nach der Systemeigenschaft, die Pflicht trifft aber nur den Anbieter. Wer ChatGPT ehrlich prüfte, landete bei „Transparenz“; der Musterfall kam nur mit einer sachlich falschen Antwort auf „minimal“. | Frage aus Anbieter-Sicht: „Bieten Sie selbst ein KI-System an, das direkt mit Menschen kommuniziert … Wer ein fremdes Werkzeug nur nutzt: Nein.“ K13 ebenso (auch bauen lassen, auch intern). | Art. 50 Abs. 1, 2; Art. 3 Nr. 3, 11; LL Art. 50 Rn. 11, 28, 30 |
+| 2 | Baum K4/K8/K14 | Emotionserkennung wurde dreimal unverbunden abgefragt; Pfade endeten ohne Hochrisiko (Anhang III Nr. 1 c) oder ohne Informationspflicht (Art. 50 Abs. 3). | Neue Reihenfolge K4 „Gefühle per Biometrie?“ → K4A „Bei Beschäftigten oder Lernenden?“ → K5; Ja bei K4 setzt einen Merker, K8 und K14 werden dann automatisch mit Ja beantwortet. | Anhang III Nr. 1 c; Art. 50 Abs. 3, 6 |
+| 3 | K4 „am Arbeitsplatz“ | Kunden im Laden oder Callcenter sind auch „Menschen am Arbeitsplatz“ → fälschlich „verboten“. | „Beschäftigte (auch Bewerber) oder Lernende“. | LL Verbote Rn. 254 |
+| 4 | K5 „Sicherheit“ | KMU verstehen darunter auch Diebstahl- und Betrugsschutz → fälschlich „nicht verboten“. | „Schutz von Leben und Gesundheit (nicht: Diebstahl, Betrug, Wohlbefinden, Stress)“. | LL Verbote Rn. 257, 258 |
+| 5 | K3 „Soll das System …“ | Nur Absicht; lit. a/b erfassen auch die Wirkung. | „gewollt oder als Wirkung“. | Art. 5 Abs. 1 lit. a, b; LL Verbote Rn. 76 |
+| 6 | K2 / E-AUSSERHALB | Forschungsausnahme zu weit, Art. 2 Abs. 8 (Entwicklung vor Markteinführung) fehlte. | Präzisiert, Abs. 8 ergänzt. | Art. 2 Abs. 6, 8, 10 |
+| 7 | K6, f12-Notiz, b2 „Herkunft“ | Lit. g nennt „Rasse“, nicht Herkunft. | korrigiert; b2-Ausnahme „Kennzeichnen/Filtern rechtmäßig erworbener biometrischer Datensätze“. | Art. 5 Abs. 1 lit. g; LL Verbote Rn. 271, 283 |
+| 8 | f12, f03, f31, b5 „Stimmungsanalyse … verboten“ | Verbot nur bei biometrischen Daten, nicht bei Textauswertung. | „Stimmanalyse“ bzw. „per Stimme oder Kamera“. | Art. 3 Nr. 39; LL Verbote Rn. 251, 265 |
+| 9 | f07 FAQ-Bot „meist keine KI“; Zitat mit Auslassung | Feste Antwortauswahl schließt KI nicht aus; Auslassung strich „in unterschiedlichem Grade“. | „Stichwort-Bot: keine KI“ mit Notiz zum trainierten Modell; Zitat vollständig. | ErwG 12; LL Def. Rn. 17–20, 33, 46 |
+| 10 | f13 „erlaubt“ mit grüner Form bei Lkw-Kamera und Kundenzählung | Grün suggeriert minimal; Müdigkeitserkennung ab Werk kann hochriskant sein. | Etikett „nicht verboten“ (neutral); Notizen präzisiert. | LL Verbote Rn. 249, 261; Anhang I Abschn. B |
+| 11 | E-HOCH-I-B, f14, f26, b4 „ab 2.8.2028“ | MVO gilt schon ab 20.1.2027 (selbstlernende Sicherheitsfunktionen mit Prüfstelle); fester Termin 2.8.2028 nur für den KI-Zusatz bei Maschinen, nicht für Fahrzeuge u. a. | „MVO ab 1/2027, KI-Zusatz ab 8/2028; Fahrzeuge u. a.: Termin offen“. | MVO Art. 54 (berichtigt), Anhang I Teil A Nr. 5, 6; Omnibus Art. 3 Nr. 1; Art. 102–109 |
+| 12 | K7 Drittprüfung | Maschinenbauer, die die Prüfstelle nur dank harmonisierter Normen vermeiden, antworteten „Nein“. | Erklärung ergänzt (Leitlinienentwurf). | Entwurf LL Hochrisiko Rn. 45, 57–59; MVO Art. 25 |
+| 13 | E-HOCH-I-A + Ausnahme | Pfade zeigten „hochriskant“ und „Ausnahme“ zugleich. | Ausnahme entfällt, wenn schon über Anhang I hochriskant. | Art. 6 Abs. 3 („abweichend von Absatz 2“) |
+| 14 | f15 / K10 lit. c „erkennt nur Muster“ | Jedes lernende System erkennt Muster; lit. c betrifft nur die nachträgliche Prüfung fertiger menschlicher Entscheidungen. | „prüft fertige Entscheidungen“. | Art. 6 Abs. 3 UAbs. 2 lit. c; Entwurf LL Rn. 100 f. |
+| 15 | Art. 4 in Transparenz-Ergebnissen; nur-GPAI-Pfad | KI-Kompetenz fehlte; System ohne Klasse. | Art. 4 ergänzt; bei nur GPAI zusätzlich „minimal“. | Art. 4 n. F.; LL Art. 50 Rn. 25 |
+| 16 | Hochrisiko-Termine ohne Bestandsschutz | Systeme, die vor dem Anwendungsbeginn laufen, fallen nur nach erheblicher Änderung darunter. | Hinweise in Ergebnissen, Notizen f06, f21, f26, f33, b6. | Art. 111 Abs. 2 n. F. |
+| 17 | Rollenwechsel | ChatGPT selbst für Bewerber-Ranking → Anbieter. | Hinweise in K8, E-HOCH-III, f08, f21. | Art. 25 Abs. 1 lit. c |
+| 18 | GPAI | Open-Source-Ausnahme, Pflichten nur für die Änderung, Drittel-Kriterium als Richtwert. | E-GPAI, K16, f19 („meist Modellanbieter“). | Art. 53 Abs. 2; LL GPAI Rn. 60, 65, 70 |
+| 19 | K15 „erfundene Figur kein Deepfake“ | Echt wirkende erfundene Personen können Deepfakes sein. | korrigiert. | Art. 3 Nr. 60; LL Art. 50 Rn. 113 |
+| 20 | f06 „GPAI und Bußgelder“ 2.8.2025 | Bußgelder gegen GPAI-Anbieter erst ab 2.8.2026. | präzisiert. | Art. 113 lit. b, Art. 101 |
+| 21 | f30 Entlastungen | Art. 11, 17, 63 und Reallabore betreffen Anbieter. | Überschrift „Für Anbieter“, „Kostenlose Hilfe für alle“. | Art. 11, 17, 63 n. F. |
+| 22 | f29 „Plus nationale Bußgelder“, Rechner „Pflichten“ | § 15 KI-MIG ahndet eigene Tatbestände; Art. 99 Abs. 4 ist abschließend. | „Daneben bis 50.000 € für weitere Pflichten“; „Hochrisiko-, Transparenzpflichten“; Midcap-Kriterien vollständig. | § 15 KI-MIG; Art. 99 Abs. 4, 6a |
+| 23 | f31 Venn | Schichtplan nach Leistung und Bewerber-Ranking betreffen auch DSGVO bzw. BetrVG (§ 95). | Neu: 1 Bonitäts-Score (AI Act + DSGVO), 2 Videoüberwachung ohne KI (DSGVO + BetrVG), 3/4 Mitte. | § 95 Abs. 2a BetrVG; Anhang III Nr. 5 b |
+| 24 | f28 Irrtum 4, 5 | „Bei Profiling bleibt es hochriskant“ legte nahe, ohne Profiling reiche Aufsicht; „Zertifikat“ zu pauschal. | „Aufsicht ist Pflicht, kein Ausweg“; „KI-Kompetenz-Zertifikat“. | Art. 6 Abs. 3, 14, 26; Art. 43, 44 |
+| 25 | f34-Notiz RDG | „Verbindliche Prüfung bleibt zugelassenen Personen vorbehalten“ ist falsch. | Eigene Einstufung erlaubt; für andere im Einzelfall Erlaubnis nötig. | § 2 Abs. 1, 3 RDG |
+| 26 | f10 Art. 85/86, BaFin | Beschweren kann jede Person; Art. 86 praktisch ab 12/2027; BaFin nur bei regulierter Finanztätigkeit. | korrigiert. | Art. 85, 86; § 2 Abs. 3, 4 KI-MIG |
+| 27 | b5, b6, b3, f23 Merksatz, f17-Notiz, f33-Notiz | Art. 26 Abs. 7 nur Hochrisiko; § 90 Abs. 1 Nr. 3 BetrVG fehlte; Produkthaftung für Software fehlte; „Stellenanzeigen“ nur gezielt schalten; Merksatz „am Telefon erlaubt“; „eingekauft“ zu grob; Betriebsrat „muss“. | jeweils korrigiert. | Art. 26 Abs. 7; § 90 BetrVG; RL 2024/2853; Anhang III Nr. 4 a |
+
+**Bestätigt:** Aufbau des Baums (Verbote vor Hochrisiko, Profiling vor Ausnahme, Ende nach Anhang I Abschnitt B nach
+Art. 2 Abs. 2 n. F.), alle zehn Verbote und ihre Termine, Art. 6 Abs. 1a–1c, Termine nach Art. 113 n. F., Art. 50
+und Art. 111 Abs. 4, Art. 4 n. F. ohne Bußgeld, Art. 99 und der Bußgeld-Rechner, Art. 26/27/86, Anhang III, alle acht
+Beispielfälle im Ergebnis. **Registrierung ausgenommener Systeme (Art. 49 Abs. 2) gilt weiter**, nur mit weniger
+Angaben (Omnibus ErwG 22, Art. 1 Nr. 42); Nr. 11j oben ist insoweit zu ergänzen.
+
+**Neu im Handy-Klassifizierer:** Knopf „Unsicher“ wählt je Frage die strengere Antwort (bei Ausnahmen Nein) und
+weist das Ergebnis als „vorsorglich eingestuft“ aus. **Test:** alle 458 Ja/Nein-Pfade durchgespielt; keine
+widersprüchlichen Ergebnisse, alle acht Fälle wie erwartet, Zurücknehmen auch über automatische Schritte.

@@ -81,6 +81,8 @@
   .erklaerung { margin: 12px 0 0; padding: 10px 12px; border-left: 4px solid var(--tinte); background: var(--papier); border-radius: 0 8px 8px 0; color: var(--tinte-2); font-size: 15px; }
   .stempel { display: inline-block; margin: 12px 8px 0 0; padding: 1px 8px 2px; border: 1.5px solid currentColor; border-radius: 6px; font: 600 13px/1.4 var(--display); color: var(--tinte-2); }
   .knoepfe { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+  .knopf--unsicher { grid-column: 1 / -1; min-height: 48px; border-style: dashed; font-size: 18px; }
+  .vorsorglich { font-size: 15px; color: var(--tinte-2); }
   button { font: inherit; cursor: pointer; }
   .knopf { min-height: 56px; border-radius: 14px; border: 3px solid var(--tinte); background: var(--papier); color: var(--tinte); font: 650 20px/1 var(--display); }
   .knopf--ja { background: var(--tinte); color: var(--papier); }
@@ -132,7 +134,7 @@
 <main>
   <header class="kopf">
     <h1>Welches Risiko hat Ihre KI?</h1>
-    <p>Der Klassifizierer zum EU AI Act: bis zu 16 Ja/Nein-Fragen in fünf Prüfstufen.</p>
+    <p>Der Klassifizierer zum EU AI Act: bis zu 15 Ja/Nein-Fragen in fünf Prüfstufen.</p>
     <p class="vorbehalt">Vereinfacht nach der Prüflogik von SimpleAct · Rechtsstand <span id="stand">31.10.2026</span> · allgemeine Information, keine Rechtsberatung · speichert und sendet nichts</p>
   </header>
 
@@ -202,8 +204,10 @@
     var knoepfe = el('div', { class: 'knoepfe' }, null, karte);
     var ja = el('button', { type: 'button', class: 'knopf knopf--ja' }, 'Ja', knoepfe);
     var nein = el('button', { type: 'button', class: 'knopf' }, 'Nein', knoepfe);
+    var unsicher = el('button', { type: 'button', class: 'knopf knopf--unsicher' }, 'Unsicher', knoepfe);
     ja.addEventListener('click', function () { antworten('Ja'); });
     nein.addEventListener('click', function () { antworten('Nein'); });
+    unsicher.addEventListener('click', function () { abgespielt = null; p.antworteUnsicher(); weiter(); });
     var zurueck = el('button', { type: 'button', class: 'leise' }, 'Letzte Antwort zurücknehmen', karte);
     zurueck.hidden = !p.pfad.length;
     zurueck.addEventListener('click', function () { p.zurueck(); weiter(); });
@@ -219,6 +223,8 @@
     ansicht.textContent = '';
     var box = el('div', { class: 'ergebnis' }, null, ansicht);
     el('h2', null, abgespielt ? 'Ergebnis: ' + abgespielt : 'Ihr Ergebnis', box);
+    var unsicher = p.pfad.filter(function (s) { return s.unsicher; }).length;
+    if (unsicher) el('p', { class: 'vorsorglich' }, 'Vorsorglich eingestuft: Bei ' + (unsicher === 1 ? 'einer Frage' : unsicher + ' Fragen') + ' haben Sie „unsicher“ gewählt; dort zählt die strengere Antwort. Klären Sie diese Punkte, bevor Sie sich auf das Ergebnis verlassen.', box);
     p.treffer().forEach(function (e) {
       var erg = el('article', { class: 'erg', 'data-klasse': e.klasse }, null, box);
       var h = el('h3', null, null, erg);
@@ -242,7 +248,7 @@
     var pfad = el('div', { class: 'pfad' }, null, box);
     el('b', null, 'Ihr Prüfpfad', pfad);
     var ol = el('ol', null, null, pfad);
-    p.pfad.forEach(function (s) { el('li', null, p.knoten[s.id].kurz + ' ' + s.antwort, ol); });
+    p.pfad.forEach(function (s) { el('li', null, p.knoten[s.id].kurz + ' ' + s.antwort + (s.unsicher ? ' (unsicher, vorsichtshalber)' : '') + (s.auto ? ' (folgt aus Ihrer Antwort zu Gefühlen)' : ''), ol); });
     var knoepfe = el('div', { class: 'knoepfe' }, null, box);
     var neu = el('button', { type: 'button', class: 'knopf knopf--ja' }, 'Neu prüfen', knoepfe);
     var zurueck = el('button', { type: 'button', class: 'knopf' }, 'Zurück', knoepfe);

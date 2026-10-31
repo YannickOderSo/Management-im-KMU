@@ -108,7 +108,7 @@
      --------------------------------------------------------------------------- */
   var STUFEN = [
     { name: 'Verbote', fest: 35, anteil: 0.07, klasse: 'verboten', zeile: '35 Mio. € oder 7 %' },
-    { name: 'Pflichten, Transparenz', fest: 15, anteil: 0.03, klasse: 'hoch', zeile: '15 Mio. € oder 3 %' },
+    { name: 'Hochrisiko-, Transparenzpflichten', fest: 15, anteil: 0.03, klasse: 'hoch', zeile: '15 Mio. € oder 3 %' },
     { name: 'falsche Auskünfte', fest: 7.5, anteil: 0.01, klasse: 'kein', zeile: '7,5 Mio. € oder 1 %' }
   ];
   function euro(mio) {

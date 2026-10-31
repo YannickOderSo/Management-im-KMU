@@ -6,8 +6,13 @@
         var p = new Klassifizierer.Pruefung(window.KLASSIFIZIERER);
         p.aktuell        → ID der offenen Frage (oder null = fertig)
         p.antworte('Ja') → beantwortet die offene Frage
+        p.antworteUnsicher() → strengere Antwort (Knoten-Feld streng, sonst Ja)
         p.zurueck()      → letzte Antwort zurücknehmen
         p.treffer()      → Ergebnisse (ohne „minimal“, wenn es andere gibt)
+      Merker: Eine Antwort kann einen Merker setzen ({ vermerk: 'emotion' }).
+      Ein Knoten mit { automatisch: { wenn: 'emotion', antwort: 'Ja' } } wird
+      dann ohne Klick beantwortet (Schritt mit auto: true), damit dieselbe
+      Tatsache nicht zweimal widersprüchlich abgefragt wird.
    2. BAUSTEIN <div class="klassifizierer" data-faelle="bewerbung" data-frei>
       Baum mit fünf Prüfstufen (Spalten) und einem Feld darunter.
       • data-faelle="a b": Schritt 1 prüft Fall a, Schritt 2 Fall b
@@ -65,17 +70,20 @@
   }
   Pruefung.prototype.neu = function () {
     this.aktuell = this.daten.start;
-    this.pfad = [];            /* [{ id, antwort, ergebnis, vorher }] */
+    this.pfad = [];            /* [{ id, antwort, ergebnis, vorher, auto, merker }] */
     this.liste = [];           /* Ergebnis-IDs in Reihenfolge */
+    this.merker = {};
   };
-  Pruefung.prototype.antworte = function (text) {
+  Pruefung.prototype.antworte = function (text, auto) {
     var k = this.knoten[this.aktuell];
     if (!k) return null;
     var a = null;
     k.antworten.forEach(function (x) { if (x.text === text || x.text.indexOf(text) === 0) a = x; });
     if (!a) return null;
-    var schritt = { id: k.id, antwort: text, ergebnis: a.ergebnis || null, vorher: this.aktuell };
+    var schritt = { id: k.id, antwort: text, ergebnis: a.ergebnis || null, vorher: this.aktuell,
+      auto: !!auto, merker: Object.assign({}, this.merker) };
     this.pfad.push(schritt);
+    if (a.vermerk) this.merker[a.vermerk] = true;
     var weiter = null;
     if (a.ergebnis) {
       this.liste.push(a.ergebnis);
@@ -85,20 +93,48 @@
       weiter = a.weiter || null;
     }
     this.aktuell = weiter;
+    /* Knoten, deren Antwort aus einem Merker folgt, gleich mitbeantworten */
+    if (!auto) {
+      var n = this.knoten[this.aktuell], sicherung = 0;
+      while (n && n.automatisch && this.merker[n.automatisch.wenn] && sicherung++ < 20) {
+        this.antworte(n.automatisch.antwort, true);
+        n = this.knoten[this.aktuell];
+      }
+    }
     return schritt;
   };
+  /* „Unsicher“: die strengere Antwort wählen (Feld streng, sonst Ja) */
+  Pruefung.prototype.antworteUnsicher = function () {
+    var k = this.knoten[this.aktuell];
+    if (!k) return null;
+    var s = this.antworte(k.streng || 'Ja');
+    if (s) s.unsicher = true;
+    return s;
+  };
   Pruefung.prototype.zurueck = function () {
-    var s = this.pfad.pop();
-    if (!s) return;
-    if (s.ergebnis) this.liste.pop();
-    this.aktuell = s.id;
+    var s;
+    do {
+      s = this.pfad.pop();
+      if (!s) return;
+      if (s.ergebnis) this.liste.pop();
+      this.aktuell = s.id;
+      this.merker = s.merker || {};
+    } while (s.auto);
   };
   Pruefung.prototype.fertig = function () { return !this.aktuell; };
   Pruefung.prototype.treffer = function () {
     var self = this;
-    var ids = this.liste.slice();
-    var andere = ids.filter(function (id) { return !(self.ergebnisse[id] || {}).nurWennNichtsAnderes; });
-    if (andere.length) ids = andere;
+    var ids = this.liste.filter(function (id, i, alle) { return alle.indexOf(id) === i; });
+    var klasse = function (id) { return (self.ergebnisse[id] || {}).klasse; };
+    /* „minimal“ nur, wenn das System sonst nichts trifft (GPAI betrifft das Modell, nicht das System) */
+    var andere = ids.filter(function (id) { return !(self.ergebnisse[id] || {}).nurWennNichtsAnderes && klasse(id) !== 'gpai'; });
+    if (andere.length) ids = ids.filter(function (id) { return !(self.ergebnisse[id] || {}).nurWennNichtsAnderes; });
+    else if (ids.length && ids.every(function (id) { return klasse(id) === 'gpai'; })) {
+      /* nur GPAI getroffen: das System selbst ist minimal */
+      self.daten.ergebnisse.forEach(function (e) { if (e.nurWennNichtsAnderes && ids.indexOf(e.id) < 0) ids.push(e.id); });
+    }
+    /* Anhang-III-Ausnahme ist gegenstandslos, wenn das System schon über Anhang I hochriskant ist */
+    if (ids.some(function (id) { return klasse(id) === 'hoch'; })) ids = ids.filter(function (id) { return klasse(id) !== 'ausnahme'; });
     return ids.map(function (id) { return self.ergebnisse[id]; }).filter(Boolean);
   };
   Pruefung.prototype.hauptklasse = function () {
@@ -137,7 +173,7 @@
   if (!Deck || !Deck.baustein || !window.KLASSIFIZIERER) return;
 
   var SPALTE_B = 336, KNOTEN_B = 312, ZEILE_Y0 = 60, ZEILE_H = 76, ZEILE_ABST = 12;
-  var REIHEN = { 1: ['K1', 'K2'], 2: ['K3', 'K4', 'K5', 'K6'], 3: ['K7', 'K11', 'K8', 'K9', 'K10'], 4: ['K12', 'K13', 'K14', 'K15'], 5: ['K16', 'ENDE'] };
+  var REIHEN = { 1: ['K1', 'K2'], 2: ['K3', 'K4', 'K4A', 'K5', 'K6'], 3: ['K7', 'K11', 'K8', 'K9', 'K10'], 4: ['K12', 'K13', 'K14', 'K15'], 5: ['K16', 'ENDE'] };
   var TEMPO = 520;          /* ms je Frage */
   var HALT = 900;           /* zusätzlich bei einem Treffer */
 
@@ -318,7 +354,7 @@
       el('b', null, name.name, zeile);
     } else {
       el('span', { class: 'kl-feld-marke', 'data-meta': '' }, 'Prüfpfad', zeile);
-      el('b', null, '16 Ja/Nein-Fragen in fünf Prüfstufen', zeile);
+      el('b', null, '17 Ja/Nein-Fragen in fünf Prüfstufen', zeile);
     }
     var leg = el('span', { class: 'kl-legende', 'data-meta': '' }, null, zeile);
     el('i', { class: 'ja', 'aria-hidden': 'true' }, null, leg);
@@ -517,15 +553,18 @@
   function freiAntworten(huelle, text) {
     var z = huelle._kl;
     if (!z.frei || !z.pruefung.aktuell) return;
+    var vorher = z.pruefung.pfad.length;
     var s = z.pruefung.antworte(text);
     if (!s) return;
-    knotenMarkieren(huelle, s);
+    var neue = z.pruefung.pfad.slice(vorher);       /* eigener Schritt + automatische */
     var ziel = z.pruefung.aktuell;
-    var nurMinimal = !ziel && s.ergebnis === 'E-MINIMAL' && z.pruefung.treffer().length === 1;
-    if (ziel || nurMinimal) {
-      var p = spurSegment(huelle, s.id, ziel || 'ENDE');
-      zeichnen(huelle, p, 300, function () {});
-    }
+    var letzte = neue[neue.length - 1];
+    var nurMinimal = !ziel && letzte.ergebnis === 'E-MINIMAL' && z.pruefung.treffer().length === 1;
+    neue.forEach(function (t, i) {
+      knotenMarkieren(huelle, t);
+      var nach = neue[i + 1] ? neue[i + 1].id : (ziel || (nurMinimal ? 'ENDE' : null));
+      if (nach) zeichnen(huelle, spurSegment(huelle, t.id, nach), 300, function () {});
+    });
     if (ziel) {
       aktivSetzen(huelle, ziel);
       feldFrage(huelle, ziel);
@@ -540,12 +579,18 @@
   function freiZurueck(huelle) {
     var z = huelle._kl;
     if (!z.frei || !z.pruefung.pfad.length) return;
-    var pfad = z.pruefung.pfad.slice(0, -1).map(function (s) { return s.antwort; });
+    var eigene = z.pruefung.pfad.filter(function (s) { return !s.auto; });
+    var pfad = eigene.slice(0, -1).map(function (s) { return s.antwort; });
     freiStarten(huelle);
     pfad.forEach(function (a) {
-      var s = z.pruefung.antworte(a);
-      knotenMarkieren(huelle, s);
-      if (z.pruefung.aktuell) spurSegment(huelle, s.id, z.pruefung.aktuell);
+      var vorher = z.pruefung.pfad.length;
+      z.pruefung.antworte(a);
+      var neue = z.pruefung.pfad.slice(vorher);
+      neue.forEach(function (t, i) {
+        knotenMarkieren(huelle, t);
+        var nach = neue[i + 1] ? neue[i + 1].id : z.pruefung.aktuell;
+        if (nach) spurSegment(huelle, t.id, nach);
+      });
     });
     aktivSetzen(huelle, z.pruefung.aktuell);
     markeAuf(huelle, z.pruefung.aktuell);

@@ -54,7 +54,7 @@ dem Publikum klicken, ↶ nimmt die letzte Antwort zurück, „Neu“ beginnt vo
 |---|---|
 | `index.html` | alle Folien mit Sprechtext (`aside.notizen`) |
 | `marke.js` | Angaben, Farben, acht Live-Umfragen (`ki-nutzung` … `ki-meinung`) |
-| `js/klassifizierer-daten.js` | **die Prüflogik** (16 Fragen, 13 Ergebnisse, 8 Beispielfälle), einzige Quelle für Folien und Handy-Seite |
+| `js/klassifizierer-daten.js` | **die Prüflogik** (17 Fragen, 13 Ergebnisse, 8 Beispielfälle; Emotionserkennung zieht Anhang III und Art. 50 Abs. 3 automatisch nach), einzige Quelle für Folien und Handy-Seite |
 | `js/klassifizierer.js` | Logik (`Klassifizierer.Pruefung`) und Baustein `.klassifizierer` für die Folien |
 | `klassifizierer.html` | Klassifizierer fürs Handy (QR-Codes auf Folie 24 und 37); speichert und sendet nichts |
 | `abstimmen.html`, `js/abstimmen.js` | Abstimmseite der Live-Umfragen (wie im Führungs-Referat, Formen der Risikoklassen ergänzt) |
@@ -72,7 +72,7 @@ Upgrade auf Kunden-Niveau (Grafik, Animation, Text-Diät) umgesetzt am 31.10.202
 dem Vortrag: `../recherche/gestaltung-upgrade.md`.
 
 Belege: `../recherche/rechtspruefung.md` (alle Rechtsangaben am Amtsblatt, BGBl. und an Kommissionsdokumenten geprüft,
-31.10.2026) und `../recherche/kmu-zahlen.md` (51 Zahlen mit Quelle). Die Prüflogik beruht auf den Antworten der
+31.10.2026; zweite, fünffache Prüfung von Prüflogik, Folien und Notizen am selben Tag, Abschnitt „Zweite Prüfung“) und `../recherche/kmu-zahlen.md` (51 Zahlen mit Quelle). Die Prüflogik beruht auf den Antworten der
 internen SimpleAct-KI (Fragebogen `../befragung/fragebogen-interne-ki.md`, Auswertung `../befragung/auswertung.md`).
 
 ## Vor dem Vortrag
