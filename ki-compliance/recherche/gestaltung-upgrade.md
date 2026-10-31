@@ -97,6 +97,20 @@ Alle Hauptfolien auf höchstens 40 Wörter; Details wandern in Sprechtext und Ba
 Probelauf am Beamer des Hörsaals (Kontrast, Lesbarkeit aus der letzten Reihe), Test der Abstimmseite auf mehreren
 Handys, Bildrate auf dem Präsentationslaptop (60 fps bei Animationen), Prüfwerkzeug ohne Fehler und Warnungen.
 
+## Umsetzungsstand (31.10.2026)
+
+| Paket | Stand | Umsetzung |
+|---|---|---|
+| A Choreografie | ✅ | `js/folien/ki-animation.js` mit GSAP 3.15 (gsap, SplitText, MotionPath in `js/vendor/gsap/`): Titel wortweise, Karten auf Bewegungspfaden durch den Trichter ins Fach (Fach-Form federt), Zeitstrahl-Achse zeichnet sich, Omnibus-Marken springen, Pyramidenstufen fallen ein, Urteile auf Folie 13 und 28 werden gestempelt, Klassenform fliegt vom Betrieb in die Inventarzeile, Kernbotschaft wortweise, Beträge im Bußgeld-Rechner rollen. Prüfpfad-Leiste bleibt beim Folienwechsel stehen (View Transition). Aus bei reduzierter Bewegung, im Druck, im Prüf- und Aufnahmemodus und in der Referentenansicht; beim Verlassen wird alles zurückgesetzt. |
+| B Grafiksprache | ✅ | 45 Phosphor-Duotone-Icons als Inline-Symbole (`werkzeuge/icons-erzeugen.py`), Zweitfarbe = Klassenfarbe; Wimmelbild isometrisch als zwei Dioramen, Büro und Werkhalle (`werkzeuge/wimmelbild-erzeugen.py`, rechnet die Punkte mit); Pyramide mit zwei Seitenflächen und Schnittflächen; Trichter mit Rand, Öffnung und Verlauf; Venn mit Nummern statt Beschriftungen in den Schnittmengen. Hell und dunkel geprüft. |
+| C Text-Diät | ✅ | Alle Hauptfolien höchstens 40 sichtbare Wörter; Details in den Sprechnotizen. Ausnahmen ausdrücklich per `data-wortbudget`: Inventar-Tabelle (26: 60), sechs Irrtümer schrittweise (28: 62), Bußgeld-Rechner (29: 55). |
+| D Kundenfassung | offen | nach dem 9.11.2026; braucht SimpleAct-CI (Logo, Farben, Schrift) und eine Entscheidung zu Abstimm-Backend und Hosting |
+| E Qualitätssicherung | teilweise | Prüfwerkzeug 0 Fehler, 0 Warnungen über alle Folien und Schritte; Animationen im Browser geprüft. Offen: Probelauf am Hörsaal-Beamer und auf dem Präsentationslaptop. |
+
+Abweichungen vom Vorschlag: MorphSVG, Flip und DrawSVG werden nicht gebraucht (Stempel, Flug und Achse kommen mit
+Kern-GSAP und MotionPath aus) und sind deshalb nicht eingebunden. Der Klassifizierer behält seinen eigenen, bereits
+geprüften Pfad-Code.
+
 ## Quellen
 
 - GSAP Standard License, Stand 30.5.2025: https://gsap.com/community/standard-license/

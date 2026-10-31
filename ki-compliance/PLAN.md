@@ -14,6 +14,12 @@ Stand: 31.10.2026 · Modul Management im KMU (Annahme, siehe „Offene Entscheid
 > „Was zuerst?“, Meinung), Daumen-Runde „Verboten oder erlaubt?“, Partnerarbeit mit dem Handy-Klassifizierer und
 > Countdown, Bußgeld-Rechner, Folien zu Aufsicht, Kosten, drei Gesetzen und Rollen im Betrieb. Freigabe der
 > SimpleAct-Inhalte erteilt.
+>
+> **Upgrade auf Kunden-Niveau (31.10.2026, Pakete A bis C aus `recherche/gestaltung-upgrade.md`):** GSAP 3.15 lokal
+> (Titel-Intro, Karten auf Bewegungspfaden, fallende Pyramidenstufen, Stempel, Flug ins Inventar, rollende Beträge),
+> Phosphor-Duotone-Icons statt eigener Piktogramme, Wimmelbild isometrisch, Pyramide mit Tiefe, Trichter mit Rand,
+> Venn mit Nummern, Text-Diät (alle Hauptfolien höchstens 40 Wörter, drei dokumentierte Ausnahmen). Prüfung: 0 Fehler,
+> 0 Warnungen. Kundenfassung (Paket D) folgt nach dem 9.11.2026.
 
 ## 1. Idee in drei Sätzen
 

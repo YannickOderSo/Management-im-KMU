@@ -61,10 +61,15 @@ dem Publikum klicken, ↶ nimmt die letzte Antwort zurück, „Neu“ beginnt vo
 | `css/folien/ki.css` | Fundament „Prüfpfad“: Farben, Klassen (Farbe + Form + Wort), Laufleiste, Bausteine |
 | `css/folien/ki-folien.css`, `css/folien/klassifizierer.css` | Gestaltung der Folien und des Baums |
 | `js/folien/ki.js` | Laufleiste, Punkte im Wimmelbild, Formen in den Umfragen, Bußgeld-Rechner, Countdown |
+| `js/folien/ki-animation.js` | Choreografie mit GSAP (Titel, Zeitstrahl, Pyramide, Stempel, Inventar-Flug, Kernbotschaft); aus bei reduzierter Bewegung, Druck und Prüfung |
+| `js/vendor/gsap/` | GSAP 3.15.0 mit SplitText und MotionPath (Standard-Lizenz, kostenlos auch kommerziell; `LIZENZ-GSAP.txt`) |
+| `werkzeuge/icons-erzeugen.py` | schreibt die Phosphor-Duotone-Icons (MIT, `bilder/LIZENZ-phosphor-icons-MIT.txt`) als Symbole in `index.html` |
+| `werkzeuge/wimmelbild-erzeugen.py` | erzeugt das isometrische Wimmelbild und die Lage der sechs Punkte |
 | `js/deck.js`, `js/komponenten.js`, `css/tokens.css`, `deck.css`, `komponenten.css`, `schriften/` | Engine (unverändert) |
 | `werkzeuge/pruefen.mjs`, `werkzeuge/redeskript.mjs` | Prüfung mit Screenshots und Notfall-PDF; Redeskript |
 
-Upgrade für Kundenfassung (Grafik, Animation, White-Label): `../recherche/gestaltung-upgrade.md`.
+Upgrade auf Kunden-Niveau (Grafik, Animation, Text-Diät) umgesetzt am 31.10.2026; Kundenfassung (White-Label) folgt nach
+dem Vortrag: `../recherche/gestaltung-upgrade.md`.
 
 Belege: `../recherche/rechtspruefung.md` (alle Rechtsangaben am Amtsblatt, BGBl. und an Kommissionsdokumenten geprüft,
 31.10.2026) und `../recherche/kmu-zahlen.md` (51 Zahlen mit Quelle). Die Prüflogik beruht auf den Antworten der
@@ -85,5 +90,9 @@ PLAYWRIGHT_CORE=/opt/node-tools/node_modules/playwright-core \
 node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte --druck export/ki-compliance-notfall.pdf
 ```
 
-Stand 31.10.2026 (Stunden-Fassung): 0 Fehler über alle Folien und Schritte, Notfall-PDF 43 Seiten. 28 Warnungen,
-alle zum Wortbudget (über 40 Wörter auf inhaltlich dichten Folien).
+Stand 31.10.2026 (nach dem Upgrade): 0 Fehler und 0 Warnungen über alle Folien und Schritte, Notfall-PDF 43 Seiten,
+Redeskript Sollzeit 50:45. Wortbudget 40 je Hauptfolie; drei ausdrückliche Ausnahmen per `data-wortbudget` (26 Inventar-
+Tabelle, 28 Irrtümer, 29 Rechner).
+
+5. Probelauf am Präsentationslaptop: Animationen flüssig? Sonst `?bewegung=reduziert` an die Adresse hängen (zeigt
+   alles ohne Bewegung, gleicher Inhalt).

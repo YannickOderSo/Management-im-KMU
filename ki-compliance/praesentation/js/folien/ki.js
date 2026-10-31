@@ -147,18 +147,37 @@
         var w2 = util.element('span', { class: 'br-betrag' }, null, b2);
         return { st: st, f1: f1, w1: w1, f2: f2, w2: w2 };
       });
+      /* Beträge rollen mit GSAP zum neuen Wert (ohne GSAP, bei reduzierter
+         Bewegung, im Druck und im Prüfmodus sofort) */
+      function rollen(el, mio) {
+        var alt = el._mio;
+        el._mio = mio;
+        if (el._rolle) { el._rolle.kill(); el._rolle = null; }
+        var html = document.documentElement;
+        if (alt === undefined || alt === mio || !window.gsap || util.bewegungReduziert() ||
+            html.classList.contains('testmodus') || html.classList.contains('druckmodus') || html.classList.contains('aufnahme')) {
+          el.textContent = euro(mio);
+          return;
+        }
+        var zahl = { v: alt };
+        el._rolle = window.gsap.to(zahl, {
+          v: mio, duration: 0.7, ease: 'power2.out',
+          onUpdate: function () { el.textContent = euro(zahl.v); },
+          onComplete: function () { el.textContent = euro(mio); }
+        });
+      }
       function setzen(u) {
         u = Math.max(1, Math.min(50, Math.round(u)));
         regler.value = String(u);
-        wert.textContent = euro(u);
+        rollen(wert, u);
         util.alle('button', knoepfe).forEach(function (b) { b.classList.toggle('ist-aktiv', Number(b.getAttribute('data-u')) === u); });
         zeilen.forEach(function (z) {
           var anteil = z.st.anteil * u;
           var kmu = Math.min(z.st.fest, anteil), gross = Math.max(z.st.fest, anteil);
           z.f1.style.width = Math.max(0.6, kmu / 35 * 100) + '%';
           z.f2.style.width = Math.max(0.6, gross / 35 * 100) + '%';
-          z.w1.textContent = euro(kmu);
-          z.w2.textContent = euro(gross);
+          rollen(z.w1, kmu);
+          rollen(z.w2, gross);
         });
       }
       [2, 10, 50].forEach(function (u) {
