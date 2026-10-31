@@ -52,7 +52,7 @@ window.KLASSIFIZIERER = {
       id: 'K1', spalte: 1,
       kurz: 'Ist es ein KI-System?',
       frage: 'Leitet das System aus Eingaben ab, wie es Ausgaben wie Vorhersagen, Inhalte, Empfehlungen oder Entscheidungen erzeugt, und arbeitet es dabei mit einem gewissen Grad an Autonomie?',
-      erklaerung: 'Feste Wenn-Dann-Regeln und Excel-Formeln, die ein Mensch vollständig vorgibt, sind in der Regel keine KI. Lernende Systeme, Sprachmodelle und Bilderkennung sind es.',
+      erklaerung: 'Feste Wenn-Dann-Regeln und Excel-Formeln, die ein Mensch vollständig vorgibt, sind in der Regel keine KI. Lernende Systeme, Sprachmodelle und Bilderkennung sind es meist; nur sehr einfache Verfahren wie eine Prognose per Durchschnittswert nehmen die Leitlinien aus.',
       rechtsgrundlage: ['Art. 3 Nr. 1'],
       antworten: [{ text: 'Ja', weiter: 'K2' }, { text: 'Nein', ergebnis: 'E-KEIN-KI' }]
     },
@@ -83,7 +83,7 @@ window.KLASSIFIZIERER = {
     {
       id: 'K4A', spalte: 2,
       kurz: 'Bei Beschäftigten oder Lernenden?',
-      frage: 'Werden damit die Gefühle von Beschäftigten (auch Bewerberinnen und Bewerbern) oder von Lernenden in einer Bildungseinrichtung erkannt?',
+      frage: 'Werden damit die Gefühle von Menschen erkannt, die für Sie arbeiten (Beschäftigte, Azubis, freie Mitarbeitende, auch Bewerberinnen und Bewerber), oder von Lernenden in einer Bildungseinrichtung?',
       erklaerung: 'Am Arbeitsplatz und in der Bildung ist Emotionserkennung grundsätzlich verboten, auch mit Einwilligung. Bei Kundinnen und Kunden ist sie nicht verboten, aber hochriskant.',
       rechtsgrundlage: ['Art. 5 Abs. 1 lit. f'],
       antworten: [{ text: 'Ja', weiter: 'K5' }, { text: 'Nein', weiter: 'K6' }]
@@ -91,15 +91,15 @@ window.KLASSIFIZIERER = {
     {
       id: 'K5', streng: 'Nein', spalte: 2,
       kurz: 'Nur Medizin oder Lebensschutz?',
-      frage: 'Dient diese Emotionserkennung ausschließlich medizinischen Zwecken oder dem Schutz von Leben und Gesundheit (nicht: Diebstahl- oder Betrugsschutz, Wohlbefinden, Stress)?',
-      erklaerung: 'Nur dann greift die eng auszulegende Ausnahme vom Verbot. Das System bleibt hochriskant und wird weiter geprüft.',
+      frage: 'Dient diese Emotionserkennung ausschließlich medizinischen Zwecken oder dem Schutz von Leben und Gesundheit (nicht: Diebstahl- oder Betrugsschutz, Wohlbefinden, allgemeine Stressmessung)?',
+      erklaerung: 'Nur dann greift die eng auszulegende Ausnahme vom Verbot. Das System bleibt hochriskant und wird weiter geprüft. Stress zu messen ist nur erlaubt, wenn er etwa an gefährlichen Maschinen Leben oder Gesundheit gefährdet; die Daten dürfen dann nicht zur Leistungsbewertung dienen.',
       rechtsgrundlage: ['Art. 5 Abs. 1 lit. f'],
       antworten: [{ text: 'Ja', weiter: 'K6' }, { text: 'Nein', ergebnis: 'E-VERBOTEN' }]
     },
     {
       id: 'K6', spalte: 2,
       kurz: 'Anderes Verbot, z. B. Biometrie?',
-      frage: 'Sortiert das System Menschen per Biometrie nach Rasse, politischer Meinung, Gewerkschaftszugehörigkeit, Religion oder Weltanschauung, Sexualleben oder sexueller Ausrichtung, baut es Gesichtsdatenbanken durch massenhaftes Auslesen auf, sagt es Straftaten allein aus Persönlichkeitsmerkmalen voraus, identifiziert es Menschen live per Biometrie im öffentlichen Raum für die Strafverfolgung oder erzeugt es realistische intime Darstellungen bestimmbarer Personen ohne deren Zustimmung bzw. Darstellungen sexuellen Kindesmissbrauchs?',
+      frage: 'Sortiert das System Menschen per Biometrie nach Rasse, politischer Meinung, Gewerkschaftszugehörigkeit, Religion oder Weltanschauung, Sexualleben oder sexueller Ausrichtung, baut es Gesichtsdatenbanken durch wahlloses Auslesen von Internet oder Überwachungskameras auf, sagt es Straftaten allein aus Persönlichkeitsmerkmalen voraus, identifiziert es Menschen live per Biometrie im öffentlichen Raum für die Strafverfolgung oder erzeugt es realistische intime Darstellungen bestimmbarer Personen ohne deren Zustimmung bzw. Darstellungen sexuellen Kindesmissbrauchs?',
       erklaerung: 'Alles verboten. Die beiden letzten Fälle sind neue Verbote ab 2.12.2026; für Anbieter greifen sie, wenn solche Inhalte Zweck des Systems sind oder ohne zumutbare Schutzvorkehrungen absehbar entstehen, für Nutzer nur, wenn sie das System gezielt dafür einsetzen.',
       rechtsgrundlage: ['Art. 5 Abs. 1 lit. ba, bb, d, e, g, h'],
       antworten: [{ text: 'Ja', ergebnis: 'E-VERBOTEN' }, { text: 'Nein', weiter: 'K7' }]
@@ -107,8 +107,8 @@ window.KLASSIFIZIERER = {
     {
       id: 'K7', spalte: 3,
       kurz: 'Sicherheitsbauteil eines Produkts?',
-      frage: 'Ist das System ein Sicherheitsbauteil eines Produkts aus der EU-Produktgesetzgebung (z. B. Maschine, Spielzeug, Aufzug, Medizinprodukt) oder selbst ein solches Produkt, und muss das Produkt von einer unabhängigen Stelle geprüft werden?',
-      erklaerung: 'Beides muss zutreffen. Reine Qualitätskontrolle ist kein Sicherheitsbauteil, außer ihr Ausfall würde Gesundheit oder Sicherheit gefährden. Eine Drittprüfung nur wegen Funk- oder EMV-Risiken zählt nicht. Ob auch Produkte zählen, bei denen die Prüfstelle nur dank angewandter harmonisierter Normen entfällt (z. B. Schutzeinrichtungen, die Personen erkennen), ist noch offen: Der Leitlinienentwurf der Kommission bejaht das, ist aber nicht final. Selbstlernende Sicherheitsfunktionen prüft nach der Maschinenverordnung ohnehin immer eine Prüfstelle.',
+      frage: 'Ist das System ein Sicherheitsbauteil eines Produkts, das unter die in Anhang I genannten EU-Produktvorschriften fällt (z. B. Maschine, Spielzeug, Aufzug, Medizinprodukt) oder selbst ein solches Produkt, und muss das Produkt von einer unabhängigen Stelle geprüft werden?',
+      erklaerung: 'Beides muss zutreffen. Reine Qualitätskontrolle ist kein Sicherheitsbauteil, außer ihr Ausfall würde Gesundheit oder Sicherheit gefährden. Eine Drittprüfung nur wegen Funk- oder EMV-Risiken zählt nicht. Auch Produkte, bei denen die Prüfstelle nur dank angewandter harmonisierter Normen entfallen darf (z. B. Schutzeinrichtungen, die Personen erkennen), zählen nach dem Willen des Gesetzgebers mit; der Leitlinienentwurf der Kommission sieht es ebenso. Verbindlich entscheidet nur der EuGH. Selbstlernende Sicherheitsfunktionen prüft nach der Maschinenverordnung ohnehin immer eine Prüfstelle.',
       rechtsgrundlage: ['Art. 6 Abs. 1, 1a–1c', 'Anhang I'],
       antworten: [{ text: 'Ja', weiter: 'K11' }, { text: 'Nein', weiter: 'K8' }]
     },
@@ -123,8 +123,8 @@ window.KLASSIFIZIERER = {
     {
       id: 'K8', spalte: 3,
       kurz: 'Hochrisiko-Zweck, z. B. Personal?',
-      frage: 'Wird das System für einen der Zwecke aus Anhang III eingesetzt (Biometrie einschließlich Emotionserkennung und Einordnung nach Merkmalen wie Geschlecht oder Alter, kritische Infrastruktur, Bildung, Beschäftigung und Personal, Zugang zu wesentlichen Diensten wie Kredit oder Lebens- und Krankenversicherung, Strafverfolgung, Migration, Justiz und Wahlen)?',
-      erklaerung: 'Beispiele: Bewerbungen filtern oder bewerten, Aufgaben nach Leistungsdaten zuweisen, Bonität von Privatpersonen bewerten. Emotionserkennung zählt immer dazu. Wer ein allgemeines Werkzeug wie ChatGPT selbst für einen solchen Zweck einsetzt, kann dadurch zum Anbieter werden (Art. 25 Abs. 1 lit. c), nämlich wenn das System für diesen Zweck hochriskant wird, also keine Ausnahme nach Art. 6 Abs. 3 greift.',
+      frage: 'Wird das System für einen der Zwecke aus Anhang III eingesetzt (Biometrie: Fernidentifizierung, Emotionserkennung oder Einordnung nach sensiblen Merkmalen wie ethnischer Herkunft oder Gesundheit; kritische Infrastruktur, Bildung, Beschäftigung und Personal, Zugang zu wesentlichen Diensten wie Kredit oder Lebens- und Krankenversicherung, Strafverfolgung, Migration, Justiz und Wahlen)?',
+      erklaerung: 'Beispiele: Bewerbungen filtern oder bewerten, Aufgaben nach Leistungsdaten zuweisen, Bonität von Privatpersonen bewerten. Emotionserkennung zählt immer dazu. Alter oder Geschlecht per Kamera zu schätzen, ist kein Hochrisiko-Zweck; die Betroffenen sind aber zu informieren (Art. 50 Abs. 3). Wer ein allgemeines Werkzeug wie ChatGPT selbst für einen solchen Zweck einsetzt, kann dadurch zum Anbieter werden (Art. 25 Abs. 1 lit. c), nämlich wenn das System für diesen Zweck hochriskant wird, also keine Ausnahme nach Art. 6 Abs. 3 greift.',
       rechtsgrundlage: ['Art. 6 Abs. 2', 'Anhang III'],
       automatisch: { wenn: 'emotion', antwort: 'Ja' },
       antworten: [{ text: 'Ja', weiter: 'K9' }, { text: 'Nein', weiter: 'K12' }]
@@ -140,7 +140,7 @@ window.KLASSIFIZIERER = {
     {
       id: 'K10', streng: 'Nein', spalte: 3,
       kurz: 'Nur Hilfsaufgabe ohne Risiko?',
-      frage: 'Erledigt das System nur eine eng begrenzte Verfahrensaufgabe, verbessert es nur das Ergebnis einer abgeschlossenen menschlichen Tätigkeit, prüft es nur bereits getroffene menschliche Entscheidungen nachträglich auf Abweichungen von früheren Mustern (ohne sie ohne menschliche Prüfung zu ändern) oder bereitet es nur eine Bewertung vor, und besteht dadurch kein erhebliches Risiko?',
+      frage: 'Erledigt das System nur eine eng begrenzte Verfahrensaufgabe, verbessert es nur das Ergebnis einer abgeschlossenen menschlichen Tätigkeit, prüft es nur bereits getroffene menschliche Entscheidungen nachträglich auf Abweichungen von früheren Mustern (und ersetzt oder beeinflusst sie nicht ohne angemessene menschliche Überprüfung) oder bereitet es nur eine Bewertung vor, und besteht dadurch kein erhebliches Risiko?',
       erklaerung: 'Nur bei einem klaren Ja. Im Zweifel gilt: hochriskant.',
       rechtsgrundlage: ['Art. 6 Abs. 3, 4'],
       antworten: [{ text: 'Ja', ergebnis: 'E-HOCH-III-AUSNAHME' }, { text: 'Nein', ergebnis: 'E-HOCH-III' }]
@@ -157,7 +157,7 @@ window.KLASSIFIZIERER = {
       id: 'K13', spalte: 4,
       kurz: 'Eigener Generator für Inhalte?',
       frage: 'Haben Sie ein System, das Text, Bilder, Audio oder Video erzeugt, selbst gebaut oder bauen lassen und setzen es unter eigenem Namen ein (auch intern) oder vertreiben es?',
-      erklaerung: 'Anbieter müssen solche Ausgaben maschinenlesbar als KI-erzeugt kennzeichnen; die Markierung des zugrunde liegenden Modells darf man nutzen. Wer ein fremdes Werkzeug nur nutzt, hat diese Pflicht nicht. Ausgenommen ist reine Unterstützung bei Standardbearbeitung.',
+      erklaerung: 'Anbieter müssen solche Ausgaben maschinenlesbar als KI-erzeugt markieren und dafür sorgen, dass sich das prüfen lässt. Die Markierung des zugrunde liegenden Modells darf man nutzen, wenn sie die Anforderungen erfüllt; verantwortlich bleibt man selbst. Wer ein fremdes Werkzeug nur nutzt, hat diese Pflicht nicht. Ausgenommen sind Standardbearbeitung und Ausgaben, die die Eingabe nicht wesentlich ändern, etwa Rechtschreibkorrektur oder Übersetzung.',
       rechtsgrundlage: ['Art. 50 Abs. 2'],
       antworten: [{ text: 'Ja', ergebnis: 'E-TRANSP-INHALT', weitere_pruefung: ['K14'] }, { text: 'Nein', weiter: 'K14' }]
     },
@@ -166,15 +166,15 @@ window.KLASSIFIZIERER = {
       kurz: 'Biometrie-Kategorien?',
       frage: 'Ordnet das System Menschen anhand biometrischer Daten Kategorien zu (z. B. Alter oder Geschlecht aus dem Gesicht)? Wer Emotionserkennung schon bejaht hat, ist hier automatisch bei Ja.',
       erklaerung: 'Wer Emotionserkennung oder biometrische Kategorisierung einsetzt, muss die betroffenen Personen informieren.',
-      rechtsgrundlage: ['Art. 50 Abs. 3', 'Art. 3 Nr. 39'],
+      rechtsgrundlage: ['Art. 50 Abs. 3', 'Art. 3 Nr. 39, 40'],
       automatisch: { wenn: 'emotion', antwort: 'Ja' },
       antworten: [{ text: 'Ja', ergebnis: 'E-TRANSP-EMOTION', weitere_pruefung: ['K15'] }, { text: 'Nein', weiter: 'K15' }]
     },
     {
       id: 'K15', spalte: 4,
       kurz: 'Deepfake oder KI-Nachricht?',
-      frage: 'Erzeugen Sie mit dem System Bilder, Ton oder Videos, die echten Personen, Gegenständen, Orten, Einrichtungen oder Ereignissen ähneln und fälschlich echt wirken (Deepfake), oder veröffentlichen Sie damit Texte, die über Themen von öffentlichem Interesse informieren, ohne dass ein Mensch sie redaktionell verantwortet?',
-      erklaerung: 'Dann muss offengelegt werden, dass der Inhalt künstlich erzeugt ist. Ob frei erfundene, aber echt wirkende Personen darunter fallen, ist nicht abschließend geklärt, denn das Gesetz verlangt Ähnlichkeit mit Wirklichem; ein kurzer Hinweis ist die sichere Variante. Offensichtlich Unrealistisches wie eine Comicfigur zählt nicht.',
+      frage: 'Erzeugen oder verändern Sie mit dem System Bilder, Ton oder Videos, die echten Personen, Gegenständen, Orten, Einrichtungen oder Ereignissen ähneln und fälschlich echt wirken (Deepfake), oder veröffentlichen Sie damit Texte, die über Themen von öffentlichem Interesse informieren, ohne dass ein Mensch sie redaktionell verantwortet?',
+      erklaerung: 'Dann muss offengelegt werden, dass der Inhalt künstlich erzeugt ist. Nach den Leitlinien der Kommission reichen auch erfundene, aber echt wirkende Personen, Produkte oder Orte, die es so geben könnte, etwa ein KI-Avatar oder ein geschöntes KI-Produktfoto in der Werbung; verbindlich entscheidet das erst der EuGH. Offensichtlich Unrealistisches wie eine Comicfigur zählt nicht.',
       rechtsgrundlage: ['Art. 50 Abs. 4', 'Art. 3 Nr. 60'],
       antworten: [{ text: 'Ja', ergebnis: 'E-TRANSP-DEEPFAKE', weitere_pruefung: ['K16'] }, { text: 'Nein', weiter: 'K16' }]
     },
@@ -182,7 +182,7 @@ window.KLASSIFIZIERER = {
       id: 'K16', spalte: 5,
       kurz: 'Eigenes KI-Modell (GPAI)?',
       frage: 'Bringen Sie selbst ein KI-Modell mit allgemeinem Verwendungszweck (z. B. ein Sprachmodell) in Verkehr, das Sie entwickelt oder erheblich verändert haben?',
-      erklaerung: 'Wer ein Modell nur über eine Schnittstelle nutzt oder leicht anpasst, ist kein Modell-Anbieter. Wer es mit erheblichem eigenem Rechenaufwand verändert (Richtwert aus den Leitlinien der Kommission, nicht verbindlich: mehr als ein Drittel der ursprünglichen Trainingsrechenleistung), wird es in der Regel, mit Pflichten nur für die Änderung.',
+      erklaerung: 'Wer ein Modell nur über eine Schnittstelle nutzt oder leicht anpasst, ist kein Modell-Anbieter. Wer es mit erheblichem eigenem Rechenaufwand verändert (Richtwert aus den Leitlinien der Kommission, nicht verbindlich: mehr als ein Drittel der ursprünglichen Trainingsrechenleistung), wird es in der Regel, mit Pflichten nur für die Änderung. Als in Verkehr gebracht gilt ein Modell auch, wenn Sie es in eine eigene Anwendung einbauen, die Sie anbieten oder selbst einsetzen.',
       rechtsgrundlage: ['Art. 3 Nr. 3, 63', 'Art. 51–53'],
       antworten: [{ text: 'Ja', ergebnis: 'E-GPAI' }, { text: 'Nein', ergebnis: 'E-MINIMAL' }]
     }
@@ -225,7 +225,7 @@ window.KLASSIFIZIERER = {
         { text: 'Bestimmte Betreiber (u. a. öffentliche Stellen, Bonität, Lebens- und Krankenversicherung): Grundrechte-Folgenabschätzung vor der ersten Verwendung', kurz: 'ggf. Grundrechte-Folgenabschätzung', art: 'Art. 27', artikel: 'Art. 27 Abs. 1', ab: '2027-12-02', optional: true },
         { text: 'Alle: KI-Kompetenz unterstützen', kurz: 'KI-Kompetenz unterstützen', art: 'Art. 4', artikel: 'Art. 4', ab: '2025-02-02', nebensache: true }
       ], weitere_pruefung: ['K12'],
-      hinweis: 'Gilt für Systeme, die ab 2.12.2027 auf den Markt kommen oder danach erheblich geändert werden (Art. 111 Abs. 2); Systeme, die Behörden nutzen sollen, müssen bis 2.8.2030 nachziehen, und Behörden als Betreiber registrieren sich selbst (Art. 49 Abs. 3). Wer ein allgemeines Werkzeug wie ChatGPT selbst für diesen Zweck einsetzt, gilt als Anbieter dieses Hochrisiko-Systems, wenn er es für diesen Zweck in Betrieb nimmt (Art. 25 Abs. 1 lit. c); der ursprüngliche Anbieter muss dann mitwirken, außer er hat die Umwidmung zum Hochrisiko-System ausgeschlossen (Art. 25 Abs. 2).' },
+      hinweis: 'Gilt ab 2.12.2027. Modelle, die schon vorher in Verkehr gebracht oder in Betrieb genommen waren, fallen nur nach einer erheblichen Änderung ihrer Konzeption darunter (Art. 111 Abs. 2); Systeme, die Behörden nutzen sollen, müssen bis 2.8.2030 nachziehen, und Behörden als Betreiber registrieren sich selbst (Art. 49 Abs. 3). Wer ein allgemeines Werkzeug wie ChatGPT selbst für diesen Zweck einsetzt, kann dadurch Anbieter dieses Hochrisiko-Systems werden (Art. 25 Abs. 1 lit. c); der ursprüngliche Anbieter muss dann mitwirken, außer er hat die Umwidmung zum Hochrisiko-System ausgeschlossen (Art. 25 Abs. 2).' },
     { id: 'E-HOCH-III-AUSNAHME', klasse: 'ausnahme', titel: 'Anhang-III-Zweck, aber Ausnahme', kurz: 'Ausnahme',
       satz: 'Das System gilt nicht als hochriskant. Der Anbieter muss das dokumentieren und registrieren; wer es nur einsetzt, sollte sich diese Einschätzung zeigen lassen.',
       pflichten: [
@@ -249,7 +249,7 @@ window.KLASSIFIZIERER = {
         { text: 'Alle: KI-Kompetenz unterstützen', kurz: 'KI-Kompetenz unterstützen', art: 'Art. 4', artikel: 'Art. 4', ab: '2025-02-02', nebensache: true }],
       weitere_pruefung: ['K15'] },
     { id: 'E-TRANSP-DEEPFAKE', klasse: 'transparenz', titel: 'Transparenz: Deepfakes und KI-Texte zu öffentlichen Themen', kurz: 'Transparenz',
-      satz: 'Wer Deepfakes erzeugt oder verändert, legt offen, dass sie künstlich sind (bei erkennbar künstlerischen oder fiktionalen Werken in eingeschränkter Form). Wer KI-Texte zu Themen von öffentlichem Interesse veröffentlicht, legt das ebenfalls offen, außer ein Mensch prüft sie und trägt die redaktionelle Verantwortung.',
+      satz: 'Wer Deepfakes erzeugt oder verändert, legt offen, dass sie künstlich sind (bei offensichtlich künstlerischen, satirischen oder fiktionalen Werken in abgeschwächter Form). Wer KI-Texte zu Themen von öffentlichem Interesse veröffentlicht, legt das ebenfalls offen, außer Menschen haben sie geprüft und eine Person oder das Unternehmen trägt die redaktionelle Verantwortung.',
       pflichten: [{ text: 'Betreiber: künstliche Erzeugung offenlegen', kurz: 'künstliche Erzeugung offenlegen', art: 'Art. 50', artikel: 'Art. 50 Abs. 4', ab: '2026-08-02' },
         { text: 'Alle: KI-Kompetenz unterstützen', kurz: 'KI-Kompetenz unterstützen', art: 'Art. 4', artikel: 'Art. 4', ab: '2025-02-02', nebensache: true }],
       weitere_pruefung: ['K16'] },
@@ -286,7 +286,7 @@ window.KLASSIFIZIERER = {
       name: 'Tool bewertet und rankt Bewerbungen',
       antworten: { K1: 'Ja', K2: 'Nein', K3: 'Nein', K4: 'Nein', K6: 'Nein', K7: 'Nein', K8: 'Ja', K9: 'Ja', K12: 'Nein', K13: 'Nein', K14: 'Nein', K15: 'Nein', K16: 'Nein' },
       rolle: 'Betreiber',
-      merksatz: 'Wer Bewerbungen von KI ranken lässt, hat Betreiberpflichten, für neue Tools ab 12/2027.'
+      merksatz: 'Wer Bewerbungen von KI ranken lässt, hat ab 12/2027 Betreiberpflichten, bei Altsystemen erst nach grundlegender Änderung.'
     },
     'stimmung-team': {
       name: 'Stimmungsanalyse der Beschäftigten',
@@ -307,7 +307,7 @@ window.KLASSIFIZIERER = {
       merksatz: 'Prüft die KI Werkstücke statt Menschen, bleibt es meist ruhig.'
     },
     'kamera-notstopp': {
-      name: 'KI-Not-Stopp in unseren verkauften Maschinen',
+      name: 'KI-Not-Stopp in unseren verkauften Biegepressen',
       antworten: { K1: 'Ja', K2: 'Nein', K3: 'Nein', K4: 'Nein', K6: 'Nein', K7: 'Ja', K11: 'Ja' },
       rolle: 'Hersteller',
       merksatz: 'Sichert die KI eine prüfpflichtige Maschine, ist sie hochriskant.'

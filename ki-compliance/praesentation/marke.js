@@ -127,7 +127,7 @@ window.MARKE = {
       liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
       runde: 'vortrag-2026-11-09',
       gueltigMinuten: 30,
-      unsereAntwort: ['hochriskant'],
+      unsereAntwort: ['hochriskant', 'Transparenz'],   // beides stimmt (Anhang III Nr. 1 lit. c und Art. 50 Abs. 3)
       aussage: '{prozent} von Ihnen liegen richtig',
       aussageLeer: 'Noch keine Stimmen',
       beispielwerte: [8, 5, 6, 1]     // BEISPIELDATEN
