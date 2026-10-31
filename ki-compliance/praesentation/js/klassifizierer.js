@@ -282,9 +282,11 @@
       z.knopfNein = el('button', { type: 'button', class: 'kl-knopf kl-knopf--nein', hidden: '' }, 'Nein', steuer);
       z.knopfZurueck = el('button', { type: 'button', class: 'kl-knopf kl-knopf--zurueck', hidden: '', title: 'Letzte Antwort zurücknehmen' }, '↶', steuer);
       [z.knopfFrei, z.knopfJa, z.knopfNein, z.knopfZurueck].forEach(function (b) {
-        ['pointerdown', 'mousedown', 'touchstart', 'keydown'].forEach(function (typ) {
+        ['pointerdown', 'mousedown', 'touchstart'].forEach(function (typ) {
           b.addEventListener(typ, function (ev) { ev.stopPropagation(); }, { passive: true });
         });
+        /* nach dem Klick Fokus abgeben: der Clicker blättert sofort weiter */
+        b.addEventListener('click', function () { setTimeout(function () { if (document.activeElement === b) b.blur(); }, 0); });
       });
       z.knopfFrei.addEventListener('click', function (ev) { ev.stopPropagation(); freiStarten(huelle); });
       z.knopfJa.addEventListener('click', function (ev) { ev.stopPropagation(); freiAntworten(huelle, 'Ja'); });
@@ -450,8 +452,8 @@
     var mitMinimal = z.pruefung.liste.indexOf('E-MINIMAL') >= 0 && z.pruefung.treffer().length === 1 && z.pruefung.treffer()[0].id === 'E-MINIMAL';
     var ziele = schritte.map(function (s, i) { return schritte[i + 1] ? schritte[i + 1].id : (mitMinimal ? 'ENDE' : null); });
 
-    var reduziert = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var wurzel = document.documentElement.classList;
+    var reduziert = wurzel.contains('bewegung-reduziert') || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     if (sofort || reduziert || wurzel.contains('druckmodus') || wurzel.contains('aufnahme')) {
       schritte.forEach(function (s, i) {
         knotenMarkieren(huelle, s);

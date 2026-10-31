@@ -39,7 +39,8 @@ window.MARKE = {
   gruppe: ['Elias Knauber', 'Yannick Heisler'],   // seit 31.10.2026 zu zweit (Aufteilung: LIESMICH.md)
   datum: '2026-11-09',            // Vortrag Mo, 9. November 2026 (Yannick, 31.10.2026)
   rechtsstand: '31.10.2026',      // erscheint auf Titel- und Methodenfolie
-  dauerMinuten: 51,               // bis zu einer Stunde, interaktiv (Yannick, 31.10.2026): Sollzeiten 50:45 + Diskussion
+  dauerMinuten: 51,               // bis zu einer Stunde, interaktiv (Yannick, 31.10.2026): Sollzeiten 51:15 + Diskussion
+  umfrageZiffern: false,          // Ziffern auf Umfragefolien springen (z. B. „22 Enter“) statt Stimmen zu zählen; Plan B: Klick auf den Balken (Review 31.10.2026)
   anrede: 'Sie',
 
   /* 5. LIVE-UMFRAGEN, acht Fragen (Baustein <div class="umfrage" data-umfrage="…">)

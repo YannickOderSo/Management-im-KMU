@@ -65,7 +65,10 @@
         }, ctx.folie);
       },
       schritt: function (ctx, n, richtung) {
-        if (richtung === 'start' || richtung === 'zurueck' || aus(ctx) || !def.schritt) return;
+        /* Zurück mitten in einer Animation: sofort Endzustand von CSS (z. B. kein
+           Flug in eine schon ausgeblendete Zeile auf Folie 26) */
+        if (richtung === 'zurueck') { if (!def.betreten) abraeumen(id); return; }
+        if (richtung === 'start' || aus(ctx) || !def.schritt) return;
         if (!kontexte[id]) kontexte[id] = gsap.context(function () {}, ctx.folie);
         kontexte[id].add(function () { def.schritt(ctx.folie, n, ctx); });
       },

@@ -212,8 +212,8 @@ window.KLASSIFIZIERER = {
     { id: 'E-HOCH-I-B', klasse: 'hoch', titel: 'Hochriskant über Produktrecht (Anhang I Abschnitt B, z. B. Maschinen)', kurz: 'hochriskant',
       satz: 'Das System ist hochriskant. Die Anforderungen kommen über das jeweilige Produktrecht (bei Maschinen die Maschinenverordnung), nicht direkt aus dem AI Act.',
       pflichten: [
-        { text: 'Maschinenhersteller: Maschinenverordnung einhalten; selbstlernende Sicherheitsfunktionen prüft eine notifizierte Stelle', kurz: 'Maschinenverordnung einhalten', art: 'MVO', artikel: 'VO (EU) 2023/1230, Anhang I Teil A Nr. 5, 6', ab: '2027-01-20' },
-        { text: 'Maschinenhersteller: zusätzliche KI-Anforderungen per delegiertem Rechtsakt zur Maschinenverordnung', kurz: 'KI-Zusatz über die MVO', art: 'Art. 8 MVO', artikel: 'Art. 8 MVO n. F., Art. 2 Abs. 2, Art. 6 Abs. 1', ab: '2028-08-02' },
+        { text: 'Maschinenhersteller: Maschinenverordnung einhalten; selbstlernende Sicherheitsfunktionen prüft eine notifizierte Stelle', kurz: 'Maschinenverordnung einhalten', art: 'Maschinen-VO', artikel: 'VO (EU) 2023/1230, Anhang I Teil A Nr. 5, 6', ab: '2027-01-20' },
+        { text: 'Maschinenhersteller: zusätzliche KI-Anforderungen per delegiertem Rechtsakt zur Maschinenverordnung', kurz: 'KI-Zusatz zur Maschinenverordnung', art: 'Art. 8 Maschinen-VO', artikel: 'Art. 8 MVO n. F., Art. 2 Abs. 2, Art. 6 Abs. 1', ab: '2028-08-02' },
         { text: 'Fahrzeuge, Luftfahrt, Bahn, Schiffe: KI-Anforderungen über das jeweilige Produktrecht, Termin noch offen', kurz: 'andere Produkte: Termin offen', art: 'Art. 102–109', artikel: 'Art. 102–109', optional: true }
       ], weitere_pruefung: [],
       hinweis: 'Aus dem AI Act gelten für dieses System nur wenige Vorschriften (Art. 2 Abs. 2).' },
@@ -285,7 +285,7 @@ window.KLASSIFIZIERER = {
       name: 'Tool bewertet und rankt Bewerbungen',
       antworten: { K1: 'Ja', K2: 'Nein', K3: 'Nein', K4: 'Nein', K6: 'Nein', K7: 'Nein', K8: 'Ja', K9: 'Ja', K12: 'Nein', K13: 'Nein', K14: 'Nein', K15: 'Nein', K16: 'Nein' },
       rolle: 'Betreiber',
-      merksatz: 'Wer Menschen für Jobs sortiert, spielt in der höchsten erlaubten Liga.'
+      merksatz: 'Wer Bewerbungen von KI ranken lässt, hat Betreiberpflichten, für neue Tools ab 12/2027.'
     },
     'stimmung-team': {
       name: 'Stimmungsanalyse der Beschäftigten',

@@ -3,13 +3,16 @@
 **Vortrag:** Montag, 9.11.2026, Hochschule Kaiserslautern · **Elias Knauber (E)** und **Yannick Heisler (Y)**
 **Folien:** https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/
 **Reserve:** `praesentation/export/ki-compliance-notfall.pdf` (43 Seiten) · `praesentation/export/redeskript.pdf`
-**Ablauf:** 37 Folien, Sollzeit 50:45, danach ca. 10 Min. Diskussion · Bedienung: `praesentation/LIESMICH.md`
+**Ablauf:** 37 Folien, Sollzeit 51:15, danach ca. 10 Min. Diskussion · Bedienung: `praesentation/LIESMICH.md`
 
 Legende: `[x]` erledigt · **Y / E / beide** = wer es macht · ⚠ = häufigste Stolperfalle
 
 ---
 
 ## 0. Erledigt (Stand 31.10.2026)
+
+- [x] Feedback von fünf unabhängigen Reviews (Firmenkundin, Dozentin, Gestaltung, Technik, Sprechtext) eingearbeitet:
+      Sprechtexte, Übergaben, Umfrage-Ansagen, Folie 30 neu, Bedienfehler behoben
 
 - [x] Inhalt final: 37 Folien + 6 Backup, Sprechtext und Rückfragen in den Notizen
 - [x] Rechtsstand 31.10.2026 zweimal am Normtext geprüft; zweite Prüfung mit fünf unabhängigen Durchgängen und
@@ -31,23 +34,30 @@ Legende: `[x]` erledigt · **Y / E / beide** = wer es macht · ⚠ = häufigste 
 - [ ] **beide** Geänderte Stellen aus der zweiten Rechtsprüfung kennen. Am wichtigsten:
       - Folie 13: Lkw-Kamera und Kundenzählung heißen „nicht verboten“, nicht „erlaubt“
       - Folie 23: Gefühle der Belegschaft sind verboten, Gefühle der Kundschaft hochriskant
-      - Folie 26: Not-Stopp „MVO ab 1/2027, KI-Zusatz ab 8/2028“
-      - Folie 30: Entlastungen gelten vor allem für Anbieter
+      - Folie 26: Not-Stopp „Maschinenverordnung ab 1/2027, KI-Zusatz ab 8/2028“
+      - Folie 30: neu „Was kostet es Sie?“ mit drei Fällen; Entlastungen gelten vor allem für Anbieter
       - Folie 31: Venn neu aufgeteilt
+- [ ] **beide** Neue Sprechtexte aus dem Review (31.10.) laut lesen. Am wichtigsten:
+      - Folie 01: Einstieg mit der Kamera („einmal frei, einmal streng geregelt, einmal verboten“), dann „kein
+        Produktvortrag“
+      - Jede Umfrage: „Neuer Code, bitte neu scannen. Sie haben 30 Sekunden.“
+      - Folie 28: erst den Irrtum vorlesen und Hände abwarten, dann klicken und auflösen
+      - Folie 29: Umsatz der Muster Metallbau schätzen lassen (rund 10 Mio.), dann 2 Mio. zum Vergleich
+      - Folie 36: unsere eigene Einschätzung nach dem Ergebnis; Folie 37 endet mit der ersten Diskussionsfrage
 - [ ] **beide** Rückfragen-Absätze in den Notizen lesen (in der Referentenansicht grau). Typische Fragen:
       - Gilt das auch für unser schon laufendes Tool? (Bestandsschutz, Art. 111)
       - Wir nutzen ChatGPT für Bewerbungen. Sind wir dann Anbieter? (Art. 25)
       - Darf ich die Einstufung selbst machen? (RDG, Folie 34)
 - [ ] **beide** Sprecherwechsel festlegen. Wer klickt beim Wechsel? Clicker übergeben oder der andere klickt im
       Referentenfenster.
-      - nach Folie 05 → E
-      - nach 19 → Y
-      - nach 28 → E
-      - nach 31 → Y
+      - nach Folie 05 → E („Durch Grundlagen und Risikoklassen führt Sie jetzt Elias.“)
+      - nach 19 → Y („Wie man sie Schritt für Schritt prüft, zeigt Ihnen jetzt Yannick.“)
+      - nach 28 → E („Was es kostet, wenn das Ob schiefgeht, rechnet Elias jetzt mit Ihnen aus.“)
+      - nach 31 → Y („Bleibt die Frage, wer sich darum kümmert. Yannick?“)
 - [ ] **Y** Zwei Ersatzfälle für den freien Modus auf Folie 23 bereithalten, falls aus dem Publikum nichts kommt:
       „Excel-Formel“ (keine KI) und „KI-Schichtplanung nach Leistungsdaten“ (hochriskant)
-- [ ] **Y** Optional: SimpleAct kurz informieren, dass die zweite Rechtsprüfung nur Formulierungen geändert hat. Der
-      Praxisblick auf Folie 34 ist unverändert.
+- [ ] **Y** Optional: SimpleAct kurz informieren, dass die zweite Rechtsprüfung nur Formulierungen geändert hat. Auf
+      Folie 34 steht im Praxisblick jetzt „„unsicher“ zählt streng“ statt „wie Ja“.
 
 ---
 
@@ -63,11 +73,13 @@ sie bis zum Vortrag verfallen: nach 30 Minuten, bei der Schätzfrage nach 90 Min
       - [ ] **P** öffnet das zweite Fenster (Pop-ups für die Seite erlauben).
       - [ ] Sprechtext, Uhr und nächste Folie sind sichtbar.
       - [ ] Das Folienfenster läuft im Vollbild (**F11**) auf dem Beamer.
+      - [ ] Rechner (29), Uhr (24) und „Eigener Fall“ (23) nur im Folienfenster bedienen. In der Referentenansicht
+        sind Klicks auf die Folie bewusst gesperrt.
 - [ ] Clicker: weiter und zurück funktionieren. **B** schaltet auf Schwarzbild, nochmal **B** blendet wieder ein.
 - [ ] Animationen laufen flüssig: Titel, Pyramide (11), Stempel (13), Flug ins Inventar (26), Kernbotschaft (35).
       Ruckelt etwas, die Adresse mit `?bewegung=reduziert` öffnen. Der Inhalt bleibt gleich, nur ohne Bewegung.
 - [ ] Am Beamer hell und dunkel vergleichen (**D**) und die bessere Variante festlegen. Lesbar aus der letzten Reihe?
-- [ ] Ganzer Durchlauf mit Uhr. Ziel 50:45 ± 3 Min., Zwischenzeiten siehe Abschnitt 5.
+- [ ] Ganzer Durchlauf mit Uhr. Ziel 51:15 ± 3 Min., Zwischenzeiten siehe Abschnitt 5.
 
 **Interaktiv**
 - [ ] Alle acht Live-Fragen (Folien 02, 04, 09, 20, 22, 25, 33, 36) mit 3–4 Handys aus der letzten Reihe testen.
@@ -82,7 +94,7 @@ sie bis zum Vortrag verfallen: nach 30 Minuten, bei der Schätzfrage nach 90 Min
       - [ ] Folie 21: Fall 1 läuft animiert.
       - [ ] Folie 23: Fall 2 und „Eigener Fall“ funktionieren (Ja/Nein, ↶ nimmt die letzte Antwort zurück, die Folie
         springt nicht).
-- [ ] Folie 24: Ein Klick startet die Uhr (3:00), ein Klick auf die Uhr hält an. Folie 29: Rechner mit den Knöpfen
+- [ ] Folie 24: Ein Klick startet die Uhr (3:00), ein Klick auf die Uhr hält an. Bei 0:30 „Noch 30 Sekunden“ ansagen. Folie 29: Rechner mit den Knöpfen
       2/10/50 Mio. € und dem Regler.
 - [ ] Handy-Klassifizierer (QR auf Folie 24 und 37) einmal komplett durchspielen, auch „Unsicher“ und „Zurück“.
 
@@ -147,23 +159,24 @@ sie bis zum Vortrag verfallen: nach 30 Minuten, bei der Schätzfrage nach 90 Min
 | B | Schwarzbild |
 | D | hell / dunkel |
 
-**Live-Fragen:** Folien 02, 04, 09, 20, 22, 25, 33, 36. Je Frage 45–60 s warten, dann auflösen. Bei „offline“:
-Handzeichen, Klick auf einen Balken zählt +1.
+**Live-Fragen:** Folien 02, 04, 09, 20, 22, 25, 33, 36. Ansage: „Neuer Code, bitte neu scannen. Sie haben 30 Sekunden.“
+Klicken, wenn n nicht mehr steigt, spätestens nach 45 s. Bei „offline“: Handzeichen, Klick auf einen Balken zählt +1.
+Ziffern springen immer zu Folien, sie zählen keine Stimmen.
 
 **Zwischenzeiten (Sollzeit ab Start)**
 
 | Folie | Soll | Folie | Soll |
 |---|---|---|---|
-| 06 Zeitstrahl (E) | 4:50 | 26 Inventar | 33:55 |
-| 11 Pyramide | 11:55 | 29 Bußgeld-Rechner (E) | 37:55 |
-| 20 Live: Fall 1 (Y) | 24:00 | 32 Wer macht was? (Y) | 42:55 |
-| 24 Partnerarbeit | 29:25 | 37 Diskussion | 50:15 |
+| 06 Zeitstrahl (E) | 4:50 | 26 Inventar | 34:50 |
+| 11 Pyramide | 11:55 | 29 Bußgeld-Rechner (E) | 38:50 |
+| 20 Live: Fall 1 (Y) | 23:40 | 32 Wer macht was? (Y) | 43:25 |
+| 24 Partnerarbeit | 29:15 | 37 Diskussion | 50:45 |
 
 **Kürzungsplan bei Verzug**
 - Ab 3 Min. Rückstand:
   - Partnerarbeit (24) nur 2 statt 3 Minuten
   - Folie 27 (Zahlen): nur die 71 % nennen
-  - Folie 28: nur drei der sechs Irrtümer aufdecken, die übrigen per Klick durchblättern
+  - Folie 28: keine Handzeichen, die Irrtümer nur vorlesen und auflösen
 - Ab 6 Min. Rückstand zusätzlich:
   - Folie 10 (Aufsicht) in einem Satz
   - Folie 30 (Kosten) überspringen: mit `31` Enter springen

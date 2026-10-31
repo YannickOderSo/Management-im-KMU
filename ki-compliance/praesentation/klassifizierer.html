@@ -193,6 +193,7 @@
     var k = p.knoten[p.aktuell];
     var sp = D.spalten[k.spalte - 1];
     ansicht.textContent = '';
+    oben();
     var karte = el('div', { class: 'karte' }, null, ansicht);
     var marke = el('p', { class: 'marke', 'data-klasse': sp.klasse }, null, karte);
     K.form(sp.klasse, marke);
@@ -221,6 +222,7 @@
 
   function ergebnisZeigen() {
     ansicht.textContent = '';
+    oben();
     var box = el('div', { class: 'ergebnis' }, null, ansicht);
     el('h2', null, abgespielt ? 'Ergebnis: ' + abgespielt : 'Ihr Ergebnis', box);
     var unsicher = p.pfad.filter(function (s) { return s.unsicher; }).length;
@@ -257,6 +259,11 @@
     neu.focus({ preventScroll: true });
   }
 
+  /* neue Frage bzw. Ergebnis oben ins Bild holen (kleine Handys) */
+  function oben() {
+    var y = ansicht.getBoundingClientRect().top + window.scrollY - 8;
+    if (window.scrollY > y) window.scrollTo({ top: Math.max(0, y), behavior: 'auto' });
+  }
   function antworten(text) { abgespielt = null; p.antworte(text); weiter(); }
   function weiter() { stufenZeichnen(); if (p.aktuell) frageZeigen(); else ergebnisZeigen(); }
 

@@ -10,7 +10,7 @@ Stand: 31.10.2026 · Modul Management im KMU (Annahme, siehe „Offene Entscheid
 > entfallen (die Zahl merkt sich das Publikum, Auflösung auf Folie 19). Aktueller Aufbau: `praesentation/LIESMICH.md`.
 >
 > **Stunden-Fassung (31.10.2026, auf Wunsch von Yannick: bis zu einer Stunde, interaktiver):** 37 Folien + 6 Backup,
-> Sollzeit 50:45 + Diskussion, zusammen ca. eine Stunde. Neu: acht Live-Fragen (u. a. Schätzung mit Auflösung auf Folie 26, Rollen-Quiz,
+> Sollzeit 51:15 + Diskussion, zusammen ca. eine Stunde. Neu: acht Live-Fragen (u. a. Schätzung mit Auflösung auf Folie 26, Rollen-Quiz,
 > „Was zuerst?“, Meinung), Daumen-Runde „Verboten oder erlaubt?“, Partnerarbeit mit dem Handy-Klassifizierer und
 > Countdown, Bußgeld-Rechner, Folien zu Aufsicht, Kosten, drei Gesetzen und Rollen im Betrieb. Freigabe der
 > SimpleAct-Inhalte erteilt.

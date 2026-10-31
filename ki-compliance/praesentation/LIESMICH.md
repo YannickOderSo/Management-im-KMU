@@ -36,7 +36,7 @@ dem Publikum klicken, ↶ nimmt die letzte Antwort zurück, „Neu“ beginnt vo
 **Notfall-PDF:** `export/ki-compliance-notfall.pdf` (eine Seite je Folie, Endzustand).
 **Redeskript:** `export/redeskript.pdf` (Sprechtext je Folie, Klicks, Sollzeiten).
 
-## Aufbau (37 Folien + 6 Backup, Sollzeit 50:45 + Diskussion, insgesamt ca. eine Stunde)
+## Aufbau (37 Folien + 6 Backup, Sollzeit 51:15 + Diskussion, insgesamt ca. eine Stunde)
 
 | Teil | Folien |
 |---|---|
@@ -44,7 +44,7 @@ dem Publikum klicken, ↶ nimmt die letzte Antwort zurück, „Neu“ beginnt vo
 | 1 Grundlagen | 06 Zeitstrahl · 07 Ist das KI? (Handzeichen) · 08 Rollen · 09 Umfrage: Welche Rolle? · 10 Wer kontrolliert? |
 | 2 Risikoklassen | 11 Pyramide · 12 Verbote · 13 Daumen-Runde · 14 Zwei Türen · 15 Filter · 16 Pflichten · 17 Transparenz · 18 Minimal und Art. 4 · 19 GPAI |
 | 3 Selbst prüfen | 20 Umfrage Fall 1 · 21 Klassifizierer · 22 Umfrage Fall 2 · 23 Gleiche Technik, andere Klasse (freier Modus) · 24 Partnerarbeit mit Handy-Klassifizierer · 25 Umfrage: Ihre Ergebnisse · 26 KI-Inventar und Auflösung der Schätzung |
-| 4 KMU-Praxis | 27 KMU in Zahlen · 28 Sechs Irrtümer (Handzeichen) · 29 Bußgeld-Rechner · 30 Kosten und Entlastung · 31 Drei Gesetze · 32 Wer macht was im Betrieb? · 33 Umfrage: Was zuerst? · 34 Fünf Schritte |
+| 4 KMU-Praxis | 27 KMU in Zahlen · 28 Sechs Irrtümer (Handzeichen) · 29 Bußgeld-Rechner · 30 Was kostet es Sie? · 31 Drei Gesetze · 32 Wer macht was im Betrieb? · 33 Umfrage: Was zuerst? · 34 Fünf Schritte |
 | Schluss | 35 Eine Kamera, drei Klassen · 36 Umfrage: Bremse oder Vertrauen? · 37 Diskussion mit QR-Code |
 | Backup | B1 Quellen · B2 Zehn Verbote · B3 Anhang III · B4 Digital-Omnibus · B5 AI Act, DSGVO, BetrVG · B6 Methode |
 
@@ -94,8 +94,8 @@ node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte --druc
 ```
 
 Stand 31.10.2026 (nach dem Upgrade): 0 Fehler und 0 Warnungen über alle Folien und Schritte, Notfall-PDF 43 Seiten,
-Redeskript Sollzeit 50:45. Wortbudget 40 je Hauptfolie; drei ausdrückliche Ausnahmen per `data-wortbudget` (26 Inventar-
-Tabelle, 28 Irrtümer, 29 Rechner).
+Redeskript Sollzeit 51:15. Wortbudget 40 je Hauptfolie; vier ausdrückliche Ausnahmen per `data-wortbudget` (26 Inventar-
+Tabelle, 28 Irrtümer, 29 Rechner, 34 Fünf Schritte mit Praxisblick).
 
 5. Probelauf am Präsentationslaptop: Animationen flüssig? Sonst `?bewegung=reduziert` an die Adresse hängen (zeigt
    alles ohne Bewegung, gleicher Inhalt).

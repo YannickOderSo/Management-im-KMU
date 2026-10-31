@@ -1585,6 +1585,9 @@
      war (z. B. „1“ „0“ Enter → Folie 10, keine Stimme für Antwort 1). */
   Deck.taste(function (e) {
     if (!/^(Digit|Numpad)[1-9]$/.test(e.code || '')) return false;
+    /* marke.js → umfrageZiffern: false: Ziffern springen immer (Ziffer + Enter),
+       Plan B ist dann der Klick auf den Balken */
+    if (marke && marke.umfrageZiffern === false) return false;
     var aktiv = umfragen.filter(umfrageSichtbar)[0];
     if (!aktiv) return false;
     var i = parseInt(e.code.replace(/\D/g, ''), 10) - 1;

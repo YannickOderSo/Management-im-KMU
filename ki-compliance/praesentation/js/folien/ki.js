@@ -115,9 +115,23 @@
     var f = new Intl.NumberFormat('de-DE', { maximumFractionDigits: mio < 1 ? 0 : 2 });
     return mio < 1 ? f.format(Math.round(mio * 1e6)) + ' €' : f.format(mio) + ' Mio. €';
   }
+  /* Klicks und Ziehen bleiben im Baustein (kein Folienwechsel). Tasten nur,
+     solange jemand den Regler bewusst per Tastatur bedient; nach einem Klick
+     gibt der Baustein den Fokus ab, damit der Clicker sofort wieder blättert
+     (Review 31.10.2026: nach „50 Mio. €“ reagierte Bild↓ nicht mehr). */
+  var REGLER_TASTEN = ['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'];
   function abschirmen(knoten) {
-    ['pointerdown', 'mousedown', 'touchstart', 'keydown', 'keyup', 'wheel', 'click'].forEach(function (typ) {
+    ['pointerdown', 'mousedown', 'touchstart', 'wheel', 'click'].forEach(function (typ) {
       knoten.addEventListener(typ, function (ev) { ev.stopPropagation(); }, { passive: true });
+    });
+    knoten.addEventListener('keydown', function (ev) {
+      if (ev.target.type === 'range' && REGLER_TASTEN.indexOf(ev.key) >= 0) ev.stopPropagation();
+    });
+    knoten.addEventListener('pointerup', function () {
+      setTimeout(function () {
+        var f = document.activeElement;
+        if (f && knoten.contains(f) && f.blur) f.blur();
+      }, 0);
     });
   }
   Deck.baustein('bussgeldrechner', {
@@ -213,7 +227,7 @@
       h.setAttribute('role', 'timer');
       h.addEventListener('click', function (ev) {
         ev.stopPropagation();
-        if (h._lauf) anhalten(h, 'angehalten, Klick setzt fort'); else if (h._rest > 0) starten(h);
+        if (h._lauf) anhalten(h, 'angehalten'); else if (h._rest > 0) starten(h);
       });
       abschirmen(h);
       zuruecksetzen(h);
@@ -222,7 +236,8 @@
       var wurzel = document.documentElement.classList;
       if (wurzel.contains('aufnahme') || wurzel.contains('druckmodus')) return;
       if (n >= h._ab && richtung === 'vor' && !h._lauf && h._rest === h._dauer) starten(h);
-      if (n < h._ab) zuruecksetzen(h);
+      /* versehentliches Zurück während der Partnerarbeit lässt die Uhr laufen */
+      if (n < h._ab && richtung === 'start') zuruecksetzen(h);
     },
     verlassen: function (h) { zuruecksetzen(h); },
     druck: function (h) { zuruecksetzen(h); }
@@ -232,7 +247,7 @@
     if (h._lauf) { clearInterval(h._lauf); h._lauf = null; }
     h._rest = h._dauer;
     h.classList.remove('ist-laeuft', 'ist-ende');
-    h._text.textContent = 'Klick startet die Uhr';
+    h._text.textContent = 'drei Minuten';
     zeigen(h);
   }
   function anhalten(h, text) {
@@ -250,6 +265,13 @@
       zeigen(h);
     }, 250);
   }
+
+  /* Nach einem Klick auf einen Umfrage-Balken (Plan B) Fokus abgeben: sonst
+     zählt die Leertaste des Clickers still eine weitere Stimme */
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest && ev.target.closest('.umfrage button, .umfrage [role="button"]');
+    if (b) setTimeout(function () { if (document.activeElement === b) b.blur(); }, 0);
+  }, true);
 
   /* 4. Artikel-Stempel sind Belege (Metaangaben wie die Quelle) */
   util.alle('.k-stempel').forEach(function (st) { st.setAttribute('data-meta', ''); });
