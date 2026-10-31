@@ -98,7 +98,7 @@ const html = `<!doctype html>
   @media print { :root { --text: #1d1d1b; --leise: #6b6b66; --akzent: #0b4f6c; --linie: #d8d4cb; --papier: #fff; } main { padding: 0; max-width: none; } }
 </style></head><body><main>
 <h1>Redeskript: Welches Risiko hat Ihre KI?</h1>
-<p class="unter">Yannick Heisler · Rechtsstand 31.10.2026 · Vortragstermin offen · ${folien.length} Folien, Sollzeit ${mmss(uhr)} Min. · Normal gesetzt: sprechen. Kursiv: Regie. „Klick“: nächster Schritt.</p>
+<p class="unter">Elias Knauber und Yannick Heisler · Montag, 9. November 2026 · Rechtsstand 31.10.2026 · ${folien.length} Folien, Sollzeit ${mmss(uhr)} Min. · Normal gesetzt: sprechen. Kursiv: Regie. „Klick“: nächster Schritt.</p>
 ${bloecke.join('\n')}
 <section class="anhang"><h2>Mögliche Rückfragen</h2>
 ${rueckfragen.map((r) => `<p><b>Folie ${String(r.nr).padStart(2, '0')}:</b> ${esc(r.text)}</p>`).join('\n')}
@@ -114,7 +114,7 @@ await druck.emulateMedia({ media: 'print', colorScheme: 'light' });
 const klein = 'font: 7px Arial, sans-serif; color: #6b6b66; width: 100%; padding: 0 18mm;';
 await druck.pdf({
   path: path.join(ziel, 'redeskript.pdf'), format: 'A4', preferCSSPageSize: true, printBackground: true, displayHeaderFooter: true,
-  headerTemplate: `<div style="${klein}">Redeskript · KI-Compliance im KMU · Yannick Heisler</div>`,
+  headerTemplate: `<div style="${klein}">Redeskript · KI-Compliance im KMU · Elias Knauber, Yannick Heisler</div>`,
   footerTemplate: `<div style="${klein} text-align: right;">Seite <span class="pageNumber"></span> von <span class="totalPages"></span></div>`
 });
 await browser.close();

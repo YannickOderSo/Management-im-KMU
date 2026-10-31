@@ -36,8 +36,8 @@ window.MARKE = {
   dozent: 'Prof. Dr. Christine Arend-Fuchs',
   hochschule: 'Hochschule Kaiserslautern',
   unternehmen: '',
-  gruppe: ['Yannick Heisler'],
-  datum: '',                      // Vortragstermin (JJJJ-MM-TT) – noch offen
+  gruppe: ['Elias Knauber', 'Yannick Heisler'],   // seit 31.10.2026 zu zweit (Aufteilung: LIESMICH.md)
+  datum: '2026-11-09',            // Vortrag Mo, 9. November 2026 (Yannick, 31.10.2026)
   rechtsstand: '31.10.2026',      // erscheint auf Titel- und Methodenfolie
   dauerMinuten: 51,               // bis zu einer Stunde, interaktiv (Yannick, 31.10.2026): Sollzeiten 50:45 + Diskussion
   anrede: 'Sie',
@@ -48,7 +48,8 @@ window.MARKE = {
      VORAUSSETZUNG für den QR-Code: Dieser Ordner liegt auf dem Branch, den
      GitHub Pages zeigt (claude/exciting-meitner-w27zwy). Sonst Plan B:
      Handzeichen, Klick auf die Balken zählt.
-     runde: 'probe' für Tests, am Vortragstag eine eigene Runde eintragen. */
+     runde: 'probe' für Tests; Vortragsrunde 'vortrag-2026-11-09' (Stimmen zählen
+     30 Minuten, Teststimme also spätestens eine halbe Stunde vor Beginn). */
   umfragen: {
     'ki-nutzung': {                       // Folie 02, Frage 1
       frage: 'Wie oft nutzen Sie KI für Studium, Job oder Nebenjob?',
@@ -57,7 +58,7 @@ window.MARKE = {
       kurzLink: '',
       ergebnisLink: '',
       liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
-      runde: 'probe',
+      runde: 'vortrag-2026-11-09',
       gueltigMinuten: 30,
       unsereAntwort: ['täglich', 'mehrmals pro Woche'],
       aussage: '{prozent} nutzen KI mindestens mehrmals pro Woche',
@@ -71,7 +72,7 @@ window.MARKE = {
       kurzLink: '',
       ergebnisLink: '',
       liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
-      runde: 'probe',
+      runde: 'vortrag-2026-11-09',
       gueltigMinuten: 30,
       unsereAntwort: ['4'],
       aussage: '{prozent} von Ihnen haben richtig geschätzt',
@@ -85,7 +86,7 @@ window.MARKE = {
       kurzLink: '',
       ergebnisLink: '',
       liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
-      runde: 'probe',
+      runde: 'vortrag-2026-11-09',
       gueltigMinuten: 30,
       unsereAntwort: ['Anbieter und Betreiber'],
       aussage: '{prozent} liegen richtig',
@@ -99,7 +100,7 @@ window.MARKE = {
       kurzLink: '',
       ergebnisLink: '',
       liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
-      runde: 'probe',
+      runde: 'vortrag-2026-11-09',
       gueltigMinuten: 30,
       unsereAntwort: ['hochriskant'],
       aussage: '{prozent} von Ihnen liegen richtig',
@@ -113,7 +114,7 @@ window.MARKE = {
       kurzLink: '',
       ergebnisLink: '',
       liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
-      runde: 'probe',
+      runde: 'vortrag-2026-11-09',
       gueltigMinuten: 30,
       unsereAntwort: ['hochriskant'],
       aussage: '{prozent} von Ihnen liegen richtig',
@@ -127,7 +128,7 @@ window.MARKE = {
       kurzLink: '',
       ergebnisLink: '',
       liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
-      runde: 'probe',
+      runde: 'vortrag-2026-11-09',
       gueltigMinuten: 30,
       unsereAntwort: ['minimal'],
       aussage: '{prozent} landen bei „minimal“',
@@ -141,7 +142,7 @@ window.MARKE = {
       kurzLink: '',
       ergebnisLink: '',
       liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
-      runde: 'probe',
+      runde: 'vortrag-2026-11-09',
       gueltigMinuten: 30,
       unsereAntwort: ['Stimmungsanalyse abschalten'],
       aussage: '{prozent} schalten zuerst das Verbotene ab',
@@ -155,7 +156,7 @@ window.MARKE = {
       kurzLink: '',
       ergebnisLink: '',
       liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
-      runde: 'probe',
+      runde: 'vortrag-2026-11-09',
       gueltigMinuten: 30,
       unsereAntwort: ['eher ja, zu viel Aufwand'],
       aussage: '{prozent} sehen eher eine Bremse',

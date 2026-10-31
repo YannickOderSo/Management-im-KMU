@@ -4,6 +4,9 @@ Web-Präsentation (HTML) für das Modul Management im KMU. Öffnen: `index.html`
 Doppelklick; Live-Umfragen und QR-Codes brauchen Internet und GitHub Pages). Engine und Bedienung wie im
 Führungs-Referat (`fuehrung/praesentation/`), eigene Gestaltung „Prüfpfad“.
 
+**Vortrag: Montag, 9. November 2026 · Elias Knauber und Yannick Heisler.** Aufteilung (Vorschlag, Regiehinweise in den
+Notizen): Yannick 01–05, 20–28, 32–37 (alle SimpleAct-Teile) · Elias 06–19, 29–31.
+
 Rechtsstand: 31.10.2026 (VO (EU) 2024/1689 in der Fassung der VO (EU) 2026/1744, KI-MIG vom 22.7.2026).
 Allgemeine Information, keine Rechtsberatung.
 
@@ -61,15 +64,18 @@ dem Publikum klicken, ↶ nimmt die letzte Antwort zurück, „Neu“ beginnt vo
 | `js/deck.js`, `js/komponenten.js`, `css/tokens.css`, `deck.css`, `komponenten.css`, `schriften/` | Engine (unverändert) |
 | `werkzeuge/pruefen.mjs`, `werkzeuge/redeskript.mjs` | Prüfung mit Screenshots und Notfall-PDF; Redeskript |
 
+Upgrade für Kundenfassung (Grafik, Animation, White-Label): `../recherche/gestaltung-upgrade.md`.
+
 Belege: `../recherche/rechtspruefung.md` (alle Rechtsangaben am Amtsblatt, BGBl. und an Kommissionsdokumenten geprüft,
 31.10.2026) und `../recherche/kmu-zahlen.md` (51 Zahlen mit Quelle). Die Prüflogik beruht auf den Antworten der
 internen SimpleAct-KI (Fragebogen `../befragung/fragebogen-interne-ki.md`, Auswertung `../befragung/auswertung.md`).
 
 ## Vor dem Vortrag
 
-1. `marke.js`: `datum` eintragen; bei allen acht Umfragen `runde` von `'probe'` auf eine eigene Vortragsrunde setzen.
-2. GitHub Pages zeigt den Branch `claude/exciting-meitner-w27zwy`. Erst wenn dieser Ordner dort liegt, funktionieren
-   die QR-Codes (Abstimmseite, Klassifizierer). Plan B ohne Netz: Handzeichen, Klick auf die Balken zählt.
+1. ✅ `marke.js`: `datum` 2026-11-09, alle acht Umfragen auf Runde `'vortrag-2026-11-09'`. Teststimme vom Handy
+   spätestens 30 Minuten vor Beginn (danach zählt sie nicht mehr).
+2. ✅ Auf GitHub Pages veröffentlicht (Branch `claude/exciting-meitner-w27zwy`), QR-Codes geprüft. Plan B ohne Netz:
+   Handzeichen, Klick auf die Balken zählt.
 3. ✅ Freigabe der SimpleAct-Inhalte erteilt (laut Yannick, 31.10.2026).
 4. Prüfen:
 

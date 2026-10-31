@@ -81,7 +81,7 @@
 .t-karte rect { fill: var(--k-papier); stroke: var(--k-tinte); stroke-width: 3; }
 .t-karte text {
   font-family: var(--schrift-text);
-  font-size: 31px; font-weight: 600;
+  font-size: 29px; font-weight: 600;
   text-anchor: middle;
   fill: var(--k-tinte);
 }
