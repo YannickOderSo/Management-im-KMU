@@ -254,7 +254,11 @@ function liveAnfrageErkennen(url) {
   if (!LIVE.quellen.length) return null;
   let u;
   try { u = new URL(url); } catch (e) { return null; }
-  const quelle = LIVE.quellen.find((q) => q.schluessel === u.origin + u.pathname);
+  /* Mehrere Umfragen können dieselbe Web-App nutzen (mit eigenem
+     gueltigMinuten): zuerst die Umfrage aus ?umfrage=…, sonst die erste mit
+     derselben Adresse */
+  const gleicheAdresse = LIVE.quellen.filter((q) => q.schluessel === u.origin + u.pathname);
+  const quelle = gleicheAdresse.find((q) => q.id === u.searchParams.get('umfrage')) || gleicheAdresse[0];
   const aktion = u.searchParams.get('aktion');
   if (!quelle || (aktion !== 'stand' && aktion !== 'stimme')) return null;
   const p = {};
