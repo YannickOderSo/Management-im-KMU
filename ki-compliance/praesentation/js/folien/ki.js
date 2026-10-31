@@ -32,7 +32,8 @@
     var aktuell = alle ? STATIONEN.length + 1 : Number(station);
     if (!alle && !(aktuell >= 1 && aktuell <= STATIONEN.length)) return;
 
-    var kopf = util.element('div', { class: 'laufkopf k-laufkopf' });
+    /* data-morph: die Leiste bleibt beim Folienwechsel stehen (View Transition) */
+    var kopf = util.element('div', { class: 'laufkopf k-laufkopf', 'data-morph': 'laufleiste' });
     util.element('span', { class: 'k-lauf-titel' }, 'KI-Compliance im KMU', kopf);
     var pfad = util.element('div', {
       class: 'k-lauf-pfad',
@@ -65,7 +66,7 @@
         data-puls                         graue Punkte pulsieren nacheinander
      --------------------------------------------------------------------------- */
   var PUNKTE = {
-    1: [172, 240], 2: [346, 54], 3: [326, 242], 4: [250, 418], 5: [612, 360], 6: [779, 282]
+    1: [281, 128], 2: [253, 37], 3: [400, 199], 4: [206, 173], 5: [654, 323], 6: [565, 239]
   };
   var FORM = { verboten: 's-verboten', hoch: 's-hoch', transparenz: 's-transparenz', minimal: 's-minimal', gpai: 's-gpai' };
   util.alle('svg.k-wimmel').forEach(function (bild) {

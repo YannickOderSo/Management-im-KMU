@@ -1,0 +1,9 @@
+GSAP 3.15.0 (gsap, SplitText, DrawSVGPlugin, MorphSVGPlugin, Flip, MotionPathPlugin, CustomEase)
+Quelle: npm-Paket gsap@3.15.0 (https://registry.npmjs.org/gsap/-/gsap-3.15.0.tgz), Dateien aus dist/ unverändert,
+Lizenzköpfe in den Dateien nicht verändert.
+
+Lizenz: GSAP Standard "No Charge" License, https://gsap.com/standard-license
+(Stand der Prüfung 31.10.2026: kommerzielle Nutzung erlaubt, alle früheren Club-Plugins eingeschlossen;
+untersagt sind u. a. die Nutzung in No-Code-Animations-Baukästen, die mit Webflow konkurrieren, und das
+Entfernen von Lizenzhinweisen. Diese Präsentation nutzt GSAP nur zur Darstellung eigener Folien.)
+Copyright GreenSock / Webflow. Alle Rechte bei den Rechteinhabern.

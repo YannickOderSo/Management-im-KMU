@@ -74,7 +74,6 @@
 .t-trichter, .t-weiche, .t-fach path {
   fill: none; stroke: var(--k-tinte); stroke-width: 5; stroke-linejoin: round; stroke-linecap: round;
 }
-.t-trichter { fill: var(--k-flaeche); }
 .t-weiche { stroke: var(--k-mittel); stroke-width: 3; stroke-dasharray: 8 9; }
 .t-fach use { fill: var(--k); }
 .t-fach[data-klasse="transparenz"] use { stroke: var(--k-gelb-text); stroke-width: 1.2; }
@@ -85,7 +84,9 @@
   text-anchor: middle;
   fill: var(--k-tinte);
 }
-.t-karte {
+/* ohne GSAP (oder bei reduzierter Bewegung) läuft die CSS-Schleife;
+   js/folien/ki-animation.js setzt .mit-gsap und bewegt die Karten selbst */
+.t-maschine:not(.mit-gsap) .t-karte {
   transform: translate(var(--zx), var(--zy));
   animation: t-sortieren 10s cubic-bezier(.45, .05, .35, 1) infinite;
 }
@@ -106,9 +107,33 @@
 /* Die Zeichnung steht als <symbol> in den defs: Regeln ohne .k-wimmel davor,
    sonst greifen sie im <use> nicht (Farben erben trotzdem je Folie) */
 .k-wimmel { overflow: visible; }
-.w-flaechen > * { fill: var(--k-flaeche); stroke: none; }
-.w-striche { fill: none; stroke: var(--k-tinte); stroke-width: 3.2; stroke-linejoin: round; stroke-linecap: round; }
-.w-striche .w-duenn { stroke: var(--k-mittel); stroke-width: 2.4; }
+/* isometrisch (werkzeuge/wimmelbild-erzeugen.py): oben hell, links mittel, rechts dunkel */
+.wi-oben, .wi-links, .wi-rechts, .wi-dach, .wi-fenster, .wi-papier, .wi-leiste, .wi-blase, .wi-anzeige {
+  stroke: var(--k-tinte); stroke-width: 2.4; stroke-linejoin: round;
+}
+.wi-oben { fill: var(--k-iso-oben); }
+.wi-links { fill: var(--k-iso-links); }
+.wi-rechts { fill: var(--k-iso-rechts); }
+.wi-oben.wi-platte { fill: var(--k-flaeche); }
+.wi-oben.wi-halle { fill: var(--k-flaeche-2); }
+.wi-schirm { fill: var(--k-iso-schirm); }
+.wi-oben.wi-schirm { fill: var(--k-mittel); }
+.wi-oben.wi-band { fill: var(--k-mittel); }
+.wi-links.wi-band, .wi-rechts.wi-band { fill: var(--k-iso-schirm); }
+.wi-papier, .wi-oben.wi-papier { fill: var(--k-iso-oben); }
+.wi-dach { fill: var(--k-iso-links); }
+.wi-fenster { fill: var(--k-flaeche); }
+.wi-anzeige { fill: var(--k-iso-schirm); stroke-width: 1.8; }
+.wi-leiste { fill: var(--k-flaeche-2); }
+.wi-blase { fill: var(--k-flaeche); stroke-width: 1.8; }
+.wi-blase--ich { fill: var(--k-flaeche-2); }
+.wi-punkt { fill: var(--k-mittel); }
+.wi-zahnrad { fill: none; stroke: var(--k-tinte); stroke-width: 3; stroke-dasharray: 5 4; }
+.wi-fuge { fill: none; stroke: var(--k-tinte); stroke-width: 1.8; }
+.wi-strahl { fill: none; stroke: var(--k-mittel); stroke-width: 2.2; stroke-dasharray: 5 5; stroke-linecap: round; }
+.wi-stiel { fill: none; stroke: var(--k-tinte); stroke-width: 2.4; stroke-dasharray: 2 5; stroke-linecap: round; }
+.wi-person { fill: var(--k-tinte); }
+.wi-headset { fill: none; stroke: var(--k-papier); stroke-width: 3; stroke-linecap: round; }
 .w-punkt .w-ring { fill: var(--k-papier); stroke: var(--k-tinte); stroke-width: 4.5; }
 .w-punkt .w-form { display: none; fill: var(--k); }
 .w-punkt .w-zahl {
@@ -283,7 +308,7 @@
   border-radius: var(--k-radius);
   background: var(--k-flaeche);
 }
-.d-symbol { width: 52px; height: 52px; fill: none; stroke: var(--k-tinte); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.d-symbol { width: 56px; height: 56px; color: var(--k-tinte); --duo: var(--k-tinte); --duo-o: .16; }
 .d-name { font-size: 30px; line-height: 1.25; font-weight: 500; }
 .d-urteil {
   padding: 6px 16px;
@@ -315,9 +340,9 @@
 .ro-rolle b { font-family: var(--schrift-display); font-size: 34px; font-weight: 600; line-height: 1.1; }
 .ro-rolle > span:not(.k-stempel):not(.ro-kmu) { font-size: 28px; line-height: 1.3; color: var(--k-tinte-2); }
 .ro-rolle .k-stempel { align-self: flex-start; margin-top: auto; }
-.ro-symbol { width: 52px; height: 52px; fill: none; stroke: var(--k-tinte); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.ro-symbol { width: 58px; height: 58px; color: var(--k-tinte); --duo: var(--k-tinte); --duo-o: .16; }
 .ro-rolle--kmu { background: var(--k-tinte); color: var(--k-papier); }
-.ro-rolle--kmu .ro-symbol { stroke: var(--k-papier); }
+.ro-rolle--kmu .ro-symbol { color: var(--k-papier); --duo: var(--k-orange); --duo-o: .9; }
 .ro-rolle--kmu > span:not(.k-stempel):not(.ro-kmu) { color: var(--k-papier); opacity: .85; }
 .ro-rolle--kmu .k-stempel { color: var(--k-papier); }
 .ro-kmu {
@@ -354,8 +379,10 @@
 }
 .py-stufen { display: grid; grid-template-columns: 640px minmax(0, 1fr); gap: 30px; align-items: center; }
 .py-grafik { width: 640px; height: 472px; overflow: visible; }
-.py-stufe { fill: var(--k); stroke: var(--k-papier); stroke-width: 4; }
-.py-stufe[data-klasse="transparenz"] { stroke: var(--k-gelb-text); stroke-width: 2; }
+.py-stufe polygon { stroke: color-mix(in srgb, var(--k) 70%, #000); stroke-width: 1.5; stroke-linejoin: round; }
+.py-stufe .py-links { fill: var(--k); }
+.py-stufe .py-rechts { fill: color-mix(in srgb, var(--k) 72%, #000); }
+.py-stufe .py-oben { fill: color-mix(in srgb, var(--k) 45%, var(--k-papier)); }
 .py-legende { display: grid; gap: 22px; }
 .py-legende li {
   display: grid;
@@ -405,7 +432,7 @@
   background: var(--k-flaeche);
   box-shadow: inset 0 5px 0 var(--k-rot);
 }
-.vb-bild { width: 72px; height: 72px; fill: none; stroke: var(--k-tinte); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.vb-bild { width: 76px; height: 76px; color: var(--k-tinte); --duo: var(--k-rot); --duo-o: .32; }
 .vb-raster b { font-size: 28px; line-height: 1.15; font-weight: 600; hyphens: manual; }
 .vb-raster .k-stempel { margin-top: 2px; }
 .vb-neu { box-shadow: inset 0 5px 0 var(--k-rot), inset 0 0 0 3px var(--k-rot) !important; background: var(--k-papier) !important; }
@@ -511,11 +538,16 @@
 }
 .fi-liste b { font-family: var(--schrift-display); font-size: 30px; color: var(--k-orange-text); }
 .fi-grafik { position: absolute; left: 480px; top: 40px; width: 520px; height: 600px; overflow: visible; }
-.fi-form { fill: var(--k-flaeche); stroke: var(--k-tinte); stroke-width: 5; stroke-linejoin: round; }
+.fi-form, .t-trichter { fill: url(#k-verlauf-koerper); stroke: var(--k-tinte); stroke-width: 5; stroke-linejoin: round; }
+.fi-rand, .t-rand { fill: var(--k-flaeche-2); stroke: var(--k-tinte); stroke-width: 5; }
+.fi-schacht, .t-schacht { fill: color-mix(in srgb, var(--k-flaeche-2) 70%, var(--k-mittel)); }
+.k-verlauf-hell { stop-color: var(--k-iso-oben); }
+.k-verlauf-mitte { stop-color: var(--k-flaeche); }
+.k-verlauf-dunkel { stop-color: var(--k-iso-rechts); }
 .fi-ausgaenge path { stroke: var(--k-orange); stroke-width: 5; stroke-dasharray: 10 8; fill: none; transition: stroke .4s; }
 .fi-unten { stroke: var(--k-tinte); stroke-width: 8; stroke-linecap: round; }
 .fi-oben {
-  position: absolute; left: 520px; top: 110px; width: 440px; text-align: center;
+  position: absolute; left: 520px; top: 150px; width: 440px; text-align: center;
   font-family: var(--schrift-display); font-size: 32px; font-weight: 600;
 }
 .fi-riegel {
@@ -569,7 +601,7 @@
 }
 .pf-liste { display: grid; gap: 12px; }
 .pf-liste li { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 12px; align-items: start; font-size: 28px; line-height: 1.3; }
-.pf-haken { width: 34px; height: 34px; fill: none; stroke: var(--k-tinte); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.pf-haken { width: 36px; height: 36px; color: var(--k-tinte); --duo: var(--k-orange); --duo-o: .45; }
 .pf-folie:has(.pf-betrvg.schritt-an) .pf-wichtig { background: var(--k-flaeche-2); border-radius: 8px; box-shadow: 0 0 0 8px var(--k-flaeche-2); }
 .pf-betrvg {
   margin-top: auto;
@@ -606,7 +638,7 @@
   border-radius: 12px;
   background: var(--k-papier);
 }
-.tr-bild svg { width: 190px; height: 127px; fill: none; stroke: var(--k-tinte); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.tr-icon { width: 128px; height: 128px; color: var(--k-tinte); --duo: var(--k-gelb); --duo-o: .75; }
 .tr-bild--chat { display: flex; flex-direction: column; justify-content: center; align-items: stretch; gap: 10px; padding: 14px; }
 .tr-blase { padding: 8px 14px; border-radius: 16px; font-size: 24px; line-height: 1.2; }
 .tr-blase--ki { align-self: flex-start; background: var(--k-gelb); color: var(--k-auf-gelb); border-bottom-left-radius: 4px; }
@@ -786,6 +818,7 @@
   border-radius: var(--k-radius);
   background: var(--k-flaeche);
 }
+.ir-fakt b { display: inline-block; }
 .ir-irrtum { font-family: var(--schrift-display); font-size: 32px; font-weight: 600; line-height: 1.2; transition: color .4s; }
 .ir-fakt {
   margin-top: auto !important;
@@ -833,7 +866,7 @@ html.druckmodus .ir-fakt { opacity: 1; translate: 0 0; }
   padding: 16px 20px; border-radius: 12px; background: var(--k-flaeche);
   font-size: 28px; line-height: 1.26;
 }
-.bu-symbol { width: 44px; height: 44px; fill: none; stroke: var(--k-tinte); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.bu-symbol { width: 46px; height: 46px; color: var(--k-tinte); --duo: var(--k-gruen); --duo-o: .35; }
 
 
 /* =============================================================================
@@ -856,11 +889,11 @@ html.druckmodus .ir-fakt { opacity: 1; translate: 0 0; }
 }
 .st-schritte li:first-child { clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%); border-radius: 12px 0 0 12px; }
 .st-schritte li:nth-child(3) { background: var(--k-tinte); color: var(--k-papier); }
-.st-schritte li:nth-child(3) .st-symbol { stroke: none; fill: var(--k-orange); }
+.st-schritte li:nth-child(3) .st-symbol { fill: var(--k-orange); }
 .st-schritte li:nth-child(3) span:last-child { color: var(--k-papier); opacity: .85; }
 .st-nr { font-family: var(--schrift-display); font-size: 26px; font-weight: 700; color: var(--k-tinte-2); padding-left: 18px; }
 .st-schritte li:nth-child(3) .st-nr { color: var(--k-papier); }
-.st-symbol { width: 50px; height: 50px; margin-left: 18px; fill: none; stroke: var(--k-tinte); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.st-symbol { width: 54px; height: 54px; margin-left: 18px; color: var(--k-tinte); --duo: var(--k-tinte); --duo-o: .16; fill: var(--k-tinte); }
 .st-schritte b { padding-left: 18px; font-family: var(--schrift-display); font-size: 31px; font-weight: 600; line-height: 1.1; }
 .st-schritte span:last-child { padding-left: 18px; padding-right: 20px; font-size: 28px; line-height: 1.26; color: var(--k-tinte-2); }
 .st-praxis {
@@ -892,7 +925,7 @@ html.druckmodus .ir-fakt { opacity: 1; translate: 0 0; }
   background: var(--k-flaeche);
   box-shadow: inset 0 8px 0 var(--k);
 }
-.ke-kamera { width: 120px; height: 120px; fill: none; stroke: var(--k-tinte); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.ke-kamera { width: 128px; height: 128px; color: var(--k-tinte); --duo: var(--k); --duo-o: .7; }
 .ke-kameras b { font-family: var(--schrift-display); font-size: 40px; font-weight: 600; }
 .ke-kameras li > span:not(.k-etikett) { font-size: 28px; color: var(--k-tinte-2); }
 .ke-kameras .k-etikett { margin-top: 10px; font-size: 28px; }
@@ -994,7 +1027,7 @@ html.druckmodus .ir-fakt { opacity: 1; translate: 0 0; }
   border-radius: 16px;
   background: var(--k-tinte); color: var(--k-papier);
 }
-.au-symbol { width: 80px; height: 80px; fill: none; stroke: var(--k-papier); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.au-symbol { width: 84px; height: 84px; color: var(--k-papier); --duo: var(--k-papier); --duo-o: .25; }
 .au-bnetza b { display: block; font-family: var(--schrift-display); font-size: 44px; font-weight: 600; line-height: 1.1; }
 .au-bnetza div span { display: block; margin-top: 8px; font-size: 28px; line-height: 1.3; opacity: .9; }
 .au-bnetza ul { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 12px; }
@@ -1186,23 +1219,27 @@ html.druckmodus .dr-urteil { opacity: 1; translate: 0 0; }
 .ge-name--ds { left: 500px; top: 120px; width: 260px; }
 .ge-name--ds b { color: var(--k-lila-text); }
 .ge-name--bv { left: 280px; top: 535px; width: 260px; }
-.ge-fall {
-  position: absolute; margin: 0;
-  display: flex; align-items: center; gap: 10px;
-  padding: 8px 14px; border-radius: 12px;
-  background: var(--k-papier); box-shadow: 0 0 0 3px var(--k-tinte);
-  font-size: 28px; font-weight: 600; line-height: 1.12;
+/* Nummern wie die Stellen im Wimmelbild; Positionen nach Kreisgeometrie
+   (SVG 900 × 760 auf 820 × 692, Faktor 0,911): Mitte der jeweiligen Schnittfläche */
+.ge-nr {
+  display: inline-grid; place-items: center; flex: none;
+  width: 64px; height: 64px; margin: 0;
+  border-radius: 50%;
+  background: var(--k-papier); box-shadow: 0 0 0 4px var(--k-tinte);
+  font-family: var(--schrift-display); font-size: 34px; font-weight: 700; line-height: 1;
+  color: var(--k-tinte);
 }
-.ge-fall .vb-stelle { width: 40px; height: 40px; font-size: 22px; }
-/* Positionen nach Kreisgeometrie (SVG 900 × 760 auf 820 × 692): AI (292|246),
-   DSGVO (528|246), BetrVG (410|446), Radius 210 */
-.ge-fall { justify-content: center; text-align: center; }
-.ge-fall--mitte { left: 315px; top: 318px; width: 190px; }
-.ge-fall--ai-ds { left: 325px; top: 148px; width: 170px; }
-.ge-fall--ai-bv { left: 196px; top: 400px; width: 180px; }
-.ge-fall--ds-bv { left: 434px; top: 386px; width: 200px; }
+.ge-bild .ge-nr { position: absolute; }
+.ge-nr--ai-ds { left: 378px; top: 114px; }
+.ge-nr--ai-bv { left: 241px; top: 369px; }
+.ge-nr--ds-bv { left: 515px; top: 369px; }
+.ge-nr--mitte { left: 378px; top: 280px; background: var(--k-tinte); color: var(--k-papier); }
 .ge-erklaerung { display: grid; gap: 22px; }
-.ge-erklaerung li { font-size: 28px; line-height: 1.38; padding-left: 22px; border-left: 5px solid var(--k-linie); }
+.ge-erklaerung li { display: flex; align-items: flex-start; gap: 22px; font-size: 28px; line-height: 1.38; }
+.ge-erklaerung .ge-nr { width: 48px; height: 48px; font-size: 26px; box-shadow: 0 0 0 3px var(--k-tinte); }
+.ge-erklaerung li:last-child .ge-nr { background: var(--k-tinte); color: var(--k-papier); }
+.ge-erklaerung p { margin: 0; }
+.ge-erklaerung b { display: block; font-family: var(--schrift-display); font-size: 30px; font-weight: 600; }
 
 /* ---------- 32 Wer macht was ---------- */
 .wm-inhalt {
@@ -1239,3 +1276,22 @@ html.druckmodus .dr-urteil { opacity: 1; translate: 0 0; }
 }
 .inv-schaetzung .ua-zahl { font-size: 64px; }
 .inv-schaetzung .ua-text { font-size: 30px; max-width: none; }
+
+
+/* Icons an Türen, GPAI-Schichten, Aufsicht, Rollen im Betrieb, Daumen-Runde */
+.hr-icon { width: 44px; height: 44px; color: var(--k-tinte); --duo: var(--k-orange); --duo-o: .55; }
+.gp-icon { width: 36px; height: 36px; color: var(--k-tinte); --duo: var(--k-tinte); --duo-o: .16; }
+.au-sonder li { grid-template-columns: 44px minmax(0, 1fr); column-gap: 14px; align-items: center; }
+.au-sonder li span { grid-column: 2; }
+.au-icon { width: 44px; height: 44px; grid-row: 1 / 3; color: var(--k-tinte); --duo: var(--k-tinte); --duo-o: .16; }
+.wm-rollen li { grid-template-columns: 40px minmax(0, 1fr); column-gap: 16px; align-items: center; }
+.wm-rollen li span { grid-column: 2; }
+.wm-icon { width: 40px; height: 40px; grid-row: 1 / 3; color: var(--k-tinte); --duo: var(--k-tinte); --duo-o: .16; }
+.wm-chef .wm-icon { color: var(--k-papier); --duo: var(--k-papier); --duo-o: .25; }
+.dr-kopf { display: flex; align-items: center; justify-content: space-between; margin: 0; }
+.dr-icon { width: 52px; height: 52px; color: var(--k-tinte); --duo: var(--k-tinte); --duo-o: .16; }
+
+
+/* Flug der Klassenform vom Betrieb in die Tabelle (Folie 26, ki-animation.js) */
+.k-flieger { position: absolute; left: 0; top: 0; z-index: 6; pointer-events: none; }
+.k-flieger .k-form { display: block; width: 100%; height: 100%; }

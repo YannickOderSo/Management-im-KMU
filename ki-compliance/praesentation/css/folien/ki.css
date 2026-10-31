@@ -41,6 +41,10 @@ html[data-modus],
   --k-flaeche-2: #E2DFD6;
   --k-letterbox: #DAD7CF;
   --k-ui: #E6E4DD;
+  --k-iso-oben: #FFFFFF;       /* isometrische Flächen (Wimmelbild, Pyramide) */
+  --k-iso-links: #E7E4DB;
+  --k-iso-rechts: #CFCBBF;
+  --k-iso-schirm: #2E3A55;
 
   --k-rot: #C8102E;      --k-rot-text: #B30E29;     --k-auf-rot: #FFFFFF;
   --k-orange: #E8650F;   --k-orange-text: #B4470A;  --k-auf-orange: #FFFFFF;
@@ -61,6 +65,10 @@ html[data-modus="dunkel"],
   --k-flaeche-2: #212B46;
   --k-letterbox: #070B14;
   --k-ui: #1A2238;
+  --k-iso-oben: #2B3754;
+  --k-iso-links: #1C2640;
+  --k-iso-rechts: #141B2E;
+  --k-iso-schirm: #5D6E95;
 
   --k-rot: #FF5C6C;      --k-rot-text: #FF7A87;     --k-auf-rot: #0F1626;
   --k-orange: #FF8A3D;   --k-orange-text: #FF9B57;  --k-auf-orange: #0F1626;
@@ -433,3 +441,15 @@ html[data-thema] {
 }
 html.druckmodus .k-endlos,
 .ist-klon .k-endlos { animation: none !important; }
+
+
+/* -----------------------------------------------------------------------------
+   6. ICONS: Phosphor Duotone (MIT), Symbole #ph-… in index.html
+      <svg class="… ph"><use href="#ph-camera"/></svg>
+      Hauptform = currentColor, Zweitebene .ph-d = --duo mit Deckkraft --duo-o
+      (die Regel greift auf das Original im <symbol>, die Variablen erben vom
+      einbindenden <svg>, also je Folie und Klasse einstellbar)
+   ----------------------------------------------------------------------------- */
+svg.ph { fill: currentColor; stroke: none; overflow: visible; }
+.ph-d { fill: var(--duo, currentColor); opacity: var(--duo-o, .2); }
+[data-klasse] svg.ph { --duo: var(--k); --duo-o: .55; }
