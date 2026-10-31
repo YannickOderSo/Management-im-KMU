@@ -34,6 +34,13 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 |---|---|---|---|
 | Mo, 26.10.2026 | Prozesse (Büchele) · KI im KMU (Tschekuev) · KI-Begriffe und KI-Führerschein (Knopper) · Gastvortrag Bundeswehr | ✅ Transkript (MD + PDF) · ✅ Redeskript (PDF) · ✅ Recap-Präsentation (25 Folien: 20 Inhaltsfolien, 4 Trennfolien, Quellen; ca. 17 Min., Elias Knauber + Yannick Heisler) | [`recap/2026-10-26-prozessmanagement-und-ki/`](recap/2026-10-26-prozessmanagement-und-ki/) · Folien: [`praesentation/`](recap/2026-10-26-prozessmanagement-und-ki/praesentation/) |
 
+## Vortrag „KI-Compliance im KMU: der EU AI Act“ (in Planung)
+
+| Teil | Stand | Ort |
+|---|---|---|
+| Plan (22 Folien + 6 Backup, ca. 31 Min., Klassifizierer als Glanzstück) | 📝 Entwurf 31.10.2026, wartet auf Freigabe | [`ki-compliance/PLAN.md`](ki-compliance/PLAN.md) |
+| Fragebogen an die interne SimpleAct-KI (Prüflogik, 14 Fälle, Gegencheck von 20 Kernaussagen) | 📝 bereit zum Einfügen; Antworten wegen öffentlichem Repo nicht einchecken | [`ki-compliance/befragung/fragebogen-interne-ki.md`](ki-compliance/befragung/fragebogen-interne-ki.md) |
+
 ## Online (GitHub Pages)
 
 Startseite: https://yannickoderso.github.io/Management-im-KMU/ (nach dem Einschalten unter Settings → Pages)
