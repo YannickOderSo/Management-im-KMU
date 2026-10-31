@@ -17,8 +17,8 @@ Stand: 31.10.2026 · Modul Management im KMU (Annahme, siehe „Offene Entscheid
 >
 > **Nach dem Review (31.10.2026, abends):** Feedback von fünf unabhängigen Reviews eingearbeitet. Entscheidungen von
 > Yannick: Umfrage zu Fall 1 gestrichen, Folie 02 als Handzeichen, Rückbezug auf die Führungsdefinition statt
-> Gründerzitat; Praxisblick, Aufsicht und GPAI bleiben. Stand jetzt: 36 Folien + 6 Backup, sechs Live-Fragen,
-> Sollzeit 49:40 + Diskussion. Aktueller Aufbau: `praesentation/LIESMICH.md`, Checkliste: `GO-LIVE.md`.
+> Gründerzitat; Praxisblick, Aufsicht und GPAI bleiben. Danach SimpleAct-Auftritt (Logo, Farben, Schrift, Folie 34 „Die fünf Schritte mit SimpleAct“;
+> neutral per `?marke=neutral`). Stand jetzt: 37 Folien + 6 Backup, sechs Live-Fragen, Sollzeit 50:30 + Diskussion. Aktueller Aufbau: `praesentation/LIESMICH.md`, Checkliste: `GO-LIVE.md`.
 >
 > **Upgrade auf Kunden-Niveau (31.10.2026, Pakete A bis C aus `recherche/gestaltung-upgrade.md`):** GSAP 3.15 lokal
 > (Titel-Intro, Karten auf Bewegungspfaden, fallende Pyramidenstufen, Stempel, Flug ins Inventar, rollende Beträge),

@@ -2384,7 +2384,7 @@
     if (IST_REFERENT) return;
     /* Adressparameter mitgeben, die die Folienliste oder das Aussehen ändern
        (z. B. ?optional=alle) – sonst hätten beide Fenster verschiedene Folien */
-    var mit = ['optional', 'thema', 'modus', 'primaer', 'sekundaer', 'bewegung'].filter(function (k) {
+    var mit = ['optional', 'thema', 'modus', 'primaer', 'sekundaer', 'bewegung', 'marke'].filter(function (k) {
       return parameter.has(k);
     }).map(function (k) {
       return encodeURIComponent(k) + (parameter.get(k) ? '=' + encodeURIComponent(parameter.get(k)) : '');

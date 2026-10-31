@@ -2,8 +2,8 @@
 
 **Vortrag:** Montag, 9.11.2026, Hochschule Kaiserslautern · **Elias Knauber (E)** und **Yannick Heisler (Y)**
 **Folien:** https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/
-**Reserve:** `praesentation/export/ki-compliance-notfall.pdf` (42 Seiten) · `praesentation/export/redeskript.pdf`
-**Ablauf:** 36 Folien, Sollzeit 49:40, danach ca. 10 Min. Diskussion · Bedienung: `praesentation/LIESMICH.md`
+**Reserve:** `praesentation/export/ki-compliance-notfall.pdf` (43 Seiten) · `praesentation/export/redeskript.pdf`
+**Ablauf:** 37 Folien, Sollzeit 50:30, danach ca. 10 Min. Diskussion · Bedienung: `praesentation/LIESMICH.md`
 
 Legende: `[x]` erledigt · **Y / E / beide** = wer es macht · ⚠ = häufigste Stolperfalle
 
@@ -15,8 +15,11 @@ Legende: `[x]` erledigt · **Y / E / beide** = wer es macht · ⚠ = häufigste 
       Sprechtexte, Übergaben, Umfrage-Ansagen, Kostenfolie neu, Bedienfehler behoben. Danach entschieden (Yannick):
       Umfrage zu Fall 1 gestrichen, Folie 02 als Handzeichen (sechs statt acht QR-Umfragen), Folie 31 mit Rückbezug auf
       unsere Führungsdefinition statt Kamill-Zitat; Praxisblick (33), Aufsicht (10) und GPAI (19) bleiben
+- [x] SimpleAct-Auftritt (Yannick, 31.10.2026): Logo (von simpleact.de) in Kopfzeile, auf Titel, Praxisblick und
+      Schlussfolie; Navy, SimpleAct-Blau und Schrift Inter; neue Folie 34 „Die fünf Schritte mit SimpleAct“; Handy-
+      Klassifizierer gebrandet. Neutrale Fassung ohne Logo und ohne Folie 34: Adresse mit `?marke=neutral`
 
-- [x] Inhalt final: 36 Folien + 6 Backup, Sprechtext und Rückfragen in den Notizen
+- [x] Inhalt final: 37 Folien + 6 Backup, Sprechtext und Rückfragen in den Notizen
 - [x] Rechtsstand 31.10.2026 zweimal am Normtext geprüft; zweite Prüfung mit fünf unabhängigen Durchgängen und
       27 Korrekturen (`recherche/rechtspruefung.md`, Abschnitt „Zweite Prüfung“)
 - [x] Prüflogik getestet: alle 458 Ja/Nein-Pfade, alle acht Beispielfälle wie erwartet
@@ -32,7 +35,7 @@ Legende: `[x]` erledigt · **Y / E / beide** = wer es macht · ⚠ = häufigste 
 
 ## 1. Bis Mittwoch, 4.11.: Inhalt abnehmen
 
-- [ ] **beide** Eigene Folien im Redeskript lesen und laut sprechen: **Y** 01–05, 20–27, 31–36 · **E** 06–19, 28–30
+- [ ] **beide** Eigene Folien im Redeskript lesen und laut sprechen: **Y** 01–05, 20–27, 31–37 · **E** 06–19, 28–30
 - [ ] **beide** Geänderte Stellen aus der zweiten Rechtsprüfung kennen. Am wichtigsten:
       - Folie 13: Lkw-Kamera und Kundenzählung heißen „nicht verboten“, nicht „erlaubt“
       - Folie 22: Gefühle der Belegschaft sind verboten, Gefühle der Kundschaft hochriskant
@@ -48,7 +51,8 @@ Legende: `[x]` erledigt · **Y / E / beide** = wer es macht · ⚠ = häufigste 
       - Folie 27: erst den Irrtum vorlesen und Hände abwarten, dann klicken und auflösen
       - Folie 28: Umsatz der Muster Metallbau schätzen lassen (rund 10 Mio.), dann 2 Mio. zum Vergleich
       - Folie 31: Rückbezug auf unsere Führungsdefinition aus dem Führungs-Referat
-      - Folie 35: unsere eigene Einschätzung nach dem Ergebnis; Folie 36 endet mit der ersten Diskussionsfrage
+      - Folie 34 (neu): „Die fünf Schritte mit SimpleAct“, Überleitung von den fünf Schritten auf Folie 33
+      - Folie 36: unsere eigene Einschätzung nach dem Ergebnis; Folie 37 endet mit der ersten Diskussionsfrage
 - [ ] **beide** Rückfragen-Absätze in den Notizen lesen (in der Referentenansicht grau). Typische Fragen:
       - Gilt das auch für unser schon laufendes Tool? (Bestandsschutz, Art. 111)
       - Wir nutzen ChatGPT für Bewerbungen. Sind wir dann Anbieter? (Art. 25)
@@ -81,13 +85,13 @@ sie bis zum Vortrag verfallen: nach 30 Minuten, bei der Schätzfrage nach 90 Min
       - [ ] Rechner (28), Uhr (23) und „Eigener Fall“ (22) nur im Folienfenster bedienen. In der Referentenansicht
         sind Klicks auf die Folie bewusst gesperrt.
 - [ ] Clicker: weiter und zurück funktionieren. **B** schaltet auf Schwarzbild, nochmal **B** blendet wieder ein.
-- [ ] Animationen laufen flüssig: Titel, Pyramide (11), Stempel (13), Flug ins Inventar (25), Kernbotschaft (34).
+- [ ] Animationen laufen flüssig: Titel, Pyramide (11), Stempel (13), Flug ins Inventar (25), Kernbotschaft (35).
       Ruckelt etwas, die Adresse mit `?bewegung=reduziert` öffnen. Der Inhalt bleibt gleich, nur ohne Bewegung.
 - [ ] Am Beamer hell und dunkel vergleichen (**D**) und die bessere Variante festlegen. Lesbar aus der letzten Reihe?
-- [ ] Ganzer Durchlauf mit Uhr. Ziel 49:40 ± 3 Min., Zwischenzeiten siehe Abschnitt 5.
+- [ ] Ganzer Durchlauf mit Uhr. Ziel 50:30 ± 3 Min., Zwischenzeiten siehe Abschnitt 5.
 
 **Interaktiv**
-- [ ] Alle sechs Live-Fragen (Folien 04, 09, 21, 24, 32, 35) mit 3–4 Handys aus der letzten Reihe testen.
+- [ ] Alle sechs Live-Fragen (Folien 04, 09, 21, 24, 32, 36) mit 3–4 Handys aus der letzten Reihe testen.
       Dabei iPhone und Android, Hochschul-WLAN und Mobilfunk. Zu prüfen:
       - [ ] Der QR-Code lässt sich scannen.
       - [ ] Das Handy zeigt „Danke“.
@@ -101,7 +105,7 @@ sie bis zum Vortrag verfallen: nach 30 Minuten, bei der Schätzfrage nach 90 Min
         springt nicht).
 - [ ] Folie 23: Ein Klick startet die Uhr (3:00), ein Klick auf die Uhr hält an. Bei 0:30 „Noch 30 Sekunden“ ansagen. Folie 28: Rechner mit den Knöpfen
       2/10/50 Mio. € und dem Regler.
-- [ ] Handy-Klassifizierer (QR auf Folie 23 und 36) einmal komplett durchspielen, auch „Unsicher“ und „Zurück“.
+- [ ] Handy-Klassifizierer (QR auf Folie 23 und 37) einmal komplett durchspielen, auch „Unsicher“ und „Zurück“.
 
 ---
 
@@ -164,7 +168,7 @@ sie bis zum Vortrag verfallen: nach 30 Minuten, bei der Schätzfrage nach 90 Min
 | B | Schwarzbild |
 | D | hell / dunkel |
 
-**Live-Fragen:** Folien 04, 09, 21, 24, 32, 35 (Folie 02 ist ein Handzeichen). Ansage: „Neuer Code, bitte neu scannen. Sie haben 30 Sekunden.“
+**Live-Fragen:** Folien 04, 09, 21, 24, 32, 36 (Folie 02 ist ein Handzeichen). Ansage: „Neuer Code, bitte neu scannen. Sie haben 30 Sekunden.“
 Klicken, wenn n nicht mehr steigt, spätestens nach 45 s. Bei „offline“: Handzeichen, Klick auf einen Balken zählt +1.
 Ziffern springen immer zu Folien, sie zählen keine Stimmen.
 
@@ -175,7 +179,8 @@ Ziffern springen immer zu Folien, sie zählen keine Stimmen.
 | 06 Zeitstrahl (E) | 4:20 | 25 Inventar | 33:15 |
 | 11 Pyramide | 11:25 | 28 Bußgeld-Rechner (E) | 37:15 |
 | 20 Klassifizierer (Y) | 23:10 | 31 Wer macht was? (Y) | 41:50 |
-| 23 Partnerarbeit | 27:40 | 36 Diskussion | 49:10 |
+| 23 Partnerarbeit | 27:40 | 34 SimpleAct | 46:40 |
+| | | 37 Diskussion | 50:00 |
 
 **Kürzungsplan bei Verzug**
 - Ab 3 Min. Rückstand:
@@ -186,6 +191,7 @@ Ziffern springen immer zu Folien, sie zählen keine Stimmen.
   - Folie 10 (Aufsicht) in einem Satz
   - Folie 29 (Kosten) überspringen: mit `30` Enter springen
   - Folie 19 (GPAI) in einem Satz
+  - Folie 34 (SimpleAct) in zwei Sätzen: „Genau diese fünf Schritte machen wir bei SimpleAct in einer Software. Mehr unter simpleact.de.“
 
 **Wenn etwas hängt**
 1. **F5:** Die Folie bleibt erhalten, sie steht in der Adresse.

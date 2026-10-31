@@ -22,7 +22,7 @@ Allgemeine Information, keine Rechtsberatung.
 | T / D | Thema / hell–dunkel |
 | B | Schwarzbild |
 
-**Mitmachen (sechs Live-Fragen):** Folien 04, 09, 21, 24, 32 und 35 haben je einen QR-Code zur Abstimmseite;
+**Mitmachen (sechs Live-Fragen):** Folien 04, 09, 21, 24, 32 und 36 haben je einen QR-Code zur Abstimmseite;
 Folie 02 ist eine Handzeichen-Runde. Ohne Netz: Handzeichen, Klick auf eine Antwort zählt +1. Ziffern springen immer
 zu Folien und zählen keine Stimmen. Die Schätzfrage (Folie 04) wird erst auf Folie 25 aufgelöst („x % haben richtig
 geschätzt“).
@@ -36,10 +36,18 @@ dem Publikum klicken, ↶ nimmt die letzte Antwort zurück, „Neu“ beginnt vo
 
 Rechner, Uhr und „Eigener Fall“ nur im Folienfenster bedienen; in der Referentenansicht sind Klicks auf die Folie gesperrt.
 
+**SimpleAct-Auftritt (Standard):** Logo in Kopfzeile, auf Titel, Praxisblick (33) und Schlussfolie, Navy und
+SimpleAct-Blau (Prüfpfad, Merksatz-Strich), Schrift Inter wie auf simpleact.de, Folie 34 „Die fünf Schritte mit
+SimpleAct“. Die Ampelfarben der Risikoklassen bleiben. **Neutrale Fassung:** Adresse mit `?marke=neutral` öffnen
+(z. B. `index.html?marke=neutral`): kein Logo, Farben und Schrift wie vorher, Folie 34 ausgeblendet, die Nummern danach
+rücken auf. Die Referentenansicht übernimmt den Schalter. Logo: von simpleact.de, freigestellt in `bilder/`
+(`simpleact-zeichen*.png`); liegt eine Vektordatei vor, einfach austauschen. Die Abstimmseite bleibt bewusst ohne
+SimpleAct-Logo: Die Stimmen landen in einer privaten Tabelle, nicht bei SimpleAct.
+
 **Notfall-PDF:** `export/ki-compliance-notfall.pdf` (eine Seite je Folie, Endzustand).
 **Redeskript:** `export/redeskript.pdf` (Sprechtext je Folie, Klicks, Sollzeiten).
 
-## Aufbau (36 Folien + 6 Backup, Sollzeit 49:40 + Diskussion, insgesamt ca. eine Stunde)
+## Aufbau (37 Folien + 6 Backup, Sollzeit 50:30 + Diskussion, insgesamt ca. eine Stunde)
 
 | Teil | Folien |
 |---|---|
@@ -48,7 +56,7 @@ Rechner, Uhr und „Eigener Fall“ nur im Folienfenster bedienen; in der Refere
 | 2 Risikoklassen | 11 Pyramide · 12 Verbote · 13 Daumen-Runde · 14 Zwei Türen · 15 Filter · 16 Pflichten · 17 Transparenz · 18 Minimal und Art. 4 · 19 GPAI |
 | 3 Selbst prüfen | 20 Klassifizierer Fall 1 · 21 Umfrage Fall 2 · 22 Gleiche Technik, andere Klasse (freier Modus) · 23 Partnerarbeit mit Handy-Klassifizierer · 24 Umfrage: Ihre Ergebnisse · 25 KI-Inventar und Auflösung der Schätzung |
 | 4 KMU-Praxis | 26 KMU in Zahlen · 27 Sechs Irrtümer (Handzeichen) · 28 Bußgeld-Rechner · 29 Was kostet es Sie? · 30 Drei Gesetze · 31 Wer macht was, ohne Rechtsabteilung? · 32 Umfrage: Was zuerst? · 33 Fünf Schritte |
-| Schluss | 34 Eine Kamera, drei Klassen · 35 Umfrage: Bremse oder Vertrauen? · 36 Diskussion mit QR-Code |
+| Schluss | 34 Die fünf Schritte mit SimpleAct (nur im SimpleAct-Auftritt) · 35 Eine Kamera, drei Klassen · 36 Umfrage: Bremse oder Vertrauen? · 37 Diskussion mit QR-Code |
 | Backup | B1 Quellen · B2 Zehn Verbote · B3 Anhang III · B4 Digital-Omnibus · B5 AI Act, DSGVO, BetrVG · B6 Methode |
 
 ## Was steht wo
@@ -59,7 +67,7 @@ Rechner, Uhr und „Eigener Fall“ nur im Folienfenster bedienen; in der Refere
 | `marke.js` | Angaben, Farben, Live-Umfragen (`ki-nutzung` … `ki-meinung`; im Vortrag sechs, `ki-nutzung` und `ki-bewerbung` ruhen) |
 | `js/klassifizierer-daten.js` | **die Prüflogik** (17 Fragen, 13 Ergebnisse, 8 Beispielfälle; Emotionserkennung zieht Anhang III und Art. 50 Abs. 3 automatisch nach), einzige Quelle für Folien und Handy-Seite |
 | `js/klassifizierer.js` | Logik (`Klassifizierer.Pruefung`) und Baustein `.klassifizierer` für die Folien |
-| `klassifizierer.html` | Klassifizierer fürs Handy (QR-Codes auf Folie 23 und 36); speichert und sendet nichts |
+| `klassifizierer.html` | Klassifizierer fürs Handy (QR-Codes auf Folie 23 und 37); speichert und sendet nichts |
 | `abstimmen.html`, `js/abstimmen.js` | Abstimmseite der Live-Umfragen (wie im Führungs-Referat, Formen der Risikoklassen ergänzt) |
 | `css/folien/ki.css` | Fundament „Prüfpfad“: Farben, Klassen (Farbe + Form + Wort), Laufleiste, Bausteine |
 | `css/folien/ki-folien.css`, `css/folien/klassifizierer.css` | Gestaltung der Folien und des Baums |
@@ -96,8 +104,8 @@ PLAYWRIGHT_CORE=/opt/node-tools/node_modules/playwright-core \
 node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte --druck export/ki-compliance-notfall.pdf
 ```
 
-Stand 31.10.2026 (nach dem Upgrade): 0 Fehler und 0 Warnungen über alle Folien und Schritte, Notfall-PDF 42 Seiten,
-Redeskript Sollzeit 49:40. Wortbudget 40 je Hauptfolie; vier ausdrückliche Ausnahmen per `data-wortbudget` (25 Inventar-
+Stand 31.10.2026 (nach dem Upgrade): 0 Fehler und 0 Warnungen über alle Folien und Schritte, Notfall-PDF 43 Seiten,
+Redeskript Sollzeit 50:30. Wortbudget 40 je Hauptfolie; vier ausdrückliche Ausnahmen per `data-wortbudget` (25 Inventar-
 Tabelle, 27 Irrtümer, 28 Rechner, 33 Fünf Schritte mit Praxisblick).
 
 5. Probelauf am Präsentationslaptop: Animationen flüssig? Sonst `?bewegung=reduziert` an die Adresse hängen (zeigt

@@ -454,3 +454,68 @@ html.druckmodus .k-endlos,
 svg.ph { fill: currentColor; stroke: none; overflow: visible; }
 .ph-d { fill: var(--duo, currentColor); opacity: var(--duo-o, .2); }
 [data-klasse] svg.ph { --duo: var(--k); --duo-o: .55; }
+
+
+/* -----------------------------------------------------------------------------
+   7. MARKE SIMPLEACT (Standard; ?marke=neutral schaltet alles hier ab)
+   Navy aus dem Logo als Tinte, SimpleAct-Blau (#2563EB, simpleact.de) als
+   Marken- und Bedienfarbe: Prüfpfad, Merksatz-Strich, Fokus. Blau gehört
+   keiner Risikoklasse, die Ampel bleibt eindeutig. Schrift Inter wie auf
+   simpleact.de (Titel Inter Tight 700, eng gesetzt).
+   ----------------------------------------------------------------------------- */
+html[data-auftritt="simpleact"] {
+  --sa-navy: #122E55;
+  --sa-blau: #2563EB;
+  --sa-teal: #0E9790;
+  --sa-mint: #4BDEB1;
+}
+html[data-auftritt="simpleact"][data-modus="hell"],
+html[data-auftritt="simpleact"] :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-modus="hell"] {
+  --k-tinte: #122E55;          /* Navy aus dem Logo (12,6 : 1 auf Papier) */
+}
+html[data-auftritt="simpleact"][data-modus="dunkel"],
+html[data-auftritt="simpleact"] :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-modus="dunkel"] {
+  --sa-blau: #60A5FA;
+}
+html[data-auftritt="simpleact"][data-thema][data-modus],
+html[data-auftritt="simpleact"] :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie {
+  --f-fokus: var(--sa-blau);
+}
+html[data-auftritt="simpleact"][data-thema="editorial"] {
+  --schrift-display: "Inter Tight Deck", "Inter Deck", "Segoe UI", Arial, sans-serif;
+  --gewicht-titel: 700;
+  --gewicht-display: 700;
+  --gewicht-zahl: 700;
+}
+html[data-auftritt="simpleact"] .folie .titel { letter-spacing: -0.025em; }
+
+/* Prüfpfad und Merksatz in SimpleAct-Blau */
+html[data-auftritt="simpleact"] .k-lauf-pfad::after { background: var(--sa-blau); }
+html[data-auftritt="simpleact"] .k-lauf-station.ist-erledigt .k-lauf-punkt { border-color: var(--sa-blau); background: var(--sa-blau); }
+html[data-auftritt="simpleact"] .k-lauf-station.ist-aktuell .k-lauf-punkt {
+  border-color: var(--sa-blau);
+  box-shadow: inset 0 0 0 4px var(--k-papier), inset 0 0 0 12px var(--sa-blau);
+}
+html[data-auftritt="simpleact"] .k-merksatz::before { background: var(--sa-blau); }
+
+/* Kopfzeile: Logo, „SimpleAct“, Thema */
+html[data-auftritt="simpleact"] :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .laufkopf.k-laufkopf {
+  grid-template-columns: 330px minmax(0, 1fr) 80px;
+}
+.k-lauf-titel { display: inline-flex; align-items: center; gap: 10px; }
+.k-lauf-logo { width: 34px; height: auto; flex: none; }
+.k-lauf-firma { font-weight: 700; letter-spacing: -0.01em; }
+.k-lauf-thema { font-weight: 500; color: var(--k-tinte-2); }
+.k-lauf-thema::before { content: "·"; margin-right: 10px; }
+
+/* Logo hell (Navy) auf hellen, weiß auf dunklen Folien */
+.k-logo-dunkel { display: none !important; }
+html[data-modus="dunkel"] .k-logo-hell,
+.folie[data-modus="dunkel"] .k-logo-hell { display: none !important; }
+html[data-modus="dunkel"] .k-logo-dunkel,
+.folie[data-modus="dunkel"] .k-logo-dunkel { display: inline-block !important; }
+html[data-modus="dunkel"] .folie[data-modus="hell"] .k-logo-hell { display: inline-block !important; }
+html[data-modus="dunkel"] .folie[data-modus="hell"] .k-logo-dunkel { display: none !important; }
+
+/* Neutrale Fassung: alles mit .nur-marke verschwindet */
+html[data-auftritt="neutral"] .nur-marke { display: none !important; }

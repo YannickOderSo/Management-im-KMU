@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M12 1.8 23 21.5H1z%22 fill=%22%23E8650F%22/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="bilder/simpleact-zeichen-128.png">
 <title>KI-Compliance im KMU</title>
 <!--
   ════════════════════════════════════════════════════════════════════════════
@@ -40,6 +40,7 @@
   if (['hell', 'dunkel'].indexOf(d) < 0) d = 'hell';
   h.setAttribute('data-thema', t);
   h.setAttribute('data-modus', d);
+  h.setAttribute('data-auftritt', m.marke === 'neutral' ? 'neutral' : 'simpleact');
   var f = m.farben || {};
   ['primaer', 'sekundaer'].forEach(function (n) {
     var w = p.get(n) || s('farbe-' + n) || f[n] || '';
@@ -349,6 +350,7 @@
      ═══════════════════════════════════════════════════════════════════════ -->
 <section class="folie t-titel" id="f01" data-titel="Titel" data-feld="leer" data-zeit="40" data-buendel="alle" data-layout="titel" data-laufkopf="aus">
   <header class="folie-kopf t-kopf">
+    <p class="t-marke nur-marke"><img class="t-logo k-logo-hell" src="bilder/simpleact-zeichen.png" alt=""><img class="t-logo k-logo-dunkel" src="bilder/simpleact-zeichen-hell.png" alt=""><span class="t-marke-text"><b>SimpleAct</b><span>KI-Compliance mit System.</span></span></p>
     <p class="t-reihe" data-meta><span>Management im KMU</span><span>Vortrag</span></p>
     <h1 class="titel t-satz">Welches Risiko <span class="k-zeile">hat Ihre KI?</span></h1>
     <p class="t-unter">Der EU AI Act und was er für KMU bedeutet</p>
@@ -1437,7 +1439,7 @@
     <p class="quelle">Der AI Act schreibt keinen KI-Beauftragten vor; Art. 4, 26 KI-VO; § 87 Abs. 1 Nr. 6 BetrVG; Bitkom, Presseinformation vom 21.10.2025</p>
   </footer>
   <aside class="notizen">
-    <p>Sprecherwechsel: Yannick übernimmt (Folien 31–36, Rückbezug auf das Führungs-Referat).</p>
+    <p>Sprecherwechsel: Yannick übernimmt (Folien 31–37, Rückbezug auf das Führungs-Referat).</p>
     <p class="gesprochen" data-schritt="0">„Danke, Elias. Wer macht das alles? Im Konzern gibt es dafür eine Compliance-Abteilung. Im KMU mit 60 Leuten landet es oft bei der Geschäftsführung selbst, neben Vertrieb und Personal. Die Verantwortung bleibt auch dort. Praktisch hilft eine Person, die koordiniert: Inventar, Prüfung, Fristen. Das schreibt der AI Act nicht vor, aber irgendwer muss den Überblick haben, oft jemand aus Datenschutz oder IT. Dazu kommen der Betriebsrat und alle Beschäftigten.“</p>
     <p class="gesprochen" data-schritt="1">„Das wichtigste Werkzeug gegen Schatten-KI ist eine einfache KI-Richtlinie: welche Tools erlaubt sind, welche Daten nicht hineingehören, wann gekennzeichnet wird und wer neue Tools prüft. Laut Bitkom haben das erst 23 Prozent der Unternehmen. Und damit sind wir bei Führung. Vor einer Woche haben wir Führung definiert als die zielbezogene, absichtliche Einflussnahme auf das Handeln anderer. Eine KI-Richtlinie ist genau das: Sie richtet aus, wie 60 Leute KI nutzen.“</p>
   </aside>
@@ -1482,7 +1484,7 @@
       <li><span class="st-nr" aria-hidden="true">5</span><svg class="st-symbol ph"><use href="#ph-arrows-clockwise"/></svg><b>Pflegen</b><span>neue Tools vorher prüfen</span></li>
     </ol>
     <div class="st-praxis" data-schritt="1" data-animation="hoch">
-      <p class="st-praxis-kopf">Praxisblick SimpleAct</p>
+      <p class="st-praxis-kopf"><img class="st-praxis-logo nur-marke k-logo-hell" src="bilder/simpleact-zeichen-128.png" alt=""><img class="st-praxis-logo nur-marke k-logo-dunkel" src="bilder/simpleact-zeichen-hell-128.png" alt="">Praxisblick SimpleAct</p>
       <ul>
         <li><span class="k-zahl">29</span><span>Prüffragen, plus 4 zur Rolle</span></li>
         <li><span class="k-zahl">0</span><span>KI im Urteil: feste Regeln</span></li>
@@ -1496,7 +1498,7 @@
   </footer>
   <aside class="notizen">
     <p class="gesprochen" data-schritt="0">„Was kann ein KMU am Montag tun? Fünf Schritte. Der wichtigste ist der erste, das Inventar: Fragen Sie Ihr Team, welche KI es nutzt, auch über private Konten. Zweitens die Rolle klären: gekauft oder selbst gebaut? Drittens für jedes Tool den Prüfpfad gehen, so wie heute. Viertens die Pflichten umsetzen: Verbotenes abschalten, kennzeichnen, schulen. Und fünftens pflegen: neue Tools vorher prüfen, denn es kommen ständig welche dazu.“</p>
-    <p class="gesprochen" data-schritt="1">„So setzt SimpleAct das in Software um: 29 Fragen zur Risikoprüfung und vier zur Rolle. In der Entscheidung steckt keine KI, sondern feste, nachvollziehbare Regeln. Und wer unsicher ist, bekommt immer die strengere Antwort, damit nie zu niedrig eingestuft wird.“</p>
+    <p class="gesprochen" data-schritt="1">„Die Prüflogik dahinter, wie wir sie bei SimpleAct nutzen: 29 Fragen zur Risikoprüfung und vier zur Rolle. In der Entscheidung steckt keine KI, sondern feste, nachvollziehbare Regeln. Und wer unsicher ist, bekommt immer die strengere Antwort, damit nie zu niedrig eingestuft wird.“</p>
     <p class="gesprochen" data-schritt="2">„Das ist Führungsarbeit, und im KMU heißt das: Chefsache. Wissen, was läuft, und Verantwortung zuordnen.“</p>
     <p>Rückfrage Rechtsdienstleistung: Die Software gibt eine Ersteinschätzung. Die Einstufung verantwortet der Betrieb selbst; seine eigenen KI-Systeme darf er selbst einstufen. Wer das für andere im Einzelfall rechtlich prüft, braucht eine Erlaubnis nach dem Rechtsdienstleistungsgesetz (§ 2 Abs. 1, § 3 RDG).</p>
     <p>Nicht mehr auf der Folie: Ergebnis der Software ist die Klasse mit Begründung, eine Pflichtenliste mit Terminen und ein Hinweis, wenn sich etwas ändert.</p>
@@ -1505,10 +1507,47 @@
 
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 34 · Kernbotschaft · 60 s (dunkel)
+     FOLIE 34 · Die fünf Schritte mit SimpleAct · 50 s
+     Nur im SimpleAct-Auftritt: data-optional, eingeschaltet über marke.js →
+     optionaleFolien.f34 (bei ?marke=neutral ausgeblendet, Nummern rücken nach).
+     Inhalte nur so, wie sie auf simpleact.de stehen (Stand 31.10.2026).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie sa-folie" id="f34" data-optional data-titel="Die fünf Schritte mit SimpleAct" data-feld="leer" data-station="4" data-zeit="50" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Die fünf Schritte <span class="k-leise">mit SimpleAct</span></h2>
+  </header>
+  <div class="folie-inhalt sa-inhalt">
+    <ol class="sa-weg" data-staffel="120" data-animation="hoch">
+      <li><span class="sa-nr" aria-hidden="true">1</span><b>Erfassen</b><span>jedes KI-System, auch Schatten-KI</span></li>
+      <li><span class="sa-nr" aria-hidden="true">2–3</span><b>Bewerten</b><span>Fragebogen, Klasse nach festen Regeln</span></li>
+      <li><span class="sa-nr" aria-hidden="true">4</span><b>Steuern</b><span>Checkliste je Klasse, Fristen, Freigaben</span></li>
+      <li><span class="sa-nr" aria-hidden="true">5</span><b>Nachweisen</b><span>Audit-Historie und Export</span></li>
+    </ol>
+    <aside class="sa-karte" data-schritt="1" data-animation="hoch">
+      <p class="sa-karte-kopf"><img class="sa-logo k-logo-hell" src="bilder/simpleact-zeichen.png" alt=""><img class="sa-logo k-logo-dunkel" src="bilder/simpleact-zeichen-hell.png" alt=""><b>SimpleAct</b></p>
+      <ul class="sa-merkmale">
+        <li>AI Act und DSGVO zusammen</li>
+        <li>Hosting in Deutschland</li>
+      </ul>
+      <div class="qr" data-qr="https://simpleact.de" data-groesse="220"></div>
+    </aside>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Funktionen laut simpleact.de, Stand 31.10.2026 · Offenlegung: Yannick Heisler arbeitet bei SimpleAct · Schrittnummern wie auf Folie 33</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Und so sieht der ganze Weg bei uns in der Software aus. Erfassen: Jedes KI-System bekommt einen Eintrag, auch die Schatten-KI. Bewerten: Ein geführter Fragebogen ergibt die Risikoklasse, nach festen Regeln, so wie Sie es heute im Klassifizierer gesehen haben. Steuern: Für jede Klasse eine Checkliste mit Verantwortlichen, Fristen und Freigaben. Und Nachweisen: Jede Änderung landet in der Audit-Historie und lässt sich exportieren, etwa für den Fragebogen eines Großkunden.“</p>
+    <p class="gesprochen" data-schritt="1">„AI Act und DSGVO hängen dabei am selben Datensatz, gehostet in Deutschland. Wer mehr sehen will: simpleact.de, der Code rechts.“</p>
+    <p>Rückfragen: Preise und Demo nicht im Vortrag, sondern über simpleact.de. Auf der Website gibt es zusätzlich einen kostenlosen Schnell-Check (sechs Fragen, ohne Anmeldung). Die Einstufung bleibt Ersteinschätzung, verantwortlich ist der Betrieb (siehe Rückfrage RDG auf Folie 33). Bei ?marke=neutral ist diese Folie ausgeblendet.</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 35 · Kernbotschaft · 60 s (dunkel)
      Eine Kamera in drei Umgebungen, drei Klassen.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie ke-folie" id="f34" data-titel="Kernbotschaft" data-feld="leer" data-station="alle" data-zeit="60" data-buendel="alle" data-modus="dunkel">
+<section class="folie ke-folie" id="f35" data-titel="Kernbotschaft" data-feld="leer" data-station="alle" data-zeit="60" data-buendel="alle" data-modus="dunkel">
   <header class="folie-kopf">
     <h2 class="titel">Eine Kamera, <span class="k-leise">drei Klassen</span></h2>
   </header>
@@ -1528,10 +1567,10 @@
 
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 35 · Umfrage: Bremse oder Vertrauen · 90 s
+     FOLIE 36 · Umfrage: Bremse oder Vertrauen · 90 s
      Meinungsfrage ohne richtige Antwort, Einstieg in die Diskussion.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie u-folie" id="f35" data-titel="Live: Ihre Meinung" data-feld="leer" data-zeit="90" data-buendel="alle" data-laufkopf="aus">
+<section class="folie u-folie" id="f36" data-titel="Live: Ihre Meinung" data-feld="leer" data-zeit="90" data-buendel="alle" data-laufkopf="aus">
   <header class="folie-kopf">
     <p class="kicker">Frage 6 von 6 · Ihre Meinung</p>
     <h2 class="titel" data-umfrage-frage="ki-meinung">Bremst der AI Act kleine Unternehmen aus?</h2>
@@ -1550,9 +1589,9 @@
 
 
 <!-- ═══════════════════════════════════════════════════════════════════════
-     FOLIE 36 · Diskussion · 30 s
+     FOLIE 37 · Diskussion · 30 s
      ═══════════════════════════════════════════════════════════════════════ -->
-<section class="folie di-folie" id="f36" data-titel="Diskussion" data-feld="leer" data-zeit="30" data-buendel="alle" data-laufkopf="aus">
+<section class="folie di-folie" id="f37" data-titel="Diskussion" data-feld="leer" data-zeit="30" data-buendel="alle" data-laufkopf="aus">
   <header class="folie-kopf">
     <h2 class="titel">Diskussion</h2>
   </header>
@@ -1565,6 +1604,7 @@
     <figure class="di-qr">
       <div class="qr" data-qr="https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/klassifizierer.html" data-kurz="" data-groesse="300"></div>
       <figcaption><b>Klassifizierer zum Mitnehmen</b><span data-meta>vereinfacht, keine Rechtsberatung</span></figcaption>
+      <p class="di-marke nur-marke"><img class="di-logo k-logo-hell" src="bilder/simpleact-zeichen-128.png" alt=""><img class="di-logo k-logo-dunkel" src="bilder/simpleact-zeichen-hell-128.png" alt=""><b>SimpleAct</b><span>simpleact.de</span></p>
     </figure>
   </div>
   <aside class="notizen">

@@ -11,7 +11,7 @@
      13 Daumen-Runde Urteil wird gestempelt
      25 Inventar     Klassenform fliegt vom Betrieb in die Tabellenzeile
      27 Irrtümer     Richtigstellung wird gestempelt
-     34 Kernbotschaft Satz Wort für Wort
+     35 Kernbotschaft Satz Wort für Wort
    Grundsätze
    • Endzustand = CSS. Alles startet mit from/fromTo und räumt danach seine
      Inline-Stile weg; gsap.context(…).revert() stellt beim Verlassen den
@@ -254,9 +254,9 @@
 
 
   /* ---------------------------------------------------------------------------
-     34 KERNBOTSCHAFT: Satz Wort für Wort (data-animation="keine")
+     35 KERNBOTSCHAFT: Satz Wort für Wort (data-animation="keine")
      --------------------------------------------------------------------------- */
-  choreo('f34', {
+  choreo('f35', {
     schritt: function (folie, n) {
       if (n === 1) woerter(folie.querySelector('.ke-botschaft'), { stagger: 0.09, duration: 0.9 });
     }

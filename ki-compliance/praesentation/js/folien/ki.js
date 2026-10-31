@@ -19,10 +19,35 @@
   var STATIONEN = ['Grundlagen', 'Risikoklassen', 'Selbst prüfen', 'KMU-Praxis'];
 
   function zweistellig(n) { return (n < 10 ? '0' : '') + n; }
+  /* Optionale Folien (z. B. Folie 34 nur im SimpleAct-Auftritt) */
+  var OPTIONAL_PARAM = (new URLSearchParams(location.search).get('optional') || '').split(',');
+  function sichtbar(folie) {
+    if (!folie.hasAttribute('data-optional')) return true;
+    if (OPTIONAL_PARAM.indexOf('alle') >= 0 || OPTIONAL_PARAM.indexOf(folie.id) >= 0) return true;
+    var m = window.MARKE || {};
+    return !!(m.optionaleFolien && m.optionaleFolien[folie.id]);
+  }
   function nummerVon(folie) {
     if (folie.hasAttribute('data-nummer')) return folie.getAttribute('data-nummer');
     var m = /^[a-z]{1,2}(\d+)([a-z]*)$/i.exec(folie.id || '');
     return m ? zweistellig(Number(m[1])) + m[2] : '';
+  }
+  /* Ist eine optionale Folie ausgeblendet, rücken die Nummern danach auf:
+     data-nummer setzen, bevor die Engine startet (sie liest es für Anzeige
+     und „Zahl + Enter“). */
+  util.alle('.buehne > section.folie').filter(function (f) {
+    return !f.hasAttribute('data-backup') && sichtbar(f);
+  }).forEach(function (f, i) {
+    if (f.hasAttribute('data-nummer')) return;
+    var soll = zweistellig(i + 1);
+    if (nummerVon(f) !== soll) f.setAttribute('data-nummer', soll);
+  });
+
+  /* SimpleAct-Auftritt (marke.js → marke; ?marke=neutral schaltet ab) */
+  var MARKE_AN = document.documentElement.getAttribute('data-auftritt') !== 'neutral';
+  function logoPaar(klasse, eltern, gross) {
+    util.element('img', { class: klasse + ' k-logo-hell', src: gross ? 'bilder/simpleact-zeichen.png' : 'bilder/simpleact-zeichen-128.png', alt: '' }, null, eltern);
+    util.element('img', { class: klasse + ' k-logo-dunkel', src: gross ? 'bilder/simpleact-zeichen-hell.png' : 'bilder/simpleact-zeichen-hell-128.png', alt: '' }, null, eltern);
   }
 
   function laufleisteBauen(folie) {
@@ -34,7 +59,14 @@
 
     /* data-morph: die Leiste bleibt beim Folienwechsel stehen (View Transition) */
     var kopf = util.element('div', { class: 'laufkopf k-laufkopf', 'data-morph': 'laufleiste' });
-    util.element('span', { class: 'k-lauf-titel' }, 'KI-Compliance im KMU', kopf);
+    var titel = util.element('span', { class: 'k-lauf-titel' }, null, kopf);
+    if (MARKE_AN) {
+      logoPaar('k-lauf-logo', titel);
+      util.element('b', { class: 'k-lauf-firma' }, 'SimpleAct', titel);
+      util.element('span', { class: 'k-lauf-thema' }, 'KI-Compliance', titel);
+    } else {
+      titel.textContent = 'KI-Compliance im KMU';
+    }
     var pfad = util.element('div', {
       class: 'k-lauf-pfad',
       role: 'img',

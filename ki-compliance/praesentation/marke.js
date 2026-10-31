@@ -10,6 +10,12 @@
    • Nach jedem Eintrag ein Komma.
    • Nach dem Ändern: Seite neu laden (F5), Konsole (F12) muss leer sein.
    ============================================================================= */
+/* Markenschalter: Standard ist der SimpleAct-Auftritt (Logo, Navy, SimpleAct-Blau,
+   Schrift Inter, Folie 34 „Die fünf Schritte mit SimpleAct“). Für eine neutrale
+   Fassung (z. B. Hochschule ohne Firmenauftritt) die Adresse mit ?marke=neutral
+   öffnen: kein Logo, Farben und Schrift wie bis 31.10.2026, Folie 34 ausgeblendet. */
+var MARKE_NEUTRAL = typeof location !== 'undefined' && /[?&]marke=neutral(&|$)/.test(location.search);
+
 window.MARKE = {
 
   /* 1. THEMA */
@@ -24,9 +30,11 @@ window.MARKE = {
     sekundaer: '#D9570B'          // Orange (hochriskant), nur als Ausgangswert
   },
 
-  /* 3. BILDER – keine Logos, keine fremden Bilder (alles eigene SVG im HTML) */
-  logo: '',
-  logoTitel: '',
+  /* 3. BILDER – SimpleAct-Logo (von simpleact.de, freigestellt in bilder/);
+     sonst nur eigene SVG im HTML */
+  marke: MARKE_NEUTRAL ? 'neutral' : 'simpleact',
+  logo: MARKE_NEUTRAL ? '' : 'bilder/simpleact-zeichen-128.png',
+  logoTitel: MARKE_NEUTRAL ? '' : 'bilder/simpleact-zeichen.png',
   raetselBild: '',
 
   /* 4. ANGABEN ZUR PRÄSENTATION */
@@ -35,15 +43,15 @@ window.MARKE = {
   veranstaltung: 'Management im KMU',
   dozent: 'Prof. Dr. Christine Arend-Fuchs',
   hochschule: 'Hochschule Kaiserslautern',
-  unternehmen: '',
+  unternehmen: MARKE_NEUTRAL ? '' : 'SimpleAct',
   gruppe: ['Elias Knauber', 'Yannick Heisler'],   // seit 31.10.2026 zu zweit (Aufteilung: LIESMICH.md)
   datum: '2026-11-09',            // Vortrag Mo, 9. November 2026 (Yannick, 31.10.2026)
   rechtsstand: '31.10.2026',      // erscheint auf Titel- und Methodenfolie
-  dauerMinuten: 50,               // bis zu einer Stunde, interaktiv (Yannick, 31.10.2026): Sollzeiten 49:40 + Diskussion
+  dauerMinuten: 51,               // bis zu einer Stunde, interaktiv (Yannick, 31.10.2026): Sollzeiten 50:30 + Diskussion
   umfrageZiffern: false,          // Ziffern auf Umfragefolien springen (z. B. „22 Enter“) statt Stimmen zu zählen; Plan B: Klick auf den Balken (Review 31.10.2026)
   anrede: 'Sie',
 
-  /* 5. LIVE-UMFRAGEN, acht Fragen (Baustein <div class="umfrage" data-umfrage="…">)
+  /* 5. LIVE-UMFRAGEN, im Vortrag sechs Fragen (Baustein <div class="umfrage" data-umfrage="…">)
      Gleiche Web-App wie im Führungs-Referat (fuehrung/praesentation/
      live-abstimmung/ANLEITUNG.md); sie zählt je Umfrage-Name getrennt.
      VORAUSSETZUNG für den QR-Code: Dieser Ordner liegt auf dem Branch, den
@@ -152,7 +160,7 @@ window.MARKE = {
       aussageLeer: 'Noch keine Stimmen',
       beispielwerte: [7, 6, 3, 2, 2]     // BEISPIELDATEN
     },
-    'ki-meinung': {                       // Folie 35, Frage 6 (Meinung)
+    'ki-meinung': {                       // Folie 36, Frage 6 (Meinung)
       frage: 'Bremst der AI Act kleine Unternehmen aus?',
       optionen: ['eher ja, zu viel Aufwand', 'eher nein, schafft Vertrauen', 'beides', 'kann ich nicht sagen'],
       link: 'https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/abstimmen.html?u=ki-meinung',
@@ -171,8 +179,8 @@ window.MARKE = {
   /* 6. LIVE-WORTWOLKEN – nicht genutzt */
   wortwolken: {},
 
-  /* 7. OPTIONALE FOLIEN – true = zeigen */
-  optionaleFolien: {},
+  /* 7. OPTIONALE FOLIEN – true = zeigen (Folie 34 gehört zum SimpleAct-Auftritt) */
+  optionaleFolien: { f34: !MARKE_NEUTRAL },
 
   /* 8. DARSTELLUNG – Taste T wechselt nur die Schriften, D hell/dunkel */
   beispieldatenHinweis: true,
