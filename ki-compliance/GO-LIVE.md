@@ -2,8 +2,8 @@
 
 **Vortrag:** Montag, 9.11.2026, Hochschule Kaiserslautern · **Elias Knauber (E)** und **Yannick Heisler (Y)**
 **Folien:** https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/
-**Reserve:** `praesentation/export/ki-compliance-notfall.pdf` (43 Seiten) · `praesentation/export/redeskript.pdf`
-**Ablauf:** 37 Folien, Sollzeit 51:15, danach ca. 10 Min. Diskussion · Bedienung: `praesentation/LIESMICH.md`
+**Reserve:** `praesentation/export/ki-compliance-notfall.pdf` (42 Seiten) · `praesentation/export/redeskript.pdf`
+**Ablauf:** 36 Folien, Sollzeit 49:40, danach ca. 10 Min. Diskussion · Bedienung: `praesentation/LIESMICH.md`
 
 Legende: `[x]` erledigt · **Y / E / beide** = wer es macht · ⚠ = häufigste Stolperfalle
 
@@ -12,9 +12,11 @@ Legende: `[x]` erledigt · **Y / E / beide** = wer es macht · ⚠ = häufigste 
 ## 0. Erledigt (Stand 31.10.2026)
 
 - [x] Feedback von fünf unabhängigen Reviews (Firmenkundin, Dozentin, Gestaltung, Technik, Sprechtext) eingearbeitet:
-      Sprechtexte, Übergaben, Umfrage-Ansagen, Folie 30 neu, Bedienfehler behoben
+      Sprechtexte, Übergaben, Umfrage-Ansagen, Kostenfolie neu, Bedienfehler behoben. Danach entschieden (Yannick):
+      Umfrage zu Fall 1 gestrichen, Folie 02 als Handzeichen (sechs statt acht QR-Umfragen), Folie 31 mit Rückbezug auf
+      unsere Führungsdefinition statt Kamill-Zitat; Praxisblick (33), Aufsicht (10) und GPAI (19) bleiben
 
-- [x] Inhalt final: 37 Folien + 6 Backup, Sprechtext und Rückfragen in den Notizen
+- [x] Inhalt final: 36 Folien + 6 Backup, Sprechtext und Rückfragen in den Notizen
 - [x] Rechtsstand 31.10.2026 zweimal am Normtext geprüft; zweite Prüfung mit fünf unabhängigen Durchgängen und
       27 Korrekturen (`recherche/rechtspruefung.md`, Abschnitt „Zweite Prüfung“)
 - [x] Prüflogik getestet: alle 458 Ja/Nein-Pfade, alle acht Beispielfälle wie erwartet
@@ -23,41 +25,44 @@ Legende: `[x]` erledigt · **Y / E / beide** = wer es macht · ⚠ = häufigste 
 - [x] GitHub Pages live: Folien, Abstimmseite, Handy-Klassifizierer und beide PDFs antworten (HTTP 200)
 - [x] Abstimm-Web-App erreichbar, Zeitfenster aktiv (nur gelesen, keine Stimme abgegeben)
 - [x] Freigabe der SimpleAct-Inhalte (laut Y, 31.10.2026)
-- [x] ⚠ Schätzfrage (Folie 04): Zeitfenster von 30 auf 90 Minuten verlängert. Ihre Auflösung kommt erst auf Folie 26,
+- [x] ⚠ Schätzfrage (Folie 04): Zeitfenster von 30 auf 90 Minuten verlängert. Ihre Auflösung kommt erst auf Folie 25,
       laut Sollzeit gut 30 Minuten später; mit 30 Minuten hätte dort „Noch keine Stimmen“ gestanden.
 
 ---
 
 ## 1. Bis Mittwoch, 4.11.: Inhalt abnehmen
 
-- [ ] **beide** Eigene Folien im Redeskript lesen und laut sprechen: **Y** 01–05, 20–28, 32–37 · **E** 06–19, 29–31
+- [ ] **beide** Eigene Folien im Redeskript lesen und laut sprechen: **Y** 01–05, 20–27, 31–36 · **E** 06–19, 28–30
 - [ ] **beide** Geänderte Stellen aus der zweiten Rechtsprüfung kennen. Am wichtigsten:
       - Folie 13: Lkw-Kamera und Kundenzählung heißen „nicht verboten“, nicht „erlaubt“
-      - Folie 23: Gefühle der Belegschaft sind verboten, Gefühle der Kundschaft hochriskant
-      - Folie 26: Not-Stopp „Maschinenverordnung ab 1/2027, KI-Zusatz ab 8/2028“
-      - Folie 30: neu „Was kostet es Sie?“ mit drei Fällen; Entlastungen gelten vor allem für Anbieter
-      - Folie 31: Venn neu aufgeteilt
+      - Folie 22: Gefühle der Belegschaft sind verboten, Gefühle der Kundschaft hochriskant
+      - Folie 25: Not-Stopp „Maschinenverordnung ab 1/2027, KI-Zusatz ab 8/2028“
+      - Folie 29: neu „Was kostet es Sie?“ mit drei Fällen; Entlastungen gelten vor allem für Anbieter
+      - Folie 30: Venn neu aufgeteilt
 - [ ] **beide** Neue Sprechtexte aus dem Review (31.10.) laut lesen. Am wichtigsten:
       - Folie 01: Einstieg mit der Kamera („einmal frei, einmal streng geregelt, einmal verboten“), dann „kein
         Produktvortrag“
       - Jede Umfrage: „Neuer Code, bitte neu scannen. Sie haben 30 Sekunden.“
-      - Folie 28: erst den Irrtum vorlesen und Hände abwarten, dann klicken und auflösen
-      - Folie 29: Umsatz der Muster Metallbau schätzen lassen (rund 10 Mio.), dann 2 Mio. zum Vergleich
-      - Folie 36: unsere eigene Einschätzung nach dem Ergebnis; Folie 37 endet mit der ersten Diskussionsfrage
+      - Folie 02: Handzeichen statt QR-Umfrage („Wer hat diese Woche KI genutzt? Und wer davon im Job?“)
+      - Folie 20: Yannick übernimmt direkt mit dem Klassifizierer („Das Ergebnis kennen Sie schon von Elias“)
+      - Folie 27: erst den Irrtum vorlesen und Hände abwarten, dann klicken und auflösen
+      - Folie 28: Umsatz der Muster Metallbau schätzen lassen (rund 10 Mio.), dann 2 Mio. zum Vergleich
+      - Folie 31: Rückbezug auf unsere Führungsdefinition aus dem Führungs-Referat
+      - Folie 35: unsere eigene Einschätzung nach dem Ergebnis; Folie 36 endet mit der ersten Diskussionsfrage
 - [ ] **beide** Rückfragen-Absätze in den Notizen lesen (in der Referentenansicht grau). Typische Fragen:
       - Gilt das auch für unser schon laufendes Tool? (Bestandsschutz, Art. 111)
       - Wir nutzen ChatGPT für Bewerbungen. Sind wir dann Anbieter? (Art. 25)
-      - Darf ich die Einstufung selbst machen? (RDG, Folie 34)
+      - Darf ich die Einstufung selbst machen? (RDG, Folie 33)
 - [ ] **beide** Sprecherwechsel festlegen. Wer klickt beim Wechsel? Clicker übergeben oder der andere klickt im
       Referentenfenster.
       - nach Folie 05 → E („Durch Grundlagen und Risikoklassen führt Sie jetzt Elias.“)
       - nach 19 → Y („Wie man sie Schritt für Schritt prüft, zeigt Ihnen jetzt Yannick.“)
-      - nach 28 → E („Was es kostet, wenn das Ob schiefgeht, rechnet Elias jetzt mit Ihnen aus.“)
-      - nach 31 → Y („Bleibt die Frage, wer sich darum kümmert. Yannick?“)
-- [ ] **Y** Zwei Ersatzfälle für den freien Modus auf Folie 23 bereithalten, falls aus dem Publikum nichts kommt:
+      - nach 27 → E („Was es kostet, wenn das Ob schiefgeht, rechnet Elias jetzt mit Ihnen aus.“)
+      - nach 30 → Y („Bleibt die Frage, wer sich darum kümmert. Yannick?“)
+- [ ] **Y** Zwei Ersatzfälle für den freien Modus auf Folie 22 bereithalten, falls aus dem Publikum nichts kommt:
       „Excel-Formel“ (keine KI) und „KI-Schichtplanung nach Leistungsdaten“ (hochriskant)
 - [ ] **Y** Optional: SimpleAct kurz informieren, dass die zweite Rechtsprüfung nur Formulierungen geändert hat. Auf
-      Folie 34 steht im Praxisblick jetzt „„unsicher“ zählt streng“ statt „wie Ja“.
+      Folie 33 steht im Praxisblick jetzt „„unsicher“ zählt streng“ statt „wie Ja“.
 
 ---
 
@@ -73,30 +78,30 @@ sie bis zum Vortrag verfallen: nach 30 Minuten, bei der Schätzfrage nach 90 Min
       - [ ] **P** öffnet das zweite Fenster (Pop-ups für die Seite erlauben).
       - [ ] Sprechtext, Uhr und nächste Folie sind sichtbar.
       - [ ] Das Folienfenster läuft im Vollbild (**F11**) auf dem Beamer.
-      - [ ] Rechner (29), Uhr (24) und „Eigener Fall“ (23) nur im Folienfenster bedienen. In der Referentenansicht
+      - [ ] Rechner (28), Uhr (23) und „Eigener Fall“ (22) nur im Folienfenster bedienen. In der Referentenansicht
         sind Klicks auf die Folie bewusst gesperrt.
 - [ ] Clicker: weiter und zurück funktionieren. **B** schaltet auf Schwarzbild, nochmal **B** blendet wieder ein.
-- [ ] Animationen laufen flüssig: Titel, Pyramide (11), Stempel (13), Flug ins Inventar (26), Kernbotschaft (35).
+- [ ] Animationen laufen flüssig: Titel, Pyramide (11), Stempel (13), Flug ins Inventar (25), Kernbotschaft (34).
       Ruckelt etwas, die Adresse mit `?bewegung=reduziert` öffnen. Der Inhalt bleibt gleich, nur ohne Bewegung.
 - [ ] Am Beamer hell und dunkel vergleichen (**D**) und die bessere Variante festlegen. Lesbar aus der letzten Reihe?
-- [ ] Ganzer Durchlauf mit Uhr. Ziel 51:15 ± 3 Min., Zwischenzeiten siehe Abschnitt 5.
+- [ ] Ganzer Durchlauf mit Uhr. Ziel 49:40 ± 3 Min., Zwischenzeiten siehe Abschnitt 5.
 
 **Interaktiv**
-- [ ] Alle acht Live-Fragen (Folien 02, 04, 09, 20, 22, 25, 33, 36) mit 3–4 Handys aus der letzten Reihe testen.
+- [ ] Alle sechs Live-Fragen (Folien 04, 09, 21, 24, 32, 35) mit 3–4 Handys aus der letzten Reihe testen.
       Dabei iPhone und Android, Hochschul-WLAN und Mobilfunk. Zu prüfen:
       - [ ] Der QR-Code lässt sich scannen.
       - [ ] Das Handy zeigt „Danke“.
       - [ ] Die Balken auf der Folie steigen innerhalb weniger Sekunden.
-- [ ] Folie 26, Schritt 5: Die Auflösung zeigt eine Prozentzahl, nicht „Beispielwerte“.
+- [ ] Folie 25, Schritt 5: Die Auflösung zeigt eine Prozentzahl, nicht „Beispielwerte“.
 - [ ] Plan B ohne Netz üben: WLAN aus. Die Pille zeigt „offline“, dann gelten Handzeichen, und ein Klick auf einen
       Balken zählt +1.
 - [ ] Klassifizierer:
-      - [ ] Folie 21: Fall 1 läuft animiert.
-      - [ ] Folie 23: Fall 2 und „Eigener Fall“ funktionieren (Ja/Nein, ↶ nimmt die letzte Antwort zurück, die Folie
+      - [ ] Folie 20: Fall 1 läuft animiert.
+      - [ ] Folie 22: Fall 2 und „Eigener Fall“ funktionieren (Ja/Nein, ↶ nimmt die letzte Antwort zurück, die Folie
         springt nicht).
-- [ ] Folie 24: Ein Klick startet die Uhr (3:00), ein Klick auf die Uhr hält an. Bei 0:30 „Noch 30 Sekunden“ ansagen. Folie 29: Rechner mit den Knöpfen
+- [ ] Folie 23: Ein Klick startet die Uhr (3:00), ein Klick auf die Uhr hält an. Bei 0:30 „Noch 30 Sekunden“ ansagen. Folie 28: Rechner mit den Knöpfen
       2/10/50 Mio. € und dem Regler.
-- [ ] Handy-Klassifizierer (QR auf Folie 24 und 37) einmal komplett durchspielen, auch „Unsicher“ und „Zurück“.
+- [ ] Handy-Klassifizierer (QR auf Folie 23 und 36) einmal komplett durchspielen, auch „Unsicher“ und „Zurück“.
 
 ---
 
@@ -107,7 +112,7 @@ sie bis zum Vortrag verfallen: nach 30 Minuten, bei der Schätzfrage nach 90 Min
          Prüffragen K7/K10 stützen sich auf den Entwurf vom 19.5.2026.
       2. Förmliche Annahme der Art.-50-Leitlinien (C(2026) 5054; bisher nur gebilligt am 20.7.2026).
       3. Formular der Kommission für die vereinfachte Doku (Art. 11): bisher nicht veröffentlicht, so steht es auf
-         Folie 30 in den Notizen.
+         Folie 29 in den Notizen.
       4. Berichtigungen zur VO 2024/1689 oder 2026/1744 im Amtsblatt, neue harmonisierte Normen (bisher nur
          EN 18286).
       5. Mitteilungen der Bundesnetzagentur zum KI-MIG.
@@ -133,10 +138,10 @@ sie bis zum Vortrag verfallen: nach 30 Minuten, bei der Schätzfrage nach 90 Min
       - [ ] Updates pausiert
       - [ ] Energiesparen und Bildschirmschoner aus
       - [ ] andere Tabs und Programme zu
-- [ ] Seite frisch laden (**Strg+F5**). Kontrollblick: Die Quellenzeile auf Folie 21 nennt „17 statt 29 Fragen“.
+- [ ] Seite frisch laden (**Strg+F5**). Kontrollblick: Die Quellenzeile auf Folie 20 nennt „17 statt 29 Fragen“.
       Steht dort „16“, kommt die Seite aus dem Cache.
-- [ ] Netz: Laptop im Hochschul-WLAN. Auf Folie 02 zeigt die Pille „Live“, nicht „offline“.
-- [ ] Teststimme **nur bei Folie 02** („Wie oft nutzen Sie KI?“), **spätestens 30 Minuten vor Beginn**. Sie verfällt
+- [ ] Netz: Laptop im Hochschul-WLAN. Auf Folie 09 zeigt die Pille „Live“, nicht „offline“.
+- [ ] Teststimme **nur bei Folie 09** (Rollen-Quiz), **spätestens 30 Minuten vor Beginn**. Sie verfällt
       bis zum Start.
 - [ ] ⚠ **Die Schätzfrage (Folie 04) am Vortragstag nicht testen.** Sie zählt 90 Minuten, eine Teststimme stünde
       später im Ergebnis.
@@ -159,7 +164,7 @@ sie bis zum Vortrag verfallen: nach 30 Minuten, bei der Schätzfrage nach 90 Min
 | B | Schwarzbild |
 | D | hell / dunkel |
 
-**Live-Fragen:** Folien 02, 04, 09, 20, 22, 25, 33, 36. Ansage: „Neuer Code, bitte neu scannen. Sie haben 30 Sekunden.“
+**Live-Fragen:** Folien 04, 09, 21, 24, 32, 35 (Folie 02 ist ein Handzeichen). Ansage: „Neuer Code, bitte neu scannen. Sie haben 30 Sekunden.“
 Klicken, wenn n nicht mehr steigt, spätestens nach 45 s. Bei „offline“: Handzeichen, Klick auf einen Balken zählt +1.
 Ziffern springen immer zu Folien, sie zählen keine Stimmen.
 
@@ -167,19 +172,19 @@ Ziffern springen immer zu Folien, sie zählen keine Stimmen.
 
 | Folie | Soll | Folie | Soll |
 |---|---|---|---|
-| 06 Zeitstrahl (E) | 4:50 | 26 Inventar | 34:50 |
-| 11 Pyramide | 11:55 | 29 Bußgeld-Rechner (E) | 38:50 |
-| 20 Live: Fall 1 (Y) | 23:40 | 32 Wer macht was? (Y) | 43:25 |
-| 24 Partnerarbeit | 29:15 | 37 Diskussion | 50:45 |
+| 06 Zeitstrahl (E) | 4:20 | 25 Inventar | 33:15 |
+| 11 Pyramide | 11:25 | 28 Bußgeld-Rechner (E) | 37:15 |
+| 20 Klassifizierer (Y) | 23:10 | 31 Wer macht was? (Y) | 41:50 |
+| 23 Partnerarbeit | 27:40 | 36 Diskussion | 49:10 |
 
 **Kürzungsplan bei Verzug**
 - Ab 3 Min. Rückstand:
-  - Partnerarbeit (24) nur 2 statt 3 Minuten
-  - Folie 27 (Zahlen): nur die 71 % nennen
-  - Folie 28: keine Handzeichen, die Irrtümer nur vorlesen und auflösen
+  - Partnerarbeit (23) nur 2 statt 3 Minuten
+  - Folie 26 (Zahlen): nur die 71 % nennen
+  - Folie 27: keine Handzeichen, die Irrtümer nur vorlesen und auflösen
 - Ab 6 Min. Rückstand zusätzlich:
   - Folie 10 (Aufsicht) in einem Satz
-  - Folie 30 (Kosten) überspringen: mit `31` Enter springen
+  - Folie 29 (Kosten) überspringen: mit `30` Enter springen
   - Folie 19 (GPAI) in einem Satz
 
 **Wenn etwas hängt**
@@ -205,7 +210,7 @@ Netz, Live-Abstimmung und Animationen sind **kein** No-Go: Für sie gibt es Plan
 
 ## 7. Nach dem Vortrag
 
-- [ ] Ergebnisse der acht Live-Fragen sichern (Screenshot der Folien oder Export aus dem Google-Sheet „Stimmen“).
+- [ ] Ergebnisse der sechs Live-Fragen sichern (Screenshot der Folien oder Export aus dem Google-Sheet „Stimmen“).
 - [ ] Stimmen im Google-Sheet nach der Auswertung löschen (Datensparsamkeit).
 - [ ] Feedback und offene Fragen aus der Diskussion notieren, als Input für die Kundenfassung. Für diese steht noch
       aus: SimpleAct-CI, eigenes Abstimm-Backend und eigenes Hosting (`recherche/gestaltung-upgrade.md`, Paket D).

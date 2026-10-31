@@ -100,7 +100,7 @@
   });
 
   /* ---------------------------------------------------------------------------
-     5. BAUSTEIN .bussgeldrechner (Folie 29)
+     5. BAUSTEIN .bussgeldrechner (Folie 28)
         Umsatz per Knopf (2/10/50 Mio. €) oder Regler (1–50 Mio. €). Je
         Stufe zwei Balken: KMU (niedrigerer Betrag, Art. 99 Abs. 6) und ohne
         KMU-Regel (höherer Betrag). Skala: 35 Mio. € = volle Breite.
@@ -209,7 +209,7 @@
   });
 
   /* ---------------------------------------------------------------------------
-     6. BAUSTEIN .k-uhr (Countdown, Folie 24)
+     6. BAUSTEIN .k-uhr (Countdown, Folie 23)
         data-sekunden="180" data-start="1": Schritt 1 startet die Uhr; Klick
         auf die Uhr hält an bzw. setzt fort. Beim Verlassen zurückgesetzt.
      --------------------------------------------------------------------------- */

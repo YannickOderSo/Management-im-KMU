@@ -20,6 +20,8 @@ import sys
 from pathlib import Path
 
 ICONS = [
+    # Handzeichen zum Einstieg (Folie 02)
+    'hand-waving', 'house',
     # Verbote (Folie 12)
     'magnet', 'hand-grabbing', 'ranking', 'detective', 'user-focus', 'smiley-sad', 'fingerprint',
     'security-camera', 'image-broken', 'shield-warning',

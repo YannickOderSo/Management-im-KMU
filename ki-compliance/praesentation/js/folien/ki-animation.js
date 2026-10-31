@@ -9,9 +9,9 @@
                      springen nach hinten
      11 Pyramide     Stufen fallen von oben ein und setzen auf
      13 Daumen-Runde Urteil wird gestempelt
-     26 Inventar     Klassenform fliegt vom Betrieb in die Tabellenzeile
-     28 Irrtümer     Richtigstellung wird gestempelt
-     35 Kernbotschaft Satz Wort für Wort
+     25 Inventar     Klassenform fliegt vom Betrieb in die Tabellenzeile
+     27 Irrtümer     Richtigstellung wird gestempelt
+     34 Kernbotschaft Satz Wort für Wort
    Grundsätze
    • Endzustand = CSS. Alles startet mit from/fromTo und räumt danach seine
      Inline-Stile weg; gsap.context(…).revert() stellt beim Verlassen den
@@ -66,7 +66,7 @@
       },
       schritt: function (ctx, n, richtung) {
         /* Zurück mitten in einer Animation: sofort Endzustand von CSS (z. B. kein
-           Flug in eine schon ausgeblendete Zeile auf Folie 26) */
+           Flug in eine schon ausgeblendete Zeile auf Folie 25) */
         if (richtung === 'zurueck') { if (!def.betreten) abraeumen(id); return; }
         if (richtung === 'start' || aus(ctx) || !def.schritt) return;
         if (!kontexte[id]) kontexte[id] = gsap.context(function () {}, ctx.folie);
@@ -198,7 +198,7 @@
       if (urteil) stempeln(urteil.querySelector('.k-etikett'), urteil.closest('li'), 0.05);
     }
   });
-  choreo('f28', {
+  choreo('f27', {
     schritt: function (folie, n) {
       var fakt = folie.querySelector('.ir-fakt[data-schritt="' + n + '"]');
       if (fakt) stempeln(fakt.querySelector('b'), fakt.closest('li'), 0.1);
@@ -207,14 +207,14 @@
 
 
   /* ---------------------------------------------------------------------------
-     26 INVENTAR: Klassenform fliegt vom Punkt im Betrieb in die Zeile
+     25 INVENTAR: Klassenform fliegt vom Punkt im Betrieb in die Zeile
      --------------------------------------------------------------------------- */
   var FORM = { verboten: 's-verboten', hoch: 's-hoch', transparenz: 's-transparenz', minimal: 's-minimal', gpai: 's-gpai' };
   function mitte(el, folie, massstab, ursprung) {
     var r = el.getBoundingClientRect();
     return { x: (r.left + r.width / 2 - ursprung.left) / massstab, y: (r.top + r.height / 2 - ursprung.top) / massstab, b: r.width / massstab };
   }
-  choreo('f26', {
+  choreo('f25', {
     schritt: function (folie, n) {
       var ursprung = folie.getBoundingClientRect();
       var massstab = ursprung.width / (folie.offsetWidth || ursprung.width) || 1;
@@ -254,9 +254,9 @@
 
 
   /* ---------------------------------------------------------------------------
-     35 KERNBOTSCHAFT: Satz Wort für Wort (data-animation="keine")
+     34 KERNBOTSCHAFT: Satz Wort für Wort (data-animation="keine")
      --------------------------------------------------------------------------- */
-  choreo('f35', {
+  choreo('f34', {
     schritt: function (folie, n) {
       if (n === 1) woerter(folie.querySelector('.ke-botschaft'), { stagger: 0.09, duration: 0.9 });
     }
