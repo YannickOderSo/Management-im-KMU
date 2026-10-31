@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M12 1.8 23 21.6H1z%22 fill=%22%23E8650F%22/%3E%3C/svg%3E">
+<title>KI-Klassifizierer</title>
+<!--
+  klassifizierer.html – der Klassifizierer zum Mitnehmen (QR-Code auf Folie 25)
+  Gleiche Daten und Logik wie die Folien: js/klassifizierer-daten.js,
+  js/klassifizierer.js (Teil 1, Logik). Läuft offline, speichert nichts,
+  sendet nichts. Vereinfacht, keine Rechtsberatung.
+-->
+<style>
+  @font-face { font-family: "Inter Deck"; src: url("schriften/inter-latin-opsz-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: "Inter Deck"; src: url("schriften/inter-latin-ext-opsz-normal.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+20A0-20AB, U+20AD-20C0, U+2C60-2C7F, U+A720-A7FF; }
+  @font-face { font-family: "Space Grotesk Deck"; src: url("schriften/space-grotesk-latin-wght-normal.woff2") format("woff2"); font-weight: 300 700; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+  @font-face { font-family: "Space Grotesk Deck"; src: url("schriften/space-grotesk-latin-ext-wght-normal.woff2") format("woff2"); font-weight: 300 700; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1E9F, U+20A0-20AB, U+20AD-20C0, U+2C60-2C7F, U+A720-A7FF; }
+
+  :root {
+    --papier: #F7F6F2; --tinte: #14213D; --tinte-2: #4B5468; --mittel: #7C8496; --linie: #CDD1D8;
+    --flaeche: #ECEAE3; --flaeche-2: #E2DFD6;
+    --rot: #C8102E; --rot-t: #B30E29; --orange: #E8650F; --orange-t: #B4470A; --orange-voll: #B4470A;
+    --gelb: #F4B400; --gelb-t: #7D5800; --gruen: #1F8A4C; --gruen-t: #17703D; --lila: #6D3FC0; --lila-t: #5F33AD;
+    --grau: #8A90A0; --grau-t: #5A6274; --auf: #FFFFFF;
+    --display: "Space Grotesk Deck", "Inter Deck", system-ui, sans-serif;
+    --text: "Inter Deck", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --papier: #0F1626; --tinte: #EEF0F3; --tinte-2: #AEB6C6; --mittel: #6A7488; --linie: #2C3650;
+      --flaeche: #182139; --flaeche-2: #212B46;
+      --rot: #FF5C6C; --rot-t: #FF7A87; --orange: #FF8A3D; --orange-t: #FF9B57; --orange-voll: #FF8A3D;
+      --gelb: #FFCB2E; --gelb-t: #FFD452; --gruen: #3FCB86; --gruen-t: #5AD89A; --lila: #A98BFF; --lila-t: #B8A0FF;
+      --grau: #8D96A8; --grau-t: #A9B1C1; --auf: #0F1626;
+    }
+  }
+  :root[data-theme="dark"] {
+    --papier: #0F1626; --tinte: #EEF0F3; --tinte-2: #AEB6C6; --mittel: #6A7488; --linie: #2C3650;
+    --flaeche: #182139; --flaeche-2: #212B46;
+    --rot: #FF5C6C; --rot-t: #FF7A87; --orange: #FF8A3D; --orange-t: #FF9B57; --orange-voll: #FF8A3D;
+    --gelb: #FFCB2E; --gelb-t: #FFD452; --gruen: #3FCB86; --gruen-t: #5AD89A; --lila: #A98BFF; --lila-t: #B8A0FF;
+    --grau: #8D96A8; --grau-t: #A9B1C1; --auf: #0F1626;
+  }
+  [data-klasse="verboten"] { --k: var(--rot); --k-t: var(--rot-t); --k-auf: var(--auf); }
+  [data-klasse="hoch"], [data-klasse="ausnahme"] { --k: var(--orange); --k-t: var(--orange-t); --k-auf: var(--auf); }
+  [data-klasse="transparenz"] { --k: var(--gelb); --k-t: var(--gelb-t); --k-auf: #14213D; }
+  [data-klasse="minimal"] { --k: var(--gruen); --k-t: var(--gruen-t); --k-auf: var(--auf); }
+  [data-klasse="gpai"] { --k: var(--lila); --k-t: var(--lila-t); --k-auf: var(--auf); }
+  [data-klasse="kein"] { --k: var(--grau); --k-t: var(--grau-t); --k-auf: var(--auf); }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--papier); color: var(--tinte); font: 17px/1.5 var(--text); }
+  main { max-width: 640px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1, h2, h3 { font-family: var(--display); line-height: 1.15; margin: 0; }
+  h1 { font-size: clamp(28px, 7vw, 38px); letter-spacing: -0.01em; }
+  .kopf p { margin: 6px 0 0; color: var(--tinte-2); }
+  .vorbehalt { font-size: 14px; color: var(--tinte-2); margin-top: 10px !important; }
+  .k-form { width: 1em; height: 1em; fill: var(--k, var(--tinte)); flex: none; vertical-align: -0.12em; }
+  .k-form[data-klasse="kein"] { fill: none; stroke: var(--k); stroke-width: 2.4; stroke-dasharray: 3.2 2.6; }
+  .k-form[data-klasse="ausnahme"] { fill: none; stroke: var(--k); stroke-width: 2.4; stroke-linejoin: round; }
+  .k-form[data-klasse="transparenz"] { stroke: var(--gelb-t); stroke-width: 1.4; }
+
+  /* Stufen */
+  .stufen { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 5px; margin: 22px 0 14px; padding: 0; list-style: none; }
+  .stufen li { min-width: 0; display: grid; justify-items: center; gap: 4px; padding: 8px 2px; border-radius: 10px; font-size: 11.5px; line-height: 1.15; text-align: center; color: var(--tinte-2); background: var(--flaeche); hyphens: auto; overflow-wrap: anywhere; }
+  .stufen li .k-form { width: 20px; height: 20px; }
+  .stufen li.ist-aktuell { background: var(--tinte); color: var(--papier); font-weight: 650; }
+  .stufen li.ist-aktuell .k-form[data-klasse="kein"] { stroke: var(--papier); }
+  .stufen li.ist-erledigt { color: var(--tinte); }
+
+  /* Frage */
+  .karte { padding: 20px; border-radius: 16px; background: var(--flaeche); }
+  .karte h2 { font-size: 22px; }
+  .marke { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; font-size: 14px; font-weight: 650; color: var(--k-t); }
+  .marke .k-form { width: 18px; height: 18px; }
+  .frage { font-size: 19px; line-height: 1.45; margin: 10px 0 0; }
+  .erklaerung { margin: 12px 0 0; padding: 10px 12px; border-left: 4px solid var(--tinte); background: var(--papier); border-radius: 0 8px 8px 0; color: var(--tinte-2); font-size: 15px; }
+  .stempel { display: inline-block; margin: 12px 8px 0 0; padding: 1px 8px 2px; border: 1.5px solid currentColor; border-radius: 6px; font: 600 13px/1.4 var(--display); color: var(--tinte-2); }
+  .knoepfe { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+  button { font: inherit; cursor: pointer; }
+  .knopf { min-height: 56px; border-radius: 14px; border: 3px solid var(--tinte); background: var(--papier); color: var(--tinte); font: 650 20px/1 var(--display); }
+  .knopf--ja { background: var(--tinte); color: var(--papier); }
+  .knopf:focus-visible, .leise:focus-visible, .beispiel:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; }
+  .leise { margin-top: 14px; padding: 6px 0; border: 0; background: none; color: var(--tinte-2); text-decoration: underline; font-size: 15px; }
+  .leise[hidden] { display: none; }
+
+  /* Treffer unterwegs */
+  .treffer { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; }
+  .etikett { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px 4px 8px; border-radius: 999px; background: var(--k); color: var(--k-auf); font-weight: 650; font-size: 15px; }
+  .etikett .k-form { fill: var(--k-auf); stroke: none; width: 16px; height: 16px; }
+
+  /* Ergebnis */
+  .ergebnis { display: grid; gap: 14px; }
+  .erg { padding: 18px 18px 16px; border-radius: 16px; background: var(--flaeche); box-shadow: inset 6px 0 0 var(--k); }
+  .erg h3 { display: flex; align-items: center; gap: 10px; font-size: 20px; }
+  .erg h3 .k-form { width: 24px; height: 24px; }
+  .erg p { margin: 8px 0 0; color: var(--tinte-2); }
+  .erg ul { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .erg li { padding-top: 10px; border-top: 1px solid var(--linie); font-size: 15px; }
+  .erg li .meta { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 4px; font-size: 13px; color: var(--tinte-2); }
+  .erg li .meta b { font-family: var(--display); color: var(--tinte); }
+  .erg li.optional { color: var(--tinte-2); }
+  .rolle { padding: 14px 16px; border-radius: 12px; border: 2px solid var(--linie); font-size: 15px; color: var(--tinte-2); }
+  .rolle b { color: var(--tinte); }
+  .pfad { font-size: 14px; color: var(--tinte-2); }
+  .pfad ol { margin: 6px 0 0; padding-left: 22px; }
+
+  /* Beispiele */
+  details { margin-top: 26px; border-top: 2px solid var(--linie); padding-top: 14px; }
+  summary { cursor: pointer; font: 650 18px/1.3 var(--display); }
+  .beispiele { display: grid; gap: 8px; margin-top: 12px; }
+  .beispiel { text-align: left; padding: 12px 14px; border-radius: 12px; border: 2px solid var(--linie); background: var(--papier); color: var(--tinte); font-size: 16px; }
+  footer { margin-top: 30px; font-size: 13px; color: var(--tinte-2); }
+  footer a { color: inherit; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="s-verboten" viewBox="0 0 24 24"><path d="M7.03 1.5h9.94l5.53 5.53v9.94l-5.53 5.53H7.03L1.5 16.97V7.03z"/></symbol>
+    <symbol id="s-hoch" viewBox="0 0 24 24"><path d="M12 1.8 23 21.6H1z"/></symbol>
+    <symbol id="s-transparenz" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.6"/></symbol>
+    <symbol id="s-minimal" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2.2"/></symbol>
+    <symbol id="s-gpai" viewBox="0 0 24 24"><path d="M12 .9 23.1 12 12 23.1.9 12z"/></symbol>
+    <symbol id="s-kein" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></symbol>
+  </defs>
+</svg>
+<main>
+  <header class="kopf">
+    <h1>Welches Risiko hat Ihre KI?</h1>
+    <p>Der Klassifizierer zum EU AI Act: bis zu 16 Ja/Nein-Fragen in fünf Prüfstufen.</p>
+    <p class="vorbehalt">Vereinfacht nach der Prüflogik von SimpleAct · Rechtsstand <span id="stand">31.10.2026</span> · allgemeine Information, keine Rechtsberatung · speichert und sendet nichts</p>
+  </header>
+
+  <ol class="stufen" id="stufen" aria-label="Prüfstufen"></ol>
+
+  <section id="ansicht" aria-live="polite"></section>
+
+  <details>
+    <summary>Beispiele aus dem Vortrag ausprobieren</summary>
+    <div class="beispiele" id="beispiele"></div>
+  </details>
+
+  <footer>
+    <p>Belege und Grenzen: Folien des Vortrags „Welches Risiko hat Ihre KI?“ (Management im KMU, Hochschule Kaiserslautern). Leitlinien der Kommission sind nicht verbindlich; im Einzelfall Rechtsberatung einholen.</p>
+    <p><a href="../../index.html">Zur Startseite</a></p>
+  </footer>
+</main>
+
+<script src="js/klassifizierer-daten.js"></script>
+<script src="js/klassifizierer.js"></script>
+<script>
+(function () {
+  'use strict';
+  var D = window.KLASSIFIZIERER, K = window.Klassifizierer;
+  if (!D || !K) { document.getElementById('ansicht').textContent = 'Daten fehlen: js/klassifizierer-daten.js'; return; }
+  var p = new K.Pruefung(D);
+  var ansicht = document.getElementById('ansicht');
+  var stufen = document.getElementById('stufen');
+  var abgespielt = null;   /* Name eines Beispiels */
+
+  function el(tag, attr, text, eltern) {
+    var e = document.createElement(tag);
+    Object.keys(attr || {}).forEach(function (k) { if (attr[k] != null) e.setAttribute(k, attr[k]); });
+    if (text != null) e.textContent = text;
+    if (eltern) eltern.appendChild(e);
+    return e;
+  }
+  function etikett(e, eltern) {
+    var s = el('span', { class: 'etikett', 'data-klasse': e.klasse }, null, eltern);
+    K.form(e.klasse, s);
+    s.appendChild(document.createTextNode(e.kurz || K.KLASSEN_NAME[e.klasse]));
+    return s;
+  }
+
+  function stufenZeichnen() {
+    stufen.textContent = '';
+    var aktuell = p.aktuell ? p.knoten[p.aktuell].spalte : 6;
+    D.spalten.forEach(function (sp) {
+      var li = el('li', { class: sp.nr === aktuell ? 'ist-aktuell' : (sp.nr < aktuell ? 'ist-erledigt' : ''), 'aria-current': sp.nr === aktuell ? 'step' : null }, null, stufen);
+      K.form(sp.klasse, li);
+      el('span', null, sp.name, li);
+    });
+  }
+
+  function frageZeigen() {
+    var k = p.knoten[p.aktuell];
+    var sp = D.spalten[k.spalte - 1];
+    ansicht.textContent = '';
+    var karte = el('div', { class: 'karte' }, null, ansicht);
+    var marke = el('p', { class: 'marke', 'data-klasse': sp.klasse }, null, karte);
+    K.form(sp.klasse, marke);
+    marke.appendChild(document.createTextNode('Stufe ' + sp.nr + ': ' + sp.name));
+    el('h2', null, k.kurz, karte);
+    el('p', { class: 'frage' }, k.frage, karte);
+    el('p', { class: 'erklaerung' }, k.erklaerung, karte);
+    k.rechtsgrundlage.forEach(function (r) { el('span', { class: 'stempel' }, r, karte); });
+    var knoepfe = el('div', { class: 'knoepfe' }, null, karte);
+    var ja = el('button', { type: 'button', class: 'knopf knopf--ja' }, 'Ja', knoepfe);
+    var nein = el('button', { type: 'button', class: 'knopf' }, 'Nein', knoepfe);
+    ja.addEventListener('click', function () { antworten('Ja'); });
+    nein.addEventListener('click', function () { antworten('Nein'); });
+    var zurueck = el('button', { type: 'button', class: 'leise' }, 'Letzte Antwort zurücknehmen', karte);
+    zurueck.hidden = !p.pfad.length;
+    zurueck.addEventListener('click', function () { p.zurueck(); weiter(); });
+    var bisher = p.treffer().filter(function (e) { return !e.nurWennNichtsAnderes; });
+    if (bisher.length) {
+      var ul = el('ul', { class: 'treffer', 'aria-label': 'Bisherige Treffer' }, null, ansicht);
+      bisher.forEach(function (e) { etikett(e, el('li', null, null, ul)); });
+    }
+    ja.focus({ preventScroll: true });
+  }
+
+  function ergebnisZeigen() {
+    ansicht.textContent = '';
+    var box = el('div', { class: 'ergebnis' }, null, ansicht);
+    el('h2', null, abgespielt ? 'Ergebnis: ' + abgespielt : 'Ihr Ergebnis', box);
+    p.treffer().forEach(function (e) {
+      var erg = el('article', { class: 'erg', 'data-klasse': e.klasse }, null, box);
+      var h = el('h3', null, null, erg);
+      K.form(e.klasse, h);
+      h.appendChild(document.createTextNode(e.titel));
+      el('p', null, e.satz, erg);
+      if (e.hinweis) el('p', null, e.hinweis, erg);
+      if (e.pflichten && e.pflichten.length) {
+        var ul = el('ul', null, null, erg);
+        e.pflichten.forEach(function (pf) {
+          var li = el('li', { class: pf.optional ? 'optional' : null }, (pf.optional ? 'Unter Umständen: ' : '') + pf.text, ul);
+          var meta = el('span', { class: 'meta' }, null, li);
+          el('b', null, pf.artikel, meta);
+          if (pf.ab) el('span', null, 'gilt ab ' + K.datum(pf.ab), meta);
+        });
+      }
+    });
+    var rolle = el('p', { class: 'rolle' }, null, box);
+    el('b', null, 'Ihre Rolle entscheidet mit: ', rolle);
+    rolle.appendChild(document.createTextNode('Wer das System selbst entwickelt oder unter eigenem Namen anbietet, ist Anbieter. Wer es nur in eigener Verantwortung einsetzt, ist Betreiber; dann gelten die Betreiberpflichten. Bei Hochrisiko-Systemen kann man durch eigenen Namen, wesentliche Änderung oder neuen Zweck zum Anbieter werden (Art. 25).'));
+    var pfad = el('div', { class: 'pfad' }, null, box);
+    el('b', null, 'Ihr Prüfpfad', pfad);
+    var ol = el('ol', null, null, pfad);
+    p.pfad.forEach(function (s) { el('li', null, p.knoten[s.id].kurz + ' ' + s.antwort, ol); });
+    var knoepfe = el('div', { class: 'knoepfe' }, null, box);
+    var neu = el('button', { type: 'button', class: 'knopf knopf--ja' }, 'Neu prüfen', knoepfe);
+    var zurueck = el('button', { type: 'button', class: 'knopf' }, 'Zurück', knoepfe);
+    neu.addEventListener('click', function () { abgespielt = null; p.neu(); weiter(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    zurueck.addEventListener('click', function () { abgespielt = null; p.zurueck(); weiter(); });
+    neu.focus({ preventScroll: true });
+  }
+
+  function antworten(text) { abgespielt = null; p.antworte(text); weiter(); }
+  function weiter() { stufenZeichnen(); if (p.aktuell) frageZeigen(); else ergebnisZeigen(); }
+
+  /* Beispiele */
+  var bsp = document.getElementById('beispiele');
+  Object.keys(D.faelle).forEach(function (id) {
+    var f = D.faelle[id];
+    var b = el('button', { type: 'button', class: 'beispiel' }, f.name, bsp);
+    b.addEventListener('click', function () {
+      p.spiele(f.antworten);
+      abgespielt = f.name;
+      stufenZeichnen();
+      ergebnisZeigen();
+      ansicht.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(D.stand || '');
+  if (m) document.getElementById('stand').textContent = Number(m[3]) + '.' + Number(m[2]) + '.' + m[1];
+  weiter();
+})();
+</script>
+</body>
+</html>

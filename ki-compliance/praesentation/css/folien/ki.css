@@ -1,0 +1,435 @@
+/* =============================================================================
+   ki.css – FUNDAMENT der Gestaltung „Prüfpfad“
+   Vortrag „Welches Risiko hat Ihre KI?“ (Management im KMU). Bühne 1920 × 1080.
+   -----------------------------------------------------------------------------
+   IDEE
+   Tinte auf warmem Papier, sachlich wie ein Prüfprotokoll. Die Signalfarben
+   gehören ALLEIN den Risikoklassen, und jede Klasse hat Farbe, Form und Wort
+   (lesbar bei Rot-Grün-Schwäche und im Schwarz-Weiß-Druck):
+     verboten     rot      Achteck  (#s-verboten)
+     hochriskant  orange   Dreieck  (#s-hoch)
+     Transparenz  gelb     Kreis    (#s-transparenz)
+     minimal      grün     Quadrat  (#s-minimal)
+     GPAI         lila     Raute    (#s-gpai)
+     kein KI / außerhalb   grau, gestrichelter Kreis (#s-kein)
+   Artikelangaben stehen als kleine Stempel (.k-stempel) an jeder Aussage.
+   Die Laufleiste ist der Prüfpfad: vier Stationen, die aktuelle gefüllt.
+
+   Aufbau
+     1. Tokens: Farben hell/dunkel · Klassenfarben · Zuordnung zur Engine ·
+        Typografie · Maße
+     2. Folienrahmen: Titel, Quelle, Laufleiste (Prüfpfad)
+     3. Klassen: Formen, Etiketten, Farbzuordnung über data-klasse
+     4. Komponenten (Präfix k-): Stempel, Karte, Liste, Hinweis, Merksatz,
+        Kennzahl, Haken/Kreuz
+     5. Bewegung, Druck, „Bewegung reduzieren“
+   Folienspezifisches steht in ki-folien.css, der Baum in klassifizierer.css.
+   ============================================================================= */
+
+
+/* -----------------------------------------------------------------------------
+   1. TOKENS
+   ----------------------------------------------------------------------------- */
+html[data-modus],
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-modus="hell"] {
+  --k-papier: #F7F6F2;
+  --k-tinte: #14213D;          /* Schrift, Linien, Prüfpfad (15,0 : 1) */
+  --k-tinte-2: #4B5468;        /* Nebentext, Quellen (7,4 : 1) */
+  --k-mittel: #7C8496;         /* Grafik zweitrangig (3,6 : 1), nie Text */
+  --k-linie: #CDD1D8;          /* Haarlinien, leere Spuren */
+  --k-flaeche: #ECEAE3;        /* Karten, Felder */
+  --k-flaeche-2: #E2DFD6;
+  --k-letterbox: #DAD7CF;
+  --k-ui: #E6E4DD;
+
+  --k-rot: #C8102E;      --k-rot-text: #B30E29;     --k-auf-rot: #FFFFFF;
+  --k-orange: #E8650F;   --k-orange-text: #B4470A;  --k-auf-orange: #FFFFFF;
+  --k-orange-voll: #B4470A;  --k-auf-orange-voll: #FFFFFF;   /* Fläche mit Schrift (5,6 : 1) */
+  --k-gelb: #F4B400;     --k-gelb-text: #7D5800;    --k-auf-gelb: #14213D;
+  --k-gruen: #1F8A4C;    --k-gruen-text: #17703D;   --k-auf-gruen: #FFFFFF;
+  --k-lila: #6D3FC0;     --k-lila-text: #5F33AD;    --k-auf-lila: #FFFFFF;
+  --k-grau: #8A90A0;     --k-grau-text: #5A6274;    --k-auf-grau: #FFFFFF;
+}
+html[data-modus="dunkel"],
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-modus="dunkel"] {
+  --k-papier: #0F1626;
+  --k-tinte: #EEF0F3;
+  --k-tinte-2: #AEB6C6;
+  --k-mittel: #6A7488;
+  --k-linie: #2C3650;
+  --k-flaeche: #182139;
+  --k-flaeche-2: #212B46;
+  --k-letterbox: #070B14;
+  --k-ui: #1A2238;
+
+  --k-rot: #FF5C6C;      --k-rot-text: #FF7A87;     --k-auf-rot: #0F1626;
+  --k-orange: #FF8A3D;   --k-orange-text: #FF9B57;  --k-auf-orange: #0F1626;
+  --k-orange-voll: #FF8A3D;  --k-auf-orange-voll: #0F1626;
+  --k-gelb: #FFCB2E;     --k-gelb-text: #FFD452;    --k-auf-gelb: #0F1626;
+  --k-gruen: #3FCB86;    --k-gruen-text: #5AD89A;   --k-auf-gruen: #0F1626;
+  --k-lila: #A98BFF;     --k-lila-text: #B8A0FF;    --k-auf-lila: #0F1626;
+  --k-grau: #8D96A8;     --k-grau-text: #A9B1C1;    --k-auf-grau: #0F1626;
+}
+
+/* Zuordnung zu den Engine-Tokens (--f-…), am <html> und an jeder Folie */
+html[data-thema][data-modus],
+[data-thema] :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie {
+  --f-hintergrund: var(--k-papier);
+  --f-hintergrund-bild: none;
+  --f-flaeche: var(--k-flaeche);
+  --f-flaeche-2: var(--k-flaeche-2);
+  --f-letterbox: var(--k-letterbox);
+  --f-text: var(--k-tinte);
+  --f-text-2: var(--k-tinte-2);
+  --f-linie: var(--k-linie);
+  --f-linie-stark: var(--k-tinte);
+  --f-akzent: var(--k-tinte);
+  --f-akzent-flaeche: var(--k-flaeche);
+  --f-auf-akzent: var(--k-papier);
+  --f-weich: var(--k-tinte);
+  --f-weich-flaeche: var(--k-flaeche);
+  --f-hart: var(--k-tinte-2);
+  --f-hart-flaeche: var(--k-flaeche);
+  --f-kern: var(--k-tinte);
+  --f-auf-kern: var(--k-papier);
+  --f-rahmen: var(--k-tinte);
+  --f-fokus: var(--k-orange);
+  --f-karte: var(--k-flaeche);
+  --f-karte-rand: var(--k-linie);
+  --f-balken: var(--k-mittel);
+  --f-diagramm-marke: var(--k-tinte);
+  --f-diagramm-wettbewerb: var(--k-tinte-2);
+  --f-diagramm-ideal: var(--k-mittel);
+}
+html[data-thema][data-modus] {
+  --f-flaeche: var(--k-ui);
+  --f-flaeche-2: var(--k-ui);
+}
+
+/* Typografie „editorial“: Space Grotesk (Titel, Zahlen, Stempel) + Inter.
+   Bento und Keynote (Taste T) behalten ihre Schriften. */
+html[data-thema="editorial"] {
+  --schrift-display: "Space Grotesk Deck", "Inter Deck", "Segoe UI", Arial, sans-serif;
+  --schrift-text: "Inter Deck", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --schrift-zahl: var(--schrift-display);
+  --schrift-kicker: var(--schrift-text);
+  --gewicht-titel: 600;
+  --gewicht-display: 600;
+  --gewicht-zahl: 600;
+  --gewicht-text: 400;
+  --gewicht-fett: 650;
+  --kicker-versalien: none;
+  --kicker-laufweite: 0;
+}
+html[data-thema] {
+  --rand-x: 120px;
+  --rand-oben: 48px;
+  --rand-unten: 44px;
+  --groesse-titel: 76px;
+  --groesse-text: 30px;
+  --groesse-meta: 22px;
+  --zeilenhoehe-titel: 1.06;
+  --k-radius: 14px;
+  --k-strich: 4px;
+  --k-strich-pfad: 8px;
+}
+
+
+/* -----------------------------------------------------------------------------
+   2. FOLIENRAHMEN
+   ----------------------------------------------------------------------------- */
+.folie { font-feature-settings: "kern" 1; }
+:where(.folie) :where(b, strong) { font-weight: var(--gewicht-fett); }
+
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .k-laufkopf ~ .folie-kopf { margin-top: 44px; }
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .folie-kopf ~ .folie-inhalt { margin-top: 40px; }
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-laufkopf="aus"]:not([data-layout="titel"]) > .folie-kopf { margin-top: 92px; }
+
+.folie .titel {
+  font-size: var(--groesse-titel);
+  line-height: var(--zeilenhoehe-titel);
+  letter-spacing: -0.015em;
+  max-width: 1500px;
+  text-wrap: balance;
+}
+.folie .titel .k-zeile { display: block; }
+.folie .titel .k-leise { color: var(--k-tinte-2); }
+.folie .kicker {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--k-tinte-2);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.folie .kicker .k-form { width: 30px; height: 30px; }
+.folie .lead { color: var(--k-tinte-2); font-size: 32px; line-height: 1.35; max-width: 1400px; margin-top: 16px; }
+.folie .quelle { font-size: 22px; line-height: 1.35; color: var(--k-tinte-2); }
+.folie p, .folie li { text-wrap: pretty; }
+
+/* Laufleiste „Prüfpfad“ (js/folien/ki.js baut sie in jede Folie mit
+   data-station="1…4" bzw. "alle"): links der Titel, in der Mitte vier
+   Stationen auf einer Linie, rechts die Foliennummer */
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .laufkopf.k-laufkopf {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr) 80px;
+  align-items: center;
+  column-gap: 40px;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  color: var(--k-tinte-2);
+}
+.k-lauf-titel {
+  font-family: var(--schrift-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--k-tinte);
+  white-space: nowrap;
+}
+.k-lauf-pfad {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  height: 40px;
+}
+.k-lauf-pfad::before {          /* die Linie unter den Stationen */
+  content: "";
+  position: absolute;
+  left: 11px; right: 0;
+  top: 50%;
+  height: 3px;
+  translate: 0 -50%;
+  background: var(--k-linie);
+}
+.k-lauf-pfad::after {           /* erledigter Teil der Linie */
+  content: "";
+  position: absolute;
+  left: 11px;
+  width: var(--k-fortschritt, 0%);
+  top: 50%;
+  height: 3px;
+  translate: 0 -50%;
+  background: var(--k-tinte);
+}
+.k-lauf-station {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  font-size: 22px;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--k-tinte-2);
+}
+.k-lauf-punkt {
+  flex: none;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--k-papier);
+  border: 3px solid var(--k-linie);
+}
+.k-lauf-name { background: var(--k-papier); padding-right: 10px; }
+.k-lauf-station.ist-erledigt .k-lauf-punkt { border-color: var(--k-tinte); background: var(--k-tinte); }
+.k-lauf-station.ist-aktuell { color: var(--k-tinte); font-weight: 650; }
+.k-lauf-station.ist-aktuell .k-lauf-punkt {
+  border-color: var(--k-tinte);
+  background: var(--k-papier);
+  box-shadow: inset 0 0 0 4px var(--k-papier), inset 0 0 0 12px var(--k-tinte);
+}
+.k-lauf-nummer {
+  justify-self: end;
+  font-family: var(--schrift-zahl);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--k-tinte);
+}
+
+
+/* -----------------------------------------------------------------------------
+   3. KLASSEN
+   data-klasse="verboten|hoch|transparenz|minimal|gpai|kein" setzt
+   --k (Fläche), --k-t (Schrift auf Papier), --k-auf (Schrift auf Fläche)
+   ----------------------------------------------------------------------------- */
+[data-klasse="verboten"]    { --k: var(--k-rot);    --k-t: var(--k-rot-text);    --k-auf: var(--k-auf-rot); }
+[data-klasse="hoch"]        { --k: var(--k-orange); --k-t: var(--k-orange-text); --k-auf: var(--k-auf-orange); }
+[data-klasse="transparenz"] { --k: var(--k-gelb);   --k-t: var(--k-gelb-text);   --k-auf: var(--k-auf-gelb); }
+[data-klasse="minimal"]     { --k: var(--k-gruen);  --k-t: var(--k-gruen-text);  --k-auf: var(--k-auf-gruen); }
+[data-klasse="gpai"]        { --k: var(--k-lila);   --k-t: var(--k-lila-text);   --k-auf: var(--k-auf-lila); }
+[data-klasse="kein"]        { --k: var(--k-grau);   --k-t: var(--k-grau-text);   --k-auf: var(--k-auf-grau); }
+[data-klasse="ausnahme"]    { --k: var(--k-orange); --k-t: var(--k-orange-text); --k-auf: var(--k-auf-orange); }
+
+.k-form {
+  display: inline-block;
+  flex: none;
+  width: 1em; height: 1em;
+  fill: var(--k, var(--k-tinte));
+  stroke: none;
+  vertical-align: -0.12em;
+  overflow: visible;
+}
+.k-form--kein,
+[data-klasse="kein"] > .k-form,
+.k-form[data-klasse="kein"] { fill: none; stroke: var(--k); stroke-width: 2.4; stroke-dasharray: 3.2 2.6; }
+[data-klasse="ausnahme"] > .k-form,
+.k-form[data-klasse="ausnahme"] { fill: none; stroke: var(--k); stroke-width: 2.4; stroke-linejoin: round; }
+/* gelber Kreis braucht auf Papier eine Kontur (Kontrast Gelb/Papier < 3 : 1) */
+[data-klasse="transparenz"] > .k-form,
+.k-form[data-klasse="transparenz"] { stroke: var(--k-gelb-text); stroke-width: 1.4; }
+
+/* Etikett: Form + Wort, z. B. <span class="k-etikett" data-klasse="hoch"><svg class="k-form"><use href="#s-hoch"/></svg>hochriskant</span> */
+.k-etikett {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-weight: 650;
+  color: var(--k-t);
+  white-space: nowrap;
+}
+.k-etikett--voll {
+  padding: 0.18em 0.6em 0.18em 0.4em;
+  border-radius: 999px;
+  background: var(--k);
+  color: var(--k-auf);
+}
+.k-etikett--voll .k-form { fill: var(--k-auf); stroke: none; }
+
+
+/* -----------------------------------------------------------------------------
+   4. KOMPONENTEN
+   ----------------------------------------------------------------------------- */
+/* Artikel-Stempel: „Art. 5 Abs. 1 lit. f“ */
+.k-stempel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px 4px;
+  border: 2px solid currentColor;
+  border-radius: 6px;
+  font-family: var(--schrift-display);
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--k-tinte-2);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.k-stempel--klein { font-size: 22px; padding: 1px 8px 2px; border-width: 1.5px; }
+.k-stempel[data-klasse] { color: var(--k-t); }
+
+/* Datum als Marke */
+.k-datum {
+  font-family: var(--schrift-display);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Karte */
+.k-karte {
+  position: relative;
+  padding: 28px 30px;
+  border-radius: var(--k-radius);
+  background: var(--k-flaeche);
+}
+.k-karte[data-klasse] { box-shadow: inset 6px 0 0 var(--k); }
+.k-karte h3 {
+  margin: 0 0 10px;
+  font-family: var(--schrift-display);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.12;
+}
+.k-karte p { margin: 0; font-size: 28px; line-height: 1.35; color: var(--k-tinte-2); }
+.k-karte p + p { margin-top: 10px; }
+
+/* Liste mit Formen als Aufzählungszeichen */
+.k-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.k-liste > li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  column-gap: 18px;
+  align-items: baseline;
+  font-size: 30px;
+  line-height: 1.3;
+}
+.k-liste > li > .k-form { width: 28px; height: 28px; translate: 0 4px; }
+.k-liste > li > .k-strich {
+  width: 18px; height: 4px;
+  background: var(--k-tinte);
+  translate: 0 -6px;
+}
+
+/* Merksatz (eine Kernaussage je Folie, unten) */
+.k-merksatz {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-family: var(--schrift-display);
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--k-tinte);
+}
+.k-merksatz::before {
+  content: "";
+  flex: none;
+  width: 56px; height: 6px;
+  background: var(--k-tinte);
+}
+
+/* Hinweis in Nebenfarbe */
+.k-hinweis { font-size: 24px; line-height: 1.35; color: var(--k-tinte-2); }
+
+/* Haken und Kreuz (Ja/Nein, richtig/falsch) */
+.k-ja, .k-nein {
+  display: inline-grid;
+  place-items: center;
+  width: 1.15em; height: 1.15em;
+  border-radius: 50%;
+  font-weight: 700;
+  line-height: 1;
+}
+.k-ja { background: var(--k-tinte); color: var(--k-papier); }
+.k-nein { border: 2px solid var(--k-tinte); color: var(--k-tinte); }
+
+/* Ja/Nein-Pille (Baum, Quiz) */
+.k-antwort {
+  display: inline-block;
+  padding: 2px 12px 3px;
+  border-radius: 999px;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.k-antwort--ja { background: var(--k-tinte); color: var(--k-papier); }
+.k-antwort--nein { border: 2px solid var(--k-tinte); color: var(--k-tinte); padding: 0 10px 1px; }
+
+/* Kennzahl */
+.k-zahl {
+  font-family: var(--schrift-zahl);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Kleingedrucktes „keine Rechtsberatung“ */
+.k-vorbehalt { font-size: 22px; color: var(--k-tinte-2); }
+
+
+/* -----------------------------------------------------------------------------
+   5. BEWEGUNG, DRUCK
+   ----------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .k-endlos { animation: none !important; }
+}
+html.druckmodus .k-endlos,
+.ist-klon .k-endlos { animation: none !important; }

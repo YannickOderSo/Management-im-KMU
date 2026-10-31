@@ -1,0 +1,1358 @@
+/* =============================================================================
+   komponenten.css – Bausteine für die Folien
+   -----------------------------------------------------------------------------
+   Nutzt nur Variablen aus tokens.css. Beispiele für jeden Baustein:
+   AUTOREN.md und folien/_demo.html.
+
+     1.  Typografie: .kicker .titel .lead .text .gross .quelle .meta
+     2.  Kennzeichnungen: .beispiel .live .chip .legende .ist-annahme
+     3.  Raster: .raster-12 (.sp-1 … .sp-12) .raster-2 .raster-3 .raster-4
+                 .stapel .reihe .fuellen .unten .mitte-v
+     4.  Karten: .karte (+ Varianten) · Kennzahl: .kennzahl
+     5.  Listen, Zitat, Bild-Platzhalter, Tabelle, Angaben (Titelfolie)
+     6.  Markensteuerrad (.steuerrad, alle Modi)
+     7.  QR-Code (.qr)
+     8.  Live-Umfrage (.umfrage)
+     9.  Live-Wortwolke (.wortwolke)
+     10. Rätsel (.raetsel)
+     11. Hantel (.hantel)
+   ============================================================================= */
+
+
+/* ---------------------------------------------------------------------------
+   1. TYPOGRAFIE
+   --------------------------------------------------------------------------- */
+
+/* Kicker: kleine Versalienzeile über dem Titel (Methode, Rubrik) */
+.kicker {
+  margin: 0 0 12px;
+  font-family: var(--schrift-kicker);
+  font-size: var(--groesse-meta);
+  font-weight: var(--kicker-gewicht);
+  letter-spacing: var(--kicker-laufweite);
+  text-transform: var(--kicker-versalien);
+  line-height: 1.2;
+  color: var(--f-akzent);
+}
+.kicker .beispiel,
+.kicker .live {
+  margin-left: 16px;
+  vertical-align: 2px;
+  /* Pille (40 px) macht die Kickerzeile (26 px) nicht höher: sonst stünde der
+     Titel auf Folien mit „Beispieldaten“ 14 px tiefer als auf Folien ohne */
+  margin-block: -8px;
+}
+
+/* Folientitel = Kernaussage (ein vollständiger Satz, höchstens zwei Zeilen) */
+.titel {
+  font-family: var(--schrift-display);
+  font-size: var(--groesse-titel);
+  font-weight: var(--gewicht-titel);
+  line-height: var(--zeilenhoehe-titel);
+  letter-spacing: var(--laufweite-titel);
+  font-variation-settings: "opsz" var(--opsz-titel), var(--achsen-ruhig);
+  text-wrap: balance;
+  color: var(--f-text);
+  max-width: 100%;
+}
+/* Hervorhebung im Titel (z. B. der Markenname): <em> */
+.titel em,
+.titel .hervor {
+  font-style: var(--stil-hervor);
+  color: var(--f-akzent);
+}
+/* Markenname im Titel (<em data-marke>): auf hellen Folien schwarz mit
+   gelbem Textmarker – die Markenfarben Gelb/Schwarz statt Braun
+   (Abschlussprüfung 16.10.2026). Auf dunklen Folien bleibt er in der hellen
+   Akzentfarbe (dort ein helles Gelb). Der Marker nutzt die Primärfarbe aus
+   marke.js, aber immer HELL (Helligkeit mind. 0,86, Buntheit höchstens 0,18
+   in OKLCH): HOLY-Gelb #FFD007 bleibt unverändert, eine dunkle oder sehr
+   satte Primärfarbe (z. B. Rot #E4003A) wird zu einem hellen Marker statt zu
+   einem Balken, der wie Durchstreichen wirkt (Abschlussprüfung 17.10.2026).
+   Ältere Browser ohne „oklch(from …)“ nehmen die erste Zeile (--f-kern). */
+html[data-modus="hell"] .folie:not([data-modus="dunkel"]) .titel em[data-marke] {
+  color: var(--f-text);
+  background: linear-gradient(transparent 46%, var(--f-kern) 46% 80%, transparent 80%);
+  background: linear-gradient(transparent 46%, oklch(from var(--marke-primaer) max(l, 0.86) min(c, 0.18) h) 46% 80%, transparent 80%);
+  padding: 0 0.08em;
+  margin: 0 -0.04em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+/* Kursivkorrektur (Grafikprüfung 17.10.2026): Im Thema Editorial steht der
+   Markenname im Titel kursiv (--stil-hervor). Der Bogen des „Y“ ragt über
+   die Laufweite hinaus, lief aus dem Marker und stieß an ein folgendes „:“
+   oder „?“. Rechts etwas mehr Raum (Marker entsprechend länger). Bento und
+   Keynote setzen den Namen aufrecht – dort bleibt alles wie bisher. */
+html[data-thema="editorial"] .titel em[data-marke] { padding-right: 0.1em; }
+html[data-thema="editorial"][data-modus="hell"] .folie:not([data-modus="dunkel"]) .titel em[data-marke] {
+  padding-right: 0.18em;
+  margin-right: -0.03em;
+}
+.titel--gross { font-size: var(--groesse-titel-gross); }
+.titel--klein { font-size: var(--groesse-titel-klein); }
+
+/* Unterzeile unter dem Titel */
+.lead {
+  margin-top: 20px;
+  font-size: var(--groesse-gross);
+  line-height: 1.32;
+  color: var(--f-text-2);
+  max-width: 34em;
+}
+.text { font-size: var(--groesse-text); line-height: var(--zeilenhoehe-text); }
+.gross { font-size: var(--groesse-gross); line-height: 1.3; }
+.untertitel {
+  font-family: var(--schrift-display);
+  font-size: var(--groesse-untertitel);
+  font-weight: var(--gewicht-display);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.text-2 { color: var(--f-text-2); }
+.akzent { color: var(--f-akzent); }
+.zahl { font-family: var(--schrift-zahl); font-variant-numeric: lining-nums tabular-nums; }
+.fett { font-weight: var(--gewicht-fett); }
+
+/* Quelle unten links – Metaangabe, darf 22 px haben */
+.quelle,
+.meta {
+  font-size: var(--groesse-meta);
+  line-height: 1.35;
+  color: var(--f-text-2);
+}
+.quelle b { color: var(--f-text); font-weight: 600; }
+
+
+/* ---------------------------------------------------------------------------
+   2. KENNZEICHNUNGEN
+   --------------------------------------------------------------------------- */
+
+/* „Beispieldaten“ – Pflicht auf jeder Folie mit erfundenen Werten.
+   <span class="beispiel">Beispieldaten</span>  (über marke.js ausblendbar) */
+.beispiel {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 16px 7px 14px;
+  border: var(--linie-fein) solid currentColor;
+  border-radius: var(--radius-pille);
+  color: var(--f-warnung);
+  background: color-mix(in oklab, var(--f-warnung) 8%, var(--f-hintergrund));
+  font-family: var(--schrift-text);
+  font-size: var(--groesse-meta);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.beispiel::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+/* marke.js → beispieldatenHinweis: false blendet nur echte Beispieldaten-Pillen aus.
+   Pflicht-Kennzeichnungen in derselben Optik („KI-simuliert“ auf 06–08b, 10, B4,
+   B5; „Innensicht · Selbstauskunft (n = 1)“ auf 05b) tragen zusätzlich die Klasse
+   .kennzeichnung und bleiben stehen (Prüfung D27, 24.10.2026). */
+html.ohne-beispielhinweis .beispiel:not(.kennzeichnung) { display: none !important; }
+.beispiel[hidden] { display: none; }
+
+/* „Live“-Pille mit ruhig pulsierendem Punkt */
+.live {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 16px 7px 14px;
+  border: var(--linie-fein) solid currentColor;
+  border-radius: var(--radius-pille);
+  color: var(--f-erfolg);
+  font-family: var(--schrift-text);
+  font-size: var(--groesse-meta);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.live-punkt {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+.live-punkt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  animation: live-puls 2.4s var(--kurve) infinite;
+}
+@keyframes live-puls {
+  0% { transform: scale(1); opacity: 0.8; }
+  70%, 100% { transform: scale(2.6); opacity: 0; }
+}
+/* Pille der eigenen Live-Abstimmung (Umfrage mit marke.js → liveQuelle) ist ein
+   Knopf mit Zustand: ist-live = verbunden (sieht aus wie oben) · ist-verbinde =
+   Verbindung wird aufgebaut · ist-offline = keine Antwort (gestrichelt, hohler
+   Punkt) · ist-pausiert = Hand-Eingabe hat Vorrang (Pausenzeichen). Gedämpft
+   = Nebentextfarbe, ohne Puls. Ohne liveQuelle bleibt es die einfache Pille. */
+button.live {
+  margin: 0;
+  background: transparent;
+  font-style: normal;
+  cursor: pointer;
+}
+.live.ist-verbinde,
+.live.ist-offline,
+.live.ist-pausiert { color: var(--f-text-2); }
+.live.ist-verbinde .live-punkt::after,
+.live.ist-offline .live-punkt::after,
+.live.ist-pausiert .live-punkt::after { animation: none; opacity: 0; }
+.live.ist-offline { border-style: dashed; }
+.live.ist-offline .live-punkt { background: transparent; box-shadow: inset 0 0 0 2px currentColor; }
+.live.ist-pausiert .live-punkt {
+  width: 10px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, currentColor 0 3px, transparent 3px 7px, currentColor 7px);
+}
+/* Referentenfenster: derselbe Zustand als gut lesbare Zeile unter der Kopfzeile
+   „Aktuell“ (js/komponenten.js, liveStatusZeigen; Farben der Referentenansicht
+   aus css/deck.css). Klick = wie Klick auf die Pille. */
+.r-live {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 8px;
+  margin: -2px 14px 8px;
+  font-size: 15px;
+  font-weight: 650;
+  padding: 4px 12px;
+  border: 1px solid var(--r-linie);
+  border-radius: 999px;
+  background: var(--r-flaeche-2);
+  color: var(--r-text);
+  font-family: inherit;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.r-live::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--r-text-2);
+  flex: none;
+}
+.r-live[data-zustand="live"]::before { background: var(--r-gut); }
+.r-live[data-zustand="offline"],
+.r-live[data-zustand="aus"] { border-color: var(--r-schlecht); border-style: dashed; }
+.r-live[data-zustand="offline"]::before,
+.r-live[data-zustand="aus"]::before { background: var(--r-schlecht); }
+.r-live[data-zustand="pausiert"] { border-color: var(--r-warn); }
+.r-live[data-zustand="pausiert"]::before { background: var(--r-warn); border-radius: 1px; }
+.r-live:hover { background: #31333A; }
+.r-live[hidden] { display: none; }
+
+/* Chip / Tag */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pille);
+  background: var(--f-flaeche-2);
+  color: var(--f-text);
+  font-size: var(--groesse-meta);
+  font-weight: 600;
+  line-height: 1.1;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.chip--akzent { background: var(--f-akzent); color: var(--f-auf-akzent); }
+.chip--rahmen { background: transparent; box-shadow: inset 0 0 0 var(--linie-fein) var(--f-linie); }
+.chip--hart { background: var(--f-hart-flaeche); color: var(--f-hart); }
+.chip--weich { background: var(--f-weich-flaeche); color: var(--f-weich); }
+.chip--gross { font-size: var(--groesse-text-min); padding: 8px 18px; }
+.chip .icon { width: 1.1em; height: 1.1em; }
+
+/* Legende „Daten vs. Annahme“ */
+.legende {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 32px;
+  font-size: var(--groesse-meta);
+  color: var(--f-text-2);
+}
+.legende > span { display: inline-flex; align-items: center; gap: 10px; }
+.legende-daten::before,
+.legende-annahme::before {
+  content: "";
+  width: 34px;
+  height: 22px;
+  border-radius: var(--radius-s);
+  flex: none;
+}
+.legende-daten::before { background: var(--f-akzent-flaeche); border: var(--linie-fein) solid var(--f-akzent); }
+.legende-annahme::before { border: var(--linie-fein) dashed var(--f-text-2); }
+/* Inhalte, die auf Annahmen beruhen: gestrichelt umrandet */
+.ist-annahme { outline: var(--linie-fein) dashed var(--f-text-2); outline-offset: 6px; }
+.karte.ist-annahme { outline: none; border-style: dashed; border-color: var(--f-text-2); }
+.ist-daten { box-shadow: inset 4px 0 0 var(--f-akzent); }
+
+
+/* ---------------------------------------------------------------------------
+   3. RASTER UND ANORDNUNG
+   --------------------------------------------------------------------------- */
+.raster-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--abstand-6) var(--rinne);
+}
+.sp-1 { grid-column: span 1; }   .sp-2 { grid-column: span 2; }   .sp-3 { grid-column: span 3; }
+.sp-4 { grid-column: span 4; }   .sp-5 { grid-column: span 5; }   .sp-6 { grid-column: span 6; }
+.sp-7 { grid-column: span 7; }   .sp-8 { grid-column: span 8; }   .sp-9 { grid-column: span 9; }
+.sp-10 { grid-column: span 10; } .sp-11 { grid-column: span 11; } .sp-12 { grid-column: span 12; }
+.raster-2,
+.raster-3,
+.raster-4 {
+  display: grid;
+  gap: var(--abstand-5);
+}
+.raster-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.raster-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.raster-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.luecke-gross { gap: var(--abstand-7); }
+.stapel { display: flex; flex-direction: column; gap: var(--abstand-4); }
+.reihe { display: flex; align-items: center; gap: var(--abstand-4); flex-wrap: wrap; }
+.fuellen { flex: 1; min-height: 0; }
+.unten { margin-top: auto; }
+.mitte-v { align-self: center; }
+.zentriert { text-align: center; justify-content: center; align-items: center; }
+
+
+/* ---------------------------------------------------------------------------
+   4. KARTEN UND KENNZAHLEN
+   <article class="karte">…</article>
+   Varianten: .karte--flaeche (getönt) · .karte--akzent (Akzentfläche)
+              .karte--hart / .karte--weich (Steuerrad-Farben)
+              .karte--linie (nur Linie oben, Editorial) · .karte--hervor
+   --------------------------------------------------------------------------- */
+.karte {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: var(--karte-polster);
+  border: var(--karte-rand) solid var(--f-karte-rand);
+  border-radius: var(--radius-l);
+  background: var(--f-karte);
+  color: var(--f-text);
+}
+[data-thema="bento"] .karte,
+[data-thema="keynote"] .karte { box-shadow: var(--schatten-1); }
+.karte--flaeche { background: var(--f-flaeche); }
+.karte--akzent { background: var(--f-akzent-flaeche); border-color: var(--f-akzent); }
+.karte--hart { background: var(--f-hart-flaeche); border-color: transparent; }
+.karte--weich { background: var(--f-weich-flaeche); border-color: transparent; }
+/* Editorial dunkel: gedeckte Flächen + feine Kante in Markenfarbe, damit die
+   Karten nicht in den Hintergrund sinken (Abschlussprüfung 16.10.2026) */
+[data-thema="editorial"][data-modus="dunkel"] .karte--weich,
+[data-thema="editorial"] [data-modus="dunkel"] .karte--weich {
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--marke-primaer) 30%, transparent);
+}
+.karte--hervor { border-color: var(--f-akzent); box-shadow: 0 0 0 var(--linie-fein) var(--f-akzent); }
+.karte--linie {
+  padding: 20px 0 0;
+  border: 0;
+  border-top: var(--linie-stark) solid var(--f-linie-stark);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none !important;
+}
+.karte-kicker {
+  font-family: var(--schrift-kicker);
+  font-size: var(--groesse-meta);
+  font-weight: var(--kicker-gewicht);
+  letter-spacing: var(--kicker-laufweite);
+  text-transform: var(--kicker-versalien);
+  color: var(--f-akzent);
+}
+.karte--hart .karte-kicker { color: var(--f-hart); }
+.karte--weich .karte-kicker { color: var(--f-weich); }
+.karte-titel {
+  font-family: var(--schrift-display);
+  font-size: var(--groesse-untertitel);
+  font-weight: var(--gewicht-display);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+.karte-text { font-size: var(--groesse-text-min); line-height: 1.35; color: var(--f-text-2); }
+.karte-fuss { margin-top: auto; padding-top: 8px; }
+
+/* Kennzahl: große Zahl + Beschriftung
+   <div class="kennzahl"><span class="kennzahl-wert" data-animation="zaehlen" data-ziel="2.8"
+     data-dezimalen="1" data-vorzeichen>+2,8</span><span class="kennzahl-text">…</span></div> */
+.kennzahl { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.kennzahl-wert {
+  font-family: var(--schrift-zahl);
+  font-size: var(--groesse-kennzahl);
+  font-weight: var(--gewicht-zahl);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--f-akzent);
+  white-space: nowrap;
+}
+.kennzahl-wert--mittel { font-size: 72px; }
+.kennzahl-einheit { font-size: 0.45em; margin-left: 6px; color: var(--f-text-2); }
+.kennzahl-text { font-size: var(--groesse-text-min); line-height: 1.3; color: var(--f-text-2); }
+.kennzahl-reihe { display: flex; align-items: center; gap: var(--abstand-4); }
+
+
+/* ---------------------------------------------------------------------------
+   5. LISTEN, ZITAT, BILD-PLATZHALTER, TABELLE, ANGABEN
+   --------------------------------------------------------------------------- */
+
+/* Aufzählung mit kurzem Strich in Akzentfarbe */
+.liste { display: flex; flex-direction: column; gap: 18px; font-size: var(--groesse-text); line-height: 1.3; }
+.liste > li { position: relative; padding-left: 40px; }
+.liste > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 22px;
+  height: var(--linie-stark);
+  background: var(--f-akzent);
+}
+.liste--nummern { counter-reset: punkt; }
+.liste--nummern > li { padding-left: 56px; counter-increment: punkt; }
+.liste--nummern > li::before {
+  content: counter(punkt, decimal-leading-zero);
+  top: 0.2em;
+  width: auto;
+  height: auto;
+  background: none;
+  font-family: var(--schrift-zahl);
+  font-size: var(--groesse-meta);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--f-akzent);
+}
+
+/* Zitat */
+.zitat { position: relative; margin: 0; padding-left: 36px; border-left: var(--linie-stark) solid var(--f-akzent); }
+.zitat-text {
+  font-family: var(--schrift-display);
+  font-size: var(--groesse-untertitel);
+  font-weight: var(--gewicht-display);
+  font-style: var(--stil-hervor);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  color: var(--f-text);
+}
+.zitat-quelle { display: block; margin-top: 16px; font-size: var(--groesse-meta); color: var(--f-text-2); font-style: normal; }
+
+/* Bild-Platzhalter: <div class="bild-platzhalter" data-beschriftung="Foto: …"></div> */
+.bild-platzhalter {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 200px;
+  border-radius: var(--radius-l);
+  border: var(--linie-fein) dashed var(--f-text-2);
+  background:
+    repeating-linear-gradient(135deg, transparent 0 22px, color-mix(in oklab, var(--f-text-2) 9%, transparent) 22px 24px),
+    var(--f-flaeche);
+  color: var(--f-text-2);
+  overflow: hidden;
+}
+.bild-platzhalter::after {
+  content: attr(data-beschriftung);
+  max-width: 80%;
+  padding: 10px 18px;
+  border-radius: var(--radius-m);
+  background: var(--f-hintergrund);
+  font-size: var(--groesse-meta);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+  line-height: 1.3;
+}
+.bild-platzhalter:not([data-beschriftung])::after { content: "Bild-Platzhalter"; }
+.bild-platzhalter > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.bild-platzhalter:has(> img)::after { display: none; }
+.bild {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-l);
+}
+
+/* Tabelle (Backup: mindestens 22 px) */
+.tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--groesse-tabelle);
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+}
+.tabelle th,
+.tabelle td {
+  padding: 12px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: var(--linie-fein) solid var(--f-linie);
+}
+.tabelle thead th {
+  font-family: var(--schrift-kicker);
+  font-size: var(--groesse-meta);
+  font-weight: var(--kicker-gewicht);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--f-text-2);
+  border-bottom: var(--linie-stark) solid var(--f-linie-stark);
+}
+.tabelle .zahl,
+.tabelle td.rechts,
+.tabelle th.rechts { text-align: right; }
+.tabelle tr.ist-markiert td { background: var(--f-akzent-flaeche); }
+
+/* Angaben-Zeile der Titelfolie: Marke | Gruppe | Präsentation */
+.angaben {
+  display: grid;
+  grid-template-columns: 3fr 6fr 3fr;
+  gap: var(--rinne);
+}
+.angaben > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 16px;
+  border-top: var(--linie-fein) solid var(--f-linie);
+}
+.angaben-titel {
+  font-family: var(--schrift-kicker);
+  font-size: var(--groesse-meta);
+  font-weight: var(--kicker-gewicht);
+  letter-spacing: var(--kicker-laufweite);
+  text-transform: uppercase;
+  color: var(--f-text-2);
+}
+.angaben-wert { font-size: var(--groesse-text); line-height: 1.25; color: var(--f-text); }
+.angaben-wert--marke {
+  font-family: var(--schrift-display);
+  font-style: var(--stil-marke);
+  font-size: var(--groesse-untertitel);
+  line-height: 1;
+  color: var(--f-akzent);
+}
+.folie[data-layout="vollbild"] .angaben > div { border-top-color: color-mix(in srgb, var(--f-auf-bild) 50%, transparent); }
+.folie[data-layout="vollbild"] .angaben-titel,
+.folie[data-layout="vollbild"] .angaben-wert { color: var(--f-auf-bild); }
+
+/* Platzhalter-Kennzeichnung für „[Marke]“, solange keine Marke eingetragen ist */
+[data-marke].ist-platzhalter { white-space: nowrap; }
+
+
+/* ---------------------------------------------------------------------------
+   6. MARKENSTEUERRAD  <div class="steuerrad" data-modus="hub|synthese|menue|mini">
+   Farben: --f-hart(-flaeche) links, --f-weich(-flaeche) rechts, --f-kern Mitte
+   --------------------------------------------------------------------------- */
+.steuerrad { position: relative; flex: none; }
+/* Hub und Synthese füllen den freien Platz im Folieninhalt; das Rad wird
+   in genau dieser Größe gebaut (.sr-hub) und bei Bedarf neu vermessen */
+.steuerrad.sr-modus-hub,
+.steuerrad.sr-modus-synthese {
+  flex: 1 1 0;
+  align-self: stretch;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.sr-hub { position: relative; flex: none; }
+.sr-modus-menue { margin: 0 auto; }
+.sr-rad { position: relative; }
+.sr-rad-platz { position: absolute; }
+.sr-svg { display: block; overflow: visible; }
+
+.sr-ring { fill: none; stroke: var(--f-rahmen); stroke-width: var(--linie-fein); transition: stroke var(--dauer-kurz) var(--kurve), stroke-width var(--dauer-kurz) var(--kurve); }
+.sr-ring-klick { fill: none; stroke: transparent; pointer-events: stroke; }
+.sr-hart .sr-flaeche { fill: var(--f-hart-flaeche); }
+.sr-weich .sr-flaeche { fill: var(--f-weich-flaeche); }
+.sr-kern { fill: var(--f-kern); }
+.sr-flaeche,
+.sr-kern {
+  stroke: transparent;
+  stroke-width: 4;
+  transition: fill var(--dauer-kurz) var(--kurve), stroke var(--dauer-kurz) var(--kurve);
+}
+/* Kern federt beim Zeigen leicht (echte Federkurve aus tokens.css) */
+.sr-kern {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: fill var(--dauer-kurz) var(--kurve), stroke var(--dauer-kurz) var(--kurve), transform var(--dauer-mittel) var(--kurve-feder);
+}
+/* Hover-Effekte nur, wenn die Maus seit dem letzten Klick wirklich bewegt
+   wurde (Klasse html.zeiger-gesperrt setzt js/komponenten.js, „Mausregel“) */
+.sr-kern-gruppe.ist-fokus .sr-kern,
+html:not(.zeiger-gesperrt) .sr-kern-gruppe:hover .sr-kern { transform: scale(1.05); }
+.mini-rad:hover .sr-kern { transform: scale(1.18); }
+.sr-feld { cursor: pointer; outline: none; }
+.sr-feld.ist-ohne-ziel { cursor: default; }
+[data-paar] { transition: opacity var(--dauer-mittel) var(--kurve); }
+
+/* Zeigen/Fokus: Feld und Methode leuchten gemeinsam, der Rest tritt zurück
+   (Deckkraft: Token --dimmen). Die Schrift im Zentrum bleibt deckend, damit
+   sie auf der aufgehellten Kernfläche lesbar bleibt (≥ 3 : 1). */
+.steuerrad.hat-fokus [data-paar]:not(.ist-fokus) { opacity: var(--dimmen); }
+.steuerrad.hat-fokus .sr-label--kern:not(.ist-fokus) { opacity: 1; }
+/* Karten und Pillen: Fläche bleibt deckend (sonst scheint der Ring durch), nur Inhalt und Rand treten zurück */
+.steuerrad.hat-fokus .sr-karte[data-paar]:not(.ist-fokus) { opacity: 1; border-color: color-mix(in oklab, var(--f-karte-rand) 45%, var(--f-hintergrund)); box-shadow: none; }
+.steuerrad.hat-fokus .sr-karte[data-paar]:not(.ist-fokus) > * { opacity: var(--dimmen); transition: opacity var(--dauer-mittel) var(--kurve); }
+.steuerrad .sr-feld.ist-fokus .sr-flaeche,
+.steuerrad .sr-feld.ist-fokus .sr-kern { stroke: var(--f-akzent); }
+.steuerrad .sr-rahmen-gruppe.ist-fokus .sr-ring { stroke: var(--f-akzent); stroke-width: 5; }
+.sr-feld:focus-visible .sr-flaeche,
+.sr-feld:focus-visible .sr-kern { stroke: var(--f-fokus); stroke-width: 5; }
+.sr-feld:focus-visible .sr-ring { stroke: var(--f-fokus); stroke-width: 6; }
+
+/* Beschriftung der Felder */
+.sr-label {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  line-height: 1.15;
+  pointer-events: none;
+}
+.sr-label-name {
+  font-family: var(--schrift-display);
+  font-size: var(--sr-label-groesse, 32px);    /* wird passend zum Feld gemessen */
+  font-weight: var(--gewicht-display);
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+  font-variation-settings: "opsz" 32, var(--achsen-ruhig);
+}
+/* obere Felder: Name auf der Zeile, Leitfrage darunter (zur Mitte hin);
+   untere Felder: Leitfrage darüber, Name auf der Zeile */
+.sr-label--oben { transform: translate(-50%, calc(var(--sr-name-hoehe, 35px) * -0.5)); }
+.sr-label--unten { flex-direction: column-reverse; transform: translate(-50%, calc(-100% + var(--sr-name-hoehe, 35px) * 0.5)); }
+.sr-label--hart .sr-label-name { color: var(--f-hart); }
+.sr-label--weich .sr-label-name { color: var(--f-weich); }
+.sr-label-frage { font-size: var(--groesse-text-min); line-height: 1.2; color: var(--f-text-2); transition: opacity var(--dauer-mittel) var(--kurve); }
+/* data-leitfragen="schrittweise" (Standard im Hub): Leitfrage nur beim gezeigten Feld */
+.steuerrad[data-leitfragen="schrittweise"] .sr-label:not(.ist-fokus) .sr-label-frage { opacity: 0; }
+/* Leitfragen passen nicht ins Feld (kleines Rad) → stehen unter der Methodenkarte */
+.sr-ohne-leitfragen .sr-label:not(.sr-label--kern) .sr-label-frage { display: none; }
+.sr-karte-frage { display: block; font-style: italic; color: var(--f-text); }
+.sr-label-folie {
+  font-family: var(--schrift-zahl);
+  font-size: 24px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  color: var(--f-akzent);
+}
+.sr-label--kern,
+.sr-label--kern .sr-label-name,
+.sr-label--kern .sr-label-frage,
+.sr-label--kern .sr-label-folie { color: var(--f-auf-kern); }
+.sr-label--kern .sr-label-name { font-size: var(--sr-kern-groesse, 30px); }
+.sr-label-klein {
+  font-family: var(--schrift-kicker);
+  font-size: var(--groesse-meta);
+  font-weight: var(--kicker-gewicht);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.sr-label-kern {
+  font-family: var(--schrift-display);
+  font-size: 30px;
+  font-weight: var(--gewicht-display);
+  line-height: 1.1;
+}
+
+/* Ringtexte */
+.sr-ringtext {
+  font-family: var(--schrift-kicker);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  fill: var(--f-text-2);
+}
+.sr-ringtext--hart { fill: var(--f-hart); }
+.sr-ringtext--weich { fill: var(--f-weich); }
+.sr-ringtext--rahmen { fill: var(--f-text); }
+.sr-ringstrich { stroke: var(--f-linie); stroke-width: var(--linie-fein); }
+/* „Hard/Soft Facts“ und der Trennstrich sind nur Beschriftung: Klicks gehen
+   hindurch auf das Feld darunter (sonst „schluckt“ die Schrift den Klick) */
+.sr-ringtext--hart,
+.sr-ringtext--weich,
+.sr-ringstrich { pointer-events: none; }
+
+/* Mini-Rad (Laufkopf): aktuelles Feld in Akzentfarbe */
+.mini-rad {
+  display: block;
+  width: var(--mini-rad);
+  height: var(--mini-rad);
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  transition: transform var(--dauer-kurz) var(--kurve);
+}
+.mini-rad:hover { transform: scale(1.06); }
+.mini-rad .sr-flaeche { fill: color-mix(in oklab, var(--f-text-2) 24%, var(--f-hintergrund)); stroke: none; }
+.mini-rad .sr-kern { fill: color-mix(in oklab, var(--f-text-2) 60%, var(--f-hintergrund)); stroke: none; }
+.mini-rad .sr-ring { stroke: color-mix(in oklab, var(--f-text-2) 70%, var(--f-hintergrund)); stroke-width: 2; }
+.mini-rad .ist-aktiv .sr-flaeche,
+.mini-rad .sr-kern-gruppe.ist-aktiv .sr-kern { fill: var(--f-akzent); }
+.mini-rad.rahmen-aktiv .sr-ring { stroke: var(--f-akzent); stroke-width: 4; }
+.mini-rad.rahmen-aktiv .sr-flaeche { fill: color-mix(in oklab, var(--f-akzent) 30%, var(--f-hintergrund)); }
+.folie[data-layout="vollbild"] .mini-rad .sr-flaeche { fill: rgb(255 255 255 / 0.35); }
+
+/* Sprungmenü-Rad: aktuelles Feld markiert */
+.sr-modus-menue .ist-aktiv .sr-flaeche,
+.sr-modus-menue .sr-kern-gruppe.ist-aktiv .sr-kern { stroke: var(--f-akzent); stroke-width: 6; }
+.sr-modus-menue.rahmen-aktiv .sr-ring { stroke: var(--f-akzent); stroke-width: 6; }
+
+/* Hub und Synthese: Karten außen, Verbinder, Logikpfeile */
+.sr-verbinder { position: absolute; inset: 0; overflow: visible; pointer-events: none; }
+.sr-linie-strich { fill: none; stroke: var(--f-text); stroke-width: var(--linie-fein); }
+.sr-linie-punkt { fill: var(--f-text); }
+.sr-logik-strich { fill: none; stroke: var(--f-text-2); stroke-width: var(--linie-fein); stroke-dasharray: 3 9; stroke-linecap: round; }
+.sr-pfeilspitze { fill: none; stroke: var(--f-text-2); stroke-width: var(--linie-fein); stroke-linecap: round; stroke-linejoin: round; }
+.sr-logik-text {
+  position: absolute;
+  width: 380px;
+  margin: 0;
+  transform: translateY(-50%);
+  font-size: var(--groesse-text-min);
+  font-style: italic;
+  line-height: 1.25;
+  color: var(--f-text-2);
+}
+.sr-logik-text--links { left: 64px; }
+.sr-logik-text--rechts { right: 64px; text-align: right; }
+.sr-seite {
+  position: absolute;
+  top: 64px;
+  margin: 0;
+  font-size: var(--groesse-meta);
+  color: var(--f-text-2);
+  letter-spacing: 0.02em;
+}
+.sr-seite b {
+  font-family: var(--schrift-kicker);
+  font-weight: var(--kicker-gewicht);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.sr-seite--hart { left: 0; }
+.sr-seite--hart b { color: var(--f-hart); }
+.sr-seite--weich { right: 0; text-align: right; }
+.sr-seite--weich b { color: var(--f-weich); }
+
+.sr-karte {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px 22px 18px;
+  border: var(--karte-rand) solid var(--f-karte-rand);
+  border-radius: var(--radius-m);
+  background: var(--f-karte);
+  color: var(--f-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: border-color var(--dauer-kurz) var(--kurve), opacity var(--dauer-mittel) var(--kurve), box-shadow var(--dauer-kurz) var(--kurve);
+}
+[data-thema="bento"] .sr-karte,
+[data-thema="keynote"] .sr-karte { box-shadow: var(--schatten-1); border-radius: var(--radius-l); }
+html:not(.zeiger-gesperrt) .sr-karte:hover,
+.sr-karte.ist-fokus { border-color: var(--f-akzent); box-shadow: 0 0 0 var(--linie-fein) var(--f-akzent); }
+.sr-karte.ist-ohne-ziel { cursor: default; }
+.sr-karte-kopf { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+/* Methodenkarten links/rechts: Name, darunter „Folie x →“. Alle Karten sind
+   linksbündig (auch rechts vom Rad) – gleiche Lesekante wie der übrige
+   Folientext; die frühere, wirkungslose Regel für rechtsbündige Karten ist
+   entfernt (Entscheidung Zusammenführung 16.10.2026). */
+.sr-modus-hub .sr-karte:not(.sr-pille) .sr-karte-kopf { flex-direction: column; align-items: flex-start; gap: 4px; }
+.sr-karte-name {
+  font-family: var(--schrift-display);
+  font-size: 34px;
+  font-weight: var(--gewicht-display);
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  font-variation-settings: "opsz" 36, var(--achsen-ruhig);
+}
+.sr-karte-folie {
+  flex: none;
+  font-family: var(--schrift-text);
+  font-size: var(--groesse-meta);
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: var(--f-akzent);
+  white-space: nowrap;
+}
+/* eindeutiger Klick-Hinweis: „Folie 06 →“ (Jury) */
+.sr-karte-folie:not(:empty)::after { content: "\00a0→"; }
+.sr-karte-text { font-size: var(--groesse-text-min); line-height: 1.25; color: var(--f-text-2); transition: opacity var(--dauer-mittel) var(--kurve); }
+/* data-beschreibungen="schrittweise" (Standard im Hub): Beschreibung erscheint
+   nur für die gezeigte Methode – unter der Karte, ohne dass sich etwas verschiebt */
+/* Einzug 64 px: links davon verläuft der gestrichelte Logikpfeil */
+.steuerrad[data-beschreibungen="schrittweise"] .sr-karte:not(.sr-pille) .sr-karte-text {
+  position: absolute;
+  left: 64px;
+  right: 0;
+  top: calc(100% + 12px);
+  text-align: left;
+  text-wrap: balance;
+}
+.steuerrad[data-beschreibungen="schrittweise"] .sr-karte--ro .sr-karte-text,
+.steuerrad[data-beschreibungen="schrittweise"] .sr-karte--ru .sr-karte-text { left: 0; right: 64px; text-align: right; }
+.steuerrad[data-beschreibungen="schrittweise"] .sr-karte:not(.ist-fokus) .sr-karte-text { opacity: 0; visibility: hidden; }
+.steuerrad[data-beschreibungen="schrittweise"] .sr-pille:not(.ist-fokus) .sr-karte-text { display: none; }
+.sr-pille {
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
+  height: 64px;
+  padding: 0 28px;
+  border-radius: var(--radius-pille) !important;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);             /* sitzt mittig auf dem Ringrand */
+}
+.sr-pille .sr-karte-kopf { gap: 16px; }
+.sr-pille .sr-karte-text { white-space: nowrap; }
+/* Synthese: Feldname + Quelle, darunter Stichworte */
+.sr-karte-feld {
+  font-family: var(--schrift-kicker);
+  font-size: var(--groesse-meta);
+  font-weight: var(--kicker-gewicht);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--f-akzent);
+}
+.sr-karte--hart .sr-karte-feld { color: var(--f-hart); }
+.sr-karte--weich .sr-karte-feld { color: var(--f-weich); }
+.sr-quelle {
+  margin-left: auto;
+  padding: 3px 10px;
+  border-radius: var(--radius-s);
+  background: var(--f-flaeche-2);
+  color: var(--f-text);
+  font-family: var(--schrift-zahl);
+  font-size: var(--groesse-meta);
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+.sr-quelle + .sr-quelle { margin-left: 6px; }
+.sr-karte-stichworte {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 12px;
+  font-size: 30px;
+  font-weight: 550;
+  line-height: 1.25;
+}
+.sr-trenner { color: var(--f-text-2); }
+.sr-pille .sr-karte-stichworte { flex-wrap: nowrap; }
+.sr-leer { color: var(--f-text-2); }
+
+
+/* ---------------------------------------------------------------------------
+   7. QR-CODE  <div class="qr" data-qr="https://…" data-groesse="420">
+   Immer dunkel auf weiß (sonst scannen manche Handys nicht).
+   Für die letzten Reihen: mindestens 360 px, besser 420 px Kantenlänge.
+   --------------------------------------------------------------------------- */
+.qr {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.qr-bild {
+  width: var(--qr-groesse, 420px);
+  height: var(--qr-groesse, 420px);
+  border-radius: var(--radius-m);
+  background: var(--f-qr-grund);
+  box-shadow: 0 0 0 var(--linie-fein) var(--f-linie);
+  overflow: hidden;
+}
+.qr-bild svg { display: block; width: 100%; height: 100%; }
+.qr-kurz {
+  margin: 0;
+  font-size: 40px;               /* Jury: Kurz-URL mindestens 40 px */
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  color: var(--f-akzent);
+  text-align: center;
+}
+
+
+/* ---------------------------------------------------------------------------
+   8. LIVE-UMFRAGE
+   --------------------------------------------------------------------------- */
+.umfrage {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 80px;
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+}
+.umfrage--ohne-qr { grid-template-columns: minmax(0, 1fr); }
+/* Linke Spalte: QR-Block und (ab data-aussage="n") die Aussagezahl im selben Feld */
+.umfrage-links {
+  display: grid;
+  align-items: center;
+  width: var(--umfrage-links-breite, 460px);
+  min-height: 0;
+}
+.umfrage-links > * { grid-area: 1 / 1; min-width: 0; }
+.umfrage-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: opacity var(--dauer-mittel) var(--kurve), visibility var(--dauer-mittel);
+}
+.umfrage-links:has(> .umfrage-aussage.schritt-an) > .umfrage-qr { opacity: 0; visibility: hidden; }
+.umfrage-qr .umfrage-stimmen { margin-top: 18px; }
+.umfrage-links > .umfrage-aussage { align-self: center; }
+.umfrage-aufruf {
+  margin: 14px 0 0;
+  font-family: var(--schrift-display);
+  font-size: var(--groesse-untertitel);
+  font-weight: var(--gewicht-display);
+  line-height: 1.1;
+}
+.umfrage-hinweis { margin: 0; font-size: var(--groesse-text-min); color: var(--f-text-2); }
+.umfrage-ergebnis { display: flex; flex-direction: column; min-width: 0; min-height: 0; }
+.umfrage-kopf {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 60px;
+  padding-bottom: 14px;
+  border-bottom: var(--linie-stark) solid var(--f-linie-stark);
+}
+.umfrage-n {
+  font-family: var(--schrift-zahl);
+  font-size: var(--groesse-text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--f-text);
+}
+.umfrage-werkzeuge {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+  opacity: 0;
+  transition: opacity var(--dauer-kurz) var(--kurve);
+}
+.umfrage:hover .umfrage-werkzeuge,
+.umfrage:focus-within .umfrage-werkzeuge { opacity: 1; }
+html.maus-ruht .umfrage:not(:focus-within) .umfrage-werkzeuge { opacity: 0; }
+.umfrage-knopf {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: var(--linie-fein) solid var(--f-linie);
+  border-radius: var(--radius-s);
+  background: var(--f-flaeche);
+  color: var(--f-text);
+  font: 600 22px/1 var(--schrift-text);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.umfrage-knopf:hover { border-color: var(--f-text-2); }
+.umfrage-knopf .icon { width: 20px; height: 20px; }
+.umfrage-liste {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 8px;
+  padding-top: 12px;
+  min-height: 0;
+}
+.umfrage-zeile {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  column-gap: 24px;
+  row-gap: 10px;
+  margin: 0 -20px;
+  padding: 10px 20px 14px;
+  border-radius: var(--radius-m);
+}
+.umfrage-option {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
+}
+.umfrage-taste {
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: 2px solid var(--f-linie);
+  color: var(--f-text-2);
+  font: 700 18px/1 var(--schrift-text);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity var(--dauer-kurz) var(--kurve);
+}
+.umfrage:hover .umfrage-taste { opacity: 1; }
+html.maus-ruht .umfrage-taste { opacity: 0; }
+.umfrage-name {
+  font-family: var(--schrift-display);
+  font-size: 44px;
+  font-weight: var(--gewicht-display);
+  line-height: 1.25;                 /* genug Platz für Unterlängen (overflow: hidden) */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.umfrage-marke {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: var(--radius-s);
+  background: var(--f-akzent);
+  color: var(--f-auf-akzent);
+  font: 700 var(--groesse-meta)/1 var(--schrift-text);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  align-self: center;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity var(--dauer-mittel) var(--kurve), transform var(--dauer-mittel) var(--kurve);
+}
+.umfrage-zeile.ist-hervor .umfrage-marke { opacity: 1; transform: none; }
+.umfrage-wert {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  justify-self: end;
+  cursor: text;
+}
+.umfrage-prozent {
+  font-family: var(--schrift-zahl);
+  font-size: 44px;
+  font-weight: var(--gewicht-display);
+  font-variant-numeric: lining-nums tabular-nums;
+  line-height: 1;
+  min-width: 3.2ch;
+  text-align: right;
+}
+.umfrage-anzahl {
+  min-width: 2.2ch;
+  font-size: var(--groesse-text-min);
+  font-variant-numeric: tabular-nums;
+  color: var(--f-text-2);
+  text-align: right;
+}
+.umfrage-eingabe {
+  width: 130px;
+  padding: 4px 10px;
+  border: var(--linie-fein) solid var(--f-akzent);
+  border-radius: var(--radius-s);
+  background: var(--f-flaeche);
+  color: var(--f-text);
+  font: 600 30px/1.1 var(--schrift-text);
+}
+.umfrage-wert:has(.umfrage-eingabe) .umfrage-prozent,
+.umfrage-wert:has(.umfrage-eingabe) .umfrage-anzahl { display: none; }
+.umfrage-spur {
+  grid-column: 1 / -1;
+  position: relative;
+  height: 16px;
+  background: linear-gradient(var(--f-linie), var(--f-linie)) left center / 100% var(--linie-fein) no-repeat;
+}
+.umfrage-balken {
+  position: absolute;
+  inset: 0;
+  background: var(--f-balken);
+  transform-origin: left center;
+  transform: scaleX(0);
+  border-radius: 2px;
+  transition: transform var(--dauer-lang) var(--kurve), background-color var(--dauer-mittel) var(--kurve);
+}
+.umfrage-zeile.ist-hervor .umfrage-balken { background: var(--f-akzent); }
+.umfrage-zeile.ist-hervor .umfrage-name,
+.umfrage-zeile.ist-hervor .umfrage-prozent { color: var(--f-akzent); }
+.umfrage-zeile.ist-gezaehlt { animation: umfrage-zaehlen 600ms var(--kurve); }
+@keyframes umfrage-zaehlen {
+  0% { background-color: var(--f-akzent-flaeche); }
+  100% { background-color: transparent; }
+}
+.umfrage-fehler { color: var(--f-fehler); font-size: var(--groesse-text-min); }
+[data-thema="bento"] .umfrage-ergebnis,
+[data-thema="keynote"] .umfrage-ergebnis {
+  padding: 28px 40px 24px;
+  border: var(--karte-rand) solid var(--f-karte-rand);
+  border-radius: var(--radius-l);
+  background: var(--f-karte);
+  box-shadow: var(--schatten-1);
+}
+[data-thema="bento"] .umfrage-spur,
+[data-thema="keynote"] .umfrage-spur { border-radius: 999px; background: var(--f-flaeche-2); height: 18px; }
+[data-thema="bento"] .umfrage-balken,
+[data-thema="keynote"] .umfrage-balken { border-radius: 999px; }
+
+
+/* Große Aussagezahl: „27 % sehen HOLY wie wir: als Eule“ */
+.umfrage-aussage {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px 0 0;
+  border-top: var(--linie-stark) solid var(--f-akzent);
+}
+.ua-zahl {
+  font-family: var(--schrift-zahl);
+  font-size: var(--groesse-kennzahl);
+  font-weight: var(--gewicht-zahl);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--f-akzent);
+  white-space: nowrap;
+}
+.ua-text {
+  font-family: var(--schrift-display);
+  font-size: var(--groesse-untertitel);
+  font-weight: var(--gewicht-display);
+  line-height: 1.15;
+  color: var(--f-text);
+  max-width: 13em;
+  text-wrap: balance;
+}
+.ua-antwort { font-style: var(--stil-hervor); color: var(--f-akzent); }
+.umfrage-aussage.ist-leer .ua-zahl { color: var(--f-text-2); }
+/* Ohne Stimmen: Satz ausblenden, stattdessen „Noch keine Stimmen“ (Text aus
+   marke.js → umfragen.<id>.aussageLeer, sonst Standard) */
+.ua-leer {
+  display: none;
+  font-family: var(--schrift-display);
+  font-size: var(--groesse-untertitel);
+  font-weight: var(--gewicht-display);
+  line-height: 1.15;
+  color: var(--f-text-2);
+}
+.umfrage-aussage.ist-leer .ua-text,
+.umfrage-aussage.ist-leer .ua-zahl { display: none; }   /* kein „– %“, nur der Hinweis */
+.umfrage-aussage.ist-leer .ua-leer { display: block; }
+/* Stimmenzähler: große Ziffer + „Stimmen“ */
+.umfrage-stimmen {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.us-zahl {
+  font-family: var(--schrift-zahl);
+  font-size: 88px;
+  font-weight: var(--gewicht-zahl);
+  line-height: 1;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--f-text);
+}
+.us-text { font-size: var(--groesse-text); color: var(--f-text-2); }
+
+
+/* ---------------------------------------------------------------------------
+   9. LIVE-WORTWOLKE
+   --------------------------------------------------------------------------- */
+.wortwolke {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1;
+  min-height: 320px;
+}
+.ww-flaeche { position: relative; flex: 1; min-height: 0; overflow: hidden; }
+.ww-wort {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  font-family: var(--schrift-display);
+  font-weight: var(--gewicht-display);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--f-text-2);
+  transform-origin: center;
+  transition:
+    transform var(--dauer-mittel) var(--kurve),
+    font-size var(--dauer-mittel) var(--kurve),
+    opacity var(--dauer-mittel) var(--kurve),
+    color var(--dauer-mittel) var(--kurve);
+}
+.ww-wort.ist-mehrfach { color: var(--f-text); }
+.ww-wort.ist-spitze { color: var(--f-akzent); }
+.ww-messer { visibility: hidden; transition: none; }
+.ww-leer {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  font-size: var(--groesse-text);
+  font-style: italic;
+  color: var(--f-text-2);
+}
+.ww-leer[hidden] { display: none; }
+.ww-eingabe {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: opacity var(--dauer-kurz) var(--kurve);
+}
+html.maus-ruht .ww-eingabe:not(:focus-within) { opacity: 0; }
+.ww-feld {
+  flex: 1;
+  min-width: 0;
+  padding: 10px 4px;
+  border: 0;
+  border-bottom: var(--linie-fein) solid var(--f-linie);
+  background: transparent;
+  color: var(--f-text);
+  font: 500 var(--groesse-text-min)/1.2 var(--schrift-text);
+}
+.ww-feld::placeholder { color: var(--f-text-2); opacity: 1; }
+.ww-feld:focus { border-bottom-color: var(--f-akzent); outline: none; }
+
+
+/* ---------------------------------------------------------------------------
+   10. RÄTSEL  (stark vergrößert + unscharf → schrittweise klar)
+   --------------------------------------------------------------------------- */
+.raetsel {
+  --raetsel-zoom: 3;
+  --raetsel-unschaerfe: 40px;
+  --raetsel-rand: 24px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--f-flaeche-2);
+  border-radius: var(--radius-l);
+}
+.folie[data-layout="vollbild"] .raetsel { border-radius: 0; --raetsel-rand: var(--rand-x); }
+.raetsel-motiv {
+  position: absolute;
+  inset: -3%;
+  transform: scale(var(--raetsel-zoom));
+  transform-origin: 56% 44%;
+  filter: blur(var(--raetsel-unschaerfe));
+  will-change: transform, filter;      /* eigene Grafikebene: Unschärfe ruckelt sonst auf schwachen Rechnern */
+  transition:
+    transform var(--dauer-lang) var(--kurve),
+    filter var(--dauer-lang) var(--kurve);
+}
+.raetsel-motiv img { display: block; width: 100%; height: 100%; object-fit: cover; user-select: none; }
+.raetsel-fortschritt {
+  position: absolute;
+  right: var(--raetsel-rand);
+  top: var(--raetsel-rand);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 20px;
+  border-radius: var(--radius-pille);
+  background: rgb(8 9 12 / 0.72);
+  color: #FFFFFF;
+  font: 700 var(--groesse-meta)/1 var(--schrift-text);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.folie[data-layout="vollbild"] .raetsel-fortschritt { top: calc(var(--rand-oben) + var(--mini-rad) + 40px); }
+.raetsel-balken { display: flex; gap: 6px; }
+.raetsel-balken > span {
+  width: 36px;
+  height: 5px;
+  border-radius: 3px;
+  background: rgb(255 255 255 / 0.35);
+  transition: background-color var(--dauer-mittel) var(--kurve);
+}
+.raetsel-balken > span.ist-an { background: #FFFFFF; }
+/* Auflösung (z. B. im Kopf der Vollbild-Folie): <p class="raetsel-loesung" data-schritt="3"> */
+.raetsel-loesung {
+  margin-top: 18px;
+  font-family: var(--schrift-display);
+  font-size: var(--groesse-untertitel);
+  font-weight: var(--gewicht-display);
+  line-height: 1.1;
+}
+.raetsel-loesung [data-marke] { font-style: var(--stil-marke); }
+
+
+/* ---------------------------------------------------------------------------
+   11. HANTEL  ● Marke ↔ ○ Wettbewerber
+   --------------------------------------------------------------------------- */
+.hantel { display: inline-block; vertical-align: middle; line-height: 0; }
+.hantel svg { display: block; overflow: visible; }
+.hantel-skala { stroke: var(--f-linie); stroke-width: var(--linie-fein); }
+.hantel-strich { stroke: var(--f-linie); stroke-width: var(--linie-fein); }
+.hantel-abstand { stroke: var(--f-diagramm-marke); stroke-width: 4; stroke-linecap: round; }
+.hantel-marke { fill: var(--f-diagramm-marke); }
+.hantel-wettbewerb { fill: var(--f-hintergrund); stroke: var(--f-diagramm-wettbewerb); stroke-width: 3; }
+
+
+/* ---------------------------------------------------------------------------
+   Druck: Bedienelemente der Bausteine ausblenden
+   --------------------------------------------------------------------------- */
+html.druckmodus .umfrage-werkzeuge,
+html.druckmodus .umfrage-taste,
+html.druckmodus .ww-eingabe { display: none !important; }
+/* Rätsel im Druck: aufgelöstes Bild ohne Filter und ohne eigene Grafikebene
+   (sonst fehlt das Bild im PDF) */
+html.druckmodus .raetsel-motiv { filter: none !important; will-change: auto; transform: none !important; inset: 0; }
+html.aufnahme .umfrage-werkzeuge,
+html.aufnahme .umfrage-taste { opacity: 0 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .live-punkt::after { animation: none; }
+}
+html.bewegung-reduziert .live-punkt::after { animation: none; }

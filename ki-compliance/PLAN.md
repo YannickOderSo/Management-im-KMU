@@ -1,6 +1,13 @@
 # Plan: Vortrag „KI-Compliance im KMU: der EU AI Act“
 
-Stand: 31.10.2026 · Entwurf zur Freigabe durch Yannick · Modul Management im KMU (Annahme, siehe „Offene Entscheidungen“)
+Stand: 31.10.2026 · Modul Management im KMU (Annahme, siehe „Offene Entscheidungen“)
+
+> **Umsetzungsstand 31.10.2026 (abends):** Erste vollständige Fassung gebaut, `praesentation/` (25 Folien + 6 Backup,
+> Sollzeit 30:20, Prüfung 0 Fehler, Notfall-PDF, Redeskript, Handy-Klassifizierer). Grundlage: Antworten der internen
+> KI (`befragung/auswertung.md`), Rechtsprüfung an Primärquellen (`recherche/rechtspruefung.md`), KMU-Zahlen
+> (`recherche/kmu-zahlen.md`). Abweichungen vom Plan unten: Live-Teil hat je eine Umfrage- und eine Baum-Folie pro
+> Fall (15 bis 18), eigene Folie „KMU in Zahlen“ (20), Hürden als „Sechs Irrtümer“ (21), Umfrage auf Folie 02
+> entfallen (die Zahl merkt sich das Publikum, Auflösung auf Folie 19). Aktueller Aufbau: `praesentation/LIESMICH.md`.
 
 ## 1. Idee in drei Sätzen
 
@@ -144,6 +151,10 @@ Das Repository und GitHub Pages sind **öffentlich**. Alles, was im Repo landet,
 Schritte 4 und 5 können parallel zu Schritt 2 laufen. Der Klassifizierer (Schritt 7) wartet auf die Antworten zu Teil B.
 
 ## 10. Offene Entscheidungen (Yannick)
+
+Umgesetzt mit den Empfehlungen (neutraler Vortrag mit Praxisblick, Live-Umfragen über die bestehende Web-App,
+Klassifizierer öffentlich mit Hinweis). Offen bleiben Termin/Dauer, Kamills Freigabe und der Merge auf den
+Pages-Branch.
 
 1. **Termin, Dauer, Rahmen:** Wann ist der Vortrag, wie lang (Annahme: ca. 30 Min. plus Diskussion), im Modul
    Management im KMU, allein oder zu zweit?

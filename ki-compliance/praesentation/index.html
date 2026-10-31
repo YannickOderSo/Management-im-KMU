@@ -1,0 +1,1260 @@
+<!doctype html>
+<html lang="de" data-thema="editorial" data-modus="hell">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Cpath d=%22M12 1.8 23 21.5H1z%22 fill=%22%23E8650F%22/%3E%3C/svg%3E">
+<title>KI-Compliance im KMU</title>
+<!--
+  ════════════════════════════════════════════════════════════════════════════
+  index.html – VORTRAG „WELCHES RISIKO HAT IHRE KI? DER EU AI ACT UND WAS ER
+  FÜR KMU BEDEUTET“ (alle Folien in Vortragsreihenfolge)
+  ════════════════════════════════════════════════════════════════════════════
+  Modul Management im KMU · Prof. Dr. Christine Arend-Fuchs · Hochschule Kaiserslautern
+  Vortragender: Yannick Heisler · Plan: ../PLAN.md
+
+  Rechtsstand 31.10.2026: VO (EU) 2024/1689 in der Fassung der VO (EU) 2026/1744
+  (Digital-Omnibus KI), KI-MIG vom 22.7.2026. Prüflogik: js/klassifizierer-daten.js
+  (vereinfacht nach SimpleAct). Belege: ../recherche/faktendossier.md
+
+  Engine (js/deck.js, js/komponenten.js, css/tokens.css, deck.css, komponenten.css)
+  unverändert aus fuehrung/praesentation übernommen.
+  Eigene Gestaltung „Prüfpfad“: css/folien/ki.css (Fundament), ki-folien.css (Folien),
+  klassifizierer.css (Baum); Verhalten: js/folien/ki.js, js/klassifizierer.js
+
+  Bedienung: → / Leertaste / Clicker = weiter · ← = zurück · O = Übersicht ·
+  P = Referentenansicht · T = Thema · D = hell/dunkel · ? = Hilfe
+  Prüfen: node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte
+-->
+<script src="marke.js"></script>
+<script>
+(function () {
+  var h = document.documentElement, p = new URLSearchParams(location.search), m = window.MARKE || {};
+  var k = 'deck:' + location.pathname + ':';
+  var s = function (n) { try { return sessionStorage.getItem(k + n); } catch (e) { return null; } };
+  var t = p.get('thema') || s('thema') || m.standardThema || 'editorial';
+  var d = p.get('modus') || s('modus') || m.standardModus || 'hell';
+  if (['editorial', 'bento', 'keynote'].indexOf(t) < 0) t = 'editorial';
+  if (['hell', 'dunkel'].indexOf(d) < 0) d = 'hell';
+  h.setAttribute('data-thema', t);
+  h.setAttribute('data-modus', d);
+  var f = m.farben || {};
+  ['primaer', 'sekundaer'].forEach(function (n) {
+    var w = p.get(n) || s('farbe-' + n) || f[n] || '';
+    if (/^[0-9a-f]{3}([0-9a-f]{3})?$/i.test(w)) w = '#' + w;
+    if (/^#[0-9a-f]{3}([0-9a-f]{3})?$/i.test(w)) h.style.setProperty('--marke-' + n, w);
+  });
+  if (p.has('referent')) h.classList.add('referent');
+  if (p.has('druck')) h.classList.add('druckmodus');
+  window.DECK_BASIS = '';
+})();
+</script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/deck.css">
+<link rel="stylesheet" href="css/komponenten.css">
+<link rel="stylesheet" href="css/folien/ki.css">
+<link rel="stylesheet" href="css/folien/ki-folien.css">
+<link rel="stylesheet" href="css/folien/klassifizierer.css">
+</head>
+<body>
+<div class="nur-ohne-css" role="alert" style="max-width:46em;margin:24px auto;padding:16px 20px;border:4px solid #B00020;background:#FFF4F4;color:#1A1A1A;font:18px/1.5 Arial,sans-serif">
+  <strong>Präsentation unvollständig geöffnet.</strong> Neben <code>index.html</code> fehlen die Ordner
+  <code>css/</code> und <code>js/</code>. ZIP-Datei zuerst vollständig entpacken und dann
+  <code>praesentation/index.html</code> öffnen (Chrome oder Edge).
+</div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- Icon-Satz der Engine (aus der Recap) -->
+    <symbol id="i-pfeil-rechts" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-pfeil-links" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-pfeil-hoch" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-pfeil-runter" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-raster" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-referent" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4M6 8h7M6 11.5h4"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><circle cx="9" cy="10" r="6"/><circle cx="15" cy="14" r="6"/></symbol>
+    <symbol id="i-mond" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+    <symbol id="i-sonne" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+    <symbol id="i-vollbild" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></symbol>
+    <symbol id="i-hilfe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1.1.9-1.1 1.7v.6M12 17.2h.01"/></symbol>
+    <symbol id="i-steuerrad" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></symbol>
+    <symbol id="i-schliessen" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-start" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
+    <symbol id="i-zuruecksetzen" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></symbol>
+    <symbol id="i-schwarz" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4M4 5l16 11"/></symbol>
+    <symbol id="i-extern" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-stift" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-loeschen" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-haken" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.6h.01"/></symbol>
+    <symbol id="i-lupe" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+    <symbol id="i-uebergabe" viewBox="0 0 24 24"><path d="M4 9h12M12 5l4 4-4 4M20 15H8M12 11l-4 4 4 4"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M10 10h4v4h-4zM9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></symbol>
+    <symbol id="i-gruppe" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 13.6A5 5 0 0 1 21.5 19"/></symbol>
+    <symbol id="i-leiter" viewBox="0 0 24 24"><path d="M8 3v18M16 3v18M8 7h8M8 12h8M8 17h8"/></symbol>
+    <symbol id="i-tabelle" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M3 14.5h18M9 4v16M15 4v16"/></symbol>
+    <symbol id="i-vergleich" viewBox="0 0 24 24"><circle cx="8.5" cy="12" r="5.5"/><circle cx="15.5" cy="12" r="5.5"/></symbol>
+    <symbol id="i-sprechblase" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H10l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-megafon" viewBox="0 0 24 24"><path d="M3 10v4h3l8 5V5L6 10H3zM18 9a4 4 0 0 1 0 6"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></symbol>
+    <symbol id="i-bild" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></symbol>
+    <symbol id="i-daten" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></symbol>
+    <symbol id="i-diagramm" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></symbol>
+    <symbol id="i-ziel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12h.01"/></symbol>
+    <symbol id="i-kompass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></symbol>
+    <symbol id="i-herz" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+    <symbol id="i-stern" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.7-4.4 4 1.2 5.8L12 16.5l-5.3 2.9 1.2-5.8-4.4-4 5.9-.7z"/></symbol>
+    <symbol id="i-zitat" viewBox="0 0 24 24"><path d="M10 7c-3 .8-5 3-5 6.5V17h4.5v-4.5H6.5M19 7c-3 .8-5 3-5 6.5V17h4.5v-4.5h-3"/></symbol>
+    <symbol id="i-uhr" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2M14 18.5V20M18.5 14H20"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+    <symbol id="i-lampe" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.3.3.5.7.5 1.1V16h6v-1c0-.4.2-.8.5-1.1A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-blatt" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15M5 19l7-7"/></symbol>
+    <symbol id="i-dokument" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h6"/></symbol>
+    <symbol id="i-annahme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1.1.9-1.1 1.7v.6M12 17.2h.01"/></symbol>
+    <!-- Klassenformen (Farbe über CSS, ki.css Abschnitt 3) -->
+    <symbol id="s-verboten" viewBox="0 0 24 24"><path d="M7.03 1.5h9.94l5.53 5.53v9.94l-5.53 5.53H7.03L1.5 16.97V7.03z"/></symbol>
+    <symbol id="s-hoch" viewBox="0 0 24 24"><path d="M12 1.8 23 21.6H1z"/></symbol>
+    <symbol id="s-transparenz" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.6"/></symbol>
+    <symbol id="s-minimal" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2.2"/></symbol>
+    <symbol id="s-gpai" viewBox="0 0 24 24"><path d="M12 .9 23.1 12 12 23.1.9 12z"/></symbol>
+    <symbol id="s-kein" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></symbol>
+
+    <!-- Piktogramme der zehn Verbote (48 × 48, Strich) -->
+    <symbol id="v-manipulation" viewBox="0 0 48 48"><path d="M9 7h30M15 7v12M33 7v12M24 7v6"/><circle cx="24" cy="17" r="4"/><path d="M24 21v12M15 19l9 6 9-6M18 43l6-10 6 10"/></symbol>
+    <symbol id="v-schwaeche" viewBox="0 0 48 48"><circle cx="19" cy="9" r="4"/><path d="M19 13v15l-6 14M19 28l6 14M19 18l11 6M31 24v20"/><path d="M38 10v12M34 18l4 4 4-4"/></symbol>
+    <symbol id="v-scoring" viewBox="0 0 48 48"><circle cx="15" cy="15" r="5.5"/><path d="M4 40c0-7.5 5-12 11-12s11 4.5 11 12"/><path d="M31 12h12M31 21h9M31 30h5"/></symbol>
+    <symbol id="v-vorhersage" viewBox="0 0 48 48"><circle cx="24" cy="20" r="13"/><path d="M13 42h22M16 33l-3 9M32 33l3 9M19 15l3-3M17 21l2-2"/></symbol>
+    <symbol id="v-scraping" viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="3"/><path d="M24 6v36M6 24h36"/><circle cx="15" cy="15" r="4"/><circle cx="33" cy="15" r="4"/><circle cx="15" cy="33" r="4"/><circle cx="33" cy="33" r="4"/></symbol>
+    <symbol id="v-emotion" viewBox="0 0 48 48"><circle cx="19" cy="19" r="13"/><path d="M14 16h.01M24 16h.01M13 25q6-5 12 0"/><rect x="29" y="31" width="16" height="12" rx="2"/><path d="M34 31v-3h6v3"/></symbol>
+    <symbol id="v-kategorie" viewBox="0 0 48 48"><circle cx="17" cy="22" r="12"/><path d="M12 19h.01M22 19h.01M12 27q5 3 10 0"/><path d="M32 8h9l4 4v7H32zM32 27h9l4 4v7H32z"/></symbol>
+    <symbol id="v-ueberwachung" viewBox="0 0 48 48"><path d="M5 13 28 7l4 10-23 6z"/><path d="M18 21v9M11 30h14"/><circle cx="37" cy="34" r="7"/><path d="M37 24v4M37 40v4M27 34h4M43 34h4"/></symbol>
+    <symbol id="v-deepfake" viewBox="0 0 48 48"><rect x="4" y="8" width="30" height="24" rx="3"/><path d="M4 28l9-9 7 7 5-5 9 9"/><circle cx="36" cy="35" r="9"/><path d="M30 41l12-12"/></symbol>
+    <symbol id="v-schutz" viewBox="0 0 48 48"><path d="M24 5l15 5v11c0 10-6.5 16-15 19-8.5-3-15-9-15-19V10z"/><path d="M24 15v10M24 31h.01"/></symbol>
+
+    <!-- Kleine Strich-Symbole für Szenen und Listen (24 × 24) -->
+    <symbol id="i-kamera" viewBox="0 0 24 24"><rect x="2.5" y="7" width="15" height="11" rx="2"/><path d="M17.5 11l4-2.5v8l-4-2.5"/><circle cx="10" cy="12.5" r="3"/></symbol>
+    <symbol id="i-maschine" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="12" cy="12" r="4"/><path d="M12 6v2M12 16v2M6 12h2M16 12h2"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16a1.5 1.5 0 0 1 1.5 1.5v9A1.5 1.5 0 0 1 20 17h-9l-5 4v-4H4A1.5 1.5 0 0 1 2.5 15.5v-9A1.5 1.5 0 0 1 4 5z"/><path d="M7 10h10M7 13h6"/></symbol>
+    <symbol id="i-text" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM15 3v4h4M9 11h7M9 14h7M9 17h4"/></symbol>
+    <symbol id="i-bewerbung" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><circle cx="12" cy="9" r="2.5"/><path d="M8 16c.5-2.2 2-3.5 4-3.5s3.5 1.3 4 3.5"/></symbol>
+    <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13" width="4" height="6" rx="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M19 19c0 1.7-1.8 2.5-5 2.5"/></symbol>
+    <symbol id="i-paragraf" viewBox="0 0 24 24"><path d="M15 5.5C14 4 12.8 3.5 11.3 3.5 9.2 3.5 8 4.8 8 6.4c0 4 8 3.6 8 8.1 0 1.4-.8 2.4-2 3M9 18.5c1 1.5 2.2 2 3.7 2 2.1 0 3.3-1.3 3.3-2.9 0-4-8-3.6-8-8.1 0-1.4.8-2.4 2-3"/></symbol>
+    <symbol id="i-schild" viewBox="0 0 24 24"><path d="M12 2.5l8 3v6c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10v-6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+    <symbol id="i-liste" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6l1 1 2-2M4 12l1 1 2-2M4 18l1 1 2-2"/></symbol>
+    <symbol id="i-lupe-plus" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5l5 5M10.5 8v5M8 10.5h5"/></symbol>
+    <symbol id="i-kreis-pfeil" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.4-5.7M20 4v4.5h-4.5"/></symbol>
+    <symbol id="i-rolle" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 21c0-4 3.1-6.5 7-6.5s7 2.5 7 6.5"/><path d="M17 3.5l2.5 2.5L17 8.5"/></symbol>
+    <symbol id="i-geld" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 9.5v5M18 9.5v5"/></symbol>
+    <symbol id="i-labor" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2h12.4a1.5 1.5 0 0 0 1.3-2L14 9V3M7 15h10"/></symbol>
+    <symbol id="i-doku" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM15 3v4h4M9 12h6M9 16h4"/></symbol>
+    <symbol id="i-hilfe-hand" viewBox="0 0 24 24"><path d="M3 14h3l4 3h4a1.5 1.5 0 0 0 0-3h-3M6 14V20H3M11 14l6-1.5a1.5 1.5 0 0 1 1 2.8L13 18"/><circle cx="14" cy="6.5" r="3.5"/></symbol>
+
+    <!-- Der Betrieb (Wimmelbild, 900 × 600). Punkte 1–6 setzt js/folien/ki.js -->
+    <symbol id="wimmel-bau" viewBox="0 0 900 600">
+      <g class="w-flaechen">
+        <rect x="60" y="170" width="380" height="392"/>
+        <path d="M440 562V200l70-50v50l70-50v50l70-50v50l70-50v50l70-50v412z"/>
+        <rect x="40" y="18" width="330" height="120" rx="12"/>
+      </g>
+      <g class="w-striche">
+        <path d="M20 562h860"/>
+        <rect x="40" y="18" width="330" height="120" rx="12"/>
+        <path d="M40 46h330"/>
+        <path class="w-duenn" d="M205 138v32" stroke-dasharray="6 7"/>
+        <rect x="60" y="170" width="380" height="392"/>
+        <path d="M60 366h380M250 170v196"/>
+        <path d="M440 562V200l70-50v50l70-50v50l70-50v50l70-50v50l70-50v412"/>
+        <!-- Vertrieb: Tisch, Laptop, Person -->
+        <path d="M82 318h150M94 318v48M220 318v48"/>
+        <rect x="140" y="280" width="64" height="38" rx="4"/>
+        <path class="w-duenn" d="M151 292h40M151 302h28"/>
+        <circle cx="108" cy="270" r="14"/>
+        <path d="M86 318c0-17 9-28 22-28s22 11 22 28"/>
+        <!-- Personal: Tisch, Stapel Bewerbungen, Person -->
+        <path d="M268 318h150M280 318v48M406 318v48"/>
+        <rect x="292" y="296" width="54" height="22" rx="2"/>
+        <path class="w-duenn" d="M298 290h54v6M304 284h54v6"/>
+        <circle cx="392" cy="270" r="14"/>
+        <path d="M370 318c0-17 9-28 22-28s22 11 22 28"/>
+        <!-- Kundenservice: zwei Plätze mit Headset -->
+        <path d="M84 512h150M96 512v50M222 512v50M262 512h150M274 512v50M400 512v50"/>
+        <rect x="160" y="466" width="62" height="40" rx="4"/>
+        <rect x="338" y="466" width="62" height="40" rx="4"/>
+        <circle cx="120" cy="462" r="14"/>
+        <path d="M98 512c0-17 9-28 22-28s22 11 22 28M103 462a17 17 0 0 1 34 0M134 466c0 6-4 9-10 9"/>
+        <circle cx="298" cy="462" r="14"/>
+        <path d="M276 512c0-17 9-28 22-28s22 11 22 28M281 462a17 17 0 0 1 34 0M312 466c0 6-4 9-10 9"/>
+        <path class="w-duenn" d="M150 432q8 8 0 16M160 426q12 14 0 28"/>
+        <!-- Website: Sprechblasen -->
+        <circle cx="62" cy="32" r="4.5"/><circle cx="80" cy="32" r="4.5"/><circle cx="98" cy="32" r="4.5"/>
+        <rect x="62" y="62" width="160" height="28" rx="14"/>
+        <rect x="190" y="100" width="160" height="28" rx="14"/>
+        <!-- Endkontrolle: Band, Teile, Kamera -->
+        <path d="M480 300h120M540 300v82"/>
+        <rect x="522" y="382" width="38" height="26" rx="5"/>
+        <path class="w-duenn" d="M532 408l-34 62M550 408l34 62" stroke-dasharray="6 7"/>
+        <rect x="462" y="482" width="178" height="16" rx="8"/>
+        <path d="M478 498v64M624 498v64"/>
+        <rect x="486" y="462" width="24" height="20" rx="2"/>
+        <rect x="532" y="462" width="24" height="20" rx="2"/>
+        <rect x="580" y="462" width="24" height="20" rx="2"/>
+        <!-- Maschine mit Personenerkennung, Person davor -->
+        <rect x="712" y="320" width="134" height="242" rx="8"/>
+        <rect x="730" y="342" width="98" height="84" rx="4"/>
+        <circle cx="779" cy="384" r="20"/>
+        <path d="M779 360v6M779 402v6M755 384h6M797 384h6"/>
+        <path d="M694 350v212"/>
+        <rect x="684" y="344" width="20" height="30" rx="4"/>
+        <path class="w-duenn" d="M684 364l-26 60M688 370l-6 64" stroke-dasharray="6 7"/>
+        <circle cx="662" cy="452" r="13"/>
+        <path d="M662 465v52M662 517l-10 45M662 517l10 45M662 480l-14 18M662 480l14 18"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="deck" id="deck">
+  <main class="buehne" id="buehne" aria-roledescription="Präsentation">
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 01 · Titel · 40 s
+     Rechts die Sortiermaschine: fünf KI-Werkzeuge fallen durch den Trichter
+     in vier Klassen-Fächer (Endlosschleife; im Druck und bei reduzierter
+     Bewegung liegen alle Karten in ihren Fächern).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie t-titel" id="f01" data-titel="Titel" data-feld="leer" data-zeit="40" data-buendel="alle" data-layout="titel" data-laufkopf="aus">
+  <header class="folie-kopf t-kopf">
+    <p class="t-reihe" data-meta><span>Management im KMU</span><span>Vortrag</span></p>
+    <h1 class="titel t-satz">Welches Risiko <span class="k-zeile">hat Ihre KI?</span></h1>
+    <p class="t-unter">Der EU AI Act und was er für KMU bedeutet</p>
+    <p class="t-meta" data-meta><span data-gruppe>Yannick Heisler</span><span>Hochschule Kaiserslautern</span><span>Rechtsstand 31.10.2026</span></p>
+    <p class="t-vorbehalt" data-meta>Allgemeine Information, keine Rechtsberatung</p>
+  </header>
+  <div class="folie-inhalt t-inhalt">
+    <svg class="t-maschine" viewBox="0 0 760 760" role="img" aria-label="Fünf KI-Werkzeuge werden in vier Risikoklassen sortiert">
+      <path class="t-trichter" d="M60 70h640L452 300v70H308v-70z"/>
+      <path class="t-weiche" d="M380 370v60M380 430L95 560M380 430L285 560M380 430l95 130M380 430l285 130"/>
+      <g class="t-fach" data-klasse="verboten"><path d="M10 560v170h170V560"/><use href="#s-verboten" x="73" y="668" width="44" height="44"/></g>
+      <g class="t-fach" data-klasse="hoch"><path d="M200 560v170h170V560"/><use href="#s-hoch" x="263" y="668" width="44" height="44"/></g>
+      <g class="t-fach" data-klasse="transparenz"><path d="M390 560v170h170V560"/><use href="#s-transparenz" x="453" y="668" width="44" height="44"/></g>
+      <g class="t-fach" data-klasse="minimal"><path d="M580 560v170h170V560"/><use href="#s-minimal" x="643" y="668" width="44" height="44"/></g>
+      <g class="t-karte k-endlos" style="--sx:90px;--sy:-40px;--zx:15px;--zy:588px;animation-delay:-1s"><rect width="160" height="50" rx="10"/><text x="80" y="35">Stimmung</text></g>
+      <g class="t-karte k-endlos" style="--sx:470px;--sy:-40px;--zx:205px;--zy:588px;animation-delay:1s"><rect width="160" height="50" rx="10"/><text x="80" y="35">Bewerbung</text></g>
+      <g class="t-karte k-endlos" style="--sx:280px;--sy:-40px;--zx:395px;--zy:588px;animation-delay:3s"><rect width="160" height="50" rx="10"/><text x="80" y="35">Chatbot</text></g>
+      <g class="t-karte k-endlos" style="--sx:150px;--sy:-40px;--zx:585px;--zy:588px;animation-delay:5s"><rect width="160" height="50" rx="10"/><text x="80" y="35">Kamera</text></g>
+      <g class="t-karte k-endlos" style="--sx:420px;--sy:-40px;--zx:585px;--zy:612px;animation-delay:7s"><rect width="160" height="50" rx="10"/><text x="80" y="35">Texte</text></g>
+    </svg>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Welches Risiko hat Ihre KI? Diese Frage muss sich heute jedes Unternehmen stellen, das KI einsetzt, auch der kleine Betrieb. Denn seit 2024 gibt es mit dem EU AI Act das erste umfassende KI-Gesetz der Welt. Ich arbeite bei SimpleAct, einem Start-up, das Software für genau diese Prüfung baut. Heute zeige ich Ihnen, wie diese Prüfung funktioniert und was sie für KMU bedeutet.“</p>
+    <p>Hinweis zum Stand: Rechtsstand 31.10.2026, allgemeine Information, keine Rechtsberatung. Rechts läuft die Sortiermaschine als ruhige Schleife.</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 02 · Der Betrieb · 70 s
+     Wimmelbild der fiktiven Muster Metallbau GmbH, sechs graue Punkte,
+     rechts die Legende. Kommt auf Folie 19 eingefärbt zurück.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie w-folie" id="f02" data-titel="Ein ganz normaler Betrieb" data-feld="leer" data-zeit="70" data-buendel="alle" data-laufkopf="aus">
+  <header class="folie-kopf">
+    <p class="kicker">Muster Metallbau GmbH · fiktiv · 60 Beschäftigte</p>
+    <h2 class="titel">Sechs Stellen, an denen hier KI arbeitet</h2>
+  </header>
+  <div class="folie-inhalt w-inhalt">
+    <svg class="k-wimmel w-gross" viewBox="0 0 900 600" role="img" aria-label="Querschnitt des Betriebs mit sechs markierten KI-Stellen" data-punkte="1 2 3 4 5 6" data-puls>
+      <use href="#wimmel-bau"/>
+    </svg>
+    <ol class="w-legende" data-staffel="110" data-animation="hoch">
+      <li><span class="w-nr">1</span><span><b>Vertrieb</b> schreibt Angebote mit ChatGPT</span></li>
+      <li><span class="w-nr">2</span><span><b>Website</b> mit selbst gebautem Chatbot</span></li>
+      <li><span class="w-nr">3</span><span><b>Personal</b>: Software rankt Bewerbungen</span></li>
+      <li><span class="w-nr">4</span><span><b>Kundenservice</b>: Software misst die Stimmung der Beschäftigten</span></li>
+      <li><span class="w-nr">5</span><span><b>Endkontrolle</b>: Kamera erkennt Kratzer</span></li>
+      <li><span class="w-nr">6</span><span><b>Produkt</b>: KI-Not-Stopp in den Maschinen, die der Betrieb verkauft</span></li>
+    </ol>
+  </div>
+  <footer class="folie-fuss">
+    <p class="k-merksatz w-frage" data-schritt="1" data-animation="hoch">Wie viele davon sind ein Problem? Merken Sie sich Ihre Zahl.</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Damit es konkret wird, schauen wir in einen Betrieb. Die Muster Metallbau GmbH ist erfunden, aber typisch: 60 Beschäftigte, Büro und Werkhalle. An sechs Stellen arbeitet hier KI. Der Vertrieb schreibt Angebote mit ChatGPT. Auf der Website antwortet ein Chatbot, den der Betrieb selbst gebaut hat. Die Personalabteilung lässt Bewerbungen von einer Software ranken. Im Kundenservice misst eine Software die Stimmung der Beschäftigten. In der Endkontrolle erkennt eine Kamera Kratzer. Und in die Maschinen, die der Betrieb verkauft, ist ein KI-Not-Stopp eingebaut.“</p>
+    <p class="gesprochen" data-schritt="1">„Meine Frage an Sie: Wie viele dieser sechs Stellen sind rechtlich ein Problem? Merken Sie sich Ihre Zahl. Am Ende lösen wir auf.“</p>
+    <p>Auflösung auf Folie 19: zwei minimal, einmal Transparenz, zweimal hochriskant, einmal verboten.</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 03 · Fahrplan · 30 s
+     Der Prüfpfad mit vier Stationen; bleibt als Leiste in der Kopfzeile.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie p-folie" id="f03" data-titel="Fahrplan" data-feld="leer" data-zeit="30" data-buendel="alle" data-laufkopf="aus">
+  <header class="folie-kopf">
+    <h2 class="titel">Unser Prüfpfad in vier Stationen</h2>
+  </header>
+  <div class="folie-inhalt p-inhalt">
+    <svg class="p-linie" viewBox="0 0 1680 40" preserveAspectRatio="none" aria-hidden="true" data-animation="zeichnen" data-dauer="1400"><path d="M30 20H1650"/></svg>
+    <ol class="p-stationen" data-staffel="160" data-animation="hoch">
+      <li><span class="p-punkt">1</span><b>Grundlagen</b><span>Seit wann gilt was? Ist das überhaupt KI? Wer bin ich?</span></li>
+      <li><span class="p-punkt">2</span><b>Risikoklassen</b><span>Verboten, hochriskant, Transparenz, minimal</span></li>
+      <li><span class="p-punkt">3</span><b>Selbst prüfen</b><span>Der Klassifizierer, live mit Ihren Stimmen</span></li>
+      <li><span class="p-punkt">4</span><b>KMU-Praxis</b><span>Irrtümer, Kosten, Hilfen, erste Schritte</span></li>
+    </ol>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Wir gehen den Weg, den auch eine Prüfung geht. Erst die Grundlagen: seit wann was gilt, was überhaupt KI ist und welche Rolle ein Unternehmen hat. Dann die vier Risikoklassen. Dann prüfen Sie selbst, mit dem Klassifizierer. Und zum Schluss die Praxis im KMU.“</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 04 · Zeitstrahl · 90 s
+     Acht Stationen mit gleichem Abstand. Schritt 1: Omnibus verschiebt die
+     Hochrisiko-Termine (alte Daten gestrichen, neue gleiten ein).
+     Schritt 2: Klammern „gilt schon“ und „kommt noch“.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie z-folie" id="f04" data-titel="Zeitstrahl" data-feld="leer" data-station="1" data-zeit="90" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Der AI Act gilt schon, <span class="k-leise">Stück für Stück</span></h2>
+  </header>
+  <div class="folie-inhalt z-inhalt">
+    <div class="z-klammer z-klammer--schon" data-schritt="2" data-animation="einblenden"><span data-ueberlauf-ok>gilt schon</span></div>
+    <div class="z-klammer z-klammer--noch" data-schritt="2" data-animation="einblenden"><span data-ueberlauf-ok>kommt noch</span></div>
+    <div class="z-achse" aria-hidden="true"></div>
+    <div class="z-heute" aria-hidden="true"><span data-meta>heute</span></div>
+    <ol class="z-stationen" data-staffel="90" data-animation="hoch">
+      <li data-klasse="kein"><span class="z-datum">1.8.2024</span><span class="z-punkt"></span><b>In Kraft</b><span class="z-text" data-meta>Verordnung (EU) 2024/1689</span></li>
+      <li data-klasse="verboten"><span class="z-datum">2.2.2025</span><span class="z-punkt"><svg class="k-form"><use href="#s-verboten"/></svg></span><b>Verbote</b><span class="z-text" data-meta>und Pflicht zur KI-Kompetenz</span></li>
+      <li data-klasse="gpai"><span class="z-datum">2.8.2025</span><span class="z-punkt"><svg class="k-form"><use href="#s-gpai"/></svg></span><b>GPAI-Modelle</b><span class="z-text" data-meta>und Bußgelder</span></li>
+      <li data-klasse="kein" class="z-omnibus"><span class="z-datum">27.7.2026</span><span class="z-punkt"></span><b>Digital-Omnibus</b><span class="z-text" data-meta>und deutsches KI-MIG (29.7.)</span></li>
+      <li data-klasse="transparenz"><span class="z-datum">2.8.2026</span><span class="z-punkt"><svg class="k-form"><use href="#s-transparenz"/></svg></span><b>Transparenz</b><span class="z-text" data-meta>allgemeiner Geltungsbeginn</span></li>
+      <li data-klasse="verboten"><span class="z-datum">2.12.2026</span><span class="z-punkt"><svg class="k-form"><use href="#s-verboten"/></svg></span><b>Zwei neue Verbote</b><span class="z-text" data-meta>intime Deepfakes, Missbrauch</span></li>
+      <li data-klasse="hoch" class="z-verschoben"><span class="z-datum"><s class="z-alt" data-meta data-schritt="1" data-animation="zustand">2.8.2026</s><span class="z-neu" data-schritt="1" data-animation="links">2.12.2027</span></span><span class="z-punkt"><svg class="k-form"><use href="#s-hoch"/></svg></span><b>Hochriskant</b><span class="z-text" data-meta>Anhang III: Einsatzzweck</span></li>
+      <li data-klasse="hoch" class="z-verschoben"><span class="z-datum"><s class="z-alt" data-meta data-schritt="1" data-animation="zustand">2.8.2027</s><span class="z-neu" data-schritt="1" data-animation="links">2.8.2028</span></span><span class="z-punkt"><svg class="k-form"><use href="#s-hoch"/></svg></span><b>Hochriskant</b><span class="z-text" data-meta>Anhang I: Produkte</span></li>
+    </ol>
+    <p class="z-omnibus-hinweis" data-schritt="1" data-animation="hoch"><span class="k-stempel">VO (EU) 2026/1744</span> Der Digital-Omnibus verschiebt die Hochrisiko-Pflichten um 16 bzw. 12 Monate, auf feste Termine.</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Art. 113 KI-VO in der Fassung der VO (EU) 2026/1744 (in Kraft seit 27.7.2026); KI-MIG vom 22.7.2026, BGBl. 2026 I Nr. 223</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Der AI Act ist seit August 2024 in Kraft, gilt aber Stück für Stück. Seit Februar 2025 sind bestimmte Praktiken verboten, und jedes Unternehmen muss die KI-Kompetenz seines Personals fördern. Seit August 2025 gelten Pflichten für die großen KI-Modelle. Seit dem 2. August 2026 gelten die Transparenzpflichten und der Großteil der Verordnung. Im Dezember kommen zwei neue Verbote dazu.“</p>
+    <p class="gesprochen" data-schritt="1">„Ursprünglich sollten die strengen Hochrisiko-Pflichten schon diesen August gelten. Im Juli 2026 hat die EU mit dem sogenannten Digital-Omnibus nachgesteuert: Die Termine rutschen auf Dezember 2027 und August 2028. Das sind feste Termine. Gleichzeitig ist in Deutschland das KI-Marktüberwachungsgesetz in Kraft getreten.“</p>
+    <p class="gesprochen" data-schritt="2">„Wichtig für KMU: Die Verschiebung betrifft nur Hochrisiko. Verbote, KI-Kompetenz und Transparenz gelten heute schon.“</p>
+    <p>Belege: Art. 113 Abs. 3 lit. c n. F. (2.12.2027 Anhang III, 2.8.2028 Anhang I); VO (EU) 2026/1744 vom 8.7.2026, ABl. 24.7.2026, in Kraft 27.7.2026. KI-MIG = Art. 1 des Gesetzes zur Durchführung der KI-VO vom 22.7.2026, in Kraft 29.7.2026. Rückfrage „Gilt der Bestandsschutz noch?“: Hochrisiko-Systeme, die vor dem neuen Anwendungsbeginn in Verkehr sind, fallen nur bei erheblicher Änderung unter Kapitel III (Art. 111 Abs. 2 n. F.); Verbote gelten immer.</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 05 · Ist das überhaupt KI? · 90 s
+     Links die Definition (Art. 3 Nr. 1) mit Markierungen in Schritt 1,
+     rechts vier Beispiele; Schritt 2 deckt die Antworten auf.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie d-folie" id="f05" data-titel="Ist das überhaupt KI?" data-feld="leer" data-station="1" data-zeit="90" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Ist das überhaupt KI?</h2>
+  </header>
+  <div class="folie-inhalt d-inhalt">
+    <figure class="d-definition">
+      <p class="d-label"><span class="k-stempel">Art. 3 Nr. 1</span> „KI-System“ ist</p>
+      <blockquote>ein <mark data-schritt="1" data-animation="zustand">maschinengestütztes System</mark>, das für einen in unterschiedlichem Grade <mark data-schritt="1" data-animation="zustand">autonomen Betrieb</mark> ausgelegt ist und das nach seiner Betriebsaufnahme anpassungsfähig sein kann und das <mark data-schritt="1" data-animation="zustand">aus den erhaltenen Eingaben</mark> für explizite oder implizite Ziele <mark data-schritt="1" data-animation="zustand">ableitet</mark>, wie Ausgaben wie etwa <mark data-schritt="1" data-animation="zustand">Vorhersagen, Inhalte, Empfehlungen oder Entscheidungen</mark> erstellt werden, die physische oder virtuelle Umgebungen beeinflussen können.</blockquote>
+      <p class="d-kern" data-schritt="1" data-animation="hoch">Kern: Das System <b>leitet selbst ab</b>, statt nur Regeln abzuarbeiten, die ein Mensch vollständig vorgegeben hat.</p>
+    </figure>
+    <ul class="d-quiz">
+      <li><svg class="d-symbol"><use href="#i-tabelle"/></svg><span class="d-name">Excel-Kalkulation mit festen Formeln</span><span class="d-urteil d-urteil--nein" data-schritt="2" data-animation="feder">keine KI</span></li>
+      <li><svg class="d-symbol"><use href="#i-chat"/></svg><span class="d-name">FAQ-Bot mit fest hinterlegten Antworten</span><span class="d-urteil d-urteil--nein" data-schritt="2" data-animation="feder" data-verzoegerung="120">in der Regel keine KI</span></li>
+      <li><svg class="d-symbol"><use href="#i-lupe"/></svg><span class="d-name">Spamfilter, der aus Beispielen lernt</span><span class="d-urteil d-urteil--ja" data-schritt="2" data-animation="feder" data-verzoegerung="240">KI</span></li>
+      <li><svg class="d-symbol"><use href="#i-text"/></svg><span class="d-name">ChatGPT, Copilot und Co.</span><span class="d-urteil d-urteil--ja" data-schritt="2" data-animation="feder" data-verzoegerung="360">KI</span></li>
+    </ul>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Art. 3 Nr. 1 KI-VO; Leitlinien der Kommission zur Definition des KI-Systems, C(2025) 5053 (Inhalt vom 6.2.2025)</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Die erste Prüffrage klingt banal: Ist das überhaupt KI? Der AI Act definiert ein KI-System in Artikel 3. Die Definition ist lang, aber sie hat einen klaren Kern.“</p>
+    <p class="gesprochen" data-schritt="1">„Ein maschinengestütztes System, das mit einer gewissen Autonomie arbeitet und aus Eingaben selbst ableitet, wie es Ausgaben erzeugt: Vorhersagen, Inhalte, Empfehlungen, Entscheidungen. Der Unterschied zu normaler Software: Sie arbeitet nicht nur Regeln ab, die ein Mensch vollständig vorgegeben hat.“</p>
+    <p class="gesprochen" data-schritt="2">„Testen wir das. Die Excel-Kalkulation mit festen Formeln ist keine KI. Ein FAQ-Bot mit fest hinterlegten Antworten in der Regel auch nicht. Ein Spamfilter, der aus Beispielen lernt, ist KI. Und ChatGPT natürlich auch. Fällt ein Werkzeug hier raus, ist die Prüfung schon zu Ende.“</p>
+    <p>Rückfrage: Die Leitlinien der Kommission nennen als Ausnahmen u. a. Systeme zur Verbesserung mathematischer Optimierung, einfache Datenverarbeitung, klassische Heuristiken und einfache Vorhersagesysteme. Leitlinien sind nicht verbindlich.</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 06 · Rollen · 80 s
+     Lieferkette von links nach rechts; KMU meist Betreiber. Schritt 1:
+     Rollenwechsel nach Art. 25 (Bogen zurück zum Anbieter). Schritt 2:
+     Eigenbau macht zum Anbieter.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie ro-folie" id="f06" data-titel="Rollen" data-feld="leer" data-station="1" data-zeit="80" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Erst die Rolle, <span class="k-leise">dann die Klasse</span></h2>
+  </header>
+  <div class="folie-inhalt ro-inhalt">
+    <ol class="ro-kette" data-staffel="120" data-animation="hoch">
+      <li class="ro-rolle"><svg class="ro-symbol"><use href="#i-chip"/></svg><b>Anbieter</b><span>entwickelt und bringt auf den Markt</span><span class="k-stempel k-stempel--klein">Art. 3 Nr. 3</span></li>
+      <li class="ro-pfeil" aria-hidden="true">→</li>
+      <li class="ro-rolle"><svg class="ro-symbol"><use href="#i-uebergabe"/></svg><b>Einführer, Händler</b><span>holt es in die EU, verkauft es weiter</span><span class="k-stempel k-stempel--klein">Art. 3 Nr. 6, 7</span></li>
+      <li class="ro-pfeil" aria-hidden="true">→</li>
+      <li class="ro-rolle ro-rolle--kmu"><svg class="ro-symbol"><use href="#i-gruppe"/></svg><b>Betreiber</b><span>setzt es in eigener Verantwortung ein</span><span class="k-stempel k-stempel--klein">Art. 3 Nr. 4</span><span class="ro-kmu" data-ueberlauf-ok>die meisten KMU</span></li>
+      <li class="ro-pfeil" aria-hidden="true">→</li>
+      <li class="ro-rolle ro-rolle--leise"><svg class="ro-symbol"><use href="#i-person"/></svg><b>Betroffene</b><span>Bewerber, Kunden, Beschäftigte</span></li>
+    </ol>
+    <svg class="ro-bogen" viewBox="0 0 1680 150" aria-hidden="true" data-schritt="1" data-animation="zeichnen" data-dauer="900"><path d="M1010 10 C1010 120 170 120 170 14"/><path d="M152 34 170 10 188 34"/></svg>
+    <div class="ro-wechsel" data-schritt="1" data-animation="hoch">
+      <p class="ro-wechsel-kopf"><b>Rollenwechsel bei Hochrisiko</b> <span class="k-stempel k-stempel--klein">Art. 25</span></p>
+      <ul><li>eigener Name</li><li>wesentliche Änderung</li><li>neuer Zweck</li></ul>
+      <p>macht den Betreiber zum Anbieter.</p>
+    </div>
+    <div class="ro-eigenbau k-karte" data-schritt="2" data-animation="hoch">
+      <h3>Selbst gebaut heißt Anbieter</h3>
+      <p>auch ohne Verkauf. Im Betrieb: der eigene Website-Chatbot.</p>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Art. 3 Nr. 3, 4, 6, 7 und Art. 25 KI-VO. Im Gesetz heißt der „Nutzer“ Betreiber (englisch deployer).</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Bevor wir nach dem Risiko fragen, müssen wir wissen, wer wir sind. Der AI Act verteilt Pflichten entlang einer Kette. Der Anbieter entwickelt das System und bringt es auf den Markt. Einführer und Händler reichen es weiter. Der Betreiber setzt es ein. Und am Ende stehen die Menschen, die davon betroffen sind. Die meisten KMU sind Betreiber.“</p>
+    <p class="gesprochen" data-schritt="1">„Aber Vorsicht: Die Rolle kann wechseln. Wer ein Hochrisiko-System unter eigenem Namen anbietet, es wesentlich verändert oder es für einen neuen, hochriskanten Zweck einsetzt, wird selbst zum Anbieter, mit allen Pflichten.“</p>
+    <p class="gesprochen" data-schritt="2">„Und wer selbst baut, ist ohnehin Anbieter, auch wenn er nichts verkauft. Unser Betrieb hat seinen Website-Chatbot selbst gebaut. Das kommt gleich noch.“</p>
+    <p>Rückfrage: Art. 25 gilt für Hochrisiko-Systeme. Ein KMU, das ein eigenes Produkt auf der Schnittstelle eines fremden Sprachmodells baut, ist Anbieter seines KI-Systems, aber nicht Anbieter des Modells.</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 07 · Pyramide · 70 s
+     Vier Stufen bauen sich von unten auf, daneben die GPAI-Spur, darunter
+     das Band „KI-Kompetenz für alle“.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie py-folie" id="f07" data-titel="Vier Stufen" data-feld="leer" data-station="2" data-zeit="70" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Vier Stufen <span class="k-leise">und eine Sonderspur</span></h2>
+  </header>
+  <div class="folie-inhalt py-inhalt">
+    <div class="py-stufen">
+      <svg class="py-grafik" viewBox="0 0 760 560" aria-hidden="true">
+        <path class="py-stufe" data-klasse="minimal" d="M20 540 135 405h490l115 135z" data-schritt="1" data-animation="hoch"/>
+        <path class="py-stufe" data-klasse="transparenz" d="M140 400 250 270h260l110 130z" data-schritt="2" data-animation="hoch"/>
+        <path class="py-stufe" data-klasse="hoch" d="M255 265 360 140h40l105 125z" data-schritt="3" data-animation="hoch" transform="translate(0 0)"/>
+        <path class="py-stufe" data-klasse="verboten" d="M364 135 380 20l16 115z" data-schritt="4" data-animation="hoch"/>
+      </svg>
+      <ul class="py-legende">
+        <li data-klasse="verboten" data-schritt="4" data-animation="links"><svg class="k-form"><use href="#s-verboten"/></svg><b>Verboten</b><span>darf nicht eingesetzt werden</span><span class="k-stempel k-stempel--klein">Art. 5</span></li>
+        <li data-klasse="hoch" data-schritt="3" data-animation="links"><svg class="k-form"><use href="#s-hoch"/></svg><b>Hochriskant</b><span>strenge Pflichten vor und im Einsatz</span><span class="k-stempel k-stempel--klein">Art. 6–27</span></li>
+        <li data-klasse="transparenz" data-schritt="2" data-animation="links"><svg class="k-form"><use href="#s-transparenz"/></svg><b>Transparenz</b><span>sagen, dass es KI ist</span><span class="k-stempel k-stempel--klein">Art. 50</span></li>
+        <li data-klasse="minimal" data-schritt="1" data-animation="links"><svg class="k-form"><use href="#s-minimal"/></svg><b>Minimal</b><span>keine besonderen Pflichten</span><span class="k-stempel k-stempel--klein">Art. 95</span></li>
+      </ul>
+    </div>
+    <div class="py-gpai k-karte" data-klasse="gpai" data-schritt="5" data-animation="links">
+      <p class="py-gpai-kopf"><svg class="k-form"><use href="#s-gpai"/></svg><b>Sonderspur GPAI</b></p>
+      <p>Pflichten für Anbieter großer KI-Modelle</p>
+      <span class="k-stempel k-stempel--klein">Art. 51–55</span>
+    </div>
+    <p class="py-band" data-schritt="6" data-animation="hoch"><b>Für alle, die KI einsetzen:</b> KI-Kompetenz fördern <span class="k-stempel k-stempel--klein">Art. 4</span></p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">„Begrenztes“ und „minimales Risiko“ sind Schlagworte; das Gesetz spricht von Transparenzpflichten bzw. kennt keine besonderen Pflichten.</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Herzstück des AI Act ist ein risikobasierter Ansatz: Je höher das Risiko für Menschen, desto strenger die Regeln. Das ergibt vier Stufen.“</p>
+    <p class="gesprochen" data-schritt="1">„Ganz unten das minimale Risiko. Hier liegt der Großteil aller KI-Anwendungen, und es gibt keine besonderen Pflichten.“</p>
+    <p class="gesprochen" data-schritt="2">„Darüber die Transparenz: Man muss sagen, dass es KI ist.“</p>
+    <p class="gesprochen" data-schritt="3">„Dann das Hochrisiko, mit strengen Pflichten vor und während des Einsatzes.“</p>
+    <p class="gesprochen" data-schritt="4">„Und ganz oben, was verboten ist.“</p>
+    <p class="gesprochen" data-schritt="5">„Daneben gibt es eine Sonderspur für die großen KI-Modelle, die sogenannten GPAI-Modelle. Die betrifft vor allem deren Hersteller.“</p>
+    <p class="gesprochen" data-schritt="6">„Und eine Pflicht gilt für alle, egal welche Stufe: die KI-Kompetenz der eigenen Leute fördern.“</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 08 · Rot: Verbote · 90 s
+     Zehn Piktogramme (acht seit 2.2.2025, zwei neu ab 2.12.2026). Schritt 1:
+     KMU-Brennpunkt Emotionserkennung am Arbeitsplatz + Stelle 4 im Betrieb.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie vb-folie" id="f08" data-titel="Rot: Verbote" data-feld="leer" data-station="2" data-zeit="90" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker" data-klasse="verboten"><svg class="k-form"><use href="#s-verboten"/></svg>Verboten · seit 2.2.2025</p>
+    <h2 class="titel">Rot: Was gar nicht geht</h2>
+  </header>
+  <div class="folie-inhalt vb-inhalt">
+    <ul class="vb-raster" data-staffel="70" data-animation="zoom">
+      <li><svg class="vb-bild"><use href="#v-manipulation"/></svg><b>Manipulation</b><span class="k-stempel k-stempel--klein">lit. a</span></li>
+      <li><svg class="vb-bild"><use href="#v-schwaeche"/></svg><b>Schwächen ausnutzen</b><span class="k-stempel k-stempel--klein">lit. b</span></li>
+      <li><svg class="vb-bild"><use href="#v-scoring"/></svg><b>Social Scoring</b><span class="k-stempel k-stempel--klein">lit. c</span></li>
+      <li><svg class="vb-bild"><use href="#v-vorhersage"/></svg><b>Straftat-Prognose aus Persönlichkeit</b><span class="k-stempel k-stempel--klein">lit. d</span></li>
+      <li><svg class="vb-bild"><use href="#v-scraping"/></svg><b>Gesichter massenhaft auslesen</b><span class="k-stempel k-stempel--klein">lit. e</span></li>
+      <li class="vb-brennpunkt"><svg class="vb-bild"><use href="#v-emotion"/></svg><b>Emotionen am Arbeitsplatz</b><span class="k-stempel k-stempel--klein">lit. f</span></li>
+      <li><svg class="vb-bild"><use href="#v-kategorie"/></svg><b>Biometrie nach Religion, Herkunft</b><span class="k-stempel k-stempel--klein">lit. g</span></li>
+      <li><svg class="vb-bild"><use href="#v-ueberwachung"/></svg><b>Live-Gesichts&shy;erkennung (Polizei)</b><span class="k-stempel k-stempel--klein">lit. h</span></li>
+      <li class="vb-neu"><svg class="vb-bild"><use href="#v-deepfake"/></svg><b>Intime Deepfakes ohne Zustimmung</b><span class="k-stempel k-stempel--klein">lit. ba · neu</span></li>
+      <li class="vb-neu"><svg class="vb-bild"><use href="#v-schutz"/></svg><b>Darstellungen von Kindesmissbrauch</b><span class="k-stempel k-stempel--klein">lit. bb · neu</span></li>
+    </ul>
+    <div class="vb-betrieb" data-schritt="1" data-animation="hoch">
+      <span class="stelle-nr vb-stelle">4</span>
+      <p><b>Im Betrieb:</b> Die Stimmungsanalyse der Beschäftigten im Kundenservice ist <span class="k-etikett" data-klasse="verboten"><svg class="k-form"><use href="#s-verboten"/></svg>verboten</span>, auch mit Einwilligung. Ausnahme nur aus medizinischen oder Sicherheitsgründen.</p>
+      <p class="vb-strafe"><span class="k-zahl">35 Mio. €</span><span data-meta>oder 7 % des Jahresumsatzes</span></p>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Art. 5 Abs. 1 KI-VO, lit. ba und bb neu ab 2.12.2026 (VO (EU) 2026/1744); Leitlinien C(2025) 5052; Bußgeld Art. 99 Abs. 3</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Ganz oben, rot: Was gar nicht geht. Seit Februar 2025 sind acht Praktiken verboten: Menschen manipulieren, ihre Schwächen ausnutzen, Social Scoring, Straftaten allein aus der Persönlichkeit vorhersagen, Gesichter massenhaft aus dem Netz auslesen, Emotionen am Arbeitsplatz erkennen, Menschen per Biometrie nach Religion oder Herkunft sortieren und Live-Gesichtserkennung durch die Polizei mit engen Ausnahmen. Mit dem Omnibus kommen ab Dezember zwei dazu: intime Deepfakes ohne Zustimmung und Darstellungen von Kindesmissbrauch.“</p>
+    <p class="gesprochen" data-schritt="1">„Für KMU ist ein Punkt besonders relevant: die Emotionserkennung am Arbeitsplatz. Die Stimmungsanalyse unserer Beschäftigten im Kundenservice, Stelle vier, ist verboten, und zwar auch dann, wenn die Beschäftigten einwilligen. Erlaubt ist das nur aus medizinischen oder Sicherheitsgründen. Ein Verstoß kann bis zu 35 Millionen Euro oder sieben Prozent des Jahresumsatzes kosten.“</p>
+    <p>Präzisierung: Emotionserkennung im Sinne des Gesetzes beruht auf biometrischen Daten (Stimme, Mimik, Tippverhalten), reine Textauswertung nicht (Leitlinien). Die neuen Verbote greifen für Anbieter nur, wenn die Erzeugung Zweck des Systems ist oder ohne zumutbare Schutzvorkehrungen absehbar eintritt (Art. 5 Abs. 1a). Für KMU gilt bei Bußgeldern der niedrigere Betrag (Folie 22).</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 09 · Orange: zwei Türen · 100 s
+     Links Tür 1 Produkt (Anhang I), rechts Tür 2 Einsatzzweck (Anhang III,
+     acht Felder). Schritt 1: KMU-typische Felder; Schritt 2: der Betrieb.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie hr-folie" id="f09" data-titel="Orange: zwei Türen" data-feld="leer" data-station="2" data-zeit="100" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker" data-klasse="hoch"><svg class="k-form"><use href="#s-hoch"/></svg>Hochriskant · ab 2.12.2027 bzw. 2.8.2028</p>
+    <h2 class="titel">Orange: zwei Türen ins Hochrisiko</h2>
+  </header>
+  <div class="folie-inhalt hr-inhalt">
+    <section class="hr-tuer hr-tuer--produkt" data-animation="links">
+      <p class="hr-schild"><span class="hr-nr">1</span>Produkt <span class="k-stempel k-stempel--klein">Anhang I</span></p>
+      <p class="hr-bedingung">KI ist <b>Sicherheitsbauteil</b> eines Produkts <b>und</b> das Produkt braucht eine <b>Prüfung durch Dritte</b></p>
+      <ul class="hr-beispiele"><li>Maschinen</li><li>Aufzüge</li><li>Spielzeug</li><li>Medizinprodukte</li></ul>
+      <p class="hr-hinweis" data-meta>Maschinen und Fahrzeuge: Anforderungen über das Produktrecht, ab 2.8.2028</p>
+      <p class="hr-betrieb" data-schritt="2" data-animation="hoch"><span class="stelle-nr vb-stelle vb-stelle--hoch">6</span>KI-Not-Stopp in der eigenen Maschine</p>
+    </section>
+    <section class="hr-tuer hr-tuer--zweck" data-animation="links" data-verzoegerung="150">
+      <p class="hr-schild"><span class="hr-nr">2</span>Einsatzzweck <span class="k-stempel k-stempel--klein">Anhang III</span></p>
+      <ol class="hr-felder">
+        <li class="hr-kmu"><span>1</span>Biometrie, Emotions&shy;erkennung</li>
+        <li><span>2</span>Kritische Infrastruktur</li>
+        <li class="hr-kmu"><span>3</span>Bildung und Prüfungen</li>
+        <li class="hr-kmu hr-betrieb-feld"><span>4</span>Beschäftigung und Personal</li>
+        <li class="hr-kmu"><span>5</span>Kredit, Lebens- und Kranken&shy;versicherung</li>
+        <li><span>6</span>Strafverfolgung</li>
+        <li><span>7</span>Migration und Grenze</li>
+        <li><span>8</span>Justiz und Wahlen</li>
+      </ol>
+      <p class="hr-kmu-hinweis" data-schritt="1" data-animation="hoch">Für KMU typisch: Felder 1, 3, 4, 5</p>
+      <p class="hr-betrieb" data-schritt="2" data-animation="hoch"><span class="stelle-nr vb-stelle vb-stelle--hoch">3</span>Bewerber-Ranking: Anhang III Nr. 4 lit. a</p>
+    </section>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Art. 6 Abs. 1 und 2, Anhang I und III KI-VO; Maschinenverordnung (EU) 2023/1230 seit VO (EU) 2026/1744 in Anhang I Abschnitt B</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Orange, hochriskant. Hier gibt es zwei Türen. Tür eins ist das Produkt: Die KI ist ein Sicherheitsbauteil, etwa in einer Maschine, einem Aufzug oder einem Medizinprodukt, und das Produkt muss von einer unabhängigen Stelle geprüft werden. Tür zwei ist der Einsatzzweck: Anhang III listet acht Bereiche, in denen KI über Menschen entscheidet.“</p>
+    <p class="gesprochen" data-schritt="1">„Für KMU sind vor allem vier relevant: Emotionserkennung, Bildung und Prüfungen, Personal, und Kredit- oder Versicherungsentscheidungen.“</p>
+    <p class="gesprochen" data-schritt="2">„In unserem Betrieb gehen gleich zwei Stellen durch diese Türen. Das Bewerber-Ranking, Stelle drei, durch Tür zwei. Und der KI-Not-Stopp in den eigenen Maschinen, Stelle sechs, durch Tür eins. Für den Maschinenbau ist neu: Seit dem Omnibus kommen die KI-Anforderungen für Maschinen über die Maschinenverordnung, ab August 2028.“</p>
+    <p>Präzisierung: Anhang I Abschnitt A (z. B. Spielzeug, Aufzüge, Medizinprodukte): Anforderungen direkt aus dem AI Act. Abschnitt B (seit Omnibus auch Maschinen, dazu Fahrzeuge, Luftfahrt, Bahn, Schiffsausrüstung): über delegierte Rechtsakte zum Produktrecht (Art. 2 Abs. 2). Reine Qualitätskontrolle ist kein Sicherheitsbauteil, außer ihr Ausfall würde Gesundheit oder Sicherheit gefährden (Art. 6 Abs. 1a, 1b); eine Drittprüfung nur wegen Funk- oder EMV-Risiken zählt nicht (Abs. 1c).</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 10 · Der Filter · 75 s
+     Trichter mit vier Durchlässen (Art. 6 Abs. 3 lit. a–d) und Riegel
+     „Profiling“. Rechts das Paar Vollständigkeit / Ranking.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie fi-folie" id="f10" data-titel="Der Filter" data-feld="leer" data-station="2" data-zeit="75" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker" data-klasse="hoch"><svg class="k-form"><use href="#s-hoch"/></svg>Hochriskant · Ausnahme</p>
+    <h2 class="titel">Nicht jeder Anhang-III-Fall ist hochriskant</h2>
+  </header>
+  <div class="folie-inhalt fi-inhalt">
+    <div class="fi-trichter">
+      <p class="fi-kopf">Ausgänge <span class="k-stempel k-stempel--klein">Art. 6 Abs. 3</span></p>
+      <ol class="fi-liste" data-staffel="100" data-animation="rechts">
+        <li><b>a</b><span>nur eng begrenzte Verfahrensaufgabe</span></li>
+        <li><b>b</b><span>verbessert abgeschlossene menschliche Arbeit</span></li>
+        <li><b>c</b><span>erkennt Muster, ersetzt nicht die Bewertung</span></li>
+        <li><b>d</b><span>bereitet eine Bewertung nur vor</span></li>
+      </ol>
+      <svg class="fi-grafik" viewBox="0 0 520 600" aria-hidden="true">
+        <g class="fi-ausgaenge"><path d="M-50 64H31"/><path d="M-50 174H83"/><path d="M-50 284H135"/><path d="M-50 394H187"/></g>
+        <path class="fi-form" d="M20 40H500L330 400v100H190V400z"/>
+        <path class="fi-unten" d="M260 500v44"/>
+      </svg>
+      <p class="fi-oben">Zweck aus Anhang III</p>
+      <div class="fi-riegel" data-schritt="1" data-animation="runter" aria-hidden="true"></div>
+      <p class="fi-riegel-text" data-schritt="1" data-animation="hoch"><b>Riegel:</b> Profiling schließt alle Ausgänge</p>
+      <p class="fi-ergebnis"><span class="k-etikett k-etikett--voll" data-klasse="hoch"><svg class="k-form"><use href="#s-hoch"/></svg>hochriskant</span></p>
+    </div>
+    <div class="fi-paar">
+      <article class="k-karte fi-fall" data-klasse="ausnahme" data-schritt="2" data-animation="hoch">
+        <p class="fi-fall-kopf"><span class="k-etikett" data-klasse="ausnahme"><svg class="k-form"><use href="#s-hoch"/></svg>Ausnahme möglich</span></p>
+        <h3>Software prüft nur, ob die Unterlagen vollständig sind</h3>
+        <p>Anbieter dokumentiert und registriert.</p>
+      </article>
+      <article class="k-karte fi-fall" data-klasse="hoch" data-schritt="3" data-animation="hoch">
+        <p class="fi-fall-kopf"><span class="k-etikett" data-klasse="hoch"><svg class="k-form"><use href="#s-hoch"/></svg>hochriskant</span></p>
+        <h3>Dieselbe Software rankt die Bewerbungen</h3>
+        <p>Profiling: Ausnahme gesperrt.</p>
+      </article>
+      <p class="k-merksatz fi-merksatz" data-schritt="3" data-animation="hoch">Im Zweifel hochriskant.</p>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Art. 6 Abs. 3 und 4, Art. 49 Abs. 2 KI-VO; Leitlinien zur Hochrisiko-Einstufung bisher nur als Entwurf (19.5.2026)</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Nicht alles, was in Anhang III fällt, ist automatisch hochriskant. Es gibt einen Filter mit vier Durchlässen: Das System erledigt nur eine eng begrenzte Verfahrensaufgabe, es verbessert nur das Ergebnis einer abgeschlossenen menschlichen Arbeit, es erkennt nur Muster, ohne die menschliche Bewertung zu ersetzen, oder es bereitet eine Bewertung nur vor.“</p>
+    <p class="gesprochen" data-schritt="1">„Aber der Filter hat einen Riegel: Sobald das System Menschen bewertet, also Profiling betreibt, ist es immer hochriskant.“</p>
+    <p class="gesprochen" data-schritt="2">„Ein Beispiel: Eine Software prüft nur, ob die Bewerbungsunterlagen vollständig sind. Hier kann die Ausnahme greifen. Der Anbieter muss das dann dokumentieren und das System registrieren.“</p>
+    <p class="gesprochen" data-schritt="3">„Dieselbe Software bewertet und rankt die Bewerbungen: Das ist Profiling, der Riegel greift, sie ist hochriskant. Und die Faustregel unserer Prüflogik lautet: im Zweifel hochriskant.“</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 11 · Pflichten · 85 s
+     Links der Stapel des Anbieters (zwölf Blöcke), rechts die Checkliste des
+     Betreibers. Schritt 1: Beschäftigte und Betriebsrat vorher informieren.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie pf-folie" id="f11" data-titel="Wer trägt wie viel?" data-feld="leer" data-station="2" data-zeit="85" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker" data-klasse="hoch"><svg class="k-form"><use href="#s-hoch"/></svg>Hochriskant · Pflichten</p>
+    <h2 class="titel">Wer trägt wie viel?</h2>
+  </header>
+  <div class="folie-inhalt pf-inhalt">
+    <section class="pf-spalte">
+      <p class="pf-kopf"><b>Anbieter</b><span>baut das System</span></p>
+      <ol class="pf-stapel" data-staffel="60" data-animation="runter">
+        <li>Risikomanagement</li><li>Datenqualität</li><li>Technische Doku</li><li>Protokollierung</li>
+        <li>Betriebsanleitung</li><li>Menschliche Aufsicht</li><li>Genauigkeit, Sicherheit</li><li>Qualitätsmanagement</li>
+        <li>Konformitätsbewertung</li><li>CE-Kennzeichnung</li><li>Registrierung</li><li>Vorfälle melden</li>
+      </ol>
+      <p class="pf-artikel"><span class="k-stempel k-stempel--klein">Art. 8–17, 43, 47–49, 72, 73</span></p>
+    </section>
+    <section class="pf-spalte pf-spalte--betreiber">
+      <p class="pf-kopf"><b>Betreiber</b><span>setzt es ein, also meist das KMU</span></p>
+      <ul class="pf-liste" data-staffel="80" data-animation="hoch">
+        <li><svg class="pf-haken"><use href="#i-haken"/></svg>nach Betriebsanleitung nutzen</li>
+        <li><svg class="pf-haken"><use href="#i-haken"/></svg>menschliche Aufsicht durch kompetente Personen</li>
+        <li><svg class="pf-haken"><use href="#i-haken"/></svg>passende Eingabedaten, Betrieb überwachen</li>
+        <li><svg class="pf-haken"><use href="#i-haken"/></svg>Protokolle mindestens 6 Monate aufbewahren</li>
+        <li class="pf-wichtig"><svg class="pf-haken"><use href="#i-haken"/></svg><span>Beschäftigte und Vertretung <b>vorher</b> informieren</span></li>
+        <li><svg class="pf-haken"><use href="#i-haken"/></svg>Betroffene informieren, auf Verlangen erklären</li>
+      </ul>
+      <p class="pf-artikel"><span class="k-stempel k-stempel--klein">Art. 26, 86</span> <span class="pf-ab" data-meta>ab 2.12.2027</span></p>
+      <p class="pf-betrvg" data-schritt="1" data-animation="hoch"><b>Heute schon:</b> Mitbestimmung des Betriebsrats bei technischer Überwachung <span class="k-stempel k-stempel--klein">§ 87 Abs. 1 Nr. 6 BetrVG</span></p>
+    </section>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Art. 8–17, 26, 27, 43, 47–49, 72, 73, 86 KI-VO. Grundrechte-Folgenabschätzung (Art. 27) nur für bestimmte Betreiber, z. B. bei Bonität und Lebens- oder Krankenversicherung.</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Wer trägt bei Hochrisiko-Systemen wie viel? Der Anbieter trägt die Hauptlast: Risikomanagement, Datenqualität, Dokumentation, Qualitätsmanagement, Konformitätsbewertung, CE-Kennzeichen und Registrierung. Der Betreiber, also meist das KMU, hat eine kürzere Liste: das System nach Anleitung nutzen, Menschen mit Kompetenz zur Aufsicht einsetzen, den Betrieb überwachen, Protokolle mindestens sechs Monate aufbewahren und Betroffene informieren. Das gilt ab Dezember 2027.“</p>
+    <p class="gesprochen" data-schritt="1">„Ein Punkt verdient Aufmerksamkeit: Vor dem Einsatz am Arbeitsplatz müssen Beschäftigte und ihre Vertretung informiert werden. Und unabhängig vom AI Act hat der Betriebsrat schon heute ein Mitbestimmungsrecht, wenn Technik Leistung oder Verhalten überwachen kann.“</p>
+    <p>Rückfrage Grundrechte-Folgenabschätzung: nur öffentliche Stellen, private Erbringer öffentlicher Dienste sowie Betreiber von Bonitäts- und Lebens-/Krankenversicherungs-Systemen (Art. 27 Abs. 1). Für das HR-Tool eines privaten KMU nicht vorgeschrieben.</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 12 · Gelb: Transparenz · 70 s
+     Vier Mini-Szenen (Abs. 1 bis 4), Schritt 1: der eigene Chatbot.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie tr-folie" id="f12" data-titel="Gelb: Transparenz" data-feld="leer" data-station="2" data-zeit="70" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker" data-klasse="transparenz"><svg class="k-form"><use href="#s-transparenz"/></svg>Transparenz · seit 2.8.2026</p>
+    <h2 class="titel">Gelb: sagen, dass es KI ist</h2>
+  </header>
+  <div class="folie-inhalt tr-inhalt">
+    <ul class="tr-szenen" data-staffel="120" data-animation="hoch">
+      <li>
+        <div class="tr-bild tr-bild--chat" aria-hidden="true"><span class="tr-blase tr-blase--ki" data-meta>Hallo, ich bin ein KI-Assistent.</span><span class="tr-blase tr-blase--mensch" data-meta>Wann können Sie liefern?</span></div>
+        <b>Chatbot</b><span>Menschen erfahren, dass sie mit KI sprechen</span>
+        <p class="tr-wer"><span>Anbieter</span><span class="k-stempel k-stempel--klein">Abs. 1</span></p>
+      </li>
+      <li>
+        <div class="tr-bild tr-bild--marke" aria-hidden="true"><svg viewBox="0 0 120 80"><rect x="6" y="6" width="108" height="68" rx="6"/><path d="M6 60l30-26 22 18 16-12 40 30"/><circle cx="84" cy="24" r="8"/></svg><span class="tr-code" data-meta>&lt;KI/&gt;</span></div>
+        <b>KI-Inhalte</b><span>maschinenlesbar als KI-erzeugt markiert</span>
+        <p class="tr-wer"><span>Anbieter</span><span class="k-stempel k-stempel--klein">Abs. 2</span></p>
+      </li>
+      <li>
+        <div class="tr-bild tr-bild--emotion" aria-hidden="true"><svg viewBox="0 0 120 80"><circle cx="44" cy="40" r="26"/><path d="M34 34h.01M54 34h.01M34 50q10 8 20 0"/><path d="M84 18h28v26H84z"/><path d="M98 24v10M98 38v.01"/></svg></div>
+        <b>Emotionserkennung</b><span>Betroffene werden informiert</span>
+        <p class="tr-wer"><span>Betreiber</span><span class="k-stempel k-stempel--klein">Abs. 3</span></p>
+      </li>
+      <li>
+        <div class="tr-bild tr-bild--deepfake" aria-hidden="true"><svg viewBox="0 0 120 80"><rect x="6" y="6" width="108" height="68" rx="6"/><circle cx="60" cy="34" r="12"/><path d="M38 66c0-12 10-18 22-18s22 6 22 18"/></svg><span class="tr-label" data-meta>KI-generiert</span></div>
+        <b>Deepfake</b><span>Offenlegen, dass es künstlich ist</span>
+        <p class="tr-wer"><span>Betreiber</span><span class="k-stempel k-stempel--klein">Abs. 4</span></p>
+      </li>
+    </ul>
+    <div class="tr-betrieb" data-schritt="1" data-animation="hoch">
+      <span class="stelle-nr vb-stelle vb-stelle--transparenz">2</span>
+      <p><b>Im Betrieb:</b> Den Website-Chatbot hat der Betrieb selbst gebaut. Damit ist er <b>Anbieter</b> und muss Abs. 1 und 2 selbst erfüllen. Bei einem eingekauften Chatbot läge die Pflicht beim Hersteller.</p>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Art. 50 Abs. 1–4 KI-VO; Altsysteme: Abs. 2 bis 2.12.2026 (Art. 111 Abs. 4); Leitlinien zu Art. 50 und Verhaltenskodex zu KI-Inhalten (10.6.2026)</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Gelb heißt: sagen, dass es KI ist. Vier Fälle. Ein Chatbot muss so gebaut sein, dass Menschen merken, dass sie mit einer KI sprechen. KI-erzeugte Texte, Bilder und Videos müssen vom Anbieter maschinenlesbar markiert werden. Wer Emotionserkennung einsetzt, muss die Betroffenen informieren. Und wer Deepfakes veröffentlicht, muss offenlegen, dass sie künstlich sind. Das gilt seit August 2026.“</p>
+    <p class="gesprochen" data-schritt="1">„In unserem Betrieb ist das Stelle zwei: der Website-Chatbot. Weil der Betrieb ihn selbst gebaut hat, ist er Anbieter und muss diese Pflichten selbst erfüllen. Hätte er ihn eingekauft, läge die Hinweispflicht beim Hersteller. Hier sehen Sie, warum die Rolle so wichtig ist.“</p>
+    <p>Präzisierung: Abs. 1 entfällt, wenn es offensichtlich ist. Abs. 4 bei erkennbar künstlerischen oder satirischen Werken eingeschränkt; KI-Texte zu öffentlichen Themen ohne redaktionelle Verantwortung ebenfalls offenlegen. Für generative Systeme, die vor dem 2.8.2026 auf dem Markt waren: Abs. 2 bis 2.12.2026.</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 13 · Grün und Art. 4 · 60 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie mi-folie" id="f13" data-titel="Grün und KI-Kompetenz" data-feld="leer" data-station="2" data-zeit="60" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker" data-klasse="minimal"><svg class="k-form"><use href="#s-minimal"/></svg>Minimal · für alle: Art. 4</p>
+    <h2 class="titel">Grün: frei, aber nicht pflichtfrei</h2>
+  </header>
+  <div class="folie-inhalt mi-inhalt">
+    <section class="mi-feld" data-klasse="minimal">
+      <p class="mi-feld-kopf">Der Großteil aller KI im Betrieb</p>
+      <ul class="mi-beispiele" data-staffel="100" data-animation="hoch">
+        <li><span class="stelle-nr vb-stelle vb-stelle--minimal">1</span>Textassistent für Angebote</li>
+        <li><span class="stelle-nr vb-stelle vb-stelle--minimal">5</span>Kamera erkennt Kratzer</li>
+        <li><span class="mi-punkt" aria-hidden="true"></span>Übersetzung, Spamfilter, Routenplanung</li>
+      </ul>
+      <p class="mi-satz">Keine besonderen Pflichten aus dem AI Act</p>
+    </section>
+    <section class="mi-art4">
+      <p class="mi-art4-kopf"><span class="k-stempel">Art. 4</span> <b>KI-Kompetenz unterstützen</b></p>
+      <blockquote>„Die Anbieter und Betreiber von KI-Systemen ergreifen Maßnahmen, um die Entwicklung der KI-Kompetenz ihres Personals … zu unterstützen“</blockquote>
+      <div class="mi-nicht" data-schritt="1" data-animation="hoch">
+        <p><b>Nicht verlangt:</b></p>
+        <ul><li>kein bestimmtes Niveau</li><li>kein Zertifikat</li><li>kein KI-Beauftragter</li><li>kein Bußgeldtatbestand</li></ul>
+      </div>
+      <p class="mi-tipp" data-schritt="2" data-animation="hoch"><b>Trotzdem dokumentieren:</b> Bei einem Schaden zeigt es Sorgfalt. Beispiel: der KI-Führerschein aus unserer Sitzung vom 26.10.</p>
+    </section>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Art. 4 KI-VO in der Fassung der VO (EU) 2026/1744 (kein bestimmtes Niveau mehr); Art. 95; kein Bußgeldtatbestand in Art. 99 und § 15 KI-MIG</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Grün ist der Normalfall. Der Textassistent für Angebote und die Kratzer-Kamera unseres Betriebs fallen hier hinein, genau wie Übersetzung oder Spamfilter. Keine besonderen Pflichten. Aber eine Pflicht gilt für alle, die KI einsetzen: Artikel 4, die KI-Kompetenz. Seit dem Omnibus heißt es: Unternehmen ergreifen Maßnahmen, um die Kompetenz ihres Personals zu unterstützen.“</p>
+    <p class="gesprochen" data-schritt="1">„Was nicht verlangt wird: ein bestimmtes Niveau, ein Zertifikat, ein KI-Beauftragter. Und es gibt dafür keinen Bußgeldtatbestand.“</p>
+    <p class="gesprochen" data-schritt="2">„Trotzdem lohnt es sich, Schulungen zu dokumentieren. Bei einem Schaden zeigt das Sorgfalt. Den KI-Führerschein aus unserer Sitzung vom 26. Oktober kennen Sie ja schon.“</p>
+    <p>Präzisierung: Kein Bußgeld folgt daraus, dass Art. 4 weder in Art. 99 Abs. 3–5 noch in § 15 KI-MIG steht; ausdrücklich steht es nirgends. Für Systeme unter Aufsicht des AI Office gibt es eine Ausnahme (Art. 75c). Hilfe: Bundesnetzagentur, Mittelstand-Digital Zentren.</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 14 · Lila: GPAI · 55 s
+     Drei Schichten: Modell, KI-System, Einsatz, mit Rolle und Pflicht.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie gp-folie" id="f14" data-titel="Lila: GPAI-Modelle" data-feld="leer" data-station="2" data-zeit="55" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker" data-klasse="gpai"><svg class="k-form"><use href="#s-gpai"/></svg>GPAI · seit 2.8.2025</p>
+    <h2 class="titel">Lila: Pflichten für die großen Modelle</h2>
+  </header>
+  <div class="folie-inhalt gp-inhalt">
+    <ol class="gp-schichten" data-staffel="160" data-animation="runter">
+      <li class="gp-schicht gp-schicht--einsatz"><span class="gp-name">Einsatz im Betrieb</span><span class="gp-beispiel">Vertrieb schreibt Angebote</span><span class="gp-rolle">Betreiber · Art. 4</span></li>
+      <li class="gp-schicht gp-schicht--system"><span class="gp-name">KI-System</span><span class="gp-beispiel">Chat-Anwendung, eigener Website-Bot</span><span class="gp-rolle">Anbieter des Systems · z. B. Art. 50</span></li>
+      <li class="gp-schicht gp-schicht--modell" data-klasse="gpai"><span class="gp-name"><svg class="k-form"><use href="#s-gpai"/></svg>GPAI-Modell</span><span class="gp-beispiel">großes Sprachmodell</span><span class="gp-rolle">Modellanbieter · Art. 53, 55</span></li>
+    </ol>
+    <div class="gp-regeln">
+      <p class="gp-regel" data-schritt="1" data-animation="hoch"><b>Wer ein Modell nur per Schnittstelle nutzt,</b> ist kein Modellanbieter, kann aber Anbieter seines eigenen Systems sein.</p>
+      <p class="gp-regel" data-schritt="2" data-animation="hoch"><b>Wer ein Modell stark nachtrainiert,</b> wird selbst Modellanbieter. Richtwert der Kommission: mehr als ein Drittel der ursprünglichen Trainingsrechenleistung.</p>
+      <p class="gp-regel gp-regel--schwelle" data-schritt="3" data-animation="hoch"><span class="k-zahl">10<sup>25</sup> FLOP</span><span>Ab diesem Trainingsaufwand wird ein systemisches Risiko vermutet, mit zusätzlichen Pflichten.</span></p>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Art. 51–55 KI-VO; Leitlinien der Kommission zu GPAI-Pflichten, C(2025) 7719, Rn. 60; Verhaltenskodex für GPAI vom 10.7.2025</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Die Sonderspur in Lila betrifft die großen KI-Modelle mit allgemeinem Verwendungszweck. Stellen Sie es sich in drei Schichten vor: unten das Modell, darauf das KI-System, oben der Einsatz im Betrieb. Die Modellpflichten, also Dokumentation, Urheberrecht, Zusammenfassung der Trainingsdaten, treffen die Modellanbieter.“</p>
+    <p class="gesprochen" data-schritt="1">„Ein KMU, das ein Modell nur über eine Schnittstelle nutzt, ist kein Modellanbieter. Baut es darauf ein eigenes Produkt, ist es aber Anbieter dieses Systems.“</p>
+    <p class="gesprochen" data-schritt="2">„Wer ein Modell stark nachtrainiert, kann selbst Modellanbieter werden. Die Kommission nennt als Richtwert mehr als ein Drittel der ursprünglichen Rechenleistung.“</p>
+    <p class="gesprochen" data-schritt="3">„Und für die ganz großen Modelle, ab zehn hoch 25 Rechenoperationen im Training, wird ein systemisches Risiko vermutet. Das betrifft eine Handvoll Unternehmen weltweit, kaum ein KMU.“</p>
+    <p>Präzisierung: Das Drittel-Kriterium (Leitlinien Rn. 60) zeigt an, wann ein nachgelagerter Modifizierer Anbieter eines GPAI-Modells wird; es ist kein Kriterium für die „wesentliche Veränderung“ eines KI-Systems. Leitlinien sind nicht verbindlich.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 15 · Umfrage Fall 1 · 75 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie u-folie" id="f15" data-titel="Live: Fall 1" data-feld="leer" data-station="3" data-zeit="75" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">Fall 1 · Stelle 3 · Ihre Einschätzung</p>
+    <h2 class="titel" data-umfrage-frage="ki-bewerbung">Ein Tool bewertet Bewerbungen und erstellt ein Ranking. Welche Klasse?</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="umfrage" data-umfrage="ki-bewerbung" data-aufloesung="1" data-aussage="1" data-qr-groesse="360"></div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Anonym, ohne Anmeldung · Auflösung auf der nächsten Folie</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Jetzt sind Sie dran. Fall eins aus unserem Betrieb: Eine eingekaufte Software bewertet Bewerbungen, erstellt ein Ranking und sortiert unpassende automatisch aus. Welche Klasse? Scannen Sie den QR-Code, anonym, ohne Anmeldung.“ Ca. 40 Sekunden laufen lassen.</p>
+    <p class="gesprochen" data-schritt="1">„[Zahl] Prozent liegen richtig: hochriskant. Schauen wir uns an, wie die Prüflogik zu diesem Ergebnis kommt.“</p>
+    <p>Technik: Stand alle 2 s. Ohne Netz: Handzeichen, Klick auf eine Antwort = +1, Umschalt+Klick = −1. Runde in marke.js am Vortragstag setzen.</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 16 · Klassifizierer Fall 1 · 90 s
+     Schritt 1 spielt den Fall „bewerbung“ ab (js/klassifizierer.js).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie kl-folie" id="f16" data-titel="Klassifizierer: Fall 1" data-feld="leer" data-station="3" data-zeit="90" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">So prüft die Logik: <span class="k-leise">Fall 1</span></h2>
+  </header>
+  <div class="folie-inhalt kl-inhalt">
+    <div class="klassifizierer" data-faelle="bewerbung"></div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Vereinfacht nach der Prüflogik von SimpleAct (16 statt 29 Fragen) · Rechtsstand 31.10.2026 · keine Rechtsberatung</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Das ist der Klassifizierer. Er beruht auf der Prüflogik von SimpleAct, für heute vereinfacht auf 16 Ja-Nein-Fragen in fünf Prüfstufen: Ist das Gesetz anwendbar, ist es verboten, ist es hochriskant, gibt es Transparenzpflichten, und ist es ein eigenes großes Modell? Die Reihenfolge ist bewusst: Ein Verbot sticht alles andere.“</p>
+    <p class="gesprochen" data-schritt="1">„Unser Fall: Es ist KI, keine Ausnahme, nichts Verbotenes, kein Sicherheitsbauteil. Aber der Zweck steht in Anhang drei, Beschäftigung und Personal. Bewertet es Menschen? Ja, das ist Profiling. Damit ist der Filter gesperrt: hochriskant. Danach prüft die Logik weiter, ob zusätzlich Transparenzpflichten greifen. Hier nicht. Unser Betrieb ist Betreiber und muss ab Dezember 2027 die Betreiberpflichten erfüllen.“</p>
+    <p>Prüflogik: regelbasiert und deterministisch, es entscheidet keine KI. „Unsicher“ zählt in der vollständigen Logik wie „Ja“, damit nie zu niedrig eingestuft wird (Ausnahme: der Filter nach Art. 6 Abs. 3).</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 17 · Umfrage Fall 2 · 60 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie u-folie" id="f17" data-titel="Live: Fall 2" data-feld="leer" data-station="3" data-zeit="60" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">Fall 2 · Variante von Stelle 4 · Ihre Einschätzung</p>
+    <h2 class="titel" data-umfrage-frage="ki-anrufe">Stimmungsanalyse, aber nur bei den Anrufenden. Welche Klasse?</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="umfrage" data-umfrage="ki-anrufe" data-aufloesung="1" data-aussage="1" data-qr-groesse="360"></div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Zur Erinnerung: Bei den Beschäftigten ist die Stimmungsanalyse verboten (Folie 08)</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Fall zwei ist eine Variante: Die Software analysiert die Stimmung nicht mehr bei den Beschäftigten, sondern nur bei den Anrufenden, um eskalierende Gespräche zu erkennen. Welche Klasse ist das jetzt?“</p>
+    <p class="gesprochen" data-schritt="1">„[Zahl] Prozent sagen hochriskant. Das stimmt, und es kommt noch etwas dazu.“</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 18 · Klassifizierer: gleiche Technik, andere Klasse · 100 s
+     Schritt 1: Beschäftigte (verboten), Schritt 2: Anrufende (hochriskant
+     + Transparenz). Knopf „Eigener Fall“ für einen Fall aus dem Publikum.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie kl-folie" id="f18" data-titel="Klassifizierer: Fall 2" data-feld="leer" data-station="3" data-zeit="100" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Gleiche Technik, <span class="k-leise">andere Klasse</span></h2>
+  </header>
+  <div class="folie-inhalt kl-inhalt">
+    <div class="klassifizierer" data-faelle="stimmung-team stimmung-anrufe" data-frei></div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Art. 5 Abs. 1 lit. f, Art. 6 Abs. 2 mit Anhang III Nr. 1 lit. c, Art. 50 Abs. 3 KI-VO · vereinfacht nach SimpleAct · keine Rechtsberatung</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Zum Vergleich lasse ich beide Varianten laufen.“</p>
+    <p class="gesprochen" data-schritt="1">„Erst bei den Beschäftigten: Emotionen am Arbeitsplatz, keine medizinische oder Sicherheitsfunktion, also verboten. Die Prüfung endet hier.“</p>
+    <p class="gesprochen" data-schritt="2">„Jetzt bei den Anrufenden: Das Verbot greift nicht, denn Kunden sind weder Beschäftigte noch Lernende. Aber Emotionserkennung steht in Anhang drei, also hochriskant. Und weil Emotionen erkannt werden, müssen die Anrufenden zusätzlich informiert werden: Transparenz. Gleiche Technik, andere Klasse. Entscheidend ist, wen sie trifft.“</p>
+    <p>Freier Modus: Knopf „Eigener Fall“ unten rechts, dann Ja/Nein klicken (↶ nimmt die letzte Antwort zurück). Vorschlag, falls niemand etwas nennt: „Excel-Formel“ oder „KI-Schichtplanung nach Leistungsdaten“ (hochriskant, Anhang III Nr. 4 lit. b).</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 19 · Das KI-Inventar · 70 s
+     Wimmelbild eingefärbt, Zeilen erscheinen nacheinander (Schritte 1–6).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie inv-folie" id="f19" data-titel="Das KI-Inventar" data-feld="leer" data-station="3" data-zeit="70" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Das KI-Inventar der Muster Metallbau</h2>
+  </header>
+  <div class="folie-inhalt inv-inhalt">
+    <svg class="k-wimmel inv-bild" viewBox="0 0 900 600" role="img" aria-label="Der Betrieb mit allen sechs KI-Stellen nach Risikoklasse eingefärbt" data-punkte="1 2 3 4 5 6" data-klassen="1:minimal@1 5:minimal@1 2:transparenz@2 3:hoch@3 6:hoch@3 4:verboten@4">
+      <use href="#wimmel-bau"/>
+    </svg>
+    <table class="inv-tabelle tabelle">
+      <thead><tr><th>Stelle</th><th>Klasse</th><th>Rolle</th><th>wichtigste Pflicht</th></tr></thead>
+      <tbody>
+        <tr data-schritt="1" data-animation="hoch"><td><span class="inv-stelle"><span class="w-nr">1</span>Angebote mit ChatGPT</span></td><td><span class="k-etikett" data-klasse="minimal"><svg class="k-form"><use href="#s-minimal"/></svg>minimal</span></td><td>Betreiber</td><td>KI-Kompetenz</td></tr>
+        <tr data-schritt="1" data-animation="hoch"><td><span class="inv-stelle"><span class="w-nr">5</span>Kratzer-Kamera</span></td><td><span class="k-etikett" data-klasse="minimal"><svg class="k-form"><use href="#s-minimal"/></svg>minimal</span></td><td>Betreiber</td><td>KI-Kompetenz</td></tr>
+        <tr data-schritt="2" data-animation="hoch"><td><span class="inv-stelle"><span class="w-nr">2</span>eigener Chatbot</span></td><td><span class="k-etikett" data-klasse="transparenz"><svg class="k-form"><use href="#s-transparenz"/></svg>Transparenz</span></td><td>Anbieter</td><td>als KI erkennbar, seit 8/2026</td></tr>
+        <tr data-schritt="3" data-animation="hoch"><td><span class="inv-stelle"><span class="w-nr">3</span>Bewerber-Ranking</span></td><td><span class="k-etikett" data-klasse="hoch"><svg class="k-form"><use href="#s-hoch"/></svg>hochriskant</span></td><td>Betreiber</td><td>Art. 26, ab 12/2027</td></tr>
+        <tr data-schritt="3" data-animation="hoch"><td><span class="inv-stelle"><span class="w-nr">6</span>KI-Not-Stopp</span></td><td><span class="k-etikett" data-klasse="hoch"><svg class="k-form"><use href="#s-hoch"/></svg>hochriskant</span></td><td>Hersteller</td><td>über Maschinen&shy;recht, ab 8/2028</td></tr>
+        <tr data-schritt="4" data-animation="hoch"><td><span class="inv-stelle"><span class="w-nr">4</span>Stimmung im Team</span></td><td><span class="k-etikett" data-klasse="verboten"><svg class="k-form"><use href="#s-verboten"/></svg>verboten</span></td><td>Betreiber</td><td>sofort abschalten</td></tr>
+      </tbody>
+    </table>
+    <p class="k-merksatz inv-merksatz" data-schritt="5" data-animation="hoch">Vier von sechs brauchen mehr als eine Schulung. Wie lag Ihre Zahl?</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Fälle nach der Prüflogik von SimpleAct geprüft (Stand 31.10.2026) · Muster Metallbau GmbH ist erfunden</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Zurück zu unserem Betrieb. Wie sieht das Inventar aus?“</p>
+    <p class="gesprochen" data-schritt="1">„Grün: der Textassistent und die Kratzer-Kamera. Hier reicht KI-Kompetenz.“</p>
+    <p class="gesprochen" data-schritt="2">„Gelb: der eigene Chatbot. Weil selbst gebaut, ist der Betrieb Anbieter und muss ihn als KI erkennbar machen.“</p>
+    <p class="gesprochen" data-schritt="3">„Orange, zweimal: das Bewerber-Ranking mit den Betreiberpflichten ab Dezember 2027, und der KI-Not-Stopp in den eigenen Maschinen. Hier ist der Betrieb Hersteller, die Anforderungen kommen über das Maschinenrecht ab August 2028.“</p>
+    <p class="gesprochen" data-schritt="4">„Und rot: die Stimmungsanalyse im Team. Die muss sofort abgeschaltet werden.“</p>
+    <p class="gesprochen" data-schritt="5">„Vier von sechs Stellen brauchen also mehr als eine Schulung. Wie lag Ihre Zahl?“</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 20 · KMU in Zahlen · 70 s
+     Links Balken KI-Nutzung nach Größe (Destatis 2025), rechts vier Kacheln.
+     Belege: ../recherche/kmu-zahlen.md (Nr. 2–4, 11, 13, 23, 45)
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie za-folie" id="f20" data-titel="KMU in Zahlen" data-feld="leer" data-station="4" data-zeit="70" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Viel KI im Einsatz, <span class="k-leise">wenig Klarheit</span></h2>
+  </header>
+  <div class="folie-inhalt za-inhalt">
+    <figure class="za-balken">
+      <figcaption>Unternehmen, die KI nutzen, nach Beschäftigten</figcaption>
+      <ol>
+        <li style="--wert:23"><span class="za-wert"><span class="k-zahl" data-animation="zaehlen" data-ziel="23" data-einheit=" %">23 %</span></span><span class="za-saeule"></span><span class="za-name">10–49</span></li>
+        <li style="--wert:36"><span class="za-wert"><span class="k-zahl" data-animation="zaehlen" data-ziel="36" data-einheit=" %">36 %</span></span><span class="za-saeule"></span><span class="za-name">50–249</span></li>
+        <li style="--wert:57"><span class="za-wert"><span class="k-zahl" data-animation="zaehlen" data-ziel="57" data-einheit=" %">57 %</span></span><span class="za-saeule"></span><span class="za-name">ab 250</span></li>
+      </ol>
+      <p class="za-quelle" data-meta>Destatis, IKT-Erhebung 2025</p>
+    </figure>
+    <ul class="za-kacheln">
+      <li data-schritt="1" data-animation="hoch"><span class="k-zahl">71 %</span><span>fühlen sich schlecht über den AI Act informiert</span><span class="za-quelle" data-meta>BSI und TÜV-Verband 2026</span></li>
+      <li data-schritt="1" data-animation="hoch" data-verzoegerung="120"><span class="k-zahl">88 %</span><span>der KI-Nutzer sind Betreiber, nur 4&nbsp;% Anbieter</span><span class="za-quelle" data-meta>BSI und TÜV-Verband 2026</span></li>
+      <li data-schritt="2" data-animation="hoch"><span class="k-zahl">33,5 %</span><span>der KI-Nutzenden in Betrieben unter 50 Beschäftigten nutzen eigene, nicht gestellte Tools</span><span class="za-quelle" data-meta>IW Köln 2026</span></li>
+      <li data-schritt="2" data-animation="hoch" data-verzoegerung="120"><span class="k-zahl">62 %</span><span>der Firmen, die KI verworfen haben, nennen unklare Rechtsfolgen</span><span class="za-quelle" data-meta>Destatis 2025</span></li>
+    </ul>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Destatis IKT-Erhebung 2025 (ab 10 Beschäftigten); BSI und TÜV-Verband, KI-Sicherheitsstudie 2026 (n = 505, ab 20 Beschäftigten); IW-Kurzbericht 63/2026. Grundgesamtheiten unterscheiden sich.</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Wie sieht es in der Praxis aus? KI ist im Mittelstand angekommen, aber ungleich verteilt: 23 Prozent der kleinen Unternehmen nutzen KI, 36 Prozent der mittleren und 57 Prozent der großen.“</p>
+    <p class="gesprochen" data-schritt="1">„Beim Recht fehlt die Klarheit. 71 Prozent der Unternehmen fühlen sich schlecht über den AI Act informiert. Und 88 Prozent der KI-Nutzer sind Betreiber, genau wie in unserem Beispiel.“</p>
+    <p class="gesprochen" data-schritt="2">„Dazu kommt Schatten-KI: In kleinen Betrieben nutzt ein Drittel der KI-Nutzenden Tools, die der Arbeitgeber gar nicht bereitstellt. Und für 62 Prozent der Firmen, die KI verworfen haben, war die unklare Rechtslage ein Grund.“</p>
+    <p>Rückfragen: EU-Schnitt 17 / 30 / 55 % (Eurostat 2025). Bitkom 2026: 70 % schulen zu KI, 25 % gar nicht. Kosten laut Folgenabschätzung der Kommission (2021, Modellrechnung): ca. 6.000–7.000 € je Hochrisiko-System. Alle Zahlen mit Fundstelle: ../recherche/kmu-zahlen.md.</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 21 · Sechs Irrtümer · 100 s
+     Karten drehen sich nacheinander um (Schritte 1–6).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie ir-folie" id="f21" data-titel="Sechs Irrtümer" data-feld="leer" data-station="4" data-zeit="100" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Sechs Irrtümer, <span class="k-leise">die wir oft hören</span></h2>
+  </header>
+  <div class="folie-inhalt ir-inhalt">
+    <ul class="ir-karten">
+      <li><p class="ir-irrtum">„Hochrisiko ist verschoben, also gilt noch nichts.“</p><p class="ir-fakt" data-schritt="1" data-animation="zustand"><b>Doch:</b> Verbote und KI-Kompetenz seit 2/2025, Transparenz seit 8/2026.</p></li>
+      <li><p class="ir-irrtum">„Wir nutzen nur ein Tool.“</p><p class="ir-fakt" data-schritt="2" data-animation="zustand"><b>Meist mehr:</b> KI steckt in Office, CRM, HR-Software und privaten Konten.</p></li>
+      <li><p class="ir-irrtum">„Wer nur einkauft, ist raus.“</p><p class="ir-fakt" data-schritt="3" data-animation="zustand"><b>Nein:</b> Wer einsetzt, ist Betreiber, mit eigenen Pflichten.</p></li>
+      <li><p class="ir-irrtum">„Mit menschlicher Prüfung ist es nicht hochriskant.“</p><p class="ir-fakt" data-schritt="4" data-animation="zustand"><b>Nur selten:</b> Die Ausnahme ist eng und gilt nie bei Profiling.</p></li>
+      <li><p class="ir-irrtum">„Wir brauchen einen KI-Beauftragten und ein Zertifikat.“</p><p class="ir-fakt" data-schritt="5" data-animation="zustand"><b>Nein:</b> Art. 4 verlangt Maßnahmen, keine bestimmte Form.</p></li>
+      <li><p class="ir-irrtum">„Für kleine Betriebe gibt es Ausnahmen.“</p><p class="ir-fakt" data-schritt="6" data-animation="zustand"><b>Keine Größenausnahme:</b> Erleichtert wird das Wie, nicht das Ob.</p></li>
+    </ul>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Beobachtungen aus Support und Beratung bei SimpleAct (keine Statistik); Art. 4, 5, 6 Abs. 3, 26, 50, 113 KI-VO</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Aus dem Alltag bei SimpleAct kenne ich sechs Sätze, die wir immer wieder hören. Alle sechs stimmen nicht.“</p>
+    <p class="gesprochen" data-schritt="1">„Erstens: Hochrisiko ist verschoben, also gilt noch nichts. Doch: Verbote und KI-Kompetenz gelten seit Februar 2025, Transparenz seit August 2026.“</p>
+    <p class="gesprochen" data-schritt="2">„Zweitens: Wir nutzen nur ein Tool. Meist sind es mehr, denn KI steckt in Office, im CRM, in der HR-Software und in privaten Konten der Beschäftigten.“</p>
+    <p class="gesprochen" data-schritt="3">„Drittens: Wer nur einkauft, ist raus. Nein, wer einsetzt, ist Betreiber und hat eigene Pflichten.“</p>
+    <p class="gesprochen" data-schritt="4">„Viertens: Mit menschlicher Prüfung ist es nicht hochriskant. Das stimmt nur selten, die Ausnahme ist eng und gilt nie bei Profiling.“</p>
+    <p class="gesprochen" data-schritt="5">„Fünftens: Wir brauchen einen KI-Beauftragten und ein Zertifikat. Nein, Artikel 4 verlangt Maßnahmen, aber keine bestimmte Form.“</p>
+    <p class="gesprochen" data-schritt="6">„Und sechstens: Für kleine Betriebe gibt es Ausnahmen. Es gibt keine Größenausnahme. Erleichtert wird das Wie, nicht das Ob.“</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 22 · Bußgeld und Erleichterungen · 80 s
+     Links drei Balken (35/15/7,5 Mio. €); Schritt 1: KMU mit 10 Mio. €
+     Umsatz, Balken schrumpfen auf den niedrigeren Betrag. Rechts Hilfen.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie bu-folie" id="f22" data-titel="Bußgeld und Erleichterungen" data-feld="leer" data-station="4" data-zeit="80" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Was ein Verstoß kostet, <span class="k-leise">was entlastet</span></h2>
+  </header>
+  <div class="folie-inhalt bu-inhalt">
+    <section class="bu-strafen">
+      <p class="bu-kopf">Höchstbußgeld <span class="bu-modus" data-schritt="1" data-animation="einblenden">für ein KMU mit 10 Mio. € Umsatz</span></p>
+      <ul class="bu-balken">
+        <li data-klasse="verboten" style="--gross:100%;--kmu:2%"><span class="bu-name">Verbote</span><span class="bu-spur"><span class="bu-fuellung"></span></span><span class="bu-wert"><span class="bu-gross">35 Mio. € oder 7 %</span><span class="bu-klein">700.000 €</span></span></li>
+        <li data-klasse="hoch" style="--gross:42.86%;--kmu:0.86%"><span class="bu-name">Pflichten, Transparenz</span><span class="bu-spur"><span class="bu-fuellung"></span></span><span class="bu-wert"><span class="bu-gross">15 Mio. € oder 3 %</span><span class="bu-klein">300.000 €</span></span></li>
+        <li data-klasse="kein" style="--gross:21.43%;--kmu:0.29%"><span class="bu-name">falsche Auskünfte</span><span class="bu-spur"><span class="bu-fuellung"></span></span><span class="bu-wert"><span class="bu-gross">7,5 Mio. € oder 1 %</span><span class="bu-klein">100.000 €</span></span></li>
+      </ul>
+      <p class="bu-regel" data-schritt="1" data-animation="hoch"><b>Für KMU gilt der niedrigere Betrag,</b> für alle anderen der höhere. <span class="k-stempel k-stempel--klein">Art. 99 Abs. 6</span></p>
+      <p class="k-hinweis bu-national" data-meta>Dazu nationale Bußgelder bis 50.000 € für einzelne Pflichten, z. B. die Erläuterung nach Art. 86 <span class="k-stempel k-stempel--klein">§ 15 KI-MIG</span></p>
+    </section>
+    <section class="bu-hilfe">
+      <p class="bu-kopf">Was KMU entlastet</p>
+      <ul class="bu-liste" data-staffel="90" data-animation="hoch">
+        <li><svg class="bu-symbol"><use href="#i-doku"/></svg><span><b>Vereinfachte Dokumentation</b> für Hochrisiko-Anbieter, Formular der Kommission steht noch aus</span><span class="k-stempel k-stempel--klein">Art. 11</span></li>
+        <li><svg class="bu-symbol"><use href="#i-liste"/></svg><span><b>Qualitätsmanagement</b> angemessen zur Größe, vereinfacht für Kleinstunternehmen</span><span class="k-stempel k-stempel--klein">Art. 17, 63</span></li>
+        <li><svg class="bu-symbol"><use href="#i-labor"/></svg><span><b>KI-Reallabor</b>: vorrangig und grundsätzlich kostenlos, bis 2.8.2027, in Deutschland bei der Bundesnetzagentur</span><span class="k-stempel k-stempel--klein">Art. 58, 62</span></li>
+        <li><svg class="bu-symbol"><use href="#i-hilfe-hand"/></svg><span><b>Kostenlose Hilfe</b>: KI-Service-Desk der Bundesnetzagentur, Mittelstand-Digital Zentren</span></li>
+      </ul>
+    </section>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Art. 99 Abs. 3–6, Art. 11, 17, 57, 58, 62, 63 KI-VO; § 15 KI-MIG. Kleine Midcaps (unter 750 Beschäftigte) profitieren seit dem Omnibus bei Abs. 4 und 5 ebenfalls (Art. 99 Abs. 6a).</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Was kostet ein Verstoß? Die Höchstbußgelder sind spektakulär: 35 Millionen Euro oder sieben Prozent des weltweiten Umsatzes für Verbote, 15 Millionen oder drei Prozent für die übrigen Pflichten.“</p>
+    <p class="gesprochen" data-schritt="1">„Für KMU gilt aber der niedrigere der beiden Beträge. Bei zehn Millionen Euro Umsatz heißt das: höchstens 700.000 Euro für ein Verbot. Immer noch existenzbedrohend, aber eine andere Größenordnung. Dazu kommen in Deutschland kleinere nationale Bußgelder.“</p>
+    <p>Rechts: Erleichterungen ändern das Wie, nicht das Ob. Art. 11: nur für Anbieter von Hochrisiko-KI, Formular nicht veröffentlicht (Stand 31.10.2026). Reallabor: Hochschulen und Forschung haben in Deutschland zusätzlich Vorrang (§ 13 KI-MIG). Behörden zahlen keine Bußgelder (§ 17 Abs. 2 KI-MIG).</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 23 · Fünf Schritte · 80 s
+     Fünf Stufen, darunter der Praxisblick: Prüflogik als Software.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie st-folie" id="f23" data-titel="Fünf Schritte" data-feld="leer" data-station="4" data-zeit="80" data-buendel="alle">
+  <header class="folie-kopf">
+    <h2 class="titel">Was ein KMU am Montag tun kann</h2>
+  </header>
+  <div class="folie-inhalt st-inhalt">
+    <ol class="st-schritte" data-staffel="120" data-animation="hoch">
+      <li><span class="st-nr">1</span><svg class="st-symbol"><use href="#i-lupe-plus"/></svg><b>Inventar</b><span>alle KI-Einsätze erfassen, auch private Konten</span></li>
+      <li><span class="st-nr">2</span><svg class="st-symbol"><use href="#i-rolle"/></svg><b>Rolle klären</b><span>Anbieter oder Betreiber?</span></li>
+      <li><span class="st-nr">3</span><svg class="st-symbol"><use href="#s-hoch"/></svg><b>Klassifizieren</b><span>den Prüfpfad gehen</span></li>
+      <li><span class="st-nr">4</span><svg class="st-symbol"><use href="#i-liste"/></svg><b>Pflichten umsetzen</b><span>Kompetenz, Transparenz, Betriebsrat</span></li>
+      <li><span class="st-nr">5</span><svg class="st-symbol"><use href="#i-kreis-pfeil"/></svg><b>Pflegen</b><span>neue Tools, Änderungen, Fristen</span></li>
+    </ol>
+    <div class="st-praxis" data-schritt="1" data-animation="hoch">
+      <p class="st-praxis-kopf">Praxisblick: Prüflogik als Software</p>
+      <ul>
+        <li><span class="k-zahl">29</span><span>Fragen zur Risikoprüfung, 4 zur Rolle</span></li>
+        <li><span class="k-zahl">0</span><span>KI in der Entscheidung: feste Regeln, nachvollziehbar</span></li>
+        <li><span class="k-zahl">?</span><span>„unsicher“ zählt wie „Ja“: nie zu niedrig einstufen</span></li>
+      </ul>
+      <p class="st-praxis-fuss">Ergebnis: Klasse, Begründung, Pflichtenliste mit Terminen, Hinweis bei Änderungen</p>
+    </div>
+    <p class="k-merksatz st-merksatz" data-schritt="2" data-animation="hoch">Das ist Führungsarbeit: wissen, was läuft, und Verantwortung zuordnen.</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Prüflogik SimpleAct, Regelwerk 3.0 vom 14.10.2026. Der AI Act schreibt kein Inventar vor, aber ohne Inventar findet niemand seine Pflichten.</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Was kann ein KMU am Montag tun? Fünf Schritte. Erstens ein Inventar: alle KI-Einsätze erfassen, auch die privaten Konten. Zweitens die Rolle klären. Drittens klassifizieren, also den Prüfpfad gehen, den wir heute gegangen sind. Viertens die Pflichten umsetzen. Und fünftens pflegen, denn neue Tools kommen ständig dazu.“</p>
+    <p class="gesprochen" data-schritt="1">„So setzt SimpleAct das in Software um: 29 Fragen zur Risikoprüfung und vier zur Rolle. In der Entscheidung steckt keine KI, sondern feste, nachvollziehbare Regeln. Und wer unsicher ist, wird so behandelt, als hätte er Ja gesagt, damit nie zu niedrig eingestuft wird.“</p>
+    <p class="gesprochen" data-schritt="2">„Und damit sind wir beim Thema unseres Moduls: Das ist Führungsarbeit. Im KMU landet das meist bei der Geschäftsführung. Wissen, was läuft, und Verantwortung zuordnen.“</p>
+    <p>Rückfrage Rechtsdienstleistung: Die Software gibt eine Ersteinschätzung; die verbindliche Prüfung des Einzelfalls bleibt nach dem Rechtsdienstleistungsgesetz zugelassenen Personen vorbehalten.</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 24 · Kernbotschaft · 60 s (dunkel)
+     Eine Kamera in drei Umgebungen, drei Klassen.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie ke-folie" id="f24" data-titel="Kernbotschaft" data-feld="leer" data-station="alle" data-zeit="60" data-buendel="alle" data-modus="dunkel">
+  <header class="folie-kopf">
+    <h2 class="titel">Eine Kamera, <span class="k-leise">drei Klassen</span></h2>
+  </header>
+  <div class="folie-inhalt ke-inhalt">
+    <ul class="ke-kameras" data-staffel="200" data-animation="hoch">
+      <li data-klasse="minimal"><svg class="ke-kamera"><use href="#i-kamera"/></svg><b>erkennt Kratzer</b><span>Endkontrolle</span><span class="k-etikett k-etikett--voll" data-klasse="minimal"><svg class="k-form"><use href="#s-minimal"/></svg>minimal</span></li>
+      <li data-klasse="hoch"><svg class="ke-kamera"><use href="#i-kamera"/></svg><b>stoppt die Maschine</b><span>Sicherheitsbauteil</span><span class="k-etikett k-etikett--voll" data-klasse="hoch"><svg class="k-form"><use href="#s-hoch"/></svg>hochriskant</span></li>
+      <li data-klasse="verboten"><svg class="ke-kamera"><use href="#i-kamera"/></svg><b>liest Gefühle</b><span>Beschäftigte im Büro</span><span class="k-etikett k-etikett--voll" data-klasse="verboten"><svg class="k-form"><use href="#s-verboten"/></svg>verboten</span></li>
+    </ul>
+    <p class="ke-botschaft" data-schritt="1" data-animation="hoch">Reguliert wird nicht die Technik, <span class="k-zeile">sondern ihr Einsatz.</span></p>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Wenn Sie heute eines mitnehmen, dann dieses Bild: Dieselbe Kamera erkennt Kratzer, minimales Risiko. Sie stoppt eine Maschine, wenn ein Mensch zu nahe kommt, hochriskant. Und sie liest die Gefühle der Beschäftigten, verboten.“</p>
+    <p class="gesprochen" data-schritt="1">„Reguliert wird nicht die Technik, sondern ihr Einsatz. Für KMU heißt das: Man muss wissen, wofür KI im eigenen Haus genutzt wird. Dann ist der AI Act beherrschbar.“</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 25 · Diskussion · 30 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie di-folie" id="f25" data-titel="Diskussion" data-feld="leer" data-zeit="30" data-buendel="alle" data-laufkopf="aus">
+  <header class="folie-kopf">
+    <h2 class="titel">Diskussion</h2>
+  </header>
+  <div class="folie-inhalt di-inhalt">
+    <ol class="di-fragen" data-staffel="140" data-animation="hoch">
+      <li>Wer sollte im KMU für KI-Compliance zuständig sein: Geschäftsführung, IT oder ein externer Dienstleister?</li>
+      <li>Bremst der AI Act kleine Unternehmen aus, oder schafft er Vertrauen, das ihnen nützt?</li>
+      <li>Welche KI nutzen Sie im (Neben-)Job, und in welche Klasse fällt sie?</li>
+    </ol>
+    <figure class="di-qr">
+      <div class="qr" data-qr="https://yannickoderso.github.io/Management-im-KMU/ki-compliance/praesentation/klassifizierer.html" data-kurz="" data-groesse="300"></div>
+      <figcaption><b>Klassifizierer zum Mitnehmen</b><span>Ihren eigenen Fall prüfen, vereinfacht, keine Rechtsberatung</span></figcaption>
+    </figure>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Damit bin ich am Ende und freue mich auf die Diskussion. Drei Fragen als Anstoß. Und wer möchte, kann den Klassifizierer über den QR-Code mitnehmen und seinen eigenen Fall prüfen.“</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B1 · Quellen
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie bk-folie" id="b1" data-titel="Backup: Quellen" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup" data-laufkopf="aus">
+  <header class="folie-kopf"><h2 class="titel">Quellen</h2></header>
+  <div class="folie-inhalt">
+    <ul class="bk-quellen tabelle">
+      <li><b>Verordnung (EU) 2024/1689</b> (KI-Verordnung, AI Act), ABl. L vom 12.7.2024, in der Fassung der <b>VO (EU) 2026/1744</b> (Digital-Omnibus KI) vom 8.7.2026, ABl. L vom 24.7.2026, berichtigt am 29.9.2026.</li>
+      <li><b>KI-Marktüberwachungs- und Innovationsförderungsgesetz (KI-MIG)</b>, Art. 1 des Gesetzes zur Durchführung der Verordnung über künstliche Intelligenz vom 22.7.2026, BGBl. 2026 I Nr. 223.</li>
+      <li><b>Leitlinien der Kommission</b>: Definition des KI-Systems, C(2025) 5053; verbotene Praktiken, C(2025) 5052 (beide 29.7.2025); Pflichten für GPAI-Modelle, C(2025) 7719 (19.11.2025); Entwurf zur Hochrisiko-Einstufung (19.5.2026); Leitlinien zu Art. 50 (20.7.2026).</li>
+      <li><b>Maschinenverordnung (EU) 2023/1230</b>; Empfehlung (EU) 2025/1099 (kleine Midcaps); harmonisierte Norm EN 18286:2026 (Qualitätsmanagement).</li>
+      <li><b>Destatis</b>, IKT-Erhebung 2025; <b>Eurostat</b>, Use of AI in enterprises (12/2025); <b>BSI und TÜV-Verband</b>, KI-Sicherheitsstudie 2026; <b>IW Köln</b>, Kurzbericht 63/2026; <b>Bitkom</b>, Presseinformationen 2025 und 2026.</li>
+      <li><b>SimpleAct</b>: Prüflogik, Regelwerk 3.0 vom 14.10.2026 (vereinfacht wiedergegeben); Beobachtungen aus Support und Beratung.</li>
+    </ul>
+  </div>
+  <footer class="folie-fuss"><p class="quelle">Vollständige Fundstellen: ki-compliance/recherche/rechtspruefung.md und kmu-zahlen.md</p></footer>
+  <aside class="notizen"><p>Backup für Rückfragen zu Belegen.</p></aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B2 · Die zehn Verbote
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie bk-folie" id="b2" data-titel="Backup: Verbote" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup" data-laufkopf="aus">
+  <header class="folie-kopf"><h2 class="titel">Die zehn Verbote im Überblick</h2></header>
+  <div class="folie-inhalt">
+    <table class="bk-tabelle tabelle">
+      <thead><tr><th>lit.</th><th>Verboten ist …</th><th>Ausnahme, Hinweis</th></tr></thead>
+      <tbody>
+        <tr><td>a</td><td>unterschwellige, manipulative oder täuschende Beeinflussung mit erheblichem Schaden</td><td></td></tr>
+        <tr><td>b</td><td>Ausnutzen von Schwächen (Alter, Behinderung, soziale oder wirtschaftliche Lage)</td><td></td></tr>
+        <tr><td>c</td><td>Social Scoring mit sachfremder oder unverhältnismäßiger Benachteiligung</td><td></td></tr>
+        <tr><td>d</td><td>Straftat-Prognose allein aus Profiling oder Persönlichkeitsmerkmalen</td><td>nicht: Unterstützung einer menschlichen Bewertung auf Basis von Fakten</td></tr>
+        <tr><td>e</td><td>Gesichtsdatenbanken durch ungezieltes Auslesen von Internet oder Videoüberwachung</td><td></td></tr>
+        <tr><td>f</td><td>Emotionserkennung am Arbeitsplatz und in Bildungseinrichtungen</td><td>medizinische oder Sicherheitsgründe</td></tr>
+        <tr><td>g</td><td>biometrische Kategorisierung nach Herkunft, politischer Meinung, Religion, Sexualleben u. a.</td><td>Filtern rechtmäßig erworbener Datensätze, Strafverfolgung</td></tr>
+        <tr><td>h</td><td>biometrische Echtzeit-Fernidentifizierung im öffentlichen Raum zur Strafverfolgung</td><td>eng begrenzte Fälle mit Genehmigung</td></tr>
+        <tr><td>ba</td><td>realistische intime Darstellungen bestimmbarer Personen ohne Zustimmung (ab 2.12.2026)</td><td>gilt, wenn Zweck oder absehbares Ergebnis (Abs. 1a)</td></tr>
+        <tr><td>bb</td><td>Darstellungen sexuellen Kindesmissbrauchs (ab 2.12.2026)</td><td>wie ba</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <footer class="folie-fuss"><p class="quelle">Art. 5 Abs. 1 KI-VO; lit. ba, bb und Abs. 1a eingefügt durch VO (EU) 2026/1744; Leitlinien C(2025) 5052</p></footer>
+  <aside class="notizen"><p>Backup für Rückfragen zu einzelnen Verboten.</p></aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B3 · Anhang III vollständig
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie bk-folie" id="b3" data-titel="Backup: Anhang III" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup" data-laufkopf="aus">
+  <header class="folie-kopf"><h2 class="titel">Anhang III: die acht Hochrisiko-Bereiche</h2></header>
+  <div class="folie-inhalt">
+    <ol class="bk-anhang tabelle">
+      <li><b>Biometrie:</b> Fernidentifizierung (nicht bloße Verifizierung), Kategorisierung nach sensiblen Merkmalen, Emotionserkennung</li>
+      <li><b>Kritische Infrastruktur:</b> Sicherheitsbauteile in digitaler Infrastruktur, Straßenverkehr, Wasser-, Gas-, Wärme- und Stromversorgung</li>
+      <li><b>Bildung:</b> Zugang und Zulassung, Bewertung von Lernergebnissen, Einstufung des Bildungsniveaus, Überwachung bei Prüfungen</li>
+      <li><b>Beschäftigung:</b> Stellenanzeigen, Sichten, Filtern und Bewerten von Bewerbungen; Entscheidungen über Arbeitsbedingungen, Beförderung, Kündigung; Aufgabenzuweisung nach Verhalten; Leistungsbewertung</li>
+      <li><b>Wesentliche Dienste:</b> öffentliche Leistungen, Kreditwürdigkeit natürlicher Personen (nicht Betrugserkennung), Risiko und Preis bei Lebens- und Krankenversicherung, Notrufe und Triage</li>
+      <li><b>Strafverfolgung:</b> u. a. Risikobewertung von Personen, Lügendetektoren, Beweiswürdigung</li>
+      <li><b>Migration, Asyl, Grenze:</b> u. a. Risikobewertung, Prüfung von Anträgen</li>
+      <li><b>Justiz und Demokratie:</b> Unterstützung von Gerichten, Beeinflussung von Wahlen und Abstimmungen</li>
+    </ol>
+  </div>
+  <footer class="folie-fuss"><p class="quelle">Anhang III KI-VO (durch den Omnibus nicht geändert); Filter nach Art. 6 Abs. 3</p></footer>
+  <aside class="notizen"><p>Backup für Rückfragen, ob ein bestimmter Zweck hochriskant ist.</p></aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B4 · Digital-Omnibus
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie bk-folie" id="b4" data-titel="Backup: Digital-Omnibus" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup" data-laufkopf="aus">
+  <header class="folie-kopf"><h2 class="titel">Was der Digital-Omnibus geändert hat</h2></header>
+  <div class="folie-inhalt">
+    <table class="bk-tabelle tabelle">
+      <thead><tr><th>Thema</th><th>vorher</th><th>seit 27.7.2026</th></tr></thead>
+      <tbody>
+        <tr><td>Hochrisiko-Termine</td><td>2.8.2026 / 2.8.2027</td><td>2.12.2027 (Anhang III) / 2.8.2028 (Anhang I), feste Termine</td></tr>
+        <tr><td>KI-Kompetenz (Art. 4)</td><td>ausreichendes Maß „nach besten Kräften sicherstellen“</td><td>Maßnahmen „zur Unterstützung“, kein bestimmtes Niveau</td></tr>
+        <tr><td>Verbote (Art. 5)</td><td>acht Verbote</td><td>zwei neue ab 2.12.2026 (lit. ba, bb)</td></tr>
+        <tr><td>Maschinen</td><td>Anhang I Abschnitt A</td><td>Abschnitt B: Anforderungen über die Maschinenverordnung, ab 2.8.2028</td></tr>
+        <tr><td>Sicherheitsbauteil</td><td>nur allgemeine Definition (Art. 3 Nr. 14)</td><td>reine Qualitätskontrolle u. Ä. ausgenommen, außer Ausfall gefährdet Sicherheit (Art. 6 Abs. 1a–1c)</td></tr>
+        <tr><td>Kleine Midcaps</td><td>gab es nicht</td><td>unter 750 Beschäftigte: vereinfachte Doku, niedrigere Bußgelder (Art. 99 Abs. 4, 5)</td></tr>
+        <tr><td>Kennzeichnung (Art. 50 Abs. 2)</td><td>ab 2.8.2026</td><td>für Altsysteme bis 2.12.2026</td></tr>
+        <tr><td>Bestandsschutz</td><td>Stichtag 2.8.2026</td><td>Stichtag ist der neue Anwendungsbeginn</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <footer class="folie-fuss"><p class="quelle">VO (EU) 2026/1744; Art. 3 Nr. 14b, 4, 5, 6, 11, 99, 111, 113 KI-VO n. F.; Empfehlung (EU) 2025/1099</p></footer>
+  <aside class="notizen"><p>Backup für Rückfragen zum Omnibus.</p></aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B5 · Drei Gesetze zugleich
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie bk-folie" id="b5" data-titel="Backup: AI Act, DSGVO, BetrVG" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup" data-laufkopf="aus">
+  <header class="folie-kopf"><h2 class="titel">Drei Gesetze zugleich</h2></header>
+  <div class="folie-inhalt">
+    <table class="bk-tabelle tabelle">
+      <thead><tr><th>Thema</th><th>AI Act</th><th>DSGVO</th><th>BetrVG</th></tr></thead>
+      <tbody>
+        <tr><td>Rollen</td><td>Anbieter, Betreiber</td><td>Verantwortlicher, Auftragsverarbeiter</td><td>Arbeitgeber, Betriebsrat</td></tr>
+        <tr><td>Folgenabschätzung</td><td>Grundrechte-Folgenabschätzung für bestimmte Betreiber (Art. 27)</td><td>DSFA (Art. 35), bei Bewertung von Personen meist nötig</td><td></td></tr>
+        <tr><td>Automatisierte Entscheidung</td><td>menschliche Aufsicht, Erläuterung (Art. 14, 26, 86)</td><td>Verbot ausschließlich automatisierter Entscheidungen (Art. 22, EuGH C-634/21)</td><td></td></tr>
+        <tr><td>Am Arbeitsplatz</td><td>Beschäftigte und Vertretung vorher informieren (Art. 26 Abs. 7)</td><td>Rechtsgrundlage, Information</td><td>Mitbestimmung bei technischer Überwachung (§ 87 Abs. 1 Nr. 6)</td></tr>
+        <tr><td>Aufsicht</td><td>Bundesnetzagentur u. a.</td><td>Datenschutzbehörden</td><td>Einigungsstelle, Arbeitsgericht</td></tr>
+      </tbody>
+    </table>
+    <p class="bk-satz" data-meta>Beispiel: Stimmungsanalyse der Beschäftigten ist nach dem AI Act verboten, auch mit Einwilligung; die DSGVO kennt kein solches Pauschalverbot.</p>
+  </div>
+  <footer class="folie-fuss"><p class="quelle">Art. 2 Abs. 7, 14, 26, 27, 86 KI-VO; Art. 22, 35 DSGVO; § 87 Abs. 1 Nr. 6 BetrVG</p></footer>
+  <aside class="notizen"><p>Backup für Rückfragen zum Datenschutz.</p></aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B6 · Methode und Grenzen
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie bk-folie" id="b6" data-titel="Backup: Methode" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup" data-laufkopf="aus">
+  <header class="folie-kopf"><h2 class="titel">Methode und Grenzen</h2></header>
+  <div class="folie-inhalt">
+    <ul class="bk-quellen tabelle">
+      <li><b>Prüflogik:</b> SimpleAct, Regelwerk 3.0 vom 14.10.2026 (29 Fragen zur Risikoprüfung, 4 zur Rolle), regelbasiert. Für den Vortrag vereinfacht auf 16 Fragen und 13 Ergebnisse; ergänzt um die Fragen zur KI-Definition, zu Art. 2 und zu Anhang I Abschnitt B.</li>
+      <li><b>Gegenprüfung:</b> 20 Kernaussagen von der Prüflogik bewertet (8 präzisiert), alle Rechtsangaben am Amtsblatt, Bundesgesetzblatt und an Dokumenten der Kommission geprüft.</li>
+      <li><b>Grenzen:</b> Ersteinschätzung, keine Rechtsberatung. Leitlinien der Kommission sind nicht verbindlich, das letzte Wort hat der EuGH. Leitlinien zur Hochrisiko-Einstufung liegen nur als Entwurf vor.</li>
+      <li><b>Bestandsschutz:</b> Hochrisiko-Systeme, die vor dem neuen Anwendungsbeginn laufen, fallen nur bei erheblicher Änderung unter die Pflichten. Verbote gelten immer.</li>
+      <li><b>Haftung:</b> Der AI Act schafft keine eigenen Schadensersatzansprüche; Betroffene können sich beschweren (Art. 85) und eine Erläuterung verlangen (Art. 86).</li>
+    </ul>
+  </div>
+  <footer class="folie-fuss"><p class="quelle">Rechtsstand 31.10.2026</p></footer>
+  <aside class="notizen"><p>Backup für Rückfragen zur Methode und Belastbarkeit.</p></aside>
+</section>
+
+
+  </main>
+</div>
+
+<script src="js/deck.js"></script>
+<script src="js/komponenten.js"></script>
+<script src="js/vendor/qrcode-generator.js"></script>
+<script src="js/klassifizierer-daten.js"></script>
+<script src="js/klassifizierer.js"></script>
+<script src="js/folien/ki.js"></script>
+</body>
+</html>

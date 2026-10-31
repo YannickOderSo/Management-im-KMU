@@ -1,0 +1,959 @@
+/* =============================================================================
+   ki-folien.css – Gestaltung der einzelnen Folien („Prüfpfad“)
+   Präfixe: t- Titel · w- Wimmelbild · p- Fahrplan · z- Zeitstrahl ·
+   d- Definition · ro- Rollen · py- Pyramide · vb- Verbote · hr- Hochrisiko ·
+   fi- Filter · pf- Pflichten · tr- Transparenz · mi- Minimal · gp- GPAI ·
+   u- Umfrage · kl- Klassifizierer-Folie · inv- Inventar · za- Zahlen ·
+   ir- Irrtümer · bu- Bußgeld · st- Schritte · ke- Kernbotschaft ·
+   di- Diskussion · bk- Backup
+   ============================================================================= */
+
+
+/* ---------- Gemeinsam: Stellen-Nummer (Betrieb) ---------- */
+.vb-stelle, .w-nr {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 3px solid var(--k-tinte);
+  font-family: var(--schrift-display);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--k-tinte);
+  background: var(--k-papier);
+}
+.vb-stelle { width: 56px; height: 56px; font-size: 28px; border: 0; background: var(--k-rot); color: var(--k-auf-rot); }
+.vb-stelle--hoch { background: var(--k-orange); color: var(--k-auf-orange); }
+.vb-stelle--transparenz { background: var(--k-gelb); color: var(--k-auf-gelb); box-shadow: inset 0 0 0 2px var(--k-gelb-text); }
+.vb-stelle--minimal { border-radius: 8px; background: var(--k-gruen); color: var(--k-auf-gruen); width: 48px; height: 48px; font-size: 24px; }
+
+
+/* =============================================================================
+   01 TITEL
+   ============================================================================= */
+.folie.t-titel {
+  grid-template-columns: minmax(0, 1fr) 720px;
+  grid-template-rows: minmax(0, 1fr);
+  grid-template-areas: "kopf inhalt";
+  column-gap: 60px;
+  align-items: center;
+}
+.t-titel > .folie-kopf { margin: 0 !important; align-self: center; }
+.t-titel > .folie-inhalt { margin: 0 !important; justify-content: center; }
+.t-reihe {
+  display: flex; gap: 24px;
+  font-size: 24px; font-weight: 600; color: var(--k-tinte-2);
+  margin-bottom: 36px;
+}
+.t-reihe span + span::before { content: "·"; margin-right: 24px; }
+.t-titel .titel.t-satz {
+  font-size: 118px;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  max-width: none;
+}
+.t-unter {
+  margin-top: 32px;
+  font-family: var(--schrift-display);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--k-tinte);
+}
+.t-meta {
+  display: flex; flex-wrap: wrap; gap: 6px 22px;
+  margin-top: 56px;
+  font-size: 26px; color: var(--k-tinte-2);
+}
+.t-meta span + span::before { content: "·"; margin-right: 22px; }
+.t-vorbehalt { margin-top: 14px; font-size: 22px; color: var(--k-tinte-2); }
+
+.t-maschine { width: 720px; height: 720px; overflow: visible; }
+.t-trichter, .t-weiche, .t-fach path {
+  fill: none; stroke: var(--k-tinte); stroke-width: 5; stroke-linejoin: round; stroke-linecap: round;
+}
+.t-trichter { fill: var(--k-flaeche); }
+.t-weiche { stroke: var(--k-mittel); stroke-width: 3; stroke-dasharray: 8 9; }
+.t-fach use { fill: var(--k); }
+.t-fach[data-klasse="transparenz"] use { stroke: var(--k-gelb-text); stroke-width: 1.2; }
+.t-karte rect { fill: var(--k-papier); stroke: var(--k-tinte); stroke-width: 3; }
+.t-karte text {
+  font-family: var(--schrift-text);
+  font-size: 31px; font-weight: 600;
+  text-anchor: middle;
+  fill: var(--k-tinte);
+}
+.t-karte {
+  transform: translate(var(--zx), var(--zy));
+  animation: t-sortieren 10s cubic-bezier(.45, .05, .35, 1) infinite;
+}
+@keyframes t-sortieren {
+  0%   { transform: translate(var(--sx), var(--sy)); opacity: 0; }
+  8%   { transform: translate(var(--sx), 10px); opacity: 1; }
+  30%  { transform: translate(290px, 190px); opacity: 1; }
+  44%  { transform: translate(290px, 360px); opacity: 1; }
+  66%  { transform: translate(var(--zx), var(--zy)); opacity: 1; }
+  90%  { transform: translate(var(--zx), var(--zy)); opacity: 1; }
+  100% { transform: translate(var(--zx), var(--zy)); opacity: 0; }
+}
+
+
+/* =============================================================================
+   WIMMELBILD (Folien 02, 19)
+   ============================================================================= */
+/* Die Zeichnung steht als <symbol> in den defs: Regeln ohne .k-wimmel davor,
+   sonst greifen sie im <use> nicht (Farben erben trotzdem je Folie) */
+.k-wimmel { overflow: visible; }
+.w-flaechen > * { fill: var(--k-flaeche); stroke: none; }
+.w-striche { fill: none; stroke: var(--k-tinte); stroke-width: 3.2; stroke-linejoin: round; stroke-linecap: round; }
+.w-striche .w-duenn { stroke: var(--k-mittel); stroke-width: 2.4; }
+.w-punkt .w-ring { fill: var(--k-papier); stroke: var(--k-tinte); stroke-width: 4.5; }
+.w-punkt .w-form { display: none; fill: var(--k); }
+.w-punkt .w-zahl {
+  font-family: var(--schrift-display);
+  font-size: 34px; font-weight: 700;
+  text-anchor: middle; dominant-baseline: central;
+  fill: var(--k-tinte);
+}
+.w-punkt[data-klasse]:not([data-schritt]) .w-form,
+.w-punkt[data-klasse].schritt-an .w-form { display: inline; }
+.w-punkt[data-klasse]:not([data-schritt]) .w-ring,
+.w-punkt[data-klasse].schritt-an .w-ring { display: none; }
+.w-punkt[data-klasse]:not([data-schritt]) .w-zahl,
+.w-punkt[data-klasse].schritt-an .w-zahl { fill: var(--k-auf); }
+.w-punkt[data-klasse="transparenz"] .w-form { stroke: var(--k-gelb-text); stroke-width: 1.2; }
+.w-punkt--puls { animation: w-puls 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes w-puls {
+  0%, 70%, 100% { scale: 1; }
+  80% { scale: 1.16; }
+}
+
+.w-inhalt {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 56px;
+}
+.w-gross { flex: none; width: 1010px; height: 673px; }
+.w-legende { display: grid; gap: 22px; }
+.w-legende li { display: flex; align-items: center; gap: 18px; font-size: 27px; line-height: 1.25; }
+.w-frage { font-size: 38px; }
+
+
+/* =============================================================================
+   03 FAHRPLAN
+   ============================================================================= */
+.p-inhalt { justify-content: center; position: relative; }
+.p-linie { position: absolute; left: 0; right: 0; top: 230px; width: 1680px; height: 40px; overflow: visible; }
+.p-linie path { stroke: var(--k-tinte); stroke-width: 8; fill: none; stroke-linecap: round; }
+.p-stationen {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 40px;
+  position: relative;
+  margin-top: 0;
+}
+.p-stationen li { display: grid; gap: 14px; align-content: start; }
+.p-punkt {
+  display: grid; place-items: center;
+  width: 120px; height: 120px;
+  margin-bottom: 30px;
+  border-radius: 50%;
+  border: 8px solid var(--k-tinte);
+  background: var(--k-papier);
+  font-family: var(--schrift-display);
+  font-size: 56px; font-weight: 700;
+}
+.p-stationen li:first-child .p-punkt { background: var(--k-tinte); color: var(--k-papier); }
+.p-stationen b { font-family: var(--schrift-display); font-size: 44px; font-weight: 600; line-height: 1.1; }
+.p-stationen span:last-child { font-size: 28px; line-height: 1.35; color: var(--k-tinte-2); }
+
+
+/* =============================================================================
+   04 ZEITSTRAHL
+   ============================================================================= */
+.z-inhalt { position: relative; }
+.z-achse {
+  position: absolute; left: 0; right: 0; top: 244px;
+  height: 6px; border-radius: 3px;
+  background: var(--k-tinte);
+}
+.z-stationen {
+  position: absolute; left: 0; right: 0; top: 150px;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  column-gap: 14px;
+}
+.z-stationen li { display: grid; grid-template-rows: 64px 64px auto auto; justify-items: start; align-items: start; }
+.z-datum {
+  position: relative;
+  align-self: end;
+  font-family: var(--schrift-display);
+  font-size: 30px; font-weight: 600;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.z-punkt {
+  display: grid; place-items: center;
+  width: 52px; height: 52px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: var(--k-papier);
+  box-shadow: 0 0 0 5px var(--k-tinte);
+}
+.z-punkt .k-form { width: 34px; height: 34px; }
+.z-stationen li[data-klasse="kein"] .z-punkt { background: var(--k-tinte); }
+.z-stationen b { margin-top: 18px; font-family: var(--schrift-display); font-size: 28px; font-weight: 600; line-height: 1.12; }
+.z-text { margin-top: 6px; font-size: 25px; line-height: 1.3; color: var(--k-tinte-2); }
+.z-omnibus .z-punkt { box-shadow: 0 0 0 5px var(--k-tinte), 0 0 0 11px var(--k-papier), 0 0 0 14px var(--k-tinte); }
+.z-verschoben .z-datum { display: grid; }
+.z-alt { color: var(--k-tinte); text-decoration: none; position: relative; transition: color .4s, font-size .4s; }
+.z-alt.schritt-an { text-decoration: line-through 4px var(--k-rot); color: var(--k-tinte-2); font-size: 24px; }
+.z-neu { color: var(--k-orange-text); }
+.z-heute {
+  position: absolute;
+  top: 150px; height: 300px;
+  left: calc((1680px - 7 * 14px) / 8 * 5 + 5 * 14px - 8px);
+  width: 4px;
+  background: repeating-linear-gradient(var(--k-rot) 0 10px, transparent 10px 18px);
+}
+.z-heute span {
+  position: absolute; top: -18px; left: 50%; translate: -50% 0;
+  padding: 2px 12px;
+  border-radius: 8px;
+  background: var(--k-rot); color: var(--k-auf-rot);
+  font-size: 22px; font-weight: 700;
+}
+.z-omnibus-hinweis {
+  position: absolute; left: 0; right: 0; top: 600px;
+  display: flex; align-items: center; gap: 18px;
+  font-size: 30px; line-height: 1.3;
+}
+.z-klammer {
+  position: absolute; top: 4px; height: 40px;
+  border: 5px solid var(--k-tinte); border-bottom: 0;
+  border-radius: 14px 14px 0 0;
+}
+.z-klammer span {
+  position: absolute; top: -26px; left: 50%; translate: -50% 0;
+  padding: 0 18px;
+  background: var(--k-papier);
+  font-family: var(--schrift-display); font-size: 32px; font-weight: 600; white-space: nowrap;
+}
+.z-klammer--schon { left: 0; width: calc((1680px - 7 * 14px) / 8 * 5 + 4 * 14px); }
+.z-klammer--noch { right: 0; width: calc((1680px - 7 * 14px) / 8 * 3 + 2 * 14px); border-style: dashed; border-bottom: 0; }
+
+
+/* =============================================================================
+   05 DEFINITION
+   ============================================================================= */
+.d-inhalt {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 64px;
+  align-items: start;
+}
+.d-label { display: flex; align-items: center; gap: 14px; font-size: 28px; font-weight: 600; color: var(--k-tinte-2); }
+.d-definition blockquote {
+  margin: 22px 0 0;
+  padding-left: 28px;
+  border-left: 6px solid var(--k-tinte);
+  font-size: 33px;
+  line-height: 1.5;
+}
+.d-definition mark {
+  background: transparent;
+  color: inherit;
+  padding: 0 2px;
+  border-radius: 4px;
+  transition: background-color .5s;
+}
+.d-definition mark.schritt-an { background: var(--k-flaeche-2); box-shadow: inset 0 -5px 0 var(--k-tinte); }
+.d-kern { margin-top: 30px; font-size: 30px; line-height: 1.35; }
+.d-quiz { display: grid; gap: 20px; }
+.d-quiz li {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  min-height: 112px;
+  padding: 18px 24px;
+  border-radius: var(--k-radius);
+  background: var(--k-flaeche);
+}
+.d-symbol { width: 52px; height: 52px; fill: none; stroke: var(--k-tinte); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.d-name { font-size: 30px; line-height: 1.25; font-weight: 500; }
+.d-urteil {
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 28px; font-weight: 700;
+  white-space: nowrap;
+}
+.d-urteil--ja { background: var(--k-tinte); color: var(--k-papier); }
+.d-urteil--nein { box-shadow: inset 0 0 0 3px var(--k-tinte); }
+
+
+/* =============================================================================
+   06 ROLLEN
+   ============================================================================= */
+.ro-inhalt { position: relative; }
+.ro-kette {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr) 40px minmax(0, 1fr) 40px minmax(0, 0.8fr);
+  align-items: stretch;
+  gap: 12px;
+}
+.ro-rolle {
+  position: relative;
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 26px 26px 28px;
+  border-radius: var(--k-radius);
+  background: var(--k-flaeche);
+}
+.ro-rolle b { font-family: var(--schrift-display); font-size: 34px; font-weight: 600; line-height: 1.1; }
+.ro-rolle > span:not(.k-stempel):not(.ro-kmu) { font-size: 28px; line-height: 1.3; color: var(--k-tinte-2); }
+.ro-rolle .k-stempel { align-self: flex-start; margin-top: auto; }
+.ro-symbol { width: 52px; height: 52px; fill: none; stroke: var(--k-tinte); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.ro-rolle--kmu { background: var(--k-tinte); color: var(--k-papier); }
+.ro-rolle--kmu .ro-symbol { stroke: var(--k-papier); }
+.ro-rolle--kmu > span:not(.k-stempel):not(.ro-kmu) { color: var(--k-papier); opacity: .85; }
+.ro-rolle--kmu .k-stempel { color: var(--k-papier); }
+.ro-kmu {
+  position: absolute; top: -18px; right: 18px;
+  padding: 3px 14px;
+  border-radius: 999px;
+  background: var(--k-orange); color: var(--k-auf-orange);
+  font-size: 22px; font-weight: 700;
+}
+.ro-rolle--leise { background: transparent; box-shadow: inset 0 0 0 3px var(--k-linie); }
+.ro-pfeil { align-self: center; justify-self: center; font-size: 40px; color: var(--k-mittel); }
+.ro-bogen { position: absolute; left: 0; top: 330px; width: 1680px; height: 150px; overflow: visible; }
+.ro-bogen path { fill: none; stroke: var(--k-orange); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.ro-wechsel {
+  position: absolute; left: 0; top: 500px; width: 900px;
+  display: grid; gap: 14px;
+  font-size: 30px; line-height: 1.3;
+}
+.ro-wechsel-kopf { display: flex; align-items: center; gap: 16px; }
+.ro-wechsel ul { display: flex; flex-wrap: wrap; gap: 12px; }
+.ro-wechsel li { padding: 6px 18px; border-radius: 999px; box-shadow: inset 0 0 0 3px var(--k-orange); font-weight: 600; }
+.ro-eigenbau { position: absolute; right: 0; top: 500px; width: 690px; }
+
+
+/* =============================================================================
+   07 PYRAMIDE
+   ============================================================================= */
+.py-inhalt {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 420px;
+  grid-template-rows: minmax(0, 1fr) auto;
+  column-gap: 48px;
+  row-gap: 24px;
+}
+.py-stufen { display: grid; grid-template-columns: 640px minmax(0, 1fr); gap: 30px; align-items: center; }
+.py-grafik { width: 640px; height: 472px; overflow: visible; }
+.py-stufe { fill: var(--k); stroke: var(--k-papier); stroke-width: 4; }
+.py-stufe[data-klasse="transparenz"] { stroke: var(--k-gelb-text); stroke-width: 2; }
+.py-legende { display: grid; gap: 22px; }
+.py-legende li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  column-gap: 16px;
+  align-items: center;
+}
+.py-legende .k-form { width: 36px; height: 36px; grid-row: 1 / 3; }
+.py-legende b { font-family: var(--schrift-display); font-size: 32px; font-weight: 600; color: var(--k-t); }
+.py-legende span:not(.k-stempel) { grid-column: 2; font-size: 28px; color: var(--k-tinte-2); }
+.py-legende .k-stempel { grid-column: 3; grid-row: 1 / 3; }
+.py-gpai { align-self: center; display: grid; gap: 14px; }
+.py-gpai .py-gpai-kopf { display: flex; align-items: center; gap: 14px; font-size: 32px; }
+.py-gpai-kopf .k-form { width: 40px; height: 40px; }
+.py-gpai-kopf b { font-family: var(--schrift-display); color: var(--k-lila-text); }
+.py-gpai p:not(.py-gpai-kopf) { font-size: 28px; }
+.py-gpai .k-stempel { justify-self: start; }
+.py-band {
+  grid-column: 1 / -1;
+  display: flex; align-items: center; gap: 18px;
+  padding: 18px 28px;
+  border-radius: var(--k-radius);
+  background: var(--k-tinte); color: var(--k-papier);
+  font-size: 30px;
+}
+.py-band .k-stempel { color: var(--k-papier); }
+
+
+/* =============================================================================
+   08 VERBOTE
+   ============================================================================= */
+.vb-inhalt { gap: 28px; }
+.vb-raster {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px;
+}
+.vb-raster li {
+  position: relative;
+  display: grid;
+  grid-template-rows: 76px auto auto;
+  gap: 8px;
+  justify-items: start;
+  padding: 18px 20px 18px;
+  border-radius: var(--k-radius);
+  background: var(--k-flaeche);
+  box-shadow: inset 0 5px 0 var(--k-rot);
+}
+.vb-bild { width: 72px; height: 72px; fill: none; stroke: var(--k-tinte); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.vb-raster b { font-size: 28px; line-height: 1.15; font-weight: 600; hyphens: manual; }
+.vb-raster .k-stempel { margin-top: 2px; }
+.vb-neu { box-shadow: inset 0 5px 0 var(--k-rot), inset 0 0 0 3px var(--k-rot) !important; background: var(--k-papier) !important; }
+.vb-folie.schritt-1 .vb-brennpunkt,
+.vb-brennpunkt:has(~ li) { }
+.vb-folie [data-schritt="1"].schritt-an ~ * { }
+.vb-betrieb {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 26px;
+  padding: 22px 28px;
+  border-radius: var(--k-radius);
+  box-shadow: inset 0 0 0 4px var(--k-rot);
+  font-size: 28px; line-height: 1.35;
+}
+.vb-strafe { display: grid; justify-items: end; text-align: right; }
+.vb-strafe .k-zahl { font-size: 52px; color: var(--k-rot-text); }
+.vb-strafe span:last-child { font-size: 22px; color: var(--k-tinte-2); }
+
+
+/* =============================================================================
+   09 HOCHRISIKO: ZWEI TÜREN
+   ============================================================================= */
+.hr-inhalt {
+  display: grid !important;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 32px;
+}
+.hr-tuer {
+  position: relative;
+  display: flex; flex-direction: column; gap: 18px;
+  padding: 28px 32px 28px;
+  border-radius: 22px 22px 8px 8px;
+  border: 5px solid var(--k-orange);
+  border-bottom-width: 12px;
+}
+.hr-schild { display: flex; align-items: center; gap: 16px; font-family: var(--schrift-display); font-size: 38px; font-weight: 600; }
+.hr-nr {
+  display: grid; place-items: center;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: var(--k-orange); color: var(--k-auf-orange);
+  font-size: 30px;
+}
+.hr-bedingung { font-size: 28px; line-height: 1.35; }
+.hr-beispiele { display: flex; flex-wrap: wrap; gap: 10px; }
+.hr-beispiele li { padding: 6px 16px; border-radius: 999px; background: var(--k-flaeche); font-size: 28px; }
+.hr-hinweis { font-size: 26px; line-height: 1.35; color: var(--k-tinte-2); }
+.hr-felder {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 12px;
+}
+.hr-felder li {
+  display: grid; grid-template-columns: 34px minmax(0, 1fr); align-items: center; gap: 8px;
+  min-height: 60px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: var(--k-flaeche);
+  font-size: 28px; line-height: 1.15;
+  hyphens: manual;
+  transition: opacity .4s, box-shadow .4s, background-color .4s;
+}
+.hr-felder li span {
+  font-family: var(--schrift-display); font-size: 28px; font-weight: 700; color: var(--k-orange-text);
+}
+.hr-kmu-hinweis { font-size: 28px; font-weight: 600; color: var(--k-orange-text); }
+.hr-folie:has(.hr-kmu-hinweis.schritt-an) .hr-felder li:not(.hr-kmu) { background: transparent; box-shadow: inset 0 0 0 2px var(--k-linie); color: var(--k-tinte-2); }
+.hr-folie:has(.hr-kmu-hinweis.schritt-an) .hr-felder li:not(.hr-kmu) span { color: var(--k-tinte-2); }
+.hr-folie:has(.hr-kmu-hinweis.schritt-an) .hr-felder li.hr-kmu { box-shadow: inset 0 0 0 4px var(--k-orange); background: var(--k-papier); }
+.hr-folie:has(.hr-betrieb.schritt-an) .hr-felder li.hr-betrieb-feld { background: var(--k-orange-voll); color: var(--k-auf-orange-voll); box-shadow: none; }
+.hr-folie:has(.hr-betrieb.schritt-an) .hr-felder li.hr-betrieb-feld span { color: var(--k-auf-orange-voll); }
+.hr-betrieb {
+  margin-top: auto;
+  display: flex; align-items: center; gap: 16px;
+  font-size: 28px; font-weight: 600; line-height: 1.25;
+}
+
+
+/* =============================================================================
+   10 FILTER
+   Liste der Ausgänge links (je 96 hoch, Abstand 14, ab y 56), Trichter ab
+   x 480 (SVG 1:1), gestrichelte Ausgänge treffen die linke Schräge.
+   Schritt 1: senkrechter Riegel verschließt alle Ausgänge.
+   ============================================================================= */
+.fi-inhalt {
+  display: grid !important;
+  grid-template-columns: 1000px minmax(0, 1fr);
+  gap: 56px;
+}
+.fi-trichter { position: relative; height: 660px; }
+.fi-kopf { position: absolute; left: 0; top: 0; display: flex; align-items: center; gap: 14px; font-family: var(--schrift-display); font-size: 30px; font-weight: 600; }
+.fi-liste { position: absolute; left: 0; top: 56px; width: 430px; display: grid; gap: 14px; }
+.fi-liste li {
+  display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px;
+  height: 96px; align-items: center;
+  padding: 8px 16px;
+  border-radius: 12px;
+  background: var(--k-papier);
+  box-shadow: inset 0 0 0 3px var(--k-orange);
+  font-size: 28px; line-height: 1.15;
+  transition: box-shadow .4s, color .4s;
+}
+.fi-liste b { font-family: var(--schrift-display); font-size: 30px; color: var(--k-orange-text); }
+.fi-grafik { position: absolute; left: 480px; top: 40px; width: 520px; height: 600px; overflow: visible; }
+.fi-form { fill: var(--k-flaeche); stroke: var(--k-tinte); stroke-width: 5; stroke-linejoin: round; }
+.fi-ausgaenge path { stroke: var(--k-orange); stroke-width: 5; stroke-dasharray: 10 8; fill: none; transition: stroke .4s; }
+.fi-unten { stroke: var(--k-tinte); stroke-width: 8; stroke-linecap: round; }
+.fi-oben {
+  position: absolute; left: 520px; top: 110px; width: 440px; text-align: center;
+  font-family: var(--schrift-display); font-size: 32px; font-weight: 600;
+}
+.fi-riegel {
+  position: absolute; left: 444px; top: 66px; width: 20px; height: 420px;
+  border-radius: 10px;
+  background: var(--k-rot);
+}
+.fi-riegel-text { position: absolute; left: 0; top: 520px; width: 470px; font-size: 28px; line-height: 1.3; }
+.fi-riegel-text b { color: var(--k-rot-text); }
+.fi-folie:has(.fi-riegel.schritt-an) .fi-ausgaenge path { stroke: var(--k-linie); }
+.fi-folie:has(.fi-riegel.schritt-an) .fi-liste li { box-shadow: inset 0 0 0 2px var(--k-linie); color: var(--k-tinte-2); }
+.fi-ergebnis { position: absolute; left: 640px; top: 596px; font-size: 32px; }
+.fi-paar { display: grid; gap: 22px; align-content: start; }
+.fi-fall h3 { font-size: 32px; }
+.fi-fall-kopf { margin-bottom: 10px !important; font-size: 28px; }
+.fi-fall-kopf .k-form { width: 26px; height: 26px; }
+
+
+/* =============================================================================
+   11 PFLICHTEN
+   ============================================================================= */
+.pf-inhalt {
+  display: grid !important;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  gap: 48px;
+}
+.pf-spalte { display: flex; flex-direction: column; gap: 18px; }
+.pf-kopf { display: flex; align-items: baseline; gap: 18px; }
+.pf-kopf b { font-family: var(--schrift-display); font-size: 40px; font-weight: 600; }
+.pf-kopf span { font-size: 28px; color: var(--k-tinte-2); }
+.pf-stapel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 10px;
+}
+.pf-stapel li {
+  padding: 13px 18px;
+  border-radius: 10px;
+  background: var(--k-orange-voll);
+  color: var(--k-auf-orange-voll);
+  font-size: 28px; font-weight: 600; line-height: 1.15;
+  display: flex; align-items: center;
+}
+.pf-artikel { display: flex; align-items: center; gap: 16px; font-size: 24px; }
+.pf-ab { font-family: var(--schrift-display); font-weight: 600; color: var(--k-orange-text); }
+.pf-spalte--betreiber {
+  padding: 26px 32px;
+  border-radius: var(--k-radius);
+  box-shadow: inset 0 0 0 4px var(--k-tinte);
+}
+.pf-liste { display: grid; gap: 12px; }
+.pf-liste li { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 12px; align-items: start; font-size: 28px; line-height: 1.3; }
+.pf-haken { width: 34px; height: 34px; fill: none; stroke: var(--k-tinte); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.pf-folie:has(.pf-betrvg.schritt-an) .pf-wichtig { background: var(--k-flaeche-2); border-radius: 8px; box-shadow: 0 0 0 8px var(--k-flaeche-2); }
+.pf-betrvg {
+  margin-top: auto;
+  padding: 14px 18px;
+  border-radius: 10px;
+  background: var(--k-flaeche);
+  font-size: 28px; line-height: 1.35;
+}
+
+
+/* =============================================================================
+   12 TRANSPARENZ
+   ============================================================================= */
+.tr-inhalt { gap: 30px; }
+.tr-szenen {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+.tr-szenen li {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 22px 24px;
+  border-radius: var(--k-radius);
+  background: var(--k-flaeche);
+  box-shadow: inset 0 6px 0 var(--k-gelb);
+}
+.tr-szenen b { margin-top: 8px; font-family: var(--schrift-display); font-size: 32px; font-weight: 600; }
+.tr-szenen li > span { font-size: 28px; line-height: 1.3; color: var(--k-tinte-2); }
+.tr-wer { margin-top: auto !important; padding-top: 10px; display: flex; justify-content: space-between; align-items: center; font-size: 28px; font-weight: 700; }
+.tr-bild {
+  position: relative;
+  height: 190px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: var(--k-papier);
+}
+.tr-bild svg { width: 190px; height: 127px; fill: none; stroke: var(--k-tinte); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.tr-bild--chat { display: flex; flex-direction: column; justify-content: center; align-items: stretch; gap: 10px; padding: 14px; }
+.tr-blase { padding: 8px 14px; border-radius: 16px; font-size: 24px; line-height: 1.2; }
+.tr-blase--ki { align-self: flex-start; background: var(--k-gelb); color: var(--k-auf-gelb); border-bottom-left-radius: 4px; }
+.tr-blase--mensch { align-self: flex-end; background: var(--k-flaeche-2); border-bottom-right-radius: 4px; }
+.tr-code, .tr-label {
+  position: absolute; right: 12px; bottom: 10px;
+  padding: 2px 10px; border-radius: 6px;
+  background: var(--k-gelb); color: var(--k-auf-gelb);
+  font-family: var(--schrift-display); font-size: 22px; font-weight: 700;
+}
+.tr-betrieb {
+  display: flex; align-items: center; gap: 24px;
+  padding: 20px 28px;
+  border-radius: var(--k-radius);
+  box-shadow: inset 0 0 0 4px var(--k-gelb-text);
+  font-size: 28px; line-height: 1.35;
+}
+
+
+/* =============================================================================
+   13 MINIMAL UND ART. 4
+   ============================================================================= */
+.mi-inhalt {
+  display: grid !important;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 48px;
+}
+.mi-feld {
+  align-self: start;
+  display: flex; flex-direction: column; gap: 26px;
+  padding: 36px;
+  border-radius: 10px;
+  background: var(--k-gruen);
+  color: var(--k-auf-gruen);
+}
+.mi-feld-kopf { font-family: var(--schrift-display); font-size: 36px; font-weight: 600; }
+.mi-beispiele { display: grid; gap: 16px; }
+.mi-beispiele li { display: flex; align-items: center; gap: 16px; font-size: 30px; }
+.mi-beispiele .vb-stelle--minimal { background: var(--k-papier); color: var(--k-gruen-text); }
+.mi-punkt { width: 48px; height: 48px; flex: none; border: 3px dashed currentColor; border-radius: 8px; opacity: .8; }
+.mi-satz { margin-top: 14px !important; padding-top: 18px; border-top: 2px solid currentColor; font-size: 28px; line-height: 1.35; }
+.mi-art4 { display: flex; flex-direction: column; gap: 22px; }
+.mi-art4-kopf { display: flex; align-items: center; gap: 16px; font-size: 36px; font-family: var(--schrift-display); }
+.mi-art4 blockquote {
+  margin: 0; padding-left: 24px;
+  border-left: 6px solid var(--k-tinte);
+  font-size: 28px; line-height: 1.4;
+}
+.mi-nicht { display: grid; gap: 10px; font-size: 28px; }
+.mi-nicht ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; }
+.mi-nicht li::before { content: "✕"; margin-right: 12px; font-weight: 700; }
+.mi-tipp { padding: 18px 22px; border-radius: 12px; background: var(--k-flaeche); font-size: 28px; line-height: 1.35; }
+
+
+/* =============================================================================
+   14 GPAI
+   ============================================================================= */
+.gp-inhalt {
+  display: grid !important;
+  grid-template-columns: 820px minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+.gp-schichten { display: grid; gap: 12px; }
+.gp-schicht {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto;
+  column-gap: 20px;
+  padding: 26px 30px;
+  border-radius: 14px;
+  background: var(--k-flaeche);
+}
+.gp-name { display: flex; align-items: center; gap: 12px; font-family: var(--schrift-display); font-size: 34px; font-weight: 600; }
+.gp-name .k-form { width: 34px; height: 34px; fill: var(--k-auf-lila); }
+.gp-beispiel { grid-column: 1; font-size: 28px; color: var(--k-tinte-2); }
+.gp-rolle { grid-column: 2; grid-row: 1 / 3; align-self: center; font-size: 28px; font-weight: 600; text-align: right; }
+.gp-schicht--einsatz { margin-inline: 80px; }
+.gp-schicht--system { margin-inline: 40px; }
+.gp-schicht--modell { background: var(--k-lila); color: var(--k-auf-lila); padding-block: 36px; }
+.gp-schicht--modell .gp-beispiel { color: var(--k-auf-lila); opacity: .85; }
+.gp-regeln { display: grid; gap: 22px; }
+.gp-regel { font-size: 29px; line-height: 1.35; }
+.gp-regel--schwelle {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 22px; align-items: center;
+  padding: 18px 22px; border-radius: 12px;
+  box-shadow: inset 0 0 0 4px var(--k-lila);
+}
+.gp-regel--schwelle .k-zahl { font-size: 46px; color: var(--k-lila-text); }
+.gp-regel--schwelle sup { font-size: .64em; }
+.gp-regel--schwelle span:last-child { font-size: 28px; }
+
+
+/* =============================================================================
+   15, 17 UMFRAGE · 16, 18 KLASSIFIZIERER
+   ============================================================================= */
+.u-folie .titel { font-size: 60px; max-width: 1680px; }
+.kl-inhalt { align-items: flex-start; }
+
+
+/* =============================================================================
+   19 INVENTAR
+   ============================================================================= */
+.inv-inhalt {
+  display: grid !important;
+  grid-template-columns: 780px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  column-gap: 44px;
+  row-gap: 18px;
+  align-items: center;
+}
+.inv-bild { width: 780px; height: 520px; }
+.inv-tabelle { border-collapse: collapse; width: 100%; font-size: 26px; }
+.inv-tabelle th { text-align: left; font-size: 22px; font-weight: 600; color: var(--k-tinte-2); padding: 0 10px 10px; border-bottom: 3px solid var(--k-tinte); }
+.inv-tabelle td { padding: 12px 10px; border-bottom: 2px solid var(--k-linie); line-height: 1.2; vertical-align: middle; }
+.inv-stelle { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+.inv-tabelle .w-nr { width: 38px; height: 38px; font-size: 22px; }
+.inv-tabelle .k-etikett .k-form { width: 24px; height: 24px; }
+.inv-merksatz { grid-column: 1 / -1; }
+
+
+/* =============================================================================
+   20 ZAHLEN
+   ============================================================================= */
+.za-inhalt {
+  display: grid !important;
+  grid-template-columns: 640px minmax(0, 1fr);
+  gap: 64px;
+}
+.za-balken { display: flex; flex-direction: column; gap: 16px; margin: 0; }
+.za-balken figcaption { font-size: 26px; font-weight: 600; }
+.za-balken ol {
+  flex: 1;
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 36px; align-items: end;
+  min-height: 460px;
+  border-bottom: 4px solid var(--k-tinte);
+}
+.za-balken li { display: grid; grid-template-rows: auto auto; justify-items: center; gap: 12px; height: 100%; align-content: end; position: relative; }
+.za-saeule {
+  width: 100%;
+  height: calc(var(--wert) * 6.6px);
+  border-radius: 10px 10px 0 0;
+  background: var(--k-tinte);
+  transform-origin: bottom;
+  animation: za-wachsen 1.1s cubic-bezier(.22, .61, .36, 1) both;
+}
+.za-balken li:nth-child(1) .za-saeule { background: var(--k-tinte); }
+.za-balken li:nth-child(2) .za-saeule { animation-delay: .12s; }
+.za-balken li:nth-child(3) .za-saeule { animation-delay: .24s; background: var(--k-mittel); }
+.folie:not(.ist-aktiv) .za-saeule { animation: none; }
+@keyframes za-wachsen { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+.za-wert .k-zahl { font-size: 54px; }
+.za-name { position: absolute; bottom: -48px; font-size: 28px; font-weight: 600; }
+.za-quelle { font-size: 22px; color: var(--k-tinte-2); }
+.za-balken > .za-quelle { margin-top: 52px; }
+.za-kacheln { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; align-content: start; }
+.za-kacheln li { display: flex; flex-direction: column; gap: 10px; padding: 24px 26px; border-radius: var(--k-radius); background: var(--k-flaeche); }
+.za-kacheln .k-zahl { font-size: 72px; }
+.za-kacheln li > span:nth-child(2) { font-size: 28px; line-height: 1.28; }
+.za-kacheln .za-quelle { margin-top: auto; }
+
+
+/* =============================================================================
+   21 IRRTÜMER
+   ============================================================================= */
+.ir-karten {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 22px;
+  height: 100%;
+}
+.ir-karten li {
+  display: flex; flex-direction: column; gap: 14px;
+  padding: 26px 28px;
+  border-radius: var(--k-radius);
+  background: var(--k-flaeche);
+}
+.ir-irrtum { font-family: var(--schrift-display); font-size: 32px; font-weight: 600; line-height: 1.2; transition: color .4s; }
+.ir-fakt {
+  margin-top: auto !important;
+  font-size: 28px; line-height: 1.32;
+  opacity: 0; translate: 0 12px;
+  transition: opacity .45s, translate .45s;
+}
+.ir-fakt.schritt-an { opacity: 1; translate: 0 0; }
+.ir-karten li:has(.ir-fakt.schritt-an) { background: var(--k-papier); box-shadow: inset 0 0 0 4px var(--k-tinte); }
+.ir-karten li:has(.ir-fakt.schritt-an) .ir-irrtum { color: var(--k-tinte-2); text-decoration: line-through 3px var(--k-rot); }
+html.druckmodus .ir-fakt { opacity: 1; translate: 0 0; }
+
+
+/* =============================================================================
+   22 BUSSGELD
+   ============================================================================= */
+.bu-inhalt {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 56px;
+}
+.bu-strafen, .bu-hilfe { display: flex; flex-direction: column; gap: 22px; }
+.bu-kopf { font-family: var(--schrift-display); font-size: 34px; font-weight: 600; display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; }
+.bu-modus { font-size: 28px; color: var(--k-orange-text); }
+.bu-balken { display: grid; gap: 22px; }
+.bu-balken li { display: grid; grid-template-columns: 230px minmax(0, 1fr); grid-template-rows: auto auto; column-gap: 18px; row-gap: 6px; align-items: center; }
+.bu-name { grid-row: 1 / 3; font-size: 28px; font-weight: 600; line-height: 1.2; }
+.bu-spur { height: 34px; border-radius: 6px; background: var(--k-flaeche); overflow: hidden; }
+.bu-fuellung {
+  display: block; height: 100%;
+  width: var(--gross);
+  background: var(--k);
+  transition: width 1.2s cubic-bezier(.65, 0, .35, 1);
+}
+.bu-wert { font-family: var(--schrift-display); font-size: 28px; font-weight: 600; }
+.bu-klein { display: none; color: var(--k-orange-text); }
+.bu-folie:has(.bu-modus.schritt-an) .bu-fuellung { width: max(var(--kmu), 6px); }
+.bu-folie:has(.bu-modus.schritt-an) .bu-gross { display: none; }
+.bu-folie:has(.bu-modus.schritt-an) .bu-klein { display: inline; }
+.bu-regel { font-size: 28px; line-height: 1.35; }
+.bu-national { margin-top: auto; }
+.bu-liste { display: grid; gap: 16px; }
+.bu-liste li {
+  display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 16px; align-items: center;
+  padding: 16px 20px; border-radius: 12px; background: var(--k-flaeche);
+  font-size: 28px; line-height: 1.26;
+}
+.bu-symbol { width: 44px; height: 44px; fill: none; stroke: var(--k-tinte); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+
+/* =============================================================================
+   23 FÜNF SCHRITTE
+   ============================================================================= */
+.st-inhalt { gap: 30px; }
+.st-schritte {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  counter-reset: s;
+}
+.st-schritte li {
+  position: relative;
+  display: grid; gap: 10px; align-content: start;
+  padding: 26px 26px 28px 30px;
+  background: var(--k-flaeche);
+  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%, 26px 50%);
+  margin-right: -14px;
+}
+.st-schritte li:first-child { clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 50%, calc(100% - 26px) 100%, 0 100%); border-radius: 12px 0 0 12px; }
+.st-schritte li:nth-child(3) { background: var(--k-tinte); color: var(--k-papier); }
+.st-schritte li:nth-child(3) .st-symbol { stroke: none; fill: var(--k-orange); }
+.st-schritte li:nth-child(3) span:last-child { color: var(--k-papier); opacity: .85; }
+.st-nr { font-family: var(--schrift-display); font-size: 26px; font-weight: 700; color: var(--k-tinte-2); padding-left: 18px; }
+.st-schritte li:nth-child(3) .st-nr { color: var(--k-papier); }
+.st-symbol { width: 50px; height: 50px; margin-left: 18px; fill: none; stroke: var(--k-tinte); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.st-schritte b { padding-left: 18px; font-family: var(--schrift-display); font-size: 31px; font-weight: 600; line-height: 1.1; }
+.st-schritte span:last-child { padding-left: 18px; padding-right: 20px; font-size: 28px; line-height: 1.26; color: var(--k-tinte-2); }
+.st-praxis {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 40px; row-gap: 14px;
+  align-items: center;
+  padding: 24px 30px;
+  border-radius: var(--k-radius);
+  box-shadow: inset 0 0 0 4px var(--k-tinte);
+}
+.st-praxis-kopf { grid-row: 1 / 3; max-width: 280px; font-family: var(--schrift-display); font-size: 32px; font-weight: 600; line-height: 1.15; }
+.st-praxis ul { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; }
+.st-praxis li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; font-size: 28px; line-height: 1.26; }
+.st-praxis .k-zahl { font-size: 54px; min-width: 58px; }
+.st-praxis-fuss { font-size: 28px; color: var(--k-tinte-2); }
+
+
+/* =============================================================================
+   24 KERNBOTSCHAFT (dunkel)
+   ============================================================================= */
+.ke-inhalt { justify-content: center; gap: 60px; }
+.ke-kameras { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; }
+.ke-kameras li {
+  display: grid; justify-items: start; gap: 12px;
+  padding: 30px 32px;
+  border-radius: 18px;
+  background: var(--k-flaeche);
+  box-shadow: inset 0 8px 0 var(--k);
+}
+.ke-kamera { width: 120px; height: 120px; fill: none; stroke: var(--k-tinte); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.ke-kameras b { font-family: var(--schrift-display); font-size: 40px; font-weight: 600; }
+.ke-kameras li > span:not(.k-etikett) { font-size: 28px; color: var(--k-tinte-2); }
+.ke-kameras .k-etikett { margin-top: 10px; font-size: 28px; }
+.ke-kameras .k-etikett .k-form { width: 26px; height: 26px; }
+.ke-botschaft { font-family: var(--schrift-display); font-size: 68px; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
+.ke-botschaft .k-zeile { display: block; }
+
+
+/* =============================================================================
+   25 DISKUSSION
+   ============================================================================= */
+.di-inhalt {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 440px;
+  gap: 64px;
+  align-items: center;
+}
+.di-fragen { display: grid; gap: 30px; counter-reset: f; }
+.di-fragen li {
+  counter-increment: f;
+  display: grid; grid-template-columns: 70px minmax(0, 1fr); gap: 20px;
+  font-size: 36px; line-height: 1.3;
+}
+.di-fragen li::before {
+  content: counter(f);
+  display: grid; place-items: center;
+  width: 60px; height: 60px; border-radius: 50%;
+  background: var(--k-tinte); color: var(--k-papier);
+  font-family: var(--schrift-display); font-size: 30px; font-weight: 700;
+}
+.di-qr { display: grid; justify-items: center; gap: 18px; margin: 0; padding: 30px; border-radius: 18px; background: var(--k-flaeche); }
+.di-qr figcaption { display: grid; gap: 6px; text-align: center; }
+.di-qr figcaption b { font-family: var(--schrift-display); font-size: 30px; }
+.di-qr figcaption span { font-size: 22px; color: var(--k-tinte-2); }
+
+
+/* =============================================================================
+   BACKUP
+   ============================================================================= */
+.bk-quellen { display: grid; gap: 16px; }
+.bk-quellen li { font-size: 25px; line-height: 1.38; padding-left: 26px; position: relative; }
+.bk-quellen li::before { content: ""; position: absolute; left: 0; top: .6em; width: 12px; height: 4px; background: var(--k-tinte); }
+.bk-tabelle { width: 100%; border-collapse: collapse; font-size: 23px; }
+.bk-tabelle th { text-align: left; padding: 0 12px 10px; border-bottom: 3px solid var(--k-tinte); font-size: 22px; color: var(--k-tinte-2); }
+.bk-tabelle td { padding: 9px 12px; border-bottom: 2px solid var(--k-linie); line-height: 1.28; vertical-align: top; }
+.bk-tabelle td:first-child { font-weight: 650; }
+.bk-anhang { display: grid; gap: 14px; counter-reset: a; }
+.bk-anhang li { counter-increment: a; position: relative; padding-left: 48px; font-size: 25px; line-height: 1.35; }
+.bk-anhang li::before { content: counter(a); position: absolute; left: 0; top: -2px; font-family: var(--schrift-display); font-size: 28px; font-weight: 700; color: var(--k-orange-text); }
+.bk-satz { margin-top: 22px !important; font-size: 25px; line-height: 1.35; }
+
+
+/* Umfrage: Form der Klasse vor der Antwort (js/folien/ki.js) */
+.umfrage-name .umfrage-form { width: .8em; height: .8em; margin-right: .35em; vertical-align: -0.04em; }
+
+/* Tabellen tragen die Klasse .tabelle (Metatext für die Prüfung); die Engine-Regeln
+   (Versalien, Sperrung, tabellarische Ziffern) hier zurücknehmen */
+.inv-tabelle.tabelle, .bk-tabelle.tabelle { font-variant-numeric: normal; line-height: 1.25; }
+.inv-tabelle.tabelle thead th, .bk-tabelle.tabelle thead th {
+  text-transform: none; letter-spacing: 0; font-family: var(--schrift-text); font-weight: 600;
+  border-bottom: 3px solid var(--k-tinte);
+}
+.inv-tabelle.tabelle th, .inv-tabelle.tabelle td { padding: 12px 10px; }
+.bk-tabelle.tabelle th, .bk-tabelle.tabelle td { padding: 9px 12px; }

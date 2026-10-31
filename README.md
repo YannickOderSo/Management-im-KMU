@@ -34,12 +34,15 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 |---|---|---|---|
 | Mo, 26.10.2026 | Prozesse (Büchele) · KI im KMU (Tschekuev) · KI-Begriffe und KI-Führerschein (Knopper) · Gastvortrag Bundeswehr | ✅ Transkript (MD + PDF) · ✅ Redeskript (PDF) · ✅ Recap-Präsentation (25 Folien: 20 Inhaltsfolien, 4 Trennfolien, Quellen; ca. 17 Min., Elias Knauber + Yannick Heisler) | [`recap/2026-10-26-prozessmanagement-und-ki/`](recap/2026-10-26-prozessmanagement-und-ki/) · Folien: [`praesentation/`](recap/2026-10-26-prozessmanagement-und-ki/praesentation/) |
 
-## Vortrag „KI-Compliance im KMU: der EU AI Act“ (in Planung)
+## Vortrag „KI-Compliance im KMU: der EU AI Act“
 
 | Teil | Stand | Ort |
 |---|---|---|
-| Plan (22 Folien + 6 Backup, ca. 31 Min., Klassifizierer als Glanzstück) | 📝 Entwurf 31.10.2026, wartet auf Freigabe | [`ki-compliance/PLAN.md`](ki-compliance/PLAN.md) |
-| Fragebogen an die interne SimpleAct-KI (Prüflogik, 14 Fälle, Gegencheck von 20 Kernaussagen) | 📝 bereit zum Einfügen; Antworten wegen öffentlichem Repo nicht einchecken | [`ki-compliance/befragung/fragebogen-interne-ki.md`](ki-compliance/befragung/fragebogen-interne-ki.md) |
+| Plan | ✅ umgesetzt (Abweichungen im Plan vermerkt) | [`ki-compliance/PLAN.md`](ki-compliance/PLAN.md) |
+| Fragebogen an die interne SimpleAct-KI | ✅ beantwortet 31.10.2026; Rohantworten nicht im Repo, Verwendung in der Auswertung | [`ki-compliance/befragung/`](ki-compliance/befragung/) |
+| Recherche: Rechtsprüfung an Primärquellen, KMU-Zahlen | ✅ 31.10.2026 (Omnibus, KI-MIG, Leitlinien, 51 Zahlen) | [`ki-compliance/recherche/`](ki-compliance/recherche/) |
+| HTML-Präsentation „Welches Risiko hat Ihre KI?“ (25 Folien + 6 Backup, Sollzeit 30:20) mit Klassifizierer, Live-Umfragen, Notfall-PDF, Redeskript | 🟡 erste Fassung, Prüfung 0 Fehler; offen: Termin, Freigabe Kamill, Merge auf den Pages-Branch | [`ki-compliance/praesentation/`](ki-compliance/praesentation/) |
+| Klassifizierer zum Mitnehmen (Handy) | ✅ | [`ki-compliance/praesentation/klassifizierer.html`](ki-compliance/praesentation/klassifizierer.html) |
 
 ## Online (GitHub Pages)
 
