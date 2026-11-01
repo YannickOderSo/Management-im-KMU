@@ -1,8 +1,11 @@
 """Erzeugt praesentation/export/redeskript.pdf aus den Sprechtexten in praesentation/index.html.
 
-Je Folie: Nummer, Titel, Sollzeit, Startzeit, der Sprechtext mit Klick-Markierungen zwischen den
-Schritten und die Hintergrundnotizen (nicht vortragen); am Ende die Backup-Folie (Quellen) mit
-ihrer Notiz, damit alle 25 Folien im Skript stehen. Nach jeder Änderung am Sprechtext neu erzeugen.
+Je Folie: Nummer, Titel, Sollzeit, Startzeit, Sprecher, der Sprechtext mit Klick-Markierungen
+zwischen den Schritten und die Hintergrundnotizen (nicht vortragen); am Ende die Backup-Folie
+(Quellen) mit ihrer Notiz, damit alle 25 Folien im Skript stehen. Die Sprecher und die Teile
+(Einstieg, Blöcke, Fazit) kommen aus praesentation/werkzeuge/skript-zusatz.json, derselben Quelle
+wie das Präsentationsskript. Nach jeder Änderung am Sprechtext oder an skript-zusatz.json neu
+erzeugen.
 
 Aufruf aus dem Repo-Wurzelordner:
     python3 recap/2026-10-26-prozessmanagement-und-ki/redeskript-erzeugen.py
@@ -21,6 +24,8 @@ from bs4 import BeautifulSoup
 ORDNER = Path(__file__).resolve().parent
 FOLIEN = ORDNER / "praesentation" / "index.html"
 ZIEL = ORDNER / "praesentation" / "export" / "redeskript.pdf"
+# Sprecheraufteilung: dieselbe Quelle wie das Präsentationsskript (werkzeuge/praesentationsskript.mjs)
+ZUSATZ = ORDNER / "praesentation" / "werkzeuge" / "skript-zusatz.json"
 SCHRIFTEN = (ORDNER / "praesentation" / "schriften").as_uri()
 WOERTER_PRO_MINUTE = 130
 
@@ -44,6 +49,25 @@ def ohne_aussenzeichen(text: str) -> str:
     return text
 
 
+def aufteilung():
+    """Sprecher je Folien-ID und die Teile aus skript-zusatz.json („teile“); leer, wenn die Datei fehlt."""
+    try:
+        zusatz = json.loads(ZUSATZ.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}, []
+    namen = {k: v.get("name", k) for k, v in zusatz.get("sprecher", {}).items()}
+    teile = zusatz.get("teile", [])
+    sprecher = {fid: namen.get(t.get("sprecher"), t.get("sprecher", ""))
+                for t in teile for fid in t.get("folien", [])}
+    return sprecher, teile
+
+
+def ids_lesbar(text: str) -> str:
+    """Folien-IDs in Hinweisen wie im Präsentationsskript: t2 → T2, f17 → 17."""
+    return re.sub(r"\b([ft])(\d{1,2})\b",
+                  lambda m: "T" + str(int(m.group(2))) if m.group(1) == "t" else m.group(2).zfill(2), text)
+
+
 def nummer_von(folie) -> str:
     if folie.has_attr("data-nummer"):
         return folie["data-nummer"]
@@ -65,7 +89,7 @@ def folien_lesen():
                 if "gesprochen" in (p.get("class") or []):
                     gesprochen.append((int(p.get("data-schritt", 0)), ohne_aussenzeichen(text)))
                 else:
-                    hinweise.append(text)
+                    hinweise.append(ids_lesbar(text) if text.startswith("Sprecherwechsel") else text)
         folien.append({
             "id": f["id"],
             "nummer": nummer_von(f),
@@ -81,6 +105,9 @@ def folien_lesen():
 
 
 def seite_bauen(folien):
+    sprecher, teile_zusatz = aufteilung()
+    # Teile ohne Block (Einstieg, Fazit) bekommen einen eigenen Kopf mit Sprecher wie die Blöcke
+    rahmen_teil = {t["folien"][0]: t for t in teile_zusatz if t.get("folien") and not t.get("block")}
     start = 0
     for f in folien:
         f["start"] = start
@@ -112,10 +139,18 @@ def seite_bauen(folien):
   {f'<div class="hinweis"><b>Hintergrund, nicht vortragen</b>{hinweise}</div>' if hinweise else ''}
 </section>""")
             continue
-        if f["block"]:
+        if f["id"] in rahmen_teil:
+            teil = rahmen_teil[f["id"]]
+            weiter = teil.get("neueSeite") is False
+            teile.append(
+                f'<div class="block{" block--weiter" if weiter else ""}"><span>{html.escape(teil.get("name", ""))}</span>'
+                f'{html.escape(teil.get("zusatz", ""))}'
+                f'<em>Sprecher: {html.escape(sprecher.get(f["id"], "")) or "______________"}</em></div>'
+            )
+        elif f["block"]:
             teile.append(
                 f'<div class="block"><span>Block {f["block"]}</span>{html.escape(BLOCK_NAMEN[f["block"]])}'
-                f'<em>Sprecher: ______________</em></div>'
+                f'<em>Sprecher: {html.escape(sprecher.get(f["id"], "")) or "______________"}</em></div>'
             )
         absaetze = []
         letzter = 0
@@ -131,7 +166,7 @@ def seite_bauen(folien):
   <header>
     <span class="nr">{f['nummer']}</span>
     <h2>{html.escape(f['titel'] if not f['block'] else f['kurz'])}</h2>
-    <span class="zeit">ab {mmss(f['start'])} · Soll {f['zeit']} s · {f['woerter']} Wörter ≈ {geschaetzt} s</span>
+    <span class="zeit">ab {mmss(f['start'])} · Soll {f['zeit']} s · {f['woerter']} Wörter ≈ {geschaetzt} s{(' · <b>' + html.escape(sprecher[f['id']]) + '</b>') if sprecher.get(f['id']) else ''}</span>
   </header>
   <div class="text">{''.join(absaetze)}</div>
   {f'<div class="hinweis"><b>Hintergrund, nicht vortragen</b>{hinweise}</div>' if hinweise else ''}
@@ -213,6 +248,8 @@ tr.trenner td { color: var(--karmin); font-weight: 600; }
   font-family: Fraunces, serif; font-size: 15pt; }
 .block span { color: var(--karmin); }
 .block em { margin-left: auto; font: 9pt Franklin, sans-serif; color: var(--schiefer); }
+.block--weiter { break-before: auto; margin-top: 8mm; }
+.zeit b { font-weight: 600; color: var(--tinte); }
 .folie { break-inside: avoid; margin: 0 0 6mm; padding-top: 3mm; border-top: .8pt solid var(--nebel); }
 .folie header { display: grid; grid-template-columns: 13mm 1fr; column-gap: 3mm; align-items: baseline; }
 .nr { grid-row: span 2; font-family: Fraunces, serif; font-size: 22pt; line-height: 1; color: var(--karmin); font-variant-numeric: lining-nums; }

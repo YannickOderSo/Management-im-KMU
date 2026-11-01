@@ -33,7 +33,7 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 
 | Sitzung | Thema | Stand | Ort |
 |---|---|---|---|
-| Mo, 26.10.2026 | Prozesse (Büchele) · KI im KMU (Tschekuev) · KI-Begriffe und KI-Führerschein (Knopper) · Gastvortrag Bundeswehr | ✅ Transkript (MD + PDF) · ✅ Redeskript (PDF) · ✅ Recap-Präsentation (25 Folien: 20 Inhaltsfolien, 4 Trennfolien, Quellen; ca. 17 Min., Elias Knauber + Yannick Heisler) | [`recap/2026-10-26-prozessmanagement-und-ki/`](recap/2026-10-26-prozessmanagement-und-ki/) · Folien: [`praesentation/`](recap/2026-10-26-prozessmanagement-und-ki/praesentation/) |
+| Mo, 26.10.2026 | Prozesse (Büchele) · KI im KMU (Tschekuev) · KI-Begriffe und KI-Führerschein (Knopper) · Gastvortrag Bundeswehr | ✅ Transkript (MD + PDF) · ✅ Redeskript (PDF) · ✅ Recap-Präsentation (25 Folien: 20 Inhaltsfolien, 4 Trennfolien, Quellen; ca. 17 Min., Elias Knauber + Yannick Heisler) · ✅ Präsentationsskript (PDF, 18 Seiten: Sprechtext je Klick, Elias Einstieg/Block 1/Block 4/Fazit, Yannick Block 2 und 3, Übergaben, Rückfragen, Kürzungsplan, Plan B) | [`recap/2026-10-26-prozessmanagement-und-ki/`](recap/2026-10-26-prozessmanagement-und-ki/) · Folien: [`praesentation/`](recap/2026-10-26-prozessmanagement-und-ki/praesentation/) |
 
 ## Vortrag „KI-Compliance im KMU: der EU AI Act“
 
@@ -54,3 +54,4 @@ Startseite: https://yannickoderso.github.io/Management-im-KMU/ (nach dem Einscha
 GitHub Pages zeigt den Branch `claude/exciting-meitner-w27zwy` (Standard-Branch des Repos).
 
 - Recap 26.10.2026: https://yannickoderso.github.io/Management-im-KMU/recap/2026-10-26-prozessmanagement-und-ki/praesentation/index.html
+- Präsentationsskript zur Recap: https://yannickoderso.github.io/Management-im-KMU/recap/2026-10-26-prozessmanagement-und-ki/praesentation/export/praesentationsskript.pdf
