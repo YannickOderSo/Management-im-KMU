@@ -20,7 +20,7 @@ PDF: `index.html?druck` öffnen und drucken (eine Seite je Folie, Endzustand).
 **Notfall-PDF** (Plan B, falls Browser oder Beamer streiken): `export/praesentation-notfall.pdf` – neu erzeugen mit
 `node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --druck export/praesentation-notfall.pdf`.
 
-## Aufbau (Vortrag 35 Min. + 10 Min. Diskussion, Sollzeiten zusammen 34:35)
+## Aufbau (Vortrag 35 Min. + 10 Min. Diskussion, Sollzeiten zusammen 35:00, ca. 3.900 gesprochene Wörter)
 
 | Teil | Folien |
 |---|---|
