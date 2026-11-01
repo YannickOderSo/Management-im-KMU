@@ -7,10 +7,10 @@
                      auf Bewegungspfaden durch den Trichter in ihre Fächer
      06 Zeitstrahl   Achse zeichnet sich; Omnibus-Schritt: Hochrisiko-Termine
                      springen nach hinten
-     11 Pyramide     Stufen fallen von oben ein und setzen auf
-     13 Daumen-Runde Urteil wird gestempelt
+     11 Pyramide     Stufen setzen von oben auf
+     13 Daumen-Runde Urteil setzt auf, Karte leuchtet kurz
      25 Inventar     Klassenform fliegt vom Betrieb in die Tabellenzeile
-     27 Irrtümer     Richtigstellung wird gestempelt
+     27 Irrtümer     Richtigstellung setzt auf
      35 Kernbotschaft Satz Wort für Wort
    Grundsätze
    • Endzustand = CSS. Alles startet mit from/fromTo und räumt danach seine
@@ -78,24 +78,33 @@
   }
   function vorwaerts(ctx) { return !ctx.sofort && ctx.richtung !== 'zurueck'; }
 
+  /* Eine Kurvenfamilie für das ganze Deck: Eintritte expo.out (≙ CSS
+     cubic-bezier(0.16, 1, 0.3, 1)), Wandel power2.inOut, Wege ≤ 32 px */
+  var KURVE = 'expo.out', WANDEL = 'power2.inOut', EIN = 0.52, STAFFEL = 0.06;
+
   /* Wörter steigen aus einer Maske auf; danach wieder normaler Text */
   function woerter(el, optionen) {
     if (!el || !window.SplitText) return null;
     var teil = window.SplitText.create(el, { type: 'words', mask: 'words' });
     return gsap.from(teil.words, Object.assign({
-      yPercent: 115, duration: 0.85, ease: 'power4.out', stagger: 0.07,
+      yPercent: 110, duration: 0.8, ease: KURVE, stagger: STAFFEL,
       onComplete: function () { teil.revert(); }
     }, optionen || {}));
   }
 
-  /* Stempel: Etikett fällt groß und schräg auf, die Karte zuckt kurz */
+  /* Urteil: Etikett setzt ruhig auf (kurzer Weg, leichte Verkleinerung),
+     die Karte hebt sich einen Moment mit einer Kontur in Akzentfarbe ab.
+     Kein Drehen, kein Zucken (Bewegung nur mit Bedeutung). */
   function stempeln(etikett, karte, verzoegerung) {
     if (!etikett) return;
     var tl = gsap.timeline({ delay: verzoegerung || 0 });
-    tl.fromTo(etikett, { scale: 2.3, rotation: -9, opacity: 0 },
-      { scale: 1, rotation: 0, opacity: 1, duration: 0.38, ease: 'power4.in', clearProps: 'transform,opacity' });
+    tl.fromTo(etikett, { scale: 1.12, y: 8, opacity: 0 },
+      { scale: 1, y: 0, opacity: 1, duration: EIN, ease: KURVE, clearProps: 'transform,opacity' });
     if (karte) {
-      tl.to(karte, { keyframes: { x: [0, -7, 6, -3, 0] }, duration: 0.32, ease: 'none', clearProps: 'transform' });
+      var stil = getComputedStyle(karte);
+      var farbe = (stil.getPropertyValue('--sa-blau') || stil.getPropertyValue('--k-tinte') || '').trim() || '#122E55';
+      tl.fromTo(karte, { boxShadow: '0 0 0 4px ' + farbe },
+        { boxShadow: '0 0 0 0px ' + farbe, duration: 0.9, ease: 'power2.out', clearProps: 'boxShadow' }, 0.1);
     }
     return tl;
   }
@@ -115,11 +124,11 @@
         var titel = woerter(folie.querySelector('.t-satz'));
         if (titel) intro.add(titel, 0.1);
         intro.from(folie.querySelectorAll('.t-reihe, .t-unter, .t-meta, .t-vorbehalt'),
-          { y: 26, opacity: 0, duration: 0.7, ease: 'power3.out', stagger: 0.09, clearProps: 'transform,opacity' }, 0.45);
+          { y: 20, opacity: 0, duration: EIN, ease: KURVE, stagger: STAFFEL, clearProps: 'transform,opacity' }, 0.45);
         intro.from(maschine.querySelectorAll('.t-trichter, .t-rand, .t-schacht'),
-          { y: -50, opacity: 0, duration: 0.9, ease: 'power3.out', clearProps: 'transform,opacity' }, 0.2);
+          { y: -24, opacity: 0, duration: 0.7, ease: KURVE, clearProps: 'transform,opacity' }, 0.2);
         intro.from(maschine.querySelector('.t-weiche'), { opacity: 0, duration: 0.5, clearProps: 'opacity' }, 0.8);
-        intro.from(faecher, { y: 60, opacity: 0, duration: 0.75, ease: 'back.out(1.7)', stagger: 0.08, clearProps: 'transform,opacity' }, 0.7);
+        intro.from(faecher, { y: 24, opacity: 0, duration: EIN, ease: KURVE, stagger: STAFFEL, clearProps: 'transform,opacity' }, 0.7);
       }
 
       /* Karten-Schleife statt der CSS-Animation (.mit-gsap schaltet sie ab) */
@@ -146,7 +155,7 @@
             scale: 1, duration: 0.95, ease: 'power2.inOut'
           });
         if (form) {
-          k.fromTo(form, { scale: 1 }, { scale: 1.45, duration: 0.16, ease: 'power2.out', transformOrigin: '50% 50%', yoyo: true, repeat: 1 });
+          k.fromTo(form, { scale: 1 }, { scale: 1.25, duration: 0.18, ease: 'power2.out', transformOrigin: '50% 50%', yoyo: true, repeat: 1 });
         }
         /* alle Karten bleiben liegen, bis die letzte sortiert ist */
         k.to(karte, { opacity: 0, duration: 0.45 }, '+=' + (1.8 + (karten.length - 1 - i) * 1.9));
@@ -163,28 +172,29 @@
   choreo('f06', {
     betreten: function (folie, ctx) {
       if (!vorwaerts(ctx)) return;
-      gsap.from(folie.querySelector('.z-achse'), { scaleX: 0, transformOrigin: '0% 50%', duration: 1.1, ease: 'power2.inOut', clearProps: 'transform' });
-      gsap.from(folie.querySelector('.z-heute'), { y: -24, opacity: 0, duration: 0.6, delay: 0.9, ease: 'back.out(2)', clearProps: 'transform,opacity' });
+      gsap.from(folie.querySelector('.z-achse'), { scaleX: 0, transformOrigin: '0% 50%', duration: 0.9, ease: WANDEL, clearProps: 'transform' });
+      gsap.from(folie.querySelector('.z-heute'), { y: -16, opacity: 0, duration: EIN, delay: 0.8, ease: KURVE, clearProps: 'transform,opacity' });
     },
     schritt: function (folie, n) {
       if (n !== 1) return;
       var punkte = folie.querySelectorAll('.z-verschoben .z-punkt');
+      /* die verschobenen Termine heben kurz ab und setzen wieder auf */
       gsap.timeline()
-        .to(punkte, { y: -30, duration: 0.28, ease: 'power2.out', stagger: 0.12 })
-        .to(punkte, { y: 0, duration: 0.7, ease: 'bounce.out', stagger: 0.12, clearProps: 'transform' }, '>-0.1');
+        .to(punkte, { y: -20, duration: 0.24, ease: 'power2.out', stagger: STAFFEL })
+        .to(punkte, { y: 0, duration: EIN, ease: KURVE, stagger: STAFFEL, clearProps: 'transform' }, '>-0.05');
     }
   });
 
 
   /* ---------------------------------------------------------------------------
-     11 PYRAMIDE: Stufen fallen ein (data-animation="keine")
+     11 PYRAMIDE: Stufen setzen von oben auf (data-animation="keine")
      --------------------------------------------------------------------------- */
   choreo('f11', {
     schritt: function (folie, n) {
       var stufe = folie.querySelector('.py-stufe[data-schritt="' + n + '"]');
       if (!stufe) return;
-      gsap.from(stufe, { y: -110, duration: 0.95, ease: 'bounce.out', clearProps: 'transform' });
-      gsap.from(stufe, { opacity: 0, duration: 0.2, ease: 'none', clearProps: 'opacity' });
+      gsap.from(stufe, { y: -32, duration: 0.7, ease: KURVE, clearProps: 'transform' });
+      gsap.from(stufe, { opacity: 0, duration: 0.3, ease: 'none', clearProps: 'opacity' });
     }
   });
 
@@ -241,13 +251,13 @@
         var tl = gsap.timeline({ delay: 0.15 + i * 0.22, onComplete: function () { flieger.remove(); } });
         tl.set(flieger, { width: g, height: g, x: a.x - g / 2, y: a.y - g / 2, scale: start, opacity: 1 })
           .set(ziel, { opacity: 0 }, 0)
-          .from(punkt.querySelector('.w-form'), { scale: 0.2, transformOrigin: '50% 50%', duration: 0.45, ease: 'back.out(2.4)', clearProps: 'transform' }, 0)
+          .from(punkt.querySelector('.w-form'), { scale: 0.4, opacity: 0, transformOrigin: '50% 50%', duration: 0.45, ease: KURVE, clearProps: 'transform,opacity' }, 0)
           .to(flieger, {
             motionPath: { path: [{ x: a.x - g / 2, y: a.y - g / 2 }, { x: (a.x + b.x) / 2 - g / 2, y: Math.min(a.y, b.y) - 90 }, { x: b.x - g / 2, y: b.y - g / 2 }], curviness: 1.2 },
-            scale: 1, duration: 0.9, ease: 'power2.inOut'
+            scale: 1, duration: 0.8, ease: WANDEL
           }, 0.25)
           .set(ziel, { opacity: 1, clearProps: 'opacity' })
-          .fromTo(etikett, { scale: 1.25 }, { scale: 1, duration: 0.5, ease: 'elastic.out(1, 0.45)', clearProps: 'transform' });
+          .fromTo(etikett, { scale: 1.08 }, { scale: 1, duration: 0.45, ease: KURVE, clearProps: 'transform' });
       });
     }
   });
@@ -258,7 +268,7 @@
      --------------------------------------------------------------------------- */
   choreo('f35', {
     schritt: function (folie, n) {
-      if (n === 1) woerter(folie.querySelector('.ke-botschaft'), { stagger: 0.09, duration: 0.9 });
+      if (n === 1) woerter(folie.querySelector('.ke-botschaft'), { stagger: 0.08, duration: 0.9 });
     }
   });
 })();

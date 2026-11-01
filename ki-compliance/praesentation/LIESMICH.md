@@ -59,6 +59,31 @@ SimpleAct-Logo: Die Stimmen landen in einer privaten Tabelle, nicht bei SimpleAc
 | Schluss | 34 Die fünf Schritte mit SimpleAct (nur im SimpleAct-Auftritt) · 35 Eine Kamera, drei Klassen · 36 Umfrage: Bremse oder Vertrauen? · 37 Diskussion mit QR-Code |
 | Backup | B1 Quellen · B2 Zehn Verbote · B3 Anhang III · B4 Digital-Omnibus · B5 AI Act, DSGVO, BetrVG · B6 Methode |
 
+## Gestaltungsregeln (Feinschliff 1.11.2026)
+
+Ergebnis einer Design-Recherche (Duarte, Reynolds, Tufte, Datawrapper, Carbon und Material Motion, Linear, Stripe) und
+einer Art-Direction-Kritik aller 37 Folien. Umgesetzt in `css/folien/ki.css` (Abschnitt 8) und am Ende von
+`css/folien/ki-folien.css` („Feinschliff Art Direction“). Wörter, Rechtstexte und Quellen blieben gleich. Grundlagen:
+`../recherche/design-recherche.md` (18 Maßnahmen mit Quellen) und `../recherche/art-direction-kritik.md` (15 Punkte je Folie).
+
+- **Feste Titellinie:** Jeder Titel beginnt bei y = 152 px, mit oder ohne Kicker und Laufleiste. Beim Blättern springt nichts.
+- **Laufweite:** Inter Tight ist schon eng geschnitten, Titel daher nur −0,01 em (vorher −0,025 em; am Beamer verschmolzen Buchstaben).
+- **Karten am Beamer sichtbar:** Flächen aus dem Marken-Navy gemischt (≈ #E0E2E3, 1,20 : 1 zum Papier statt 1,11 : 1). Ein Rahmen
+  (3 px) heißt „unser Fall / im Betrieb“, höchstens eine Navy-Fläche je Folie. Klassenkanten als gerade 6-px-Kante.
+- **Ampelfarben nur für Klassen:** Live-Pille, Countdown, Rechner-Bedienung und Fokus in SimpleAct-Blau (neutral: Navy),
+  Beispieldaten-Pille neutral gestrichelt, keine Versalien. Stellen-Nummern in der Form ihrer Klasse.
+- **Ein Nummernsystem:** Ring = Stelle im Betrieb (1–6). Abfolgen (Daumen-Runde, Partnerarbeit, Diskussion, SimpleAct-Weg)
+  als freie Ziffern. Folie 30: Fälle außerhalb des Betriebs heißen A und B, 3 und 4 sind Stellen.
+- **Artikel-Stempel** als getönte Fläche statt Mini-Rahmen (Klassenfarbe behält die Kontur).
+- **Dunkle Folien (35, 37)** im Logo-Navy mit ruhigem Verlauf und einem Lichthof; die QR-Karte auf 37 bleibt weiß.
+- **Bewegung:** eine Kurve (expo.out ≙ `cubic-bezier(0.16, 1, 0.3, 1)`), Eintritte 520 ms, Versatz 60 ms, Wege ≤ 32 px.
+  Kein Hüpfen, Federn, Drehen oder Zucken mehr. Bei „Bewegung reduzieren“ 180 ms Überblenden statt hartem Springen.
+- **Einzelfolien:** 01 Absender als Briefkopf, Trichter flach · 25 Tabelle im Satzspiegel · 27 Irrtümer als Zeitungsspalten ·
+  29 Beträge als Zahlen · 33 Fünf Schritte als Prüfpfad · 37 Schluss in Navy mit vollständigem Pfad.
+
+Offen als Option (nicht umgesetzt, weil sie Ablauf oder Folienzahl ändern): Kapitelvorhänge vor 06, 11, 20 und 26, die in die
+Laufleiste schrumpfen; die Sortiermaschine von Folie 01 als Rückkehr auf Folie 35.
+
 ## Was steht wo
 
 | Datei | Inhalt |
@@ -105,8 +130,8 @@ PLAYWRIGHT_CORE=/opt/node-tools/node_modules/playwright-core \
 node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte --druck export/ki-compliance-notfall.pdf
 ```
 
-Stand 31.10.2026 (nach dem Upgrade): 0 Fehler und 0 Warnungen über alle Folien und Schritte, Notfall-PDF 43 Seiten,
-Redeskript Sollzeit 50:30. Wortbudget 40 je Hauptfolie; Ausnahmen per `data-wortbudget` für Tabellen und Rechner
+Stand 1.11.2026 (nach dem Design-Feinschliff): 0 Fehler und 0 Warnungen über alle Folien und Schritte, auch mit
+`--modus dunkel` und `--bewegung-reduziert`; Notfall-PDF 43 Seiten, Redeskript Sollzeit 50:30. Wortbudget 40 je Hauptfolie; Ausnahmen per `data-wortbudget` für Tabellen und Rechner
 (25, 27, 28, 33) und für rechtlich nötige Präzisierungen nach der dritten Rechtsprüfung (08, 10, 12, 16, 29).
 
 5. Probelauf am Präsentationslaptop: Animationen flüssig? Sonst `?bewegung=reduziert` an die Adresse hängen (zeigt

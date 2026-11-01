@@ -101,7 +101,7 @@ html[data-thema][data-modus],
   --f-kern: var(--k-tinte);
   --f-auf-kern: var(--k-papier);
   --f-rahmen: var(--k-tinte);
-  --f-fokus: var(--k-orange);
+  --f-fokus: var(--k-tinte);     /* nie eine Ampelfarbe: Orange heißt hochriskant */
   --f-karte: var(--k-flaeche);
   --f-karte-rand: var(--k-linie);
   --f-balken: var(--k-mittel);
@@ -149,9 +149,16 @@ html[data-thema] {
 .folie { font-feature-settings: "kern" 1; }
 :where(.folie) :where(b, strong) { font-weight: var(--gewicht-fett); }
 
-:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .k-laufkopf ~ .folie-kopf { margin-top: 44px; }
+/* Feste Titellinie: Jeder Titel beginnt bei y = 152, mit oder ohne Kicker
+   und mit oder ohne Laufleiste (Laufleiste endet bei 48 + 40 = 88 px; der
+   Kicker ist 30 px hoch plus 12 px Abstand). Beim Blättern springt der
+   wichtigste Text nicht mehr. */
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .k-laufkopf ~ .folie-kopf { margin-top: 64px; }
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .k-laufkopf ~ .folie-kopf:has(> .kicker) { margin-top: 22px; }
 :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .folie-kopf ~ .folie-inhalt { margin-top: 40px; }
-:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-laufkopf="aus"]:not([data-layout="titel"]) > .folie-kopf { margin-top: 92px; }
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-laufkopf="aus"]:not([data-layout="titel"]) > .folie-kopf { margin-top: 104px; }
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-laufkopf="aus"]:not([data-layout="titel"]) > .folie-kopf:has(> .kicker) { margin-top: 62px; }
+.folie .kicker { min-height: 30px; }
 
 .folie .titel {
   font-size: var(--groesse-titel);
@@ -203,20 +210,21 @@ html[data-thema] {
   align-items: center;
   height: 40px;
 }
-.k-lauf-pfad::before {          /* die Linie unter den Stationen */
+.k-lauf-pfad::before {          /* die Linie unter den Stationen, endet an Station 4 */
   content: "";
   position: absolute;
-  left: 11px; right: 0;
+  left: 11px; right: calc(25% - 11px);
   top: 50%;
   height: 3px;
   translate: 0 -50%;
   background: var(--k-mittel);
 }
-.k-lauf-pfad::after {           /* erledigter Teil der Linie */
+.k-lauf-pfad::after {           /* erledigter Teil der Linie, nie über Station 4 */
   content: "";
   position: absolute;
   left: 11px;
   width: var(--k-fortschritt, 0%);
+  max-width: 75%;
   top: 50%;
   height: 3px;
   translate: 0 -50%;
@@ -313,13 +321,14 @@ html[data-thema] {
    4. KOMPONENTEN
    ----------------------------------------------------------------------------- */
 /* Artikel-Stempel: „Art. 5 Abs. 1 lit. f“ */
-.k-stempel {
+.k-stempel {                    /* getönte Fläche statt Mini-Rahmen: Belege bleiben, treten zurück */
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 3px 10px 4px;
-  border: 2px solid currentColor;
+  padding: 4px 11px 5px;
+  border: 0;
   border-radius: 6px;
+  background: color-mix(in srgb, currentColor 10%, transparent);
   font-family: var(--schrift-display);
   font-size: 22px;
   font-weight: 600;
@@ -329,8 +338,9 @@ html[data-thema] {
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
-.k-stempel--klein { font-size: 22px; padding: 1px 8px 2px; border-width: 1.5px; }
-.k-stempel[data-klasse] { color: var(--k-t); }
+.k-stempel--klein { font-size: 22px; padding: 2px 9px 3px; }
+/* Stempel in Klassenfarbe behalten die Kontur (Orange-Text auf Tönung < 4,5 : 1) */
+.k-stempel[data-klasse] { color: var(--k-t); border: 1.5px solid currentColor; background: transparent; }
 
 /* Datum als Marke */
 .k-datum {
@@ -487,7 +497,9 @@ html[data-auftritt="simpleact"][data-thema="editorial"] {
   --gewicht-display: 700;
   --gewicht-zahl: 700;
 }
-html[data-auftritt="simpleact"] .folie .titel { letter-spacing: -0.025em; }
+/* Inter Tight ist schon eng geschnitten; zusätzlich nur −0,01 em, sonst
+   verschmelzen Buchstaben am Beamer („rn“ → „m“) */
+html[data-auftritt="simpleact"] .folie .titel { letter-spacing: -0.01em; }
 
 /* Prüfpfad und Merksatz in SimpleAct-Blau */
 html[data-auftritt="simpleact"] .k-lauf-pfad::after { background: var(--sa-blau); }
@@ -519,3 +531,59 @@ html[data-modus="dunkel"] .folie[data-modus="hell"] .k-logo-dunkel { display: no
 
 /* Neutrale Fassung: alles mit .nur-marke verschwindet */
 html[data-auftritt="neutral"] .nur-marke { display: none !important; }
+
+
+/* -----------------------------------------------------------------------------
+   8. FEINSCHLIFF NACH DESIGN-RECHERCHE (1.11.2026)
+   Quellen und Begründung: LIESMICH.md, Abschnitt „Gestaltungsregeln“.
+   • Karten am Beamer sichtbar: Flächen aus dem Marken-Navy gemischt (eine
+     Farbtemperatur mit der Schrift), ≥ 1,2 : 1 zum Papier statt 1,11 : 1
+   • Dunkle Folie = Marken-Navy mit ruhigem Verlauf und einem Lichthof;
+     Tiefe über Flächen und Lichtkanten, nicht über Schatten (kein Korn:
+     die Laufleisten-Namen decken die Linie mit Vollfarbe ab)
+   • Ampelfarben nur für Risikoklassen: Live-Pille und Bedienung in Blau,
+     Beispieldaten-Pille neutral, keine Versalien
+   ----------------------------------------------------------------------------- */
+html[data-auftritt="simpleact"][data-modus="hell"],
+html[data-auftritt="simpleact"] :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-modus="hell"] {
+  --k-flaeche: color-mix(in oklab, #122E55 9%, #F7F6F2);      /* ≈ #E0E2E3 · 1,20 : 1 zum Papier */
+  --k-flaeche-2: color-mix(in oklab, #122E55 15%, #F7F6F2);   /* ≈ #D1D5DA · 1,36 : 1 */
+  --k-ui: color-mix(in oklab, #122E55 8%, #F7F6F2);
+}
+
+/* Dunkle Folie (35) im Logo-Navy statt Fast-Schwarz */
+html[data-auftritt="simpleact"] :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-modus="dunkel"] {
+  --k-papier: #122E55;           /* Laufleisten-Namen decken die Linie mit dieser Farbe ab */
+  --k-flaeche: #1B3A66;          /* 1,20 : 1 zum Navy, mit Lichtkante */
+  --k-flaeche-2: #234679;
+  --k-linie: #2F5085;
+  --k-tinte: #F3F5F9;            /* 11,9 : 1 auf Navy */
+  --k-tinte-2: #BAC6DA;          /* 7,9 : 1 auf Navy, 6,6 : 1 auf der Karte */
+  --k-mittel: #7F92B3;
+  --k-letterbox: #081A33;
+  --k-auf-rot: #122E55; --k-auf-orange: #122E55; --k-auf-orange-voll: #122E55;
+  --k-auf-gelb: #122E55; --k-auf-gruen: #122E55; --k-auf-lila: #122E55; --k-auf-grau: #122E55;
+  --f-hintergrund-bild:
+    radial-gradient(42% 46% at 50% 44%, rgb(37 99 235 / .26), transparent 72%),
+    linear-gradient(180deg, #122E55 0%, #0D2445 100%);
+}
+html[data-auftritt="simpleact"] .folie[data-modus="dunkel"] .k-flaeche-licht,
+html[data-auftritt="simpleact"] .folie[data-modus="dunkel"] .ke-kameras li {
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / .10), 0 0 0 2px rgb(255 255 255 / .08);
+}
+
+/* Kennzeichnungs-Pillen: keine Ampelfarbe, keine Versalien */
+.folie :is(.live, .beispiel, .umfrage-marke) { text-transform: none; letter-spacing: 0.01em; }
+.folie .live { color: var(--sa-blau, var(--k-tinte)); }
+.folie .live.ist-verbinde, .folie .live.ist-offline, .folie .live.ist-pausiert { color: var(--k-tinte-2); }
+.folie .beispiel { color: var(--k-tinte-2); background: transparent; border-style: dashed; }
+
+/* Bewegung: dieselbe Kurvenfamilie wie die GSAP-Choreografie (expo.out),
+   Eintritte 520 ms, Versatz 60 ms. Nur ohne „Bewegung reduzieren“. */
+@media (prefers-reduced-motion: no-preference) {
+  html[data-auftritt="simpleact"]:not(.bewegung-reduziert) {
+    --kurve: cubic-bezier(0.16, 1, 0.3, 1);
+    --dauer-mittel: 520ms;
+    --staffel: 60ms;
+  }
+}

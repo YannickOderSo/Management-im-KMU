@@ -1461,3 +1461,174 @@ html.bewegung-reduziert .za-saeule { animation: none; }
 .di-logo { width: 44px; height: auto; }
 .di-marke b { font-family: var(--schrift-display); font-size: 32px; font-weight: 700; }
 .di-marke span { color: var(--k-tinte-2); }
+
+
+/* =============================================================================
+   FEINSCHLIFF ART DIRECTION (1.11.2026)
+   Ergebnis von Design-Recherche und Art-Direction-Kritik aller Folien.
+   Nur Gestaltung: Wörter, Rechtstexte und Quellen bleiben unverändert.
+   ============================================================================= */
+
+/* ---------- Luft verteilen: Inhalt optisch mittig statt Loch unten (07, 10, 17, 18, 29, 31) ---------- */
+.d-inhalt, .mi-inhalt, .ko-inhalt { align-content: center; padding-bottom: 56px; }
+.au-inhalt { grid-template-rows: auto auto auto; align-content: center; padding-bottom: 56px; }
+.wm-inhalt { grid-template-rows: auto auto; align-content: center; padding-bottom: 56px; }
+.tr-inhalt { justify-content: center; padding-bottom: 56px; }
+
+/* ---------- Umfragen: ruhig, im Satzspiegel, ohne Widget-Optik ---------- */
+.u-folie .umfrage-option { position: relative; }
+.u-folie .umfrage-taste { position: absolute; right: calc(100% + 12px); top: 50%; transform: translateY(-50%); }
+.u-folie .umfrage-zeile.ist-hervor[data-hervor-stil="rahmen"] { box-shadow: none; }
+.u-folie .umfrage-marke { border-radius: 999px; padding: 6px 16px; }
+.u-folie .umfrage-spur { height: 12px; border-radius: 6px; background: var(--k-flaeche); }
+.u-folie .umfrage-balken { border-radius: 6px; }
+.umfrage-aussage.ist-leer { border-top: 2px dashed var(--k-linie); }
+.umfrage-aussage.ist-leer .ua-leer { font: 500 28px/1.3 var(--schrift-text); color: var(--k-tinte-2); }
+
+/* ---------- Ampelfarben nur für Klassen ---------- */
+.z-alt.schritt-an { text-decoration-color: var(--k-tinte); }
+.ro-rolle--kmu .ro-symbol { --duo: var(--k-papier); --duo-o: .3; }
+.k-uhr.ist-laeuft { box-shadow: inset 0 0 0 10px var(--sa-blau, var(--k-tinte)); }
+.k-uhr.ist-ende { box-shadow: inset 0 0 0 10px var(--k-tinte); }
+.k-uhr.ist-ende .k-uhr-zeit { color: var(--k-tinte); }
+.bu-symbol { --duo: var(--k-tinte); --duo-o: .16; }
+.br-knopf:focus-visible, .br-regler:focus-visible { outline-color: var(--f-fokus); }
+.wm-regeln li::before { color: var(--sa-blau, var(--k-tinte)); }
+/* Stellen-Nummer in der Form ihrer Klasse (Achteck = verboten, Dreieck = hochriskant) */
+.vb-stelle:not([class*="vb-stelle--"]) {
+  border-radius: 0;
+  clip-path: polygon(29% 0, 71% 0, 100% 29%, 100% 71%, 71% 100%, 29% 100%, 0 71%, 0 29%);
+}
+.vb-stelle--hoch {
+  width: 66px; height: 60px; padding-top: 18px; font-size: 26px;
+  border-radius: 0; clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+
+/* ---------- Ein Kartensystem: gerade Klassenkanten statt „Lippe“, ein Rahmen (3 px) ---------- */
+.vb-raster li, .tr-szenen li, .ke-kameras li { position: relative; overflow: hidden; box-shadow: none; }
+.vb-raster li::before, .tr-szenen li::before, .ke-kameras li::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 6px; background: var(--k-kante, var(--k));
+}
+.vb-raster li { --k-kante: var(--k-rot); }
+.tr-szenen li { --k-kante: var(--k-gelb); }
+.vb-neu { box-shadow: inset 0 0 0 3px var(--k-rot) !important; }
+.st-praxis, .wm-regeln, .ko-faelle li:last-child { box-shadow: inset 0 0 0 3px var(--k-tinte); }
+.vb-betrieb { box-shadow: inset 0 0 0 3px var(--k-rot); }
+.tr-betrieb { box-shadow: inset 0 0 0 3px var(--k-gelb-text); }
+.sa-karte { box-shadow: inset 0 0 0 3px var(--sa-blau, var(--k-tinte)); }
+.dr-karten li:has(.dr-urteil.schritt-an) { box-shadow: inset 0 0 0 3px var(--k-tinte); }
+.pf-spalte--betreiber { box-shadow: inset 0 0 0 3px var(--k-tinte); }
+/* Radien: Karten 14 px, Zeilen und Felder in Karten 10 px */
+.au-bnetza, .br-regel, .wm-regeln, .ke-kameras li, .pa-qr, .di-qr, .sa-karte, .mi-feld { border-radius: var(--k-radius); }
+.au-eu, .au-sonder li, .wm-rollen li, .bu-liste li, .tr-bild { border-radius: 10px; }
+/* 10: nur eine Navy-Fläche je Folie; die EU-Marke wird umrandet */
+.au-marke { background: transparent; color: var(--k-tinte); box-shadow: inset 0 0 0 2px var(--k-tinte); }
+.au-sonder b { font-size: 28px; }
+
+/* ---------- Ein Nummernsystem: Ring = Stelle im Betrieb, Abfolgen als freie Ziffern ---------- */
+.dr-nr, .pa-schritte li::before, .di-fragen li::before {
+  width: auto; height: auto; border-radius: 0; background: none;
+  color: var(--k-tinte-2); font: 700 40px/1 var(--schrift-display);
+  place-items: start; font-variant-numeric: tabular-nums;
+}
+.pa-schritte li::before { padding-top: 2px; }
+.di-fragen li::before { padding-top: 4px; }
+.sa-nr { box-shadow: none; background: none; padding: 0; min-width: 0; font-size: 34px; color: var(--k-tinte-2); }
+/* 30: Fälle A und B liegen außerhalb des Betriebs, 3 und 4 sind Stellen (Ring) */
+.ge-nr { box-shadow: 0 0 0 3px var(--k-tinte); }
+.ge-nr--mitte, .ge-nr--mitte2, .ge-erklaerung li:nth-child(n+3) .ge-nr { background: var(--k-papier); color: var(--k-tinte); }
+
+/* ---------- 25 Inventar: Tabelle zurück in den Satzspiegel ---------- */
+.inv-folie .inv-inhalt { grid-template-columns: 640px minmax(0, 1fr) !important; column-gap: 40px; }
+.inv-bild { width: 640px; height: 427px; }
+.inv-bild .w-zahl { font-size: 41px; }      /* Bild auf 71 %: Ziffern bleiben ≥ 28 px */
+
+/* ---------- 35 Kernbotschaft: satte Icons, die Botschaft führt ---------- */
+.ke-kameras li[data-klasse] svg.ke-kamera { --duo-o: 1; }
+.ke-kameras li { box-shadow: none; }
+.ke-botschaft { font-size: 84px; letter-spacing: -0.015em; }
+
+/* ---------- 01 Titel: Absender wie ein Briefkopf, die Frage ist der Held; Trichter flach ---------- */
+.t-marke { position: absolute; top: var(--rand-oben); left: var(--rand-x); margin: 0; gap: 14px; }
+.t-logo { width: 56px; }
+.t-marke-text { display: flex; align-items: baseline; gap: 12px; }
+.t-marke-text b { font-size: 32px; letter-spacing: -0.01em; }
+.t-marke-text span { font-size: 24px; }
+.t-vorbehalt { position: absolute; left: var(--rand-x); bottom: var(--rand-unten); margin: 0; }
+.t-reihe { margin-bottom: 28px; }
+.t-meta { margin-top: 48px; }
+.t-titel .titel.t-satz { letter-spacing: -0.015em; }
+.t-trichter, .fi-form { fill: var(--k-iso-oben); }
+.t-rand, .fi-rand { fill: var(--k-flaeche); }
+.t-schacht, .fi-schacht { fill: var(--k-flaeche-2); }
+
+/* ---------- 27 Irrtümer: Spalten mit Linien wie in einer Zeitung ---------- */
+.ir-inhalt { justify-content: center; padding-bottom: 40px; }
+.ir-karten { grid-auto-rows: auto; gap: 56px; height: auto; }
+.ir-karten li { background: transparent; border-radius: 0; padding: 24px 0 0; box-shadow: inset 0 3px 0 var(--k-linie); }
+.ir-karten li:has(.ir-fakt.schritt-an) { background: transparent; box-shadow: inset 0 3px 0 var(--k-tinte); }
+.ir-fakt { font-size: 36px; margin-top: 8px !important; }
+
+/* ---------- 29 Kosten: die Beträge als Zahlen ---------- */
+.ko-faelle .ko-betrag {
+  display: block; margin-top: 4px;
+  font: 700 44px/1.1 var(--schrift-zahl); letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums; color: var(--k-tinte);
+}
+
+/* ---------- 33 Fünf Schritte: der Prüfpfad statt Pfeilkacheln ---------- */
+/* Die Nummer sitzt im Stationspunkt (wie in der Laufleiste), .st-nr entfällt */
+.st-schritte { gap: 28px; position: relative; padding-top: 84px; }
+.st-schritte::before {
+  content: ""; position: absolute; top: 25px; left: 28px; right: calc(20% - 50px);
+  height: 6px; border-radius: 3px; background: var(--k-mittel);
+}
+.st-schritte li { counter-increment: s; }
+.st-schritte .st-nr { display: none; }
+.st-schritte li, .st-schritte li:first-child {
+  clip-path: none; margin-right: 0; border-radius: 0; background: transparent; color: inherit; padding: 0;
+}
+.st-schritte li::before {
+  content: counter(s); position: absolute; top: -84px; left: 0; width: 56px; height: 56px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--k-papier); box-shadow: inset 0 0 0 5px var(--k-tinte); color: var(--k-tinte);
+  font: 700 28px/1 var(--schrift-display); font-variant-numeric: tabular-nums;
+}
+.st-schritte li:first-child::before { background: var(--sa-blau, var(--k-tinte)); box-shadow: none; color: #FFFFFF; }
+.st-schritte :is(.st-nr, .st-symbol, b, span:last-child) { padding-left: 0; margin-left: 0; }
+.st-schritte li:first-child :is(.st-nr, b, span:last-child) { color: inherit; opacity: 1; }
+.st-schritte li:first-child span:last-child { color: var(--k-tinte-2); }
+.st-schritte li:first-child .st-nr { color: var(--sa-blau, var(--k-tinte)); }
+.st-schritte li:first-child .st-symbol { color: var(--k-tinte); fill: var(--k-tinte); --duo: var(--k-tinte); --duo-o: .16; }
+.st-schritte li:nth-child(3) .st-symbol { fill: var(--k-tinte); }
+.st-schritte b { font-size: 34px; }
+
+/* ---------- 37 Schluss: Marken-Navy, Prüfpfad vollständig, QR-Karte hell ---------- */
+.di-fragen li { font-size: 40px; }
+.folie[data-modus="dunkel"] .di-qr {
+  --k-tinte: #122E55; --k-tinte-2: #4B5468; --k-linie: #CDD1D8; --k-papier: #FFFFFF;
+  --f-text: #122E55; --f-text-2: #4B5468; --f-linie: #CDD1D8; --f-akzent: #122E55;
+  background: #FFFFFF; color: #122E55;
+}
+html .folie[data-modus="dunkel"] .di-qr .k-logo-hell { display: inline-block !important; }
+html .folie[data-modus="dunkel"] .di-qr .k-logo-dunkel { display: none !important; }
+
+/* ---------- Außerdem ---------- */
+.py-stufe polygon { stroke: none; }
+.py-stufe .py-oben { fill: color-mix(in srgb, var(--k) 78%, var(--k-papier)); }
+.za-balken ol { border-bottom-width: 2px; }
+.br-regler {
+  appearance: none; -webkit-appearance: none; height: 8px; border-radius: 4px;
+  background: var(--k-linie); margin-block: 14px;
+}
+.br-regler::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--sa-blau, var(--k-tinte)); border: 6px solid var(--k-papier);
+  box-shadow: 0 0 0 2px var(--sa-blau, var(--k-tinte));
+}
+.br-regler::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--sa-blau, var(--k-tinte)); border: 6px solid var(--k-papier);
+  box-shadow: 0 0 0 2px var(--sa-blau, var(--k-tinte));
+}
+.br-knopf.ist-aktiv { background: var(--sa-blau, var(--k-tinte)); border-color: var(--sa-blau, var(--k-tinte)); color: var(--k-papier); }

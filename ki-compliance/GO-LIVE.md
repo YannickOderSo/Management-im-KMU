@@ -25,6 +25,9 @@ Legende: `[x]` erledigt · **Y / E / beide** = wer es macht · ⚠ = häufigste 
 - [x] Dritte Rechtsprüfung (31.10.2026, nachts): Rechts-KI von SimpleAct, fünf unabhängige Recherchen an
       Primärquellen und Endprüfung mit Fable 5.1. Ergebnis: rechtlich vortragsreif, 0 Fehler offen; Details in
       `recherche/rechtspruefung.md`, Abschnitt „Dritte Prüfung“
+- [x] Design-Feinschliff (1.11.2026, nachts): Recherche zu hochwertigen Vortragsfolien und Art-Direction-Kritik aller
+      Folien, umgesetzt: feste Titellinie, kräftigere Karten, Ampelfarben nur für Klassen, ein Nummernsystem, ruhigere
+      Animationen, Navy-Folien 35 und 37, neu gestaltet 01, 25, 27, 29, 33. Regeln: `praesentation/LIESMICH.md`
 - [x] Prüflogik getestet: alle 458 Ja/Nein-Pfade, alle acht Beispielfälle wie erwartet
 - [x] Prüfwerkzeug: 0 Fehler, 0 Warnungen über alle Folien und Klickschritte
 - [x] Notfall-PDF und Redeskript neu erzeugt
@@ -88,9 +91,10 @@ sie bis zum Vortrag verfallen: nach 30 Minuten, bei der Schätzfrage nach 90 Min
       - [ ] Rechner (28), Uhr (23) und „Eigener Fall“ (22) nur im Folienfenster bedienen. In der Referentenansicht
         sind Klicks auf die Folie bewusst gesperrt.
 - [ ] Clicker: weiter und zurück funktionieren. **B** schaltet auf Schwarzbild, nochmal **B** blendet wieder ein.
-- [ ] Animationen laufen flüssig: Titel, Pyramide (11), Stempel (13), Flug ins Inventar (25), Kernbotschaft (35).
+- [ ] Animationen laufen flüssig: Titel, Pyramide (11), Urteile (13, 27), Flug ins Inventar (25), Kernbotschaft (35).
       Ruckelt etwas, die Adresse mit `?bewegung=reduziert` öffnen. Der Inhalt bleibt gleich, nur ohne Bewegung.
 - [ ] Am Beamer hell und dunkel vergleichen (**D**) und die bessere Variante festlegen. Lesbar aus der letzten Reihe?
+      Bei Licht an: Sind die grauen Karten (z. B. 10, 29) und die Navy-Folien 35 und 37 klar zu erkennen?
 - [ ] Ganzer Durchlauf mit Uhr. Ziel 50:30 ± 3 Min., Zwischenzeiten siehe Abschnitt 5.
 
 **Interaktiv**

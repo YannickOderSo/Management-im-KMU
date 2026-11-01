@@ -114,6 +114,8 @@ Legende Interaktion: **U** = Live-Umfrage per Handy (QR-Code), **K** = Klick-Qui
   Bußgeldbalken, Hürden-Kacheln, Kamera in drei Umgebungen.
 - Animation nur, wo sie einen Gedanken zeigt (Herleitung, Vergleich, Veränderung). `prefers-reduced-motion` wird
   beachtet, im Druck steht immer der Endzustand.
+- Feinschliff 1.11.2026 nach Design-Recherche und Art-Direction-Kritik (feste Titellinie, Kartensystem, ein
+  Nummernsystem, Farbdisziplin, eine Bewegungskurve, Navy-Folien): Regeln in `praesentation/LIESMICH.md`.
 
 ## 6. Technik
 

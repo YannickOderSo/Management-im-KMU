@@ -772,13 +772,14 @@
 /* -----------------------------------------------------------------------------
    9. BEWEGUNG REDUZIEREN
    Wer im Betriebssystem „Bewegung reduzieren“ eingestellt hat, sieht keine
-   Bewegung (nur kurzes Überblenden). deck.js beachtet das zusätzlich.
+   Bewegung, nur kurzes Überblenden (180 ms, deck.js reduziert jede
+   Animation auf Deckkraft). deck.js beachtet das zusätzlich.
    ----------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   :root {
     --weg: 0px;
     --dauer-lang: 1ms;
-    --dauer-mittel: 1ms;
+    --dauer-mittel: 180ms;          /* kurzes Überblenden statt hartem Springen (nur Deckkraft) */
     --staffel: 0ms;
     --kurve-feder: linear;
   }
@@ -786,7 +787,7 @@
 html.bewegung-reduziert {
   --weg: 0px;
   --dauer-lang: 1ms;
-  --dauer-mittel: 1ms;
+  --dauer-mittel: 180ms;
   --staffel: 0ms;
   --kurve-feder: linear;
 }
