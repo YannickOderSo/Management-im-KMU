@@ -12,6 +12,7 @@ Aufgabe: Den Begriff **Führung** im Kontext des Moduls definieren. Dazu gehöre
 | HTML-Präsentation (21 Folien + 6 Backup, Vortrag Mo, 2.11.2026, 35 + 10 Min.) | ✅ final: Befragung auf drei Folien (15 bis 17), Prüfung 0 Fehler, Sollzeit 35:00 Min. (ca. 3.900 gesprochene Wörter), Redeskript in `export/redeskript.pdf` | [`fuehrung/praesentation/`](fuehrung/praesentation/) |
 | Diskussionspapier als Handout (2 Seiten, Abgabe Fr, 30.10.2026) | ✅ Thema zusammengefasst, ohne Quellenangaben, Fragen wie Folie 21 (Schema wie Handout Elias) | [`fuehrung/diskussionspapier/`](fuehrung/diskussionspapier/) |
 | Quellennachweis (welche Quelle wofür und warum, 9 Seiten) | ✅ aus Dossier erzeugt | [`fuehrung/quellennachweis/`](fuehrung/quellennachweis/) · neu: `python3 fuehrung/quellennachweis/erzeugen.py && node fuehrung/quellennachweis/pdf.mjs` |
+| Präsentationsskript (30 Seiten, Aufbau wie Recap-Skript) | ✅ `fuehrung/praesentation/export/praesentationsskript.pdf` | neu: `node fuehrung/praesentation/werkzeuge/praesentationsskript.mjs` (Zusatzdaten in `werkzeuge/skript-zusatz.json`) |
 
 ## Schriftliche Befragung
 

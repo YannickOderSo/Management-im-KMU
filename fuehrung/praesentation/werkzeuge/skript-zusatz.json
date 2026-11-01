@@ -1,0 +1,97 @@
+{
+  "_hinweis": "Zusatzdaten für das Präsentationsskript (werkzeuge/praesentationsskript.mjs, Aufbau wie das Skript der Recap). Sprechtext, Zeiten und Randnotizen kommen immer frisch aus index.html; Belegnotizen (Belege …) bleiben draußen. Kürzungssätze müssen wörtlich im Sprechtext stehen. Nach jeder Änderung hier oder in den Notizen neu erzeugen.",
+  "stand": "1.11.2026",
+  "sollzeit": 2100,
+  "woerterProMinute": 120,
+  "art": "Referat",
+  "titelZeilen": ["Führung", "im KMU"],
+  "untertitel": "Begriff, Besonderheiten und Praxis, wenn Eigentum und Leitung in einer Hand liegen",
+  "titelZahl": { "wert": "10", "text": "Minuten Diskussion danach" },
+  "leisteTitel": "Ablauf",
+  "akzent": "#0B4F6C",
+  "fusszeile": ["Vortrag am 2.11.2026", "Modul Management im KMU, Hochschule Kaiserslautern"],
+
+  "sprecher": {
+    "yannick": { "name": "Yannick Heisler", "rufname": "Yannick", "marke": "gefuellt" }
+  },
+
+  "teile": [
+    { "name": "Einstieg", "zusatz": "Titel und Fahrplan", "folien": ["f01", "f02"], "sprecher": "yannick" },
+    { "block": 1, "name": "Begriff", "zusatz": "Was ist Führung? Drei Definitionen, eine Arbeitsdefinition", "folien": ["f03", "f04", "f05"], "sprecher": "yannick" },
+    { "block": 2, "name": "KMU", "zusatz": "Was ist ein KMU? Größe und Einheit von Eigentum und Leitung", "folien": ["f06"], "sprecher": "yannick" },
+    { "block": 3, "name": "Besonderheiten", "zusatz": "Was ist im KMU anders? Mit Live-Umfrage", "folien": ["f07", "f08", "f09"], "sprecher": "yannick" },
+    { "block": 4, "name": "Instrumente", "zusatz": "Womit führt man? Fünf Werkzeuge im Alltag", "folien": ["f10", "f11", "f12", "f13", "f14"], "sprecher": "yannick" },
+    { "block": 5, "name": "Praxis", "zusatz": "Was zeigt die Praxis? Befragung, Zahlen und ein Fall", "folien": ["f15", "f16", "f17", "f18", "f19"], "sprecher": "yannick" },
+    { "name": "Schluss", "zusatz": "Kernbotschaft und Diskussion", "folien": ["f20", "f21"], "sprecher": "yannick", "neueSeite": false }
+  ],
+
+  "aufteilungTitel": "Vor dem Start",
+  "aufteilung": [
+    "Präsentation im Browser öffnen, P drückt die Referentenansicht auf, F den Vollbildmodus. Die Umfrage-Runde steht schon auf dem Vortragstag.",
+    "QR-Code auf Folie 08 einmal mit dem eigenen Handy testen und die Probestimme danach nicht mehr beachten: Stimmen älter als 30 Minuten erscheinen nicht.",
+    "Notfall-PDF (export/praesentation-notfall.pdf) auf dem Laptop und einem Stick bereithalten, dieses Skript ausgedruckt daneben."
+  ],
+
+  "uebergaben": [],
+
+  "rueckfragen": [
+    { "folie": "f03", "frage": "Warum fehlt die bekannte Definition von Wunderer?", "antwort": "Sie ist in Lehrbüchern verbreitet, ihr Wortlaut ist aber nicht frei zugänglich. Ich habe nur Quellen genutzt, die jeder nachprüfen kann; die Bausteine decken sich ohnehin." },
+    { "folie": "f06", "frage": "Ist TLT überhaupt ein KMU?", "antwort": "Formal nein: rund 300 Beschäftigte weltweit und Teil des Konzerns POWERCHINA, Eigentum und Leitung fallen nicht zusammen. Gerade deshalb ist TLT in der Befragung der Kontrast zu SimpleAct (inhabergeführt, vier Personen)." },
+    { "folie": "f06", "frage": "Mal heißt es 54 Prozent, mal 72 Prozent der Beschäftigten. Was stimmt?", "antwort": "Beides, je nach Definition und Bezugsgröße: KMU nach EU-Definition stellen 53,7 % der tätigen Personen (Destatis) bzw. 54,4 % der abhängig Beschäftigten (IfM); der Mittelstand nach KfW-Definition (bis 500 Mio. € Umsatz) 71,6 % der Erwerbstätigen, jeweils 2024. Backup B3." },
+    { "folie": "f09", "frage": "Woher stammen die zwei Drittel patriarchal geführter Familienunternehmen?", "antwort": "Aus einem Übersichtsartikel des Organisationsforschers Rudolf Wimmer (2021). Es ist seine Einschätzung, keine Erhebung, und ausdrücklich nicht abwertend gemeint." },
+    { "folie": "f09", "frage": "Woher kommt das kooperative Gegenbild?", "antwort": "Aus einer Studie des IfM Bonn (2018) mit 11 Interviews zu Digitalisierungsprojekten. Kooperativ führt dort ein Führungstyp, wenn im Team die Kompetenzen vorhanden sind; das gilt nicht für alle KMU." },
+    { "folie": "f09", "frage": "Stammen die sieben Stufen von Tannenbaum und Schmidt?", "antwort": "Das Kontinuum ja (1958). Die sieben Bezeichnungen sind eine Lehrbuch-Variante in Anlehnung daran; der Originalaufsatz liegt hinter einer Bezahlschranke." },
+    { "folie": "f09", "frage": "Warum sieht sich der Gründer weiter auf der Chefseite als der Abteilungsleiter?", "antwort": "Er ist ‚gleichzeitig Verkäufer, Entwickler und Chef‘ und würde ‚am liebsten alles selbst machen‘. Strategie, Preise und Rechtliches entscheidet er selbst. Sein Team sähe ihn nach seiner Vermutung ‚teilweise 1, zum größten Teil 4/5‘, Jörg Heisler vermutet bei sich Stufe 5." },
+    { "folie": "f11", "frage": "Woher stammen die 91 Prozent?", "antwort": "Aus dem IW-Personalpanel 2020 (KOFA-Studie 4/2021), 1.431 Unternehmen. Gefragt wurde, wer federführend für die Personalarbeit zuständig ist." },
+    { "folie": "f11", "frage": "Bieten wirklich nur 15 Prozent der kleinen Firmen Führungsschulungen an?", "antwort": "Gefragt wurde, mit welchen Maßnahmen Unternehmen den Zusammenhalt stärken; 15 % der Unternehmen bis 49 Beschäftigte nennen Führungsschulungen, 64 % ab 500. Angaben von Personalverantwortlichen (Randstad-ifo, 2025)." },
+    { "folie": "f12", "frage": "Gelten die Zahlen zu Zielvereinbarungen auch für kleine Betriebe?", "antwort": "Nein. Sie stammen aus einer Befragung von Betrieben ab 50 Beschäftigten; für kleinere gibt es keine frei zugängliche Auswertung. Die Zahlen zu Mitarbeitergesprächen gelten dagegen auch für 1 bis 49 Beschäftigte." },
+    { "folie": "f13", "frage": "Warum nennen Sie bei ELBS keine Erfolgszahlen?", "antwort": "Die Angaben sind Selbstauskunft und widersprechen sich (Teaser ‚100 Prozent mehr Umsatz‘, im Text ‚bis zu 50 Prozent‘), außerdem überlagert durch eine Vier-Tage-Woche." },
+    { "folie": "f14", "frage": "Sind die guten Zahlen der kleinen Betriebe nicht geschönt?", "antwort": "Teilweise sind es Angaben der Personalverantwortlichen, deshalb steht die Beschäftigtensicht daneben: 32 % der Beschäftigten in Betrieben mit 20 bis 49 erleben wenig oder keine Wertschätzung (DGB-Index, Mittel 2022 bis 2025). Die 90,8 % gelten nur für KMU, die in Weiterbildung investieren." },
+    { "folie": "f15", "frage": "Sind zwei Befragte aussagekräftig?", "antwort": "Nein, und das ist auch nicht der Anspruch: Selbstauskunft, nicht repräsentativ, beide stehen mir persönlich nahe (Arbeitgeber, Vater). Die Befragung liefert Praxisstimmen und einen Kontrast. Beide sind mit Name, Funktion und wörtlichen Zitaten einverstanden." },
+    { "folie": "f18", "frage": "Gilt die Gallup-Zahl auch für KMU?", "antwort": "Gallup weist keine Werte nach Unternehmensgröße aus. Die 77 % gelten für alle Beschäftigten in Deutschland 2025." },
+    { "folie": "f18", "frage": "Planen 569.000 Inhaber eine Stilllegung?", "antwort": "Sie streben bis Ende 2029 nach ihrem Rückzug keine Fortführung an; ernsthaft erwogene Stilllegungen sind eingerechnet. Häufigste Gründe: Rentenalter 52 %, fehlendes Interesse in der Familie 47 % (KfW Nachfolge-Monitoring, Mehrfachnennung)." },
+    { "folie": "f19", "frage": "Sind die Praxisfälle repräsentativ?", "antwort": "Nein. Alle stammen aus dem Förderprogramm INQA-Coaching und sind Erfolgsberichte. Beim Pflegedienst stellt die Quelle auch keinen ursächlichen Zusammenhang zwischen Leitfaden und Nachfolge her." }
+  ],
+
+  "kuerzung": {
+    "regel": "An jeder Zwischenzeit (Seite {seite:ueberblick}) auf die Uhr sehen. Mehr als 30 Sekunden hinter dem Plan: ab sofort Stufe 1; reicht sie laut Spalte „noch kürzbar“ nicht für den Rückstand, zusätzlich Stufe 2. Ab Block 5 bringen beide Stufen nur noch {rest:f15}, Kernbotschaft und Diskussion bleiben ungekürzt. Im Sprechtext stehen die Sätze grau in eckigen Klammern; die Ziffer nennt die Stufe.",
+    "stufen": [
+      {
+        "name": "Stufe 1",
+        "ziel": "ca. −1 min",
+        "saetze": [
+          { "folie": "f05", "text": "Diese Trennung gilt geradezu als Kennzeichen des modernen Managements." },
+          { "folie": "f06", "text": "Darunter liegen kleine Unternehmen mit weniger als 50 und Kleinstunternehmen mit weniger als 10 Beschäftigten." },
+          { "folie": "f07", "text": "Familienunternehmen hat die Führungsforschung dagegen lange weitgehend ignoriert." },
+          { "folie": "f10", "text": "Die moderne Variante heißt OKR, Objectives and Key Results: Ziele werden aus der Strategie abgeleitet und jeweils für das nächste Quartal festgelegt." },
+          { "folie": "f11", "text": "In Sachsen-Anhalt zum Beispiel hatten 2022 nur 13 Prozent der Kleinstbetriebe überhaupt eine zweite Führungsebene." },
+          { "folie": "f14", "text": "Fehler werden in den kleinen zu 62 Prozent offen angesprochen, in den großen zu 28 Prozent." },
+          { "folie": "f17", "text": "Außerdem unterscheidet er: In Produktion und Technik wird vor Ort geführt, mit Schichtübergaben und Runden direkt in der Halle; im Büro über Ergebnisse, Gleitzeit und Homeoffice." },
+          { "folie": "f18", "text": "Rechnet man andere Merkmale heraus, entscheidet aber weniger die Größe als der Digitalisierungsgrad und das digitale Know-how." }
+        ]
+      },
+      {
+        "name": "Stufe 2",
+        "ziel": "zusätzlich, zusammen ca. −2 min",
+        "saetze": [
+          { "folie": "f09", "text": "Natürlich ist so eine Linie vereinfacht. Nehmen Sie sie als Landkarte, nicht als Wahrheit." },
+          { "folie": "f12", "text": "Und der Trend geht weg vom Formular: Schriftliche Zielvereinbarungen sind zwischen 2012 und 2023 von 60 auf 50 Prozent zurückgegangen." },
+          { "folie": "f14", "text": "Als Lernchance sehen Großunternehmen Fehler häufiger als kleine, 19 gegenüber 5 Prozent." },
+          { "folie": "f15", "text": "Ein schriftliches Leitbild gibt es noch nicht." },
+          { "folie": "f16", "text": "Bei einem Compliance-Produkt ist genau das heikel, denn ein kleiner Fehler kann das Vertrauen ins ganze Produkt kosten." },
+          { "folie": "f18", "text": "Und gleichzeitig hatten nur 40 Prozent der Führungskräfte im letzten Jahr ein Coaching für ihre Führungsaufgabe." },
+          { "folie": "f18", "text": "Die Inhaber sind im Schnitt über 54 Jahre alt; 2003 waren es noch 45." },
+          { "folie": "f19", "text": "Schnell war klar: Der Betrieb braucht eine längerfristige Beratung." }
+        ]
+      }
+    ]
+  },
+
+  "planb": [
+    { "fall": "Beamer oder Laptop fällt aus", "tun": "Notfall-PDF export/praesentation-notfall.pdf im Vollbild zeigen: eine Seite je Folie im Endzustand, 27 Seiten. Die Klick-Schritte entfallen, der Sprechtext bleibt gleich." },
+    { "fall": "Live-Umfrage ohne Netz (Folie 08)", "tun": "Per Handzeichen abfragen und auf Folie 08 eintragen: Klick auf eine Antwort = +1, Umschalt+Klick = −1, oder Ziffern 1 bis 5. Folie 09 zeigt dann diese Werte." },
+    { "fall": "Referentenansicht fällt aus", "tun": "Mit diesem ausgedruckten Skript weitermachen: Startzeit und Klicks stehen je Folie. Die Präsentation läuft mit Pfeiltaste oder Clicker weiter; Ziffern und Enter springen zu einer Folie, z. B. 12 Enter, O zeigt die Übersicht." },
+    { "fall": "Zeit läuft über", "tun": "Kürzungsplan oben: zuerst Stufe 1, dann Stufe 2. Die Sätze stehen im Sprechtext grau in eckigen Klammern." },
+    { "fall": "Diskussion kommt nicht in Gang", "tun": "Mit Frage 1 beginnen und an das eigene Umfrageergebnis anknüpfen: Viele im Raum erleben Beteiligung, der typische Inhaberstil wird aber auf patriarchalisch geschätzt. Danach Frage 3 (Nachfolge)." }
+  ]
+}
