@@ -1,0 +1,57 @@
+{
+  "stand": "1.11.2026",
+  "uebergaben": [
+    ["Nach Folie 05", "Yannick", "„Durch Grundlagen und Risikoklassen führt Sie jetzt Elias.“", "„Danke, Yannick.“"],
+    ["Nach Folie 19", "Elias", "„Wie man sie Schritt für Schritt prüft, zeigt Ihnen jetzt Yannick.“", "„Danke, Elias.“"],
+    ["Nach Folie 27", "Yannick", "„Was es kostet, wenn das Ob schiefgeht, rechnet Elias jetzt mit Ihnen aus.“", "„Danke, Yannick.“"],
+    ["Nach Folie 30", "Elias", "„Bleibt die Frage, wer sich darum kümmert. Yannick?“", "„Danke, Elias.“"]
+  ],
+  "regeln": [
+    "Sechs Live-Fragen: Folien 04, 09, 21, 24, 32 und 36. Folie 02 ist ein Handzeichen.",
+    "Ansage jedes Mal: „Neuer Code, bitte neu scannen. Sie haben 30 Sekunden.“",
+    "Klicken, wenn die Zahl der Stimmen nicht mehr steigt, spätestens nach 45 Sekunden.",
+    "Pille zeigt „offline“: Handzeichen, ein Klick auf einen Balken zählt +1. Ziffern springen immer zu Folien und zählen keine Stimmen.",
+    "Rechner (28), Uhr (23) und „Eigener Fall“ (22) nur im Folienfenster bedienen; in der Referentenansicht sind Klicks auf die Folie gesperrt.",
+    "Ohne Firmenauftritt: Adresse mit ?marke=neutral öffnen. Dann fehlt Folie 34, alle Nummern danach rücken um eins vor."
+  ],
+  "diskussion": "Die drei Fragen auf Folie 37 tragen die Diskussion, wenn sie stockt. Vorschlag: Beide moderieren abwechselnd, Elias nimmt Fragen zu Aufsicht, Kosten und Nachbarrecht, Yannick die zu Klassifizierung und Praxis.",
+  "rueckfragen": [
+    ["04", "Schätzfrage", "Richtig ist 4 (Chatbot, Bewerber-Ranking, KI-Not-Stopp, Stimmungsanalyse). Nicht auflösen, die Auflösung kommt auf Folie 25."],
+    ["06", "Bestandsschutz", "Hochrisiko-Systeme, deren Modell vor dem neuen Anwendungsbeginn in Verkehr oder in Betrieb war, fallen erst nach einer erheblichen Änderung ihrer Konzeption unter die Pflichten (Art. 111 Abs. 2 n. F.). Verbote gelten immer, Systeme für Behörden müssen bis 2.8.2030 konform sein. GPAI-Bußgelder gegen Modellanbieter erst ab 2.8.2026 (Art. 113 Abs. 3 lit. b, Art. 101); Altmodelle haben bis 2.8.2027 Zeit (Art. 111 Abs. 3). Belege: Omnibus-VO (EU) 2026/1744 vom 8.7.2026, in Kraft 27.7.2026; KI-MIG in Kraft 29.7.2026."],
+    ["07", "Was ist keine KI?", "Die Leitlinien der Kommission nehmen u. a. Verbesserung mathematischer Optimierung, einfache Datenverarbeitung, klassische Heuristiken und einfache Vorhersagesysteme aus. Leitlinien sind nicht verbindlich."],
+    ["08", "ChatGPT für Bewerbungen: sind wir dann Anbieter?", "Art. 25 greift ab 2.12.2027, wenn am Ende ein Hochrisiko-System steht. Man kann dadurch Anbieter werden (Art. 25 Abs. 1 lit. c); es hängt auch davon ab, ob der Hersteller solche Zwecke ausschließt, und Leitlinien fehlen noch. Wer ein eigenes Produkt auf einem fremden Sprachmodell baut, ist Anbieter seines Systems, nicht des Modells."],
+    ["10", "Aufsicht", "Das Reallabor muss nach EU-Recht bis 2.8.2027 einsatzbereit sein; in Deutschland haben neben KMU auch Hochschulen und Forschung Vorrang (§ 13 KI-MIG). Gegen Behörden keine Bußgelder (§ 17 Abs. 2). BaFin nur bei KI mit direktem Bezug zur regulierten Finanztätigkeit; Versicherungs- und Finanzanlagenvermittler (§§ 34d, 34f, 34h, 34i, 34k GewO) beaufsichtigt die BNetzA."],
+    ["12", "Verbote", "Emotionserkennung im Sinne des Gesetzes beruht auf biometrischen Daten (Stimme, Mimik, Tippverhalten), reine Textauswertung zählt nicht. Selbstcoaching ist nur erlaubt, wenn die Ergebnisse allein bei der Person bleiben. Die neuen Verbote ab 2.12.2026 greifen für Anbieter nur, wenn die Erzeugung Zweck ist oder ohne zumutbare Schutzvorkehrungen absehbar eintritt (Art. 5 Abs. 1a). Alle acht bisherigen Verbote: manipulieren, Schwächen ausnutzen, Social Scoring, Straftaten allein aus der Persönlichkeit vorhersagen, Gesichtsdatenbanken durch wahlloses Auslesen aufbauen, Emotionen am Arbeitsplatz und in der Bildung erkennen, biometrisch nach sensiblen Merkmalen sortieren, Live-Gesichtserkennung durch die Polizei."],
+    ["14", "Maschinen", "Biegepressen mit Handbeschickung (Hub über 6 mm, über 30 mm/s) stehen in Anhang I Teil B Nr. 9 der Maschinenverordnung. Dass der Hersteller dank harmonisierter Normen ohne Prüfstelle auskommt, ändert die Einstufung nicht (Leitlinienentwurf Rn. 57 bis 59; für Abschnitt A auch der Gesetzgeber). Eine fest trainierte KI in einer Maschine, die nicht in Anhang I steht, wäre nicht hochriskant. Reine Qualitätskontrolle ist kein Sicherheitsbauteil (Art. 6 Abs. 1a, 1b)."],
+    ["16", "Grundrechte-Folgenabschätzung", "Nur öffentliche Stellen, private Erbringer öffentlicher Dienste (z. B. private Schulen, Kliniken, Pflegedienste) und Betreiber von Bonitäts- sowie Lebens- und Krankenversicherungs-Systemen (Art. 27 Abs. 1). Für das HR-Tool der Muster Metallbau nicht vorgeschrieben."],
+    ["17", "Transparenz", "Der Chatbot-Hinweis entfällt, wenn es offensichtlich ist. Bei offensichtlich künstlerischen, satirischen oder fiktionalen Werken reicht ein abgeschwächter Hinweis, bei Werbung nur im Einzelfall. KI-Texte zu öffentlichen Themen sind offenzulegen, außer ein Mensch prüft sie und trägt die redaktionelle Verantwortung. Ältere Generatoren: Markierung bis 2.12.2026."],
+    ["18", "KI-Kompetenz", "In Deutschland kein Bußgeld (weder Art. 99 noch § 15 KI-MIG); andere Mitgliedstaaten könnten nach Art. 99 Abs. 1 n. F. Sanktionen vorsehen. Hilfe: KI-Service-Desk der Bundesnetzagentur (Orientierung, unverbindlich), Mittelstand-Digital Zentren."],
+    ["19", "Große Modelle", "Systemisches Risiko wird ab 10^25 Rechenoperationen im Training vermutet (Art. 51 Abs. 2). Das Drittel-Kriterium (GPAI-Leitlinien Rn. 60) zeigt nur, wann ein Modifizierer Modellanbieter wird."],
+    ["20", "Prüflogik", "Regelbasiert, es entscheidet keine KI. „Unsicher“ wählt je Frage die strengere Antwort, bei Ausnahmen also Nein. Wer Emotionserkennung bejaht, bekommt Anhang III und die Informationspflicht automatisch dazu."],
+    ["25", "Inventar", "Der Chatbot hat zwei Pflichten, den Hinweis auf KI (seit 2.8.2026) und die maschinenlesbare Markierung der Antworten. Für Bots, die schon vor dem 2.8.2026 liefen, lässt die Kommission Zeit bis 2.12.2026; sicherer ist, jetzt zu markieren."],
+    ["26", "Zahlen", "EU-Schnitt 17, 30 und 55 % (Eurostat 2025). Bitkom 2026: 70 % schulen zu KI, 25 % gar nicht. Alle Fundstellen in recherche/kmu-zahlen.md im Repository."],
+    ["28", "„Daneben bis 50.000 €“", "Nationale Bußgelder für eigene Tatbestände (Art. 21, 27, 45, 86 nach § 15 KI-MIG), nicht zusätzlich für denselben Verstoß, praktisch ab 2.12.2027."],
+    ["29", "Kosten", "Für Anbieter nannte die Kommission 6.000 bis 7.000 € je System. Wo eine benannte Stelle prüfen muss: 3.000 bis 7.500 € für die Dokumentation, dazu 1.000 bis 2.000 € je Audittag. Die Kommission schätzte 5 bis 15 % aller KI-Anwendungen als hochriskant; appliedAI (2023) fand bei 106 Systemen 18 % eindeutig hochriskant und 40 % unklar. Vereinfachtes Qualitätsmanagement nur für KMU ohne Partner- oder verbundene Unternehmen (Art. 63 Abs. 1); das Formular zur vereinfachten Dokumentation (Art. 11) steht noch aus."],
+    ["30", "Nachbarrecht", "Bewerber sind nicht von § 87 Abs. 1 Nr. 6 BetrVG erfasst; bei KI-Auswahl greift § 95 Abs. 1, 2a (Auswahlrichtlinien), die Unterrichtung über KI allgemein § 90 Abs. 1 Nr. 3."],
+    ["33", "Darf ich die Einstufung selbst machen?", "Ja, seine eigenen KI-Systeme darf der Betrieb selbst einstufen und verantwortet das auch. Wer das für andere im Einzelfall rechtlich prüft, erbringt eine Rechtsdienstleistung; die ist nur erlaubt, soweit ein Gesetz sie zulässt, etwa für Anwälte oder als Nebenleistung (§§ 2, 3, 5 RDG)."],
+    ["34", "SimpleAct", "Keine Preise und keine Demo im Vortrag, Verweis auf simpleact.de mit dem kostenlosen Schnell-Check (sechs Fragen, ohne Anmeldung). Die Einstufung bleibt eine Ersteinschätzung, verantwortlich ist der Betrieb."]
+  ],
+  "kuerzung": [
+    ["Ab 3 Minuten Rückstand", "Partnerarbeit (23) nur 2 statt 3 Minuten. Folie 26 nur die 71 % nennen. Folie 27 ohne Handzeichen, die Irrtümer nur vorlesen und auflösen."],
+    ["Ab 6 Minuten zusätzlich", "Folie 10 und Folie 19 in je einem Satz. Folie 29 überspringen (30 Enter). Folie 34 in zwei Sätzen: „Genau diese fünf Schritte machen wir bei SimpleAct in einer Software. Mehr unter simpleact.de.“"]
+  ],
+  "planb": [
+    "F5 drücken: Die Folie bleibt erhalten, sie steht in der Adresse.",
+    "Neuer Tab mit der Folien-Adresse, dann Foliennummer und Enter.",
+    "Notfall-PDF im Vollbild (export/ki-compliance-notfall.pdf).",
+    "Ohne Netz: Umfragen per Handzeichen, ein Klick auf einen Balken zählt +1. Die Live-Abstimmung ist kein Muss."
+  ],
+  "titelErsatz": {
+    "f04": "Schätzfrage: Wo reicht Schulung allein nicht?",
+    "f09": "Welche Rolle hat der Betrieb mit dem eigenen Chatbot?",
+    "f21": "Stimmungsanalyse nur bei den Anrufenden: welche Klasse?",
+    "f24": "Welche Klasse hat Ihr KI-Tool ergeben?",
+    "f32": "Was gehen Sie am Montag als Erstes an?",
+    "f36": "Bremst der AI Act kleine Unternehmen aus?"
+  }
+}

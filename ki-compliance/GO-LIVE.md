@@ -128,7 +128,7 @@ sie bis zum Vortrag verfallen: nach 30 Minuten, bei der Schätzfrage nach 90 Min
 - [ ] Gibt es Neues, Folie und Notiz anpassen. Den Rechtsstand in `marke.js` (`rechtsstand`) und auf Folie 01
       nachziehen; alle Stellen mit „31.10.2026“ suchen. Danach Prüfwerkzeug, PDF und Redeskript neu erzeugen und
       pushen (Befehle in `praesentation/LIESMICH.md`). Oder Claude bitten, das zu übernehmen.
-- [ ] **beide** Redeskript ausdrucken (je ein Exemplar). Notfall-PDF auf USB-Stick und aufs Handy.
+- [ ] **beide** Präsentationsskript ausdrucken (`praesentation/export/praesentationsskript.pdf`, je ein Exemplar, mit Folienbildern). Notfall-PDF auf USB-Stick und aufs Handy.
 - [ ] **beide** Packliste:
       - [ ] Laptop-Netzteil
       - [ ] HDMI- und USB-C-Adapter
