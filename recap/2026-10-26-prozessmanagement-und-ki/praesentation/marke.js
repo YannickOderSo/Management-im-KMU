@@ -41,8 +41,9 @@ window.MARKE = {
   hochschule: 'Hochschule Kaiserslautern',
   unternehmen: '',
   gruppe: ['Elias Knauber', 'Yannick Heisler'],
-  datum: '',                      // Vortragstermin der Recap eintragen (JJJJ-MM-TT), dann steht er auf der Titelfolie
-  dauerMinuten: 17,               // ca. 17 Minuten (Knopper-Block um zwei Folien erweitert, 30.10.2026)
+  datum: '',                      // nicht genutzt: die Titelfolie nennt fest das Sitzungsdatum (Mo, 26.10.2026), keinen Vortragstermin
+  dauerMinuten: 16.834,           // Plan 16:50 = Summe data-zeit 1010 s, ca. 17 Minuten (Knopper-Block um zwei Folien erweitert, 30.10.2026).
+                                  // Die Engine zeigt floor(dauerMinuten · 60) s: 16.834 · 60 = 1010,04 → „von 16:50“ (1010 / 60 ergäbe 1009,99… → „16:49“)
   anrede: 'Sie',
 
   /* 5./6. LIVE-UMFRAGE, WORTWOLKEN – nicht genutzt */

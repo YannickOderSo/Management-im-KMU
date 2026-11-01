@@ -18,6 +18,8 @@
 /* ---------- f08 Verbreitung: drei Kennzahlen (r-zahl) mit Strichskala, Spotlight ---------- */
 .r-zahlen .folie-inhalt { justify-content: flex-start; }
 .r-anteile { display: flex; flex-direction: column; gap: 22px; }
+/* Die Wende 59 % (.r-zahl--faden): Karmin, Gewicht 600, 200 statt 172 px
+   und Zusatzabstand kommen aus recap.css (Graustufentest) */
 
 
 /* ---------- f09 Größe und Know-how ---------------------------------------------
@@ -25,17 +27,44 @@
    recap.css: Randspalte 166 px, Zahl 104 px) + Rinne + Strichskala 900 px
    (r-skala--schmal, Mindestbreite) – so bleibt das Seitenfeld (Sp. 9–12)
    für die Faktoren frei. Hier ist nicht die Zahl die Pointe, sondern das
-   Know-how. */
+   Know-how: es steht als Aussage im Seitenfeld (Schritt 1). */
 .r-groesse .folie-inhalt { justify-content: flex-start; }
-.r-groesse-skalen { grid-column: 1 / 9; display: flex; flex-direction: column; gap: 30px; margin: 0; }
+.r-groesse-skalen { grid-column: 1 / 9; display: flex; flex-direction: column; gap: 52px; margin: 0; }
+.r-groesse-skalen > .r-bezeichner { margin-bottom: -16px; }
 /* Seitenfeld eine Rinne eingerückt: sonst stößt es optisch an das Ende der
    900-px-Skalen (Abstand sonst nur 32 px) */
 .r-groesse-ursache { grid-column: 9 / 13; min-width: 0; padding-left: 32px; }
-.r-groesse-faktoren { margin-top: 18px; border-bottom: var(--r-haar) solid var(--r-leer); }
-.r-groesse-faktoren > li { padding: 20px 0 22px; }
-.r-groesse-faktoren .r-liste-wort { font-size: 40px; }
+/* Mit Schritt 1 treten die Größen-Skalen zurück (Rückzug .r-zurueck /
+   .r-zurueck-ausloeser, recap.css 5.9: Text Schiefer, Striche Mittel) und
+   bleiben es auch im Endzustand, im Druck und in der Übersicht: Sobald die
+   Ursache im Seitenfeld steht, ist die Größe nur noch Treiber. So trägt das
+   Bild den Titel, und „Know-how im Team“ ist auch in Graustufen die
+   stärkste Stelle. */
+/* Die Aussage, die den Titel belegt: Fraunces 72 px (zweizeilig), Karmin,
+   Gewicht 600 – das kräftigste Element unter dem Titel */
+.r-groesse-kern {
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: var(--r-haar) solid var(--r-leer);
+  font-family: var(--schrift-display);
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  font-variation-settings: "opsz" 72, var(--achsen-ruhig);
+  text-wrap: balance;
+  color: var(--r-faden-text);
+}
+.r-groesse-weitere {
+  margin-top: 14px;
+  padding-bottom: 26px;
+  border-bottom: var(--r-haar) solid var(--r-leer);
+  font-size: 30px;
+  line-height: 1.3;
+  text-wrap: balance;
+  color: var(--r-schrift-2);
+}
 .r-groesse-folgerung { margin-top: 26px; font-size: 32px; line-height: 1.25; color: var(--r-schrift); }
-.r-groesse .r-zahl-quelle { font-size: 26px; }   /* Größenklassen sind Inhalt, auf 8 m lesbar */
 
 
 /* ---------- f10 TOE-Modell -------------------------------------------------------
@@ -65,7 +94,9 @@
   font-variation-settings: "opsz" 48, var(--achsen-ruhig);
   color: var(--r-schrift);
 }
-.r-toe-wer { margin-top: 8px; font-size: 24px; line-height: 1.25; color: var(--r-schrift-2); }
+/* Bezug der Prozente (Anwender, Nicht-Nutzer, Umfeld): ohne ihn sind die
+   Balken nicht vergleichbar – darum in Textgröße, aus der letzten Reihe lesbar */
+.r-toe-wer { margin-top: 8px; font-size: 30px; line-height: 1.25; color: var(--r-schrift-2); }
 .r-toe-wert {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -86,14 +117,25 @@
 }
 .r-toe-was { font-size: 30px; line-height: 1.2; color: var(--r-schrift); }
 .r-toe-wert > .r-balken-spur { grid-column: 1 / -1; }
-/* die EINE Karmin-Zahl: Zahl und Balken Karmin, Zahl zusätzlich kräftiger */
+/* die EINE Karmin-Zahl: Zahl und Balken Karmin, Zahl zusätzlich kräftiger
+   (600 gegen 470 – Karmin ist kaum dunkler als Schiefer) */
 .r-toe-wert--faden { --balken-farbe: var(--spot-akzent-strich, var(--r-faden)); }
-.r-toe-wert--faden .r-toe-zahl { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 560; }
-/* Schritt 1: Beispiel als ruhige Zeile unter einer Haarlinie; der Satz
-   beginnt auf der Achse der mittleren Spalte (Sp. 5) */
-.r-toe-beispiel { display: grid; grid-template-columns: var(--r-raster); column-gap: var(--r-rinne); align-items: baseline; }
-.r-toe-beispiel > .r-bezeichner { grid-column: 1 / 5; }
-.r-toe-fall { grid-column: 5 / 13; font-size: 32px; line-height: 1.25; color: var(--r-schrift); }
+.r-toe-wert--faden .r-toe-zahl { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 600; }
+/* Graustufentest: Der Karmin-Balken allein ist heller als die Tinten-Balken.
+   Deshalb ist die Schlüsselzeile auch größer: Zahl 80 statt 64 px (gleiche
+   Zeilenbox 57,6 px – Faktor ohne Einheit, sonst erbt das %-Zeichen die
+   Höhe und die Zeile wächst; die Grundlinie sinkt um ≈ 6 px, der Abstand
+   oben gleicht das aus) und Balken 24 statt 16 px (nach oben und unten je 4 px
+   verbreitert, ohne die Zeile zu verschieben). */
+.r-toe-wert--faden { margin-top: 29px; }
+.r-toe-wert--faden .r-toe-zahl { font-size: 80px; line-height: 0.72; font-variation-settings: "opsz" 72, var(--achsen-ruhig); }
+.r-toe-wert--faden > .r-balken-spur { --hoehe: 24px; margin-block: -4px; }
+/* der Treiber im Umfeld (57 % nutzen schon KI = Druck, kein Hemmnis):
+   Balken in Mittel statt Tinte, damit er nicht als sechste Bremse gelesen wird */
+.r-toe-wert--druck { --balken-farbe: var(--spot-strich, var(--r-mittel)); }
+/* Schritt 1: Beispiel als ruhige Zeile unter einer Haarlinie (Wortbudget:
+   ohne eigenen Bezeichner, der Satz nennt den Fall selbst) */
+.r-toe-fall { font-size: 32px; line-height: 1.25; color: var(--r-schrift); }
 
 
 /* ---------- f11 TAM als Pfaddiagramm ----------
@@ -111,7 +153,7 @@
    der Kernpfeil dockt von unten an ihr an (Spitze bei y = 356 im SVG). */
 .r-tam-knoten--nutzung { left: 900px; top: 270px; translate: -50% 0; }
 .r-tam-label { position: absolute; left: 560px; top: 130px; }
-.r-tam-rechts { grid-column: 9 / 13; display: flex; flex-direction: column; gap: 32px; padding-top: 60px; }
+.r-tam-rechts { grid-column: 9 / 13; display: flex; flex-direction: column; gap: 40px; padding-top: 76px; }
 .r-tam-zahl b {
   display: block;
   font-family: var(--schrift-zahl);
@@ -123,10 +165,11 @@
   font-variant-numeric: lining-nums tabular-nums;
 }
 .r-tam-zahl > span { display: block; margin-top: 14px; font-size: 30px; line-height: 1.3; }
+/* Folgerung = Karmin-Aussage: schwerer als die Nachbarn (Graustufentest) */
 .r-tam-folgerung {
   font-family: var(--schrift-display);
   font-size: 46px;
-  font-weight: 450;
+  font-weight: 580;
   line-height: 1.1;
   letter-spacing: -0.01em;
   font-variation-settings: "opsz" 48, var(--achsen-ruhig);
@@ -145,8 +188,16 @@
    (recap.css): die Zahl steht am Ende der Spur, und zwischen den Zahlen links
    und den Namen rechts bleibt eine klare Gasse (≈ 120 px) – sonst läse man
    „72 % Infrastruktur“ als Paar */
-.r-einsatz-balken { --spur: 380px; --name: 220px; --hoehe: 20px; row-gap: 64px; margin-top: 44px; }
-.r-einsatz-balken .r-balken-zahl { font-size: 48px; font-variation-settings: "opsz" 48, var(--achsen-ruhig); }
+.r-einsatz-balken { --spur: 380px; --name: 220px; --hoehe: 20px; --balken-zahl: 48px; row-gap: 64px; margin-top: 44px; }
+/* Kosten: „Datenaufbereitung“ (wie auf Folie 10) braucht eine breitere
+   Namensspalte; die Spur (= 100 %) bleibt gleich lang wie links */
+.r-einsatz-gruppe--kosten .r-einsatz-balken { --name: 272px; }
+.r-einsatz-balken .r-balken-zahl { font-variation-settings: "opsz" 48, var(--achsen-ruhig); }
+/* Graustufentest: Die Schlüsselzeile „Lizenzen“ steht auch über die Größe
+   hervor (recap.css 5.7: Zahl 1,25-mal so groß = 60 px, Balken 28 statt
+   20 px, Zeilenbox gleich hoch – beide Gruppen bleiben auf denselben Zeilen);
+   hier nur die optische Größe passend zu 60 px */
+.r-einsatz-balken .r-balken-zeile--faden .r-balken-zahl { font-variation-settings: "opsz" 60, var(--achsen-ruhig); }
 
 
 /* ---------- f13 Rechtlicher Rahmen -------------------------------------------------

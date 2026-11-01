@@ -1,7 +1,8 @@
 """Erzeugt praesentation/export/redeskript.pdf aus den Sprechtexten in praesentation/index.html.
 
 Je Folie: Nummer, Titel, Sollzeit, Startzeit, der Sprechtext mit Klick-Markierungen zwischen den
-Schritten und die Hintergrundnotizen (nicht vortragen). Nach jeder Änderung am Sprechtext neu erzeugen.
+Schritten und die Hintergrundnotizen (nicht vortragen); am Ende die Backup-Folie (Quellen) mit
+ihrer Notiz, damit alle 25 Folien im Skript stehen. Nach jeder Änderung am Sprechtext neu erzeugen.
 
 Aufruf aus dem Repo-Wurzelordner:
     python3 recap/2026-10-26-prozessmanagement-und-ki/redeskript-erzeugen.py
@@ -90,6 +91,7 @@ def seite_bauen(folien):
     zeilen = []
     for f in folien:
         if f["backup"]:
+            zeilen.append(f'<tr><td>{f["nummer"]}</td><td>{html.escape(f["kurz"])}</td><td>–</td><td>–</td></tr>')
             continue
         zeilen.append(
             f'<tr{" class=trenner" if f["block"] else ""}><td>{f["nummer"]}</td><td>{html.escape(f["kurz"])}</td>'
@@ -99,6 +101,16 @@ def seite_bauen(folien):
     teile = []
     for f in folien:
         if f["backup"]:
+            hinweise = "".join(f"<p>{html.escape(h)}</p>" for h in f["hinweise"])
+            teile.append(f"""
+<section class="folie">
+  <header>
+    <span class="nr">{f['nummer']}</span>
+    <h2>{html.escape(f['titel'])}</h2>
+    <span class="zeit">Backup für Rückfragen · nicht vortragen</span>
+  </header>
+  {f'<div class="hinweis"><b>Hintergrund, nicht vortragen</b>{hinweise}</div>' if hinweise else ''}
+</section>""")
             continue
         if f["block"]:
             teile.append(

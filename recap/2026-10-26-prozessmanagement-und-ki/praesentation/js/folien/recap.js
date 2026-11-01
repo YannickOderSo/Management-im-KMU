@@ -10,9 +10,9 @@
       .laufkopf übernimmt statt eine eigene einzufügen, steht die Leiste damit
       fest im DOM – in Druck/PDF, Übersicht (Klone) und Referentenansicht, und
       unabhängig davon, ob ein Folien-Skript Deck.registriere(…) nutzt.
-      Der Fadenabschnitt trägt data-morph="faden", der Name des aktuellen Blocks
-      data-morph="station-n": von der Trennfolie gleiten Faden und Kurzname
-      beim Weiterschalten in die Leiste.
+      Der Fadenabschnitt trägt data-morph="faden", das Wort des aktuellen
+      Blocks (.r-lauf-wort im Namensfeld) data-morph="station-n": von der
+      Trennfolie gleiten Faden und Kurzname beim Weiterschalten in die Leiste.
       data-station="alle" (Fazit): Leiste zu einer durchgehenden Karminlinie
       geschlossen, ohne aktuellen Block.
    2. FADEN AUSRICHTEN UND WEBEN
@@ -84,11 +84,15 @@
       var n = i + 1;
       var zustand = geschlossen || n < aktuell ? ' ist-erledigt' : (n === aktuell ? ' ist-aktuell' : ' ist-kommend');
       var stil = '--anteil:' + anteile[i];
+      var feld = util.element('span', { class: 'r-lauf-name' + zustand, style: stil }, null, namen);
+      /* data-morph auf dem Wort selbst (inline-block, so breit wie der Text),
+         nicht auf dem breiten Flex-Element: sonst passen die Seitenverhältnisse
+         von Trennfolie und Leiste nicht zusammen und der Name erscheint beim
+         Morph kurz doppelt */
       util.element('span', {
-        class: 'r-lauf-name' + zustand,
-        style: stil,
+        class: 'r-lauf-wort',
         'data-morph': n === aktuell ? 'station-' + n : null
-      }, name, namen);
+      }, name, feld);
       util.element('span', { class: 'r-lauf-teil' + zustand, style: stil }, null, faden);
     });
     var nummer = nummerVon(folie);

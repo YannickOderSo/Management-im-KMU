@@ -6,8 +6,8 @@
    Bausteine und Markup-Muster: werk/KATALOG.md.
    Regeln je Folie mit der Folienklasse beginnen, nur Tokens verwenden.
 
-     f14 .r-llm      Schleife (Kette + Bogen), Beispielsatz mit Kandidaten,
-                     drei Folgen im Seitenfeld (Halluzination = Karmin)
+     f14 .r-llm      Schleife (Kette + Bogen), Beispielsatz als Zitat mit
+                     Tokenzahl, drei Folgen im Seitenfeld (Halluzination = Karmin)
      f15 .r-fenster  Kette Prompt → Chatbot → Modell (Chatbot = Karmin), Beispiel-
                      Prompt als Zitat, zwei Modellfamilien im Seitenfeld
      f16 .r-agent    Kreislauf links, vier Begriffe rechts (Tool Calling = Karmin)
@@ -20,90 +20,121 @@
 
 
 /* ---------- f14 Wie ein LLM antwortet ------------------------------------------
-   Hauptfeld: Bezeichner, Schleife (fünf Wörter auf der Tintenlinie, Bogen
-   zurück zum ersten), darunter das Beispiel. Seitenfeld: drei Folgen. */
+   Hauptfeld: Bezeichner, Schleife (fünf Wörter mit Stationspunkten auf der
+   Tintenlinie, Bogen zurück zum ersten), darunter Knoppers Beispielsatz als
+   Zitat (5.2b) mit der Tokenzahl als Hinweiszeile (5.3). Seitenfeld: drei
+   Folgen. */
 .r-llm .folie-inhalt { justify-content: flex-start; }
 .r-llm-haupt { display: flex; flex-direction: column; align-items: flex-start; }
 /* Bogenenden misst recap.js an den Wortmitten; die Werte hier sind der
    Rückfall ohne Skript */
-.r-llm-schleife { --bogen-von: 50px; --bogen-bis: 114px; margin-top: 22px; }
+.r-llm-schleife { --bogen-von: 50px; --bogen-bis: 114px; margin-top: 22px; padding-bottom: 80px; }
 .r-llm .r-kette { --abstand: 36px; }
-.r-llm-beispiel { margin: 76px 0 0; }
-/* „Ein Hund ist ein“ + Kandidatenstapel: das gewählte Token setzt den Satz
-   auf derselben Grundlinie fort, die übrigen stehen darunter (Schiefer) */
-.r-llm-satz {
-  display: flex;
-  align-items: baseline;
-  gap: 0.26em;
-  margin-top: 14px;
-  font-family: var(--schrift-display);
-  font-size: 56px;
-  font-weight: 430;
-  line-height: 1.12;
-  letter-spacing: -0.01em;
-  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
-  color: var(--r-schrift);
+/* Stationspunkte (wie f05/f07): ein Ring je Schritt auf der Linie, mittig
+   unter dem Wort – fünf Stationen statt einer Wortkette. Die Linie liegt
+   13 px unter den Wörtern (Polster 26 px, Mitte der 26-px-Spitze); der Bogen
+   beginnt 16 px unter der Kette, seine Spitze endet knapp unter dem ersten Punkt. */
+.r-llm .r-kette > li { position: relative; }
+.r-llm .r-kette > li::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: -25px;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  translate: -50% 0;
+  border: 5px solid var(--spot-strich, var(--r-schrift));
+  border-radius: 50%;
+  background: var(--r-papier);
 }
-.r-llm-kandidaten { display: flex; flex-direction: column; }
-.r-llm-wahl { font-weight: 620; }
-.r-llm-andere { font-size: 42px; line-height: 1.22; color: var(--r-schrift-2); }
-.r-llm-anzahl { margin: 10px 0 0; font-size: 32px; line-height: 1.3; color: var(--r-schrift-2); }
-/* die eine Karmin-Aussage (Halluzination): li.ist-faden, recap.css 5.15 */
+/* Knoppers Beispielsatz (Video 00:04:45) wie der Beispiel-Prompt auf f15:
+   Zitat 40 px, darunter die Tokenzahl als Hinweiszeile 26 px. Das Zitat
+   steht auf derselben Höhe wie dort (Oberkante y = 666, Hinweis y ≈ 726),
+   damit sich beim Weiterschalten nur der Inhalt ändert. */
+.r-llm-beispiel { margin: 63px 0 0; }
+.r-llm-anzahl { margin-top: 12px; }
+/* die eine Karmin-Aussage (Halluzination): li.ist-faden, recap.css 5.15
+   (Stichwort 680, Merksatz 560 – gilt auch für f16 „Tool Calling“) */
 
 
 /* ---------- f15 Chatbot, Prompt, Modellfamilien --------------------------------
-   Hauptfeld: Kette (drei Wörter, „Chatbot“ Karmin), darunter wo man ihn
-   sieht; dann der Beispiel-Prompt als Zitat. Seitenfeld: zwei Familien. */
+   Hauptfeld: die Kette als Held (.r-kette--gross, 64 px wie f03), „Chatbot“
+   als einziges Karmin – zusätzlich schwerer als die Nachbarn (780 gegen
+   440), damit es auch in Graustufen die stärkste Stelle ist (Tonwert im
+   Schriftkasten über „Prompt“ und „Modell“). Unter dem Wort,
+   bündig mit ihm und unter der Linie, wo man den Chatbot sieht (Meta).
+   Schritt 1: Beispiel-Prompt als Zitat (Bezeichner, Zitat 40 px, Regel).
+   Schritt 2: zwei Modellfamilien im Seitenfeld – dieselbe Stelle wie die
+   Listen auf f14 und f16. */
 .r-fenster .folie-inhalt { justify-content: flex-start; }
 .r-fenster-haupt { display: flex; flex-direction: column; align-items: flex-start; }
-.r-fenster-kette { margin-top: 22px; --abstand: 64px; }
-.r-fenster-kette > li.ist-faden { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 540; }
-.r-fenster-wo { margin-top: 10px; }
-.r-fenster-prompt { margin: 64px 0 0; }
-.r-fenster-prompt .r-zitat { margin-top: 14px; }
-.r-fenster-regel { margin-top: 14px; }
-/* die eine Karmin-Aussage: „Chatbot“ in der Kette */
+.r-fenster-kette { --abstand: 72px; margin-top: 22px; }
+.r-fenster-kette > li.ist-faden { position: relative; color: var(--spot-akzent, var(--r-faden-text)); font-weight: 780; }
+/* Etikett unter „Chatbot“: Wortkasten-Unterkante → 7 px → Linie (6 px) → 21 px */
+.r-fenster-wo {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 34px);
+  font-family: var(--schrift-text);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0;
+  font-variation-settings: normal;
+  white-space: nowrap;
+  color: var(--r-schrift-2);
+}
+.r-fenster-prompt { margin: 104px 0 0; }
+.r-fenster-prompt .r-zitat { margin-top: 12px; }
+.r-fenster-regel { margin-top: 12px; }
 
 
 /* ---------- f16 KI-Agenten ----------------------------------------------------
-   Kreislauf in Spalten 1–6 (Etikett „Prüfung“ bündig am Inhaltsrand),
-   Begriffe in Spalten 7–12 auf Haarlinien. */
+   Kreislauf mittig im Hauptfeld (Sp. 1–8), Begriffe im Seitenfeld (Sp. 9–12)
+   auf Haarlinien – dieselbe Stelle wie die Liste auf f14, damit sie beim
+   Weiterschalten nicht springt. */
 .r-agent .folie-inhalt { justify-content: flex-start; }
-.r-agent-kreis { grid-column: 1 / 7; justify-self: start; margin: 24px 0 0 40px; }
-.r-agent-begriffe { grid-column: 7 / 13; }
-.r-agent-zeile { display: block; }
+.r-agent-kreis { grid-column: 1 / 9; justify-self: center; margin: 24px 0 0; }
+.r-agent-begriffe { grid-column: 9 / 13; }
 /* die eine Karmin-Aussage (Tool Calling): li.ist-faden, recap.css 5.15 */
 
 
 /* ---------- f17 KI-Führerschein ---------------------------------------------
-   Zeitstrahl-Komponente (sechs Stationen, Badge = Karmin), darunter die
-   Hinweiszeile zum Ablauf. */
-.r-fuehrerschein .folie-inhalt { justify-content: flex-start; }
-.r-fuehrerschein .r-zeitstrahl { margin-top: 40px; }
-.r-fuehrerschein-ablauf { margin-top: 96px; }
+   Zeitstrahl-Komponente wie f05 und f13 (gleiche Höhe: direkt unter dem
+   Titel): fünf Module, das Badge als einziger Karmin-Knoten. Schritt 1: die
+   Hinweiszeile zum Ablauf, Abstand wie auf f13. */
+.r-fuehrerschein .folie-inhalt { justify-content: flex-start; gap: 104px; }
+/* Graustufentest: „Badge“ schwerer als die Komponente vorgibt (760 statt 600) –
+   das Wort ist kurz und stünde sonst heller als die fetten Modulnamen */
+.r-fuehrerschein .r-zeitstrahl-stationen > li.ist-faden > .r-zeit-jahr { font-weight: 760; }
 
 
 /* ---------- f18 Führen bei der Bundeswehr -------------------------------------
-   Wegediagramm (SVG im Bühnenmaß 640 × 200): drei Wege vom selben Start zum
-   Ziel, zwei in Tinte (4 px), einer in Karmin (8 px); darunter der Vergleich. */
-.r-bund .folie-inhalt { justify-content: flex-start; gap: 36px; }
-.r-bund-wege { position: relative; width: 640px; height: 200px; margin: 0; flex: none; }
-.r-bund-wege svg { position: absolute; inset: 0; width: 640px; height: 200px; overflow: visible; }
-.r-bund-weg { fill: none; stroke: var(--r-schrift); stroke-width: var(--r-strich-schwach); stroke-linecap: round; }
-.r-bund-weg--faden { stroke: var(--r-faden); stroke-width: 8px; }
+   Wegediagramm (SVG im Bühnenmaß 940 × 240, Sp. 1–7): EIN Ziel oben, drei
+   Wege von unten mit eigenem Verlauf – stufig und weit ausholend in Tinte
+   (5 px), geschwungen in Karmin (12 px, auch in Graustufen die kräftigste
+   Linie). Sie berühren sich erst am Ziel (keine geschlossene Form).
+   „Ziel“ steht über dem Zielring. Darunter der Vergleich. */
+.r-bund .folie-inhalt { justify-content: flex-start; gap: 40px; }
+.r-bund-wege { position: relative; width: 940px; height: 240px; margin: 0; flex: none; }
+.r-bund-wege svg { position: absolute; inset: 0; width: 940px; height: 240px; overflow: visible; }
+.r-bund-weg { fill: none; stroke: var(--r-schrift); stroke-width: 5px; stroke-linecap: round; stroke-linejoin: round; }
+.r-bund-weg--faden { stroke: var(--r-faden); stroke-width: 12px; }
 .r-bund-start { fill: var(--r-schrift); }
-.r-bund-ziel { fill: var(--r-papier); stroke: var(--r-schrift); stroke-width: 5px; }
+.r-bund-ziel { fill: var(--r-papier); stroke: var(--r-schrift); stroke-width: 6px; }
 .r-bund-ziel-wort {
   position: absolute;
-  left: 634px;
-  top: 28px;
-  translate: 0 -54%;
+  left: 470px;
+  top: 0;
+  translate: -50% 0;
+  white-space: nowrap;
   font-family: var(--schrift-display);
   font-size: 40px;
   font-weight: 450;
   line-height: 1;
   font-variation-settings: "opsz" 48, var(--achsen-ruhig);
-  white-space: nowrap;
   color: var(--r-schrift);
 }
 
@@ -125,8 +156,10 @@
   white-space: nowrap;
   color: var(--r-faden-text);
 }
-.r-bindung-text { max-width: 520px; font-size: 32px; line-height: 1.25; }
+.r-bindung-text { max-width: 520px; font-size: 32px; line-height: 1.25; text-wrap: balance; }
 .r-gallup { margin: 56px 0 0; }
+/* Der Karmin-Teil (10 %) steht 20 px höher als die anderen Teile –
+   Stellung statt nur Farbe, aus der Teil-Skala in recap.css (5.6) */
 .r-gallup .r-skala { --takt: 10px; --strich: 7px; --hoehe: 88px; }
 .r-gallup-legende { position: relative; width: 1014px; height: 44px; margin-top: 18px; font-size: 28px; line-height: 1.2; }
 .r-gallup-legende > span { position: absolute; top: 0; white-space: nowrap; }
@@ -145,24 +178,25 @@
 
 
 /* ---------- f20 Fazit: der Faden kehrt zurück ---------------------------------
-   Drei Gedanken (Dreier 4/4/4, Zeilen per Subgrid bündig): Herkunft (Meta),
-   Aussage 52 px, Erläuterung 30 px. Die zweite Zeile jeder Aussage steht auf
-   EINEM randabfallenden Faden: Anker in der zweiten Zeile des ersten
-   Gedankens, Stapelkontext am <ol> (.r-faden-rahmen) – die Linie liegt hinter
-   allen drei Aussagen, Unterlängen (g, p) stehen unversehrt davor. */
+   Drei Gedanken (Dreier 4/4/4, Zeilen per Subgrid bündig): Aussage 52 px,
+   darunter die Herkunft (Meta, Blocknamen wie in der Laufleiste – wie die
+   Blocknamen unter dem Faden auf f02). EIN randabfallender Faden trägt die
+   drei Gedanken: Anker auf der Grundlinie der zweiten Aussagezeile des
+   ersten Gedankens, die Linie 34 px darunter (Mitte) – mindestens 12 px unter
+   den Unterlängen (g, p ≈ 13 px) und mit Abstand über der Herkunft.
+   Nichts wirkt unterstrichen. */
 .r-fazit .folie-inhalt { justify-content: center; }
 .r-fazit-gedanken {
-  --r-faden-tief: 0.38em;     /* Faden unter den Unterlängen, nicht auf der Grundlinie */
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto;
   column-gap: var(--r-rinne);
   margin: 0 0 24px;
   padding: 0;
   list-style: none;
 }
-.r-fazit-gedanke { display: grid; grid-row: span 3; grid-template-rows: subgrid; min-width: 0; }
-.r-fazit-herkunft { margin-bottom: 22px; font-size: 24px; line-height: 1.25; color: var(--r-schrift-2); }
+.r-fazit-gedanke { display: grid; grid-row: span 2; grid-template-rows: subgrid; min-width: 0; }
+.r-fazit-herkunft { margin-top: 52px; font-size: 24px; line-height: 1.25; color: var(--r-schrift-2); }
 .r-fazit-satz {
   align-self: end;
   font-family: var(--schrift-display);
@@ -174,13 +208,15 @@
   color: var(--r-schrift);
 }
 .r-fazit-zeile { display: block; white-space: nowrap; }
-.r-fazit-text { margin-top: 34px; max-width: 480px; font-size: 30px; line-height: 1.3; color: var(--r-schrift-2); text-wrap: pretty; }
+.r-fazit .r-faden-linie { top: calc(34px - var(--dicke) / 2); }
 
 
 /* ---------- b1 Quellen (Backup) ------------------------------------------------
    Ohne Laufleiste; der Titel steht trotzdem auf der Höhe der Inhaltsfolien
    (Regel „Folien ohne Laufleiste“ in recap.css, Abschnitt 3). Zwei Spalten,
-   24 px, hängender Einzug. */
+   24 px, hängender Einzug. 16 Einträge seit der Zusammenführung: Zeilen 1,32,
+   Abstand 16 px, damit die längere Spalte mit Abstand über dem unteren Rand
+   endet. */
 .r-backup .folie-inhalt { justify-content: flex-start; }
 .r-quellen {
   columns: 2;
@@ -189,8 +225,8 @@
   padding: 0;
   list-style: none;
   font-size: 24px;
-  line-height: 1.36;
+  line-height: 1.32;
   color: var(--r-schrift-2);
 }
-.r-quellen > li { break-inside: avoid; margin-bottom: 22px; padding-left: 32px; text-indent: -32px; }
+.r-quellen > li { break-inside: avoid; margin-bottom: 16px; padding-left: 32px; text-indent: -32px; }
 .r-quellen-wer { color: var(--r-schrift); font-weight: 500; }
