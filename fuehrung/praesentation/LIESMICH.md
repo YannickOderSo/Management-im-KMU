@@ -69,3 +69,7 @@ Blöcke, Rückfragen, Kürzungssätze und Plan B aus `werkzeuge/skript-zusatz.js
 
 Neu erzeugen nach jeder Änderung an Sprechtext, Notizen, data-zeit oder skript-zusatz.json; der Prüfbericht
 liegt in `_test/skript/pruefung.json` (Kürzungssätze müssen wörtlich im Sprechtext stehen).
+
+Locker formulierte Fassung (gleiche Folien, Zeiten und Randnotizen, Sprechtext aus `werkzeuge/skript-locker.json`,
+Zahlen gerundet, Zitate wörtlich): `SKRIPT_TEXTE=werkzeuge/skript-locker.json node werkzeuge/praesentationsskript.mjs`
+→ `export/praesentationsskript-locker.pdf`.

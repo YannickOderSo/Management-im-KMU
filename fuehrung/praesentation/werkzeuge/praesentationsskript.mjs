@@ -55,6 +55,13 @@ const bilderOrdner = path.join(zielArbeit, 'skript-bilder');
 fs.mkdirSync(zielPdf, { recursive: true });
 fs.mkdirSync(bilderOrdner, { recursive: true });
 const zusatz = JSON.parse(fs.readFileSync(path.join(ordner, 'werkzeuge', 'skript-zusatz.json'), 'utf8'));
+/* Zweite Fassung (z. B. locker formuliert): SKRIPT_TEXTE=werkzeuge/skript-locker.json ersetzt den
+   Sprechtext je Absatz („f03/0“ = data-schritt 0, „f04/g“ = p.gesprochen ohne Schritt), dazu
+   optional „kicker“, „datei“ (Name des PDF ohne Endung) und „kuerzung“. Folien, Zeiten und
+   Randnotizen bleiben wie in index.html. */
+const fassung = process.env.SKRIPT_TEXTE ? JSON.parse(fs.readFileSync(path.resolve(ordner, process.env.SKRIPT_TEXTE), 'utf8')) : null;
+if (fassung && fassung.kuerzung) zusatz.kuerzung = fassung.kuerzung;
+const dateiName = (fassung && fassung.datei) || 'praesentationsskript';
 const schrift = (datei) => pathToFileURL(path.join(ordner, 'schriften', datei)).href;
 
 const fehler = [];
@@ -115,6 +122,10 @@ for (const f of liste) {
       absaetze
     };
   }, f.id);
+  if (fassung) for (const a of daten.absaetze) {
+    const neu = a.gesprochen !== false && fassung.texte[`${f.id}/${a.schritt ?? 'g'}`];
+    if (neu) { a.text = neu; a.ersetzt = `${f.id}/${a.schritt ?? 'g'}`; }
+  }
   folien.push({ ...f, ...daten, bild: 'skript-bilder/' + datei });
 }
 
@@ -525,7 +536,7 @@ const anzahlSprecher = new Set(teile.map((x) => x.sprecher)).size;
 const titelseite = `<section class="titelseite" data-abschnitt="titel">
   <div class="ts-kopf"><span class="ts-art">${esc(zusatz.art || 'Recap')}</span><span>Management im KMU</span></div>
   <div class="ts-mitte">
-    <p class="ts-kicker">Präsentationsskript</p>
+    <p class="ts-kicker">${esc((fassung && fassung.kicker) || 'Präsentationsskript')}</p>
     <h1 class="ts-titel">${titelZeilen.length ? `${fadenZeile(webe(titelZeilen[0], true))}<span class="ts-zeile2">${esc(titelZeilen.slice(1).join(' '))}</span>` : fadenZeile(webe(titel, true))}</h1>
     <p class="ts-unter">${t(untertitel)}</p>
   </div>
@@ -1072,7 +1083,7 @@ ${koerper}
 ${anhang}
 </body></html>`;
 
-const htmlPfad = path.join(zielArbeit, 'praesentationsskript.html');
+const htmlPfad = path.join(zielArbeit, dateiName + '.html');
 fs.writeFileSync(htmlPfad, html);
 
 /* ---------------------------------------------------------------------------
@@ -1138,7 +1149,7 @@ const ende = await browser.newPage({ viewport: { width: 658, height: 1123 } });
 await ende.goto(pathToFileURL(htmlPfad).href, { waitUntil: 'load' });
 await ende.evaluate(() => document.fonts && document.fonts.ready);
 await ende.evaluate(() => window.weben());
-const pdfPfad = path.join(zielPdf, 'praesentationsskript.pdf');
+const pdfPfad = path.join(zielPdf, dateiName + '.pdf');
 const pdf = await ende.pdf({ ...pdfOptionen, path: pdfPfad, outline: true, tagged: true });
 const seitenGesamt = seitenIn(pdf);
 if (seitenGesamt !== seite - 1) warnungen.push(`Seitenzahl ${seitenGesamt} statt ${seite - 1}: Seitenangaben im Überblick prüfen.`);
@@ -1176,9 +1187,14 @@ const bericht = {
   fehler,
   warnungen
 };
-fs.writeFileSync(path.join(zielArbeit, 'pruefung.json'), JSON.stringify(bericht, null, 2));
+if (fassung) {
+  const benutzt = new Set(folien.flatMap((f) => f.absaetze.filter((a) => a.ersetzt).map((a) => a.ersetzt)));
+  for (const k of Object.keys(fassung.texte)) if (!benutzt.has(k)) warnungen.push(`Fassung: Schlüssel ${k} passt zu keinem Sprechtext-Absatz.`);
+  bericht.fassungErsetzt = benutzt.size;
+}
+fs.writeFileSync(path.join(zielArbeit, dateiName === 'praesentationsskript' ? 'pruefung.json' : `pruefung-${dateiName}.json`), JSON.stringify(bericht, null, 2));
 
-console.log(`praesentationsskript.pdf erzeugt: ${pdfPfad}`);
+console.log(`${dateiName}.pdf erzeugt: ${pdfPfad}`);
 console.log(`  ${folien.length} Folien (${haupt.length} im Vortrag, ${backups.length} Backup), ${bericht.absaetzeGesprochen} Sprechtext-Absätze, Sollzeit ${mmss(gesamt)}, ${seitenGesamt} Seiten`);
 console.log(`  Redezeit: ${Object.entries(redezeit).map(([k, v]) => `${sprecher[k]?.name || k} ${mmss(v.zeit)}`).join(', ')}`);
 console.log(`  Übergaben: ${uebergaben.map((u) => `nach ${u.vorher?.nummer || u.nach} ${u.letzterSatzGefunden && u.ersterSatzGefunden && u.wechselNotiz ? 'wortgleich' : 'UNVOLLSTÄNDIG'}`).join(', ')}`);

@@ -13,6 +13,7 @@ Aufgabe: Den Begriff **Führung** im Kontext des Moduls definieren. Dazu gehöre
 | Diskussionspapier als Handout (2 Seiten, Abgabe Fr, 30.10.2026) | ✅ Thema zusammengefasst, ohne Quellenangaben, Fragen wie Folie 21 (Schema wie Handout Elias) | [`fuehrung/diskussionspapier/`](fuehrung/diskussionspapier/) |
 | Quellennachweis (welche Quelle wofür und warum, 9 Seiten) | ✅ aus Dossier erzeugt | [`fuehrung/quellennachweis/`](fuehrung/quellennachweis/) · neu: `python3 fuehrung/quellennachweis/erzeugen.py && node fuehrung/quellennachweis/pdf.mjs` |
 | Präsentationsskript (30 Seiten, Aufbau wie Recap-Skript) | ✅ `fuehrung/praesentation/export/praesentationsskript.pdf` | neu: `node fuehrung/praesentation/werkzeuge/praesentationsskript.mjs` (Zusatzdaten in `werkzeuge/skript-zusatz.json`) |
+| Präsentationsskript, locker formuliert (29 Seiten) | ✅ `fuehrung/praesentation/export/praesentationsskript-locker.pdf` | Texte in `werkzeuge/skript-locker.json`, Aufruf mit `SKRIPT_TEXTE=werkzeuge/skript-locker.json` |
 
 ## Schriftliche Befragung
 
