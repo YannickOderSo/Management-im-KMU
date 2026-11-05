@@ -54,6 +54,7 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 | Teil | Stand | Ort |
 |---|---|---|
 | HTML-Präsentation: Vorstellung und kritische Bewertung der Fallstudie [robbierichards.com/seo/case-study](https://www.robbierichards.com/seo/case-study/) (28 Folien + 3 Trennfolien + 2 Backup, Sollzeit 23:00, Sprechtext in der Referentenansicht, 11 Belege aus der Studie, eigene Diagramme) | ✅ Prüfung 0 Fehler (hell und dunkel), Notfall-PDF; Fakten von vier unabhängigen Prüfungen gegengeprüft (05.11.2026) | [`seo-fallstudie/praesentation/`](seo-fallstudie/praesentation/) |
+| Handout (2 Seiten A4): Fall, sechs Schritte, Bewertung mit Ampel, KMU-Übertragung, die drei Diskussionsfragen von Folie 28 | ✅ `handout.pdf` | [`seo-fallstudie/handout/`](seo-fallstudie/handout/) · neu: `node seo-fallstudie/handout/pdf.mjs` |
 
 ## Online (GitHub Pages)
 
