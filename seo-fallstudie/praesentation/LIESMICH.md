@@ -4,7 +4,7 @@ Web-Präsentation (HTML) für das Modul Management im KMU (Hochschule Kaiserslau
 Zweibrücken): Vorstellung und kritische Bewertung der Fallstudie
 [„SEO Case Study: 6-Step Process That Generated 150,732 Visits“](https://www.robbierichards.com/seo/case-study/)
 von Robbie Richards (Gastbeitrag Michael Karp, Kunde UAV Coach). Vortrag: Yannick Heisler.
-28 Folien, 3 Trennfolien und 2 Backup-Folien, Sollzeit 22:20 (Summe `data-zeit`).
+28 Folien, 3 Trennfolien und 2 Backup-Folien, Sollzeit 23:00 (Summe `data-zeit`).
 
 **Öffnen:** `index.html` in Chrome oder Edge. Läuft offline per Doppelklick und auf GitHub Pages,
 ohne Anfragen ins Internet. Immer den ganzen Ordner `praesentation/` mitnehmen.
@@ -16,7 +16,7 @@ ohne Anfragen ins Internet. Immer den ganzen Ordner `praesentation/` mitnehmen.
 | → / ↓ / Leertaste / Enter / Clicker | weiter, auch Schritte innerhalb einer Folie |
 | ← / ↑ / Rücktaste | zurück |
 | Ziffern + Enter | Sprung zur Folie, z. B. `17 Enter` |
-| P | Referentenansicht im zweiten Fenster: Sprechtext, Uhr, Plan „von 22:20“, nächste Folie |
+| P | Referentenansicht im zweiten Fenster: Sprechtext, Uhr, Plan „von 23:00“, nächste Folie |
 | O | Übersicht aller Folien |
 | F | Vollbild |
 | B oder . | Schwarzbild |
@@ -51,20 +51,20 @@ Schriften: Bricolage Grotesque (Titel, Zahlen) und Inter (Text), beide lokal in 
 | 11 | Schritt 4: Leads (Trichter, 2.335 E-Mails) | 0:55 |
 | 12 | Schritt 5: Promotion | 0:45 |
 | 13 | Schritt 6: Backlinks | 0:50 |
-| 14 | Verlauf: Monat 0 bis 18 | 0:45 |
+| 14 | Verlauf: Monat 0 bis 18 | 0:55 |
 | T2 | Teil 2: Kritische Bewertung | 0:05 |
 | 15 | Prüfraster: sechs Fragen | 0:40 |
 | 16 | Widersprüchliche Zahlen | 0:55 |
-| 17 | Basiseffekt: 1.232 → 150.732 Sitzungen | 0:50 |
+| 17 | Basiseffekt: 1.232 → 150.732 organische Sitzungen | 1:00 |
 | 18 | Kausalität: Einzelfall, Survivorship Bias | 0:55 |
-| 19 | „Mashable geschlagen“ | 0:40 |
-| 20 | Interessenkonflikte: 16 Partnerlinks, Kurs, Beratung | 0:55 |
-| 21 | Aktualität: 2015 bis 2026, KI-Übersichten (Pew 2025) | 0:55 |
+| 19 | „Vor Mashable“ – welcher Treffer, bleibt offen | 0:45 |
+| 20 | Interessenkonflikte: 15 Partnerlinks, Kurs, Beratung | 0:55 |
+| 21 | Aktualität: erschienen 2015, KI-Übersichten (Pew 2025) | 1:05 |
 | 22 | Wirtschaftlichkeit: Waage | 0:50 |
 | 23 | Was trägt | 0:45 |
 | 24 | Gesamturteil (Ampel) | 0:45 |
 | T3 | Teil 3: Was heißt das für KMU? | 0:05 |
-| 25 | Behalten, anpassen, streichen | 0:55 |
+| 25 | Behalten, anpassen, streichen | 1:00 |
 | 26 | Beispiel Heizungsbauer (fiktiv) | 0:50 |
 | 27 | Fazit | 0:45 |
 | 28 | Diskussion | 0:30 |
@@ -73,22 +73,30 @@ Schriften: Bricolage Grotesque (Titel, Zahlen) und Inter (Text), beide lokal in 
 
 Sprechtext steht je Folie in `aside.notizen` (`p.gesprochen` je Schritt, Absätze ohne Klasse sind
 Hintergrund für Rückfragen) und erscheint in der Referentenansicht (Taste P). Zum Kürzen auf
-ca. 18 Minuten eignen sich Folie 03 (wenn SEO bekannt ist), 08, 19 und 23.
+ca. 21 Minuten eignen sich die Folien 08, 12 und 19 (zusammen 2:20).
 
-## Geprüfte Befunde (Stand 05.11.2026)
+## Geprüfte Befunde (Stand 05.11.2026, von vier Prüfungen gegengeprüft)
 
-- Titel 150.732, Einleitung 152.732 Besuche; Text 18 Monate, Screenshot 12.02.–11.11.2015
-  (9 Monate) gegen 15.05.2014–11.02.2015; Text +11.065 %, Screenshot +12.134,74 % (150.732 vs.
-  1.232 Sitzungen der ganzen Website).
-- Suchvolumen „how to fly a quadcopter“: 720 (Auswahl 2015) vs. 260 (SEMrush, Nov. 2018);
-  1.331 Keywords im Text vs. 1.314 im Screenshot; 4.400 vs. 4.774 Wörter; 17 vs. 18 Kapitel.
-- „Ohne Geld für Linkaufbau“ vs. 90 Tage Linkaufbau (Schritt 6).
-- 16 eindeutige Links mit Partner-/Affiliate-Kennung, 13 „Editor's notes“, 4 Hinweise auf den Kurs
-  „The SEO Playbook“, 2 Beratungsangebote (Zählung im Quelltext, Abruf 05.11.2026).
-- Fallstudie datiert 02.08.2020 (geändert 2022), Screenshots aus 2018, Daten aus 2014/2015.
-  Der UAV-Coach-Artikel wurde 2024 unter neuem Titel neu veröffentlicht.
-- Pew Research Center (22.07.2025): Klick auf ein normales Ergebnis bei 8 % der Besuche mit
-  KI-Übersicht gegenüber 15 % ohne.
+- Titel 150.732, Einleitung 152.732 Besuche; Text „6 Monate“ (+11.065 %) und „18 Monate“
+  (152.732), Screenshot 12.02.–11.11.2015 (9 Monate) gegen 15.05.2014–11.02.2015: +12.134,74 %,
+  150.732 vs. 1.232 organische Sitzungen der ganzen Website (Bericht nach Keyword; nicht nur der
+  Ratgeber, der selbst 20.314 Seitenaufrufe über Google in 6 Monaten brachte). 1.232 ÷ 9 ≈ 137.
+- 4.400 Wörter (Einleitung) vs. 4.774 (Schritt 2, späterer Stand). Suchvolumen 720 (Auswahl 2015)
+  vs. 260 (SEMrush, Nov. 2018) – verschiedene Jahre, kein echter Widerspruch. Schwach: 1.331 vs.
+  1.314 Keywords (zwei SEMrush-Berichte), 17 vs. 18 Kapitel (Vorlage einer Outreach-Mail).
+- „Without spending any money on … link building“ meint: keine gekauften Links; trotzdem 90 Tage
+  Linkaufbau durch einen bezahlten Berater.
+- Im `<article>`: 15 eindeutige Links mit Partner-/Affiliate-Kennung (23 Vorkommen; ein weiterer
+  SEMrush-Link in der Seitenleiste), 15 „Editor’s notes“, 5 Links auf den Kurs „The SEO Playbook“,
+  2 Beratungsangebote.
+- Erschienen Nov. 2015 (Kommentare ab Nov. 2015), neu datiert 02.08.2020, geändert 22.11.2022;
+  142 von 143 Inhaltsbildern aus 2018/12. Der UAV-Coach-Artikel hieß schon 2018 „How to Fly a
+  Drone …“, 2024 neu datiert.
+- Mashable: Die Studie belegt nur eine Kategorie-Seite (mashable.com/category/drones/), ohne Bezug
+  zu einem Keyword; welcher Treffer überholt wurde, bleibt offen.
+- Pew Research Center (22.07.2025): Klick auf ein normales Ergebnis bei 8 % der Aufrufe einer
+  Suchseite mit KI-Übersicht gegenüber 15 % ohne. KI-Übersichten USA 14.05.2024, Deutschland
+  26.03.2025. 53 % = abgebrochene mobile Besuche (Google/DoubleClick 2016).
 
 ## Bilder
 
@@ -106,5 +114,5 @@ PLAYWRIGHT_CORE=/opt/node-tools/node_modules/playwright-core \
 node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte --druck export/seo-fallstudie-notfall.pdf
 ```
 
-Stand 05.11.2026: 0 Fehler, hell und dunkel; 6 Warnungen zum Wortbudget (Folien 02, 08, 12, 20,
-21, 25 mit 42–58 sichtbaren Wörtern). Notfall-PDF mit 33 Seiten (alle Folien im Endzustand).
+Stand 05.11.2026: 0 Fehler, hell und dunkel; 7 Warnungen zum Wortbudget (Folien 02, 08, 12, 20,
+21, 24, 25 mit 42–58 sichtbaren Wörtern). Notfall-PDF mit 33 Seiten (alle Folien im Endzustand).

@@ -53,7 +53,7 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 
 | Teil | Stand | Ort |
 |---|---|---|
-| HTML-Präsentation: Vorstellung und kritische Bewertung der Fallstudie [robbierichards.com/seo/case-study](https://www.robbierichards.com/seo/case-study/) (28 Folien + 3 Trennfolien + 2 Backup, Sollzeit 22:20, Sprechtext in der Referentenansicht, 11 Belege aus der Studie, eigene Diagramme) | ✅ Prüfung 0 Fehler (hell und dunkel), Notfall-PDF | [`seo-fallstudie/praesentation/`](seo-fallstudie/praesentation/) |
+| HTML-Präsentation: Vorstellung und kritische Bewertung der Fallstudie [robbierichards.com/seo/case-study](https://www.robbierichards.com/seo/case-study/) (28 Folien + 3 Trennfolien + 2 Backup, Sollzeit 23:00, Sprechtext in der Referentenansicht, 11 Belege aus der Studie, eigene Diagramme) | ✅ Prüfung 0 Fehler (hell und dunkel), Notfall-PDF; Fakten von vier unabhängigen Prüfungen gegengeprüft (05.11.2026) | [`seo-fallstudie/praesentation/`](seo-fallstudie/praesentation/) |
 
 ## Online (GitHub Pages)
 
