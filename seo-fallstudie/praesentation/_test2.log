@@ -1,0 +1,479 @@
+{
+  "datei": "index.html",
+  "zeitpunkt": "2026-11-05T05:08:35.081Z",
+  "einstellungen": {
+    "thema": null,
+    "modus": "dunkel",
+    "schritte": false,
+    "skala": 0.5,
+    "optional": false,
+    "primaer": null,
+    "sekundaer": null,
+    "bewegungReduziert": false,
+    "live": "ohne liveQuelle"
+  },
+  "zusammenfassung": {
+    "folien": 33,
+    "screenshots": 0,
+    "fehler": 0,
+    "warnungen": 6,
+    "warnungenOhneAbgeblendet": 6,
+    "warnungenAbgeblendet": 0,
+    "warnungenKurz": "6",
+    "externeAnfragen": 0,
+    "liveAnfragen": 0,
+    "ausgabe": "_test/dunkel",
+    "ergebnis": "ok mit Warnungen"
+  },
+  "fehler": [],
+  "warnungen": [
+    {
+      "ort": "Folie 02 (f02)",
+      "text": "Wortbudget: 42 sichtbare Wörter (Hauptfolie höchstens ca. 40)"
+    },
+    {
+      "ort": "Folie 08 (f08)",
+      "text": "Wortbudget: 51 sichtbare Wörter (Hauptfolie höchstens ca. 40)"
+    },
+    {
+      "ort": "Folie 12 (f12)",
+      "text": "Wortbudget: 46 sichtbare Wörter (Hauptfolie höchstens ca. 40)"
+    },
+    {
+      "ort": "Folie 20 (f20)",
+      "text": "Wortbudget: 48 sichtbare Wörter (Hauptfolie höchstens ca. 40)"
+    },
+    {
+      "ort": "Folie 21 (f21)",
+      "text": "Wortbudget: 50 sichtbare Wörter (Hauptfolie höchstens ca. 40)"
+    },
+    {
+      "ort": "Folie 25 (f25)",
+      "text": "Wortbudget: 58 sichtbare Wörter (Hauptfolie höchstens ca. 40)"
+    }
+  ],
+  "folien": [
+    {
+      "id": "f01",
+      "nummer": "01",
+      "titel": "Titel",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 31
+    },
+    {
+      "id": "f02",
+      "nummer": "02",
+      "titel": "Fahrplan",
+      "schritte": 1,
+      "backup": false,
+      "bilder": [],
+      "woerter": 42
+    },
+    {
+      "id": "f03",
+      "nummer": "03",
+      "titel": "SEO in einer Minute",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 40
+    },
+    {
+      "id": "f04",
+      "nummer": "04",
+      "titel": "Der Fall",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 32
+    },
+    {
+      "id": "f05",
+      "nummer": "05",
+      "titel": "Das Versprechen",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 38
+    },
+    {
+      "id": "t1",
+      "nummer": "T1",
+      "titel": "Teil 1: Die Methode",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 10
+    },
+    {
+      "id": "f06",
+      "nummer": "06",
+      "titel": "Sechs Schritte",
+      "schritte": 1,
+      "backup": false,
+      "bilder": [],
+      "woerter": 23
+    },
+    {
+      "id": "f07",
+      "nummer": "07",
+      "titel": "Schritt 1: Keywords",
+      "schritte": 1,
+      "backup": false,
+      "bilder": [],
+      "woerter": 22
+    },
+    {
+      "id": "f08",
+      "nummer": "08",
+      "titel": "Schritt 1: Konkurrenz prüfen",
+      "schritte": 1,
+      "backup": false,
+      "bilder": [],
+      "woerter": 51
+    },
+    {
+      "id": "f09",
+      "nummer": "09",
+      "titel": "Schritt 2: Inhalt",
+      "schritte": 1,
+      "backup": false,
+      "bilder": [],
+      "woerter": 40
+    },
+    {
+      "id": "f10",
+      "nummer": "10",
+      "titel": "Schritt 3: On-Page",
+      "schritte": 1,
+      "backup": false,
+      "bilder": [],
+      "woerter": 40
+    },
+    {
+      "id": "f11",
+      "nummer": "11",
+      "titel": "Schritt 4: Leads",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 22
+    },
+    {
+      "id": "f12",
+      "nummer": "12",
+      "titel": "Schritt 5: Promotion",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 46
+    },
+    {
+      "id": "f13",
+      "nummer": "13",
+      "titel": "Schritt 6: Backlinks",
+      "schritte": 1,
+      "backup": false,
+      "bilder": [],
+      "woerter": 28
+    },
+    {
+      "id": "f14",
+      "nummer": "14",
+      "titel": "Der Verlauf",
+      "schritte": 1,
+      "backup": false,
+      "bilder": [],
+      "woerter": 33
+    },
+    {
+      "id": "t2",
+      "nummer": "T2",
+      "titel": "Teil 2: Kritische Bewertung",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 8
+    },
+    {
+      "id": "f15",
+      "nummer": "15",
+      "titel": "Prüfraster",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 33
+    },
+    {
+      "id": "f16",
+      "nummer": "16",
+      "titel": "Widersprüchliche Zahlen",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 33
+    },
+    {
+      "id": "f17",
+      "nummer": "17",
+      "titel": "Basiseffekt",
+      "schritte": 2,
+      "backup": false,
+      "bilder": [],
+      "woerter": 31
+    },
+    {
+      "id": "f18",
+      "nummer": "18",
+      "titel": "Kausalität",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 37
+    },
+    {
+      "id": "f19",
+      "nummer": "19",
+      "titel": "Gegner Mashable",
+      "schritte": 2,
+      "backup": false,
+      "bilder": [],
+      "woerter": 31
+    },
+    {
+      "id": "f20",
+      "nummer": "20",
+      "titel": "Interessenkonflikte",
+      "schritte": 1,
+      "backup": false,
+      "bilder": [],
+      "woerter": 48
+    },
+    {
+      "id": "f21",
+      "nummer": "21",
+      "titel": "Aktualität",
+      "schritte": 1,
+      "backup": false,
+      "bilder": [],
+      "woerter": 50
+    },
+    {
+      "id": "f22",
+      "nummer": "22",
+      "titel": "Wirtschaftlichkeit",
+      "schritte": 1,
+      "backup": false,
+      "bilder": [],
+      "woerter": 33
+    },
+    {
+      "id": "f23",
+      "nummer": "23",
+      "titel": "Stärken",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 39
+    },
+    {
+      "id": "f24",
+      "nummer": "24",
+      "titel": "Gesamturteil",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 40
+    },
+    {
+      "id": "t3",
+      "nummer": "T3",
+      "titel": "Teil 3: Was heißt das für KMU?",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 9
+    },
+    {
+      "id": "f25",
+      "nummer": "25",
+      "titel": "Übertragbarkeit",
+      "schritte": 2,
+      "backup": false,
+      "bilder": [],
+      "woerter": 58
+    },
+    {
+      "id": "f26",
+      "nummer": "26",
+      "titel": "Beispiel KMU",
+      "schritte": 1,
+      "backup": false,
+      "bilder": [],
+      "woerter": 24
+    },
+    {
+      "id": "f27",
+      "nummer": "27",
+      "titel": "Fazit",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 39
+    },
+    {
+      "id": "f28",
+      "nummer": "28",
+      "titel": "Diskussion",
+      "schritte": 0,
+      "backup": false,
+      "bilder": [],
+      "woerter": 30
+    },
+    {
+      "id": "b1",
+      "nummer": "B1",
+      "titel": "Quellen",
+      "schritte": 0,
+      "backup": true,
+      "bilder": [],
+      "woerter": 1
+    },
+    {
+      "id": "b2",
+      "nummer": "B2",
+      "titel": "Weitere Belege",
+      "schritte": 0,
+      "backup": true,
+      "bilder": [],
+      "woerter": 15
+    }
+  ],
+  "schriften": [
+    "Inter Deck normal 100 900",
+    "Inter Deck italic 100 900",
+    "Bricolage Deck normal 200 800"
+  ],
+  "screenshots": [],
+  "externeAnfragen": [],
+  "liveAnfragen": {
+    "anzahl": 0,
+    "stand": 0,
+    "stimme": 0,
+    "beantwortetVon": "– (keine liveQuelle in marke.js)",
+    "modus": "ohne liveQuelle",
+    "werte": null,
+    "abgelehnt": 0,
+    "konsoleOffline": 0,
+    "ausDruckansicht": 0,
+    "stimmeAusPraesentation": 0,
+    "zeitfenster": [],
+    "standOhnePassendeMinuten": 0,
+    "quelle": [],
+    "pruefseiteMitAufnahme": true,
+    "anzeige": {}
+  },
+  "druck": null,
+  "farbpaare": [
+    {
+      "was": "Text auf Hintergrund",
+      "vorne": "--f-text",
+      "hinten": "--f-hintergrund",
+      "kontrast": 16,
+      "soll": 4.5
+    },
+    {
+      "was": "Nebentext auf Hintergrund",
+      "vorne": "--f-text-2",
+      "hinten": "--f-hintergrund",
+      "kontrast": 9.01,
+      "soll": 4.5
+    },
+    {
+      "was": "Nebentext auf Fläche",
+      "vorne": "--f-text-2",
+      "hinten": "--f-flaeche",
+      "kontrast": 7.92,
+      "soll": 4.5
+    },
+    {
+      "was": "Text auf Karte",
+      "vorne": "--f-text",
+      "hinten": "--f-karte",
+      "kontrast": 16,
+      "soll": 4.5
+    },
+    {
+      "was": "Akzenttext (Kicker) auf Hintergrund",
+      "vorne": "--f-akzent",
+      "hinten": "--f-hintergrund",
+      "kontrast": 7.75,
+      "soll": 4.5
+    },
+    {
+      "was": "Akzenttext auf Akzentfläche",
+      "vorne": "--f-akzent",
+      "hinten": "--f-akzent-flaeche",
+      "kontrast": 6.33,
+      "soll": 4.5
+    },
+    {
+      "was": "Schrift auf Akzent (Etikett „Unsere Analyse“)",
+      "vorne": "--f-auf-akzent",
+      "hinten": "--f-akzent",
+      "kontrast": 7.75,
+      "soll": 4.5
+    },
+    {
+      "was": "Feldname auf Hard-Facts-Feld (Großtext)",
+      "vorne": "--f-hart",
+      "hinten": "--f-hart-flaeche",
+      "kontrast": 7.92,
+      "soll": 3
+    },
+    {
+      "was": "Feldname auf Soft-Facts-Feld (Großtext)",
+      "vorne": "--f-weich",
+      "hinten": "--f-weich-flaeche",
+      "kontrast": 5.94,
+      "soll": 3
+    },
+    {
+      "was": "Leitfrage auf Hard-Facts-Feld",
+      "vorne": "--f-text-2",
+      "hinten": "--f-hart-flaeche",
+      "kontrast": 7.92,
+      "soll": 4.5
+    },
+    {
+      "was": "Leitfrage auf Soft-Facts-Feld",
+      "vorne": "--f-text-2",
+      "hinten": "--f-weich-flaeche",
+      "kontrast": 7.31,
+      "soll": 4.5
+    },
+    {
+      "was": "Schrift im Kern (Großtext)",
+      "vorne": "--f-auf-kern",
+      "hinten": "--f-kern",
+      "kontrast": 7.75,
+      "soll": 3
+    },
+    {
+      "was": "Live-Pille",
+      "vorne": "--f-erfolg",
+      "hinten": "--f-hintergrund",
+      "kontrast": 9.05,
+      "soll": 4.5
+    },
+    {
+      "was": "Beispieldaten-Pille",
+      "vorne": "--f-warnung",
+      "hinten": "--f-hintergrund",
+      "kontrast": 9.77,
+      "soll": 4.5
+    }
+  ]
+}

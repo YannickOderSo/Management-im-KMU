@@ -49,6 +49,12 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 | Klassifizierer zum Mitnehmen (Handy) | ✅ | [`ki-compliance/praesentation/klassifizierer.html`](ki-compliance/praesentation/klassifizierer.html) |
 | Go-Live-Checkliste (Generalprobe, Raum-Check, Spickzettel, Kürzungsplan, Go/No-Go) | 📋 abzuhaken bis 9.11.2026 | [`ki-compliance/GO-LIVE.md`](ki-compliance/GO-LIVE.md) |
 
+## Vortrag „SEO-Fallstudie unter der Lupe“
+
+| Teil | Stand | Ort |
+|---|---|---|
+| HTML-Präsentation: Vorstellung und kritische Bewertung der Fallstudie [robbierichards.com/seo/case-study](https://www.robbierichards.com/seo/case-study/) (28 Folien + 3 Trennfolien + 2 Backup, Sollzeit 22:20, Sprechtext in der Referentenansicht, 11 Belege aus der Studie, eigene Diagramme) | ✅ Prüfung 0 Fehler (hell und dunkel), Notfall-PDF | [`seo-fallstudie/praesentation/`](seo-fallstudie/praesentation/) |
+
 ## Online (GitHub Pages)
 
 Startseite: https://yannickoderso.github.io/Management-im-KMU/ (nach dem Einschalten unter Settings → Pages)

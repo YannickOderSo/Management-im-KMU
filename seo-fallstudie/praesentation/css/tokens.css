@@ -1,0 +1,792 @@
+/* =============================================================================
+   tokens.css – Gestaltungs-Grundwerte („Design-Tokens“) der Präsentation
+   -----------------------------------------------------------------------------
+   Hier stehen ALLE Farben, Schriften, Größen, Abstände, Radien, Schatten und
+   Bewegungswerte als CSS-Variablen. Folien und Bausteine verwenden nur diese
+   Variablen. Wer etwas am Aussehen ändern will, ändert es hier – nicht in den
+   Folien.
+
+   DREI THEMEN, JE HELL UND DUNKEL
+     data-thema="editorial"  Standard (Jury-Wahl): Serifen-Titel, Papierton,
+                             Haarlinien, ruhige Bewegung
+     data-thema="bento"      helle Kacheln mit großen Radien und Kartenrand
+     data-thema="keynote"    groteske Titel, weiche Flächen, leichter Lichthof
+     data-modus="hell" | "dunkel"
+   Thema und Modus stehen am <html>-Element. Umschalten in der Präsentation:
+   Taste T (Thema) und Taste D (hell/dunkel). Standardwerte: marke.js.
+   Eine einzelne Folie kann einen eigenen Modus haben: <section … data-modus="dunkel">.
+
+   MARKENFARBEN
+     Die Gruppe trägt die Markenfarben in marke.js ein (farben.primaer und
+     farben.sekundaer). Alle übrigen Farben werden daraus BERECHNET. Solange
+     dort nichts steht, gelten die neutralen Farben des jeweiligen Themas
+     (--neutral-primaer / --neutral-sekundaer weiter unten).
+       primär   → Akzent, „soft facts“ (rechte Steuerrad-Hälfte), Zentrum
+       sekundär → „hard facts“ (linke Steuerrad-Hälfte), Flächentöne
+
+   LESEHILFE FÜR DIE FARBFORMELN
+     color-mix(in oklab, A 20%, B)   = 20 % Farbe A mit 80 % Farbe B gemischt
+     oklch(from FARBE  L  C  H)      = „relative Farbe“: nimmt FARBE und setzt
+                                       Helligkeit L (0 = schwarz, 1 = weiß),
+                                       Buntheit C und Farbton H neu.
+       Beispiel: oklch(from var(--marke-primaer) min(l, 0.46) c h)
+                 = Markenfarbe, aber höchstens 46 % hell → dunkel genug für Text
+                   auf hellem Grund, egal wie hell die Marke ist (z. B. Gelb).
+     So bleibt jede Text-Hintergrund-Kombination bei mindestens 4,5 : 1
+     (WCAG AA), auch Text auf den farbigen Steuerrad-Feldern.
+     Ältere Browser ohne oklch(from …) nutzen die color-mix-Werte aus dem
+     ersten Block (etwas weniger streng, aber für neutrale Farben geprüft).
+
+   Alle Größen beziehen sich auf die Bühne von 1920 × 1080 Pixeln.
+   ============================================================================= */
+
+
+/* -----------------------------------------------------------------------------
+   1. SCHRIFTEN (lokal im Ordner schriften/, keine Internetverbindung nötig)
+   Lizenz aller Schriften: SIL Open Font License 1.1 – siehe schriften/HERKUNFT.txt
+   Je Schrift zwei Dateien: „latin“ (Grundzeichen, ä ö ü ß) und „latin-ext“.
+   ----------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Fraunces Deck";
+  src: url("../schriften/fraunces-latin-opsz-normal.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Fraunces Deck";
+  src: url("../schriften/fraunces-latin-ext-opsz-normal.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Kursive Fraunces: Datei mit ALLEN Achsen (wght, opsz, SOFT, WONK). Nur so
+   lassen sich die verspielten „wonky“-Formen (b, h, k, l) abschalten, die die
+   reine opsz-Datei bei großen Schriftgraden einsetzt – sie lasen sich auf dem
+   Beamer unruhig (b ähnlich einer 6). Abgeschaltet wird mit "WONK" 0 über
+   das Token --achsen-ruhig (Abschnitt 2), das in jeder Angabe
+   font-variation-settings mitsteht und für <body> gilt (Abschlussprüfung
+   16.10.2026). Andere Schriften kennen die Achse nicht und ignorieren sie. */
+@font-face {
+  font-family: "Fraunces Deck";
+  src: url("../schriften/fraunces-latin-full-italic.woff2") format("woff2");
+  font-weight: 100 900; font-style: italic; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Fraunces Deck";
+  src: url("../schriften/fraunces-latin-ext-full-italic.woff2") format("woff2");
+  font-weight: 100 900; font-style: italic; font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter Deck";
+  src: url("../schriften/inter-latin-opsz-normal.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter Deck";
+  src: url("../schriften/inter-latin-ext-opsz-normal.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* Echte Kursive der Inter (sonst stellt der Browser den Normalschnitt nur
+   schräg, z. B. „Attribute als Startpunkte“ auf Folie 02) */
+@font-face {
+  font-family: "Inter Deck";
+  src: url("../schriften/inter-latin-opsz-italic.woff2") format("woff2");
+  font-weight: 100 900; font-style: italic; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter Deck";
+  src: url("../schriften/inter-latin-ext-opsz-italic.woff2") format("woff2");
+  font-weight: 100 900; font-style: italic; font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Inter Tight Deck";
+  src: url("../schriften/inter-tight-latin-wght-normal.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Inter Tight Deck";
+  src: url("../schriften/inter-tight-latin-ext-wght-normal.woff2") format("woff2");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Space Grotesk Deck";
+  src: url("../schriften/space-grotesk-latin-wght-normal.woff2") format("woff2");
+  font-weight: 300 700; font-style: normal; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Space Grotesk Deck";
+  src: url("../schriften/space-grotesk-latin-ext-wght-normal.woff2") format("woff2");
+  font-weight: 300 700; font-style: normal; font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Bricolage Deck";
+  src: url("../schriften/bricolage-grotesque-latin-standard-normal.woff2") format("woff2");
+  font-weight: 200 800; font-stretch: 75% 100%; font-style: normal; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Bricolage Deck";
+  src: url("../schriften/bricolage-grotesque-latin-ext-standard-normal.woff2") format("woff2");
+  font-weight: 200 800; font-stretch: 75% 100%; font-style: normal; font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Jakarta Deck";
+  src: url("../schriften/plus-jakarta-sans-latin-wght-normal.woff2") format("woff2");
+  font-weight: 200 800; font-style: normal; font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Jakarta Deck";
+  src: url("../schriften/plus-jakarta-sans-latin-ext-wght-normal.woff2") format("woff2");
+  font-weight: 200 800; font-style: normal; font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+
+/* -----------------------------------------------------------------------------
+   2. GRUNDWERTE (gelten in allen Themen, solange ein Thema sie nicht ändert)
+   ----------------------------------------------------------------------------- */
+:root {
+  /* ---- Schriftgrößen (Bühne 1920 × 1080) – Beamer-Regeln ----
+     Fließtext mindestens 28 px, Titel 56–96 px. Nur reine Metaangaben
+     (Quelle, Seitenzahl, Kicker, Badges) dürfen 22–24 px haben,
+     Tabellen im Backup mindestens 22 px. */
+  --groesse-titel-gross: 96px;     /* Titelfolie */
+  --groesse-titel: 72px;           /* Folientitel = Kernaussage */
+  --groesse-titel-klein: 56px;     /* zweizeilige Titel, Backup-Folien */
+  --groesse-untertitel: 40px;      /* Zwischenzeilen, Kartentitel, Diagrammtitel */
+  --groesse-gross: 34px;           /* hervorgehobener Text */
+  --groesse-text: 30px;            /* Fließtext */
+  --groesse-text-min: 28px;        /* kleinster erlaubter Inhaltstext */
+  --groesse-tabelle: 24px;         /* Tabellen im Backup (min. 22 px) */
+  --groesse-meta: 22px;            /* Quelle, Kicker, Seitenzahl, Badges */
+  --groesse-kennzahl: 120px;       /* große Zahl in .kennzahl */
+
+  /* Ruhige Buchstabenformen der kursiven Fraunces (keine „wonky“-Formen).
+     Steht in jeder Angabe font-variation-settings mit: "opsz" …, var(--achsen-ruhig) */
+  --achsen-ruhig: "WONK" 0;
+
+  --zeilenhoehe-titel: 1.06;
+  --zeilenhoehe-text: 1.38;
+
+  /* ---- Abstände (8er-Raster) ---- */
+  --abstand-1: 8px;
+  --abstand-2: 12px;
+  --abstand-3: 16px;
+  --abstand-4: 24px;
+  --abstand-5: 32px;
+  --abstand-6: 48px;
+  --abstand-7: 64px;
+  --abstand-8: 96px;
+
+  /* ---- Satzspiegel ---- */
+  --rand-x: 128px;                 /* Seitenrand links/rechts */
+  --rand-oben: 44px;
+  --rand-unten: 40px;
+  --rinne: 32px;                   /* Spaltenabstand im Raster */
+
+  /* ---- Linien (Jury: Haarlinien mindestens 2 px, sonst verschwinden sie am Beamer) ---- */
+  --linie-fein: 2px;
+  --linie-stark: 3px;
+
+  /* ---- Mini-Steuerrad in der Kopfzeile (Jury: mindestens ca. 56 px) ---- */
+  --mini-rad: 60px;
+
+  /* ---- Bewegung: ruhig und präzise ----
+     Wege höchstens 18 px, Staffel 70 ms, Feder nur für Punkte und Marker.
+     Bei „Bewegung reduzieren“ (Betriebssystem) gibt es keine Bewegung. */
+  --dauer-kurz: 240ms;             /* Hover, kleine Zustandswechsel */
+  --dauer-mittel: 560ms;           /* Einblenden von Text und Flächen */
+  --dauer-lang: 1100ms;            /* Linien zeichnen, Balken wachsen, Zählen */
+  --dauer-folie: 520ms;            /* Folienwechsel */
+  --staffel: 70ms;                 /* Versatz zwischen gestaffelten Elementen */
+  --weg: 18px;                     /* Weg der Einblend-Bewegungen */
+  /* Deckkraft zurücktretender Elemente (Steuerrad-Fokus, data-dimmen,
+     Hervorhebungen auf Folien). 0.6 statt 0.45: bleibt auch auf blassen
+     Beamern lesbar, der Unterschied zum betonten Element ist trotzdem klar. */
+  --dimmen: 0.6;
+  --kurve: cubic-bezier(0.22, 0.61, 0.36, 1);        /* weiches Ausrollen */
+  --kurve-feder: cubic-bezier(0.34, 1.36, 0.64, 1);  /* kleines Nachfedern (nur Punkte/Marker);
+                                                        Ersatz für Browser ohne linear(), echte Feder siehe unten */
+  --kurve-wechsel: cubic-bezier(0.4, 0, 0.2, 1);     /* Folienwechsel */
+
+  /* ---- Feste Farben, die nie vom Thema abhängen ---- */
+  --f-qr-grund: #FFFFFF;           /* QR-Code immer dunkel auf hell, sonst scannen manche Handys nicht */
+  --f-qr-punkt: #111111;
+  --f-auf-bild: #FFFFFF;           /* Schrift auf Fotos (über abgedunkeltem Verlauf) */
+  --f-bild-schleier: rgb(8 9 12 / 0.78);  /* dunkelste Stelle des Verlaufs über Vollbild-Fotos */
+}
+
+/* ECHTE FEDERKURVE (Jury: „linear() mit cubic-bezier-Ersatz“)
+   linear(…) listet die Position der Bewegung zu 29 gleich weit auseinander
+   liegenden Zeitpunkten auf – berechnet aus einer gedämpften Feder
+   (Dämpfung 0,7, schwingt höchstens 4,6 % über das Ziel hinaus, dann Ruhe).
+   Nur für Punkte, Marker und den Kern des Steuerrads verwenden – nie für Text.
+   Browser ohne linear() (vor Chrome/Edge 113, Firefox 112, Safari 17.2)
+   behalten die cubic-bezier-Kurve von oben. */
+@supports (transition-timing-function: linear(0, 1)) {
+  :root {
+    --kurve-feder: linear(0, 0.034, 0.12, 0.235, 0.362, 0.489, 0.608, 0.713, 0.803,
+      0.876, 0.934, 0.977, 1.008, 1.028, 1.04, 1.045, 1.046, 1.043, 1.039, 1.033,
+      1.027, 1.022, 1.016, 1.012, 1.008, 1.005, 1.002, 1.001, 1);
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   3. THEMA „EDITORIAL“ (Standard) – Schrift, Form, Bewegung
+   ----------------------------------------------------------------------------- */
+:root,
+[data-thema="editorial"] {
+  --neutral-primaer: #34506B;      /* „Tinte“: gedecktes Blaugrau */
+  --neutral-sekundaer: #8F877C;    /* „Stein“: warmes Grau */
+
+  --schrift-display: "Fraunces Deck", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --schrift-text: "Inter Deck", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --schrift-zahl: var(--schrift-display);
+  --schrift-kicker: var(--schrift-text);
+
+  /* Fraunces: Gewicht mindestens 450 und optische Größe begrenzt,
+     sonst werden die Haarstriche am Beamer zu dünn (Hinweis der Jury). */
+  --gewicht-titel: 460;
+  --gewicht-display: 460;          /* Kartentitel, Feldnamen in Display-Schrift */
+  --gewicht-zahl: 540;             /* große Kennzahlen (Jury: kräftiger, mind. 500) */
+  --gewicht-text: 400;
+  --gewicht-fett: 620;
+  --opsz-titel: 48;                /* optische Größe der Titel (9–144); kleiner = kräftiger */
+  --laufweite-titel: -0.015em;
+  --stil-hervor: italic;           /* Hervorhebung im Titel (<em>) */
+  --stil-marke: normal;            /* Markenname immer aufrecht (Jury: Corporate Design nicht verfälschen) */
+  --kicker-versalien: uppercase;
+  --kicker-laufweite: 0.14em;
+  --kicker-gewicht: 650;
+
+  --radius-s: 2px;
+  --radius-m: 4px;
+  --radius-l: 10px;
+  --radius-pille: 999px;
+  --karte-rand: var(--linie-fein);  /* Rahmenstärke von Karten */
+  --karte-polster: var(--abstand-5);
+
+  --rand-x: 128px;
+}
+
+
+/* -----------------------------------------------------------------------------
+   4. THEMA „BENTO“ – Schrift, Form, Bewegung
+   ----------------------------------------------------------------------------- */
+[data-thema="bento"] {
+  --neutral-primaer: #3A3F58;      /* „Tinte“ */
+  --neutral-sekundaer: #A8957C;    /* „Sand“ */
+
+  --schrift-display: "Bricolage Deck", "Jakarta Deck", "Segoe UI", Arial, sans-serif;
+  --schrift-text: "Jakarta Deck", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --schrift-zahl: var(--schrift-display);
+  --schrift-kicker: var(--schrift-text);
+
+  --gewicht-titel: 680;
+  --gewicht-display: 640;
+  --gewicht-zahl: 700;
+  --gewicht-text: 450;
+  --gewicht-fett: 700;
+  --opsz-titel: 48;
+  --laufweite-titel: -0.015em;     /* Jury: enger als −0,015 em lässt Buchstaben kollidieren */
+  --stil-hervor: normal;
+  --stil-marke: normal;
+  --kicker-versalien: uppercase;
+  --kicker-laufweite: 0.1em;
+  --kicker-gewicht: 700;
+
+  --radius-s: 14px;
+  --radius-m: 24px;
+  --radius-l: 36px;
+  --radius-pille: 999px;
+  /* Jury: Kartenkanten verschwinden am Beamer → kräftiger Rand statt nur Schatten */
+  --karte-rand: 2px;
+  --karte-polster: var(--abstand-6);
+
+  --rand-x: 88px;
+  --staffel: 70ms;
+  --kurve: cubic-bezier(0.22, 0.8, 0.24, 1);
+}
+
+
+/* -----------------------------------------------------------------------------
+   5. THEMA „KEYNOTE“ – Schrift, Form, Bewegung
+   (aus Richtung 2, aber OHNE Glas-Unschärfe, Körnung und Dauer-Glühen:
+    diese Effekte ruckeln auf Hochschulrechnern und verschwinden im hellen Saal)
+   ----------------------------------------------------------------------------- */
+[data-thema="keynote"] {
+  --neutral-primaer: #5D6E91;      /* Schieferblau */
+  --neutral-sekundaer: #9C8E7B;    /* warmes Taupe */
+
+  --schrift-display: "Inter Tight Deck", "Inter Deck", "Segoe UI", Arial, sans-serif;
+  --schrift-text: "Inter Deck", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --schrift-zahl: "Space Grotesk Deck", "Inter Deck", "Segoe UI", Arial, sans-serif;
+  --schrift-kicker: "Space Grotesk Deck", "Inter Deck", sans-serif;
+
+  --gewicht-titel: 700;
+  --gewicht-display: 660;
+  --gewicht-zahl: 640;
+  --gewicht-text: 420;
+  --gewicht-fett: 640;
+  --opsz-titel: 32;
+  --laufweite-titel: -0.015em;     /* Jury: −0,03 em (Richtung 2) ließ Buchstaben kollidieren */
+  --stil-hervor: normal;
+  --stil-marke: normal;
+  --kicker-versalien: uppercase;
+  --kicker-laufweite: 0.12em;
+  --kicker-gewicht: 600;
+
+  --radius-s: 12px;
+  --radius-m: 22px;
+  --radius-l: 32px;
+  --radius-pille: 999px;
+  --karte-rand: 2px;
+  --karte-polster: var(--abstand-5);
+
+  --rand-x: 96px;
+  --dauer-mittel: 620ms;
+  --kurve: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* -----------------------------------------------------------------------------
+   6. MARKENFARBEN
+   Solange marke.js keine Farben setzt, gelten die neutralen Farben des Themas.
+   marke.js schreibt --marke-primaer und --marke-sekundaer direkt an <html>.
+   ----------------------------------------------------------------------------- */
+:root,
+[data-thema] {
+  --marke-primaer: var(--neutral-primaer);
+  --marke-sekundaer: var(--neutral-sekundaer);
+}
+/* Sind in marke.js Farben eingetragen, schreibt deck.js sie als Inline-Stil
+   an <html> (style="--marke-primaer: …"). Inline-Werte haben Vorrang. */
+
+
+/* =============================================================================
+   7. FARBEN – je Thema und Modus
+   Jeder Block legt dieselben Farb-Tokens fest (Liste siehe AUTOREN.md):
+     Flächen:  --f-hintergrund, --f-flaeche, --f-flaeche-2, --f-letterbox
+     Text:     --f-text, --f-text-2, --f-linie, --f-linie-stark
+     Akzent:   --f-akzent, --f-akzent-flaeche, --f-auf-akzent
+     Steuerrad:--f-hart, --f-hart-flaeche, --f-weich, --f-weich-flaeche,
+               --f-kern, --f-auf-kern, --f-rahmen
+     Signal:   --f-erfolg, --f-warnung, --f-fehler, --f-fokus
+     Diagramm: --f-diagramm-marke, --f-diagramm-wettbewerb, --f-diagramm-ideal,
+               --f-balken
+     Tiefe:    --schatten-1, --schatten-2, --f-karte, --f-karte-rand
+   ============================================================================= */
+
+/* ---------- 7a. EDITORIAL · HELL (Standard) ---------- */
+:root,
+[data-modus="hell"],
+[data-thema="editorial"][data-modus="hell"],
+[data-thema="editorial"] [data-modus="hell"] {
+  color-scheme: light;
+  --f-hintergrund: color-mix(in oklab, var(--marke-sekundaer) 5%, #FBFAF7);
+  --f-flaeche:     color-mix(in oklab, var(--marke-sekundaer) 10%, #FBFAF7);
+  --f-flaeche-2:   color-mix(in oklab, var(--marke-sekundaer) 18%, #FBFAF7);
+  --f-letterbox:   color-mix(in oklab, var(--marke-sekundaer) 22%, #DEDBD4);
+  --f-text:        color-mix(in oklab, var(--marke-sekundaer) 8%, #141414);
+  --f-text-2:      color-mix(in oklab, var(--marke-sekundaer) 14%, #4A4743);
+  --f-linie:       color-mix(in oklab, var(--marke-sekundaer) 30%, #D8D5CE);
+  --f-linie-stark: var(--f-text);
+  --f-akzent:         color-mix(in oklab, var(--marke-primaer) 88%, #000000);
+  --f-akzent-flaeche: color-mix(in oklab, var(--marke-primaer) 10%, #FBFAF7);
+  --f-auf-akzent:     #FFFFFF;
+  --f-hart:           color-mix(in oklab, var(--marke-sekundaer) 50%, #1A1A1A);
+  --f-hart-flaeche:   color-mix(in oklab, var(--marke-sekundaer) 16%, #FBFAF7);
+  --f-weich:          color-mix(in oklab, var(--marke-primaer) 85%, #000000);
+  --f-weich-flaeche:  color-mix(in oklab, var(--marke-primaer) 12%, #FBFAF7);
+  --f-kern:           var(--marke-primaer);
+  --f-auf-kern:       #FFFFFF;
+  --f-rahmen:         var(--f-text);
+  --f-erfolg:  #2B6B45;
+  --f-warnung: #7A4B00;
+  --f-fehler:  #A3211C;
+  --f-fokus:   var(--f-akzent);
+  --f-diagramm-marke: var(--f-akzent);
+  --f-diagramm-wettbewerb: var(--f-hart);
+  --f-diagramm-ideal: var(--f-text-2);
+  --f-balken: color-mix(in oklab, var(--f-text-2) 55%, var(--f-hintergrund));
+  --f-karte: var(--f-hintergrund);
+  --f-karte-rand: var(--f-linie);
+  --schatten-1: 0 1px 2px rgb(20 20 20 / 0.06), 0 4px 14px rgb(20 20 20 / 0.05);
+  --schatten-2: 0 2px 4px rgb(20 20 20 / 0.07), 0 18px 48px rgb(20 20 20 / 0.12);
+  --f-hintergrund-bild: none;
+}
+
+/* ---------- 7b. EDITORIAL · DUNKEL ---------- */
+[data-modus="dunkel"],
+[data-thema="editorial"][data-modus="dunkel"],
+[data-thema="editorial"] [data-modus="dunkel"] {
+  color-scheme: dark;
+  --f-hintergrund: color-mix(in oklab, var(--marke-sekundaer) 7%, #131416);
+  --f-flaeche:     color-mix(in oklab, var(--marke-sekundaer) 10%, #1B1C1F);
+  --f-flaeche-2:   color-mix(in oklab, var(--marke-sekundaer) 14%, #25272B);
+  --f-letterbox:   #060607;
+  --f-text:        color-mix(in oklab, var(--marke-sekundaer) 6%, #F4F2ED);
+  --f-text-2:      color-mix(in oklab, var(--marke-sekundaer) 10%, #C2BFB8);
+  --f-linie:       color-mix(in oklab, var(--marke-sekundaer) 18%, #3C3E43);
+  --f-linie-stark: var(--f-text);
+  --f-akzent:         color-mix(in oklab, var(--marke-primaer) 45%, #FFFFFF);
+  --f-akzent-flaeche: color-mix(in oklab, var(--marke-primaer) 12%, #1B1C1F);   /* gedeckt, nicht olivbraun (Prüfung 16.10.) */
+  --f-auf-akzent:     #121316;
+  --f-hart:           color-mix(in oklab, var(--marke-sekundaer) 35%, #EEECE7);
+  --f-hart-flaeche:   color-mix(in oklab, var(--marke-sekundaer) 16%, #1E1F22);
+  --f-weich:          color-mix(in oklab, var(--marke-primaer) 40%, #FFFFFF);
+  --f-weich-flaeche:  color-mix(in oklab, var(--marke-primaer) 15%, #1E1F22);
+  --f-kern:           color-mix(in oklab, var(--marke-primaer) 85%, #FFFFFF);
+  --f-auf-kern:       #FFFFFF;
+  --f-rahmen:         var(--f-text);
+  --f-erfolg:  #7CC79C;
+  --f-warnung: #E8B754;
+  --f-fehler:  #F08A80;
+  --f-fokus:   var(--f-akzent);
+  --f-diagramm-marke: var(--f-akzent);
+  --f-diagramm-wettbewerb: var(--f-hart);
+  --f-diagramm-ideal: var(--f-text-2);
+  --f-balken: color-mix(in oklab, var(--f-text-2) 50%, var(--f-hintergrund));
+  --f-karte: var(--f-flaeche);
+  --f-karte-rand: var(--f-linie);
+  --schatten-1: 0 1px 2px rgb(0 0 0 / 0.35), 0 4px 14px rgb(0 0 0 / 0.25);
+  --schatten-2: 0 2px 4px rgb(0 0 0 / 0.4), 0 18px 48px rgb(0 0 0 / 0.45);
+  --f-hintergrund-bild: none;
+}
+
+/* ---------- 7c. BENTO · HELL ---------- */
+[data-thema="bento"],
+[data-thema="bento"][data-modus="hell"],
+[data-thema="bento"] [data-modus="hell"] {
+  color-scheme: light;
+  --f-hintergrund: color-mix(in oklab, var(--marke-sekundaer) 12%, #E9E8E4);
+  --f-flaeche:     #FFFFFF;
+  --f-flaeche-2:   color-mix(in oklab, var(--marke-primaer) 6%, #F5F5F3);
+  --f-letterbox:   color-mix(in oklab, var(--marke-sekundaer) 18%, #CFCDC7);
+  --f-text:        color-mix(in oklab, var(--marke-primaer) 14%, #141519);
+  --f-text-2:      color-mix(in oklab, var(--marke-primaer) 16%, #464851);
+  --f-linie:       color-mix(in oklab, var(--marke-sekundaer) 26%, #C9C7C1);
+  --f-linie-stark: var(--f-text);
+  --f-akzent:         color-mix(in oklab, var(--marke-primaer) 85%, #000000);
+  --f-akzent-flaeche: color-mix(in oklab, var(--marke-primaer) 11%, #FFFFFF);
+  --f-auf-akzent:     #FFFFFF;
+  --f-hart:           color-mix(in oklab, var(--marke-sekundaer) 55%, #1A1A1A);
+  --f-hart-flaeche:   color-mix(in oklab, var(--marke-sekundaer) 24%, #FFFFFF);
+  --f-weich:          color-mix(in oklab, var(--marke-primaer) 82%, #000000);
+  --f-weich-flaeche:  color-mix(in oklab, var(--marke-primaer) 15%, #FFFFFF);
+  --f-kern:           var(--marke-primaer);
+  --f-auf-kern:       #FFFFFF;
+  --f-rahmen:         var(--f-text-2);
+  --f-erfolg:  #1F6E47;
+  --f-warnung: #7E4A00;
+  --f-fehler:  #A3211C;
+  --f-fokus:   var(--f-akzent);
+  --f-diagramm-marke: var(--f-akzent);
+  --f-diagramm-wettbewerb: var(--f-hart);
+  --f-diagramm-ideal: var(--f-text-2);
+  --f-balken: color-mix(in oklab, var(--marke-sekundaer) 40%, #B9B7B1);
+  --f-karte: var(--f-flaeche);
+  --f-karte-rand: color-mix(in oklab, var(--marke-sekundaer) 30%, #B4B1AA);
+  --schatten-1: 0 1px 2px rgb(30 32 45 / 0.08), 0 10px 28px -14px rgb(30 32 45 / 0.3);
+  --schatten-2: 0 2px 4px rgb(30 32 45 / 0.1), 0 28px 56px -22px rgb(30 32 45 / 0.42);
+  --f-hintergrund-bild: none;
+}
+
+/* ---------- 7d. BENTO · DUNKEL ---------- */
+[data-thema="bento"][data-modus="dunkel"],
+[data-thema="bento"] [data-modus="dunkel"] {
+  color-scheme: dark;
+  --f-hintergrund: color-mix(in oklab, var(--marke-primaer) 12%, #0F1013);
+  --f-flaeche:     color-mix(in oklab, var(--marke-primaer) 10%, #1C1D22);
+  --f-flaeche-2:   color-mix(in oklab, var(--marke-primaer) 16%, #25262C);
+  --f-letterbox:   #050506;
+  --f-text:        color-mix(in oklab, var(--marke-sekundaer) 6%, #F5F5F3);
+  --f-text-2:      color-mix(in oklab, var(--marke-sekundaer) 12%, #BDBEC4);
+  --f-linie:       color-mix(in oklab, var(--marke-sekundaer) 16%, #3B3C43);
+  --f-linie-stark: var(--f-text);
+  --f-akzent:         color-mix(in oklab, var(--marke-primaer) 45%, #FFFFFF);
+  --f-akzent-flaeche: color-mix(in oklab, var(--marke-primaer) 28%, #1C1D22);
+  --f-auf-akzent:     #111216;
+  --f-hart:           color-mix(in oklab, var(--marke-sekundaer) 45%, #FFFFFF);
+  --f-hart-flaeche:   color-mix(in oklab, var(--marke-sekundaer) 22%, #1C1D22);
+  --f-weich:          color-mix(in oklab, var(--marke-primaer) 42%, #FFFFFF);
+  --f-weich-flaeche:  color-mix(in oklab, var(--marke-primaer) 30%, #1C1D22);
+  --f-kern:           color-mix(in oklab, var(--marke-primaer) 80%, #FFFFFF);
+  --f-auf-kern:       #FFFFFF;
+  --f-rahmen:         var(--f-text-2);
+  --f-erfolg:  #6FD3A0;
+  --f-warnung: #F2B65A;
+  --f-fehler:  #F08A80;
+  --f-fokus:   var(--f-akzent);
+  --f-diagramm-marke: var(--f-akzent);
+  --f-diagramm-wettbewerb: var(--f-hart);
+  --f-diagramm-ideal: var(--f-text-2);
+  --f-balken: color-mix(in oklab, var(--marke-sekundaer) 26%, #4A4B52);
+  --f-karte: var(--f-flaeche);
+  --f-karte-rand: color-mix(in oklab, var(--marke-sekundaer) 20%, #474951);
+  --schatten-1: 0 1px 0 rgb(255 255 255 / 0.05) inset, 0 12px 28px -16px rgb(0 0 0 / 0.7);
+  --schatten-2: 0 1px 0 rgb(255 255 255 / 0.07) inset, 0 30px 60px -24px rgb(0 0 0 / 0.85);
+  --f-hintergrund-bild: none;
+}
+
+/* ---------- 7e. KEYNOTE · HELL ---------- */
+[data-thema="keynote"],
+[data-thema="keynote"][data-modus="hell"],
+[data-thema="keynote"] [data-modus="hell"] {
+  color-scheme: light;
+  --f-hintergrund: color-mix(in oklab, var(--marke-primaer) 6%, #F4F5F7);
+  --f-flaeche:     color-mix(in oklab, var(--marke-primaer) 2%, #FFFFFF);
+  --f-flaeche-2:   color-mix(in oklab, var(--marke-primaer) 9%, #ECEEF2);
+  --f-letterbox:   color-mix(in oklab, var(--marke-primaer) 12%, #D3D6DD);
+  --f-text:        color-mix(in oklab, var(--marke-primaer) 10%, #0B0D13);
+  --f-text-2:      color-mix(in oklab, var(--marke-primaer) 14%, #3F4552);
+  --f-linie:       color-mix(in oklab, var(--marke-primaer) 22%, #C3C8D2);
+  --f-linie-stark: var(--f-text);
+  --f-akzent:         color-mix(in oklab, var(--marke-primaer) 78%, #000000);
+  --f-akzent-flaeche: color-mix(in oklab, var(--marke-primaer) 11%, #FFFFFF);
+  --f-auf-akzent:     #FFFFFF;
+  --f-hart:           color-mix(in oklab, var(--marke-sekundaer) 55%, #1E222A);
+  --f-hart-flaeche:   color-mix(in oklab, var(--marke-sekundaer) 15%, #FFFFFF);
+  --f-weich:          color-mix(in oklab, var(--marke-primaer) 78%, #000000);
+  --f-weich-flaeche:  color-mix(in oklab, var(--marke-primaer) 15%, #FFFFFF);
+  --f-kern:           var(--marke-primaer);
+  --f-auf-kern:       #FFFFFF;
+  --f-rahmen:         var(--f-text-2);
+  --f-erfolg:  #08694A;
+  --f-warnung: #8A4500;
+  --f-fehler:  #A3211C;
+  --f-fokus:   var(--f-akzent);
+  --f-diagramm-marke: var(--f-akzent);
+  --f-diagramm-wettbewerb: var(--f-hart);
+  --f-diagramm-ideal: var(--f-text-2);
+  --f-balken: color-mix(in oklab, var(--marke-primaer) 18%, #B8BDC7);
+  --f-karte: var(--f-flaeche);
+  --f-karte-rand: color-mix(in oklab, var(--marke-primaer) 18%, #C9CDD6);
+  --schatten-1: 0 1px 2px rgb(16 20 30 / 0.06), 0 10px 28px -10px rgb(16 20 30 / 0.16);
+  --schatten-2: 0 1px 2px rgb(16 20 30 / 0.06), 0 36px 70px -28px rgb(16 20 30 / 0.28);
+  /* sanfter, statischer Lichthof (keine Animation, kein Filter) */
+  --f-hintergrund-bild: radial-gradient(1200px 800px at 85% -10%, color-mix(in oklab, var(--marke-primaer) 12%, transparent), transparent 70%);
+}
+
+/* ---------- 7f. KEYNOTE · DUNKEL ---------- */
+[data-thema="keynote"][data-modus="dunkel"],
+[data-thema="keynote"] [data-modus="dunkel"] {
+  color-scheme: dark;
+  --f-hintergrund: color-mix(in oklab, var(--marke-primaer) 9%, #07080C);
+  --f-flaeche:     color-mix(in oklab, var(--marke-primaer) 14%, #13151C);
+  --f-flaeche-2:   color-mix(in oklab, var(--marke-primaer) 20%, #1C1F28);
+  --f-letterbox:   #000000;
+  --f-text:        color-mix(in oklab, var(--marke-primaer) 4%, #F7F8FB);
+  --f-text-2:      color-mix(in oklab, var(--marke-primaer) 12%, #C6CBD5);
+  --f-linie:       color-mix(in oklab, var(--marke-primaer) 25%, #3E4352);
+  --f-linie-stark: var(--f-text);
+  --f-akzent:         color-mix(in oklab, var(--marke-primaer) 55%, #FFFFFF);
+  --f-akzent-flaeche: color-mix(in oklab, var(--marke-primaer) 28%, #13151C);
+  --f-auf-akzent:     #07080C;
+  --f-hart:           color-mix(in oklab, var(--marke-sekundaer) 40%, #E3E7EE);
+  --f-hart-flaeche:   color-mix(in oklab, var(--marke-sekundaer) 18%, #15171D);
+  --f-weich:          color-mix(in oklab, var(--marke-primaer) 50%, #FFFFFF);
+  --f-weich-flaeche:  color-mix(in oklab, var(--marke-primaer) 30%, #15171D);
+  --f-kern:           var(--marke-primaer);
+  --f-auf-kern:       #FFFFFF;
+  --f-rahmen:         var(--f-text-2);
+  --f-erfolg:  #3DDC97;
+  --f-warnung: #FFC857;
+  --f-fehler:  #FF8A80;
+  --f-fokus:   var(--f-akzent);
+  --f-diagramm-marke: var(--f-akzent);
+  --f-diagramm-wettbewerb: var(--f-hart);
+  --f-diagramm-ideal: var(--f-text-2);
+  --f-balken: color-mix(in oklab, var(--marke-primaer) 22%, #4A5060);
+  --f-karte: var(--f-flaeche);
+  --f-karte-rand: color-mix(in oklab, var(--marke-primaer) 22%, #343947);
+  --schatten-1: inset 0 1px 0 0 rgb(255 255 255 / 0.06), 0 12px 32px -12px rgb(0 0 0 / 0.75);
+  --schatten-2: inset 0 1px 0 0 rgb(255 255 255 / 0.08), 0 40px 90px -30px rgb(0 0 0 / 0.9);
+  --f-hintergrund-bild: radial-gradient(1100px 760px at 82% -8%, color-mix(in oklab, var(--marke-primaer) 30%, transparent), transparent 70%),
+                        radial-gradient(900px 700px at 0% 110%, color-mix(in oklab, var(--marke-sekundaer) 14%, transparent), transparent 70%);
+}
+
+
+/* =============================================================================
+   8. KONTRAST-SICHERUNG mit relativen Farben (Chrome/Edge 119+, Firefox 128+,
+      Safari 18+). Ältere Browser behalten die Werte aus Abschnitt 7.
+   Prinzip: Flächen bekommen eine FESTE Helligkeit (nur Farbton und ein Hauch
+   Buntheit kommen aus der Marke), Text- und Linienfarben eine Ober- bzw.
+   Untergrenze der Helligkeit. Damit hält jede Kombination ≥ 4,5 : 1 – auch
+   Text auf den Steuerrad-Feldern und bei extremen Marken (Gelb, Schwarz).
+   Die Schrift auf dem Zentrum (--f-auf-kern) und auf Akzentflächen
+   (--f-auf-akzent) wird automatisch schwarz oder weiß gewählt:
+     color(from X xyz-d65 …(0.179 - y)…) → weiß, wenn X dunkel ist (Luminanz
+     y < 0,179), sonst schwarz. 0,179 ist der Punkt, an dem Schwarz und Weiß
+     gleich gut lesbar sind.
+   ============================================================================= */
+@supports (color: oklch(from red l c h)) {
+
+  /* ---------- EDITORIAL · HELL ---------- */
+  :root,
+  [data-modus="hell"],
+  [data-thema="editorial"][data-modus="hell"],
+  [data-thema="editorial"] [data-modus="hell"] {
+    --f-hintergrund:    oklch(from var(--marke-sekundaer) 0.975 min(c, 0.007) h);
+    --f-flaeche:        oklch(from var(--marke-sekundaer) 0.952 min(c, 0.010) h);
+    --f-flaeche-2:      oklch(from var(--marke-sekundaer) 0.918 min(c, 0.014) h);
+    --f-letterbox:      oklch(from var(--marke-sekundaer) 0.86 min(c, 0.012) h);
+    --f-text:           oklch(from var(--marke-sekundaer) 0.2 min(c, 0.01) h);
+    --f-text-2:         oklch(from var(--marke-sekundaer) 0.42 min(c, 0.016) h);
+    --f-linie:          oklch(from var(--marke-sekundaer) 0.86 min(c, 0.014) h);
+    --f-akzent:         oklch(from var(--marke-primaer) min(l, 0.46) min(c, 0.16) h);
+    --f-akzent-flaeche: oklch(from var(--marke-primaer) 0.94 min(c, 0.035) h);
+    --f-hart:           oklch(from var(--marke-sekundaer) min(l, 0.4) min(c, 0.06) h);
+    --f-hart-flaeche:   oklch(from var(--marke-sekundaer) 0.915 min(c, 0.022) h);
+    --f-weich:          oklch(from var(--marke-primaer) min(l, 0.44) min(c, 0.15) h);
+    --f-weich-flaeche:  oklch(from var(--marke-primaer) 0.925 min(c, 0.035) h);
+    --f-auf-akzent:     color(from var(--f-akzent) xyz-d65 clamp(0, (0.179 - y) * 1000, 0.9505) clamp(0, (0.179 - y) * 1000, 1) clamp(0, (0.179 - y) * 1000, 1.089));
+    --f-auf-kern:       color(from var(--f-kern) xyz-d65 clamp(0, (0.179 - y) * 1000, 0.9505) clamp(0, (0.179 - y) * 1000, 1) clamp(0, (0.179 - y) * 1000, 1.089));
+  }
+
+  /* ---------- EDITORIAL · DUNKEL ---------- */
+  [data-modus="dunkel"],
+  [data-thema="editorial"][data-modus="dunkel"],
+  [data-thema="editorial"] [data-modus="dunkel"] {
+    --f-hintergrund:    oklch(from var(--marke-sekundaer) 0.19 min(c, 0.008) h);
+    --f-flaeche:        oklch(from var(--marke-sekundaer) 0.235 min(c, 0.01) h);
+    --f-flaeche-2:      oklch(from var(--marke-sekundaer) 0.28 min(c, 0.012) h);
+    --f-text:           oklch(from var(--marke-sekundaer) 0.95 min(c, 0.008) h);
+    --f-text-2:         oklch(from var(--marke-sekundaer) 0.8 min(c, 0.014) h);
+    --f-linie:          oklch(from var(--marke-sekundaer) 0.38 min(c, 0.014) h);
+    --f-akzent:         oklch(from var(--marke-primaer) max(l, 0.8) min(c, 0.13) h);
+    /* Akzent- und Soft-Facts-Flächen: weniger Buntheit (0,05/0,055 → 0,028/0,036),
+       sonst wirken große Karten (z. B. Folie 08) im Dunkeln schwer und
+       khakifarben (Abschlussprüfung 16.10.2026). Karten bekommen dafür eine
+       feine Kante in Markenfarbe (css/komponenten.css, Karten). */
+    --f-akzent-flaeche: oklch(from var(--marke-primaer) 0.29 min(c, 0.028) h);
+    --f-hart:           oklch(from var(--marke-sekundaer) max(l, 0.85) min(c, 0.05) h);
+    --f-hart-flaeche:   oklch(from var(--marke-sekundaer) 0.3 min(c, 0.025) h);
+    --f-weich:          oklch(from var(--marke-primaer) max(l, 0.83) min(c, 0.12) h);
+    --f-weich-flaeche:  oklch(from var(--marke-primaer) 0.31 min(c, 0.036) h);
+    --f-kern:           oklch(from var(--marke-primaer) clamp(0.45, l, 0.75) c h);
+    --f-auf-akzent:     color(from var(--f-akzent) xyz-d65 clamp(0, (0.179 - y) * 1000, 0.9505) clamp(0, (0.179 - y) * 1000, 1) clamp(0, (0.179 - y) * 1000, 1.089));
+    --f-auf-kern:       color(from var(--f-kern) xyz-d65 clamp(0, (0.179 - y) * 1000, 0.9505) clamp(0, (0.179 - y) * 1000, 1) clamp(0, (0.179 - y) * 1000, 1.089));
+  }
+
+  /* ---------- BENTO · HELL ---------- */
+  [data-thema="bento"],
+  [data-thema="bento"][data-modus="hell"],
+  [data-thema="bento"] [data-modus="hell"] {
+    --f-hintergrund:    oklch(from var(--marke-sekundaer) 0.925 min(c, 0.012) h);
+    --f-flaeche:        oklch(from var(--marke-sekundaer) 0.995 min(c, 0.003) h);
+    --f-flaeche-2:      oklch(from var(--marke-primaer) 0.962 min(c, 0.014) h);
+    --f-letterbox:      oklch(from var(--marke-sekundaer) 0.84 min(c, 0.012) h);
+    --f-text:           oklch(from var(--marke-primaer) 0.2 min(c, 0.02) h);
+    --f-text-2:         oklch(from var(--marke-primaer) 0.42 min(c, 0.03) h);
+    --f-linie:          oklch(from var(--marke-sekundaer) 0.82 min(c, 0.02) h);
+    --f-akzent:         oklch(from var(--marke-primaer) min(l, 0.46) min(c, 0.16) h);
+    --f-akzent-flaeche: oklch(from var(--marke-primaer) 0.94 min(c, 0.035) h);
+    --f-hart:           oklch(from var(--marke-sekundaer) min(l, 0.42) min(c, 0.1) h);
+    --f-hart-flaeche:   oklch(from var(--marke-sekundaer) 0.9 min(c, 0.04) h);
+    --f-weich:          oklch(from var(--marke-primaer) min(l, 0.44) min(c, 0.15) h);
+    --f-weich-flaeche:  oklch(from var(--marke-primaer) 0.91 min(c, 0.05) h);
+    --f-karte-rand:     oklch(from var(--marke-sekundaer) 0.76 min(c, 0.02) h);
+    --f-balken:         oklch(from var(--marke-sekundaer) 0.74 min(c, 0.03) h);
+    --f-auf-akzent:     color(from var(--f-akzent) xyz-d65 clamp(0, (0.179 - y) * 1000, 0.9505) clamp(0, (0.179 - y) * 1000, 1) clamp(0, (0.179 - y) * 1000, 1.089));
+    --f-auf-kern:       color(from var(--f-kern) xyz-d65 clamp(0, (0.179 - y) * 1000, 0.9505) clamp(0, (0.179 - y) * 1000, 1) clamp(0, (0.179 - y) * 1000, 1.089));
+  }
+
+  /* ---------- BENTO · DUNKEL ---------- */
+  [data-thema="bento"][data-modus="dunkel"],
+  [data-thema="bento"] [data-modus="dunkel"] {
+    --f-hintergrund:    oklch(from var(--marke-primaer) 0.165 min(c, 0.014) h);
+    --f-flaeche:        oklch(from var(--marke-primaer) 0.225 min(c, 0.016) h);
+    --f-flaeche-2:      oklch(from var(--marke-primaer) 0.265 min(c, 0.022) h);
+    --f-text:           oklch(from var(--marke-sekundaer) 0.965 min(c, 0.008) h);
+    --f-text-2:         oklch(from var(--marke-sekundaer) 0.8 min(c, 0.02) h);
+    --f-linie:          oklch(from var(--marke-sekundaer) 0.38 min(c, 0.02) h);
+    --f-akzent:         oklch(from var(--marke-primaer) max(l, 0.8) min(c, 0.14) h);
+    --f-akzent-flaeche: oklch(from var(--marke-primaer) 0.29 min(c, 0.045) h);
+    --f-hart:           oklch(from var(--marke-sekundaer) max(l, 0.84) min(c, 0.08) h);
+    --f-hart-flaeche:   oklch(from var(--marke-sekundaer) 0.31 min(c, 0.02) h);   /* wenig Buntheit: sonst „schlammig braun“ (Jury) */
+    --f-weich:          oklch(from var(--marke-primaer) max(l, 0.82) min(c, 0.14) h);
+    --f-weich-flaeche:  oklch(from var(--marke-primaer) 0.33 min(c, 0.065) h);
+    --f-kern:           oklch(from var(--marke-primaer) clamp(0.45, l, 0.75) c h);
+    --f-karte-rand:     oklch(from var(--marke-sekundaer) 0.42 min(c, 0.02) h);
+    --f-auf-akzent:     color(from var(--f-akzent) xyz-d65 clamp(0, (0.179 - y) * 1000, 0.9505) clamp(0, (0.179 - y) * 1000, 1) clamp(0, (0.179 - y) * 1000, 1.089));
+    --f-auf-kern:       color(from var(--f-kern) xyz-d65 clamp(0, (0.179 - y) * 1000, 0.9505) clamp(0, (0.179 - y) * 1000, 1) clamp(0, (0.179 - y) * 1000, 1.089));
+  }
+
+  /* ---------- KEYNOTE · HELL ---------- */
+  [data-thema="keynote"],
+  [data-thema="keynote"][data-modus="hell"],
+  [data-thema="keynote"] [data-modus="hell"] {
+    --f-hintergrund:    oklch(from var(--marke-primaer) 0.965 min(c, 0.008) h);
+    --f-flaeche:        oklch(from var(--marke-primaer) 0.993 min(c, 0.004) h);
+    --f-flaeche-2:      oklch(from var(--marke-primaer) 0.935 min(c, 0.012) h);
+    --f-text:           oklch(from var(--marke-primaer) 0.18 min(c, 0.02) h);
+    --f-text-2:         oklch(from var(--marke-primaer) 0.42 min(c, 0.03) h);
+    --f-linie:          oklch(from var(--marke-primaer) 0.84 min(c, 0.02) h);
+    --f-akzent:         oklch(from var(--marke-primaer) clamp(0.34, l, 0.46) min(c, 0.17) h);
+    --f-akzent-flaeche: oklch(from var(--marke-primaer) 0.94 min(c, 0.035) h);
+    --f-hart:           oklch(from var(--marke-sekundaer) clamp(0.3, calc(l - 0.18), 0.42) min(c, 0.1) h);
+    --f-hart-flaeche:   oklch(from var(--marke-sekundaer) 0.93 min(c, 0.03) h);
+    --f-weich:          oklch(from var(--marke-primaer) clamp(0.34, l, 0.44) min(c, 0.16) h);
+    --f-weich-flaeche:  oklch(from var(--marke-primaer) 0.92 min(c, 0.045) h);
+    --f-karte-rand:     oklch(from var(--marke-primaer) 0.82 min(c, 0.02) h);
+    --f-auf-akzent:     color(from var(--f-akzent) xyz-d65 clamp(0, (0.179 - y) * 1000, 0.9505) clamp(0, (0.179 - y) * 1000, 1) clamp(0, (0.179 - y) * 1000, 1.089));
+    --f-auf-kern:       color(from var(--f-kern) xyz-d65 clamp(0, (0.179 - y) * 1000, 0.9505) clamp(0, (0.179 - y) * 1000, 1) clamp(0, (0.179 - y) * 1000, 1.089));
+  }
+
+  /* ---------- KEYNOTE · DUNKEL ---------- */
+  [data-thema="keynote"][data-modus="dunkel"],
+  [data-thema="keynote"] [data-modus="dunkel"] {
+    --f-hintergrund:    oklch(from var(--marke-primaer) 0.15 min(c, 0.014) h);
+    --f-flaeche:        oklch(from var(--marke-primaer) 0.215 min(c, 0.02) h);
+    --f-flaeche-2:      oklch(from var(--marke-primaer) 0.26 min(c, 0.025) h);
+    --f-text:           oklch(from var(--marke-primaer) 0.975 min(c, 0.006) h);
+    --f-text-2:         oklch(from var(--marke-primaer) 0.82 min(c, 0.02) h);
+    --f-linie:          oklch(from var(--marke-primaer) 0.38 min(c, 0.03) h);
+    --f-akzent:         oklch(from var(--marke-primaer) clamp(0.78, calc(l + 0.18), 0.88) min(c, 0.13) h);
+    --f-akzent-flaeche: oklch(from var(--marke-primaer) 0.3 min(c, 0.05) h);
+    --f-hart:           oklch(from var(--marke-sekundaer) clamp(0.82, calc(l + 0.22), 0.9) min(c, 0.08) h);
+    --f-hart-flaeche:   oklch(from var(--marke-sekundaer) 0.29 min(c, 0.03) h);
+    --f-weich:          oklch(from var(--marke-primaer) clamp(0.8, calc(l + 0.2), 0.9) min(c, 0.12) h);
+    --f-weich-flaeche:  oklch(from var(--marke-primaer) 0.31 min(c, 0.06) h);
+    --f-kern:           oklch(from var(--marke-primaer) clamp(0.45, l, 0.72) c h);
+    --f-karte-rand:     oklch(from var(--marke-primaer) 0.36 min(c, 0.03) h);
+    --f-auf-akzent:     color(from var(--f-akzent) xyz-d65 clamp(0, (0.179 - y) * 1000, 0.9505) clamp(0, (0.179 - y) * 1000, 1) clamp(0, (0.179 - y) * 1000, 1.089));
+    --f-auf-kern:       color(from var(--f-kern) xyz-d65 clamp(0, (0.179 - y) * 1000, 0.9505) clamp(0, (0.179 - y) * 1000, 1) clamp(0, (0.179 - y) * 1000, 1.089));
+  }
+}
+
+
+/* -----------------------------------------------------------------------------
+   9. BEWEGUNG REDUZIEREN
+   Wer im Betriebssystem „Bewegung reduzieren“ eingestellt hat, sieht keine
+   Bewegung (nur kurzes Überblenden). deck.js beachtet das zusätzlich.
+   ----------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --weg: 0px;
+    --dauer-lang: 1ms;
+    --dauer-mittel: 1ms;
+    --staffel: 0ms;
+    --kurve-feder: linear;
+  }
+}
+html.bewegung-reduziert {
+  --weg: 0px;
+  --dauer-lang: 1ms;
+  --dauer-mittel: 1ms;
+  --staffel: 0ms;
+  --kurve-feder: linear;
+}

@@ -1,0 +1,1221 @@
+<!doctype html>
+<html lang="de" data-thema="editorial" data-modus="hell">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2228%22 cy=%2228%22 r=%2218%22 fill=%22none%22 stroke=%22%23C2410C%22 stroke-width=%228%22/%3E%3Cpath d=%22M41 41 L56 56%22 stroke=%22%23C2410C%22 stroke-width=%2210%22 stroke-linecap=%22round%22/%3E%3C/svg%3E">
+<title>SEO-Fallstudie unter der Lupe</title>
+<!--
+  ════════════════════════════════════════════════════════════════════════════
+  index.html – SEO-FALLSTUDIE UNTER DER LUPE (alle Folien in Vortragsreihenfolge)
+  ════════════════════════════════════════════════════════════════════════════
+  Modul Management im KMU · Prof. Dr. Christine Arend-Fuchs · Hochschule Kaiserslautern
+  Vortrag: Yannick Heisler
+
+  Gegenstand: Richards/Karp, „SEO Case Study: 6-Step Process That Generated
+  150,732 Visits“ (robbierichards.com/seo/case-study), Kunde UAV Coach.
+  Teil 1 Vorstellung · Teil 2 Kritische Bewertung · Teil 3 KMU · Fazit · Diskussion
+
+  Engine (js/deck.js, js/komponenten.js, css/tokens.css, deck.css, komponenten.css)
+  unverändert aus fuehrung/praesentation bzw. recap/ übernommen.
+  Gestaltung „Unter der Lupe“: css/folien/seo.css (Blau = Behauptung, Orange = Befund).
+  Belege (Screenshots aus der Fallstudie): bilder/fallstudie/
+  Anleitung: LIESMICH.md
+
+  Bedienung: → / Leertaste / Clicker = weiter · ← = zurück · O = Übersicht ·
+  P = Referentenansicht (zweites Fenster) · F = Vollbild · D = hell/dunkel ·
+  B = Schwarzbild · H oder ? = Hilfe
+-->
+<script src="marke.js"></script>
+<script>
+(function () {
+  var h = document.documentElement, p = new URLSearchParams(location.search), m = window.MARKE || {};
+  var k = 'deck:' + location.pathname + ':';
+  var s = function (n) { try { return sessionStorage.getItem(k + n); } catch (e) { return null; } };
+  var t = p.get('thema') || s('thema') || m.standardThema || 'editorial';
+  var d = p.get('modus') || s('modus') || m.standardModus || 'hell';
+  if (['editorial', 'bento', 'keynote'].indexOf(t) < 0) t = 'editorial';
+  if (['hell', 'dunkel'].indexOf(d) < 0) d = 'hell';
+  h.setAttribute('data-thema', t);
+  h.setAttribute('data-modus', d);
+  var f = m.farben || {};
+  ['primaer', 'sekundaer'].forEach(function (n) {
+    var w = p.get(n) || s('farbe-' + n) || f[n] || '';
+    if (/^[0-9a-f]{3}([0-9a-f]{3})?$/i.test(w)) w = '#' + w;
+    if (/^#[0-9a-f]{3}([0-9a-f]{3})?$/i.test(w)) h.style.setProperty('--marke-' + n, w);
+  });
+  if (p.has('referent')) h.classList.add('referent');
+  if (p.has('druck')) h.classList.add('druckmodus');
+  window.DECK_BASIS = '';
+})();
+</script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/deck.css">
+<link rel="stylesheet" href="css/komponenten.css">
+<link rel="stylesheet" href="css/folien/seo.css">
+</head>
+<body>
+<div class="nur-ohne-css" role="alert" style="max-width:46em;margin:24px auto;padding:16px 20px;border:4px solid #B00020;background:#FFF4F4;color:#1A1A1A;font:18px/1.5 Arial,sans-serif">
+  <strong>Präsentation unvollständig geöffnet.</strong> Neben <code>index.html</code> fehlen die Ordner
+  <code>css/</code> und <code>js/</code>. ZIP-Datei zuerst vollständig entpacken und dann
+  <code>praesentation/index.html</code> öffnen (Chrome oder Edge).
+</div>
+
+<!-- Icon-Satz (aus dem Modul Unternehmenskommunikation, ergänzt um Schlüssel, Code, Magnet, Euro, Waage): <svg class="icon"><use href="#i-name"/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-pfeil-rechts" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-pfeil-links" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-pfeil-hoch" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-pfeil-runter" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-raster" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-referent" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4M6 8h7M6 11.5h4"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><circle cx="9" cy="10" r="6"/><circle cx="15" cy="14" r="6"/></symbol>
+    <symbol id="i-mond" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+    <symbol id="i-sonne" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+    <symbol id="i-vollbild" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></symbol>
+    <symbol id="i-hilfe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1.1.9-1.1 1.7v.6M12 17.2h.01"/></symbol>
+    <symbol id="i-steuerrad" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></symbol>
+    <symbol id="i-schliessen" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-start" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
+    <symbol id="i-zuruecksetzen" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></symbol>
+    <symbol id="i-schwarz" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4M4 5l16 11"/></symbol>
+    <symbol id="i-extern" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-stift" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-loeschen" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-haken" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.6h.01"/></symbol>
+    <symbol id="i-lupe" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+    <symbol id="i-uebergabe" viewBox="0 0 24 24"><path d="M4 9h12M12 5l4 4-4 4M20 15H8M12 11l-4 4 4 4"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M10 10h4v4h-4zM9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></symbol>
+    <symbol id="i-gruppe" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 13.6A5 5 0 0 1 21.5 19"/></symbol>
+    <symbol id="i-leiter" viewBox="0 0 24 24"><path d="M8 3v18M16 3v18M8 7h8M8 12h8M8 17h8"/></symbol>
+    <symbol id="i-tabelle" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M3 14.5h18M9 4v16M15 4v16"/></symbol>
+    <symbol id="i-vergleich" viewBox="0 0 24 24"><circle cx="8.5" cy="12" r="5.5"/><circle cx="15.5" cy="12" r="5.5"/></symbol>
+    <symbol id="i-sprechblase" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H10l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-megafon" viewBox="0 0 24 24"><path d="M3 10v4h3l8 5V5L6 10H3zM18 9a4 4 0 0 1 0 6"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></symbol>
+    <symbol id="i-bild" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></symbol>
+    <symbol id="i-daten" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></symbol>
+    <symbol id="i-diagramm" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></symbol>
+    <symbol id="i-ziel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12h.01"/></symbol>
+    <symbol id="i-kompass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></symbol>
+    <symbol id="i-herz" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+    <symbol id="i-stern" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.7-4.4 4 1.2 5.8L12 16.5l-5.3 2.9 1.2-5.8-4.4-4 5.9-.7z"/></symbol>
+    <symbol id="i-zitat" viewBox="0 0 24 24"><path d="M10 7c-3 .8-5 3-5 6.5V17h4.5v-4.5H6.5M19 7c-3 .8-5 3-5 6.5V17h4.5v-4.5h-3"/></symbol>
+    <symbol id="i-uhr" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2M14 18.5V20M18.5 14H20"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+    <symbol id="i-lampe" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.3.3.5.7.5 1.1V16h6v-1c0-.4.2-.8.5-1.1A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-blatt" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15M5 19l7-7"/></symbol>
+    <symbol id="i-dokument" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h6"/></symbol>
+    <symbol id="i-annahme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1.1.9-1.1 1.7v.6M12 17.2h.01"/></symbol>
+    <symbol id="i-schluessel" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4.5"/><path d="M11.2 11.8L20 3M16.5 6.5l2.5 2.5M14 9l2 2"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 4.5l-3 15"/></symbol>
+    <symbol id="i-magnet" viewBox="0 0 24 24"><path d="M5 4h4v8a3 3 0 0 0 6 0V4h4v8a7 7 0 0 1-14 0z"/><path d="M5 8h4M15 8h4"/></symbol>
+    <symbol id="i-euro" viewBox="0 0 24 24"><path d="M18 6.5A7 7 0 1 0 18 17.5"/><path d="M4 10h9M4 14h9"/></symbol>
+    <symbol id="i-waage" viewBox="0 0 24 24"><path d="M12 4v16M8 20h8M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></symbol>
+  </defs>
+</svg>
+
+<div class="deck" id="deck">
+  <main class="buehne" id="buehne" aria-roledescription="Präsentation">
+
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 01 · Titel · 25 s
+     Lupe über einer steigenden Kurve: Blau = Behauptung, Orange = Prüfung.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-titelfolie" id="f01" data-titel="Titel" data-zeit="25" data-layout="titel" data-rubrik="">
+  <svg class="s-svg s-titel-lupe" viewBox="0 0 700 560" aria-hidden="true">
+    <path class="l-2" d="M20 520 H680"/>
+    <path class="l-blau" d="M20 512 C 160 510, 230 500, 300 470 S 430 330, 520 250 S 640 120, 680 70" data-animation="zeichnen" data-dauer="1600"/>
+    <g data-animation="zoom" data-verzoegerung="900">
+      <circle cx="430" cy="330" r="150" class="f-papier" style="opacity:.82"/>
+      <circle cx="430" cy="330" r="150" class="l-orange" style="stroke-width:16"/>
+      <path class="l-orange" d="M538 438 L640 540" style="stroke-width:30"/>
+      <text x="430" y="318" text-anchor="middle" class="t-zahl t-orange" font-size="64">?</text>
+      <text data-meta x="430" y="372" text-anchor="middle" class="t-2" font-size="26">Was ist belegt?</text>
+    </g>
+  </svg>
+  <header class="folie-kopf">
+    <p class="s-kicker"><span data-meta class="s-etikett">SEO-Fallstudie</span><span data-meta class="s-etikett s-etikett--befund">kritisch bewertet</span></p>
+    <h1 class="titel">150.732 Besuche – <em>was steckt dahinter?</em></h1>
+    <p class="lead">Wie ein Drohnen-Ratgeber auf Platz 1 bei Google kam: die Fallstudie von Robbie Richards über UAV Coach</p>
+  </header>
+  <div class="folie-inhalt">
+    <dl class="s-angaben">
+      <div><dt data-meta>Von</dt><dd data-gruppe>Yannick Heisler</dd></div>
+      <div><dt data-meta>Modul</dt><dd>Management im KMU</dd></div>
+      <div><dt data-meta>Dozentin</dt><dd>Prof. Dr. Christine Arend-Fuchs</dd></div>
+    </dl>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Hochschule Kaiserslautern, Campus Zweibrücken · Fallstudie: robbierichards.com/seo/case-study</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Ich stelle heute eine SEO-Fallstudie vor und bewerte sie kritisch. Sie verspricht eine Zahl, die man sich merkt: 150.732 Besuche, ohne einen Cent Werbebudget. Die Frage für die nächsten zwanzig Minuten ist: Was davon ist wirklich belegt, und was kann ein kleines oder mittleres Unternehmen daraus lernen?“</p>
+    <p>Die Lupe ist das Bild für die ganze Präsentation: Alles in Blau ist das, was die Fallstudie behauptet. Alles in Orange ist das, was unsere Prüfung findet.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 02 · Fahrplan · 40 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-mittig" id="f02" data-titel="Fahrplan" data-zeit="40" data-rubrik="Überblick">
+  <header class="folie-kopf">
+    <h2 class="titel">Erst vorstellen, dann prüfen, <span class="s-zeile">dann auf KMU übertragen</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <ol class="s-fahrplan" data-staffel="140" data-animation="hoch">
+      <li class="t1"><span class="s-fahrplan-nr">1</span><p class="s-fahrplan-name">Vorstellung</p><p class="s-fahrplan-text">Fall, Zahlen, sechs Schritte</p></li>
+      <li class="t2"><span class="s-fahrplan-nr">2</span><p class="s-fahrplan-name">Bewertung</p><p class="s-fahrplan-text">sechs Prüffragen</p></li>
+      <li class="t3"><span class="s-fahrplan-nr">3</span><p class="s-fahrplan-name">KMU</p><p class="s-fahrplan-text">was sich übertragen lässt</p></li>
+      <li><span class="s-fahrplan-nr">4</span><p class="s-fahrplan-name">Fazit</p><p class="s-fahrplan-text">und Diskussion</p></li>
+    </ol>
+    <p class="s-kern s-leitfrage" data-schritt="1" data-animation="hoch">Belegt die Fallstudie, was sie verspricht – und lohnt sich der Weg für ein KMU?</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Blau = Behauptung der Fallstudie · Orange = Befund der Prüfung</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Ich gehe in vier Teilen vor. Zuerst stelle ich die Fallstudie vor: wer, was, welche Zahlen, und die sechs Schritte der Methode. Dann prüfe ich sie mit sechs Fragen. Danach schauen wir, was ein KMU davon übernehmen kann. Zum Schluss ein Fazit und Fragen für die Diskussion. Damit man es auseinanderhält: Blau ist immer die Fallstudie, Orange immer meine Prüfung.“</p>
+    <p class="gesprochen" data-schritt="1">„Die Leitfrage lautet: Belegt die Fallstudie, was sie verspricht, und lohnt sich der Weg für ein KMU?“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 03 · SEO in einer Minute · 50 s
+     Eigene Skizze einer Suchergebnisseite (keine Google-Marke).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f03" data-titel="SEO in einer Minute" data-zeit="50" data-rubrik="Grundlagen">
+  <header class="folie-kopf">
+    <h2 class="titel">SEO heißt: <em class="s-blau">unbezahlt oben stehen,</em> <span class="s-zeile">wenn Kunden suchen</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-zwei" style="--spalten: 900px 1fr">
+      <svg class="s-svg" viewBox="0 0 900 600" role="img" aria-label="Skizze einer Suchergebnisseite: oben Anzeigen, dann eine Antwortbox, darunter die organischen Treffer auf Platz 1 bis 3">
+        <rect x="0" y="0" width="900" height="600" rx="18" class="f-flaeche"/>
+        <rect x="30" y="28" width="640" height="62" rx="31" class="f-papier"/>
+        <text x="64" y="70" font-size="28" class="t-2">wie fliege ich eine drohne</text>
+        <circle cx="636" cy="59" r="14" class="l" style="stroke-width:4"/><path class="l" d="M646 69 L658 81" style="stroke-width:4"/>
+        <g data-animation="einblenden" data-verzoegerung="200">
+          <rect x="30" y="112" width="640" height="78" rx="10" class="f-linie"/>
+          <text x="52" y="160" font-size="28" class="t-fett">Anzeige</text>
+          <text data-meta x="700" y="160" font-size="26" class="t-2">bezahlt</text>
+        </g>
+        <g data-animation="einblenden" data-verzoegerung="500">
+          <rect x="30" y="208" width="640" height="118" rx="10" class="f-blau-hell"/>
+          <rect x="30" y="208" width="10" height="118" class="f-blau"/>
+          <text x="58" y="254" font-size="28" class="t-fett t-blau">Antwortbox</text>
+          <text data-meta x="58" y="296" font-size="26" class="t-2">„Featured Snippet“</text>
+          <text data-meta x="700" y="274" font-size="26" class="t-blau t-fett">Platz 0</text>
+        </g>
+        <g data-animation="einblenden" data-verzoegerung="800">
+          <text x="44" y="388" font-size="34" class="t-zahl t-blau">1</text>
+          <rect x="90" y="356" width="420" height="20" rx="10" class="f-blau"/><rect x="90" y="390" width="560" height="14" rx="7" class="f-linie"/>
+          <text x="44" y="468" font-size="34" class="t-zahl">2</text>
+          <rect x="90" y="436" width="380" height="20" rx="10" class="f-mittel"/><rect x="90" y="470" width="540" height="14" rx="7" class="f-linie"/>
+          <text x="44" y="548" font-size="34" class="t-zahl">3</text>
+          <rect x="90" y="516" width="340" height="20" rx="10" class="f-mittel"/><rect x="90" y="550" width="520" height="14" rx="7" class="f-linie"/>
+          <path class="l-blau" d="M690 360 V556" style="stroke-width:4"/>
+          <text data-meta x="708" y="466" font-size="26" class="t-blau t-fett">organisch</text>
+          <text data-meta x="708" y="498" font-size="24" class="t-2">= unbezahlt</text>
+        </g>
+      </svg>
+      <ul class="s-liste" data-staffel="120" data-animation="hoch" aria-label="Vier Begriffe">
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-schluessel"/></svg></span><span><b class="s-liste-wort">Keyword</b><span class="s-liste-text">der Suchbegriff</span></span></li>
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-diagramm"/></svg></span><span><b class="s-liste-wort">Suchvolumen</b><span class="s-liste-text">Suchen pro Monat</span></span></li>
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-link"/></svg></span><span><b class="s-liste-wort">Backlink</b><span class="s-liste-text">Link einer fremden Seite, wirkt wie eine Empfehlung</span></span></li>
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-sprechblase"/></svg></span><span><b class="s-liste-wort">Featured Snippet</b><span class="s-liste-text">Antwortbox über Platz 1</span></span></li>
+      </ul>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Eigene Skizze. SEO = Search Engine Optimization (Suchmaschinenoptimierung)</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Kurz zum Begriff: SEO heißt Suchmaschinenoptimierung. Ziel ist, bei Google unbezahlt weit oben zu stehen, wenn potenzielle Kunden nach etwas suchen. Oben stehen oft Anzeigen, dafür zahlt man pro Klick. Darunter kommen die organischen, also unbezahlten Treffer, manchmal mit einer Antwortbox, dem Featured Snippet. Vier Begriffe brauchen wir gleich: Das Keyword ist der Suchbegriff, das Suchvolumen sagt, wie oft er pro Monat gesucht wird, und ein Backlink ist ein Link von einer fremden Seite, für Google so etwas wie eine Empfehlung. Wer auf Platz 1 steht, bekommt den größten Teil der Klicks.“</p>
+    <p>Hintergrund: Der Klickanteil von Platz 1 liegt je nach Studie bei rund einem Viertel aller Klicks; genaue Werte schwanken stark nach Suchanfrage und Seitentyp. Die Skizze ist bewusst neutral (keine Google-Gestaltung).</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 04 · Der Fall · 50 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f04" data-titel="Der Fall" data-zeit="50" data-rubrik="Fallstudie" data-teil="1">
+  <header class="folie-kopf">
+    <h2 class="titel">Ein Drohnen-Ratgeber soll Kunden <span class="s-zeile">für eine Flugschule gewinnen</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-zwei" style="--spalten: 1fr 860px">
+      <ul class="s-liste" data-staffel="120" data-animation="hoch">
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-gruppe"/></svg></span><span><b class="s-liste-wort">UAV Coach</b><span class="s-liste-text">Online-Kurse für Drohnenpiloten, USA</span></span></li>
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-stift"/></svg></span><span><b class="s-liste-wort">Michael Karp</b><span class="s-liste-text">Content-Berater, schreibt den Ratgeber</span></span></li>
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-megafon"/></svg></span><span><b class="s-liste-wort">Robbie Richards</b><span class="s-liste-text">SEO-Berater, veröffentlicht die Fallstudie</span></span></li>
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-ziel"/></svg></span><span><b class="s-liste-wort">Ziel</b><span class="s-liste-text">Reichweite, E-Mail-Adressen, Kunden</span></span></li>
+      </ul>
+      <figure class="s-beleg" data-animation="hoch" data-verzoegerung="300">
+        <figcaption class="s-beleg-leiste">uavcoach.com/how-to-fly-a-quadcopter-guide</figcaption>
+        <div class="s-beleg-bild"><img src="bilder/fallstudie/artikel-kopf.jpg" alt="Kopf des Ratgebers „How to Fly a Drone – A Beginner’s Guide to Multirotor Systems“ von UAV Coach mit Inhaltsverzeichnis"></div>
+      </figure>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Richards/Karp: SEO Case Study, robbierichards.com (datiert 02.08.2020); Screenshot aus der Fallstudie</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Zum Fall: UAV Coach ist ein US-Unternehmen, das Online-Kurse für Drohnenpiloten verkauft. Gründer Alan Perlman brauchte regelmäßigen Traffic und Kontakte. Er beauftragte den Content-Berater Michael Karp. Der schrieb einen ausführlichen Ratgeber: ‚How to Fly a Quadcopter – The Ultimate Guide‘, also: Wie fliege ich eine Drohne. Veröffentlicht hat die Fallstudie dann Robbie Richards auf seinem SEO-Blog, als Gastbeitrag von Karp. Wichtig für später: Wir haben drei Beteiligte, und alle drei verdienen mit SEO ihr Geld.“</p>
+    <p>Quadcopter = Drohne mit vier Rotoren. UAV = Unmanned Aerial Vehicle. Der Screenshot zeigt den Artikel unter seinem späteren Titel „How to Fly a Drone“.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 05 · Das Versprechen · 50 s
+     Sechs Kennzahlen, die die Fallstudie nennt (alle blau = Behauptung).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-mittig" id="f05" data-titel="Das Versprechen" data-zeit="50" data-rubrik="Fallstudie" data-teil="1">
+  <header class="folie-kopf">
+    <h2 class="titel">Die Fallstudie verspricht Platz 1 – <span class="s-zeile">ohne Werbebudget</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <ul class="s-kennzahlen" style="--anzahl: 3" data-staffel="140" data-animation="hoch">
+      <li class="ist-gross"><span class="s-zahl" data-animation="zaehlen" data-ziel="150732">150.732</span><span class="s-zahl-text"><b>Besuche</b> laut Titel</span></li>
+      <li class="ist-gross"><span class="s-zahl" data-animation="zaehlen" data-ziel="11065" data-einheit=" %" data-vorzeichen>+11.065 %</span><span class="s-zahl-text"><b>organischer Traffic</b> in 6 Monaten</span></li>
+      <li class="ist-gross"><span class="s-zahl">Platz 1</span><span class="s-zahl-text">vor <b>Mashable</b>, nach 5 Monaten</span></li>
+      <li><span class="s-zahl" data-animation="zaehlen" data-ziel="1331">1.331</span><span class="s-zahl-text"><b>Keywords</b> mit einem Artikel</span></li>
+      <li><span class="s-zahl" data-animation="zaehlen" data-ziel="2335">2.335</span><span class="s-zahl-text"><b>E-Mail-Adressen</b> gesammelt</span></li>
+      <li><span class="s-zahl">5:22</span><span class="s-zahl-text">Minuten <b>Lesezeit</b> im Schnitt</span></li>
+    </ul>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Alle Zahlen: Angaben der Fallstudie (Richards/Karp, robbierichards.com/seo/case-study)</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Das verspricht die Fallstudie, alles blau, also ihre eigenen Angaben: 150.732 Besuche. Ein Plus von über elftausend Prozent organischem Traffic in sechs Monaten. Platz 1 bei Google, sogar vor großen Medien wie Mashable, und das nach fünf Monaten. Ein einziger Artikel rankt für 1.331 Suchbegriffe. Er hat 2.335 E-Mail-Adressen eingesammelt, und die Leser bleiben im Schnitt über fünf Minuten. Und das alles, so der Text wörtlich, ‚ohne Geld für Werbung oder Linkaufbau‘. Klingt beeindruckend. Merken Sie sich die Zahlen, wir kommen auf jede zurück.“</p>
+    <p>Original: „increase organic traffic 11,065% in just 6 months … without spending any money on paid advertising or link building“. 20.314 organische Seitenaufrufe in den ersten 6 Monaten; 21,4 % des gesamten Traffics der Website.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     TRENNFOLIE T1 · Teil 1: Die Methode · 5 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-trenner" id="t1" data-titel="Teil 1: Die Methode" data-zeit="5" data-laufkopf="aus" data-nummer="T1" data-teil="1">
+  <div class="folie-inhalt">
+    <p class="s-trenner-nr" data-animation="hoch">1</p>
+    <h2 class="s-trenner-name" data-animation="hoch" data-verzoegerung="120">Die Methode</h2>
+    <p class="s-trenner-text" data-animation="einblenden" data-verzoegerung="300">Sechs Schritte von der Keyword-Recherche zum Backlink</p>
+    <div class="s-trenner-leiste" aria-hidden="true"><span class="ist-aktuell"></span><span></span><span></span><span></span></div>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen">„Teil 1: die Methode in sechs Schritten.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 06 · Sechs Schritte · 40 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-mittig" id="f06" data-titel="Sechs Schritte" data-zeit="40" data-rubrik="Methode" data-teil="1">
+  <header class="folie-kopf">
+    <h2 class="titel">Sechs Schritte: finden, bauen, <span class="s-zeile">Kontakte sammeln, verbreiten</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <ol class="s-sechs" data-staffel="110" data-animation="hoch">
+      <li><span class="s-sechs-nr">1</span><span class="s-sechs-icon"><svg class="icon"><use href="#i-lupe"/></svg></span><p class="s-sechs-name">Keywords</p><p class="s-sechs-text" data-meta>Themen und Konkurrenz prüfen</p></li>
+      <li><span class="s-sechs-nr">2</span><span class="s-sechs-icon"><svg class="icon"><use href="#i-stift"/></svg></span><p class="s-sechs-name">Inhalt</p><p class="s-sechs-text" data-meta>besten Artikel schreiben</p></li>
+      <li><span class="s-sechs-nr">3</span><span class="s-sechs-icon"><svg class="icon"><use href="#i-code"/></svg></span><p class="s-sechs-name">On-Page</p><p class="s-sechs-text" data-meta>Seite technisch optimieren</p></li>
+      <li><span class="s-sechs-nr">4</span><span class="s-sechs-icon"><svg class="icon"><use href="#i-magnet"/></svg></span><p class="s-sechs-name">Leads</p><p class="s-sechs-text" data-meta>E-Mail-Adressen sammeln</p></li>
+      <li><span class="s-sechs-nr">5</span><span class="s-sechs-icon"><svg class="icon"><use href="#i-megafon"/></svg></span><p class="s-sechs-name">Promotion</p><p class="s-sechs-text" data-meta>Artikel aktiv verbreiten</p></li>
+      <li><span class="s-sechs-nr">6</span><span class="s-sechs-icon"><svg class="icon"><use href="#i-link"/></svg></span><p class="s-sechs-name">Backlinks</p><p class="s-sechs-text" data-meta>Empfehlungen aufbauen</p></li>
+    </ol>
+    <div class="s-sechs-phasen" data-schritt="1" data-animation="einblenden" aria-label="Phasen">
+      <span>Seite bauen</span><span>Kontakte</span><span>Reichweite</span>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Gliederung der Fallstudie: „The Repeatable 6-Step Formula“</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Die Methode hat sechs Schritte. Erstens Keyword-Recherche mit Konkurrenzanalyse. Zweitens den besten Artikel zum Thema schreiben. Drittens die Seite technisch optimieren, das nennt man On-Page-SEO. Viertens aus Lesern E-Mail-Kontakte machen. Fünftens den Artikel aktiv verbreiten. Sechstens Backlinks aufbauen.“</p>
+    <p class="gesprochen" data-schritt="1">„Man kann das in drei Phasen zusammenfassen: Die ersten drei Schritte bauen die Seite, Schritt vier sammelt Kontakte, die letzten beiden bringen Reichweite. Karp sagt selbst: Das ist nicht kompliziert, und genau das sei das Schöne daran.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 07 · Schritt 1: Keywords · 55 s
+     Eisberg: Hauptkeyword oben, Long Tail darunter. Beleg: SEMrush, 1.331.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f07" data-titel="Schritt 1: Keywords" data-zeit="55" data-rubrik="Schritt 1 · Keywords" data-teil="1">
+  <header class="folie-kopf">
+    <h2 class="titel">Nicht das große Keyword zählt, <span class="s-zeile">sondern die <em class="s-blau">vielen kleinen</em></span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-zwei" style="--spalten: 760px 1fr">
+      <svg class="s-svg" viewBox="0 0 760 600" role="img" aria-label="Eisberg: Über Wasser das Hauptkeyword mit 720 Suchen pro Monat, unter Wasser 1.331 Keywords, für die der Artikel insgesamt rankt">
+        <path d="M0 170 H760" class="l-blau" style="stroke-width:3; opacity:.55"/>
+        <path d="M290 170 L350 70 L400 105 L440 60 L500 170 Z" class="f-blau"/>
+        <text x="395" y="34" text-anchor="middle" font-size="28" class="t-fett">„how to fly a quadcopter“</text>
+        <text x="560" y="128" font-size="28" class="t-zahl t-blau">720</text>
+        <text data-meta x="560" y="158" font-size="22" class="t-2">Suchen/Monat</text>
+        <g data-schritt="1" data-animation="einblenden">
+          <path d="M290 170 L500 170 L640 330 L590 520 L420 590 L210 540 L120 360 Z" class="f-blau-hell"/>
+          <text x="395" y="290" text-anchor="middle" font-size="96" class="t-zahl t-blau">1.331</text>
+          <text x="395" y="336" text-anchor="middle" font-size="28" class="t-fett">Keywords insgesamt</text>
+          <text data-meta x="395" y="404" text-anchor="middle" font-size="26" class="t-2">„quadcopter controls“</text>
+          <text data-meta x="395" y="444" text-anchor="middle" font-size="26" class="t-2">„fly a quadcopter in a circle“</text>
+          <text data-meta x="395" y="484" text-anchor="middle" font-size="26" class="t-2">„how to fly a drone“ …</text>
+        </g>
+      </svg>
+      <div class="s-stapel">
+        <figure class="s-beleg" data-schritt="1" data-animation="hoch" data-verzoegerung="200">
+          <figcaption class="s-beleg-leiste">SEMrush · Top-Seiten von uavcoach.com</figcaption>
+          <div class="s-beleg-bild">
+            <img src="bilder/fallstudie/semrush-1331-keywords.jpg" alt="SEMrush-Bericht: Die Seite how-to-fly-a-quadcopter-guide rankt für 1.331 Keywords">
+            <span class="s-mark s-mark--blau" style="--x: 82%; --y: 77%; --b: 13%; --h: 15%"></span>
+          </div>
+        </figure>
+        <p class="quelle" data-meta>Werkzeuge: SEMrush, Keywords Everywhere, AnswerThePublic, „Nutzer fragen auch“</p>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Richards/Karp: SEO Case Study, Schritt 1; Screenshot aus der Fallstudie</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Schritt 1, Keyword-Recherche. Karp wählt ‚how to fly a quadcopter‘ mit 720 Suchen im Monat. Das ist wenig. Er nennt vier Gründe: solides Suchvolumen, genau die Frage der Zielgruppe, also Drohnen-Anfänger, leicht zu recherchieren, und vor allem ein großer ‚organischer Fußabdruck‘.“</p>
+    <p class="gesprochen" data-schritt="1">„Das ist der eigentliche Gedanke: Unter der Spitze des Eisbergs liegen hunderte ähnliche Suchanfragen, der sogenannte Long Tail. Weil der Artikel jede dieser Fragen in einem eigenen Abschnitt beantwortet, rankt er am Ende für 1.331 Keywords. Das Hauptkeyword bringt laut Studie nur einen kleinen Teil des Traffics. Gefunden hat Karp die Begriffe mit Tools wie SEMrush, AnswerThePublic und den Fragen, die Google selbst unter ‚Nutzer fragen auch‘ anzeigt.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 08 · Schritt 1b: Konkurrenz prüfen · 50 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f08" data-titel="Schritt 1: Konkurrenz prüfen" data-zeit="50" data-rubrik="Schritt 1 · Konkurrenz" data-teil="1">
+  <header class="folie-kopf">
+    <h2 class="titel">Vorher prüfen, ob man <span class="s-zeile">überhaupt gewinnen kann</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-zwei" style="--spalten: 1fr 1fr">
+      <ul class="s-liste" data-staffel="120" data-animation="hoch" aria-label="Vier Prüfungen der Konkurrenz">
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-link"/></svg></span><span><b class="s-liste-wort">Autorität</b><span class="s-liste-text">Wie viele Backlinks haben die Top 10?</span></span></li>
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-dokument"/></svg></span><span><b class="s-liste-wort">Inhaltstyp</b><span class="s-liste-text">Ratgeber, Produktseite oder Video?</span></span></li>
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-code"/></svg></span><span><b class="s-liste-wort">On-Page</b><span class="s-liste-text">Steht das Keyword im Titel?</span></span></li>
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-stern"/></svg></span><span><b class="s-liste-wort">Qualität</b><span class="s-liste-text">Wie gründlich und aktuell?</span></span></li>
+      </ul>
+      <div class="s-stapel" data-schritt="1" data-animation="hoch">
+        <span data-meta class="s-etikett">Beispiel aus der Studie: Inhaltstyp</span>
+        <p class="s-karte-titel">„interactive infographic“: <span class="s-zeile">organische Besuche in 12 Monaten</span></p>
+        <ol class="s-balken" style="--etikett: 220px">
+          <li><span class="s-balken-name">Produktseite</span><span class="s-balken-spur"><span class="s-balken-fuell" style="--wert: 3.8" data-animation="zeichnen"></span><span class="s-balken-wert">366</span></span></li>
+          <li><span class="s-balken-name">Ratgeber-Liste</span><span class="s-balken-spur"><span class="s-balken-fuell s-balken-fuell--blau" style="--wert: 80" data-animation="zeichnen" data-verzoegerung="200"></span><span class="s-balken-wert">9.565</span></span></li>
+        </ol>
+        <p class="s-zahl-text">Google zeigte nur Listen-Artikel – die Produktseite hatte keine Chance.</p>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Richards/Karp: SEO Case Study, Schritt 1 („Editor’s note“ von R. Richards zu einem SaaS-Kunden)</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Bevor man schreibt, prüft man die Konkurrenz auf Seite 1, in vier Punkten: Wie stark sind die Seiten verlinkt? Welcher Inhaltstyp rankt, also Ratgeber, Produktseite oder Video? Wie gut sind die Seiten optimiert? Und wie gut ist ihr Inhalt? Beim Drohnen-Keyword war die Konkurrenz schwach verlinkt, und der bisherige Platz 1 hatte nur 303 Wörter.“</p>
+    <p class="gesprochen" data-schritt="1">„Der wichtigste Punkt ist der Inhaltstyp. Richards erzählt dazu ein Beispiel: Ein Software-Kunde wollte mit seiner Produktseite für ‚interactive infographic‘ ranken und schaffte es nicht. Google zeigte für diese Suche nur Listen-Artikel. Also schrieb man einen Listen-Artikel. Ergebnis in zwölf Monaten: 9.565 Besuche statt 366. Google zeigt, was die Suchenden erwarten, und dagegen kommt man nicht an.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 09 · Schritt 2: Inhalt · 50 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f09" data-titel="Schritt 2: Inhalt" data-zeit="50" data-rubrik="Schritt 2 · Inhalt" data-teil="1">
+  <header class="folie-kopf">
+    <h2 class="titel">Den <em class="s-blau">besten Artikel</em> zum Thema schreiben – <span class="s-zeile">länger, aktueller, übersichtlicher</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-zwei" style="--spalten: 1fr 640px">
+      <div class="s-stapel">
+        <p class="s-karte-titel">Länge in Wörtern</p>
+        <ol class="s-balken" style="--etikett: 300px">
+          <li><span class="s-balken-name">bisher Platz 1</span><span class="s-balken-spur"><span class="s-balken-fuell" style="--wert: 5.4" data-animation="zeichnen"></span><span class="s-balken-wert">303</span></span></li>
+          <li><span class="s-balken-name">Ø Seite 1 laut Studie</span><span class="s-balken-spur"><span class="s-balken-fuell" style="--wert: 35.6" data-animation="zeichnen" data-verzoegerung="150"></span><span class="s-balken-wert">≈ 2.000</span></span></li>
+          <li><span class="s-balken-name">UAV Coach</span><span class="s-balken-spur"><span class="s-balken-fuell s-balken-fuell--blau" style="--wert: 85" data-animation="zeichnen" data-verzoegerung="300"></span><span class="s-balken-wert">4.774</span></span></li>
+        </ol>
+        <ul class="s-kennzahlen" style="--anzahl: 3; margin-top: 26px" data-schritt="1" data-staffel="120" data-animation="hoch">
+          <li><span class="s-zahl" style="--zahl-groesse: 72px">3 Tage</span><span class="s-zahl-text">Recherche und Schreiben</span></li>
+          <li><span class="s-zahl" style="--zahl-groesse: 72px">17</span><span class="s-zahl-text">Kapitel mit Sprungmarken</span></li>
+          <li><span class="s-zahl" style="--zahl-groesse: 72px">+ Video</span><span class="s-zahl-text">Bilder, Checklisten</span></li>
+        </ul>
+      </div>
+      <figure class="s-beleg s-beleg--ausschnitt" style="--bildhoehe: 560px; --pos: 50% 0%" data-animation="hoch" data-verzoegerung="300">
+        <figcaption class="s-beleg-leiste">Inhaltsverzeichnis des Ratgebers</figcaption>
+        <div class="s-beleg-bild"><img src="bilder/fallstudie/inhaltsverzeichnis.jpg" alt="Klickbares Inhaltsverzeichnis des Ratgebers mit 17 Kapiteln von Definitionen bis zu Flugtechniken für Fortgeschrittene"></div>
+      </figure>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Richards/Karp: SEO Case Study, Schritt 2; Screenshot aus der Fallstudie</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Schritt 2, der Inhalt. Die Haltung lautet: Ich will den besten Inhalt zu diesem Thema, Punkt. Der bisherige Platz 1 hatte 303 Wörter, im Schnitt haben Treffer auf Seite 1 laut Studie rund 2.000. Karp schreibt 4.774 Wörter.“</p>
+    <p class="gesprochen" data-schritt="1">„Dafür hat er drei Tage recherchiert und geschrieben. Der Ratgeber hat 17 Kapitel mit einem klickbaren Inhaltsverzeichnis, das Google sogar als Sprungmarken im Suchergebnis anzeigt. Dazu Bilder, Videos, eine Checkliste vor dem Start und Übungen vom Anfänger bis zum Fortgeschrittenen. Die Regel: Alles, was die Konkurrenz macht, besser machen, und dann das ergänzen, was sie nicht macht.“</p>
+    <p>Die Länge ist ein Mittel, kein Ziel: Google bewertet nicht die Wortzahl, sondern ob die Seite die Frage vollständig beantwortet (siehe Teil 3, „streichen“).</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 10 · Schritt 3: On-Page · 50 s
+     Eigene Skizze einer Artikelseite mit den Optimierungspunkten.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f10" data-titel="Schritt 3: On-Page" data-zeit="50" data-rubrik="Schritt 3 · On-Page" data-teil="1">
+  <header class="folie-kopf">
+    <h2 class="titel">Google und Leser sollen <span class="s-zeile">sofort sehen, worum es geht</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <svg class="s-svg" viewBox="0 0 1664 620" role="img" aria-label="Skizze einer Artikelseite mit sieben Stellen, an denen das Keyword und die Technik optimiert werden: Titel, Adresse, Überschrift, erster Absatz, Zwischenüberschriften, Bilder, Links und Ladezeit">
+      <rect x="560" y="0" width="540" height="620" rx="18" class="f-flaeche"/>
+      <rect x="560" y="0" width="540" height="54" rx="18" class="f-linie"/>
+      <rect x="590" y="16" width="330" height="22" rx="11" class="f-papier"/>
+      <rect x="600" y="88" width="420" height="34" rx="8" class="f-blau"/>
+      <rect x="600" y="146" width="460" height="14" rx="7" class="f-mittel"/><rect x="600" y="172" width="400" height="14" rx="7" class="f-mittel"/>
+      <rect x="600" y="214" width="300" height="24" rx="8" class="f-blau" style="opacity:.6"/>
+      <rect x="600" y="256" width="200" height="130" rx="10" class="f-linie"/><path class="l" d="M620 366 L680 300 L720 340 L750 316 L790 366" style="stroke-width:4"/>
+      <rect x="820" y="256" width="240" height="14" rx="7" class="f-linie"/><rect x="820" y="282" width="220" height="14" rx="7" class="f-linie"/><rect x="820" y="308" width="240" height="14" rx="7" class="f-linie"/>
+      <rect x="600" y="414" width="300" height="24" rx="8" class="f-blau" style="opacity:.6"/>
+      <rect x="600" y="458" width="460" height="14" rx="7" class="f-linie"/><rect x="600" y="484" width="360" height="14" rx="7" class="f-linie"/>
+      <rect x="600" y="510" width="120" height="14" rx="7" class="f-blau"/>
+      <g data-staffel="110" data-animation="einblenden">
+        <g><path class="l-blau" d="M590 27 H420" style="stroke-width:3"/><text x="400" y="36" text-anchor="end" font-size="30" class="t-fett">Title-Tag und kurze URL</text></g>
+        <g><path class="l-blau" d="M1030 105 H1170" style="stroke-width:3"/><text x="1190" y="114" font-size="30" class="t-fett">Keyword in der H1</text></g>
+        <g><path class="l-blau" d="M600 166 H420" style="stroke-width:3"/><text x="400" y="175" text-anchor="end" font-size="30" class="t-fett">… und im ersten Absatz</text></g>
+        <g><path class="l-blau" d="M910 226 H1170" style="stroke-width:3"/><text x="1190" y="235" font-size="30" class="t-fett">Nebenkeywords in H2/H3</text></g>
+        <g><path class="l-blau" d="M600 330 H420" style="stroke-width:3"/><text x="400" y="322" text-anchor="end" font-size="30" class="t-fett">Bilder mit Alt-Text, Videos</text><text data-meta x="400" y="358" text-anchor="end" font-size="26" class="t-2">länger auf der Seite</text></g>
+        <g><path class="l-blau" d="M730 517 H1170" style="stroke-width:3"/><text x="1190" y="510" font-size="30" class="t-fett">Links nach innen und außen</text><text data-meta x="1190" y="546" font-size="26" class="t-2">als Signal für Relevanz</text></g>
+      </g>
+      <g data-schritt="1" data-animation="einblenden">
+        <path class="l-orange" d="M590 590 H420" style="stroke-width:4"/>
+        <text x="400" y="560" text-anchor="end" font-size="30" class="t-fett">Ladezeit</text>
+        <text x="400" y="602" text-anchor="end" font-size="40" class="t-zahl t-orange">53 % gehen nach 3 s</text>
+      </g>
+    </svg>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Eigene Skizze nach Richards/Karp, Schritt 3; 53 %: Google/DoubleClick-Studie zu mobilen Seiten (2016), zitiert in der Fallstudie</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Schritt 3 ist die Technik auf der Seite selbst. Das Keyword gehört in den Seitentitel, in eine kurze, sprechende Adresse, in die Hauptüberschrift und in den ersten Absatz. Die Nebenkeywords stehen in den Zwischenüberschriften. Bilder bekommen einen beschreibenden Alt-Text, Videos halten die Leser länger auf der Seite. Und Karp setzt bewusst Links auf andere gute Quellen, das machte die Konkurrenz nicht.“</p>
+    <p class="gesprochen" data-schritt="1">„Dazu kommt die Ladezeit: Laut einer Google-Studie verlassen 53 Prozent der mobilen Nutzer eine Seite, die länger als drei Sekunden lädt. Die Fallstudie sagt selbst: On-Page wirkt schwächer als Backlinks, aber man hat es in wenigen Minuten selbst in der Hand.“</p>
+    <p>Die Fallstudie empfiehlt hier auch „LSI-Keywords“. Den Begriff gibt es bei Google nicht (John Mueller, 2019: „There's no such thing as LSI keywords“) – gemeint sind verwandte Begriffe. Kommt in Teil 2 bei der Aktualität.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 11 · Schritt 4: Leads · 55 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f11" data-titel="Schritt 4: Leads" data-zeit="55" data-rubrik="Schritt 4 · Leads" data-teil="1">
+  <header class="folie-kopf">
+    <h2 class="titel">Aus Lesern werden <em class="s-blau">E-Mail-Kontakte</em></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-zwei s-zwei--mitte" style="--spalten: 1fr 700px">
+      <svg class="s-svg" viewBox="0 0 860 600" role="img" aria-label="Trichter: Besucher, dann Pop-up nach 12 Sekunden mit 5,12 Prozent Eintragungen oder Lead-Box im Text mit 20 bis 50 Prozent, dann Bestätigung per Double-Opt-in und PDF, am Ende 2.335 E-Mail-Adressen">
+        <g data-staffel="160" data-animation="hoch">
+          <g><path d="M0 0 H860 L800 120 H60 Z" class="f-blau-hell"/><text x="430" y="72" text-anchor="middle" font-size="34" class="t-fett">Besucher des Ratgebers</text></g>
+          <g>
+            <path d="M70 140 H425 L410 290 H120 Z" class="f-blau-hell"/>
+            <text x="250" y="190" text-anchor="middle" font-size="28" class="t-fett">Pop-up nach 12 s</text>
+            <text x="250" y="258" text-anchor="middle" font-size="58" class="t-zahl t-blau">5,12 %</text>
+            <path d="M435 140 H790 L740 290 H450 Z" class="f-blau-hell"/>
+            <text x="605" y="190" text-anchor="middle" font-size="28" class="t-fett">Box im Text</text>
+            <text x="605" y="258" text-anchor="middle" font-size="58" class="t-zahl t-blau">20–50 %</text>
+          </g>
+          <g><path d="M130 310 H730 L680 430 H180 Z" class="f-blau-hell"/><text x="430" y="362" text-anchor="middle" font-size="30" class="t-fett">Bestätigen (Double-Opt-in)</text><text data-meta x="430" y="404" text-anchor="middle" font-size="26" class="t-2">dann kommt der Ratgeber als PDF</text></g>
+          <g><path d="M190 450 H670 L610 600 H250 Z" class="f-blau"/><text x="430" y="530" text-anchor="middle" font-size="64" class="t-zahl f-papier">2.335</text><text data-meta x="430" y="572" text-anchor="middle" font-size="26" class="f-papier">E-Mail-Adressen</text></g>
+        </g>
+      </svg>
+      <figure class="s-beleg" data-animation="hoch" data-verzoegerung="300">
+        <figcaption class="s-beleg-leiste">Pop-up auf uavcoach.com</figcaption>
+        <div class="s-beleg-bild"><img src="bilder/fallstudie/popup.jpg" alt="Pop-up „Become a Drone Expert“: E-Mail-Adresse eintragen und den Ratgeber als kostenloses E-Book erhalten"></div>
+      </figure>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Richards/Karp: SEO Case Study, Schritt 4 (Werkzeuge: Sumo, Thrive Leads, ConvertKit); Screenshot aus der Fallstudie</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Schritt 4 ist aus Unternehmenssicht der wichtigste: Traffic allein bezahlt keine Rechnungen. Die Studie sagt, 98 Prozent der Besucher gehen, ohne etwas zu tun. Darum bekommt der Leser ein Angebot: den Ratgeber als PDF zum Herunterladen, gegen seine E-Mail-Adresse. Das nennt man Lead-Magnet. Es gibt zwei Wege: ein Pop-up nach zwölf Sekunden, das 5,12 Prozent der Besucher nutzen, und eine Box im Text, bei der 20 bis 50 Prozent derer, die klicken, sich eintragen. Danach bestätigt man die Adresse per Double-Opt-in und bekommt das PDF. Ergebnis: 2.335 E-Mail-Adressen, die UAV Coach weiter anschreiben kann, bis jemand einen Kurs kauft.“</p>
+    <p>Die 98 % und die „7 Kontaktpunkte vor dem Kauf“ nennt die Fallstudie ohne Quelle. Pop-up-Regel: höchstens einmal pro 24 Stunden je Besucher.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 12 · Schritt 5: Promotion · 45 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-mittig" id="f12" data-titel="Schritt 5: Promotion" data-zeit="45" data-rubrik="Schritt 5 · Promotion" data-teil="1">
+  <header class="folie-kopf">
+    <h2 class="titel">Den Artikel dorthin tragen, <span class="s-zeile">wo die Zielgruppe schon ist</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-zwei" style="--spalten: 1fr 560px">
+      <div class="s-kennzahlen" style="--anzahl: 2; row-gap: 30px" data-staffel="120" data-animation="hoch">
+        <div class="s-karte s-karte--blau"><p class="s-karte-titel">Quora</p><p class="s-karte-text">Fragen beantworten, Link ans Ende. 1–2 Stunden täglich in Woche 1</p></div>
+        <div class="s-karte s-karte--blau"><p class="s-karte-titel">Foren</p><p class="s-karte-text">mitdiskutieren, Link in der Signatur</p></div>
+        <div class="s-karte s-karte--blau"><p class="s-karte-titel">Social Media</p><p class="s-karte-text">17 Kapitel = 17 einzelne Posts</p></div>
+        <div class="s-karte s-karte--blau"><p class="s-karte-titel">Scoop.it</p><p class="s-karte-text">Kuratoren-Seiten vorschlagen, 7 pro Tag</p></div>
+      </div>
+      <figure class="s-beleg s-beleg--ausschnitt" style="--bildhoehe: 560px; --pos: 50% 100%" data-animation="hoch" data-verzoegerung="300">
+        <figcaption class="s-beleg-leiste">Quora-Antwort von Alan Perlman</figcaption>
+        <div class="s-beleg-bild">
+          <img src="bilder/fallstudie/quora-antwort.jpg" alt="Quora-Antwort auf „How does a quadcopter fly?“ mit Link auf den Ratgeber und 4.800 Aufrufen">
+          <span class="s-mark-text" style="--x: 2%; --y: 89%; --tx: 0; --ty: -100%">↓ 4.800 Aufrufe</span>
+        </div>
+      </figure>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Richards/Karp: SEO Case Study, Schritt 5; Screenshot aus der Fallstudie</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Schritt 5: Bis Google einen neuen Artikel weit oben zeigt, vergehen Monate. Deshalb trägt man ihn am Anfang selbst dorthin, wo die Zielgruppe schon ist. Bei Quora beantwortet man Fragen ausführlich und setzt am Ende den Link, in der ersten Woche ein bis zwei Stunden täglich. Diese eine Antwort hatte 4.800 Aufrufe. In Foren diskutiert man mit und hat den Link in der Signatur. In sozialen Netzwerken wird jedes der 17 Kapitel ein eigener Post. Und auf Scoop.it schlägt man den Artikel Kuratoren vor, bis zu sieben pro Tag.“</p>
+    <p>Auffällig: Die Quora-Antwort stammt von Alan Perlman selbst (im Screenshot: „Community Manager at UAV Coach“, 15.02.2015) – Eigenwerbung, kein unabhängiger Nutzer.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 13 · Schritt 6: Backlinks · 50 s
+     Netz aus vier Taktiken um den Artikel; Beleg: Ahrefs-Vergleich der Top 10.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f13" data-titel="Schritt 6: Backlinks" data-zeit="50" data-rubrik="Schritt 6 · Backlinks" data-teil="1">
+  <header class="folie-kopf">
+    <h2 class="titel"><em class="s-blau">Backlinks</em> entscheiden über Platz 1</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-zwei s-zwei--mitte" style="--spalten: 780px 1fr">
+      <svg class="s-svg" viewBox="0 0 780 600" role="img" aria-label="Vier Taktiken führen Links zum Artikel: Links der Konkurrenz nachbauen, Link-Lücken finden, Wochen-Rückblicke anschreiben, Ressourcenseiten anschreiben. Ergebnis: rund 100 verlinkende Domains in 90 Tagen">
+        <g data-animation="zeichnen" data-dauer="900">
+          <path class="l-blau" d="M390 300 L150 90"/><path class="l-blau" d="M390 300 L630 90"/><path class="l-blau" d="M390 300 L150 510"/><path class="l-blau" d="M390 300 L630 510"/>
+        </g>
+        <circle cx="390" cy="300" r="118" class="f-blau"/>
+        <text x="390" y="290" text-anchor="middle" font-size="72" class="t-zahl f-papier">≈ 100</text>
+        <text data-meta x="390" y="330" text-anchor="middle" font-size="26" class="f-papier">Domains</text>
+        <text data-meta x="390" y="362" text-anchor="middle" font-size="24" class="f-papier">in 90 Tagen</text>
+        <g data-staffel="140" data-animation="zoom">
+          <g><rect x="0" y="20" width="320" height="110" rx="14" class="f-blau-hell"/><text x="160" y="66" text-anchor="middle" font-size="28" class="t-fett">Konkurrenz-Links</text><text data-meta x="160" y="104" text-anchor="middle" font-size="24" class="t-2">nachbauen</text></g>
+          <g><rect x="460" y="20" width="320" height="110" rx="14" class="f-blau-hell"/><text x="620" y="66" text-anchor="middle" font-size="28" class="t-fett">Link-Lücken</text><text data-meta x="620" y="104" text-anchor="middle" font-size="24" class="t-2">„Link Intersect“</text></g>
+          <g><rect x="0" y="470" width="320" height="110" rx="14" class="f-blau-hell"/><text x="160" y="516" text-anchor="middle" font-size="28" class="t-fett">Wochen-Rückblicke</text><text data-meta x="160" y="554" text-anchor="middle" font-size="24" class="t-2">anschreiben</text></g>
+          <g><rect x="460" y="470" width="320" height="110" rx="14" class="f-blau-hell"/><text x="620" y="516" text-anchor="middle" font-size="28" class="t-fett">Ressourcenseiten</text><text data-meta x="620" y="554" text-anchor="middle" font-size="24" class="t-2">z. B. MIT</text></g>
+        </g>
+      </svg>
+      <div class="s-stapel">
+        <figure class="s-beleg" data-schritt="1" data-animation="hoch">
+          <figcaption class="s-beleg-leiste">Ahrefs · Top 10 für „how to fly a quadcopter“</figcaption>
+          <div class="s-beleg-bild">
+            <img src="bilder/fallstudie/ahrefs-serp-links.jpg" alt="Ahrefs-Übersicht der Top 10: Der UAV-Coach-Artikel auf Platz 1 hat 96 verweisende Domains, die anderen deutlich weniger">
+            <span class="s-mark s-mark--blau" style="--x: 0.5%; --y: 22%; --b: 99%; --h: 13%"></span>
+          </div>
+        </figure>
+        <p class="s-zahl-text" data-schritt="1" data-animation="einblenden">Mehr verweisende Domains als jeder Konkurrent auf Seite 1</p>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Richards/Karp: SEO Case Study, Schritt 6; Screenshot aus der Fallstudie</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Schritt 6, und laut Studie der entscheidende: Backlinks. 90 Tage lang hat das Team gezielt Links gesammelt, mit vier Taktiken. Erstens: Wer auf schwächere Konkurrenzartikel verlinkt, bekommt eine Mail mit dem besseren Artikel. Zweitens Link-Lücken: Seiten, die auf mehrere Konkurrenten verlinken, aber nicht auf uns. Drittens Blogs mit wöchentlichen Linksammlungen. Viertens Ressourcenseiten, darunter eine Seite des MIT.“</p>
+    <p class="gesprochen" data-schritt="1">„Ergebnis: rund 100 verlinkende Domains, mehr als jeder andere Treffer auf Seite 1. Die Studie nennt das selbst den Hauptgrund für Platz 1. Und hier steckt schon ein Widerspruch: Am Anfang hieß es, man habe kein Geld für Linkaufbau ausgegeben. Man hat nur nicht für Links bezahlt, aber 90 Tage Arbeit hineingesteckt.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 14 · Verlauf · 45 s
+     Zeitstrahl in Monaten nach Veröffentlichung.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f14" data-titel="Der Verlauf" data-zeit="45" data-rubrik="Ergebnis" data-teil="1">
+  <header class="folie-kopf">
+    <h2 class="titel">Nach fünf Monaten auf Platz 1 – <span class="s-zeile">laut Fallstudie</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <svg class="s-svg" viewBox="0 0 1664 560" role="img" aria-label="Zeitstrahl: Monat 0 Veröffentlichung, Monat 3 Seite 1, Monat 5 Platz 1, Monat 6 20.314 Seitenaufrufe, Monat 18 152.732 Besuche über mehrere Artikel">
+      <path class="l-2" d="M40 300 H1630" style="stroke-width:6"/>
+      <path class="l-blau" d="M40 300 H1630" style="stroke-width:8" data-animation="zeichnen" data-dauer="1600"/>
+      <g data-staffel="220" data-animation="hoch" data-verzoegerung="200">
+        <g><circle cx="60" cy="300" r="18" class="f-blau"/><text x="60" y="250" text-anchor="middle" font-size="30" class="t-zahl t-2">Monat 0</text><text x="60" y="370" font-size="30" class="t-fett" text-anchor="start">Veröffentlicht</text><text data-meta x="60" y="410" font-size="26" class="t-2">4.774 Wörter</text></g>
+        <g><circle cx="330" cy="300" r="18" class="f-blau"/><text x="330" y="250" text-anchor="middle" font-size="30" class="t-zahl t-2">Monat 3</text><text x="330" y="370" text-anchor="middle" font-size="30" class="t-fett">Seite 1</text><text data-meta x="330" y="410" text-anchor="middle" font-size="26" class="t-2">Platz 4–10</text></g>
+        <g><circle cx="510" cy="300" r="26" class="f-blau"/><text x="510" y="250" text-anchor="middle" font-size="30" class="t-zahl t-2">Monat 5</text><text x="510" y="370" text-anchor="middle" font-size="30" class="t-fett">Platz 1</text><text data-meta x="510" y="410" text-anchor="middle" font-size="26" class="t-2">vor Mashable</text></g>
+        <g><circle cx="600" cy="300" r="18" class="f-blau"/><text x="640" y="160" text-anchor="middle" font-size="30" class="t-zahl t-2">Monat 6</text><text x="640" y="110" text-anchor="middle" font-size="60" class="t-zahl t-blau">20.314</text><text data-meta x="640" y="200" text-anchor="middle" font-size="26" class="t-2">organische Seitenaufrufe</text></g>
+        <g><circle cx="1610" cy="300" r="26" class="f-blau"/><text x="1610" y="250" text-anchor="end" font-size="30" class="t-zahl t-2">Monat 18</text><text x="1610" y="200" text-anchor="end" font-size="80" class="t-zahl t-blau">152.732</text><text x="1610" y="370" text-anchor="end" font-size="30" class="t-fett">Besuche</text><text data-meta x="1610" y="410" text-anchor="end" font-size="26" class="t-2">mehrere Artikel nach gleichem Muster</text></g>
+      </g>
+      <g data-schritt="1" data-animation="einblenden">
+        <rect x="900" y="460" width="730" height="90" rx="14" class="f-blau-hell"/>
+        <text x="930" y="516" font-size="30" class="t-fett">Website heute: Top 3 bei <tspan class="t-blau t-zahl">3.034</tspan> Keywords</text>
+      </g>
+    </svg>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Angaben der Fallstudie; Zeitachse nicht maßstäblich zwischen Monat 6 und 18</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„So beschreibt die Studie den Verlauf: Nach drei Monaten ist der Artikel auf Seite 1, einige Monate auf Platz 4 bis 10. Nach fünf Monaten Platz 1. Nach sechs Monaten 20.314 organische Seitenaufrufe, das sind über 21 Prozent des Traffics der ganzen Website. Danach hat UAV Coach das Muster auf weitere Artikel übertragen, und nach 18 Monaten stehen 152.732 Besuche.“</p>
+    <p class="gesprochen" data-schritt="1">„Am Ende steht die Website laut Studie für über 3.000 Keywords unter den ersten drei. Das ist Teil 1, die Geschichte, wie sie erzählt wird. Jetzt schauen wir genauer hin.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     TRENNFOLIE T2 · Teil 2: Bewertung · 5 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-trenner" id="t2" data-titel="Teil 2: Kritische Bewertung" data-zeit="5" data-laufkopf="aus" data-nummer="T2" data-teil="2">
+  <div class="folie-inhalt">
+    <p class="s-trenner-nr" data-animation="hoch">2</p>
+    <h2 class="s-trenner-name" data-animation="hoch" data-verzoegerung="120">Kritische Bewertung</h2>
+    <p class="s-trenner-text" data-animation="einblenden" data-verzoegerung="300">Sechs Prüffragen an die Fallstudie</p>
+    <div class="s-trenner-leiste" aria-hidden="true"><span class="ist-erledigt"></span><span class="ist-aktuell"></span><span></span><span></span></div>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen">„Teil 2: die kritische Bewertung.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 15 · Prüfraster · 40 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-mittig" id="f15" data-titel="Prüfraster" data-zeit="40" data-rubrik="Bewertung" data-teil="2">
+  <header class="folie-kopf">
+    <h2 class="titel">Sechs Fragen, die man <span class="s-zeile">jeder Fallstudie stellen sollte</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <ul class="s-kennzahlen" style="--anzahl: 3; row-gap: 52px" data-staffel="110" data-animation="hoch">
+      <li><span class="s-liste-icon" style="background: var(--s-orange-flaeche); color: var(--s-orange)"><svg class="icon"><use href="#i-tabelle"/></svg></span><p class="s-karte-titel" style="margin-top:18px">Stimmen die Zahlen?</p><p class="s-zahl-text">Konsistenz</p></li>
+      <li><span class="s-liste-icon" style="background: var(--s-orange-flaeche); color: var(--s-orange)"><svg class="icon"><use href="#i-annahme"/></svg></span><p class="s-karte-titel" style="margin-top:18px">Ist die Ursache belegt?</p><p class="s-zahl-text">Kausalität</p></li>
+      <li><span class="s-liste-icon" style="background: var(--s-orange-flaeche); color: var(--s-orange)"><svg class="icon"><use href="#i-euro"/></svg></span><p class="s-karte-titel" style="margin-top:18px">Wer verdient daran?</p><p class="s-zahl-text">Unabhängigkeit</p></li>
+      <li><span class="s-liste-icon" style="background: var(--s-orange-flaeche); color: var(--s-orange)"><svg class="icon"><use href="#i-uhr"/></svg></span><p class="s-karte-titel" style="margin-top:18px">Gilt das noch?</p><p class="s-zahl-text">Aktualität</p></li>
+      <li><span class="s-liste-icon" style="background: var(--s-orange-flaeche); color: var(--s-orange)"><svg class="icon"><use href="#i-waage"/></svg></span><p class="s-karte-titel" style="margin-top:18px">Rechnet es sich?</p><p class="s-zahl-text">Wirtschaftlichkeit</p></li>
+      <li><span class="s-liste-icon" style="background: var(--s-orange-flaeche); color: var(--s-orange)"><svg class="icon"><use href="#i-dokument"/></svg></span><p class="s-karte-titel" style="margin-top:18px">Ist es nachvollziehbar?</p><p class="s-zahl-text">Dokumentation</p></li>
+    </ul>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Eigenes Prüfraster, angelehnt an die Gütekriterien für Fallstudien (Yin 2018: Validität, Reliabilität)</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Ich prüfe die Fallstudie mit sechs Fragen. Stimmen die Zahlen in sich? Ist belegt, dass die Methode die Ursache für den Erfolg war? Wer verdient an der Studie? Gilt das, was sie beschreibt, heute noch? Rechnet sich der Aufwand? Und, als Gegengewicht: Ist das Vorgehen nachvollziehbar dokumentiert? Das Raster lehnt sich an die Gütekriterien an, die man auch an wissenschaftliche Fallstudien anlegt, etwa nach Yin: Gültigkeit und Zuverlässigkeit.“</p>
+    <p>Yin unterscheidet Konstruktvalidität, interne Validität (Ursache), externe Validität (Übertragbarkeit) und Reliabilität (Nachvollziehbarkeit). Übertragbarkeit behandeln wir eigens in Teil 3.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 16 · Widersprüche · 55 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f16" data-titel="Widersprüchliche Zahlen" data-zeit="55" data-rubrik="Konsistenz" data-teil="2">
+  <header class="folie-kopf">
+    <h2 class="titel">Die Zahlen <em>widersprechen sich</em> – <span class="s-zeile">schon zwischen Titel und Text</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <table class="s-widerspruch">
+      <thead><tr><th data-meta scope="col">Angabe</th><th data-meta scope="col">Fallstudie sagt</th><th data-meta scope="col">Fallstudie sagt auch</th></tr></thead>
+      <tbody data-staffel="120" data-animation="hoch">
+        <tr><td>Besuche</td><td><span class="w-a">150.732</span><span data-meta class="w-ort">im Titel</span></td><td><span class="w-b">152.732</span><span data-meta class="w-ort">in der Einleitung</span></td></tr>
+        <tr><td>Zeitraum</td><td><span class="w-a">18 Monate</span><span data-meta class="w-ort">im Text</span></td><td><span class="w-b">9 Monate</span><span data-meta class="w-ort">im Screenshot, Feb.–Nov. 2015</span></td></tr>
+        <tr><td>Wachstum</td><td><span class="w-a">+11.065 %</span><span data-meta class="w-ort">im Text</span></td><td><span class="w-b">+12.134,74 %</span><span data-meta class="w-ort">im Screenshot</span></td></tr>
+        <tr><td>Suchvolumen</td><td><span class="w-a">720</span><span data-meta class="w-ort">bei der Auswahl</span></td><td><span class="w-b">260</span><span data-meta class="w-ort">im Ranking-Screenshot</span></td></tr>
+        <tr><td>Länge</td><td><span class="w-a">4.400 Wörter</span><span data-meta class="w-ort">in der Einleitung</span></td><td><span class="w-b">4.774 Wörter</span><span data-meta class="w-ort">in Schritt 2</span></td></tr>
+        <tr><td>Linkaufbau</td><td><span class="w-a">„ohne Geld“</span><span data-meta class="w-ort">in der Einleitung</span></td><td><span class="w-b">90 Tage</span><span data-meta class="w-ort">in Schritt 6</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Eigene Auswertung von Text und Screenshots der Fallstudie (Abruf 05.11.2026)</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Erste Frage: Stimmen die Zahlen? Nein, nicht einmal untereinander. Im Titel stehen 150.732 Besuche, in der Einleitung 152.732. Der Text spricht von 18 Monaten, der Screenshot dazu zeigt neun Monate, Februar bis November 2015. Das Wachstum ist im Text 11.065 Prozent, im Screenshot 12.134 Prozent. Das Suchvolumen des Hauptkeywords ist mal 720, mal 260. Der Artikel hat mal 4.400, mal 4.774 Wörter. Und ‚ohne Geld für Linkaufbau‘ heißt in Wahrheit: 90 Tage Arbeit am Linkaufbau. Einzeln sind das Kleinigkeiten, teils erklärbar, weil Daten aus verschiedenen Jahren gemischt werden. Zusammen zeigen sie: Die Zahlen wurden nicht sorgfältig geprüft, und keine davon ist unabhängig überprüfbar.“</p>
+    <p>Weitere Abweichungen: 1.331 Keywords im Text, 1.314 im SEMrush-Screenshot; 17 Kapitel im Text, 18 Kapitel in der Musterlösung der Outreach-Mail. Das Suchvolumen 260 stammt aus einem Screenshot vom November 2018, die 720 aus der Recherche 2015.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 17 · Basiseffekt · 50 s
+     Hauptbeleg der Studie mit eigenen Markierungen + eigenes Balkendiagramm.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f17" data-titel="Basiseffekt" data-zeit="50" data-rubrik="Konsistenz" data-teil="2">
+  <header class="folie-kopf">
+    <h2 class="titel">Der Hauptbeleg zeigt <em>Wachstum fast aus dem Nichts</em></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-zwei" style="--spalten: 520px 1fr; column-gap: 72px">
+      <figure class="s-beleg s-beleg--hoehe" style="--bildhoehe: 560px">
+        <figcaption class="s-beleg-leiste">Google Analytics</figcaption>
+        <div class="s-beleg-bild">
+          <img src="bilder/fallstudie/analytics-150732.jpg" alt="Google-Analytics-Screenshot: Sitzungen 12. Februar bis 11. November 2015 im Vergleich zu 15. Mai 2014 bis 11. Februar 2015: plus 12.134,74 Prozent, 150.732 gegenüber 1.232">
+          <span class="s-mark" style="--x: 0%; --y: 0%; --b: 64%; --h: 9.5%" data-schritt="1" data-animation="zoom"></span>
+          <span class="s-mark" style="--x: 66%; --y: 86%; --b: 33%; --h: 11%" data-schritt="1" data-animation="zoom" data-verzoegerung="200"></span>
+        </div>
+      </figure>
+      <div class="s-stapel" style="gap: 34px">
+        <span data-meta class="s-etikett s-etikett--befund">Sitzungen der ganzen Website, je 9 Monate</span>
+        <ol class="s-balken" style="--etikett: 300px">
+          <li><span class="s-balken-name">Mai 2014–Feb. 2015</span><span class="s-balken-spur"><span class="s-balken-fuell" style="--wert: 0.7" data-animation="zeichnen"></span><span class="s-balken-wert">1.232</span></span></li>
+          <li><span class="s-balken-name">Feb.–Nov. 2015</span><span class="s-balken-spur"><span class="s-balken-fuell s-balken-fuell--blau" style="--wert: 82" data-animation="zeichnen" data-verzoegerung="200"></span><span class="s-balken-wert">150.732</span></span></li>
+        </ol>
+        <div data-schritt="2" data-animation="hoch">
+          <p class="s-kern">Vorher: rund <span class="akzent">137 Besuche im Monat</span>. <span class="s-zeile">Bei so kleiner Basis wirkt jedes Wachstum riesig.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Screenshot aus der Fallstudie, Markierungen ergänzt; 1.232 ÷ 9 Monate ≈ 137 (eigene Rechnung)</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Schauen wir auf den wichtigsten Beleg, den Google-Analytics-Screenshot ganz oben in der Studie. Er vergleicht zwei Zeiträume von je neun Monaten, und zwar die Sitzungen der ganzen Website, nicht nur die des einen Artikels.“</p>
+    <p class="gesprochen" data-schritt="1">„Oben die Zeiträume: Februar bis November 2015 gegen Mai 2014 bis Februar 2015. Unten die Zahl: 150.732 gegenüber 1.232 Sitzungen.“</p>
+    <p class="gesprochen" data-schritt="2">„Das heißt: Vorher hatte die Seite rund 137 Besuche im Monat, sie war praktisch neu. Wenn man von fast null startet, ist jedes Wachstum ein Rekord in Prozent. Das nennt man Basiseffekt. Die 11.000 Prozent sagen deshalb kaum etwas über die Methode, sie sagen vor allem etwas über den Startpunkt.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 18 · Kausalität · 55 s
+     Punktraster: 200 Artikel, einer wird gezeigt (Survivorship Bias).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f18" data-titel="Kausalität" data-zeit="55" data-rubrik="Kausalität" data-teil="2">
+  <header class="folie-kopf">
+    <h2 class="titel">Ein Einzelfall ohne Vergleich <span class="s-zeile"><em>beweist keine Ursache</em></span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-zwei" style="--spalten: 700px 1fr; column-gap: 80px">
+      <div class="s-stapel" style="gap: 20px">
+        <div class="s-punkte" role="img" aria-label="200 Punkte für veröffentlichte Artikel, nur einer ist hervorgehoben: der Gewinner, über den man eine Fallstudie schreibt" data-animation="einblenden">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class="ist-gewinner"></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <p class="s-zahl-text">Gezeigt wird der Gewinner. <b>Wie viele Artikel blieben auf Seite 5?</b></p>
+      </div>
+      <ul class="s-liste s-liste--befund" data-staffel="140" data-animation="hoch">
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-person"/></svg></span><span><b class="s-liste-wort">n = 1</b><span class="s-liste-text">ein Artikel, eine Nische, ein Jahr</span></span></li>
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-vergleich"/></svg></span><span><b class="s-liste-wort">Keine Vergleichsgruppe</b><span class="s-liste-text">Welcher Schritt hat gewirkt?</span></span></li>
+        <li><span class="s-liste-icon"><svg class="icon"><use href="#i-diagramm"/></svg></span><span><b class="s-liste-wort">Korrelation ≠ Ursache</b><span class="s-liste-text">Ranking-Studien zeigen Zusammenhänge</span></span></li>
+      </ul>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Die Studie selbst: „You probably won’t rank #1 for every article you publish.“ (Abschnitt „Key Takeaway“)</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Zweite Frage: Ist belegt, dass die sechs Schritte die Ursache waren? Nein. Wir haben einen Einzelfall: ein Artikel, eine Nische, ein Jahr. Es gibt keine Vergleichsgruppe, wir wissen also nicht, welcher Schritt gewirkt hat, oder ob der Artikel nicht auch ohne Pop-up und Quora gestiegen wäre. Die Studie stützt sich auf Ranking-Studien von Ahrefs und SEMrush, aber die messen nur Zusammenhänge, keine Ursachen. Und dann der Survivorship Bias: Eine Fallstudie schreibt man über den Gewinner. Die Studie sagt am Ende selbst, man werde nicht mit jedem Artikel auf Platz 1 kommen. Wie viele es nicht geschafft haben, erfahren wir nicht.“</p>
+    <p>Survivorship Bias = Verzerrung durch die Auswahl der Erfolgreichen. Die Punkte sind symbolisch, die tatsächliche Zahl der Artikel von UAV Coach nennt die Studie nicht.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 19 · Mashable · 40 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f19" data-titel="Gegner Mashable" data-zeit="40" data-rubrik="Kausalität" data-teil="2">
+  <header class="folie-kopf">
+    <h2 class="titel">„Mashable geschlagen“ heißt: <span class="s-zeile"><em>eine Übersichtsseite</em> geschlagen</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-zwei" style="--spalten: 1fr 1fr">
+      <div class="s-stapel">
+        <figure class="s-beleg">
+          <figcaption class="s-beleg-leiste">Der „große“ Konkurrent im Suchergebnis</figcaption>
+          <div class="s-beleg-bild">
+            <img src="bilder/fallstudie/mashable.jpg" alt="Suchtreffer „Drones – Mashable“ mit der Adresse mashable.com/category/drones, also eine Kategorie-Übersicht, kein Ratgeber">
+            <span class="s-mark" style="--x: 0%; --y: 26%; --b: 49%; --h: 27%" data-schritt="1" data-animation="zoom"></span>
+          </div>
+        </figure>
+        <p class="s-zahl-text" data-schritt="1" data-animation="einblenden">Kategorie-Seite mit Nachrichten – <b>kein Ratgeber zur Frage</b></p>
+      </div>
+      <div class="s-stapel" data-schritt="2" data-animation="hoch">
+        <div class="s-zitat s-zitat--befund">
+          <p class="s-zitat-text">„The competition in this area was pretty weak.“</p>
+          <p class="s-zitat-quelle" data-meta>Michael Karp in der Fallstudie, Schritt 1</p>
+        </div>
+        <figure class="s-beleg s-beleg--ausschnitt" style="--bildhoehe: 300px; --pos: 0% 0%">
+          <figcaption class="s-beleg-leiste">Die eigentliche Konkurrenz: kleine Blogs</figcaption>
+          <div class="s-beleg-bild"><img src="bilder/fallstudie/serp-inhaltstyp.jpg" alt="Suchergebnisse für „how to fly a quadcopter“: UAV Coach auf Platz 1, darunter Ratgeber kleiner Drohnen-Blogs wie Drone Nodes, MyFirstDrone und Droney Bee"></div>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Screenshot aus der Fallstudie, Markierung ergänzt</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Ein Detail zur Erfolgsgeschichte: ‚Wir haben Mashable geschlagen‘ klingt nach David gegen Goliath.“</p>
+    <p class="gesprochen" data-schritt="1">„Im Screenshot sieht man aber: Der Mashable-Treffer war eine Kategorie-Seite mit Drohnen-Nachrichten, kein Ratgeber, der die Frage ‚Wie fliege ich eine Drohne?‘ beantwortet. Nach Schritt 1 der Studie selbst ist das der falsche Inhaltstyp, so eine Seite verliert gegen jeden guten Ratgeber.“</p>
+    <p class="gesprochen" data-schritt="2">„Und Karp schreibt selbst: Die Konkurrenz war ziemlich schwach. Der Erfolg ist also auch einer günstigen Nische geschuldet, nicht nur der Methode.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 20 · Interessen · 55 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-mittig" id="f20" data-titel="Interessenkonflikte" data-zeit="55" data-rubrik="Unabhängigkeit" data-teil="2">
+  <header class="folie-kopf">
+    <h2 class="titel">Die Fallstudie ist selbst Werbung – <span class="s-zeile">für Tools, Kurs und Beratung</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <ul class="s-kennzahlen" style="--anzahl: 4" data-staffel="140" data-animation="hoch">
+      <li><span class="s-zahl s-zahl--befund" data-animation="zaehlen" data-ziel="16">16</span><span class="s-zahl-text"><b>Links mit Partnerkennung</b> zu SEMrush, Ahrefs, Sumo, Thrive, ConvertKit</span></li>
+      <li><span class="s-zahl s-zahl--befund" data-animation="zaehlen" data-ziel="13">13</span><span class="s-zahl-text"><b>Einschübe</b> des Herausgebers („Editor’s note“)</span></li>
+      <li><span class="s-zahl s-zahl--befund" data-animation="zaehlen" data-ziel="4">4</span><span class="s-zahl-text">Hinweise auf den <b>eigenen Kurs</b> „The SEO Playbook“</span></li>
+      <li><span class="s-zahl s-zahl--befund" data-animation="zaehlen" data-ziel="2">2</span><span class="s-zahl-text">Angebote zur <b>Beratung</b></span></li>
+    </ul>
+    <p class="s-kern" style="margin-top: 70px" data-schritt="1" data-animation="hoch">Offengelegt und legal – aber <span class="akzent">ein Verkaufsargument, kein neutraler Beleg</span>.</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Eigene Zählung im Quelltext der Fallstudie (Abruf 05.11.2026); Affiliate-Hinweis steht am Anfang des Artikels</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Dritte Frage: Wer verdient daran? Ich habe im Quelltext gezählt. Die Fallstudie enthält 16 verschiedene Links mit Partnerkennung zu den Tools, die sie empfiehlt. Wer darüber ein Abo abschließt, bringt Richards eine Provision. Dazu kommen 13 Einschübe des Herausgebers, viele davon mit Hinweis auf seinen eigenen bezahlten SEO-Kurs, und zweimal das Angebot, ihn als Berater zu buchen.“</p>
+    <p class="gesprochen" data-schritt="1">„Das ist offen angegeben und völlig legal. Aber es heißt: Die Fallstudie ist Content-Marketing für Content-Marketing. Sie soll uns überzeugen, Tools, Kurs oder Beratung zu kaufen. Ein neutraler Beleg ist sie damit nicht.“</p>
+    <p>Gezählt: 16 eindeutige Adressen mit Partner- oder Affiliate-Kennung (ref=, source=, /recommends/, partner_, sjv.io). Der Kurs heißt „The SEO Playbook“.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 21 · Aktualität · 55 s
+     Zeitstrahl 2015–2026; Pew-Zahlen zu KI-Übersichten.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f21" data-titel="Aktualität" data-zeit="55" data-rubrik="Aktualität" data-teil="2">
+  <header class="folie-kopf">
+    <h2 class="titel">Die Daten sind <em>elf Jahre alt</em> – <span class="s-zeile">die Suche hat sich verändert</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <svg class="s-svg" viewBox="0 0 1664 330" role="img" aria-label="Zeitstrahl: 2015 Daten und Artikel, 2018 Screenshots, 2020 Datum der Fallstudie, 2022 Helpful-Content-Update, 2024 und 2025 KI-Übersichten bei Google, 2026 heute">
+      <path class="l-2" d="M20 150 H1640" style="stroke-width:6"/>
+      <g data-staffel="140" data-animation="hoch">
+        <g><circle cx="80" cy="150" r="20" class="f-blau"/><text x="80" y="100" text-anchor="middle" font-size="40" class="t-zahl t-blau">2015</text><text x="80" y="214" text-anchor="middle" font-size="28" class="t-fett">Daten, Artikel</text></g>
+        <g><circle cx="380" cy="150" r="14" class="f-blau"/><text x="380" y="100" text-anchor="middle" font-size="40" class="t-zahl t-blau">2018</text><text x="380" y="214" text-anchor="middle" font-size="28" class="t-fett">Screenshots</text></g>
+        <g><circle cx="640" cy="150" r="14" class="f-blau"/><text x="640" y="100" text-anchor="middle" font-size="40" class="t-zahl t-blau">2020</text><text x="640" y="214" text-anchor="middle" font-size="28" class="t-fett">Datum der Studie</text></g>
+        <g><circle cx="930" cy="150" r="20" class="f-orange"/><text x="930" y="100" text-anchor="middle" font-size="40" class="t-zahl t-orange">2022</text><text x="930" y="214" text-anchor="middle" font-size="28" class="t-fett">Helpful Content</text><text data-meta x="930" y="252" text-anchor="middle" font-size="24" class="t-2">für Menschen schreiben</text></g>
+        <g><circle cx="1240" cy="150" r="20" class="f-orange"/><text x="1240" y="100" text-anchor="middle" font-size="40" class="t-zahl t-orange">2024/25</text><text x="1240" y="214" text-anchor="middle" font-size="28" class="t-fett">KI-Übersichten</text><text data-meta x="1240" y="252" text-anchor="middle" font-size="24" class="t-2">USA 2024, DE 2025</text></g>
+        <g><circle cx="1580" cy="150" r="14" class="f-mittel"/><text x="1580" y="100" text-anchor="middle" font-size="40" class="t-zahl">2026</text><text x="1580" y="214" text-anchor="middle" font-size="28" class="t-fett">heute</text></g>
+      </g>
+    </svg>
+    <div class="s-zwei" style="--spalten: 1fr 1fr; margin-top: 30px; height: auto" data-schritt="1" data-animation="hoch">
+      <ol class="s-balken" style="--etikett: 300px">
+        <li><span class="s-balken-name">ohne KI-Übersicht</span><span class="s-balken-spur"><span class="s-balken-fuell" style="--wert: 75"></span><span class="s-balken-wert">15 %</span></span></li>
+        <li><span class="s-balken-name">mit KI-Übersicht</span><span class="s-balken-spur"><span class="s-balken-fuell s-balken-fuell--orange" style="--wert: 40"></span><span class="s-balken-wert">8 %</span></span></li>
+      </ol>
+      <p class="s-zahl-text" style="margin-top:0">Anteil der Suchen, nach denen auf ein normales Ergebnis <b>geklickt</b> wird (Pew Research Center, USA, 2025)</p>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Pew Research Center (22.07.2025): Google users are less likely to click on links when an AI summary appears; Google Search Central (2022): Helpful Content Update</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Vierte Frage: Gilt das noch? Die Fallstudie trägt das Datum 2020. Die Daten stammen aber aus 2015, die Screenshots aus 2018. Im Text steht noch ‚im Juli dieses Jahres‘ über ein Google-Update von 2018. Seitdem hat sich viel geändert: 2022 kam das Helpful-Content-Update, das Seiten abwertet, die vor allem für Suchmaschinen geschrieben sind. Und seit 2024, in Deutschland seit 2025, beantwortet Google viele Fragen direkt mit einer KI-Übersicht.“</p>
+    <p class="gesprochen" data-schritt="1">„Was das bedeutet, zeigt eine Studie des Pew Research Center: Ohne KI-Übersicht klicken Nutzer bei 15 Prozent der Suchen auf ein Ergebnis, mit KI-Übersicht nur bei 8 Prozent. Genau die Ratgeber-Fragen wie ‚Wie fliege ich eine Drohne?‘ sind die, die eine KI direkt beantwortet. Platz 1 bringt heute also deutlich weniger Besuche als 2015.“</p>
+    <p>Weitere veraltete Punkte: „LSI-Keywords“ gibt es laut Google nicht (Mueller 2019); Scoop.it und Forensignaturen spielen kaum noch eine Rolle. Der Artikel selbst wurde 2024 unter neuem Titel neu veröffentlicht („How to Fly a Drone: A Beginner's Guide“) – „evergreen“ heißt auch: dauernd pflegen. Pew: 900 US-Erwachsene, 68.879 Suchen im März 2025.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 22 · Wirtschaftlichkeit · 50 s
+     Waage: Aufwand (teilweise bekannt) gegen Ertrag (unbekannt).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="f22" data-titel="Wirtschaftlichkeit" data-zeit="50" data-rubrik="Wirtschaftlichkeit" data-teil="2">
+  <header class="folie-kopf">
+    <h2 class="titel">Den Aufwand kennt man halbwegs, <span class="s-zeile"><em>den Ertrag gar nicht</em></span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <svg class="s-svg" viewBox="0 0 1664 640" style="max-height: 100%" role="img" aria-label="Waage: Links der Aufwand mit drei Tagen Schreiben, ein bis zwei Stunden Quora täglich, 90 Tagen Linkaufbau, Tool-Abos und Beraterhonorar. Rechts der Ertrag: 2.335 E-Mail-Adressen, aber unbekannt sind Kunden, Umsatz und Gewinn">
+      <path class="l" d="M832 600 V120" style="stroke-width:8"/>
+      <path class="l" d="M760 600 H904" style="stroke-width:8"/>
+      <circle cx="832" cy="120" r="16" class="f-mittel"/>
+      <g style="transform-origin: 832px 120px; transform: rotate(-6deg)">
+        <path class="l" d="M300 120 H1364" style="stroke-width:8"/>
+        <path class="l-2" d="M300 120 L180 260 M300 120 L420 260 M1364 120 L1244 260 M1364 120 L1484 260" style="stroke-width:3"/>
+        <path d="M150 260 H450 A150 40 0 0 1 150 260 Z" class="f-linie"/>
+        <path d="M1214 260 H1514 A150 40 0 0 1 1214 260 Z" class="f-linie"/>
+      </g>
+      <g data-staffel="100" data-animation="hoch">
+        <text x="40" y="440" font-size="36" class="t-fett">Aufwand</text>
+        <text x="40" y="490" font-size="30">3 Tage Recherche und Schreiben</text>
+        <text x="40" y="534" font-size="30">1–2 h täglich Quora, dazu Foren</text>
+        <text x="40" y="578" font-size="30">90 Tage Linkaufbau</text>
+        <text x="40" y="622" font-size="30">Tool-Abos, Plugins, Berater</text>
+      </g>
+      <g data-schritt="1" data-staffel="140" data-animation="hoch">
+        <text x="1180" y="340" font-size="36" class="t-fett">Ertrag</text>
+        <text x="1180" y="404" font-size="48" class="t-zahl t-blau">2.335 E-Mails</text>
+        <text x="1180" y="470" font-size="48" class="t-zahl t-orange">? Kunden</text>
+        <text x="1180" y="536" font-size="48" class="t-zahl t-orange">? Umsatz</text>
+        <text x="1180" y="602" font-size="48" class="t-zahl t-orange">? Gewinn</text>
+      </g>
+    </svg>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Aufwand laut Fallstudie; Kosten, Umsatz und Rendite nennt die Fallstudie nicht</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Fünfte Frage, die für ein Unternehmen eigentlich wichtigste: Rechnet es sich? Den Aufwand kann man zum Teil aus der Studie ablesen: drei Tage Schreiben, in der ersten Woche täglich ein bis zwei Stunden Quora, dazu Foren, 90 Tage Linkaufbau, mehrere kostenpflichtige Tools und das Honorar für den Berater.“</p>
+    <p class="gesprochen" data-schritt="1">„Auf der Ertragsseite steht genau eine Zahl: 2.335 E-Mail-Adressen. Wie viele davon einen Kurs gekauft haben, wie viel Umsatz entstanden ist, ob sich das gerechnet hat: kein Wort. Besuche und E-Mail-Adressen sind Zwischenziele. Für eine Investitionsentscheidung im KMU bräuchte man Kosten pro Kunde und den Umsatz.“</p>
+    <p>Einzige Aussage zum Geschäft: das Zitat von Alan Perlman, man habe die Liste vergrößert und „Umsatz über Affiliate-Partner“ erzielt – ohne Zahlen. Im Zitat ist Perlman als „UI/UX Designer“ bezeichnet, obwohl er Gründer von UAV Coach ist; auch das spricht für wenig Sorgfalt.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 23 · Was trägt · 45 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-mittig" id="f23" data-titel="Stärken" data-zeit="45" data-rubrik="Dokumentation" data-teil="2">
+  <header class="folie-kopf">
+    <h2 class="titel">Was trägt: <em class="s-blau">die Methode</em> ist plausibel <span class="s-zeile">und gut dokumentiert</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-kennzahlen" style="--anzahl: 2; gap: 32px" data-staffel="130" data-animation="hoch">
+      <div class="s-karte s-karte--blau s-staerke"><span class="s-liste-icon"><svg class="icon"><use href="#i-haken"/></svg></span><p class="s-karte-titel">Suchintention zuerst</p><p class="s-karte-text">Inhaltstyp der Top 10 prüfen – heute Standard</p></div>
+      <div class="s-karte s-karte--blau s-staerke"><span class="s-liste-icon"><svg class="icon"><use href="#i-haken"/></svg></span><p class="s-karte-titel">Ein Thema gründlich</p><p class="s-karte-text">statt zehn dünner Artikel</p></div>
+      <div class="s-karte s-karte--blau s-staerke"><span class="s-liste-icon"><svg class="icon"><use href="#i-haken"/></svg></span><p class="s-karte-titel">Kontakte statt Klicks</p><p class="s-karte-text">Traffic wird in Leads übersetzt</p></div>
+      <div class="s-karte s-karte--blau s-staerke"><span class="s-liste-icon"><svg class="icon"><use href="#i-haken"/></svg></span><p class="s-karte-titel">Nachvollziehbar</p><p class="s-karte-text">über 100 Screenshots, Vorlagen, Mustermails</p></div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Eigene Bewertung</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Damit es nicht nur Kritik ist: Was trägt? Die Methode selbst ist plausibel. Erst zu prüfen, welchen Inhaltstyp Google für eine Suche zeigt, ist heute Standard in jedem SEO-Lehrbuch. Ein Thema gründlich zu beantworten statt zehn dünne Artikel zu schreiben, passt sogar besser zu Googles heutigen Regeln als damals. Gut ist auch, dass die Studie nicht bei Klicks stehen bleibt, sondern Kontakte sammelt. Und sie ist sehr gut nachvollziehbar: über hundert Screenshots, Vorlagen und Mustermails. Man kann jeden Schritt nachmachen.“</p>
+    <p>Die Fallstudie hat rund 8.000 Wörter. Die Anzahl der Bilder: über 100 eindeutige Screenshots im Artikel (eigene Zählung, ohne Autorenfoto).</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 24 · Gesamturteil · 45 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-mittig" id="f24" data-titel="Gesamturteil" data-zeit="45" data-rubrik="Bewertung" data-teil="2">
+  <header class="folie-kopf">
+    <h2 class="titel">Gesamturteil: <em class="s-blau">gutes Handwerk,</em> <em>schwache Beweisführung</em></h2>
+  </header>
+  <div class="folie-inhalt">
+    <ol class="s-ampel" data-staffel="110" data-animation="hoch">
+      <li><span class="s-ampel-name">Konsistenz</span><span class="s-ampel-urteil u-schwach">schwach</span><span class="s-ampel-text">Zahlen widersprechen sich</span></li>
+      <li><span class="s-ampel-name">Kausalität</span><span class="s-ampel-urteil u-schwach">schwach</span><span class="s-ampel-text">Einzelfall, kein Vergleich, Basiseffekt</span></li>
+      <li><span class="s-ampel-name">Unabhängigkeit</span><span class="s-ampel-urteil u-schwach">schwach</span><span class="s-ampel-text">Provisionen, Kurs, Beratung</span></li>
+      <li><span class="s-ampel-name">Aktualität</span><span class="s-ampel-urteil u-teils">teils</span><span class="s-ampel-text">Prinzip gilt, Taktiken und Klickzahlen veraltet</span></li>
+      <li><span class="s-ampel-name">Wirtschaftlichkeit</span><span class="s-ampel-urteil u-schwach">schwach</span><span class="s-ampel-text">keine Kosten, kein Umsatz</span></li>
+      <li><span class="s-ampel-name">Dokumentation</span><span class="s-ampel-urteil u-gut">gut</span><span class="s-ampel-text">jeder Schritt nachvollziehbar</span></li>
+    </ol>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Eigene Bewertung nach dem Prüfraster (Folie 15)</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Zusammengefasst: Bei Konsistenz, Kausalität, Unabhängigkeit und Wirtschaftlichkeit ist die Fallstudie schwach. Die Aktualität ist gemischt: Das Prinzip gilt noch, viele Taktiken und vor allem die Klickzahlen nicht mehr. Stark ist die Dokumentation. Mein Urteil: gutes Handwerk, schwache Beweisführung. Man kann aus der Studie lernen, wie man es macht. Man kann aus ihr nicht schließen, dass es so gut funktioniert, wie sie behauptet.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     TRENNFOLIE T3 · Teil 3: KMU · 5 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-trenner" id="t3" data-titel="Teil 3: Was heißt das für KMU?" data-zeit="5" data-laufkopf="aus" data-nummer="T3" data-teil="3">
+  <div class="folie-inhalt">
+    <p class="s-trenner-nr" data-animation="hoch" style="background: linear-gradient(90deg, var(--s-blau), var(--s-orange)); -webkit-background-clip: text; background-clip: text; color: transparent; display: inline-block">3</p>
+    <h2 class="s-trenner-name" data-animation="hoch" data-verzoegerung="120">Was heißt das für KMU?</h2>
+    <p class="s-trenner-text" data-animation="einblenden" data-verzoegerung="300">Behalten, anpassen, streichen</p>
+    <div class="s-trenner-leiste" aria-hidden="true"><span class="ist-erledigt"></span><span class="ist-erledigt"></span><span class="ist-aktuell" style="background: linear-gradient(90deg, var(--s-blau), var(--s-orange))"></span><span></span></div>
+  </div>
+  <aside class="notizen">
+    <p class="gesprochen">„Teil 3: Was heißt das für kleine und mittlere Unternehmen?“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 25 · Übertragbarkeit · 55 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-mittig" id="f25" data-titel="Übertragbarkeit" data-zeit="55" data-rubrik="KMU" data-teil="3">
+  <header class="folie-kopf">
+    <h2 class="titel">Für KMU passt das Prinzip – <span class="s-zeile">nicht jede Taktik</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-drei">
+      <div style="--farbe: var(--s-blau)" data-animation="hoch">
+        <p class="s-drei-kopf"><svg class="icon"><use href="#i-haken"/></svg>Behalten</p>
+        <ul>
+          <li><b>Nische statt Masse</b><span>Fachwissen schlägt Budget</span></li>
+          <li><b>Suchintention prüfen</b><span>vor dem Schreiben</span></li>
+          <li><b>Kontakte sammeln</b><span>Checkliste gegen E-Mail</span></li>
+        </ul>
+      </div>
+      <div style="--farbe: var(--s-gelb)" data-schritt="1" data-animation="hoch">
+        <p class="s-drei-kopf"><svg class="icon"><use href="#i-stift"/></svg>Anpassen</p>
+        <ul>
+          <li><b>Anfragen messen</b><span>nicht Besuche</span></li>
+          <li><b>3–6 Monate Anlauf</b><span>fest einplanen</span></li>
+          <li><b>Lokal denken</b><span>Unternehmensprofil, Region</span></li>
+        </ul>
+      </div>
+      <div style="--farbe: var(--s-orange)" data-schritt="2" data-animation="hoch">
+        <p class="s-drei-kopf"><svg class="icon"><use href="#i-schliessen"/></svg>Streichen</p>
+        <ul>
+          <li><b>Wortzahl als Ziel</b><span>Antwort zählt, nicht Länge</span></li>
+          <li><b>Forenspam, Scoop.it</b><span>kaum Wirkung</span></li>
+          <li><b>Pop-up nach 12 s</b><span>stört, DSGVO beachten</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Eigene Ableitung; Double-Opt-in und Einwilligung nach DSGVO und UWG</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Was soll ein KMU übernehmen? Behalten würde ich drei Dinge. Erstens die Nische: Ein KMU kann nicht gegen Konzerne um große Begriffe kämpfen, aber es hat Fachwissen für sehr konkrete Fragen. Zweitens: vor dem Schreiben prüfen, was Google für die Suche zeigt. Drittens: Kontakte sammeln, zum Beispiel mit einer Checkliste gegen die E-Mail-Adresse.“</p>
+    <p class="gesprochen" data-schritt="1">„Anpassen sollte man das Ziel: nicht Besuche messen, sondern Anfragen und Aufträge. Man sollte drei bis sechs Monate Anlauf fest einplanen, das zeigt ja auch die Fallstudie. Und viele KMU verkaufen regional, dann gehören das Google-Unternehmensprofil und regionale Begriffe dazu.“</p>
+    <p class="gesprochen" data-schritt="2">„Streichen würde ich die Wortzahl als Ziel, Google zählt keine Wörter. Forensignaturen und Scoop.it bringen heute kaum noch etwas. Und ein Pop-up nach zwölf Sekunden nervt, außerdem braucht man in Deutschland eine saubere Einwilligung nach DSGVO, also Double-Opt-in und Datenschutzhinweis.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 26 · Beispiel KMU (fiktiv) · 50 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-mittig" id="f26" data-titel="Beispiel KMU" data-zeit="50" data-rubrik="KMU" data-teil="3">
+  <header class="folie-kopf">
+    <h2 class="titel">Beispiel: ein Heizungsbauer <span class="s-zeile">mit zwölf Beschäftigten</span></h2>
+  </header>
+  <div class="folie-inhalt">
+    <ol class="s-sechs" data-staffel="110" data-animation="hoch">
+      <li><span class="s-sechs-nr">1</span><p class="s-sechs-name">Keyword</p><p class="s-sechs-text" data-meta>„Wärmepumpe im Altbau“ + Kundenfragen</p></li>
+      <li><span class="s-sechs-nr">2</span><p class="s-sechs-name">Ratgeber</p><p class="s-sechs-text" data-meta>eigene Fotos, echte Kosten, Erfahrungen</p></li>
+      <li><span class="s-sechs-nr">3</span><p class="s-sechs-name">Technik</p><p class="s-sechs-text" data-meta>Ort im Titel, Unternehmensprofil</p></li>
+      <li><span class="s-sechs-nr">4</span><p class="s-sechs-name">Lead</p><p class="s-sechs-text" data-meta>Förder-Checkliste als PDF, dann Beratung</p></li>
+      <li><span class="s-sechs-nr">5</span><p class="s-sechs-name">Verbreiten</p><p class="s-sechs-text" data-meta>Newsletter, Kundengespräch, Lokalzeitung</p></li>
+      <li><span class="s-sechs-nr">6</span><p class="s-sechs-name">Links</p><p class="s-sechs-text" data-meta>Innung, Hersteller, Verein, Kammer</p></li>
+    </ol>
+    <p class="s-kern s-kern--blau" style="margin-top: 40px" data-schritt="1" data-animation="hoch">Erfolg = <span class="akzent">Beratungstermine pro Monat</span>, nicht Besuche.</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Fiktives Beispiel zur Veranschaulichung, eigene Übertragung der sechs Schritte</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen" data-schritt="0">„Wie sähe das konkret aus? Ein fiktives Beispiel: ein Heizungsbauer mit zwölf Beschäftigten. Schritt 1: Das Keyword ist ‚Wärmepumpe im Altbau‘, dazu die Fragen, die Kunden am Telefon stellen. Schritt 2: ein Ratgeber mit eigenen Fotos und echten Kosten aus der Region, so etwas kann keine KI-Übersicht ersetzen. Schritt 3: Ort im Titel und ein gepflegtes Google-Unternehmensprofil. Schritt 4: Eine Förder-Checkliste als PDF, danach das Angebot eines Beratungstermins. Schritt 5: Newsletter, Kundengespräche, Lokalzeitung. Schritt 6: Links von Innung, Herstellern, Vereinen und der Handwerkskammer.“</p>
+    <p class="gesprochen" data-schritt="1">„Und gemessen wird nicht in Besuchen, sondern in Beratungsterminen pro Monat. Das ist die Zahl, die die Fallstudie uns schuldig bleibt.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 27 · Fazit · 45 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-mittig" id="f27" data-titel="Fazit" data-zeit="45" data-rubrik="Fazit">
+  <header class="folie-kopf">
+    <h2 class="titel">Fazit: <em class="s-blau">Die Methode taugt</em> – <em>der Beweis nicht</em></h2>
+  </header>
+  <div class="folie-inhalt">
+    <ol class="s-fahrplan" style="grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px" data-staffel="160" data-animation="hoch">
+      <li class="t1"><span class="s-fahrplan-nr" style="color: var(--s-blau)">1</span><p class="s-fahrplan-name">Solides Handwerk</p><p class="s-fahrplan-text">Die sechs Schritte passen gut zu KMU mit Nischenwissen.</p></li>
+      <li class="t2"><span class="s-fahrplan-nr" style="color: var(--s-orange)">2</span><p class="s-fahrplan-name">Schwacher Beleg</p><p class="s-fahrplan-text">Widersprüche, Einzelfall, eigene Verkaufsinteressen.</p></li>
+      <li class="t3"><span class="s-fahrplan-nr">3</span><p class="s-fahrplan-name">Anders messen</p><p class="s-fahrplan-text">Anfragen und Umsatz zählen – mit KI-Antworten gibt es weniger Klicks.</p></li>
+    </ol>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Eigene Bewertung</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Mein Fazit in drei Sätzen. Erstens: Die sechs Schritte sind solides Handwerk, und gerade KMU mit Fachwissen in einer Nische können sie gut nutzen. Zweitens: Als Beleg taugt die Fallstudie wenig. Die Zahlen widersprechen sich, es ist ein Einzelfall von 2015, und die Autoren verdienen an dem, was sie empfehlen. Drittens: Wer es nachmacht, sollte Anfragen und Umsatz messen, nicht Besuche, und damit rechnen, dass KI-Antworten heute einen Teil der Klicks abfangen. Kurz gesagt: Die Methode taugt, der Beweis nicht.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 28 · Diskussion · 30 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie s-mittig" id="f28" data-titel="Diskussion" data-zeit="30" data-rubrik="Diskussion">
+  <header class="folie-kopf">
+    <h2 class="titel">Diskussion</h2>
+  </header>
+  <div class="folie-inhalt">
+    <ol class="s-fragen" data-staffel="160" data-animation="hoch">
+      <li><p class="s-fragen-text">Würden Sie einem KMU raten, 2026 noch in Ratgeber-Artikel zu investieren?</p></li>
+      <li><p class="s-fragen-text">Wie viel Vertrauen verdient eine Fallstudie von jemandem, der daran verdient?</p></li>
+      <li><p class="s-fragen-text">Welche Zahl hätten Sie statt „Besuche“ veröffentlicht?</p></li>
+    </ol>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Fallstudie: robbierichards.com/seo/case-study</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Damit komme ich zur Diskussion. Drei Fragen an Sie: Würden Sie einem KMU raten, 2026 noch in Ratgeber-Artikel zu investieren, wenn Google viele Fragen selbst beantwortet? Wie viel Vertrauen verdient eine Fallstudie von jemandem, der an ihr verdient? Und welche Zahl hätten Sie an Stelle der Besuche veröffentlicht? Vielen Dank.“</p>
+    <p>Mögliche Antworten zu 1: ja, wenn der Inhalt eigene Erfahrung bietet, die eine KI nicht hat (Fotos, Preise, regionale Besonderheiten), und wenn er Anfragen erzeugt. Zu 3: Anfragen, Kosten pro Kunde, Umsatz aus organischer Suche.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B1 · Quellen
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="b1" data-titel="Quellen" data-backup data-layout="backup" data-nummer="B1" data-zeit="0">
+  <header class="folie-kopf">
+    <h2 class="titel">Quellen</h2>
+  </header>
+  <div class="folie-inhalt">
+    <ul class="s-quellen" data-meta>
+      <li><b>Richards, R.; Karp, M. (2020):</b> SEO Case Study: 6-Step Process That Generated 150,732 Visits. robbierichards.com/seo/case-study (datiert 02.08.2020, Abruf 05.11.2026). Alle Screenshots auf den Folien stammen aus dieser Fallstudie und werden als Beleg zitiert (§ 51 UrhG).</li>
+      <li><b>UAV Coach (2026):</b> How to Fly a Drone: A Beginner’s Guide to Multirotor Systems. uavcoach.com/how-to-fly-a-quadcopter-guide (neu veröffentlicht 02.05.2024, Abruf 05.11.2026).</li>
+      <li><b>Pew Research Center (2025):</b> Google users are less likely to click on links when an AI summary appears in the results. Short Read, 22.07.2025.</li>
+      <li><b>Google Search Central (2022):</b> What creators should know about Google’s August 2022 helpful content update. Blog, 18.08.2022.</li>
+      <li><b>Google (2025):</b> Einführung der KI-Übersichten in Deutschland und weiteren EU-Ländern, März 2025.</li>
+      <li><b>Mueller, J. (2019):</b> „There's no such thing as LSI keywords“. Beitrag auf X/Twitter, 30.07.2019; berichtet von Search Engine Roundtable.</li>
+      <li><b>Yin, R. K. (2018):</b> Case Study Research and Applications. Design and Methods. 6. Aufl., SAGE.</li>
+      <li><b>Google/DoubleClick (2016):</b> The Need for Mobile Speed (53 % Absprung bei mehr als 3 s Ladezeit), zitiert in der Fallstudie.</li>
+    </ul>
+  </div>
+  <aside class="notizen">
+    <p>Nicht vortragen. Folie für Rückfragen.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B2 · Weitere Belege
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie" id="b2" data-titel="Weitere Belege" data-backup data-nummer="B2" data-zeit="0" data-rubrik="Backup">
+  <header class="folie-kopf">
+    <h2 class="titel">Belege zu den Widersprüchen</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="s-zwei" style="--spalten: 1fr 1fr">
+      <figure class="s-beleg">
+        <figcaption class="s-beleg-leiste">Auswahl des Keywords: 720 Suchen</figcaption>
+        <div class="s-beleg-bild">
+          <img src="bilder/fallstudie/keyword-auswahl-720.jpg" alt="Keyword-Liste mit „how to fly a quadcopter“ und 720 Suchen pro Monat">
+          <span class="s-mark s-mark--blau" style="--x: 0.5%; --y: 15%; --b: 99%; --h: 12%"></span>
+        </div>
+      </figure>
+      <figure class="s-beleg">
+        <figcaption class="s-beleg-leiste">Ranking 2018: 260 Suchen, 1.314 Keywords</figcaption>
+        <div class="s-beleg-bild">
+          <img src="bilder/fallstudie/semrush-positionen.jpg" alt="SEMrush-Positionen: „how to fly a quadcopter“ mit 260 Suchen pro Monat, Stand 8. November 2018; insgesamt 1.314 Keywords">
+          <span class="s-mark" style="--x: 1%; --y: 81%; --b: 98%; --h: 9%"></span>
+          <span class="s-mark" style="--x: 21%; --y: 0%; --b: 16%; --h: 9%"></span>
+        </div>
+      </figure>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Screenshots aus der Fallstudie, Markierungen ergänzt</p>
+  </footer>
+  <aside class="notizen">
+    <p>Nicht vortragen. Für Rückfragen zu Folie 16: links die Auswahl des Hauptkeywords (720 Suchen), rechts der SEMrush-Screenshot vom November 2018 (260 Suchen, 1.314 statt 1.331 Keywords).</p>
+  </aside>
+</section>
+
+
+  </main>
+</div>
+
+<noscript>
+  <p style="position:fixed;inset:auto 0 0 0;padding:16px;background:#fff;color:#111;font:20px/1.4 sans-serif">
+    Diese Präsentation braucht JavaScript. Bitte in Chrome, Edge, Firefox oder Safari öffnen.
+  </p>
+</noscript>
+
+<script src="js/vendor/qrcode-generator.js"></script>
+<script src="js/deck.js"></script>
+<script src="js/komponenten.js"></script>
+</body>
+</html>

@@ -1,0 +1,1190 @@
+/* =============================================================================
+   deck.css – Bühne, Folienraster, Schritte, Übergänge, Bedienleiste,
+              Übersicht, Hilfe, Sprungmenü, Referentenansicht, Druck
+   -----------------------------------------------------------------------------
+   Nutzt nur Variablen aus tokens.css. Folien-Autor:innen müssen hier in der
+   Regel nichts ändern – eigene Gestaltung gehört in css/folien/<datei>.css.
+
+   Aufbau
+     1.  Grundlagen (Seite, Letterbox)
+     2.  Bühne 1920 × 1080 (wird von deck.js auf das Fenster skaliert)
+     3.  Folie: Raster aus Laufkopf | Kopf | Inhalt | Fuß
+     4.  Laufkopf (Rubrikzeile mit Seitenzahl und Mini-Steuerrad)
+     5.  Layout-Varianten (data-layout)
+     6.  Schritte und Hervorhebungen
+     7.  Folienübergänge (View Transitions + Rückfall)
+     8.  Bedienleiste und Fortschritt
+     9.  Ebenen: Übersicht, Hilfe, Sprungmenü, Ziffern, Hinweis, Schwarzbild
+     10. Referentenansicht (index.html?referent)
+     11. Druck und PDF (Strg+P oder index.html?druck)
+   ============================================================================= */
+
+
+/* ---------------------------------------------------------------------------
+   1. GRUNDLAGEN
+   --------------------------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--f-letterbox);       /* Rand um die Bühne, falls das Fenster nicht 16:9 ist */
+  color: var(--f-text);
+  font-family: var(--schrift-text);
+  font-variation-settings: var(--achsen-ruhig);   /* ruhige Kursive (tokens.css) */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+/* Maus ausblenden, wenn sie eine Weile still steht (nur im Vortrag) */
+html.maus-ruht:not(.referent),
+html.maus-ruht:not(.referent) * { cursor: none !important; }
+
+/* Hinweis „Präsentation unvollständig“ (index.html, direkt nach <body>): Er
+   hat ein eigenes Inline-Format und erscheint nur, wenn diese Datei NICHT
+   geladen wurde – z. B. index.html per Doppelklick aus einer ZIP-Datei
+   (VORTRAGSREIFE A15, 21.10.2026). Mit deck.css bleibt er immer unsichtbar. */
+.nur-ohne-css { display: none !important; }
+
+/* Für Screenreader sichtbar, für alle anderen unsichtbar */
+.nur-screenreader {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Sichtbarer Fokusrahmen für Tastatur-Bedienung (nicht bei Mausklick) */
+:focus { outline: none; }
+:focus-visible {
+  outline: 3px solid var(--f-fokus);
+  outline-offset: 4px;
+  border-radius: var(--radius-s);
+}
+
+/* Icon-Satz (Inline-SVG-Sprite am Anfang von index.html): <svg class="icon"><use href="#i-…"/></svg> */
+.icon {
+  width: 1em;
+  height: 1em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vertical-align: -0.125em;
+}
+
+
+/* ---------------------------------------------------------------------------
+   2. BÜHNE
+   .deck  = Fläche, in die die Bühne eingepasst wird (Fenster oder Panel)
+   .buehne = feste 1920 × 1080 px; deck.js setzt transform: scale(…)
+   --------------------------------------------------------------------------- */
+.deck {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  touch-action: pan-y;                  /* waagerechtes Wischen wertet deck.js aus */
+}
+.buehne {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  transform-origin: 0 0;                /* deck.js: translate(x, y) scale(s) */
+  background: var(--f-hintergrund);
+  contain: layout paint;
+  /* Windows-Kontrastdesign (erzwungene Farben) nicht auf die Folien anwenden:
+     sonst überschreibt der Browser die Farben, Legenden und Marker (z. B. auf
+     06) verschwinden (VORTRAGSREIFE A29, 21.10.2026). Bedienleiste, Übersicht
+     und Referentenansicht folgen dem Kontrastdesign weiter. */
+  forced-color-adjust: none;
+}
+/* Ebene für Überlagerungen (Übersicht, Hilfe …) – gleiche Koordinaten wie die Bühne */
+.ebene {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: 0 0;
+  pointer-events: none;
+  z-index: 50;
+  color: var(--f-text);
+  font-family: var(--schrift-text);
+}
+.ebene > * { pointer-events: auto; }
+
+
+/* ---------------------------------------------------------------------------
+   3. FOLIE
+   Raster:  Laufkopf  (automatisch)
+            .folie-kopf   Kicker + Titel
+            .folie-inhalt füllt den Rest
+            .folie-fuss   Quelle
+   --------------------------------------------------------------------------- */
+.folie {
+  position: absolute;
+  inset: 0;
+  display: none;                        /* nur die aktive Folie wird gezeigt */
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  grid-template-areas: "lauf" "kopf" "inhalt" "fuss";
+  padding: var(--rand-oben) var(--rand-x) var(--rand-unten);
+  overflow: hidden;
+  background-color: var(--f-hintergrund);
+  background-image: var(--f-hintergrund-bild);
+  color: var(--f-text);
+  font-family: var(--schrift-text);
+  font-size: var(--groesse-text);
+  font-weight: var(--gewicht-text);
+  line-height: var(--zeilenhoehe-text);
+  font-optical-sizing: auto;
+}
+.folie.ist-aktiv,
+.folie.ist-geht,
+.folie.ist-klon { display: grid; }
+.folie.ist-geht { z-index: 0; pointer-events: none; }
+.folie.ist-aktiv { z-index: 1; }
+/* Messen unsichtbarer Folien (Deck.util.messen): kurz eingeblendet, aber unsichtbar */
+.folie.ist-messung { display: grid !important; visibility: hidden !important; z-index: -1; }
+
+/* Grundwerte ohne Gewicht (:where), damit Bausteine sie leicht überschreiben */
+:where(.folie) :where(h1, h2, h3, h4, p, ol, ul, figure, blockquote, dl, dd, table) { margin: 0; }
+:where(.folie) :where(ul, ol) { padding: 0; list-style: none; }
+:where(.folie) :where(img, svg) { max-width: 100%; }
+:where(.folie) a { color: inherit; }
+
+.folie-kopf { grid-area: kopf; min-width: 0; }
+.folie-inhalt {
+  grid-area: inhalt;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.folie-fuss {
+  grid-area: fuss;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--abstand-6);
+  min-height: 0;
+}
+.laufkopf ~ .folie-kopf { margin-top: 40px; }
+.folie-kopf ~ .folie-inhalt { margin-top: 40px; }
+.folie-inhalt ~ .folie-fuss { margin-top: 24px; }
+
+/* Sprechtext und Daten erscheinen nie auf der Folie */
+.folie > .notizen,
+.folie > script.daten { display: none !important; }
+
+
+/* ---------------------------------------------------------------------------
+   4. LAUFKOPF (von deck.js eingefügt)
+   links:  Titel der Präsentation | [Marke]
+   rechts: Rubrik · Seitenzahl · Mini-Steuerrad (klickbar)
+   Ausschalten je Folie: data-laufkopf="aus"
+   --------------------------------------------------------------------------- */
+.laufkopf {
+  grid-area: lauf;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--abstand-5);
+  min-height: var(--mini-rad);
+  padding-bottom: 12px;
+  border-bottom: var(--linie-stark) solid var(--f-linie-stark);
+  font-size: var(--groesse-meta);
+  line-height: 1.2;
+  color: var(--f-text-2);
+}
+.laufkopf-links,
+.laufkopf-rechts {
+  display: flex;
+  align-items: center;
+  gap: var(--abstand-4);
+  min-width: 0;
+}
+.laufkopf-titel,
+.laufkopf-rubrik {
+  font-family: var(--schrift-kicker);
+  font-weight: var(--kicker-gewicht);
+  letter-spacing: var(--kicker-laufweite);
+  text-transform: var(--kicker-versalien);
+  white-space: nowrap;
+}
+.laufkopf-trenner {
+  width: var(--linie-fein);
+  height: 24px;
+  background: var(--f-linie);
+}
+.laufkopf-marke {
+  font-family: var(--schrift-display);
+  font-style: var(--stil-marke);
+  font-size: 28px;
+  font-weight: var(--gewicht-display);
+  color: var(--f-text);
+  white-space: nowrap;
+}
+.laufkopf-nummer {
+  font-family: var(--schrift-zahl);
+  font-size: 32px;
+  font-weight: var(--gewicht-display);
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--f-text);
+  min-width: 1.6em;
+  text-align: right;
+}
+.laufkopf .mini-rad {
+  margin-left: 4px;
+  /* Das Mini-Rad (60 px) ragt oben und unten in den Rand, statt die Kopfzeile
+     zu vergrößern: Kopfzeile, Kicker und Titel stehen so auf allen Folien
+     gleich hoch – mit und ohne Mini-Rad */
+  margin-block: -8px;
+}
+
+/* Thema-Varianten des Laufkopfs */
+[data-thema="keynote"] .laufkopf { border-bottom-width: var(--linie-fein); border-bottom-color: var(--f-linie); }
+[data-thema="keynote"] .laufkopf-nummer { color: var(--f-akzent); font-weight: 600; }
+[data-thema="bento"] .laufkopf { border-bottom: 0; padding-bottom: 0; }
+[data-thema="bento"] .laufkopf-rubrik {
+  padding: 8px 16px;
+  border-radius: var(--radius-pille);
+  background: var(--f-flaeche);
+  border: var(--karte-rand) solid var(--f-karte-rand);
+  color: var(--f-text);
+}
+
+/* Titelfolie: Laufkopf zeigt Veranstaltung statt Präsentationstitel */
+.laufkopf--titel .laufkopf-titel { color: var(--f-text-2); }
+
+
+/* ---------------------------------------------------------------------------
+   5. LAYOUT-VARIANTEN  <section class="folie" data-layout="…">
+     standard (ohne Angabe) · titel · geteilt · mitte · vollbild · backup · leer
+   --------------------------------------------------------------------------- */
+
+/* titel: großer Titel im unteren Teil, Inhalt (z. B. .angaben-Zeile) darunter */
+.folie[data-layout="titel"] {
+  grid-template-rows: auto minmax(0, 1fr) auto auto auto;
+  grid-template-areas: "lauf" "." "kopf" "inhalt" "fuss";
+}
+.folie[data-layout="titel"] .laufkopf ~ .folie-kopf { margin-top: 0; }
+.folie[data-layout="titel"] .folie-kopf ~ .folie-inhalt { margin-top: var(--abstand-6); }
+.folie[data-layout="titel"] .titel { font-size: var(--groesse-titel-gross); }
+
+/* geteilt: Kopf links (5 Spalten), Inhalt rechts (7 Spalten) */
+.folie[data-layout="geteilt"] {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-areas: "lauf lauf" "kopf inhalt" "fuss fuss";
+  column-gap: var(--abstand-7);
+}
+.folie[data-layout="geteilt"] .folie-kopf ~ .folie-inhalt { margin-top: 40px; }
+
+/* mitte: alles zentriert (Zwischentitel, Danke-Folie) */
+.folie[data-layout="mitte"] { text-align: center; }
+.folie[data-layout="mitte"] .folie-kopf { justify-self: center; max-width: 1500px; }
+.folie[data-layout="mitte"] .folie-inhalt { align-items: center; justify-content: center; }
+
+/* vollbild: Inhalt randlos über die ganze Bühne (z. B. Rätselbild),
+   Kopf liegt unten links auf einem abgedunkelten Verlauf in heller Schrift.
+   Text nur im unteren Drittel platzieren – dort ist der Verlauf dunkel genug
+   (gemessen: mindestens 5 : 1 auch über weißem Bild). */
+.folie[data-layout="vollbild"] {
+  grid-template-rows: auto minmax(0, 1fr) auto auto;
+  grid-template-areas: "lauf" "." "kopf" "fuss";
+  color: var(--f-auf-bild);
+}
+.folie[data-layout="vollbild"] > .folie-inhalt {
+  grid-area: auto;                 /* Bezugsrahmen = ganze Folie (dieses Layout hat keinen Bereich „inhalt“;
+                                      sonst fehlt der Inhalt im PDF) */
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  z-index: 0;
+}
+.folie[data-layout="vollbild"]::after {      /* Verlauf für lesbare Schrift */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    rgb(8 9 12 / 0.38) 0%,
+    rgb(8 9 12 / 0) 18%,
+    rgb(8 9 12 / 0) 38%,
+    rgb(8 9 12 / 0.62) 58%,
+    var(--f-bild-schleier) 100%);
+}
+.folie[data-layout="vollbild"] > :not(.folie-inhalt) { position: relative; z-index: 1; }
+.folie[data-layout="vollbild"] .laufkopf {
+  border-bottom-color: color-mix(in srgb, var(--f-auf-bild) 70%, transparent);
+  color: var(--f-auf-bild);
+}
+.folie[data-layout="vollbild"] .laufkopf-marke,
+.folie[data-layout="vollbild"] .laufkopf-nummer,
+.folie[data-layout="vollbild"] .titel,
+.folie[data-layout="vollbild"] .kicker,
+.folie[data-layout="vollbild"] .quelle,
+.folie[data-layout="vollbild"] .folie-kopf { color: var(--f-auf-bild); }
+.folie[data-layout="vollbild"] .titel :is(em, .hervor) { color: var(--f-auf-bild); }
+.folie[data-layout="vollbild"] :is(.lead, .text-2) { color: rgb(255 255 255 / 0.88); }
+.folie[data-layout="vollbild"] .folie-kopf { max-width: 1240px; }
+
+/* backup: dichter, kleinerer Titel; Tabellen dürfen 22–24 px haben */
+.folie[data-layout="backup"] .titel { font-size: var(--groesse-titel-klein); }
+.folie[data-layout="backup"] .laufkopf ~ .folie-kopf { margin-top: 32px; }
+.folie[data-layout="backup"] .folie-kopf ~ .folie-inhalt { margin-top: 32px; }
+
+/* leer: kein Laufkopf, freie Fläche (eigene Gestaltung) */
+.folie[data-layout="leer"] {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-areas: "kopf" "inhalt" "fuss";
+}
+
+
+/* ---------------------------------------------------------------------------
+   6. SCHRITTE
+   Elemente mit data-schritt="n" sind versteckt, bis Schritt n erreicht ist
+   (Klasse .schritt-an, von deck.js gesetzt). Der Platz bleibt reserviert –
+   so springt das Layout nicht.
+   Ausnahmen: data-animation="hervorheben" (immer sichtbar, wird betont)
+              data-animation="zustand"     (nur Auslöser für Folien-Skripte)
+   --------------------------------------------------------------------------- */
+.folie [data-schritt]:not(.schritt-an):not([data-animation~="hervorheben"]):not([data-animation~="zustand"]) {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Hervorheben: .ist-hervor setzt deck.js (bis zum Ende bzw. mit
+   data-hervor="aktuell" nur, solange der Schritt der aktuelle ist) */
+.folie [data-animation~="hervorheben"] {
+  border-radius: var(--radius-m);
+  transition:
+    background-color var(--dauer-mittel) var(--kurve),
+    box-shadow var(--dauer-mittel) var(--kurve),
+    color var(--dauer-mittel) var(--kurve),
+    opacity var(--dauer-mittel) var(--kurve);
+}
+.folie .ist-hervor:not([data-hervor-stil]),
+.folie .ist-hervor[data-hervor-stil="flaeche"] {
+  background-color: var(--f-akzent-flaeche);
+  box-shadow: 0 0 0 var(--linie-stark) var(--f-akzent);
+}
+.folie .ist-hervor[data-hervor-stil="rahmen"] { box-shadow: 0 0 0 var(--linie-stark) var(--f-akzent); }
+.folie .ist-hervor[data-hervor-stil="text"] { color: var(--f-akzent); }
+/* Container mit data-dimmen: Geschwister eines hervorgehobenen Elements treten zurück */
+.folie [data-dimmen] > * { transition: opacity var(--dauer-mittel) var(--kurve); }
+.folie [data-dimmen]:has(> .ist-hervor) > :not(.ist-hervor) { opacity: var(--dimmen, 0.6); }
+
+/* Zeichnen: Linien bleiben scharf (keine Unschärfe während der Animation) */
+.folie [data-animation~="zeichnen"] { shape-rendering: geometricPrecision; }
+/* SVG-Formen skalieren um ihre eigene Mitte (zoom, feder) statt um die Ecke des SVG */
+.folie svg [data-animation],
+.folie svg [data-schritt] { transform-box: fill-box; transform-origin: center; }
+
+
+/* ---------------------------------------------------------------------------
+   7. FOLIENÜBERGÄNGE
+   Moderne Browser: View Transitions API. Die aktive Folie heißt „folie“,
+   Elemente mit data-morph="name" bekommen ihren eigenen Namen und gleiten
+   in die gleichnamigen Elemente der Zielfolie (z. B. Steuerrad → Mini-Rad).
+   Richtung: html.richtung-vor / html.richtung-zurueck (setzt deck.js).
+   Ohne View Transitions oder bei „Bewegung reduzieren“: einfaches Überblenden.
+   --------------------------------------------------------------------------- */
+.folie.ist-aktiv { view-transition-name: folie; }
+.folie.ist-klon,
+.folie.ist-klon * { view-transition-name: none !important; }
+html.menue-offen .folie [data-morph] { view-transition-name: none !important; }
+
+::view-transition-group(*) {
+  animation-duration: calc(var(--dauer-folie) * 1.15);
+  animation-timing-function: var(--kurve-wechsel);
+}
+::view-transition-old(folie),
+::view-transition-new(folie) {
+  animation-duration: var(--dauer-folie);
+  animation-timing-function: var(--kurve-wechsel);
+  animation-fill-mode: both;
+}
+::view-transition-old(folie) { animation-name: deck-raus-vor; }
+::view-transition-new(folie) { animation-name: deck-rein-vor; }
+html.richtung-zurueck::view-transition-old(folie) { animation-name: deck-raus-zurueck; }
+html.richtung-zurueck::view-transition-new(folie) { animation-name: deck-rein-zurueck; }
+/* Sprungmenü öffnen/schließen: Folie bleibt stehen, nur das Rad morpht */
+html.vt-menue::view-transition-old(folie),
+html.vt-menue::view-transition-new(folie) { animation: none; }
+html.vt-menue::view-transition-old(folie) { display: none; }
+
+/* Wechsel zwischen dunkler und heller Folie (html.wechsel-modus, setzt
+   deck.js): erst die alte Folie zügig aus-, dann die neue einblenden. Beim
+   gleichzeitigen Überblenden lag sonst ein graues Doppelbild dazwischen. */
+html.wechsel-modus::view-transition-old(folie),
+html.wechsel-modus::view-transition-old(steuerrad),
+html.wechsel-modus::view-transition-old(vorgehen-pille-oben),
+html.wechsel-modus::view-transition-old(vorgehen-pille-unten) { animation-duration: 180ms; }
+html.wechsel-modus::view-transition-new(folie),
+html.wechsel-modus::view-transition-new(steuerrad) { animation-delay: 160ms; animation-fill-mode: both; }
+
+/* Großes Steuerrad ↔ Mini-Rad (html.wechsel-rad-gross, z. B. Folie 02 → 03):
+   Das Rad gleitet weiter an seinen Platz, ist aber auf dem Weg über den
+   neuen Titel unsichtbar – das alte Bild verblasst schnell, das neue
+   erscheint erst kurz vor dem Ziel. Mini-Rad → Mini-Rad bleibt unverändert. */
+html.wechsel-rad-gross::view-transition-old(steuerrad) { animation-duration: 140ms; }
+html.wechsel-rad-gross::view-transition-new(steuerrad) {
+  animation-delay: 320ms;
+  animation-duration: calc(var(--dauer-folie) * 1.15 - 320ms);
+  animation-fill-mode: both;
+}
+
+@keyframes deck-raus-vor     { to   { opacity: 0; transform: translateX(-24px); } }
+@keyframes deck-rein-vor     { from { opacity: 0; transform: translateX(24px); } }
+@keyframes deck-raus-zurueck { to   { opacity: 0; transform: translateX(24px); } }
+@keyframes deck-rein-zurueck { from { opacity: 0; transform: translateX(-24px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   8. BEDIENLEISTE UND FORTSCHRITT (außerhalb der Bühne, in Fenster-Pixeln)
+   Blendet sich nach 2,5 s ohne Mausbewegung aus.
+   --------------------------------------------------------------------------- */
+.bedienleiste {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 4px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--f-flaeche) 92%, transparent);
+  box-shadow: 0 0 0 1px var(--f-linie), var(--schatten-1);
+  color: var(--f-text);
+  font: 500 14px/1 var(--schrift-text);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+.bedienleiste button {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.bedienleiste button:hover { background: var(--f-flaeche-2); }
+.bedienleiste button .icon { width: 20px; height: 20px; }
+.bedienleiste .bl-nummer {
+  min-width: 64px;
+  padding: 0 6px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: var(--f-text-2);
+}
+.bedienleiste .bl-trenner { width: 1px; height: 22px; margin: 0 4px; background: var(--f-linie); }
+.bedienleiste button[hidden] { display: none; }
+/* Farbwähler (Markenfarben live testen) */
+.bl-farbe {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.bl-farbe:hover { background: var(--f-flaeche-2); }
+.bl-farbe input {
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 2px solid var(--f-linie);
+  border-radius: 50%;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.bl-farbe input::-webkit-color-swatch-wrapper { padding: 0; }
+.bl-farbe input::-webkit-color-swatch { border: 0; border-radius: 50%; }
+.bl-farbe input::-moz-color-swatch { border: 0; border-radius: 50%; }
+.fortschritt {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  z-index: 59;
+  background: transparent;
+  transition: opacity 300ms ease;
+}
+.fortschritt-balken {
+  height: 100%;
+  width: 100%;
+  background: var(--f-akzent);
+  transform-origin: left center;
+  transform: scaleX(var(--anteil, 0));
+  transition: transform var(--dauer-mittel) var(--kurve);
+}
+html.leiste-aus .bedienleiste,
+html.leiste-aus .fortschritt { opacity: 0; pointer-events: none; }
+html.leiste-aus .bedienleiste { transform: translateY(8px); }
+
+/* Touch-Bildschirme (Finger statt Maus): Knöpfe mindestens 44 × 44 px */
+@media (pointer: coarse) {
+  .bedienleiste button,
+  .bl-farbe { width: 44px; height: 44px; }
+}
+/* Schmale Bildschirme (Handy hochkant): Die Leiste passt in die Breite.
+   Es bleiben Zurück, Nummer, Weiter, Übersicht, Vollbild und Hilfe; Referent,
+   Thema, hell/dunkel und Farbwähler (Werkzeuge für den Laptop) entfallen. */
+@media (max-width: 560px) {
+  .bedienleiste {
+    max-width: calc(100vw - 32px);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .bedienleiste .bl-trenner,
+  .bedienleiste .bl-farbe,
+  .bedienleiste [data-aktion="referent"],
+  .bedienleiste [data-aktion="thema"],
+  .bedienleiste [data-aktion="modus"],
+  .bedienleiste [data-aktion="farben-zurueck"] { display: none; }
+  .bedienleiste .bl-nummer { min-width: 56px; padding: 0 4px; }
+}
+/* Handy hochkant: Die Folie (16 : 9) ist dann sehr klein – kurzer Hinweis
+   im freien Rand über der Folie (nicht im Druck, nicht in der Referentenansicht) */
+@media screen and (orientation: portrait) and (max-width: 600px) {
+  html:not(.referent):not(.druckmodus):not(.aufnahme) body::after {
+    content: "\21BB  Gerät quer halten – dann wird die Folie größer";
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    z-index: 58;
+    text-align: center;
+    font: 500 15px/1.35 var(--schrift-text);
+    color: var(--f-text-2);
+    pointer-events: none;
+  }
+}
+html.aufnahme .bedienleiste,
+html.aufnahme .fortschritt { display: none !important; }
+/* Testmodus (werkzeuge/pruefen.mjs): Endzustände sofort, ohne Übergänge */
+html.testmodus *,
+html.testmodus *::before,
+html.testmodus *::after { transition: none !important; animation: none !important; }
+
+
+/* ---------------------------------------------------------------------------
+   9. EBENEN (in Bühnen-Koordinaten 1920 × 1080)
+   --------------------------------------------------------------------------- */
+.ebene-fenster {
+  position: absolute;
+  inset: 0;
+  display: none;
+  background: var(--f-hintergrund);     /* deckend: die Folie darunter soll nicht durchscheinen */
+  color: var(--f-text);
+}
+/* Klone (Übersicht, Vorschau) behalten die volle Bühnengröße und werden skaliert */
+.ue-bild > .folie,
+.r-vorschau > .folie {
+  inset: auto;
+  left: 0;
+  top: 0;
+  width: 1920px;
+  height: 1080px;
+}
+.ebene-fenster.ist-offen { display: block; }
+.ebene-fenster:focus { outline: none; }        /* das Fenster selbst bekommt nur programmatisch Fokus */
+
+/* ----- Übersicht (Taste O) ----- */
+.uebersicht {
+  overflow-y: auto;
+  padding: 56px 96px 72px;
+  overscroll-behavior: contain;
+}
+.ue-kopf {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 32px;
+  padding-bottom: 16px;
+  margin-bottom: 32px;
+  border-bottom: var(--linie-stark) solid var(--f-linie-stark);
+}
+.ue-titel {
+  margin: 0;
+  font-family: var(--schrift-display);
+  font-size: 56px;
+  font-weight: var(--gewicht-titel);
+  letter-spacing: var(--laufweite-titel);
+  font-variation-settings: "opsz" var(--opsz-titel), var(--achsen-ruhig);
+}
+.ue-info { font-size: 24px; color: var(--f-text-2); text-align: right; }
+.ue-rubrik {
+  margin: 40px 0 16px;
+  font-family: var(--schrift-kicker);
+  font-size: 22px;
+  font-weight: var(--kicker-gewicht);
+  letter-spacing: var(--kicker-laufweite);
+  text-transform: uppercase;
+  color: var(--f-akzent);
+}
+.ue-raster {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 28px 24px;
+}
+.ue-karte {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.ue-bild {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--radius-m);
+  box-shadow: 0 0 0 var(--linie-fein) var(--f-linie);
+  background: var(--f-hintergrund);
+  transition: box-shadow var(--dauer-kurz) var(--kurve), transform var(--dauer-kurz) var(--kurve);
+}
+.ue-bild > .folie {
+  transform-origin: 0 0;
+  pointer-events: none;
+}
+.ue-karte:hover .ue-bild { box-shadow: 0 0 0 var(--linie-stark) var(--f-text-2); }
+.ue-karte.ist-aktuell .ue-bild { box-shadow: 0 0 0 4px var(--f-akzent); }
+.ue-karte:focus-visible { outline: none; }
+.ue-karte:focus-visible .ue-bild { box-shadow: 0 0 0 4px var(--f-fokus), 0 0 0 8px var(--f-akzent-flaeche); }
+.ue-text {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: 22px;
+  line-height: 1.25;
+}
+.ue-nr {
+  font-family: var(--schrift-zahl);
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  color: var(--f-akzent);
+}
+.ue-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ue-meta { display: block; margin-top: 2px; font-size: 22px; color: var(--f-text-2); }
+
+/* ----- Hilfe (Taste H oder ?) ----- */
+.hilfe {
+  display: none;
+  padding: 64px 128px;
+}
+.hilfe.ist-offen { display: block; }
+.hilfe h2 {
+  margin: 0 0 32px;
+  font-family: var(--schrift-display);
+  font-size: 56px;
+  font-weight: var(--gewicht-titel);
+  font-variation-settings: "opsz" var(--opsz-titel), var(--achsen-ruhig);
+}
+.hilfe-spalten {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 96px;
+}
+.hilfe dl {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 14px 24px;
+  margin: 0;
+  font-size: 26px;
+  align-items: baseline;
+}
+.hilfe dt { display: flex; flex-wrap: wrap; gap: 6px; }
+.hilfe dd { margin: 0; color: var(--f-text-2); }
+.hilfe kbd,
+.taste {
+  display: inline-block;
+  min-width: 1.8em;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 2px solid var(--f-linie);
+  border-bottom-width: 4px;
+  background: var(--f-flaeche);
+  color: var(--f-text);
+  font: 600 22px/1.1 var(--schrift-text);
+  text-align: center;
+}
+.hilfe-fuss { margin-top: 40px; font-size: 22px; color: var(--f-text-2); }
+
+/* ----- Sprungmenü (Klick auf das Mini-Steuerrad) ----- */
+.sprungmenue {
+  display: none;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 56px 96px;
+}
+.sprungmenue.ist-offen { display: grid; }
+.sprungmenue-text { align-self: start; padding-top: 24px; }
+.sprungmenue-text h2 {
+  margin: 12px 0 0;
+  font-family: var(--schrift-display);
+  font-size: 64px;
+  line-height: 1.05;
+  font-weight: var(--gewicht-titel);
+  letter-spacing: var(--laufweite-titel);
+  font-variation-settings: "opsz" var(--opsz-titel), var(--achsen-ruhig);
+}
+.sprungmenue-text p { margin: 24px 0 0; font-size: 28px; color: var(--f-text-2); max-width: 14em; }
+.sprungmenue-knoepfe {
+  align-self: end;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 24px;
+}
+
+/* ----- Ziffern-Eingabe („Gehe zu Folie …“) ----- */
+.ziffern-anzeige {
+  position: absolute;
+  left: 50%;
+  bottom: 72px;
+  display: none;
+  transform: translateX(-50%);
+  padding: 18px 32px;
+  border-radius: var(--radius-l);
+  background: var(--f-text);
+  color: var(--f-hintergrund);
+  font: 600 32px/1 var(--schrift-text);
+  box-shadow: var(--schatten-2);
+}
+.ziffern-anzeige.ist-offen { display: block; }
+
+/* ----- Kurzer Hinweis (z. B. „Thema: Bento · hell“) ----- */
+.hinweis-toast {
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  padding: 16px 28px;
+  border-radius: var(--radius-pille);
+  background: var(--f-text);
+  color: var(--f-hintergrund);
+  font: 600 26px/1 var(--schrift-text);
+  box-shadow: var(--schatten-2);
+  opacity: 0;
+  transform: translate(-50%, -12px);
+  transition: opacity var(--dauer-kurz) var(--kurve), transform var(--dauer-kurz) var(--kurve);
+  pointer-events: none !important;
+}
+.hinweis-toast.ist-offen { opacity: 1; transform: translate(-50%, 0); }
+
+/* Bewegung reduzieren (Betriebssystem oder ?bewegung=reduziert): Bedienleiste
+   und Hinweis blenden nur über die Deckkraft ein und aus, ohne Weg */
+html.bewegung-reduziert.leiste-aus .bedienleiste { transform: none; }
+html.bewegung-reduziert .hinweis-toast { transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) {
+  html.leiste-aus .bedienleiste { transform: none; }
+  .hinweis-toast { transform: translate(-50%, 0); }
+}
+
+/* ----- Schwarzbild (Taste B oder .) – deckt das ganze Fenster ab ----- */
+.schwarzbild {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 280ms ease;
+}
+html.schwarz .schwarzbild { opacity: 1; pointer-events: auto; cursor: none; }
+
+/* ----- Knöpfe in Ebenen und Referentenansicht ----- */
+.deck-knopf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 56px;
+  padding: 0 24px;
+  border-radius: var(--radius-m);
+  border: var(--linie-fein) solid var(--f-linie);
+  background: var(--f-flaeche);
+  color: var(--f-text);
+  font: 600 24px/1 var(--schrift-text);
+  cursor: pointer;
+  transition: background-color var(--dauer-kurz) var(--kurve), border-color var(--dauer-kurz) var(--kurve);
+}
+.deck-knopf:hover { border-color: var(--f-text-2); background: var(--f-flaeche-2); }
+.deck-knopf .icon { width: 24px; height: 24px; }
+.deck-knopf--klein { min-height: 40px; padding: 0 14px; font-size: 18px; border-radius: var(--radius-s); }
+
+
+/* ---------------------------------------------------------------------------
+   10. REFERENTENANSICHT  (index.html?referent, Taste P im Vortragsfenster)
+   Eigene, ruhige Oberfläche in Fenster-Pixeln – unabhängig vom Thema.
+   --------------------------------------------------------------------------- */
+html.referent,
+html.referent body {
+  --r-grund: #121316;
+  --r-flaeche: #1C1D21;
+  --r-flaeche-2: #26282D;
+  --r-linie: #34363C;
+  --r-text: #F2F1EE;
+  --r-text-2: #B4B6BC;
+  --r-gut: #7CD39F;
+  --r-warn: #F2C14E;
+  --r-schlecht: #FF8A80;
+  background: var(--r-grund);
+  color: var(--r-text);
+}
+html.referent body { overflow: hidden; }
+.referent-raster {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  grid-template-rows: minmax(0, 3fr) minmax(0, 2fr);
+  grid-template-areas:
+    "aktuell naechste"
+    "notizen uhren";
+  gap: 16px;
+  padding: 16px;
+  font-family: "Inter Deck", "Segoe UI", Arial, sans-serif;
+}
+.r-feld {
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+  border-radius: 12px;
+  background: var(--r-flaeche);
+  box-shadow: 0 0 0 1px var(--r-linie);
+}
+.r-etikett {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--r-text-2);
+}
+.r-aktuell { grid-area: aktuell; display: flex; flex-direction: column; }
+.r-naechste { grid-area: naechste; display: flex; flex-direction: column; }
+.r-buehnenplatz {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  margin: 0 12px 12px;
+}
+/* Die echte Bühne wird in .r-buehnenplatz eingepasst */
+html.referent .deck {
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: var(--f-letterbox);
+}
+.r-vorschau {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #000;
+}
+.r-vorschau > .folie { transform-origin: 0 0; pointer-events: none; }
+.r-vorschau-ende {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--r-text-2);
+  font-size: 22px;
+}
+.r-notizen {
+  grid-area: notizen;
+  display: flex;
+  flex-direction: column;
+}
+.r-notizen-text {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 24px 24px;
+  font-size: var(--r-schrift, 28px);
+  line-height: 1.45;
+  color: var(--r-text);
+}
+.r-notizen-text p,
+.r-notizen-text ul,
+.r-notizen-text ol { margin: 0 0 0.6em; }
+.r-notizen-text ul,
+.r-notizen-text ol { padding-left: 1.2em; }
+.r-notizen-text [data-schritt] { opacity: 0.5; transition: opacity 200ms ease; }
+.r-notizen-text [data-schritt].ist-erreicht { opacity: 1; }
+.r-notizen-text [data-schritt].ist-jetzt { box-shadow: -10px 0 0 var(--r-warn); }
+.r-notizen-leer { color: var(--r-text-2); font-style: italic; }
+/* Alles, was nicht gesprochen wird (Absätze ohne data-schritt: Stand, Belege,
+   Bedienung, Rückfragen …), kleiner und grau – nur auf Folien mit
+   Sprechabsätzen (deck.js setzt .r-mit-schritten; Folie 12 hat keine).
+   class="gesprochen" nimmt einen Absatz aus (VORTRAGSREIFE A11, 21.10.2026). */
+.r-notizen-text.r-mit-schritten > :not([data-schritt]):not(.gesprochen) {
+  font-size: 0.78em;
+  line-height: 1.4;
+  color: var(--r-text-2);
+}
+/* Beginn der Rückfragen: Linie darüber, damit man den Absatz beim Rollen findet */
+.r-notizen-text > .r-rueckfragen-start {
+  margin-top: 1.2em;
+  padding-top: 0.6em;
+  border-top: 2px solid var(--r-warn);
+  color: var(--r-text) !important;
+}
+.r-uhren {
+  grid-area: uhren;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 16px 14px;
+  overflow: auto;
+}
+.r-uhr-zeile {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 4px 12px;
+}
+.r-uhr-name { font-size: 14px; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; color: var(--r-text-2); }
+.r-uhr-wert { font-size: 40px; line-height: 1.05; font-weight: 650; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.r-uhr-soll { font-size: 20px; color: var(--r-text-2); font-variant-numeric: tabular-nums; }
+.r-uhr-balken { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: var(--r-flaeche-2); overflow: hidden; }
+.r-uhr-balken > span { display: block; height: 100%; width: 0; background: var(--r-gut); transition: width 400ms linear, background-color 400ms ease; }
+.r-uhr-zeile[data-stand="warn"] .r-uhr-wert { color: var(--r-warn); }
+.r-uhr-zeile[data-stand="warn"] .r-uhr-balken > span { background: var(--r-warn); }
+.r-uhr-zeile[data-stand="ueber"] .r-uhr-wert { color: var(--r-schlecht); }
+.r-uhr-zeile[data-stand="ueber"] .r-uhr-balken > span { background: var(--r-schlecht); }
+.r-plan { font-size: 18px; color: var(--r-text-2); }
+.r-plan strong { color: var(--r-text); }
+.r-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 18px;
+}
+.r-pille {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--r-flaeche-2);
+  color: var(--r-text);
+  white-space: nowrap;
+}
+.r-pille b { color: var(--r-text-2); font-weight: 600; margin-right: 4px; }
+.r-knoepfe { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+.r-knopf {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  border: 1px solid var(--r-linie);
+  border-radius: 10px;
+  background: var(--r-flaeche-2);
+  color: var(--r-text);
+  font: 600 16px/1 "Inter Deck", "Segoe UI", Arial, sans-serif;
+  cursor: pointer;
+}
+.r-knopf:hover { background: #31333A; }
+.r-knopf .icon { width: 20px; height: 20px; }
+.r-knopf--gross { min-width: 72px; }
+.r-etikett .r-knopf { min-height: 32px; padding: 0 10px; font-size: 14px; letter-spacing: 0; text-transform: none; }
+.r-knopf[hidden] { display: none; }
+/* Start-Knopf leuchtet, solange die Uhr noch nie lief (A14: mit dem ersten
+   Satz auf Folie 01 klicken, sonst fehlt die Rätselfrage in den Uhren) */
+.r-knopf--start { background: var(--r-warn); border-color: var(--r-warn); color: #121316; }
+.r-knopf--start:hover { background: #F7D27A; }
+@media (prefers-reduced-motion: no-preference) {
+  .r-knopf--start { animation: r-start-puls 1.6s ease-in-out infinite; }
+}
+@keyframes r-start-puls { 50% { box-shadow: 0 0 0 6px rgb(242 193 78 / 0.35); } }
+/* Schwarzbild-Knopf, solange der Saal schwarz ist („Saal einblenden“, A8) */
+.r-knopf.ist-an { background: #5A1D1D; border-color: var(--r-schlecht); }
+.r-knopf.ist-an:hover { background: #6E2525; }
+.r-verbindung { font-size: 14px; color: var(--r-text-2); }
+.r-verbindung[data-stand="verbunden"]::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; background: var(--r-gut); }
+.r-verbindung[data-stand="getrennt"]::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; background: var(--r-schlecht); }
+html.referent :focus-visible { outline-color: var(--r-warn); }
+
+/* Niedrige Fenster (Laptop, z. B. 1366 × 768 oder 1280 × 720 abzüglich der
+   Browserleisten; VORTRAGSREIFE A10, 21.10.2026): mehr Höhe für den
+   Sprechtext, Uhren und Knöpfe kompakt – alle fünf Knöpfe ohne Rollen
+   sichtbar. Gemessen mit Playwright bei 1366 × 660, 1280 × 720 und 1280 × 606. */
+@media (max-height: 820px) {
+  .referent-raster {
+    grid-template-rows: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 10px;
+    padding: 10px;
+  }
+  .r-etikett { padding: 6px 12px; font-size: 12px; }
+  .r-buehnenplatz { margin: 0 10px 10px; }
+  .r-uhren { gap: 6px; padding: 8px 12px 10px; }
+  .r-uhr-zeile { gap: 2px 10px; }
+  .r-uhr-name { font-size: 12px; }
+  .r-uhr-wert { font-size: 28px; }
+  .r-uhr-soll { font-size: 15px; }
+  .r-uhr-balken { height: 4px; }
+  .r-plan { font-size: 14px; line-height: 1.3; }
+  .r-info { gap: 6px; font-size: 14px; }
+  .r-pille { padding: 3px 9px; }
+  .r-knoepfe { gap: 6px; }
+  .r-knopf { min-height: 34px; padding: 0 10px; font-size: 14px; gap: 6px; border-radius: 8px; }
+  .r-knopf .icon { width: 16px; height: 16px; }
+  .r-knopf--gross { min-width: 48px; }
+  .r-etikett .r-knopf { min-height: 28px; padding: 0 8px; font-size: 13px; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   11. DRUCK UND PDF
+   index.html?druck (Bildschirm-Vorschau) oder Strg+P: jede Folie eine Seite
+   16:9, alle Schritte sichtbar, keine Bedienelemente. Mit ?druck&notizen
+   steht der Sprechtext unter jeder Folie (deck.js passt die Seitengröße an).
+   --------------------------------------------------------------------------- */
+@page {
+  size: 1920px 1080px;
+  margin: 0;
+}
+html.druckmodus,
+html.druckmodus body {
+  height: auto;
+  overflow: visible;
+}
+html.druckmodus .deck {
+  position: static;
+  overflow: visible;
+}
+html.druckmodus .buehne {
+  position: static;
+  width: 1920px;
+  height: auto;
+  overflow: visible;
+  transform: none !important;
+  contain: none;
+  background: none;
+}
+html.druckmodus .folie {
+  display: grid !important;
+  position: relative;
+  inset: auto;
+  width: 1920px;
+  height: 1080px;
+  break-after: page;
+  page-break-after: always;
+  break-inside: avoid;
+  view-transition-name: none !important;
+}
+html.druckmodus .folie.ist-ausgeblendet { display: none !important; }
+html.druckmodus .letzte-seite { break-after: auto !important; page-break-after: auto !important; }
+html.druckmodus .folie [data-schritt] { visibility: visible !important; opacity: 1 !important; }
+html.druckmodus .bedienleiste,
+html.druckmodus .fortschritt,
+html.druckmodus .ebene,
+html.druckmodus .schwarzbild { display: none !important; }
+html.druckmodus *,
+html.druckmodus *::before,
+html.druckmodus *::after {
+  animation: none !important;
+  transition: none !important;
+}
+/* Bildschirm-Vorschau von ?druck: Seiten mit Abstand untereinander, scrollbar */
+@media screen {
+  html.druckmodus body { background: #6B6B6B; padding: 24px 0; }
+  html.druckmodus .buehne { margin: 0 auto; }
+  html.druckmodus .folie,
+  html.druckmodus .druck-seite { margin: 0 auto 24px; box-shadow: 0 6px 24px rgb(0 0 0 / 0.35); }
+}
+/* Sprechtext unter der Folie (?druck&notizen). Seite 1920 × 1620 px: oben die Folie,
+   darunter der Sprechtext. Längere Sprechtexte laufen auf Folgeseiten weiter
+   (nichts wird abgeschnitten); die nächste Folie beginnt immer auf einer neuen Seite. */
+.druck-seite { display: contents; }
+html.druck-notizen .druck-seite {
+  display: block;
+  width: 1920px;
+  min-height: 1620px;
+  break-after: page;
+  page-break-after: always;
+  background: #FFFFFF;
+  overflow: visible;
+}
+html.druck-notizen .druck-seite > .folie { break-after: auto; page-break-after: auto; break-inside: avoid; }
+.druck-notiz { display: none; }
+html.druck-notizen .druck-notiz {
+  display: block;
+  min-height: 540px;
+  padding: 40px 128px;
+  border-top: 3px solid #222;
+  background: #FFFFFF;
+  color: #1A1A1A;
+  font: 400 28px/1.45 "Inter Deck", Arial, sans-serif;
+  overflow: visible;
+  /* auf der Folgeseite wieder mit Innenabstand beginnen */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+html.druck-notizen .druck-notiz p { break-inside: avoid; orphans: 3; widows: 3; }
+html.druck-notizen .druck-notiz h3 {
+  margin: 0 0 16px;
+  font: 650 20px/1.2 "Inter Deck", Arial, sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #555;
+}
+html.druck-notizen .druck-notiz p { margin: 0 0 0.5em; }
+
+@media print {
+  html,
+  body {
+    height: auto !important;
+    overflow: visible !important;
+    background: none !important;
+  }
+  html:not(.druckmodus) .bedienleiste,
+  html:not(.druckmodus) .fortschritt,
+  html:not(.druckmodus) .ebene { display: none !important; }
+  html.druckmodus .folie,
+  html.druckmodus .druck-seite { margin: 0 !important; box-shadow: none !important; }
+  html.druckmodus body { padding: 0 !important; }
+}
