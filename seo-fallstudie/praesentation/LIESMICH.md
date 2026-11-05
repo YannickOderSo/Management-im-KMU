@@ -75,6 +75,25 @@ Sprechtext steht je Folie in `aside.notizen` (`p.gesprochen` je Schritt, Absätz
 Hintergrund für Rückfragen) und erscheint in der Referentenansicht (Taste P). Zum Kürzen auf
 ca. 21 Minuten eignen sich die Folien 08, 12 und 19 (zusammen 2:20).
 
+## Präsentationsskript
+
+`export/praesentationsskript.pdf` (A4, 24 Seiten, druckfest in Schwarz-Weiß) ist das Skript zum
+Vortragen, Aufbau wie in `fuehrung/` und `recap/`: Titelseite mit Ablauf, Überblick mit
+Zwischenzeiten, je Teil jede Folie mit Vorschaubild, Startzeit, Sprechtext je Klick und
+Randnotizen „Bei Rückfragen“; Anhang mit 15 Rückfragen samt Antworten, Quellen als Text,
+Kürzungsplan in zwei Stufen (−45 s, zusammen −80 s; Sätze stehen wortgleich im Sprechtext) und
+Plan B. Sprechtext, Notizen und Zeiten kommen immer frisch aus `index.html`, alles Übrige aus
+`werkzeuge/skript-zusatz.json`. Erzeugen im Ordner `praesentation/`:
+
+```
+CHROME_PFAD=/opt/pw-browsers/chromium-1243/chrome-linux64/chrome \
+PLAYWRIGHT_CORE=/opt/node-tools/node_modules/playwright-core \
+node werkzeuge/praesentationsskript.mjs
+```
+
+Neu erzeugen nach jeder Änderung an Sprechtext, Notizen, `data-zeit` oder `skript-zusatz.json`.
+Die Trennfolien tragen dafür `data-block="1…3"`.
+
 ## Geprüfte Befunde (Stand 05.11.2026, von vier Prüfungen gegengeprüft)
 
 - Titel 150.732, Einleitung 152.732 Besuche; Text „6 Monate“ (+11.065 %) und „18 Monate“

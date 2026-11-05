@@ -1,0 +1,93 @@
+{
+  "_hinweis": "Zusatzdaten für das Präsentationsskript (werkzeuge/praesentationsskript.mjs, übernommen aus fuehrung/praesentation). Sprechtext, Zeiten und Randnotizen kommen immer frisch aus index.html. Kürzungssätze müssen wörtlich im Sprechtext stehen. Rückfragen und Antworten entsprechen den gegengeprüften Befunden in LIESMICH.md. Nach jeder Änderung hier oder in den Notizen neu erzeugen.",
+  "stand": "5.11.2026",
+  "sollzeit": 1380,
+  "woerterProMinute": 130,
+  "art": "Fallstudie",
+  "titelZeilen": ["150.732 Besuche –", "was steckt dahinter?"],
+  "untertitel": "Die SEO-Fallstudie über UAV Coach vorgestellt und kritisch bewertet",
+  "titelZahl": { "wert": "3", "text": "Fragen für die Diskussion" },
+  "leisteTitel": "Ablauf",
+  "akzent": "#B23C0A",
+  "fusszeile": ["Vortrag von Yannick Heisler", "Modul Management im KMU, Hochschule Kaiserslautern"],
+
+  "sprecher": {
+    "yannick": { "name": "Yannick Heisler", "rufname": "Yannick", "marke": "gefuellt" }
+  },
+
+  "teile": [
+    { "name": "Einstieg", "zusatz": "Titel, Fahrplan und SEO in einer Minute", "folien": ["f01", "f02", "f03"], "sprecher": "yannick" },
+    { "block": 1, "name": "Vorstellung", "zusatz": "Der Fall, das Versprechen und die sechs Schritte", "folien": ["f04", "f05", "t1", "f06", "f07", "f08", "f09", "f10", "f11", "f12", "f13", "f14"], "sprecher": "yannick" },
+    { "block": 2, "name": "Kritische Bewertung", "zusatz": "Sechs Prüffragen an die Fallstudie", "folien": ["t2", "f15", "f16", "f17", "f18", "f19", "f20", "f21", "f22", "f23", "f24"], "sprecher": "yannick" },
+    { "block": 3, "name": "KMU", "zusatz": "Behalten, anpassen, streichen und ein Beispiel", "folien": ["t3", "f25", "f26"], "sprecher": "yannick" },
+    { "name": "Schluss", "zusatz": "Fazit und Diskussion", "folien": ["f27", "f28"], "sprecher": "yannick", "neueSeite": false }
+  ],
+
+  "aufteilungTitel": "Vor dem Start",
+  "aufteilung": [
+    "Präsentation im Browser öffnen (seo-fallstudie/praesentation/index.html, ganzer Ordner nötig). P öffnet die Referentenansicht mit Sprechtext und Uhr, F den Vollbildmodus, D schaltet hell/dunkel.",
+    "Farbregel im Kopf behalten und einmal am Anfang sagen: Blau ist, was die Fallstudie behauptet, Orange, was die Prüfung findet.",
+    "Notfall-PDF (export/seo-fallstudie-notfall.pdf) und Handout (../handout/handout.pdf) auf dem Laptop und einem Stick bereithalten, Handout ausgedruckt verteilen, dieses Skript daneben.",
+    "Backup-Folien für Rückfragen: B1 Quellen, B2 Belege zu den Widersprüchen. Hinkommen: O drücken und die Folie in der Übersicht anklicken."
+  ],
+
+  "uebergaben": [],
+
+  "rueckfragen": [
+    { "folie": "f04", "frage": "Woher wissen Sie, was UAV Coach verkauft?", "antwort": "Nicht aus der Fallstudie; dort heißt es nur „a fast growing business in the commercial drone space“. Laut uavcoach.com verkauft UAV Coach Online-Kurse für Drohnenpiloten, etwa die „Drone Pilot Ground School“ zur US-Prüfung Part 107. Gründer ist Alan Perlman („Alan Perlman started UAV Coach“)." },
+    { "folie": "f05", "frage": "Was heißt 5:22 genau?", "antwort": "Durchschnittliche Verweildauer auf der Seite laut Google Analytics (Website-Schnitt 3:35). Ob die Leute wirklich lesen, misst das nicht." },
+    { "folie": "f07", "frage": "Warum ist 720 Suchen pro Monat „wenig“, wenn der Artikel auch für ‚how to fly a drone‘ mit 3.600 rankt?", "antwort": "Genau das ist der Punkt der Methode: Das gewählte Hauptkeyword ist klein, der Traffic kommt über viele verwandte Begriffe, darunter auch größere wie ‚how to fly a drone‘. Suchvolumina sind Schätzwerte der Tools und ändern sich über die Jahre (2018 nur noch 260)." },
+    { "folie": "f10", "frage": "Was ist an den „LSI-Keywords“ falsch?", "antwort": "Die Fallstudie behauptet, Google nutze LSI-Keywords. John Mueller von Google schrieb 2019: „There’s no such thing as LSI keywords“. Gemeint sind schlicht verwandte Begriffe; die zu verwenden ist sinnvoll, nur der Begriff ist ein Mythos." },
+    { "folie": "f11", "frage": "Woher stammen die 98 Prozent, die nichts tun?", "antwort": "Die Fallstudie verlinkt dafür nur einen Anbieter-Blog (Retargeter), also keine unabhängige Studie; die „7 Kontaktpunkte vor dem Kauf“ belegt sie gar nicht." },
+    { "folie": "f13", "frage": "Stand Platz 1 wirklich wegen der Backlinks?", "antwort": "Das behauptet die Studie („the main reason why the guide ranks in the top spot“). Belegt ist nur ein Zusammenhang: 2018 hatte der Artikel mit 96 verweisenden Domains mehr als jeder Konkurrent. Die Ursache lässt sich so nicht nachweisen (Folie 18)." },
+    { "folie": "f16", "frage": "Sind das nicht nur Tippfehler?", "antwort": "Einzeln ja, teilweise auch erklärbar (andere Zeiträume, Daten aus verschiedenen Jahren). Zusammen zeigen sie, dass die Zahlen nicht abgeglichen wurden, und keine lässt sich unabhängig prüfen. Belege auf B2." },
+    { "folie": "f17", "frage": "Woher wissen Sie, dass es organische Sitzungen sind?", "antwort": "Der Bericht ist nach „Keyword“ gegliedert, die Bilddatei heißt „Organic-traffic-increase-in-Google-Analytics“, und die Einleitung spricht von „organic traffic“. Sicher ist: Es sind alle Seiten der Website, nicht nur der Ratgeber, der selbst 20.314 Seitenaufrufe über Google in sechs Monaten brachte." },
+    { "folie": "f19", "frage": "Hat UAV Coach Mashable nun überholt oder nicht?", "antwort": "Das lässt sich nicht prüfen. Die Studie zeigt nur eine Mashable-Kategorie-Seite ohne Bezug zu einem bestimmten Keyword. In den Top 10 von 2018 steht kein Mashable, wohl aber WIRED auf Platz 10." },
+    { "folie": "f20", "frage": "Woher stammen die Zahlen 15, 15, 5 und 2?", "antwort": "Eigene Zählung im Artikeltext (ohne Seitenleiste), am 5.11.2026 von einer zweiten Prüfung nachgezählt: 15 eindeutige Links mit Partner- oder Affiliate-Kennung (23 Vorkommen), 15 „Editor’s notes“, 5 Links auf den Kurs „The SEO Playbook“, 2 Beratungsangebote." },
+    { "folie": "f20", "frage": "Ist Affiliate-Marketing nicht völlig normal?", "antwort": "Ja, und es ist hier auch offengelegt. Es geht nicht um einen Vorwurf, sondern um die Frage, wie viel Beweiskraft eine Fallstudie hat, deren Herausgeber an den empfohlenen Tools und am eigenen Kurs verdient." },
+    { "folie": "f21", "frage": "Woher wissen Sie, dass die Studie von 2015 ist?", "antwort": "Die Kommentare unter dem Artikel beginnen im November 2015 (59 im November, 17 im Dezember), der Analytics-Zeitraum endet am 11.11.2015. Im Quelltext steht als Datum der 2.8.2020, letzte Änderung 22.11.2022." },
+    { "folie": "f21", "frage": "Gelten die Pew-Zahlen auch für Deutschland?", "antwort": "Nein, Pew hat 900 US-Erwachsene mit 68.879 Suchen im März 2025 ausgewertet. Gezählt sind Aufrufe von Google-Suchseiten, nach denen auf ein normales Ergebnis geklickt wurde: 8 % mit, 15 % ohne KI-Übersicht. In Deutschland gibt es die KI-Übersichten seit 26.3.2025." },
+    { "folie": "f25", "frage": "Ist Double-Opt-in in Deutschland Pflicht?", "antwort": "Nicht als Verfahren. Für Werbe-E-Mails braucht man eine vorherige ausdrückliche Einwilligung (§ 7 Abs. 2 Nr. 2 UWG) und muss sie nachweisen können (Art. 7 Abs. 1 DSGVO). Double-Opt-in ist der übliche Weg für diesen Nachweis." },
+    { "folie": "f26", "frage": "Lohnt sich das für einen Handwerksbetrieb überhaupt?", "antwort": "Das hängt von Marge und Region ab. Deshalb der Vorschlag, in Beratungsterminen pro Monat zu messen: Wenn ein Termin im Schnitt zu einem Auftrag führt, lässt sich der Aufwand direkt gegen den Ertrag rechnen, genau das, was der Fallstudie fehlt." }
+  ],
+
+  "kuerzung": {
+    "regel": "An jeder Zwischenzeit (Seite {seite:ueberblick}) auf die Uhr sehen. Mehr als 30 Sekunden hinter dem Plan: ab sofort Stufe 1; reicht sie laut Spalte „noch kürzbar“ nicht, zusätzlich Stufe 2. Ab der Bewertung bringen beide Stufen nur noch {rest:f15}; Fazit und Diskussion bleiben ungekürzt. Im Sprechtext stehen die Sätze grau in eckigen Klammern; die Ziffer nennt die Stufe. Reicht auch das nicht: Folien 08, 12 und 19 überspringen (zusammen 2:20).",
+    "stufen": [
+      {
+        "name": "Stufe 1",
+        "ziel": "ca. −45 s",
+        "saetze": [
+          { "folie": "f03", "text": "Oben stehen oft Anzeigen, dafür zahlt man pro Klick." },
+          { "folie": "f07", "text": "Gefunden hat Karp die Begriffe mit Tools wie SEMrush, AnswerThePublic und den Fragen, die Google selbst unter ‚Nutzer fragen auch‘ anzeigt." },
+          { "folie": "f09", "text": "Dazu Bilder, Videos, eine Checkliste vor dem Start und Übungen vom Anfänger bis zum Fortgeschrittenen." },
+          { "folie": "f12", "text": "In Foren diskutiert man mit und hat den Link in der Signatur." },
+          { "folie": "f14", "text": "Zum Stand der Studie, also 2018, steht die Website in den USA für über 3.000 Keywords unter den ersten drei." },
+          { "folie": "f21", "text": "Es wertet Websites ab, deren Inhalte vor allem für Suchmaschinen statt für Menschen geschrieben sind." },
+          { "folie": "f26", "text": "Schritt 5: Newsletter, Kundengespräche, Lokalzeitung." }
+        ]
+      },
+      {
+        "name": "Stufe 2",
+        "ziel": "zusätzlich, zusammen ca. −80 s",
+        "saetze": [
+          { "folie": "f04", "text": "Gründer Alan Perlman brauchte regelmäßigen Traffic und Kontakte." },
+          { "folie": "f08", "text": "Beim Drohnen-Keyword war die Konkurrenz schwach verlinkt, und der bisherige Platz 1 hatte nur 303 Wörter." },
+          { "folie": "f10", "text": "Die Nebenkeywords stehen in den Zwischenüberschriften." },
+          { "folie": "f13", "text": "Drittens Blogs mit wöchentlichen Linksammlungen." },
+          { "folie": "f18", "text": "Die Studie stützt sich auf Ranking-Studien von Ahrefs und SEMrush, aber die messen nur Zusammenhänge, keine Ursachen." },
+          { "folie": "f20", "text": "Die meisten verlinken eigene Artikel, mehrere werben für seinen bezahlten SEO-Kurs." },
+          { "folie": "f23", "text": "Gut ist auch, dass die Studie nicht bei Klicks stehen bleibt, sondern Kontakte sammelt." }
+        ]
+      }
+    ]
+  },
+
+  "planb": [
+    { "fall": "Beamer oder Laptop fällt aus", "tun": "Notfall-PDF export/seo-fallstudie-notfall.pdf im Vollbild zeigen: eine Seite je Folie im Endzustand, 33 Seiten. Die Klick-Schritte entfallen, der Sprechtext bleibt gleich. Notfalls mit dem Handout weitermachen, es enthält Methode, Bewertung und die drei Fragen." },
+    { "fall": "Referentenansicht fällt aus", "tun": "Mit diesem ausgedruckten Skript weitermachen: Startzeit und Klicks stehen je Folie. Die Präsentation läuft mit Pfeiltaste oder Clicker; Ziffern und Enter springen zu einer Folie, z. B. 16 Enter, O zeigt die Übersicht." },
+    { "fall": "Zeit läuft über", "tun": "Kürzungsplan oben: zuerst Stufe 1, dann Stufe 2. Die Sätze stehen im Sprechtext grau in eckigen Klammern. Danach die Folien 08, 12 und 19 überspringen." },
+    { "fall": "Jemand zweifelt eine Zahl an", "tun": "Ruhig auf Backup B2 (Screenshots mit Markierungen) oder B1 (Quellen) springen; die Antworten zu den häufigsten Rückfragen stehen oben im Anhang." },
+    { "fall": "Diskussion kommt nicht in Gang", "tun": "Mit Frage 3 beginnen („Welche Zahl hätten Sie statt ‚Besuche‘ veröffentlicht?“) und selbst einen Vorschlag machen: Anfragen oder Beratungstermine pro Monat. Danach Frage 1 mit dem Heizungsbauer aus Folie 26 als Anker." }
+  ]
+}
