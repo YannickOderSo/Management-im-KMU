@@ -92,6 +92,13 @@ node werkzeuge/praesentationsskript.mjs
 ```
 
 Neu erzeugen nach jeder Änderung an Sprechtext, Notizen, `data-zeit` oder `skript-zusatz.json`.
+
+**Locker formulierte Fassung:** `export/praesentationsskript-locker.pdf`, gleicher Aufbau, Sprechtext
+in Alltagssprache aus `werkzeuge/skript-locker.json` (Schlüssel „f07/0“ = Folie f07, Schritt 0;
+„f04/g“ = Absatz ohne Schritt). Zahlen nur gerundet, wo die genaue Zahl nicht der Punkt ist; auf
+den Folien 16 und 17 bleiben sie exakt. Eigener Kürzungsplan mit Sätzen aus dieser Fassung.
+Erzeugen wie oben, mit `SKRIPT_TEXTE=werkzeuge/skript-locker.json` vor dem Aufruf. Bei
+Änderungen am Sprechtext in `index.html` die lockere Fassung inhaltlich mitziehen.
 Die Trennfolien tragen dafür `data-block="1…3"`.
 
 ## Geprüfte Befunde (Stand 05.11.2026, von vier Prüfungen gegengeprüft)
