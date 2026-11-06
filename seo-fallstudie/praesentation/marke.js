@@ -36,7 +36,7 @@ window.MARKE = {
   dozent: 'Prof. Dr. Christine Arend-Fuchs',
   hochschule: 'Hochschule Kaiserslautern',
   unternehmen: 'UAV Coach',
-  gruppe: ['Yannick Heisler'],
+  gruppe: ['Elias Knauber', 'Yannick Heisler'],
   datum: '',
   dauerMinuten: 23,               // Summe data-zeit 1380 s = 23:00
   anrede: 'Sie',

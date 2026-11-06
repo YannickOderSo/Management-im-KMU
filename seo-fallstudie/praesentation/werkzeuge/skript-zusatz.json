@@ -9,7 +9,7 @@
   "titelZahl": { "wert": "3", "text": "Fragen für die Diskussion" },
   "leisteTitel": "Ablauf",
   "akzent": "#B23C0A",
-  "fusszeile": ["Vortrag von Yannick Heisler", "Modul Management im KMU, Hochschule Kaiserslautern"],
+  "fusszeile": ["Vortrag von Elias Knauber und Yannick Heisler", "Modul Management im KMU, Hochschule Kaiserslautern"],
 
   "sprecher": {
     "yannick": { "name": "Yannick Heisler", "rufname": "Yannick", "marke": "gefuellt" }

@@ -3,7 +3,7 @@
 Web-Präsentation (HTML) für das Modul Management im KMU (Hochschule Kaiserslautern, Campus
 Zweibrücken): Vorstellung und kritische Bewertung der Fallstudie
 [„SEO Case Study: 6-Step Process That Generated 150,732 Visits“](https://www.robbierichards.com/seo/case-study/)
-von Robbie Richards (Gastbeitrag Michael Karp, Kunde UAV Coach). Vortrag: Yannick Heisler.
+von Robbie Richards (Gastbeitrag Michael Karp, Kunde UAV Coach). Vortrag: Elias Knauber und Yannick Heisler.
 28 Folien, 3 Trennfolien und 2 Backup-Folien, Sollzeit 23:00 (Summe `data-zeit`).
 
 **Öffnen:** `index.html` in Chrome oder Edge. Läuft offline per Doppelklick und auf GitHub Pages,
