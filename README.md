@@ -9,8 +9,11 @@ Aufgabe: Den Begriff **Führung** im Kontext des Moduls definieren. Dazu gehöre
 |---|---|---|
 | Schriftliche Befragung (2 Fragebögen) | ✅ beide zurück (28./29.10.2026) und ausgewertet; Einverständnis beider vollständig | [`fuehrung/befragung/auswertung.md`](fuehrung/befragung/auswertung.md) |
 | Recherche (Tools + Literaturbasis + Faktendossier) | ✅ fertig, von 5 Prüf-Agenten gegengeprüft (28.10.2026) | [`recherche/dossier-fakten.md`](recherche/dossier-fakten.md), Prüfberichte in [`recherche/pruefung/`](recherche/pruefung/) |
-| HTML-Präsentation (21 Folien + 6 Backup, Vortrag Mo, 2.11.2026, 35 + 10 Min.) | ✅ final: Befragung auf drei Folien (15 bis 17), Prüfung 0 Fehler, Sollzeit 34:35 Min., Redeskript in `export/redeskript.pdf` | [`fuehrung/praesentation/`](fuehrung/praesentation/) |
+| HTML-Präsentation (21 Folien + 6 Backup, Vortrag Mo, 2.11.2026, 35 + 10 Min.) | ✅ final: Befragung auf drei Folien (15 bis 17), Prüfung 0 Fehler, Sollzeit 35:00 Min. (ca. 3.900 gesprochene Wörter), Redeskript in `export/redeskript.pdf` | [`fuehrung/praesentation/`](fuehrung/praesentation/) |
 | Diskussionspapier als Handout (2 Seiten, Abgabe Fr, 30.10.2026) | ✅ Thema zusammengefasst, ohne Quellenangaben, Fragen wie Folie 21 (Schema wie Handout Elias) | [`fuehrung/diskussionspapier/`](fuehrung/diskussionspapier/) |
+| Quellennachweis (welche Quelle wofür und warum, 9 Seiten) | ✅ aus Dossier erzeugt | [`fuehrung/quellennachweis/`](fuehrung/quellennachweis/) · neu: `python3 fuehrung/quellennachweis/erzeugen.py && node fuehrung/quellennachweis/pdf.mjs` |
+| Präsentationsskript (30 Seiten, Aufbau wie Recap-Skript) | ✅ `fuehrung/praesentation/export/praesentationsskript.pdf` | neu: `node fuehrung/praesentation/werkzeuge/praesentationsskript.mjs` (Zusatzdaten in `werkzeuge/skript-zusatz.json`) |
+| Präsentationsskript, locker formuliert (29 Seiten) | ✅ `fuehrung/praesentation/export/praesentationsskript-locker.pdf` | Texte in `werkzeuge/skript-locker.json`, Aufruf mit `SKRIPT_TEXTE=werkzeuge/skript-locker.json` |
 
 ## Schriftliche Befragung
 
@@ -32,7 +35,7 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 
 | Sitzung | Thema | Stand | Ort |
 |---|---|---|---|
-| Mo, 26.10.2026 | Prozesse (Büchele) · KI im KMU (Tschekuev) · KI-Begriffe und KI-Führerschein (Knopper) · Gastvortrag Bundeswehr | ✅ Transkript (MD + PDF) · ✅ Redeskript (PDF) · ✅ Recap-Präsentation (25 Folien: 20 Inhaltsfolien, 4 Trennfolien, Quellen; ca. 17 Min., Elias Knauber + Yannick Heisler) | [`recap/2026-10-26-prozessmanagement-und-ki/`](recap/2026-10-26-prozessmanagement-und-ki/) · Folien: [`praesentation/`](recap/2026-10-26-prozessmanagement-und-ki/praesentation/) |
+| Mo, 26.10.2026 | Prozesse (Büchele) · KI im KMU (Tschekuev) · KI-Begriffe und KI-Führerschein (Knopper) · Gastvortrag Bundeswehr | ✅ Transkript (MD + PDF) · ✅ Redeskript (PDF) · ✅ Recap-Präsentation (25 Folien: 20 Inhaltsfolien, 4 Trennfolien, Quellen; ca. 17 Min., Elias Knauber + Yannick Heisler) · ✅ Präsentationsskript (PDF, 18 Seiten: Sprechtext je Klick, Elias Einstieg/Block 1/Block 4/Fazit, Yannick Block 2 und 3, Übergaben, Rückfragen, Kürzungsplan, Plan B) | [`recap/2026-10-26-prozessmanagement-und-ki/`](recap/2026-10-26-prozessmanagement-und-ki/) · Folien: [`praesentation/`](recap/2026-10-26-prozessmanagement-und-ki/praesentation/) |
 
 ## Vortrag „KI-Compliance im KMU: der EU AI Act“
 
@@ -46,6 +49,15 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 | Klassifizierer zum Mitnehmen (Handy) | ✅ | [`ki-compliance/praesentation/klassifizierer.html`](ki-compliance/praesentation/klassifizierer.html) |
 | Go-Live-Checkliste (Generalprobe, Raum-Check, Spickzettel, Kürzungsplan, Go/No-Go) | 📋 abzuhaken bis 9.11.2026 | [`ki-compliance/GO-LIVE.md`](ki-compliance/GO-LIVE.md) |
 
+## Vortrag „SEO-Fallstudie unter der Lupe“
+
+| Teil | Stand | Ort |
+|---|---|---|
+| HTML-Präsentation: Vorstellung und kritische Bewertung der Fallstudie [robbierichards.com/seo/case-study](https://www.robbierichards.com/seo/case-study/) (28 Folien + 3 Trennfolien + 2 Backup, Sollzeit 23:00, Sprechtext in der Referentenansicht, 11 Belege aus der Studie, eigene Diagramme) | ✅ Prüfung 0 Fehler (hell und dunkel), Notfall-PDF; Fakten von vier unabhängigen Prüfungen gegengeprüft (05.11.2026) | [`seo-fallstudie/praesentation/`](seo-fallstudie/praesentation/) |
+| Präsentationsskript (24 Seiten, Aufbau wie bei den anderen Vorträgen: Sprechtext je Klick, Zwischenzeiten, 15 Rückfragen, Kürzungsplan, Plan B) | ✅ `export/praesentationsskript.pdf` | neu: `node seo-fallstudie/praesentation/werkzeuge/praesentationsskript.mjs` (im Ordner `praesentation/`, Zusatzdaten in `werkzeuge/skript-zusatz.json`) |
+| Präsentationsskript, locker formuliert (24 Seiten, gleicher Aufbau, Sprechtext in Alltagssprache) | ✅ `export/praesentationsskript-locker.pdf` | Texte in `werkzeuge/skript-locker.json`, Aufruf mit `SKRIPT_TEXTE=werkzeuge/skript-locker.json` |
+| Handout (2 Seiten A4): Fall, sechs Schritte, Bewertung mit Ampel, KMU-Übertragung, die drei Diskussionsfragen von Folie 28 | ✅ `handout.pdf` | [`seo-fallstudie/handout/`](seo-fallstudie/handout/) · neu: `node seo-fallstudie/handout/pdf.mjs` |
+
 ## Online (GitHub Pages)
 
 Startseite: https://yannickoderso.github.io/Management-im-KMU/ (nach dem Einschalten unter Settings → Pages)
@@ -53,3 +65,4 @@ Startseite: https://yannickoderso.github.io/Management-im-KMU/ (nach dem Einscha
 GitHub Pages zeigt den Branch `claude/exciting-meitner-w27zwy` (Standard-Branch des Repos).
 
 - Recap 26.10.2026: https://yannickoderso.github.io/Management-im-KMU/recap/2026-10-26-prozessmanagement-und-ki/praesentation/index.html
+- Präsentationsskript zur Recap: https://yannickoderso.github.io/Management-im-KMU/recap/2026-10-26-prozessmanagement-und-ki/praesentation/export/praesentationsskript.pdf

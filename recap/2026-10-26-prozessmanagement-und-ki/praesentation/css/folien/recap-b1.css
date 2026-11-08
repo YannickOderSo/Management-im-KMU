@@ -19,19 +19,20 @@
 /* ---------- f03 Was ist ein Prozess? -------------------------------------------
    Die Kette ist der Held: über die ganze Breite (.r-kette--breit), Wörter
    64 px (.r-kette--gross, recap.css); Titel und Kette bilden die obere
-   Gruppe. Die untere Gruppe sitzt 168 px tiefer: links Zitat (Sp. 1–6) und
-   „Wiederholbar …“, rechts (Sp. 8–12) zweimal dasselbe Formular
-   „Bestellung“ – Modell mit gestrichelten Leerfeldern (Schiefer), Instanz in
-   Tinte ausgefüllt (Schritt 1). */
-.r-begriff .folie-inhalt { gap: 168px; }
+   Gruppe. Die untere Gruppe sitzt tiefer: links das Zitat (Sp. 1–6), rechts
+   (Sp. 8–12) zweimal dasselbe Formular „Bestellung“ – Modell mit
+   gestrichelten Leerfeldern (Schiefer), Instanz in Tinte ausgefüllt
+   (Schritt 1) – und darunter „Wiederholbar …“, das Modell und Instanz
+   erklärt (Spec: Seitenfeld). */
+.r-begriff .folie-inhalt { gap: 140px; }
 .r-begriff-unten { align-items: start; grid-template-rows: auto auto; }
-.r-begriff-zitat { grid-column: 1 / 7; grid-row: 1; }
+.r-begriff-zitat { grid-column: 1 / 7; grid-row: 1 / span 2; }
 /* Formular-Raster für Modell UND Instanz: gemeinsame Zeilen, damit Feldname,
    Leerfeld und Wert beider Formulare auf einer Grundlinie stehen.
    Spalten: Feldname | Feld | Abstand | Feldname | Wert (Sp. 8–12, 674 px) */
 .r-begriff-formular {
   grid-column: 8 / 13;
-  grid-row: 1 / span 2;
+  grid-row: 1;
   display: grid;
   grid-template-columns: 96px minmax(0, 1fr) 32px 96px minmax(0, 1fr);
   column-gap: 12px;
@@ -45,8 +46,8 @@
 .r-begriff-formular > .r-begriff-leer { grid-column: 2; }
 .r-begriff-formular > .r-begriff-feld.r-begriff-fall { grid-column: 4; }
 .r-begriff-formular > .r-begriff-wert { grid-column: 5; }
-/* „Wiederholbar …“ steht links unten, bündig mit der letzten Formularzeile */
-.r-begriff-zeile { grid-column: 1 / 7; grid-row: 2; align-self: end; margin-bottom: 2px; font-size: 32px; line-height: 1.25; color: var(--r-schrift); }
+/* „Wiederholbar …“ steht unter beiden Formularen (Sp. 8–12) */
+.r-begriff-zeile { grid-column: 8 / 13; grid-row: 2; margin-top: 30px; font-size: 32px; line-height: 1.25; color: var(--r-schrift); }
 .r-begriff-art { font-size: 30px; font-weight: 600; line-height: 1.2; color: var(--r-schrift); }
 .r-begriff-kopf {
   margin-top: 6px;
@@ -84,12 +85,22 @@
 /* ---------- f04 Relevanz und Schnittstellen ------------------------------------
    Drei Gründe (Liste als Reihe), die gerissene Kette über die ganze Breite
    (.r-kette--bruch.r-kette--breit: Abschnitte wachsen mit, Bruchzeichen
-   bleiben schmal), Wörter 48 px; Kernaussage als These in Karmin. */
+   bleiben schmal), Wörter 48 px; Kernaussage als These in Karmin.
+   Graustufentest: Karmin ist kaum dunkler als Schiefer – die These steht
+   deshalb größer (56 px) und schwerer (560) als alles andere unter dem
+   Titel; Umbruch nach „nicht,“ (zwei Satzhälften, zwei Zeilen). */
 .r-relevanz .folie-inhalt { gap: 64px; }
 .r-relevanz-kette { display: flex; flex-direction: column; gap: 14px; }
 .r-relevanz .r-kette--bruch > li:not(.r-kette-bruch) {
   font-size: 48px;
   font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+}
+/* Gewicht 560 und Karmin kommen aus .r-these--faden, der Umbruch aus .r-zeile (recap.css) */
+.r-relevanz .r-relevanz-kern {
+  font-size: 56px;
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  font-variation-settings: "opsz" 60, var(--achsen-ruhig);
 }
 
 
@@ -144,13 +155,16 @@
 
 /* ---------- f06 Prozessarten und Sichten ----------------------------------------
    Schichtung im Hauptfeld (Sp. 1–8): Name rechtsbündig in der Randspalte
-   (Sp. 1–3), Text ab Sp. 4, Haarlinien zwischen den Schichten. Der Kern ist die
-   dickste Schicht: Fraunces 64 px in Karmin, Gewicht 540, mehr Luft.
-   Sichten als ruhige Liste im Seitenfeld (Sp. 9–12). */
+   (Sp. 1–3), Text ab Sp. 4, Haarlinien zwischen den Schichten. Der Kern ist
+   die Betonung: Fraunces 64 px in Karmin, Gewicht 600 (Nachbarn 44 px / 450 –
+   Graustufentest), Text in Tinte. Sichten als Standard-Liste im Seitenfeld
+   (Sp. 9–12). Beide Spalten teilen ein Raster aus drei 128-px-Bändern: alle
+   Haarlinien laufen auf derselben Höhe durch (vorher lagen die Linien der
+   Liste 14–16 px neben denen der Schichtung). */
 .r-arten-porter { grid-column: 1 / 9; margin: 0; }
 .r-arten-sichten { grid-column: 9 / 13; min-width: 0; }
 .r-arten-schichten {
-  margin: 18px 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
   border-bottom: var(--r-haar) solid var(--r-leer);
@@ -160,7 +174,10 @@
   grid-template-columns: var(--r-randspalte) minmax(0, 1fr);
   column-gap: var(--r-rinne);
   align-items: baseline;
-  padding: 30px 0 32px;
+  align-content: center;
+  box-sizing: border-box;
+  height: 128px;
+  padding: 0;
   border-top: var(--r-haar) solid var(--r-leer);
 }
 /* Namen hängen rechtsbündig in der Randspalte (wie die Zahlen der Kennzahl
@@ -177,28 +194,32 @@
   color: var(--r-schrift);
 }
 .r-arten-text { font-size: 30px; line-height: 1.3; color: var(--r-schrift-2); }
-.r-arten-schichten > li.r-arten-kern { padding: 44px 0 46px; }
 .r-arten-kern .r-arten-name {
   font-size: 64px;
-  font-weight: 540;
+  font-weight: 600;
   font-variation-settings: "opsz" 72, var(--achsen-ruhig);
   color: var(--r-faden-text);
 }
 .r-arten-kern .r-arten-text { font-size: 32px; color: var(--r-schrift); }
 .r-arten-grenze { margin-top: 26px; }
-.r-arten-sichten .r-liste { margin-top: 18px; }
-/* ruhige Liste: nur die obere Haarlinie (auf Höhe der ersten Schicht),
-   keine Linien dazwischen – sonst laufen zwei Linienrhythmen nebeneinander */
-.r-arten-sichten .r-liste > li { padding: 16px 0 14px; border-top: 0; }
-.r-arten-sichten .r-liste > li:first-child { padding-top: 30px; border-top: var(--r-haar) solid var(--r-leer); }
-.r-arten-sichten .r-liste-wort { font-size: 34px; }
+/* Sichten: Standard-Liste (Stichwort 38 px, Haarlinie je Punkt) wie auf
+   f04, f07, f14, f15, f17 – hier in denselben 128-px-Bändern wie die
+   Schichtung und mit Schlusslinie wie sie */
+.r-arten-sichten .r-liste { border-bottom: var(--r-haar) solid var(--r-leer); }
+.r-arten-sichten .r-liste > li { box-sizing: border-box; height: 128px; }
 
 
 /* ---------- f07 Lebenszyklus und Modellierung -----------------------------------
    Phasenlinie über die ganze Inhaltsbreite (1664 px): sechs Spalten à
-   204 px + Rinne 24 px, die letzte Spalte (ab x = 1368) trägt die Schleife.
+   244 px (ohne Rinne), die letzte Spalte (ab x = 1464) trägt die Schleife.
    Punkte wie im Zeitstrahl (28 px, Rand 5 px); ihre Mitte liegt auf y = 136,
-   dort laufen auch Linie und Schleife (SVG, Koordinaten im Fragment). */
+   dort laufen auch Linie und Schleife (SVG, Koordinaten im Fragment).
+   Etiketten wie die Namen im Zeitstrahl (f05): Franklin 34 px / 600, alle
+   einzeilig (breitestes „Organisation“ 208 px, in Bento 213 px – mindestens
+   31 px Luft zum nächsten Etikett). Die eine Karmin-Betonung – Schleife und
+   „kontinuierlich verbessern“ – ist größer als ihre Nachbarn (Fraunces
+   42 px, Schleife 8 px gegen Linie 6 px), damit sie auch in Graustufen das
+   Ziel der Linie bleibt; das Etikett steht rechtsbündig unter der Schleife. */
 .r-zyklus .folie-inhalt { gap: 0; }
 .r-zyklus-bahn { position: relative; width: 1664px; margin: 0; }
 .r-zyklus-linie { position: absolute; left: 0; top: 0; width: 1664px; height: 150px; overflow: visible; }
@@ -208,8 +229,8 @@
 .r-zyklus-phasen {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(6, 204px) minmax(0, 1fr);
-  column-gap: 24px;
+  grid-template-columns: repeat(6, 244px) minmax(0, 1fr);
+  column-gap: 0;
   margin: 0;
   padding: 122px 0 0;
   list-style: none;
@@ -218,10 +239,10 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 600;
-  line-height: 1.2;
-  hyphens: manual;
+  line-height: 1.15;
+  white-space: nowrap;
   color: var(--r-schrift);
 }
 .r-zyklus-phasen > li::before {
@@ -233,11 +254,42 @@
   border-radius: 50%;
   background: var(--r-papier);
 }
-.r-zyklus-phasen > li.r-zyklus-dauer { color: var(--r-faden-text); }
-.r-zyklus-phasen > li.r-zyklus-dauer::before { visibility: hidden; }
+.r-zyklus-phasen > li.r-zyklus-dauer {
+  position: absolute;
+  top: 122px;                            /* = padding-top der Liste */
+  right: 0;
+  width: max-content;
+  text-align: right;
+  font-family: var(--schrift-display);
+  font-size: 42px;
+  font-weight: 560;
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+  white-space: nowrap;
+  color: var(--r-faden-text);
+}
+/* Grundlinie der ersten Zeile auf die der Phasen (Fraunces 44 hat mehr
+   Oberlänge als Franklin 34): 6 px weniger Abstand unter dem Leerpunkt */
+.r-zyklus-phasen > li.r-zyklus-dauer::before { visibility: hidden; margin-bottom: 18px; }
+/* Schritt 1 und 2 auf den Etikettenkanten: Modellierungssprachen und das
+   Fadenende unter „Ist-Analyse“ (x = 2 · 244), DMAIC unter „Roll-out“
+   (x = 5 · 244) – der Kreislauf steht bei der Schleife */
 .r-zyklus .r-zyklus-spalten {
   margin-top: 64px;
-  margin-left: 424px;
-  grid-template-columns: 674.667px 533.333px;
+  margin-left: 488px;
+  grid-template-columns: 700px 444px;
 }
-.r-zyklus-ende { margin-top: 48px; margin-left: 424px; }
+.r-zyklus-ende { margin-top: 48px; margin-left: 488px; }
+/* „Planen ≠ Ausführen“: das Ungleichzeichen als Linien (currentColor), weil
+   keine mitgelieferte Schrift U+2260 enthält (sonst Systemschrift) */
+.r-zeit .r-ungleich {
+  display: inline-block;
+  width: 0.62em;
+  height: 0.62em;
+  vertical-align: -0.03em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}

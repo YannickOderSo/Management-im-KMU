@@ -1,0 +1,467 @@
+/* =============================================================================
+   seo.css – Gestaltung „Unter der Lupe“
+   SEO-Fallstudie UAV Coach (Robbie Richards / Michael Karp), vorgestellt und
+   kritisch bewertet. Bühne 1920 × 1080 px. Engine unverändert (deck.js).
+   -----------------------------------------------------------------------------
+   IDEE
+   Zwei Stimmen ziehen sich durch die ganze Präsentation:
+     Blau   = was die Fallstudie BEHAUPTET (Zahlen, Versprechen, Methode)
+     Orange = was unsere PRÜFUNG findet (Widersprüche, Lücken, Einordnung)
+   Teil 1 (Vorstellung) ist überwiegend blau, Teil 2 (Bewertung) orange,
+   Teil 3 (KMU) und Fazit bringen beide zusammen. Screenshots aus der Studie
+   stehen als „Belege“ in einem schlichten Browserrahmen; eigene Markierungen
+   (orange Rahmen) zeigen, worauf wir schauen. Alle Diagramme sind eigene
+   Zeichnungen (Inline-SVG oder CSS), keine Bilder.
+
+   Aufbau
+     1. Tokens: Farben hell/dunkel, Zuordnung zur Engine, Schrift, Maße
+     2. Folienrahmen: Titel, Quelle, Laufkopf
+     3. Bausteine (Präfix s-)
+     4. Folien mit eigener Komposition
+     5. Druck, Bewegung
+   ============================================================================= */
+
+
+/* -----------------------------------------------------------------------------
+   1. TOKENS
+   ----------------------------------------------------------------------------- */
+html[data-modus],
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-modus="hell"] {
+  --s-papier: #F7F6F2;
+  --s-flaeche: #ECEAE3;       /* ruhige Fläche hinter Karten und Belegen */
+  --s-schrift: #15171C;
+  --s-schrift-2: #555A64;     /* 6,4 : 1 auf Papier */
+  --s-linie: #C9CAC6;
+  --s-mittel: #8A8F98;        /* Grafik „sekundär“ */
+  --s-blau: #1F4FD8;          /* Behauptung – 6,1 : 1 */
+  --s-blau-flaeche: #E3E9FB;
+  --s-orange: #B23C0A;        /* Befund – 5,6 : 1 */
+  --s-orange-flaeche: #FCEEE6;
+  --s-gruen: #2F7D32;         /* nur Ampel „trägt“ – 5,0 : 1 */
+  --s-gelb: #A86B00;          /* nur Ampel „teils“ – 4,6 : 1 */
+  --s-letterbox: #DCDAD3;
+  --s-ui: #E7E5DE;
+  --s-beleg-rand: #B9BAB5;
+}
+html[data-modus="dunkel"],
+:is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-modus="dunkel"] {
+  --s-papier: #14161B;
+  --s-flaeche: #1F2229;
+  --s-schrift: #F2F1EC;
+  --s-schrift-2: #B3B7C0;
+  --s-linie: #3A3E47;
+  --s-mittel: #6E7480;
+  --s-blau: #7EA2FF;
+  --s-blau-flaeche: #1C2747;
+  --s-orange: #FF8A4C;
+  --s-orange-flaeche: #3A2216;
+  --s-gruen: #6CC070;
+  --s-gelb: #E7B547;
+  --s-letterbox: #08090C;
+  --s-ui: #1F2229;
+  --s-beleg-rand: #4A4E57;
+}
+
+html[data-thema][data-modus],
+[data-thema] :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie {
+  --f-hintergrund: var(--s-papier);
+  --f-hintergrund-bild: none;
+  --f-flaeche: var(--s-flaeche);
+  --f-flaeche-2: var(--s-flaeche);
+  --f-letterbox: var(--s-letterbox);
+  --f-text: var(--s-schrift);
+  --f-text-2: var(--s-schrift-2);
+  --f-linie: var(--s-linie);
+  --f-linie-stark: var(--s-schrift);
+  --f-akzent: var(--s-orange);
+  --f-akzent-flaeche: var(--s-orange-flaeche);
+  --f-auf-akzent: var(--s-papier);
+  --f-weich: var(--s-blau);
+  --f-weich-flaeche: var(--s-blau-flaeche);
+  --f-hart: var(--s-schrift-2);
+  --f-hart-flaeche: var(--s-flaeche);
+  --f-kern: var(--s-orange);
+  --f-auf-kern: var(--s-papier);
+  --f-rahmen: var(--s-schrift);
+  --f-fokus: var(--s-orange);
+  --f-karte: var(--s-papier);
+  --f-karte-rand: var(--s-linie);
+  --f-balken: var(--s-mittel);
+  --f-diagramm-marke: var(--s-blau);
+  --f-diagramm-wettbewerb: var(--s-schrift-2);
+  --f-diagramm-ideal: var(--s-mittel);
+}
+html[data-thema][data-modus] { --f-flaeche: var(--s-ui); --f-flaeche-2: var(--s-ui); }
+
+/* Schrift: Bricolage Grotesque (Titel, Zahlen) + Inter (Text) – in allen
+   drei Themen gleich, Taste T wechselt nur Kleinigkeiten der Engine */
+html[data-thema] {
+  --schrift-display: "Bricolage Deck", "Inter Deck", "Segoe UI", Arial, sans-serif;
+  --schrift-text: "Inter Deck", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --schrift-zahl: "Bricolage Deck", "Inter Deck", sans-serif;
+  --schrift-kicker: "Inter Deck", "Segoe UI", sans-serif;
+  --gewicht-text: 400;
+  --gewicht-fett: 600;
+  --gewicht-titel: 650;
+  --gewicht-display: 650;
+  --gewicht-zahl: 700;
+  --laufweite-titel: -0.015em;
+  --stil-hervor: normal;
+  --kicker-versalien: none;
+  --kicker-laufweite: 0;
+  --kicker-gewicht: 500;
+
+  --rand-x: 128px;
+  --rand-oben: 52px;
+  --rand-unten: 44px;
+  --groesse-titel: 76px;
+  --groesse-text: 30px;
+  --groesse-gross: 34px;
+  --groesse-meta: 22px;
+  --zeilenhoehe-titel: 1.06;
+  --zeilenhoehe-text: 1.38;
+
+  --s-radius: 14px;
+  --s-rinne: 40px;
+}
+
+
+/* -----------------------------------------------------------------------------
+   2. FOLIENRAHMEN
+   ----------------------------------------------------------------------------- */
+:where(.folie) :is(b, strong) { font-weight: var(--gewicht-fett); }
+.folie .titel { font-size: var(--groesse-titel); line-height: var(--zeilenhoehe-titel); max-width: 1500px; }
+.folie .titel .s-zeile { display: block; }
+.folie .titel em { font-style: normal; color: var(--s-orange); }
+.folie .titel em.s-blau { color: var(--s-blau); }
+.folie .quelle { font-size: 22px; line-height: 1.35; color: var(--s-schrift-2); }
+.folie .lead { color: var(--s-schrift-2); }
+.laufkopf ~ .folie-kopf { margin-top: 34px; }
+.folie-kopf ~ .folie-inhalt { margin-top: 40px; }
+
+.folie > .laufkopf { border-bottom: 2px solid var(--s-linie); }
+.folie > .laufkopf .laufkopf-marke { font-family: var(--schrift-display); font-size: 26px; font-weight: 650; font-style: normal; }
+.folie > .laufkopf .laufkopf-rubrik { color: var(--s-schrift-2); }
+.folie > .laufkopf .laufkopf-nummer { font-size: 28px; font-weight: 650; }
+/* Teil-Kennzeichen: kleiner Punkt in der Farbe der Stimme vor der Rubrik */
+.folie[data-teil] > .laufkopf .laufkopf-rubrik::before {
+  content: ""; display: inline-block; width: 14px; height: 14px; border-radius: 50%;
+  margin-right: 12px; vertical-align: 1px; background: var(--s-blau);
+}
+.folie[data-teil="2"] > .laufkopf .laufkopf-rubrik::before { background: var(--s-orange); }
+.folie[data-teil="3"] > .laufkopf .laufkopf-rubrik::before { background: linear-gradient(90deg, var(--s-blau) 50%, var(--s-orange) 50%); }
+
+
+/* -----------------------------------------------------------------------------
+   3. BAUSTEINE
+   ----------------------------------------------------------------------------- */
+
+/* 3a. Raster: zwei Spalten mit frei wählbaren Anteilen */
+.s-zwei {
+  display: grid;
+  grid-template-columns: var(--spalten, 1fr 1fr);
+  column-gap: var(--s-rinne);
+  align-items: start;
+  min-height: 0;
+  height: 100%;
+}
+.s-zwei--mitte { align-items: center; }
+.s-stapel { display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+
+/* 3b. Stimmen-Etikett: „Fallstudie sagt“ / „Prüfung“ */
+.s-etikett {
+  display: inline-flex; align-items: center; gap: 10px;
+  align-self: flex-start;
+  padding: 6px 16px 7px;
+  border-radius: 999px;
+  font-size: 22px; font-weight: 600; line-height: 1.2;
+  background: var(--s-blau-flaeche); color: var(--s-blau);
+}
+.s-etikett--befund { background: var(--s-orange-flaeche); color: var(--s-orange); }
+.s-etikett--neutral { background: var(--s-flaeche); color: var(--s-schrift-2); }
+.s-etikett .icon { width: 22px; height: 22px; stroke-width: 2.4; }
+
+/* 3c. Beleg: Screenshot aus der Fallstudie im Browserrahmen */
+.s-beleg {
+  position: relative;
+  margin: 0;
+  display: flex; flex-direction: column;
+  border: 2px solid var(--s-beleg-rand);
+  border-radius: var(--s-radius);
+  background: #FFFFFF;
+  overflow: hidden;
+  box-shadow: 0 18px 40px -24px rgb(20 22 28 / 0.45);
+  min-height: 0;
+}
+.s-beleg-leiste {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 16px;
+  background: var(--s-flaeche);
+  border-bottom: 2px solid var(--s-beleg-rand);
+  font-size: 22px; line-height: 1.2; color: var(--s-schrift-2);
+  white-space: nowrap; overflow: hidden;
+}
+.s-beleg-leiste::before {
+  content: ""; flex: none; width: 52px; height: 14px;
+  background:
+    radial-gradient(circle at 7px 7px, var(--s-mittel) 6px, transparent 6.5px),
+    radial-gradient(circle at 26px 7px, var(--s-mittel) 6px, transparent 6.5px),
+    radial-gradient(circle at 45px 7px, var(--s-mittel) 6px, transparent 6.5px);
+}
+.s-beleg-bild { position: relative; line-height: 0; min-height: 0; }
+.s-beleg-bild img { display: block; width: 100%; height: auto; }
+.s-beleg--hoehe .s-beleg-bild img { width: auto; max-width: 100%; height: var(--bildhoehe, 520px); margin: 0 auto; object-fit: contain; }
+/* Ausschnitt: nur ein Teil des Screenshots (object-position) */
+.s-beleg--ausschnitt .s-beleg-bild img { height: var(--bildhoehe, 400px); width: 100%; object-fit: cover; object-position: var(--pos, 50% 0%); }
+/* Markierung über dem Screenshot (Prozentwerte relativ zum Bild) */
+.s-mark {
+  position: absolute;
+  left: var(--x); top: var(--y); width: var(--b); height: var(--h);
+  border: 5px solid var(--s-orange);
+  border-radius: 10px;
+  box-shadow: 0 0 0 4px rgb(255 255 255 / 0.65);
+  pointer-events: none;
+}
+.s-mark--blau { border-color: var(--s-blau); }
+.s-mark-text {
+  position: absolute; left: var(--x); top: var(--y);
+  transform: translate(var(--tx, 0), var(--ty, -100%));
+  padding: 6px 14px; border-radius: 8px;
+  background: var(--s-orange); color: #FFFFFF;
+  font-size: 28px; font-weight: 650; line-height: 1.2; white-space: nowrap;
+}
+.s-mark-text--blau { background: var(--s-blau); }
+html[data-modus="dunkel"] .s-mark-text { color: #14161B; }
+
+/* 3d. Kennzahl: große Zahl + Bezeichnung */
+.s-zahl {
+  display: block;
+  font-family: var(--schrift-zahl);
+  font-weight: 700;
+  font-size: var(--zahl-groesse, 104px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--s-blau);
+  white-space: nowrap;
+}
+.s-zahl--befund { color: var(--s-orange); }
+.s-zahl--neutral { color: var(--s-schrift); }
+.s-zahl-text { display: block; margin-top: 10px; font-size: 30px; line-height: 1.3; color: var(--s-schrift-2); }
+.s-zahl-text b { color: var(--s-schrift); }
+
+.s-kennzahlen {
+  display: grid;
+  grid-template-columns: repeat(var(--anzahl, 3), minmax(0, 1fr));
+  gap: 44px var(--s-rinne);
+}
+.s-kennzahlen > li { border-top: 3px solid var(--s-linie); padding-top: 20px; min-width: 0; }
+.s-kennzahlen > li.ist-gross { border-top-color: var(--s-blau); }
+
+/* 3e. Liste mit Stichwort und Text */
+.s-liste { display: flex; flex-direction: column; gap: 30px; }
+.s-liste > li { display: grid; grid-template-columns: 52px minmax(0, 1fr); column-gap: 18px; align-items: start; }
+.s-liste-icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--s-blau-flaeche); color: var(--s-blau);
+}
+.s-liste-icon .icon { width: 28px; height: 28px; stroke-width: 2.2; }
+.s-liste--befund .s-liste-icon { background: var(--s-orange-flaeche); color: var(--s-orange); }
+.s-liste-wort { display: block; font-weight: 650; font-size: 34px; line-height: 1.25; }
+.s-liste-text { display: block; font-size: 30px; line-height: 1.3; color: var(--s-schrift-2); }
+
+/* 3f. Balken (horizontal) – Breite per --wert (0–100) */
+.s-balken { display: flex; flex-direction: column; gap: 22px; }
+.s-balken > li { display: grid; grid-template-columns: var(--etikett, 300px) minmax(0, 1fr); column-gap: 24px; align-items: center; }
+.s-balken-name { font-size: 28px; line-height: 1.2; color: var(--s-schrift-2); }
+.s-balken-spur { position: relative; height: 56px; display: flex; align-items: center; }
+.s-balken-fuell {
+  height: 100%; width: calc(var(--wert) * 1%); min-width: 6px;
+  border-radius: 6px; background: var(--s-mittel);
+}
+.s-balken-fuell--blau { background: var(--s-blau); }
+.s-balken-fuell--orange { background: var(--s-orange); }
+.s-balken-wert {
+  margin-left: 16px; font-family: var(--schrift-zahl); font-weight: 700; font-size: 36px;
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+
+/* 3g. Zitat */
+.s-zitat { border-left: 6px solid var(--s-blau); padding-left: 28px; }
+.s-zitat--befund { border-left-color: var(--s-orange); }
+.s-zitat-text { font-family: var(--schrift-display); font-weight: 500; font-size: 36px; line-height: 1.25; }
+.s-zitat-quelle { margin-top: 12px; font-size: 22px; color: var(--s-schrift-2); }
+
+/* 3h. Karte */
+.s-karte {
+  border-radius: var(--s-radius);
+  background: var(--s-flaeche);
+  padding: 28px 32px;
+  min-width: 0;
+}
+.s-karte--blau { background: var(--s-blau-flaeche); }
+.s-karte--orange { background: var(--s-orange-flaeche); }
+.s-karte-titel { font-family: var(--schrift-display); font-weight: 650; font-size: 38px; line-height: 1.15; }
+.s-karte-text { margin-top: 12px; font-size: 30px; line-height: 1.32; color: var(--s-schrift-2); }
+
+/* 3i. Kernsatz unten auf der Folie */
+.s-kern {
+  font-family: var(--schrift-display); font-weight: 600; font-size: 40px; line-height: 1.2;
+  padding-left: 28px; border-left: 8px solid var(--s-orange);
+}
+.s-kern--blau { border-left-color: var(--s-blau); }
+
+.s-staerke { display: grid; grid-template-columns: 52px minmax(0, 1fr); column-gap: 22px; align-items: center; padding: 34px 36px; }
+.s-staerke .s-karte-text { grid-column: 2; margin-top: 6px; }
+.s-staerke .s-liste-icon { grid-row: 1 / span 2; background: var(--s-papier); }
+
+/* 3i2. Inhalt senkrecht mittig (Folien mit wenig Inhalt) */
+.folie.s-mittig > .folie-inhalt { justify-content: center; padding-bottom: 40px; }
+
+/* 3j. SVG-Grafiken: Grundstile (eigene Zeichnungen) */
+.s-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.s-svg text { font-family: var(--schrift-text); fill: var(--s-schrift); }
+.s-svg .t-2 { fill: var(--s-schrift-2); }
+.s-svg .t-blau { fill: var(--s-blau); }
+.s-svg .t-orange { fill: var(--s-orange); }
+.s-svg .t-zahl { font-family: var(--schrift-zahl); font-weight: 700; }
+.s-svg .t-fett { font-weight: 650; }
+.s-svg .f-papier { fill: var(--s-papier); }
+.s-svg .f-flaeche { fill: var(--s-flaeche); }
+.s-svg .f-blau { fill: var(--s-blau); }
+.s-svg .f-blau-hell { fill: var(--s-blau-flaeche); }
+.s-svg .f-orange { fill: var(--s-orange); }
+.s-svg .f-orange-hell { fill: var(--s-orange-flaeche); }
+.s-svg .f-mittel { fill: var(--s-mittel); }
+.s-svg .f-linie { fill: var(--s-linie); }
+.s-svg .l { fill: none; stroke: var(--s-schrift); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.s-svg .l-2 { fill: none; stroke: var(--s-linie); stroke-width: 3; stroke-linecap: round; }
+.s-svg .l-blau { fill: none; stroke: var(--s-blau); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.s-svg .l-orange { fill: none; stroke: var(--s-orange); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.s-svg .l-gestrichelt { stroke-dasharray: 10 10; }
+
+
+/* -----------------------------------------------------------------------------
+   4. FOLIEN MIT EIGENER KOMPOSITION
+   ----------------------------------------------------------------------------- */
+
+/* 4a. Titelfolie */
+.s-titelfolie { overflow: hidden; }
+.s-titelfolie .folie-kopf { position: relative; z-index: 1; }
+.s-titelfolie .s-kicker { display: flex; gap: 16px; align-items: center; margin-bottom: 30px; }
+.s-titelfolie .titel { font-size: 112px; line-height: 1.0; letter-spacing: -0.03em; max-width: 1180px; }
+.s-titelfolie .lead { margin-top: 28px; font-size: 36px; max-width: 1080px; }
+.s-titelfolie .s-angaben { display: flex; gap: 64px; font-size: 28px; line-height: 1.35; position: relative; z-index: 1; }
+.s-titelfolie .s-angaben dt { color: var(--s-schrift-2); font-size: 22px; }
+.s-titelfolie .s-angaben dd { margin: 4px 0 0; font-weight: 600; }
+.s-titel-lupe { position: absolute; right: 60px; top: 150px; width: 700px; z-index: 0; }
+
+/* 4b. Trennfolien */
+.s-trenner { --teil-farbe: var(--s-blau); }
+.s-trenner[data-teil="2"] { --teil-farbe: var(--s-orange); }
+.s-trenner .folie-inhalt { justify-content: center; }
+.s-trenner-nr {
+  font-family: var(--schrift-zahl); font-weight: 750; font-size: 300px; line-height: 0.8;
+  color: var(--teil-farbe); letter-spacing: -0.04em;
+}
+.s-trenner-name { margin-top: 34px; font-family: var(--schrift-display); font-weight: 650; font-size: 120px; line-height: 1; letter-spacing: -0.03em; }
+.s-trenner-text { margin-top: 26px; font-size: 34px; color: var(--s-schrift-2); }
+.s-trenner-leiste { display: flex; gap: 12px; margin-top: 70px; }
+.s-trenner-leiste span { flex: 1; height: 10px; border-radius: 5px; background: var(--s-linie); }
+.s-trenner-leiste span.ist-aktuell { background: var(--teil-farbe); }
+.s-trenner-leiste span.ist-erledigt { background: var(--s-mittel); }
+
+/* 4c. Fahrplan */
+.s-fahrplan { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; margin-top: 10px; }
+.s-fahrplan > li { border-top: 8px solid var(--s-linie); padding-top: 26px; }
+.s-fahrplan > li.t1 { border-top-color: var(--s-blau); }
+.s-fahrplan > li.t2 { border-top-color: var(--s-orange); }
+.s-fahrplan > li.t3 { border-image: linear-gradient(90deg, var(--s-blau) 50%, var(--s-orange) 50%) 1; }
+.s-fahrplan-nr { font-family: var(--schrift-zahl); font-weight: 700; font-size: 88px; line-height: 1; }
+.s-fahrplan-name { margin-top: 18px; font-family: var(--schrift-display); font-weight: 650; font-size: 48px; line-height: 1.12; }
+.s-fahrplan-text { margin-top: 12px; font-size: 32px; line-height: 1.3; color: var(--s-schrift-2); }
+.s-leitfrage { margin-top: 64px; }
+
+/* 4d. Sechs Schritte (Kreislauf-Leiste) */
+.s-sechs { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px; }
+.s-sechs > li {
+  position: relative;
+  border-radius: var(--s-radius);
+  background: var(--s-blau-flaeche);
+  padding: 26px 22px 28px;
+  min-height: 340px;
+}
+.s-sechs > li:not(:last-child)::after {
+  content: ""; position: absolute; right: -16px; top: 50%; width: 14px; height: 14px;
+  border-top: 4px solid var(--s-blau); border-right: 4px solid var(--s-blau);
+  transform: translate(0, -50%) rotate(45deg); z-index: 1;
+}
+.s-sechs-nr { font-family: var(--schrift-zahl); font-weight: 700; font-size: 56px; line-height: 1; color: var(--s-blau); }
+.s-sechs-icon { margin-top: 18px; width: 56px; height: 56px; color: var(--s-blau); }
+.s-sechs-icon .icon { width: 56px; height: 56px; stroke-width: 1.8; }
+.s-sechs-name { margin-top: 18px; font-family: var(--schrift-display); font-weight: 650; font-size: 36px; line-height: 1.12; }
+.s-sechs-text { margin-top: 10px; font-size: 26px; line-height: 1.3; color: var(--s-schrift-2); }
+.s-sechs-phasen { display: grid; grid-template-columns: 3fr 1fr 2fr; gap: 18px; margin-top: 24px; }
+.s-sechs-phasen span {
+  border-top: 3px solid var(--s-linie); padding-top: 10px;
+  font-size: 28px; color: var(--s-schrift-2); text-align: center;
+}
+
+/* 4e. Widerspruchstabelle */
+.s-widerspruch { width: 100%; border-collapse: collapse; font-size: 28px; line-height: 1.25; }
+.s-widerspruch th { text-align: left; font-size: 22px; font-weight: 600; color: var(--s-schrift-2); padding: 0 20px 12px 0; border-bottom: 3px solid var(--s-schrift); }
+.s-widerspruch td { padding: 15px 20px 15px 0; border-bottom: 2px solid var(--s-linie); vertical-align: baseline; }
+.s-widerspruch td:first-child { color: var(--s-schrift-2); width: 24%; }
+.s-widerspruch .w-a { font-family: var(--schrift-zahl); font-weight: 700; font-size: 34px; color: var(--s-blau); white-space: nowrap; }
+.s-widerspruch .w-b { font-family: var(--schrift-zahl); font-weight: 700; font-size: 34px; color: var(--s-orange); white-space: nowrap; }
+.s-widerspruch .w-ort { display: block; font-family: var(--schrift-text); font-weight: 400; font-size: 22px; color: var(--s-schrift-2); }
+
+/* 4f. Punktraster (Survivorship) */
+.s-punkte { display: grid; grid-template-columns: repeat(20, 1fr); gap: 12px; }
+.s-punkte i { aspect-ratio: 1; border-radius: 50%; background: var(--s-linie); }
+.s-punkte i.ist-gewinner { background: var(--s-blau); box-shadow: 0 0 0 6px var(--s-blau-flaeche); }
+
+/* 4g. Bewertungsraster / Ampel */
+.s-ampel { display: flex; flex-direction: column; }
+.s-ampel > li {
+  display: grid; grid-template-columns: 330px 180px minmax(0, 1fr); column-gap: 28px; align-items: center;
+  padding: 22px 0; border-bottom: 2px solid var(--s-linie);
+}
+.s-ampel-name { font-weight: 650; font-size: 34px; }
+.s-ampel-urteil { display: flex; align-items: center; gap: 12px; font-size: 30px; font-weight: 650; }
+.s-ampel-urteil::before { content: ""; width: 26px; height: 26px; border-radius: 50%; background: currentColor; flex: none; }
+.s-ampel-urteil.u-gut { color: var(--s-gruen); }
+.s-ampel-urteil.u-teils { color: var(--s-gelb); }
+.s-ampel-urteil.u-schwach { color: var(--s-orange); }
+.s-ampel-text { font-size: 30px; line-height: 1.3; color: var(--s-schrift-2); }
+
+/* 4h. Drei Spalten behalten / anpassen / streichen */
+.s-drei { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-rinne); }
+.s-drei-kopf { display: flex; align-items: center; gap: 14px; padding-bottom: 14px; border-bottom: 5px solid var(--farbe, var(--s-schrift)); font-family: var(--schrift-display); font-weight: 650; font-size: 38px; }
+.s-drei-kopf .icon { width: 40px; height: 40px; color: var(--farbe); stroke-width: 2.4; }
+.s-drei ul { margin-top: 26px; display: flex; flex-direction: column; gap: 26px; }
+.s-drei li { font-size: 34px; line-height: 1.3; }
+.s-drei li b { display: block; }
+.s-drei li span { color: var(--s-schrift-2); font-size: 30px; }
+
+/* 4i. Fragen (Diskussion) */
+.s-fragen { display: flex; flex-direction: column; gap: 56px; counter-reset: frage; }
+.s-fragen > li { display: grid; grid-template-columns: 110px minmax(0, 1fr); align-items: baseline; counter-increment: frage; }
+.s-fragen > li::before { content: counter(frage); font-family: var(--schrift-zahl); font-weight: 700; font-size: 80px; line-height: 1; color: var(--s-orange); }
+.s-fragen-text { font-family: var(--schrift-display); font-weight: 600; font-size: 52px; line-height: 1.2; }
+.s-fragen-text small { display: block; margin-top: 6px; font-family: var(--schrift-text); font-weight: 400; font-size: 28px; color: var(--s-schrift-2); }
+
+/* 4j. Quellen (Backup) */
+.s-quellen { columns: 2; column-gap: 64px; font-size: 22px; line-height: 1.38; color: var(--s-schrift-2); }
+.s-quellen li { break-inside: avoid; margin-bottom: 14px; }
+.s-quellen b { color: var(--s-schrift); font-weight: 600; }
+
+
+/* -----------------------------------------------------------------------------
+   5. DRUCK, BEWEGUNG
+   ----------------------------------------------------------------------------- */
+@media print {
+  .s-beleg { box-shadow: none; }
+}
+html.bewegung-reduziert .s-beleg { box-shadow: none; }

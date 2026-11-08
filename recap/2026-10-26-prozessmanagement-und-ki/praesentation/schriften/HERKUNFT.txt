@@ -16,9 +16,9 @@ Thema „Editorial“ (Standard)
     fraunces-latin-full-italic.woff2, fraunces-latin-ext-full-italic.woff2
     (Kursive seit 16.10.2026 aus der „full“-Datei: nur dort lassen sich mit
     "WONK" 0 die verspielten Formen b, h, k, l abschalten – css/tokens.css.
-    Die bisherigen Dateien fraunces-latin-opsz-italic.woff2 und
-    fraunces-latin-ext-opsz-italic.woff2 bleiben liegen: Die Startseite der
-    Webseite (index.html im Hauptverzeichnis des Repositorys) bindet sie ein.)
+    Die früheren Dateien fraunces-latin-opsz-italic.woff2 und
+    fraunces-latin-ext-opsz-italic.woff2 bindet keine Datei dieser
+    Präsentation ein; sie sind hier seit 30.10.2026 entfernt.)
     Original: github.com/undercasetype/Fraunces
   Inter (Achsen wght 100–900, opsz 14–32; normal + kursiv)     – @fontsource-variable/inter
     inter-latin-opsz-normal.woff2, inter-latin-ext-opsz-normal.woff2,

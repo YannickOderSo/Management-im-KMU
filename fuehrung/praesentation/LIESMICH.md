@@ -20,7 +20,7 @@ PDF: `index.html?druck` öffnen und drucken (eine Seite je Folie, Endzustand).
 **Notfall-PDF** (Plan B, falls Browser oder Beamer streiken): `export/praesentation-notfall.pdf` – neu erzeugen mit
 `node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --druck export/praesentation-notfall.pdf`.
 
-## Aufbau (Vortrag 35 Min. + 10 Min. Diskussion, Sollzeiten zusammen 34:35)
+## Aufbau (Vortrag 35 Min. + 10 Min. Diskussion, Sollzeiten zusammen 35:00, ca. 3.900 gesprochene Wörter)
 
 | Teil | Folien |
 |---|---|
@@ -56,3 +56,20 @@ Belege: Die Nummern `[n]` in den Fußzeilen entsprechen den Quellenverzeichnisse
 3. ✅ GitHub Pages ist eingeschaltet (Branch `claude/exciting-meitner-w27zwy`), QR-Codes auf Folie 08 und 21 führen dorthin.
    Abstimmseite einmal mit dem Handy testen.
 4. Prüfen: `PLAYWRIGHT_CORE=… node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte`
+
+## Präsentationsskript
+
+`export/praesentationsskript.pdf` (A4, ca. 30 Seiten), Aufbau wie das Skript der Recap: Titelseite mit Ablauf,
+Überblick mit Zwischenzeiten, je Block jede Folie mit Vorschaubild, Sprechtext je Klick, Regie und Randnotizen,
+Anhang mit Rückfragen, Quellen, Kürzungsplan und Plan B. Sprechtext und Zeiten kommen aus `index.html`,
+Blöcke, Rückfragen, Kürzungssätze und Plan B aus `werkzeuge/skript-zusatz.json`.
+
+    CHROME_PFAD=/opt/pw-browsers/chromium PLAYWRIGHT_CORE=/opt/node-tools/node_modules/playwright-core \
+    node werkzeuge/praesentationsskript.mjs
+
+Neu erzeugen nach jeder Änderung an Sprechtext, Notizen, data-zeit oder skript-zusatz.json; der Prüfbericht
+liegt in `_test/skript/pruefung.json` (Kürzungssätze müssen wörtlich im Sprechtext stehen).
+
+Locker formulierte Fassung (gleiche Folien, Zeiten und Randnotizen, Sprechtext aus `werkzeuge/skript-locker.json`,
+Zahlen gerundet, Zitate wörtlich): `SKRIPT_TEXTE=werkzeuge/skript-locker.json node werkzeuge/praesentationsskript.mjs`
+→ `export/praesentationsskript-locker.pdf`.

@@ -73,7 +73,8 @@ html[data-modus],
   --r-schrift: #161B27;       /* Tinte: Schrift, Titel, Daten, Pfeile */
   --r-schrift-2: #586070;     /* Schiefer: Nebentext, Meta, Quellen, zurückgetretene Spotlight-Texte */
   --r-mittel: #737B8B;        /* Mittel: Grafik „gering/sekundär“, zurückgetretene Striche */
-  --r-leer: #A9B0BB;          /* Nebel: NUR leere Reststriche, Haarlinien, kommende Laufleiste – nie Daten */
+  --r-leer: #A9B0BB;          /* Nebel: NUR leere Reststriche, Haarlinien, kommende Laufleiste – nie Daten.
+                                 Kräftiger als die Spec (#BCC2CB), damit Haarlinien und Reststriche am Beamer sichtbar bleiben (30.10.2026) */
   --r-faden: #C0132D;         /* Karmin: Faden (Linie, Webung, aktueller Block), Schlüssel-Grafik */
   --r-faden-text: #C0132D;    /* Karmin als Schrift: die EINE Schlüsselzahl/-aussage je Folie */
   --r-letterbox: #D7DAD4;     /* Rand um die Bühne (Fenster nicht 16 : 9) */
@@ -193,8 +194,11 @@ html[data-thema="bento"] {
    3. FOLIENRAHMEN
    ----------------------------------------------------------------------------- */
 .folie { font-feature-settings: "kern" 1; }
-/* Spezifität 0, damit Klassenregeln für <b> (Hervorhebung, Listenwörter) greifen */
-:where(.folie) :where(b, strong) { font-weight: var(--gewicht-fett); }
+/* Grundgewicht für <b>/<strong> mit Spezifität 0,0,1 (:where zählt nicht):
+   Komponentenklassen auf <b> (.r-liste-wort 450, .r-toe-zahl 470 …) gewinnen
+   damit immer – sonst stünde jedes Stichwort in 600 und das Karmin-Element
+   wäre leichter als seine Nachbarn (Prüfbefund 30.10.2026). */
+:where(.folie) :is(b, strong) { font-weight: var(--gewicht-fett); }
 
 /* Senkrechter Rhythmus: Laufleiste → 60 → Titel → 56 → Inhalt */
 :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie > .r-laufkopf ~ .folie-kopf { margin-top: 60px; }
@@ -207,17 +211,15 @@ html[data-thema="bento"] {
 :is(.buehne, .ue-bild, .r-vorschau, .druck-seite) > .folie[data-laufkopf="aus"]:not(.r-titel) > .folie-kopf { margin-top: 108.4px; }
 
 /* Titel = Kernaussage als Satz: 88 px, höchstens 2 Zeilen, höchstens 9 Spalten.
-   Gezielter Zeilenumbruch: <span class="r-zeile">zweite Zeile</span> */
+   Gezielter Zeilenumbruch: <span class="r-zeile">zweite Zeile</span> – gilt
+   auf der ganzen Folie (Titel, Thesen, Etiketten, Listen; f04, f07, f16). */
 .folie .titel {
   font-size: var(--groesse-titel);
   line-height: var(--zeilenhoehe-titel);
   max-width: 1240px;
 }
-.folie .titel .r-zeile { display: block; }
+.folie .r-zeile { display: block; }
 
-/* Übergang: Kicker der noch nicht umgestellten Folien ruhig statt Versalien
-   (auf umgestellten Inhaltsfolien gibt es keinen Kicker mehr) */
-.folie .kicker { font-size: 24px; font-weight: 500; color: var(--r-schrift-2); }
 .folie .lead { color: var(--r-schrift-2); }
 
 /* Quelle: 22 px Schiefer unten links */
@@ -252,6 +254,11 @@ html[data-thema="bento"] {
   color: var(--r-schrift-2);
 }
 .r-lauf-name.ist-aktuell { color: var(--r-schrift); font-weight: 600; }
+/* Das Wort selbst trägt data-morph="station-n" (recap.js): seine Box ist so
+   breit wie der Text, sodass der Kurzname der Trennfolie beim Morph als EIN
+   Wort in die Leiste schrumpft (die Box des Flex-Elements wäre bis zu 600 px
+   breit und verzerrte das Seitenverhältnis). */
+.r-lauf-wort { display: inline-block; }
 .r-lauf-faden { height: var(--r-faden-dicke); align-items: center; }
 .r-lauf-teil { flex: var(--anteil, 1) 1 0; height: var(--r-haar); background: var(--r-leer); }
 .r-lauf-teil.ist-erledigt { background: var(--r-schrift-2); }
@@ -260,8 +267,6 @@ html[data-thema="bento"] {
 .r-lauf--geschlossen .r-lauf-teil { height: var(--r-faden-dicke); background: var(--r-faden); }
 .r-lauf--geschlossen .r-lauf-name { color: var(--r-schrift); }
 .r-lauf-nummer {
-  min-width: 40px;            /* Fraunces-Ziffern ungleich breit: Leiste soll nicht zucken */
-  text-align: right;
   font-family: var(--schrift-zahl);
   font-size: 30px;
   font-weight: 450;
@@ -269,6 +274,11 @@ html[data-thema="bento"] {
   font-variation-settings: "opsz" 36, var(--achsen-ruhig);
   font-variant-numeric: lining-nums tabular-nums;
   color: var(--r-schrift);
+  /* feste Breite: Fraunces hat hier proportionale Ziffern („11“ 27 px,
+     „08“ 37 px) – ohne feste Box wanderten Leistenende und Blockgrenzen von
+     Folie zu Folie um bis zu 10 px */
+  min-width: var(--r-lauf-nummer-breite, 44px);
+  text-align: right;
 }
 
 
@@ -387,18 +397,14 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
 
 /* 5.0 Raster und Felder (12 Spalten, Rinne 32 px, keine Zeilenlücke):
    <div class="r-raster"><div class="r-feld-haupt">…</div><div class="r-feld-seite">…</div></div>
-   Felder: rand 1–3 (hängende Zahlen) · text 4–12 · haupt 1–8 · seite 9–12 ·
-   links 1–7 · rechts 8–12 (Vergleich). Dreier/Vierer: .r-raster--3 / --4. */
+   Felder: haupt 1–8 · seite 9–12. Dreier 4/4/4: .r-raster--3.
+   Andere Felder direkt mit grid-column in der Folien-Datei setzen (die
+   ungenutzten Vorrat-Felder rand/text/links/rechts/voll und .r-raster--4
+   sind seit dem Abschluss am 01.11.2026 gestrichen). */
 .r-raster { display: grid; grid-template-columns: var(--r-raster); column-gap: var(--r-rinne); align-items: start; }
 .r-raster--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.r-raster--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.r-feld-rand { grid-column: 1 / 4; }
-.r-feld-text { grid-column: 4 / 13; }
 .r-feld-haupt { grid-column: 1 / 9; }
 .r-feld-seite { grid-column: 9 / 13; }
-.r-feld-links { grid-column: 1 / 8; }
-.r-feld-rechts { grid-column: 8 / 13; }
-.r-feld-voll { grid-column: 1 / -1; }
 
 /* 5.1 Bezeichner: ruhige Zeile, die ein Diagramm benennt (statt Kicker),
    z. B. „Technology Acceptance Model (Davis 1989)“. Immer mit data-meta. */
@@ -422,7 +428,10 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
   text-wrap: balance;
   color: var(--spot-text, var(--r-schrift));
 }
-.r-these--faden { color: var(--spot-akzent, var(--r-faden-text)); }
+/* Karmin-These: zusätzlich kräftiger (560 gegen 430, wie der Merksatz von
+   li.ist-faden) – Karmin ist kaum dunkler als Schiefer; bei 500 trat die
+   These im Graustufentest nicht sicher vor Nachbarn in Tinte 450 (f04) */
+.r-these--faden { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 560; }
 
 /* 5.2b Zitat: Fraunces 40 px, Quelle als Meta-Zeile darunter.
    <blockquote class="r-zitat"><p class="r-zitat-text">„inhaltlich abgeschlossene … Folge von Aktivitäten“</p>
@@ -450,8 +459,9 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
 }
 .r-hinweis b { font-weight: 600; color: var(--r-schrift); }
 
-/* 5.4 Haarlinie: 2 px Nebel (Struktur, nie Information) */
-.r-haarlinie { height: 0; margin: 0; border: 0; border-top: var(--r-haar) solid var(--r-leer); }
+/* 5.4 Haarlinie: 2 px Nebel (Struktur, nie Information): Linie oben + 20 px.
+   Haarlinien-Strukturen, die nebeneinanderstehen, auf gemeinsame Bänder legen
+   (feste Zeilenhöhe), damit keine Linien knapp versetzt stehen (f06). */
 .r-mit-haarlinie { padding-top: 20px; border-top: var(--r-haar) solid var(--r-leer); }
 
 /* 5.5 %-Einheit: Prozentzeichen 0,5 em mit schmalem Abstand hinter der Zahl.
@@ -472,7 +482,9 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
                   <span class="r-skala-teil r-skala-teil--mittel" style="--anteil:77"></span>
                   <span class="r-skala-teil r-skala-teil--umriss" style="--anteil:13"></span></span>
    Wert in Tinte, Rest in Nebel. Teile: Karmin/Tinte/Mittel, „leer/keine“ als
-   Umriss-Striche; zwischen Teilen eine Strichbreite Lücke. */
+   Umriss-Striche; zwischen Teilen eine Strichbreite Lücke. Der Karmin-Teil
+   steht 20 px höher als die anderen (Stellung statt nur Farbe: Karmin ist in
+   Graustufen kaum dunkler als Mittel; f19). */
 .r-skala {
   --takt: 12px;                         /* Strich + Lücke */
   --strich: 8px;
@@ -496,6 +508,7 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
 }
 .r-skala--teile {
   display: flex;
+  align-items: flex-end;
   gap: var(--strich);
   width: max-content;
   background: none;
@@ -508,9 +521,10 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
   background: repeating-linear-gradient(90deg, var(--teil-farbe) 0 var(--strich), transparent var(--strich) var(--takt));
 }
 .r-skala-teil--faden { --teil-farbe: var(--spot-akzent-strich, var(--r-faden)); }
+.r-skala--teile > .r-skala-teil--faden { height: calc(100% + 20px); }
 .r-skala-teil--mittel { --teil-farbe: var(--r-mittel); }
 .r-skala-teil--umriss {
-  --umriss: var(--r-mittel);
+  --umriss: var(--r-schrift-2);
   background:
     repeating-linear-gradient(90deg, var(--umriss) 0 var(--strich), transparent var(--strich) var(--takt)) top / 100% 2px no-repeat,
     repeating-linear-gradient(90deg, var(--umriss) 0 var(--strich), transparent var(--strich) var(--takt)) bottom / 100% 2px no-repeat,
@@ -535,6 +549,7 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
   --spur: 520px;
   --name: max-content;
   --hoehe: 16px;
+  --balken-zahl: 36px;
   display: grid;
   grid-template-columns: var(--name) var(--spur) auto;
   justify-content: start;
@@ -570,7 +585,7 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
   justify-self: end;
   text-align: right;
   font-family: var(--schrift-zahl);
-  font-size: 36px;
+  font-size: var(--balken-zahl, 36px);
   font-weight: 480;
   line-height: 1;
   font-variation-settings: "opsz" 36, var(--achsen-ruhig);
@@ -578,9 +593,21 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
   color: var(--spot-text, var(--r-schrift));
   white-space: nowrap;
 }
+/* Schlüsselzeile: Karmin UND Gewicht 600 (Name und Zahl) UND Größe – der
+   Karmin-Balken allein ist in Graustufen heller als die Tinten-Balken. Die
+   Zahl steht 1,25-mal so groß; ihre Zeilenhöhe ist ein Faktor ohne Einheit
+   (0,8), damit die Zeilenbox gleich hoch bleibt (eine absolute Zeilenhöhe
+   erbte das %-Zeichen, die Zeile wüchse). Der Balken ist 8 px dicker, nach
+   oben und unten je 4 px (margin-block −4 px: die Zeile verschiebt sich
+   nicht). Größere Zahlen: --balken-zahl an der Liste (f12: 48 px → 60 px). */
 .r-balken-zeile--faden .r-balken-zahl,
-.r-balken-zeile--faden .r-balken-name { color: var(--spot-akzent, var(--r-faden-text)); }
-.r-balken-zeile--faden .r-balken-zahl { font-weight: 560; }
+.r-balken-zeile--faden .r-balken-name { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 600; }
+.r-balken-zeile--faden .r-balken-zahl {
+  font-size: calc(var(--balken-zahl, 36px) * 1.25);
+  line-height: 0.8;
+  font-variation-settings: "opsz" 48, var(--achsen-ruhig);
+}
+.r-balken-zeile--faden .r-balken-spur { height: calc(var(--hoehe, 16px) + 8px); margin-block: -4px; }
 
 /* 5.8 Kennzahl mit Zahl in der Randspalte (Spalten 1–3, rechtsbündig),
    Aussage 32 px ab Spalte 4, Quelle 22 px Schiefer je Zeile.
@@ -589,7 +616,9 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
      <p class="r-zahl-text">des Mittelstands …</p>
      <span class="r-skala" style="--wert:20">…</span>   (optional)
      <span class="r-zahl-quelle" data-meta>KfW-Mittelstandspanel</span></div>
-   .r-zahl--faden: die EINE Schlüsselzahl in Karmin (mit Zusatzabstand). */
+   .r-zahl--faden: die EINE Schlüsselzahl in Karmin – mit Zusatzabstand,
+   Gewicht 600 (gegen 470) und Größe 200 px (gegen 172): Karmin plus Gewicht
+   allein genügt im Graustufentest nicht (f08). */
 .r-zahl {
   display: grid;
   grid-template-columns: var(--r-randspalte) minmax(0, 1fr);
@@ -615,7 +644,7 @@ html.wechsel-laeuft .r-webe-vorne { opacity: 0; transition: none; }
 .r-zahl-text { margin-bottom: 12px; font-size: 32px; line-height: 1.25; color: var(--spot-text, var(--r-schrift)); }
 .r-zahl-quelle { margin-top: 8px; font-size: 22px; line-height: 1.2; color: var(--r-schrift-2); }
 .r-zahl--faden { margin-top: 28px; }
-.r-zahl--faden .r-zahl-wert { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 540; }
+.r-zahl--faden .r-zahl-wert { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 600; font-size: 200px; }
 /* .r-zahl--schmal: Kennzahl im Hauptfeld neben einem Seitenfeld (f09).
    Randspalte 166 px, Zahl 104 px – mit Rinne und r-skala--schmal (900 px)
    füllt die Zeile genau Spalten 1–8 (166 + 32 + 900 = 1098). */
@@ -644,6 +673,20 @@ html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:
   transition: color 360ms var(--kurve), background-color 360ms var(--kurve), stroke 360ms var(--kurve), fill 360ms var(--kurve);
 }
 .r-spot > [data-schritt] :is(.r-skala-wert, .r-skala-teil, .r-skala) { transition: none; }
+/* Rückzug: Eine Gruppe tritt ab einem Schritt DAUERHAFT zurück (Text
+   Schiefer, Striche Mittel – dieselben Stufen wie im Spotlight), auch im
+   Endzustand, im Druck und in der Übersicht. Für Folien, auf denen ein erster
+   Eindruck widerlegt wird (f09: die Größen-Skalen treten zurück, sobald
+   „Know-how im Team“ steht). Auslöser ist ein Geschwister mit data-schritt:
+   <figure class="r-zurueck">…</figure>
+   <div class="r-zurueck-ausloeser" data-schritt="1">…</div>
+   Kein Karmin in der zurücktretenden Gruppe. */
+:has(> .r-zurueck-ausloeser.schritt-an) > .r-zurueck,
+html.druckmodus .r-zurueck,
+.ue-bild .r-zurueck {
+  --spot-text: var(--r-schrift-2);
+  --spot-strich: var(--r-mittel);
+}
 
 /* 5.10 Pfaddiagramm: Knoten sind Wörter (Fraunces 46–64 px), keine Kästen.
    Linien als SVG im Bühnenmaß (viewBox = Pixelgröße des SVG), Pfeilspitzen
@@ -693,9 +736,8 @@ html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:
    (Wörter 64 px, f03).
    .r-kette--bruch: die Linie reißt an jeder Übergabe; zwischen die <li>
    gehört <li class="r-kette-bruch" aria-label="Übergabe"></li> (kleines
-   Bruchzeichen in Tinte; .r-kette-bruch--faden = Karmin, nur wenn es die
-   EINE Karmin-Betonung der Folie ist). Mit .r-kette--breit wachsen die
-   Abschnitte mit, die Bruchzeichen bleiben schmal (f04). */
+   Bruchzeichen in Tinte). Mit .r-kette--breit wachsen die Abschnitte mit,
+   die Bruchzeichen bleiben schmal (f04). */
 .r-kette {
   --strich: var(--r-strich-daten);
   --spitze: 26px;
@@ -780,8 +822,6 @@ html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:
 }
 .r-kette-bruch::before { left: 10px; }
 .r-kette-bruch::after { left: 22px; }
-.r-kette-bruch--faden::before,
-.r-kette-bruch--faden::after { background: var(--spot-akzent-strich, var(--r-faden)); }
 
 /* Bogen zurück (Schleife, z. B. „anhängen, von vorn“): unter der Kette von
    der letzten zur ersten Station, Pfeilspitze nach oben am Anfang.
@@ -924,7 +964,8 @@ html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:
   font-variant-numeric: lining-nums tabular-nums;
   color: var(--r-schrift);
 }
-:is(.ist-heute, .ist-faden) > .r-zeit-jahr { color: var(--r-faden-text); }
+/* Karmin-Knoten: gefüllter Punkt UND kräftigeres Jahr (600 gegen 470) */
+:is(.ist-heute, .ist-faden) > .r-zeit-jahr { color: var(--r-faden-text); font-weight: 600; }
 .r-zeit-name { margin-top: 8px; font-size: 34px; font-weight: 600; line-height: 1.15; color: var(--r-schrift); }
 .r-zeit-wort { margin-top: 6px; font-size: 30px; line-height: 1.25; color: var(--r-schrift-2); }
 /* Zeitstrahl mit wenigen Stationen (f13: zwei): statt des Stichworts ein
@@ -976,8 +1017,9 @@ html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:
 }
 .r-vergleich > .r-vergleich-kopf:nth-child(even) { color: var(--r-schrift-2); }
 .r-vergleich > p.r-vergleich-leer { border-top-color: transparent; }
-/* erste Zeile: Kopf hat schon seine Linie, keine zweite darunter */
-.r-vergleich > p:nth-child(-n+4) { border-top-color: transparent; }
+/* erste Zeile direkt unter den Köpfen: keine eigene Haarlinie (sonst stünde
+   unter der 2-px-Kopflinie eine zweite Linie im Abstand von 4 px) */
+.r-vergleich > p:is(:nth-child(3), :nth-child(4)) { border-top-color: transparent; }
 
 /* 5.15 Liste (nur ohne Struktur, höchstens 4 Punkte): Stichwort Fraunces
    36–40 px + Erklärung 30 px Schiefer, Haarlinien. .r-liste--reihe: 3–4
@@ -1003,8 +1045,12 @@ html:not(.druckmodus):not(.aufnahme) :is(.buehne, .r-vorschau) > .folie .r-spot:
   color: var(--spot-text, var(--r-schrift));
 }
 .r-liste-text { font-size: 30px; line-height: 1.3; color: var(--r-schrift-2); text-wrap: balance; }
-.r-liste > li.ist-faden .r-liste-wort { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 540; }
-.r-liste > li.ist-faden .r-liste-text { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 500; }
+/* Karmin ist kaum dunkler als Schiefer: die Karmin-Aussage hebt sich deshalb
+   zusätzlich über das Gewicht ab (Stichwort 680 gegen 450, Merksatz 560 gegen
+   400). Bei 600 stand das Stichwort im Graustufentest noch heller als die
+   Tinte-Nachbarn (f14: Tonwert 67,9 gegen 71,4; bei 680 ca. 76). */
+.r-liste > li.ist-faden .r-liste-wort { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 680; }
+.r-liste > li.ist-faden .r-liste-text { color: var(--spot-akzent, var(--r-faden-text)); font-weight: 560; }
 .r-liste--reihe { display: grid; grid-template-columns: repeat(var(--spalten, 3), minmax(0, 1fr)); column-gap: var(--r-rinne); }
 
 
@@ -1061,17 +1107,33 @@ html:is([data-thema="keynote"], [data-thema="bento"]) :is(.buehne, .ue-bild, .r-
    Ohne Laufleiste; der Titel steht trotzdem auf der Höhe der Inhaltsfolien
    (Regel „Folien ohne Laufleiste“ in Abschnitt 3). Der Faden ist schon in
    Schritt 0 da (gleitet von f01 herein) und läuft UNTER den Nummern – nichts
-   wirkt durchgestrichen. */
-.r-plan .folie-inhalt { justify-content: flex-start; gap: 84px; }
+   wirkt durchgestrichen. Folienklasse .r-ueberblick (nicht .r-plan: diesen
+   Namen nutzt die Referentenansicht der Engine, deck.css).
+   Je Block: Nummer, Kurzname (wie Laufleiste und Trennfolien), wer ihn
+   gehalten hat. Die vier Blöcke teilen sich per Subgrid ihre Zeilen: die
+   Namen stehen auf einer Linie, auch wenn ein Kurzname unter Taste T
+   (breitere Grotesk) zweizeilig umbräche. */
+/* Abstand Blöcke → These 140 px: so steht die These (Schritt 1) mittig
+   zwischen den Blöcken und der Quelle (Luft darüber ≈ Luft darunter) */
+.r-ueberblick .folie-inhalt { justify-content: flex-start; gap: 140px; }
 .r-bloecke {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(3, auto);
   column-gap: var(--r-rinne);
   margin: 0;
   padding: 0;
   list-style: none;
 }
-.r-block { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.r-block {
+  display: grid;
+  grid-row: span 3;
+  grid-template-rows: subgrid;
+  justify-items: start;
+  align-content: start;
+  min-width: 0;
+}
+.r-block > * { align-self: start; }
 .r-block-nr {
   font-family: var(--schrift-zahl);
   font-size: 176px;
@@ -1091,11 +1153,10 @@ html:is([data-thema="keynote"], [data-thema="bento"]) :is(.buehne, .ue-bild, .r-
   letter-spacing: -0.01em;
   font-variation-settings: "opsz" 48, var(--achsen-ruhig);
 }
-.r-block-wer { margin-top: 18px; font-size: 26px; line-height: 1.25; color: var(--r-schrift); }
-.r-block-stand { margin-top: 4px; font-size: 24px; line-height: 1.25; color: var(--r-schrift-2); }
+.r-block-wer { margin-top: 18px; font-size: 26px; line-height: 1.25; color: var(--r-schrift-2); }
 /* These 50 px: bei opsz 48 bräche sie dreizeilig um (Fraunces wird mit
    kleiner optischer Größe breiter); opsz 60 hält sie zweizeilig in 9 Spalten */
-.r-plan .r-these { margin-top: 14px; font-size: 50px; letter-spacing: -0.015em; font-variation-settings: "opsz" 60, var(--achsen-ruhig); }
+.r-ueberblick .r-these { font-size: 50px; letter-spacing: -0.015em; font-variation-settings: "opsz" 60, var(--achsen-ruhig); }
 
 /* ---------- Trennfolien t1–t4: Fahrplan der vier Blöcke ----------
    Der aktuelle Block: Kurzname (einheitlich --r-trenner-groesse) steht auf
@@ -1167,4 +1228,20 @@ html.bewegung-reduziert .r-spot > [data-schritt] * { transition: none !important
   .r-webe-vorne,
   .r-spot > [data-schritt],
   .r-spot > [data-schritt] * { transition: none !important; }
+}
+
+/* Morph Trennfolie → Laufleiste (data-morph="station-n", View Transition der
+   Engine): Kurzname (Fraunces 320 px) und Leistenwort (Franklin 22 px) haben
+   verschiedene Seitenverhältnisse (2,6–3,7 gegen 3,7–5 : 1). Standardmäßig
+   behält jedes Bild sein eigenes Verhältnis und hängt oben an der Gruppe –
+   dann stehen altes und neues Wort versetzt übereinander („Geisterwort“).
+   Beide Bilder füllen deshalb die Gruppe ganz aus: die Grundlinien decken
+   sich, das Wort schrumpft als EIN Wort. Keine eigene Animation; Druck,
+   Aufnahme und „Bewegung reduzieren“ haben keine View Transitions. */
+::view-transition-old(station-1), ::view-transition-new(station-1),
+::view-transition-old(station-2), ::view-transition-new(station-2),
+::view-transition-old(station-3), ::view-transition-new(station-3),
+::view-transition-old(station-4), ::view-transition-new(station-4) {
+  block-size: 100%;
+  object-fit: fill;
 }

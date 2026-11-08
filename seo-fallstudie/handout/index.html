@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SEO-Fallstudie · Handout</title>
+<!--
+  Handout (max. 2 Seiten A4) zur Präsentation „SEO-Fallstudie unter der Lupe“
+  Modul Management im KMU · Prof. Dr. Christine Arend-Fuchs · Elias Knauber und Yannick Heisler
+  Aufbau wie fuehrung/diskussionspapier: Thema zusammengefasst, keine Quellenliste,
+  am Ende die drei Diskussionsfragen von Folie 28 (wortgleich).
+  Alle Zahlen wie in der Präsentation (gegengeprüft am 05.11.2026, siehe
+  ../praesentation/LIESMICH.md, Abschnitt „Geprüfte Befunde“).
+  PDF erzeugen: node seo-fallstudie/handout/pdf.mjs  (prüft: höchstens 2 Seiten)
+-->
+<style>
+  @font-face { font-family: "Bricolage Handout"; src: url("../praesentation/schriften/bricolage-grotesque-latin-standard-normal.woff2") format("woff2"); font-weight: 200 800; font-style: normal; }
+  @font-face { font-family: "Bricolage Handout"; src: url("../praesentation/schriften/bricolage-grotesque-latin-ext-standard-normal.woff2") format("woff2"); font-weight: 200 800; font-style: normal; unicode-range: U+0100-024F, U+1E00-1EFF; }
+  @font-face { font-family: "Inter Handout"; src: url("../praesentation/schriften/inter-latin-opsz-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; }
+  @font-face { font-family: "Inter Handout"; src: url("../praesentation/schriften/inter-latin-ext-opsz-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; unicode-range: U+0100-024F, U+1E00-1EFF; }
+  @font-face { font-family: "Inter Handout"; src: url("../praesentation/schriften/inter-latin-opsz-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; }
+
+  :root { --text: #15171C; --leise: #555A64; --linie: #D3D3CE; --papier: #fff; --flaeche: #F3F2EE;
+          --blau: #1F4FD8; --blau-flaeche: #E8EDFB; --orange: #B23C0A; --orange-flaeche: #FCEEE6; --gruen: #2F7D32; --gelb: #8F5B00; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --text: #F2F1EC; --leise: #B3B7C0; --linie: #3A3E47; --papier: #14161B; --flaeche: #1F2229;
+          --blau: #7EA2FF; --blau-flaeche: #1C2747; --orange: #FF8A4C; --orange-flaeche: #3A2216; --gruen: #6CC070; --gelb: #E7B547; }
+  }
+  :root[data-theme="dark"] { --text: #F2F1EC; --leise: #B3B7C0; --linie: #3A3E47; --papier: #14161B; --flaeche: #1F2229;
+          --blau: #7EA2FF; --blau-flaeche: #1C2747; --orange: #FF8A4C; --orange-flaeche: #3A2216; --gruen: #6CC070; --gelb: #E7B547; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--papier); color: var(--text);
+    font: 9.8pt/1.48 "Inter Handout", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    hyphens: auto;
+  }
+  main { max-width: 174mm; margin: 0 auto; padding: 24px 16px; }
+  h1, h2 { font-family: "Bricolage Handout", "Inter Handout", Arial, sans-serif; font-weight: 650; line-height: 1.12; margin: 0; letter-spacing: -0.015em; }
+  h1 { font-size: 22pt; margin-bottom: 4px; }
+  h1 em { font-style: normal; color: var(--orange); }
+  h2 { font-size: 12.5pt; margin: 13px 0 4px; break-after: avoid; }
+  h2 .nr { color: var(--blau); margin-right: 6px; }
+  h2.befund .nr { color: var(--orange); }
+  p { margin: 0 0 5px; }
+  .unterzeile { color: var(--leise); margin-bottom: 8px; }
+  .legende { display: flex; gap: 14px; flex-wrap: wrap; font-size: 8.4pt; color: var(--leise); margin: 2px 0 6px; }
+  .legende span::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; vertical-align: 0; }
+  .legende .b::before { background: var(--blau); }
+  .legende .o::before { background: var(--orange); }
+  .zahlen { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px 14px; margin: 6px 0 4px; }
+  .zahlen div { border-top: 2px solid var(--blau); padding-top: 3px; }
+  .zahlen b { display: block; font-family: "Bricolage Handout", Arial, sans-serif; font-weight: 700; font-size: 14pt; line-height: 1.1; color: var(--blau); }
+  .zahlen span { font-size: 8.4pt; color: var(--leise); }
+  table { width: 100%; border-collapse: collapse; margin: 4px 0 6px; font-size: 8.9pt; line-height: 1.35; }
+  th { text-align: left; font-weight: 600; color: var(--leise); font-size: 8.2pt; border-bottom: 1.5px solid var(--text); padding: 0 8px 3px 0; }
+  td { border-bottom: 1px solid var(--linie); padding: 3px 8px 3px 0; vertical-align: top; }
+  tr { break-inside: avoid; }
+  td.nr { font-family: "Bricolage Handout", Arial, sans-serif; font-weight: 700; color: var(--blau); width: 14px; }
+  td.name { font-weight: 600; white-space: nowrap; }
+  .u { font-weight: 650; white-space: nowrap; }
+  .u::before { content: "●"; margin-right: 4px; }
+  .u-schwach { color: var(--orange); } .u-teils { color: var(--gelb); } .u-gut { color: var(--gruen); }
+  ul.punkte { margin: 2px 0 5px; padding-left: 16px; }
+  ul.punkte li { margin: 0 0 2px; }
+  .drei { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 4px 0 4px; font-size: 9pt; }
+  .drei h3 { font: 650 10pt/1.2 "Bricolage Handout", Arial, sans-serif; margin: 0 0 3px; padding-bottom: 3px; border-bottom: 2px solid var(--f); }
+  .drei ul { margin: 0; padding-left: 14px; }
+  .kern { border-left: 4px solid var(--orange); padding: 3px 0 3px 10px; font-family: "Bricolage Handout", Arial, sans-serif; font-weight: 600; font-size: 11pt; line-height: 1.3; margin: 6px 0; }
+  .fragen { margin: 6px 0 0; padding: 0; list-style: none; counter-reset: f; }
+  .fragen li { counter-increment: f; display: grid; grid-template-columns: 22px 1fr; align-items: baseline; margin: 0 0 5px; font-family: "Bricolage Handout", Arial, sans-serif; font-weight: 600; font-size: 11pt; line-height: 1.3; }
+  .fragen li::before { content: counter(f); color: var(--orange); font-weight: 700; font-size: 13pt; }
+  .notizen { margin-top: 10px; border-top: 1px dashed var(--linie); height: 34mm; }
+  @media print { .notizen { height: 95mm; } }
+  .notizen span { font-size: 8pt; color: var(--leise); }
+  @page { size: A4; margin: 14mm 17mm 13mm 17mm; }
+  @media print {
+    :root { --text: #15171C; --leise: #555A64; --linie: #D3D3CE; --papier: #fff; --flaeche: #F3F2EE;
+            --blau: #1F4FD8; --blau-flaeche: #E8EDFB; --orange: #B23C0A; --orange-flaeche: #FCEEE6; --gruen: #2F7D32; --gelb: #8F5B00; }
+    main { max-width: none; padding: 0; }
+  }
+  @media (max-width: 560px) { .zahlen, .drei { grid-template-columns: 1fr 1fr; } td.name { white-space: normal; } }
+</style>
+</head>
+<body>
+<main>
+
+<h1>150.732 Besuche – <em>was steckt dahinter?</em></h1>
+<p class="unterzeile">Handout zur Präsentation über die SEO-Fallstudie „6-Step Process That Generated 150,732 Visits“ (robbierichards.com/seo/case-study) · Elias Knauber und Yannick Heisler · Management im KMU</p>
+<p class="legende"><span class="b">Blau: was die Fallstudie behauptet</span><span class="o">Orange: was die Prüfung findet</span></p>
+
+<h2>Worum es geht</h2>
+<p>SEO (Suchmaschinenoptimierung) heißt, bei Google unbezahlt weit oben zu stehen, wenn potenzielle Kunden suchen. Die Fallstudie erschien 2015 auf dem Blog des SEO-Beraters Robbie Richards, geschrieben von Michael Karp als Gastbeitrag; 2020 wurde sie neu datiert. Kunde war UAV Coach, ein US-Anbieter von Online-Kursen für Drohnenpiloten. Ziel: mit einem Ratgeber „How to Fly a Quadcopter – The Ultimate Guide“ Reichweite, E-Mail-Kontakte und Kunden gewinnen, ohne Werbebudget.</p>
+<div class="zahlen">
+  <div><b>150.732</b><span>Besuche laut Titel</span></div>
+  <div><b>+11.065&#8239;%</b><span>organischer Traffic in 6 Monaten</span></div>
+  <div><b>Platz 1</b><span>nach 5 Monaten, „vor Mashable“</span></div>
+  <div><b>1.331</b><span>Keywords mit einem Artikel</span></div>
+  <div><b>2.335</b><span>gesammelte E-Mail-Adressen</span></div>
+  <div><b>5:22 min</b><span>durchschnittliche Verweildauer</span></div>
+</div>
+
+<h2>Die Methode in sechs Schritten</h2>
+<table>
+  <thead><tr><th></th><th>Schritt</th><th>Was gemacht wurde</th></tr></thead>
+  <tbody>
+    <tr><td class="nr">1</td><td class="name">Keywords und Konkurrenz</td><td>Hauptkeyword mit nur 720 Suchen pro Monat, aber vielen verwandten Suchanfragen (Long Tail). Vorher prüfen: Wie stark sind die Top 10 verlinkt, welcher Inhaltstyp rankt, wie gut sind sie?</td></tr>
+    <tr><td class="nr">2</td><td class="name">Inhalt</td><td>Den besten Artikel zum Thema schreiben: 4.774 Wörter statt 303 beim bisherigen Platz 1, 17 Kapitel mit Inhaltsverzeichnis, Bilder, Videos, Checkliste; drei Tage Arbeit.</td></tr>
+    <tr><td class="nr">3</td><td class="name">On-Page</td><td>Keyword in Seitentitel, URL, Hauptüberschrift und erstem Absatz; Nebenkeywords in Zwischenüberschriften; Alt-Texte, Links nach innen und außen, kurze Ladezeit.</td></tr>
+    <tr><td class="nr">4</td><td class="name">Leads</td><td>Ratgeber als PDF gegen E-Mail-Adresse: Pop-up nach 12 Sekunden (5,12&#8239;% der Besucher tragen sich ein), Box im Text (20–50&#8239;% der Klickenden), Bestätigung per Double-Opt-in.</td></tr>
+    <tr><td class="nr">5</td><td class="name">Promotion</td><td>Fragen auf Quora beantworten, in Foren mitdiskutieren, jedes Kapitel als eigener Social-Media-Post, Vorschläge auf Scoop.it.</td></tr>
+    <tr><td class="nr">6</td><td class="name">Backlinks</td><td>90 Tage Linkaufbau mit vier Taktiken (Links der Konkurrenz, Link-Lücken, Wochen-Rückblicke, Ressourcenseiten); 2018 rund 100 verweisende Domains, mehr als jeder Konkurrent.</td></tr>
+  </tbody>
+</table>
+
+<h2 class="befund">Kritische Bewertung</h2>
+<p>Die Fallstudie wurde mit sechs Prüffragen bewertet, angelehnt an die Gütekriterien für Fallstudien (Gültigkeit und Zuverlässigkeit):</p>
+<table>
+  <thead><tr><th>Prüffrage</th><th>Urteil</th><th>Begründung</th></tr></thead>
+  <tbody>
+    <tr><td class="name">Stimmen die Zahlen?</td><td><span class="u u-schwach">schwach</span></td><td>Titel 150.732, Einleitung 152.732 Besuche; der Text nennt 6 und 18 Monate, der Screenshot zeigt 9 Monate (Feb.–Nov. 2015) und +12.134,74&#8239;% statt +11.065&#8239;%; 4.400 oder 4.774 Wörter.</td></tr>
+    <tr><td class="name">Ist die Ursache belegt?</td><td><span class="u u-schwach">schwach</span></td><td>Einzelfall ohne Vergleichsgruppe; gezeigt wird nur der Gewinner (Survivorship Bias). Basiseffekt: Vorher kamen nur rund 137 Besuche im Monat über die Suche (1.232 in 9 Monaten), daher die riesigen Prozentwerte. „Vor Mashable“ ist nur mit einer Kategorie-Seite belegt.</td></tr>
+    <tr><td class="name">Wer verdient daran?</td><td><span class="u u-schwach">schwach</span></td><td>15 Links mit Partner- oder Affiliate-Kennung, 15 Einschübe des Herausgebers, 5 Links auf seinen bezahlten Kurs, 2 Beratungsangebote. Offengelegt und legal, aber kein neutraler Beleg.</td></tr>
+    <tr><td class="name">Gilt das noch?</td><td><span class="u u-teils">teils</span></td><td>Daten von 2014/2015. Seitdem: Helpful-Content-Update (2022) und KI-Übersichten bei Google (USA 2024, Deutschland 2025). Mit KI-Übersicht klicken Nutzer nur bei 8&#8239;% statt 15&#8239;% der Suchseiten-Aufrufe auf ein normales Ergebnis (Pew Research Center 2025).</td></tr>
+    <tr><td class="name">Rechnet es sich?</td><td><span class="u u-schwach">schwach</span></td><td>Aufwand teilweise bekannt (Schreiben, Quora, 90 Tage Linkaufbau, Tools, Berater), Ertrag nur als 2.335 E-Mail-Adressen; Kunden, Umsatz und Gewinn fehlen.</td></tr>
+    <tr><td class="name">Ist es nachvollziehbar?</td><td><span class="u u-gut">gut</span></td><td>Über 100 Screenshots, Vorlagen und Mustermails; das Vorgehen lässt sich nachmachen, die Ergebnisse aber nicht unabhängig prüfen.</td></tr>
+  </tbody>
+</table>
+<p class="kern">Gesamturteil: gutes Handwerk, schwache Beweisführung. Die Methode taugt – der Beweis nicht.</p>
+
+<h2>Was heißt das für KMU?</h2>
+<div class="drei">
+  <div style="--f: var(--blau)"><h3>Behalten</h3><ul><li>Nische statt Masse: Fachwissen schlägt Budget</li><li>Suchintention prüfen, bevor man schreibt</li><li>Kontakte sammeln, mit nachweisbarer Einwilligung</li></ul></div>
+  <div style="--f: var(--gelb)"><h3>Anpassen</h3><ul><li>Anfragen und Umsatz messen, nicht Besuche</li><li>3–6 Monate Anlauf fest einplanen</li><li>Lokal denken: Unternehmensprofil, Region</li></ul></div>
+  <div style="--f: var(--orange)"><h3>Streichen</h3><ul><li>Wortzahl als Ziel</li><li>Forensignaturen, Scoop.it</li><li>Pop-up, das beim Lesen stört</li></ul></div>
+</div>
+<p>Beispiel: Ein Heizungsbauer mit zwölf Beschäftigten schreibt einen Ratgeber „Wärmepumpe im Altbau“ mit eigenen Fotos und echten Kosten aus der Region, bietet eine Förder-Checkliste als PDF an und misst den Erfolg in Beratungsterminen pro Monat. Für Werbe-E-Mails braucht er eine vorherige ausdrückliche Einwilligung, die er nachweisen kann, üblicherweise per Double-Opt-in.</p>
+
+<h2 class="befund">Fragen für die Diskussion</h2>
+<ol class="fragen">
+  <li>Würden Sie einem KMU raten, 2026 noch in Ratgeber-Artikel zu investieren?</li>
+  <li>Wie viel Vertrauen verdient eine Fallstudie von jemandem, der daran verdient?</li>
+  <li>Welche Zahl hätten Sie statt „Besuche“ veröffentlicht?</li>
+</ol>
+<div class="notizen"><span>Notizen</span></div>
+
+</main>
+</body>
+</html>

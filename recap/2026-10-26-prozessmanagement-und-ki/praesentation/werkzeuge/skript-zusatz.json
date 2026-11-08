@@ -1,0 +1,95 @@
+{
+  "_hinweis": "Einzige Stelle für die Sprecheraufteilung des Präsentationsskripts (werkzeuge/praesentationsskript.mjs) und des Redeskripts (../redeskript-erzeugen.py). Sprechtext und Hintergrundnotizen kommen immer frisch aus index.html. Nach jeder Änderung hier oder in den Notizen beide Skripte neu erzeugen.",
+  "stand": "1.11.2026",
+  "sollzeit": 1010,
+  "woerterProMinute": 130,
+  "fusszeile": ["Sitzung vom 26.10.2026", "Modul Management im KMU, Hochschule Kaiserslautern"],
+
+  "sprecher": {
+    "elias": { "name": "Elias Knauber", "rufname": "Elias", "marke": "gefuellt" },
+    "yannick": { "name": "Yannick Heisler", "rufname": "Yannick", "marke": "umrandet" }
+  },
+
+  "teile": [
+    { "name": "Einstieg", "zusatz": "Titel und Überblick", "folien": ["f01", "f02"], "sprecher": "elias" },
+    { "block": 1, "folien": ["t1", "f03", "f04", "f05", "f06", "f07"], "sprecher": "elias" },
+    { "block": 2, "folien": ["t2", "f08", "f09", "f10", "f11", "f12", "f13"], "sprecher": "yannick" },
+    { "block": 3, "folien": ["t3", "f14", "f15", "f16", "f17"], "sprecher": "yannick" },
+    { "block": 4, "folien": ["t4", "f18", "f19"], "sprecher": "elias" },
+    { "name": "Fazit", "zusatz": "Der Faden schließt sich", "folien": ["f20"], "sprecher": "elias", "neueSeite": false }
+  ],
+
+  "aufteilung": [
+    "Von Yannick festgelegt: Yannick spricht die beiden KI-Blöcke (Referat Tschekuev und Klaus Knopper), Elias die beiden anderen (Prozesse und Gastvortrag Bundeswehr).",
+    "Titel, Überblick und Fazit waren nicht zugeteilt. Vorschlag in diesem Skript: Elias übernimmt sie. So gibt es nur zwei Übergaben, und die Redezeit ist ausgeglichen ({redezeit}).",
+    "Ändern nur in werkzeuge/skript-zusatz.json, dann beide Skripte neu erzeugen."
+  ],
+
+  "uebergaben": [
+    { "nach": "f07", "von": "elias", "an": "yannick", "letzterSatz": "Damit übergebe ich an Yannick.", "ersterSatz": "Danke, Elias." },
+    { "nach": "f17", "von": "yannick", "an": "elias", "letzterSatz": "Den Gastvortrag übernimmt wieder Elias.", "ersterSatz": "Danke, Yannick." }
+  ],
+
+  "rueckfragen": [
+    { "folie": "f03", "frage": "Was ist der Unterschied zwischen Aufbau- und Ablauforganisation, und was ist ein Workflow?", "antwort": "Die Aufbauorganisation gliedert in Abteilungen und Stellen, die Ablauforganisation regelt, wer was wann und womit macht. Prozessmanagement plant, steuert und kontrolliert die Prozesse. Ein Workflow ist ein Prozess, dessen Übergänge ein Anwendungssystem steuert, z. B. Rechnungsprüfung oder Dienstreiseantrag." },
+    { "folie": "f06", "frage": "Porter 1980 oder 1985?", "antwort": "Bücheles Folie nennt ‚nach Porter 1980‘. Wertkette und Prozessarten stammen aus ‚Competitive Advantage‘ von 1985; deshalb steht auf der Folie Porter 1985, zitiert nach Becker/Kugeler/Rosemann 2012." },
+    { "folie": "f07", "frage": "Warum fehlen die Praxisbeispiele und das Fallbeispiel energis?", "antwort": "Teil 1 endete nach der Folie zur Modellierung. Die Praxisbeispiele, eine Kundenausschreibung im Lebensmittelhandel und die Dienstplanung in einer JVA, sowie Chancen, Risiken und Trends kommen in einer späteren Sitzung. Teil 2 endete vor dem Fallbeispiel energis (Copilot im Energiedatenmanagement)." },
+    { "folie": "f08", "frage": "Warum liegen 20 und 57 Prozent so weit auseinander?", "antwort": "Es sind verschiedene Befragungen. Die KfW erfasst den ganzen Mittelstand einschließlich Kleinstbetrieben für 2022 bis 2024. Bitkom hat im Sommer 2026 nur Unternehmen ab 20 Beschäftigten befragt (603 Unternehmen, telefonisch); dort waren es ein Jahr zuvor 36 Prozent, zwei Jahre zuvor 20 Prozent." },
+    { "folie": "f08", "frage": "Wie stark schöpfen die Anwender das Potenzial aus?", "antwort": "Laut Bitkom 59 Prozent überhaupt nicht, 28 Prozent eher wenig, 3 Prozent eher stark, vollständig kein einziges Unternehmen. Der Anteil ist in allen Größenklassen fast gleich." },
+    { "folie": "f10", "frage": "Auf wen beziehen sich die Prozentwerte im TOE-Modell?", "antwort": "50 und 41 Prozent sind Kostenpunkte der KI-Anwender (Datenaufbereitung, Integration). 85, 63 und 66 Prozent beziehen sich auf die Nicht-Nutzer. Die 57 Prozent sind Unternehmen ab 20 Beschäftigten, die KI nutzen, also kein Hemmnis, sondern Druck aus dem Umfeld." },
+    { "folie": "f11", "frage": "Woher stammt das TAM, und wie viele Unternehmen schulen?", "antwort": "Von Fred Davis, 1989 in der Fachzeitschrift MIS Quarterly erschienen. Laut Bitkom schulen 70 Prozent der Unternehmen, jedes vierte gar nicht; unter den Unternehmen, die KI einsetzen, sind es 91 Prozent." },
+    { "folie": "f12", "frage": "Was steckt hinter den Kostenpunkten?", "antwort": "Infrastruktur heißt Cloud und Rechenleistung (51 Prozent), dazu Datenaufbereitung (50) und Integration in bestehende Systeme (41). Lizenzen nennen nur 21 Prozent, gleichauf mit externer Beratung. Es sind Anteile der KI-Anwender, Mehrfachnennung möglich." },
+    { "folie": "f13", "frage": "Braucht man ein bestimmtes Zertifikat?", "antwort": "Nein. Seit dem 27.07.2026 verlangt Art. 4 Maßnahmen, die KI-Kompetenz fördern, aber kein bestimmtes Kompetenzniveau mehr. Ein festes Zertifikat oder Prüfsiegel ist nicht vorgeschrieben (Wortmeldung in der Sitzung); als Nachweis eignet sich z. B. das Badge des OLAT-Kurses ‚KI-Kompetenz‘." },
+    { "folie": "f14", "frage": "Ist ChatGPT ein GPT oder ein LLM?", "antwort": "Genau genommen ist ChatGPT der Chatbot, also das Fenster (Folie 15); dahinter rechnen GPT-Modelle. GPT heißt Generative Pre-trained Transformer und ist eine Bauart von LLM: Jedes GPT ist ein LLM, aber nicht jedes LLM ein GPT. Im Video stehen ChatGPT, Claude, Gemini, Kimi und DeepSeek verkürzt als Beispiele für LLMs." },
+    { "folie": "f14", "frage": "Was genau ist ein Token?", "antwort": "Die kleinste Einheit, die ein Modell verarbeitet: oft ein Wortteil, eine Silbe oder nur ein Zeichen (Video 00:04:37). Die Zahl der Token begrenzt die Länge von Anfrage und Antwort und bestimmt Rechenaufwand und Kosten." },
+    { "folie": "f16", "frage": "Was unterscheidet RAG von Deep Search?", "antwort": "Deep Search recherchiert mehrstufig im Internet und verfolgt Links bis zum Dokument. RAG antwortet nur aus bereitgestellten Dokumenten, ohne Internetzugriff und ohne Neutraining, etwa zur IT-Sicherheit auf Basis der rund 800 Seiten BSI-Grundschutz. Mehrere Modelle und Werkzeuge koordiniert ein Orchestrierer, z. B. n8n oder ComfyUI." },
+    { "folie": "f17", "frage": "Wie lange dauert der KI-Führerschein?", "antwort": "Der OLAT-Kurs ‚KI-Kompetenz‘ ist auf etwa 90 Minuten angelegt (zwei Arbeitseinheiten), fünf Module mit je einem Test. Bestanden haben wir am 26.10.2026 zwischen 15:06 und 15:48 Uhr. Beispiel aus Modul 1: ‚Nice-‘ und ‚EvilGPT‘, gleiche Basis, anderer Systemprompt." },
+    { "folie": "f18", "frage": "Wie heißt das Prinzip ‚Ziel vorgeben, Weg freilassen‘?", "antwort": "Bei der Bundeswehr Auftragstaktik oder ‚Führen mit Auftrag‘. Der Begriff ist unsere Ergänzung, der Gastredner hat ihn nicht genannt. Das Gegenstück ist die Befehlstaktik, bei der jeder Schritt vorgegeben ist." },
+    { "folie": "f19", "frage": "Stimmen die 10 Prozent?", "antwort": "Der Gastredner nannte rund 10 Prozent eng gebundene Beschäftigte. Der Gallup Engagement Index Deutschland 2025 passt dazu: 10 Prozent hohe, 77 Prozent geringe, 13 Prozent keine Bindung (unsere Ergänzung). Große Konzerne binden eher über Anreize." }
+  ],
+
+  "kuerzung": {
+    "_regel": "Platzhalter: {seite:ueberblick} = Seite der Zwischenzeiten, {rest:t4} = was beide Stufen ab Folie t4 noch bringen (vom Generator gerechnet).",
+    "regel": "An jeder Zwischenzeit (Seite {seite:ueberblick}) auf die Uhr sehen. Mehr als 30 Sekunden hinter dem Plan: ab sofort Stufe 1; reicht sie laut Spalte „noch kürzbar“ nicht für den Rückstand, zusätzlich Stufe 2. Die meisten Sätze liegen in Block 1 bis 3: Ab T4 bringen beide Stufen nur noch {rest:t4}, das Fazit bleibt ungekürzt. Im Sprechtext stehen sie grau in eckigen Klammern; die Ziffer nennt die Stufe.",
+    "stufen": [
+      {
+        "name": "Stufe 1",
+        "ziel": "−1 min",
+        "saetze": [
+          { "folie": "f03", "text": "Ein Geschäftsprozess dient den obersten Zielen des Unternehmens und hat Schnittstellen zu Kunden und Lieferanten." },
+          { "folie": "f04", "text": "Dazu kommen die mentalen Modelle: Jeder Beteiligte hat ein eigenes Bild seiner Arbeit, und die Aufgabe ist, diese Bilder zusammenzuführen." },
+          { "folie": "f06", "text": "Gemessen wird ein Prozess mit Kennzahlen: KPIs für den Erfolg des Unternehmens, PPIs für die Leistung eines einzelnen Prozesses." },
+          { "folie": "f08", "text": "Am häufigsten Sprach-KI zum Texteschreiben mit 14 Prozent, Datenanalyse nur 3 Prozent." },
+          { "folie": "f12", "text": "Stark gewachsen sind interne Bereiche: Controlling und Rechnungswesen von 17 auf 25, Wissensmanagement von 11 auf 22 Prozent." },
+          { "folie": "f15", "text": "Am Rande: Selbst der Beruf des Prompt Engineers ist heute weitgehend automatisierbar." },
+          { "folie": "f16", "text": "Beispiele aus dem Video: ein Buchhaltungs-Agent, der Rechnungen prüft, und ein Gutachten-Agent, der Quellen in Abschlussarbeiten kontrolliert." },
+          { "folie": "f19", "text": "Neue Ideen entstehen in offenen Innovations-Hubs, etwa im Innovationszentrum Erding." }
+        ]
+      },
+      {
+        "name": "Stufe 2",
+        "ziel": "zusätzlich, zusammen −2 min",
+        "saetze": [
+          { "folie": "f05", "text": "1934 beschreibt Nordsieck den Betrieb als ununterbrochene Leistungskette." },
+          { "folie": "f06", "text": "Und in einer Bank ist die Kreditvergabe ein Kernprozess." },
+          { "folie": "f08", "text": "Die Zahlen weichen ab, weil verschiedene Unternehmen zu verschiedenen Zeiten befragt wurden." },
+          { "folie": "f10", "text": "Ob ein Unternehmen neue Technik einführt, hängt von drei Kontexten ab." },
+          { "folie": "f11", "text": "70 Prozent der Unternehmen schulen, jedes vierte gar nicht." },
+          { "folie": "f13", "text": "Elbrus’ Fallbeispiel, Copilot im Energiedatenmanagement bei der energis GmbH, kommt noch." },
+          { "folie": "f16", "text": "Das Harness ist die Umgebung mit Werkzeugen, Speicher und Rechten; das Modell ist das Gehirn." },
+          { "folie": "f18", "text": "Die Befehlstaktik, bei der jeder Schritt vorgegeben ist, tritt zurück." },
+          { "folie": "f18", "text": "Führungskräfte werden immer schon für die nächsthöhere Ebene ausgebildet, damit bei einem Ausfall, im Ernstfall durch Tod, sofort jemand bereitsteht." },
+          { "folie": "f19", "text": "Der Gallup-Index 2025 bestätigt das: 77 Prozent sind nur gering, 13 Prozent gar nicht gebunden." },
+          { "folie": "f19", "text": "Viele Junge kommen wegen des Geldes und fühlen sich kaum verbunden." }
+        ]
+      }
+    ]
+  },
+
+  "planb": [
+    { "fall": "Beamer oder Laptop fällt aus", "tun": "Notfall-PDF export/recap-notfall.pdf im Vollbild zeigen: eine Seite je Folie im Endzustand, 25 Seiten. Die Klick-Schritte entfallen, der Sprechtext bleibt gleich." },
+    { "fall": "Referentenansicht fällt aus", "tun": "Mit diesem ausgedruckten Skript weitermachen: Startzeit und Klicks stehen je Folie. Die Präsentation im Folienfenster läuft weiter mit Pfeiltaste oder Clicker; Ziffern und Enter springen zu einer Folie, z. B. 17 Enter." },
+    { "fall": "Ein Sprecher fehlt", "tun": "Wer da ist, übernimmt alles. Die Übergaben entfallen: den letzten Satz auf 07 und 17 und das „Danke, …“ auf T2 und T4 weglassen. Außerdem auf 01 nur sich selbst vorstellen („Ich bin …“) und auf 02 den Satz „Ich übernehme …“ weglassen." },
+    { "fall": "Zeit läuft über", "tun": "Kürzungsplan oben: zuerst Stufe 1, dann Stufe 2. Die Sätze stehen im Sprechtext grau in eckigen Klammern." }
+  ]
+}
