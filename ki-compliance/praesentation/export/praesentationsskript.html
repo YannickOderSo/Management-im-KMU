@@ -7,7 +7,11 @@
 @font-face { font-family: "Inter Deck"; src: url("../schriften/inter-latin-opsz-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; }
 @font-face { font-family: "Inter Tight Deck"; src: url("../schriften/inter-tight-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; }
 @page { size: A4; margin: 16mm 15mm 18mm 15mm; }
-:root { --navy: #122E55; --blau: #2563EB; --teal: #0E9790; --grau: #4B5468; --linie: #D5D9E0; --flaeche: #F3F4F6; --papier: #FFFFFF; }
+:root { --navy: #122E55; --blau: #2563EB; --teal: #0E9790; --grau: #4B5468; --linie: #D5D9E0; --flaeche: #F3F4F6; --papier: #FFFFFF;
+  /* Sprecherfarben: weit auseinander, damit man auf einen Blick sieht, wer dran ist */
+  --y: #2563EB; --y-hell: #EDF2FE; --e: #C2410C; --e-hell: #FDF0E6; }
+.sp-yannick { --sp: var(--y); --sp-hell: var(--y-hell); }
+.sp-elias { --sp: var(--e); --sp-hell: var(--e-hell); }
 * { box-sizing: border-box; }
 html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 body { margin: 0; font: 10pt/1.45 "Inter Deck", Arial, sans-serif; color: var(--navy); }
@@ -25,7 +29,7 @@ h1, h2, h3 { font-family: "Inter Tight Deck", "Inter Deck", Arial, sans-serif; l
 .kennzahlen b { display: block; font: 700 20pt "Inter Tight Deck", Arial, sans-serif; letter-spacing: -0.02em; }
 .kennzahlen span { color: var(--grau); font-size: 9pt; }
 .zeitleiste { width: 100%; height: auto; }
-.zeitleiste .yannick { fill: var(--blau); } .zeitleiste .elias { fill: var(--teal); }
+.zeitleiste .yannick { fill: var(--y); } .zeitleiste .elias { fill: var(--e); }
 .balken-text { fill: #fff; font: 600 8.5px "Inter Deck", Arial, sans-serif; }
 .tick { fill: var(--grau); font: 8px "Inter Deck", Arial, sans-serif; }
 .legende { display: flex; gap: 6mm; font-size: 9pt; color: var(--grau); margin: 1mm 0 0; }
@@ -34,7 +38,8 @@ h1, h2, h3 { font-family: "Inter Tight Deck", "Inter Deck", Arial, sans-serif; l
 /* Überblick */
 .ueberblick { break-after: page; }
 h2 { font-size: 18pt; margin: 0 0 4mm; }
-.ueberblick h3 { font-size: 11.5pt; margin: 7mm 0 2.5mm; }
+.ueberblick h3 { font-size: 11.5pt; margin: 5.5mm 0 2mm; }
+.ueberblick td { padding: 1.3mm 2mm 1.3mm 0; } .ueberblick th { padding: 1.2mm 2mm 1.2mm 0; }
 table { width: 100%; border-collapse: collapse; font-size: 9.5pt; }
 th { text-align: left; font-weight: 600; color: var(--grau); border-bottom: 1.5px solid var(--navy); padding: 1.6mm 2mm 1.6mm 0; }
 td { border-bottom: 1px solid var(--linie); padding: 1.8mm 2mm 1.8mm 0; vertical-align: top; }
@@ -46,15 +51,49 @@ ul.regeln { margin: 0; padding-left: 4.5mm; } ul.regeln li { margin: 0 0 1.2mm; 
 .teil-nr { margin: 0; font-size: 8.5pt; font-weight: 600; color: var(--blau); text-transform: uppercase; letter-spacing: .08em; }
 .teil-kopf h2 { font-size: 22pt; margin: 1mm 0 1mm; }
 .teil-kopf p:last-child { margin: 0; color: var(--grau); font-size: 9.5pt; }
-.folie { display: grid; grid-template-columns: 58mm 1fr; gap: 6mm; padding: 4mm 0 5mm; border-bottom: 1px solid var(--linie); }
+/* Jede Folie trägt die Farbe ihres Sprechers: Balken links, getönte Fläche, Namensband */
+.folie { display: grid; grid-template-columns: 58mm 1fr; gap: 6mm; margin: 0 0 3.5mm; padding: 4mm 4mm 4.5mm 4.5mm;
+  border-left: 3.2mm solid var(--sp); border-radius: 0 2mm 2mm 0; background: var(--sp-hell);
+  break-inside: avoid; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.folie--lang { break-inside: auto; }
+.folie--lang .schritt, .folie--lang .links { break-inside: auto; }
+.teil-kopf { break-after: avoid; }
 .links { break-inside: avoid; } .rechts h3 { break-after: avoid; } .schritt, .wechsel { break-inside: avoid; }
 p { orphans: 3; widows: 3; }
-.folie img { width: 58mm; aspect-ratio: 16 / 9; border-radius: 2mm; border: 1px solid var(--linie); display: block; }
-.meta { display: flex; align-items: center; gap: 2.5mm; margin: 2.5mm 0 0; }
+.folie img { width: 58mm; aspect-ratio: 16 / 9; border-radius: 0 0 2mm 2mm; border: 1.5px solid var(--sp); border-top: 0; display: block; background: #fff; }
+.wer-band { display: flex; align-items: center; gap: 2.2mm; margin: 0; padding: 1.4mm 2.6mm; border-radius: 2mm 2mm 0 0;
+  background: var(--sp); color: #fff; font: 700 11pt "Inter Tight Deck", Arial, sans-serif; letter-spacing: .09em; text-transform: uppercase; }
+.mono { display: inline-grid; place-items: center; width: 5.4mm; height: 5.4mm; border-radius: 50%; background: #fff; color: var(--sp); font-size: 9pt; letter-spacing: 0; }
+.meta { display: flex; align-items: baseline; gap: 2.5mm; margin: 2.2mm 0 0; }
 .nr { font: 700 16pt "Inter Tight Deck", Arial, sans-serif; letter-spacing: -0.02em; }
 .wer { font-size: 8.5pt; font-weight: 600; color: #fff; border-radius: 99px; padding: .4mm 2.4mm; }
 .sp-yannick .wer { background: var(--blau); } .sp-elias .wer { background: var(--teal); }
-.zeit { margin: .6mm 0 0; color: var(--grau); font-size: 8.5pt; font-variant-numeric: tabular-nums; }
+.zeit { color: var(--grau); font-size: 8.5pt; font-variant-numeric: tabular-nums; }
+/* Übergabe-Kasten vor dem ersten Satz eines neuen Sprechers */
+.uebergabe { break-inside: avoid; break-after: avoid; margin: 6mm 0 3mm; padding: 4mm 5mm; border-radius: 2.5mm; background: var(--sp); color: #fff; }
+.teil-kopf + .uebergabe { margin-top: 0; }
+.ue-kopf { display: grid; grid-template-columns: 13mm 1fr auto; gap: 4mm; align-items: center; }
+.ue-mono { display: grid; place-items: center; width: 13mm; height: 13mm; border-radius: 50%; background: #fff; color: var(--sp); font: 700 20pt "Inter Tight Deck", Arial, sans-serif; }
+.ue-klein { margin: 0; font-size: 8.5pt; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; opacity: .9; }
+.ue-name { margin: .5mm 0 0; font: 700 21pt/1.05 "Inter Tight Deck", Arial, sans-serif; letter-spacing: -0.015em; }
+.ue-bereich { margin: 0; text-align: right; font-size: 9.5pt; font-weight: 600; line-height: 1.4; font-variant-numeric: tabular-nums; }
+.ue-saetze { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-top: 3.5mm; }
+.ue-saetze p { margin: 0; padding: 2.2mm 3mm; border-radius: 1.5mm; background: rgb(255 255 255 / .16); font-size: 10pt; line-height: 1.4; }
+.ue-saetze span { display: block; margin-bottom: .8mm; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; opacity: .85; }
+/* Sprecher als Pille (Überblick, Teilköpfe) */
+.pille { display: inline-flex; align-items: center; gap: 1.4mm; padding: .35mm 2.6mm .35mm .7mm; border-radius: 99px;
+  background: var(--sp); color: #fff; font-size: 8.5pt; font-weight: 700; white-space: nowrap; vertical-align: middle; }
+.pille i { display: inline-grid; place-items: center; width: 4.2mm; height: 4.2mm; border-radius: 50%; background: #fff; color: var(--sp); font-style: normal; font-size: 7pt; }
+.teil-kopf p:last-child .pille { margin-right: 1.5mm; }
+/* Überblick: Wer spricht wann */
+.ww-titel { font-size: 11.5pt; margin: 9mm 0 2.5mm; }
+.wer-wann { display: grid; gap: 2.5mm; }
+td.wechsel-zelle { white-space: nowrap; }
+.ww-zeile { display: grid; grid-template-columns: 38mm 1fr 20mm; gap: 3mm; align-items: center; padding: 2.5mm 3mm; border-left: 2.5mm solid var(--sp); background: var(--sp-hell); border-radius: 0 1.5mm 1.5mm 0; }
+.ww-zeile b { font: 700 11pt "Inter Tight Deck", Arial, sans-serif; color: var(--sp); }
+.ww-zeile .ww-bloecke { display: flex; flex-wrap: wrap; gap: 1.5mm; }
+.ww-zeile .ww-bloecke span { padding: .4mm 2.2mm; border-radius: 99px; background: #fff; border: 1.2px solid var(--sp); font-size: 8.8pt; font-weight: 600; font-variant-numeric: tabular-nums; }
+.ww-zeile .ww-summe { text-align: right; font-size: 9pt; font-weight: 700; font-variant-numeric: tabular-nums; }
 .rechts h3 { font-size: 12.5pt; line-height: 1.25; margin: 0 0 2.5mm; }
 .schritt { display: grid; grid-template-columns: 15mm 1fr; gap: 2.5mm; margin: 0 0 2.2mm; }
 .schritt p { margin: 0; }
@@ -103,40 +142,48 @@ p { orphans: 3; widows: 3; }
     <text x="472.1" y="60" class="tick">37:15</text></g><g><rect x="530.2" y="18" width="109.8" height="26" rx="4" class="yannick"/>
     <text x="585.1" y="35" text-anchor="middle" class="balken-text">31 bis 37</text>
     <text x="530.2" y="60" class="tick">41:50</text></g><text x="640" y="60" class="tick" text-anchor="end">50:30</text></svg>
-    <p class="legende"><span><i style="background:#2563EB"></i>Yannick Heisler</span><span><i style="background:#0E9790"></i>Elias Knauber</span><span>Startzeiten in Minuten ab Vortragsbeginn</span></p>
+    <p class="legende"><span><i style="background:#2563EB"></i>Yannick Heisler</span><span><i style="background:#C2410C"></i>Elias Knauber</span><span>Startzeiten in Minuten ab Vortragsbeginn</span></p>
+  <h3 class="ww-titel">Wer spricht wann</h3>
+  <div class="wer-wann"><div class="ww-zeile sp-yannick"><b>Yannick Heisler</b><span class="ww-bloecke"><span>Folien 01 bis 05 · ab 0:00</span><span>Folien 20 bis 27 · ab 23:10</span><span>Folien 31 bis 37 · ab 41:50</span></span><span class="ww-summe">27:05 min</span></div><div class="ww-zeile sp-elias"><b>Elias Knauber</b><span class="ww-bloecke"><span>Folien 06 bis 19 · ab 4:20</span><span>Folien 28 bis 30 · ab 37:15</span></span><span class="ww-summe">23:25 min</span></div></div>
   </div>
-  <p class="titelfuss"><span>Vortrag Mo, 9.11.2026 · Hochschule Kaiserslautern · Management im KMU</span><span>Rechtsstand 31.10.2026 · Stand Skript 1.11.2026</span></p>
+  <p class="titelfuss"><span>Vortrag Mo, 9.11.2026 · Hochschule Kaiserslautern · Management im KMU</span><span>Rechtsstand 31.10.2026 · Stand Skript 8.11.2026</span></p>
 </section>
 
 <section class="ueberblick">
   <h2>Überblick</h2>
   <table><thead><tr><th>Teil</th><th>Folien</th><th>Sprecher</th><th>Start (min)</th><th>Dauer (min)</th></tr></thead>
-  <tbody><tr><td>Einstieg</td><td>01 bis 05</td><td>Yannick</td><td>0:00</td><td>4:20</td></tr>
-<tr><td>Grundlagen</td><td>06 bis 10</td><td>Elias</td><td>4:20</td><td>7:05</td></tr>
-<tr><td>Risikoklassen</td><td>11 bis 19</td><td>Elias</td><td>11:25</td><td>11:45</td></tr>
-<tr><td>Selbst prüfen</td><td>20 bis 25</td><td>Yannick</td><td>23:10</td><td>11:15</td></tr>
-<tr><td>KMU-Praxis</td><td>26 bis 34</td><td>Yannick, Elias</td><td>34:25</td><td>13:05</td></tr>
-<tr><td>Schluss</td><td>35 bis 37</td><td>Yannick</td><td>47:30</td><td>3:00</td></tr></tbody></table>
+  <tbody><tr><td>Einstieg</td><td>01 bis 05</td><td><span class="pille sp-yannick"><i>Y</i>Yannick</span></td><td>0:00</td><td>4:20</td></tr>
+<tr><td>Grundlagen</td><td>06 bis 10</td><td><span class="pille sp-elias"><i>E</i>Elias</span></td><td>4:20</td><td>7:05</td></tr>
+<tr><td>Risikoklassen</td><td>11 bis 19</td><td><span class="pille sp-elias"><i>E</i>Elias</span></td><td>11:25</td><td>11:45</td></tr>
+<tr><td>Selbst prüfen</td><td>20 bis 25</td><td><span class="pille sp-yannick"><i>Y</i>Yannick</span></td><td>23:10</td><td>11:15</td></tr>
+<tr><td>KMU-Praxis</td><td>26 bis 34</td><td><span class="pille sp-yannick"><i>Y</i>Yannick</span> <span class="pille sp-elias"><i>E</i>Elias</span></td><td>34:25</td><td>13:05</td></tr>
+<tr><td>Schluss</td><td>35 bis 37</td><td><span class="pille sp-yannick"><i>Y</i>Yannick</span></td><td>47:30</td><td>3:00</td></tr></tbody></table>
   <h3>So liest du das Skript</h3>
   <div class="lesehilfe">
+    <span class="pille sp-yannick"><i>Y</i>Yannick</span><span>blauer Balken und blaues Band an der Folie: Yannick spricht.</span>
+    <span class="pille sp-elias"><i>E</i>Elias</span><span>oranger Balken und oranges Band: Elias spricht. Vor jedem Wechsel steht ein großer Kasten in der Farbe des neuen Sprechers, mit dem letzten und dem ersten Satz.</span>
     <span class="klick klick--start">Start</span><span>Text, sobald die Folie erscheint.</span>
     <span class="klick">Klick 2</span><span>Text nach dem zweiten Klick auf dieser Folie.</span>
     <span class="regie">kursiv</span><span>tun, nicht sagen. Alles andere wird gesprochen.</span>
   </div>
   <h3>Übergaben (wörtlich)</h3>
-  <table><thead><tr><th>Wann</th><th>Wer übergibt</th><th>Letzter Satz</th><th>Erster Satz danach</th></tr></thead>
-  <tbody><tr><td>Nach Folie 05</td><td>Yannick</td><td>„Durch Grundlagen und Risikoklassen führt Sie jetzt Elias.“</td><td>„Danke, Yannick.“</td></tr><tr><td>Nach Folie 19</td><td>Elias</td><td>„Wie man sie Schritt für Schritt prüft, zeigt Ihnen jetzt Yannick.“</td><td>„Danke, Elias.“</td></tr><tr><td>Nach Folie 27</td><td>Yannick</td><td>„Was es kostet, wenn das Ob schiefgeht, rechnet Elias jetzt mit Ihnen aus.“</td><td>„Danke, Yannick.“</td></tr><tr><td>Nach Folie 30</td><td>Elias</td><td>„Bleibt die Frage, wer sich darum kümmert. Yannick?“</td><td>„Danke, Elias.“</td></tr></tbody></table>
+  <table><thead><tr><th>Wann</th><th>Wechsel</th><th>Letzter Satz</th><th>Erster Satz danach</th></tr></thead>
+  <tbody><tr><td>Nach Folie 05</td><td class="wechsel-zelle"><span class="pille sp-yannick"><i>Y</i>Yannick</span> → <span class="pille sp-elias"><i>E</i>Elias</span></td><td>„Durch Grundlagen und Risikoklassen führt Sie jetzt Elias.“</td><td>„Danke, Yannick.“</td></tr><tr><td>Nach Folie 19</td><td class="wechsel-zelle"><span class="pille sp-elias"><i>E</i>Elias</span> → <span class="pille sp-yannick"><i>Y</i>Yannick</span></td><td>„Wie man sie Schritt für Schritt prüft, zeigt Ihnen jetzt Yannick.“</td><td>„Danke, Elias.“</td></tr><tr><td>Nach Folie 27</td><td class="wechsel-zelle"><span class="pille sp-yannick"><i>Y</i>Yannick</span> → <span class="pille sp-elias"><i>E</i>Elias</span></td><td>„Was es kostet, wenn das Ob schiefgeht, rechnet Elias jetzt mit Ihnen aus.“</td><td>„Danke, Yannick.“</td></tr><tr><td>Nach Folie 30</td><td class="wechsel-zelle"><span class="pille sp-elias"><i>E</i>Elias</span> → <span class="pille sp-yannick"><i>Y</i>Yannick</span></td><td>„Bleibt die Frage, wer sich darum kümmert. Yannick?“</td><td>„Danke, Elias.“</td></tr></tbody></table>
   <h3>Regeln für Umfragen und Bedienung</h3>
   <ul class="regeln"><li>Sechs Live-Fragen: Folien 04, 09, 21, 24, 32 und 36. Folie 02 ist ein Handzeichen.</li><li>Ansage jedes Mal: „Neuer Code, bitte neu scannen. Sie haben 30 Sekunden.“</li><li>Klicken, wenn die Zahl der Stimmen nicht mehr steigt, spätestens nach 45 Sekunden.</li><li>Pille zeigt „offline“: Handzeichen, ein Klick auf einen Balken zählt +1. Ziffern springen immer zu Folien und zählen keine Stimmen.</li><li>Rechner (28), Uhr (23) und „Eigener Fall“ (22) nur im Folienfenster bedienen; in der Referentenansicht sind Klicks auf die Folie gesperrt.</li><li>Ohne Firmenauftritt: Adresse mit ?marke=neutral öffnen. Dann fehlt Folie 34, alle Nummern danach rücken um eins vor.</li></ul>
 </section>
 
 <section class="teil">
-<header class="teil-kopf"><p class="teil-nr">Teil 1</p><h2>Einstieg</h2><p>Yannick · Folien 01 bis 05 · ab 0:00 · 4:20 min</p></header>
-<article class="folie sp-yannick">
+<header class="teil-kopf"><p class="teil-nr">Teil 1</p><h2>Einstieg</h2><p><span class="pille sp-yannick"><i>Y</i>Yannick</span> Folien 01 bis 05 · ab 0:00 · 4:20 min</p></header>
+<div class="uebergabe sp-yannick">
+  <div class="ue-kopf"><span class="ue-mono">Y</span><div><p class="ue-klein">Es beginnt</p><p class="ue-name">Yannick Heisler</p></div>
+  <p class="ue-bereich">Folien 01 bis 05<br>ab 0:00 · 4:20 min</p></div>
+  
+</div><article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/01.jpg" alt="Folie 01">
-    <p class="meta"><b class="nr">01</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 0:00 · 40 s</p>
+    <p class="meta"><b class="nr">01</b><span class="zeit">ab 0:00 · 40 s</span></p>
   </div>
   <div class="rechts">
     <h3>Welches Risiko hat Ihre KI?</h3>
@@ -145,9 +192,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/02.jpg" alt="Folie 02">
-    <p class="meta"><b class="nr">02</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 0:40 · 60 s</p>
+    <p class="meta"><b class="nr">02</b><span class="zeit">ab 0:40 · 60 s</span></p>
   </div>
   <div class="rechts">
     <h3>Wer hat diese Woche KI genutzt?</h3>
@@ -158,9 +205,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/03.jpg" alt="Folie 03">
-    <p class="meta"><b class="nr">03</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 1:40 · 70 s</p>
+    <p class="meta"><b class="nr">03</b><span class="zeit">ab 1:40 · 70 s</span></p>
   </div>
   <div class="rechts">
     <h3>Sechs Stellen, an denen hier KI arbeitet</h3>
@@ -170,9 +217,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/04.jpg" alt="Folie 04">
-    <p class="meta"><b class="nr">04</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 2:50 · 60 s</p>
+    <p class="meta"><b class="nr">04</b><span class="zeit">ab 2:50 · 60 s</span></p>
   </div>
   <div class="rechts">
     <h3>Schätzfrage: Wo reicht Schulung allein nicht?</h3>
@@ -181,9 +228,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/05.jpg" alt="Folie 05">
-    <p class="meta"><b class="nr">05</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 3:50 · 30 s</p>
+    <p class="meta"><b class="nr">05</b><span class="zeit">ab 3:50 · 30 s</span></p>
   </div>
   <div class="rechts">
     <h3>Unser Prüfpfad in vier Stationen</h3>
@@ -193,16 +240,19 @@ p { orphans: 3; widows: 3; }
 
 </section>
 <section class="teil">
-<header class="teil-kopf"><p class="teil-nr">Teil 2</p><h2>Grundlagen</h2><p>Elias · Folien 06 bis 10 · ab 4:20 · 7:05 min</p></header>
-<article class="folie sp-elias">
+<header class="teil-kopf"><p class="teil-nr">Teil 2</p><h2>Grundlagen</h2><p><span class="pille sp-elias"><i>E</i>Elias</span> Folien 06 bis 10 · ab 4:20 · 7:05 min</p></header>
+<div class="uebergabe sp-elias">
+  <div class="ue-kopf"><span class="ue-mono">E</span><div><p class="ue-klein">Sprecherwechsel · ab hier spricht</p><p class="ue-name">Elias Knauber</p></div>
+  <p class="ue-bereich">Folien 06 bis 19<br>ab 4:20 · 18:50 min</p></div>
+  <div class="ue-saetze"><p><span>Yannick sagt zuletzt</span>„Durch Grundlagen und Risikoklassen führt Sie jetzt Elias.“</p><p><span>Elias beginnt mit</span>„Danke, Yannick.“</p></div>
+</div><article class="folie sp-elias folie--lang">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/06.jpg" alt="Folie 06">
-    <p class="meta"><b class="nr">06</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 4:20 · 90 s</p>
+    <p class="meta"><b class="nr">06</b><span class="zeit">ab 4:20 · 90 s</span></p>
   </div>
   <div class="rechts">
     <h3>Der AI Act gilt schon, Stück für Stück</h3>
-    <p class="wechsel"><span class="pfeil" aria-hidden="true">⇄</span>Sprecherwechsel: Elias übernimmt (Folien 06 bis 19).</p>
     <div class="schritt"><span class="klick klick--start">Start</span><p><span class="rede">Danke, Yannick. Erste Frage: Seit wann gilt was? Der AI Act ist seit August 2024 in Kraft, gilt aber Stück für Stück. Seit Februar 2025 sind bestimmte Praktiken verboten, und jedes Unternehmen, das KI einsetzt, muss die KI-Kompetenz seines Personals fördern. Seit August 2025 gelten Pflichten für die großen KI-Modelle. Seit dem 2. August 2026 gelten die Transparenzpflichten und der Großteil der Verordnung. Im Dezember kommen zwei neue Verbote dazu.</span></p></div>
     <div class="schritt"><span class="klick">Klick 1</span><p><span class="rede">Ursprünglich sollten die Hochrisiko-Pflichten für Einsatzzwecke wie Personal schon diesen August gelten, für Produkte ein Jahr später. Im Juli 2026 hat die EU mit dem sogenannten Digital-Omnibus nachgesteuert: Die Termine rutschen auf Dezember 2027 und August 2028. Das sind feste Termine. Gleichzeitig ist in Deutschland das KI-Marktüberwachungs- und Innovationsförderungsgesetz, kurz KI-MIG, in Kraft getreten.</span></p></div>
     <div class="schritt"><span class="klick">Klick 2</span><p><span class="rede">Wichtig für KMU: Verschoben ist im Kern nur Hochrisiko. Verbote, KI-Kompetenz und Transparenz gelten schon heute; nur ältere KI-Generatoren haben für die Kennzeichnung bis Dezember Zeit.</span></p></div>
@@ -210,9 +260,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-elias">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/07.jpg" alt="Folie 07">
-    <p class="meta"><b class="nr">07</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 5:50 · 90 s</p>
+    <p class="meta"><b class="nr">07</b><span class="zeit">ab 5:50 · 90 s</span></p>
   </div>
   <div class="rechts">
     <h3>Ist das überhaupt KI?</h3>
@@ -226,9 +276,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-elias">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/08.jpg" alt="Folie 08">
-    <p class="meta"><b class="nr">08</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 7:20 · 80 s</p>
+    <p class="meta"><b class="nr">08</b><span class="zeit">ab 7:20 · 80 s</span></p>
   </div>
   <div class="rechts">
     <h3>Erst die Rolle, dann die Klasse</h3>
@@ -238,9 +288,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-elias">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/09.jpg" alt="Folie 09">
-    <p class="meta"><b class="nr">09</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 8:40 · 90 s</p>
+    <p class="meta"><b class="nr">09</b><span class="zeit">ab 8:40 · 90 s</span></p>
   </div>
   <div class="rechts">
     <h3>Welche Rolle hat der Betrieb mit dem eigenen Chatbot?</h3>
@@ -250,9 +300,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-elias">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/10.jpg" alt="Folie 10">
-    <p class="meta"><b class="nr">10</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 10:10 · 75 s</p>
+    <p class="meta"><b class="nr">10</b><span class="zeit">ab 10:10 · 75 s</span></p>
   </div>
   <div class="rechts">
     <h3>Wer kontrolliert das?</h3>
@@ -264,12 +314,12 @@ p { orphans: 3; widows: 3; }
 
 </section>
 <section class="teil">
-<header class="teil-kopf"><p class="teil-nr">Teil 3</p><h2>Risikoklassen</h2><p>Elias · Folien 11 bis 19 · ab 11:25 · 11:45 min</p></header>
+<header class="teil-kopf"><p class="teil-nr">Teil 3</p><h2>Risikoklassen</h2><p><span class="pille sp-elias"><i>E</i>Elias</span> Folien 11 bis 19 · ab 11:25 · 11:45 min</p></header>
 <article class="folie sp-elias">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/11.jpg" alt="Folie 11">
-    <p class="meta"><b class="nr">11</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 11:25 · 70 s</p>
+    <p class="meta"><b class="nr">11</b><span class="zeit">ab 11:25 · 70 s</span></p>
   </div>
   <div class="rechts">
     <h3>Vier Stufen und eine Sonderspur</h3>
@@ -282,11 +332,11 @@ p { orphans: 3; widows: 3; }
     <div class="schritt"><span class="klick">Klick 6</span><p><span class="rede">Und eine Pflicht gilt für alle, egal welche Stufe: die KI-Kompetenz der eigenen Leute fördern.</span></p></div>
   </div>
 </article>
-<article class="folie sp-elias">
+<article class="folie sp-elias folie--lang">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/12.jpg" alt="Folie 12">
-    <p class="meta"><b class="nr">12</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 12:35 · 90 s</p>
+    <p class="meta"><b class="nr">12</b><span class="zeit">ab 12:35 · 90 s</span></p>
   </div>
   <div class="rechts">
     <h3>Rot: Was gar nicht geht</h3>
@@ -296,9 +346,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-elias">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/13.jpg" alt="Folie 13">
-    <p class="meta"><b class="nr">13</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 14:05 · 120 s</p>
+    <p class="meta"><b class="nr">13</b><span class="zeit">ab 14:05 · 120 s</span></p>
   </div>
   <div class="rechts">
     <h3>Erlaubt oder verboten?</h3>
@@ -310,11 +360,11 @@ p { orphans: 3; widows: 3; }
     <div class="schritt"><span class="klick">Klick 5</span><p><span class="rede">Nicht verboten. Sie identifiziert niemanden, ordnet niemanden Kategorien zu und liest keine Gefühle. Den Datenschutz muss der Laden trotzdem beachten.</span></p></div>
   </div>
 </article>
-<article class="folie sp-elias">
+<article class="folie sp-elias folie--lang">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/14.jpg" alt="Folie 14">
-    <p class="meta"><b class="nr">14</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 16:05 · 85 s</p>
+    <p class="meta"><b class="nr">14</b><span class="zeit">ab 16:05 · 85 s</span></p>
   </div>
   <div class="rechts">
     <h3>Orange: zwei Türen ins Hochrisiko</h3>
@@ -325,9 +375,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-elias">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/15.jpg" alt="Folie 15">
-    <p class="meta"><b class="nr">15</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 17:30 · 75 s</p>
+    <p class="meta"><b class="nr">15</b><span class="zeit">ab 17:30 · 75 s</span></p>
   </div>
   <div class="rechts">
     <h3>Ausnahme: Die KI hilft nur zu</h3>
@@ -339,9 +389,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-elias">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/16.jpg" alt="Folie 16">
-    <p class="meta"><b class="nr">16</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 18:45 · 80 s</p>
+    <p class="meta"><b class="nr">16</b><span class="zeit">ab 18:45 · 80 s</span></p>
   </div>
   <div class="rechts">
     <h3>Wer trägt wie viel?</h3>
@@ -351,9 +401,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-elias">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/17.jpg" alt="Folie 17">
-    <p class="meta"><b class="nr">17</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 20:05 · 70 s</p>
+    <p class="meta"><b class="nr">17</b><span class="zeit">ab 20:05 · 70 s</span></p>
   </div>
   <div class="rechts">
     <h3>Gelb: sagen, dass es KI ist</h3>
@@ -363,9 +413,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-elias">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/18.jpg" alt="Folie 18">
-    <p class="meta"><b class="nr">18</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 21:15 · 60 s</p>
+    <p class="meta"><b class="nr">18</b><span class="zeit">ab 21:15 · 60 s</span></p>
   </div>
   <div class="rechts">
     <h3>Grün: frei, nicht pflichtfrei</h3>
@@ -376,9 +426,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-elias">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/19.jpg" alt="Folie 19">
-    <p class="meta"><b class="nr">19</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 22:15 · 55 s</p>
+    <p class="meta"><b class="nr">19</b><span class="zeit">ab 22:15 · 55 s</span></p>
   </div>
   <div class="rechts">
     <h3>Lila: die großen Modelle</h3>
@@ -391,25 +441,28 @@ p { orphans: 3; widows: 3; }
 
 </section>
 <section class="teil">
-<header class="teil-kopf"><p class="teil-nr">Teil 4</p><h2>Selbst prüfen</h2><p>Yannick · Folien 20 bis 25 · ab 23:10 · 11:15 min</p></header>
-<article class="folie sp-yannick">
+<header class="teil-kopf"><p class="teil-nr">Teil 4</p><h2>Selbst prüfen</h2><p><span class="pille sp-yannick"><i>Y</i>Yannick</span> Folien 20 bis 25 · ab 23:10 · 11:15 min</p></header>
+<div class="uebergabe sp-yannick">
+  <div class="ue-kopf"><span class="ue-mono">Y</span><div><p class="ue-klein">Sprecherwechsel · ab hier spricht</p><p class="ue-name">Yannick Heisler</p></div>
+  <p class="ue-bereich">Folien 20 bis 27<br>ab 23:10 · 14:05 min</p></div>
+  <div class="ue-saetze"><p><span>Elias sagt zuletzt</span>„Wie man sie Schritt für Schritt prüft, zeigt Ihnen jetzt Yannick.“</p><p><span>Yannick beginnt mit</span>„Danke, Elias.“</p></div>
+</div><article class="folie sp-yannick folie--lang">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/20.jpg" alt="Folie 20">
-    <p class="meta"><b class="nr">20</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 23:10 · 100 s</p>
+    <p class="meta"><b class="nr">20</b><span class="zeit">ab 23:10 · 100 s</span></p>
   </div>
   <div class="rechts">
     <h3>So prüft die Logik: Fall 1</h3>
-    <p class="wechsel"><span class="pfeil" aria-hidden="true">⇄</span>Sprecherwechsel: Yannick übernimmt (Folien 20 bis 27, Klassifizierer und Praxis bei SimpleAct).</p>
     <div class="schritt"><span class="klick klick--start">Start</span><p><span class="rede">Danke, Elias. Jetzt prüfen wir Schritt für Schritt, und zwar Fall eins aus unserem Betrieb: Eine eingekaufte Software bewertet Bewerbungen, erstellt ein Ranking und sortiert unpassende automatisch aus. Das Ergebnis kennen Sie schon von Elias: hochriskant. Schauen wir, wie die Logik dahin kommt. Das ist der Klassifizierer. Er beruht auf der Prüflogik von SimpleAct, für heute vereinfacht auf 17 Ja-Nein-Fragen in fünf Prüfstufen: Ist das Gesetz anwendbar, ist es verboten, ist es hochriskant, gibt es Transparenzpflichten, und ist es ein eigenes großes Modell? Die Reihenfolge ist bewusst: Ein Verbot sticht alles andere.</span></p></div>
     <div class="schritt"><span class="klick">Klick 1</span><p><span class="rede">Unser Fall: Es ist KI, keine Ausnahme, nichts Verbotenes, kein Sicherheitsbauteil. Aber der Zweck steht in Anhang drei, Beschäftigung und Personal. Bewertet es Menschen? Ja, das ist Profiling. Damit ist der Filter gesperrt: hochriskant. Danach prüft die Logik weiter, ob zusätzlich Transparenzpflichten greifen. Hier nicht. Unser Betrieb ist Betreiber und muss ab Dezember 2027 die Betreiberpflichten erfüllen; für ein Tool, das schon vorher auf dem Markt war, erst nach einer grundlegenden Änderung. Würde er ab Dezember 2027 Bewerbungen selbst mit ChatGPT ranken, könnte er sogar selbst zum Anbieter werden. Und weil das Tool unpassende Bewerbungen automatisch aussortiert, ist schon heute die DSGVO berührt: Rein automatische Absagen sind nur in engen Ausnahmen erlaubt.</span></p></div>
   </div>
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/21.jpg" alt="Folie 21">
-    <p class="meta"><b class="nr">21</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 24:50 · 70 s</p>
+    <p class="meta"><b class="nr">21</b><span class="zeit">ab 24:50 · 70 s</span></p>
   </div>
   <div class="rechts">
     <h3>Stimmungsanalyse nur bei den Anrufenden: welche Klasse?</h3>
@@ -419,9 +472,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/22.jpg" alt="Folie 22">
-    <p class="meta"><b class="nr">22</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 26:00 · 100 s</p>
+    <p class="meta"><b class="nr">22</b><span class="zeit">ab 26:00 · 100 s</span></p>
   </div>
   <div class="rechts">
     <h3>Gleiche Technik, andere Klasse</h3>
@@ -433,9 +486,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/23.jpg" alt="Folie 23">
-    <p class="meta"><b class="nr">23</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 27:40 · 225 s</p>
+    <p class="meta"><b class="nr">23</b><span class="zeit">ab 27:40 · 225 s</span></p>
   </div>
   <div class="rechts">
     <h3>Jetzt Sie: Ihr KI-Tool im Prüfpfad</h3>
@@ -446,9 +499,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/24.jpg" alt="Folie 24">
-    <p class="meta"><b class="nr">24</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 31:25 · 110 s</p>
+    <p class="meta"><b class="nr">24</b><span class="zeit">ab 31:25 · 110 s</span></p>
   </div>
   <div class="rechts">
     <h3>Welche Klasse hat Ihr KI-Tool ergeben?</h3>
@@ -458,9 +511,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/25.jpg" alt="Folie 25">
-    <p class="meta"><b class="nr">25</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 33:15 · 70 s</p>
+    <p class="meta"><b class="nr">25</b><span class="zeit">ab 33:15 · 70 s</span></p>
   </div>
   <div class="rechts">
     <h3>Das KI-Inventar</h3>
@@ -475,12 +528,12 @@ p { orphans: 3; widows: 3; }
 
 </section>
 <section class="teil">
-<header class="teil-kopf"><p class="teil-nr">Teil 5</p><h2>KMU-Praxis</h2><p>Yannick und Elias · Folien 26 bis 34 · ab 34:25 · 13:05 min</p></header>
+<header class="teil-kopf"><p class="teil-nr">Teil 5</p><h2>KMU-Praxis</h2><p><span class="pille sp-yannick"><i>Y</i>Yannick</span> <span class="pille sp-elias"><i>E</i>Elias</span> Folien 26 bis 34 · ab 34:25 · 13:05 min</p></header>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/26.jpg" alt="Folie 26">
-    <p class="meta"><b class="nr">26</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 34:25 · 70 s</p>
+    <p class="meta"><b class="nr">26</b><span class="zeit">ab 34:25 · 70 s</span></p>
   </div>
   <div class="rechts">
     <h3>Viel KI, wenig Klarheit</h3>
@@ -491,9 +544,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/27.jpg" alt="Folie 27">
-    <p class="meta"><b class="nr">27</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 35:35 · 100 s</p>
+    <p class="meta"><b class="nr">27</b><span class="zeit">ab 35:35 · 100 s</span></p>
   </div>
   <div class="rechts">
     <h3>Sechs Irrtümer</h3>
@@ -506,24 +559,27 @@ p { orphans: 3; widows: 3; }
     <div class="schritt"><span class="klick">Klick 6</span><p><span class="rede">Es gibt keine Größenausnahme. Erleichtert wird das Wie, nicht das Ob. Was es kostet, wenn das Ob schiefgeht, rechnet Elias jetzt mit Ihnen aus.</span></p></div>
   </div>
 </article>
-<article class="folie sp-elias">
+<div class="uebergabe sp-elias">
+  <div class="ue-kopf"><span class="ue-mono">E</span><div><p class="ue-klein">Sprecherwechsel · ab hier spricht</p><p class="ue-name">Elias Knauber</p></div>
+  <p class="ue-bereich">Folien 28 bis 30<br>ab 37:15 · 4:35 min</p></div>
+  <div class="ue-saetze"><p><span>Yannick sagt zuletzt</span>„Was es kostet, wenn das Ob schiefgeht, rechnet Elias jetzt mit Ihnen aus.“</p><p><span>Elias beginnt mit</span>„Danke, Yannick.“</p></div>
+</div><article class="folie sp-elias">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/28.jpg" alt="Folie 28">
-    <p class="meta"><b class="nr">28</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 37:15 · 110 s</p>
+    <p class="meta"><b class="nr">28</b><span class="zeit">ab 37:15 · 110 s</span></p>
   </div>
   <div class="rechts">
     <h3>Was ein Verstoß kostet</h3>
-    <p class="wechsel"><span class="pfeil" aria-hidden="true">⇄</span>Sprecherwechsel: Elias übernimmt (Folien 28 bis 30).</p>
     <div class="schritt"><span class="klick klick--start">Start</span><p><span class="rede">Danke, Yannick. Was kostet ein Verstoß? Rechnen wir es aus, für unsere Muster Metallbau mit 60 Leuten. Was schätzen Sie, wie viel Umsatz macht so ein Betrieb?</span> <span class="regie">Kurz Zurufe sammeln, dann:</span> <span class="rede">Rund zehn Millionen Euro.</span> <span class="regie">Knopf 10 Mio. € (Startwert).</span> <span class="rede">Für große Unternehmen gilt der höhere Betrag: 35 Millionen Euro oder sieben Prozent des Umsatzes bei Verboten. Für KMU gilt der niedrigere. Bei zehn Millionen Euro Umsatz sind das höchstens 700.000 Euro für ein Verbot und 300.000 Euro für Verstöße gegen Hochrisiko- oder Transparenzpflichten. Ohne KMU-Regel stünden da 35 Millionen.</span> <span class="regie">Knopf 2 Mio. €</span> <span class="rede">Bei einem kleinen Betrieb mit zwei Millionen Umsatz sind es höchstens 140.000 und 60.000 Euro. Immer noch existenzbedrohend, aber eine ganz andere Größenordnung. Und wie fällt so etwas auf? Selten durch eine Kontrolle aus heiterem Himmel. Eher durch eine Beschwerde, einen Schadensfall oder den Fragebogen eines Großkunden, der wissen will, welche KI Sie einsetzen.</span></p></div>
     <div class="schritt"><span class="klick klick--leer"></span><p><span class="regie">Knöpfe 2 / 10 / 50 Mio. € oder Regler (1 bis 50 Mio. €); Klicks und Pfeiltasten im Regler wechseln die Folie nicht. KMU nach EU-Empfehlung: unter 250 Beschäftigte und höchstens 50 Mio. € Umsatz oder 43 Mio. € Bilanzsumme.</span></p></div>
   </div>
 </article>
-<article class="folie sp-elias">
+<article class="folie sp-elias folie--lang">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/29.jpg" alt="Folie 29">
-    <p class="meta"><b class="nr">29</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 39:05 · 75 s</p>
+    <p class="meta"><b class="nr">29</b><span class="zeit">ab 39:05 · 75 s</span></p>
   </div>
   <div class="rechts">
     <h3>Was kostet es Sie?</h3>
@@ -532,9 +588,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-elias">
   <div class="links">
+    <p class="wer-band"><span class="mono">E</span>Elias</p>
     <img src="skript-bilder/30.jpg" alt="Folie 30">
-    <p class="meta"><b class="nr">30</b><span class="wer">Elias</span></p>
-    <p class="zeit">ab 40:20 · 90 s</p>
+    <p class="meta"><b class="nr">30</b><span class="zeit">ab 40:20 · 90 s</span></p>
   </div>
   <div class="rechts">
     <h3>Selten nur ein Gesetz</h3>
@@ -544,24 +600,27 @@ p { orphans: 3; widows: 3; }
     <div class="schritt"><span class="klick">Klick 3</span><p><span class="rede">In der Mitte, wo alle drei Gesetze gelten, liegt das meiste, was KI mit Beschäftigten macht: das Bewerber-Ranking mit Betreiberpflichten, Datenschutz und Zustimmung des Betriebsrats zu Auswahlrichtlinien, ein KI-Schichtplan nach Leistungsdaten, und die Stimmungsanalyse. Die ist nach dem AI Act sogar verboten, auch mit Einwilligung; die DSGVO allein kennt kein solches Pauschalverbot. Drei Gesetze, ein Betrieb. Bleibt die Frage, wer sich darum kümmert. Yannick?</span></p></div>
   </div>
 </article>
-<article class="folie sp-yannick">
+<div class="uebergabe sp-yannick">
+  <div class="ue-kopf"><span class="ue-mono">Y</span><div><p class="ue-klein">Sprecherwechsel · ab hier spricht</p><p class="ue-name">Yannick Heisler</p></div>
+  <p class="ue-bereich">Folien 31 bis 37<br>ab 41:50 · 8:40 min</p></div>
+  <div class="ue-saetze"><p><span>Elias sagt zuletzt</span>„Bleibt die Frage, wer sich darum kümmert. Yannick?“</p><p><span>Yannick beginnt mit</span>„Danke, Elias.“</p></div>
+</div><article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/31.jpg" alt="Folie 31">
-    <p class="meta"><b class="nr">31</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 41:50 · 90 s</p>
+    <p class="meta"><b class="nr">31</b><span class="zeit">ab 41:50 · 90 s</span></p>
   </div>
   <div class="rechts">
     <h3>Wer macht was, ohne Rechtsabteilung?</h3>
-    <p class="wechsel"><span class="pfeil" aria-hidden="true">⇄</span>Sprecherwechsel: Yannick übernimmt (Folien 31 bis 37, Rückbezug auf das Führungs-Referat).</p>
     <div class="schritt"><span class="klick klick--start">Start</span><p><span class="rede">Danke, Elias. Wer macht das alles? Im Konzern gibt es dafür eine Compliance-Abteilung. Im KMU mit 60 Leuten landet es oft bei der Geschäftsführung selbst, neben Vertrieb und Personal. Die Verantwortung bleibt auch dort. Praktisch hilft eine Person, die koordiniert: Inventar, Prüfung, Fristen. Das schreibt der AI Act nicht vor, aber irgendwer muss den Überblick haben, oft jemand aus Datenschutz oder IT. Dazu kommen der Betriebsrat und alle Beschäftigten.</span></p></div>
     <div class="schritt"><span class="klick">Klick 1</span><p><span class="rede">Das wichtigste Werkzeug gegen Schatten-KI ist eine einfache KI-Richtlinie: welche Tools erlaubt sind, welche Daten nicht hineingehören, wann gekennzeichnet wird und wer neue Tools prüft. Laut Bitkom haben das erst 23 Prozent der Unternehmen. Und damit sind wir bei Führung. Vor einer Woche haben wir Führung definiert als die zielbezogene, absichtliche Einflussnahme auf das Handeln anderer. Eine KI-Richtlinie ist genau das: Sie richtet aus, wie 60 Leute KI nutzen.</span></p></div>
   </div>
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/32.jpg" alt="Folie 32">
-    <p class="meta"><b class="nr">32</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 43:20 · 120 s</p>
+    <p class="meta"><b class="nr">32</b><span class="zeit">ab 43:20 · 120 s</span></p>
   </div>
   <div class="rechts">
     <h3>Was gehen Sie am Montag als Erstes an?</h3>
@@ -571,9 +630,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/33.jpg" alt="Folie 33">
-    <p class="meta"><b class="nr">33</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 45:20 · 80 s</p>
+    <p class="meta"><b class="nr">33</b><span class="zeit">ab 45:20 · 80 s</span></p>
   </div>
   <div class="rechts">
     <h3>Fünf Schritte ab Montag</h3>
@@ -584,9 +643,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/34.jpg" alt="Folie 34">
-    <p class="meta"><b class="nr">34</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 46:40 · 50 s</p>
+    <p class="meta"><b class="nr">34</b><span class="zeit">ab 46:40 · 50 s</span></p>
   </div>
   <div class="rechts">
     <h3>Die fünf Schritte mit SimpleAct</h3>
@@ -597,12 +656,12 @@ p { orphans: 3; widows: 3; }
 
 </section>
 <section class="teil">
-<header class="teil-kopf"><p class="teil-nr">Teil 6</p><h2>Schluss</h2><p>Yannick · Folien 35 bis 37 · ab 47:30 · 3:00 min</p></header>
+<header class="teil-kopf"><p class="teil-nr">Teil 6</p><h2>Schluss</h2><p><span class="pille sp-yannick"><i>Y</i>Yannick</span> Folien 35 bis 37 · ab 47:30 · 3:00 min</p></header>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/35.jpg" alt="Folie 35">
-    <p class="meta"><b class="nr">35</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 47:30 · 60 s</p>
+    <p class="meta"><b class="nr">35</b><span class="zeit">ab 47:30 · 60 s</span></p>
   </div>
   <div class="rechts">
     <h3>Eine Kamera, drei Klassen</h3>
@@ -612,9 +671,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/36.jpg" alt="Folie 36">
-    <p class="meta"><b class="nr">36</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 48:30 · 90 s</p>
+    <p class="meta"><b class="nr">36</b><span class="zeit">ab 48:30 · 90 s</span></p>
   </div>
   <div class="rechts">
     <h3>Bremst der AI Act kleine Unternehmen aus?</h3>
@@ -624,9 +683,9 @@ p { orphans: 3; widows: 3; }
 </article>
 <article class="folie sp-yannick">
   <div class="links">
+    <p class="wer-band"><span class="mono">Y</span>Yannick</p>
     <img src="skript-bilder/37.jpg" alt="Folie 37">
-    <p class="meta"><b class="nr">37</b><span class="wer">Yannick</span></p>
-    <p class="zeit">ab 50:00 · 30 s</p>
+    <p class="meta"><b class="nr">37</b><span class="zeit">ab 50:00 · 30 s</span></p>
   </div>
   <div class="rechts">
     <h3>Diskussion</h3>
