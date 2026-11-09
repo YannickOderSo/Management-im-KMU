@@ -103,7 +103,7 @@ Laufleiste schrumpfen; die Sortiermaschine von Folie 01 als Rückkehr auf Folie 
 | `werkzeuge/wimmelbild-erzeugen.py` | erzeugt das isometrische Wimmelbild und die Lage der sechs Punkte |
 | `js/deck.js`, `js/komponenten.js`, `css/tokens.css`, `deck.css`, `komponenten.css`, `schriften/` | Engine (unverändert) |
 | `werkzeuge/pruefen.mjs`, `werkzeuge/redeskript.mjs` | Prüfung mit Screenshots und Notfall-PDF; Redeskript |
-| `werkzeuge/praesentationsskript.mjs`, `werkzeuge/skript-zusatz.json` | Präsentationsskript als gestaltetes PDF (`export/praesentationsskript.pdf`): Titelseite mit Sprecher-Zeitleiste, Überblick, je Folie Vorschaubild, Sprechtext je Klick und Regie, Anhang mit Rückfragen, Kürzungsplan und Plan B. Nach Änderungen an den Notizen neu erzeugen |
+| `werkzeuge/praesentationsskript.mjs`, `werkzeuge/skript-zusatz.json` | Präsentationsskript als gestaltetes PDF (`export/praesentationsskript.pdf`): Titelseite mit Sprecher-Zeitleiste und „Wer spricht wann“, Überblick, jede Folie in der Farbe ihres Sprechers (Yannick blau, Elias orange) mit Namensband, vor jedem Wechsel ein Übergabe-Kasten mit letztem und erstem Satz, je Folie Vorschaubild, Sprechtext je Klick und Regie, Anhang mit Rückfragen, Kürzungsplan und Plan B. Nach Änderungen an den Notizen neu erzeugen |
 
 Upgrade auf Kunden-Niveau (Grafik, Animation, Text-Diät) umgesetzt am 31.10.2026; Kundenfassung (White-Label) folgt nach
 dem Vortrag: `../recherche/gestaltung-upgrade.md`.
