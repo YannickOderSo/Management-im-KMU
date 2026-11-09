@@ -101,6 +101,21 @@ Erzeugen wie oben, mit `SKRIPT_TEXTE=werkzeuge/skript-locker.json` vor dem Aufru
 Änderungen am Sprechtext in `index.html` die lockere Fassung inhaltlich mitziehen.
 Die Trennfolien tragen dafür `data-block="1…3"`.
 
+## Frei gesprochene Fassung und Redeskript
+
+- **Frei gesprochen** (`werkzeuge/skript-frei.json`): noch lockerer als die lockere Fassung, kurze
+  Sätze, direkte Ansprache; gleiche Inhalte und Zahlen, eigener Kürzungsplan. Als
+  Präsentationsskript: `export/praesentationsskript-frei.pdf`
+  (`SKRIPT_TEXTE=werkzeuge/skript-frei.json node werkzeuge/praesentationsskript.mjs`).
+- **Redeskript** `export/redeskript.pdf` (13 Seiten, schlichte Leseversion wie in `fuehrung/`):
+  frei gesprochener Sprechtext je Folie mit Zeiten und Klicks, Kürzungssätze grau in Klammern,
+  dann **Diskussion: Beispielantworten** zu den drei Fragen von Folie 28 (Einstieg, typische
+  Antworten aus dem Publikum mit Reaktion, eigene Position, Nachfrage, „Wenn die Diskussion
+  stockt“; Daten in `werkzeuge/diskussion.json`) und die 15 Rückfragen. Erzeugen im Ordner
+  `praesentation/` (gleiche Umgebungsvariablen wie oben): `node werkzeuge/redeskript.mjs`.
+  Bricht ab, wenn ein Absatz ohne freie Fassung bleibt, ein Kürzungssatz fehlt oder die
+  Diskussionsfragen nicht wortgleich zu Folie 28 sind.
+
 ## Geprüfte Befunde (Stand 05.11.2026, von vier Prüfungen gegengeprüft)
 
 - Titel 150.732, Einleitung 152.732 Besuche; Text „6 Monate“ (+11.065 %) und „18 Monate“

@@ -1,0 +1,129 @@
+{
+  "_hinweis": "Frei gesprochene Fassung (noch lockerer als skript-locker.json) für Redeskript und Präsentationsskript. Gleiche Inhalte wie index.html, Zitate wörtlich, Zahlen nur gerundet, wo die genaue Zahl nicht der Punkt ist (Folien 16 und 17 exakt). Erzeugen: node werkzeuge/redeskript.mjs bzw. SKRIPT_TEXTE=werkzeuge/skript-frei.json node werkzeuge/praesentationsskript.mjs",
+  "datei": "praesentationsskript-frei",
+  "kicker": "Präsentationsskript, frei gesprochen",
+  "texte": {
+    "f01/g": "„150.000 Besuche, kein Cent Werbung. Klingt wie ein Traum, oder? Genau mit diesem Versprechen wirbt die Fallstudie, die ich Ihnen heute zeige. In den nächsten gut zwanzig Minuten schauen wir zusammen, was da wirklich dran ist. Und was ein kleines oder mittleres Unternehmen davon mitnehmen kann.“",
+    "f02/0": "„Vier Teile. Erst die Fallstudie: wer, was, welche Zahlen, welche sechs Schritte. Dann nehm ich sie mit sechs Fragen auseinander. Danach: Was davon kann ein KMU brauchen? Und am Ende Fazit und Ihre Meinung. Kleine Lesehilfe: Blau ist immer, was die Studie sagt. Orange ist, was ich gefunden hab.“",
+    "f02/1": "„Und die große Frage über allem: Hält die Studie, was sie verspricht? Und lohnt sich das für ein KMU?“",
+    "f03/g": "„Ganz kurz, damit wir alle vom Gleichen reden. SEO heißt Suchmaschinenoptimierung. Man will bei Google oben stehen, ohne dafür zu zahlen. Ganz oben sind oft Anzeigen, da zahlt man pro Klick. Darunter kommen die normalen Treffer, manchmal mit einer Antwortbox drüber, dem Featured Snippet. Vier Wörter brauchen wir gleich. Keyword: der Suchbegriff. Suchvolumen: wie oft der im Monat gesucht wird, von Tools geschätzt. Backlink: ein Link von einer fremden Seite, für Google so was wie eine Empfehlung. Und das Featured Snippet ist die Antwortbox. Wer auf Platz 1 steht, kriegt mit Abstand die meisten Klicks.“",
+    "f04/g": "„Zum Fall. UAV Coach, eine Firma aus den USA, verkauft Online-Kurse für Drohnenpiloten. Gründer Alan Perlman will mehr Besucher und mehr Kontakte. Also holt er sich den Berater Michael Karp. Der schreibt einen riesigen Ratgeber: ‚How to Fly a Quadcopter – The Ultimate Guide‘. Auf Deutsch: Wie fliege ich eine Drohne. Die Fallstudie dazu erscheint 2015 als Gastbeitrag von Karp auf dem SEO-Blog von Robbie Richards. Und behalten Sie im Hinterkopf: Zwei von den dreien verdienen ihr Geld mit SEO-Beratung. Der dritte ist ihr Kunde.“",
+    "f05/g": "„Und jetzt das Versprechen, alles in Blau, alles Angaben der Studie. Rund 150.000 Besuche. Über elftausend Prozent mehr Besucher aus der Suche, in sechs Monaten. Platz 1 bei Google, angeblich sogar vor Mashable, und das nach fünf Monaten. Ein einziger Artikel taucht bei über 1.300 Suchbegriffen auf. Gut 2.300 E-Mail-Adressen. Und die Leute bleiben im Schnitt über fünf Minuten. Alles, so sinngemäß der Text, ‚ohne Geld für Werbung oder Linkaufbau‘. Ziemlich stark, oder? Merken Sie sich die Zahlen. Auf die wichtigsten komm ich zurück.“",
+    "t1/g": "„Teil 1: Wie haben die das gemacht?“",
+    "f06/0": "„Sechs Schritte. Eins: Keywords suchen, Konkurrenz checken. Zwei: den besten Artikel zum Thema schreiben. Drei: die Seite selbst optimieren, also Titel, Überschriften, Bilder, Ladezeit. Das heißt On-Page-SEO, im Gegensatz zu Off-Page-SEO wie Backlinks. Vier: aus Lesern E-Mail-Kontakte machen. Fünf: den Artikel aktiv rumzeigen. Sechs: Backlinks sammeln.“",
+    "f06/1": "„Man kann’s auch in drei Phasen packen: Die ersten drei bauen die Seite, Schritt vier sammelt Kontakte, die letzten zwei holen Reichweite. Karp sagt selbst: Das sei nicht kompliziert, und genau das sei das Schöne daran.“",
+    "f07/0": "„Schritt 1, Keywords. Karp nimmt ‚how to fly a quadcopter‘, nur gut 700 Suchen im Monat. Seine Gründe: Genau das fragen Drohnen-Anfänger, also seine Zielgruppe. Es lässt sich gut recherchieren. Das Volumen ist okay. Und vor allem hängen viele verwandte Suchanfragen dran. Er nennt das ‚organischen Fußabdruck‘.“",
+    "f07/1": "„Und das ist der eigentliche Trick. Stellen Sie sich einen Eisberg vor: Oben das Hauptkeyword, darunter hunderte ähnliche Fragen. Das nennt man Long Tail. Der Artikel beantwortet viele davon in eigenen Abschnitten und rankt am Ende für über 1.300 Keywords. Das Hauptkeyword bringt laut Studie nur einen kleinen Teil der Besucher. Gefunden hat Karp die Begriffe mit Tools wie SEMrush, AnswerThePublic und den Fragen, die Google unter ‚Nutzer fragen auch‘ zeigt.“",
+    "f08/0": "„Bevor man loslegt, schaut man sich die Konkurrenz auf Seite 1 an. Vier Fragen: Wie stark sind die verlinkt? Was für Inhalte ranken da, Ratgeber, Produktseiten, Videos? Wie gut sind die optimiert? Und wie gut ist der Inhalt? Bei den Drohnen sah’s gut aus: schwach verlinkt, und der bisherige Platz 1 hatte gerade mal 303 Wörter.“",
+    "f08/1": "„Am wichtigsten ist die Art des Inhalts. Richards hat ein schönes Beispiel: Ein Software-Kunde will mit seiner Produktseite für ‚interactive infographic‘ ranken. Klappt nicht. Warum? Google zeigt bei der Suche nur Listen-Artikel. Mit einem Listen-Artikel kommen dann in einem Jahr gut 9.500 Besuche statt rund 370. Google zeigt halt, was die Leute erwarten.“",
+    "f09/0": "„Schritt 2, der Inhalt. Die Ansage: Ich schreib den besten Artikel zu dem Thema, Punkt. Der alte Platz 1 hatte 303 Wörter, auf Seite 1 sind es laut Studie im Schnitt rund 2.000. Karp schreibt fast 4.800.“",
+    "f09/1": "„Drei Tage sitzt er dran. Raus kommen 17 Kapitel mit klickbarem Inhaltsverzeichnis, das Google sogar als Sprungmarken anzeigt. Dazu Bilder, Videos, eine Checkliste vor dem Start und Übungen vom Anfänger bis zum Profi. Die Regel dahinter: Alles, was die Konkurrenz macht, besser machen. Und dann noch das, was sie nicht macht.“",
+    "f10/0": "„Schritt 3: die Seite selbst optimieren. Das Keyword kommt in den Seitentitel, in eine kurze Adresse, in die Hauptüberschrift und in den ersten Absatz. Die Nebenkeywords stehen in den Zwischenüberschriften. Bilder kriegen einen Alt-Text, also eine Beschreibung für Google und für Screenreader. Videos halten die Leute länger auf der Seite. Und Karp verlinkt bewusst andere gute Quellen, anders als viele Konkurrenten.“",
+    "f10/1": "„Dazu kommt die Ladezeit. Laut einer Google-Studie von 2016 wird gut die Hälfte der Besuche auf mobilen Seiten abgebrochen, wenn das Laden länger als drei Sekunden dauert. Laut Fallstudie bringt On-Page weniger als Backlinks, ist aber in ein paar Minuten erledigt.“",
+    "f11/g": "„Schritt 4 – und für ein Unternehmen der wichtigste. Denn Besucher allein zahlen keine Rechnung. Laut Studie gehen 98 Prozent wieder, ohne irgendwas zu tun. Also gibt’s ein Angebot: den Ratgeber als PDF, gegen die E-Mail-Adresse. Lead-Magnet heißt das. Zwei Wege: ein Pop-up nach zwölf Sekunden, da tragen sich gut 5 Prozent der Besucher ein. Und eine Box im Text: Von denen, die draufklicken, tragen sich 20 bis 50 Prozent ein. Dann noch Double-Opt-in, also Bestätigungsklick in einer zweiten Mail, und das PDF ist da. Am Ende: gut 2.300 E-Mail-Adressen, die UAV Coach anschreiben kann, bis jemand was kauft.“",
+    "f12/g": "„Schritt 5. Bis Google einen neuen Artikel weit oben zeigt, vergehen Monate. Also trägt man ihn am Anfang selbst dahin, wo die Zielgruppe eh schon rumhängt. Auf Quora beantwortet man Fragen ausführlich und setzt am Ende den Link, in der ersten Woche ein, zwei Stunden am Tag. Diese eine Antwort hier hatte fast 5.000 Aufrufe. In Foren diskutiert man mit und hat den Link in der Signatur. Jedes der 17 Kapitel wird ein eigener Social-Media-Post. Und auf Scoop.it, einer Plattform für Linksammlungen, schlägt man den Artikel vor, bis zu sieben Mal am Tag.“",
+    "f13/0": "„Schritt 6, laut Studie der entscheidende: Backlinks. 90 Tage lang sammelt das Team gezielt Links, mit vier Tricks. Eins: Wer auf schwächere Artikel der Konkurrenz verlinkt, kriegt eine Mail mit dem besseren. Zwei: Link-Lücken, also Seiten, die auf mehrere Konkurrenten verlinken, nur nicht auf uns. Drei: Blogs mit wöchentlichen Linksammlungen. Vier: Ressourcenseiten, sogar eine vom MIT.“",
+    "f13/1": "„2018 zeigt der Screenshot rund 100 verweisende Domains, mehr als jeder andere auf Seite 1. Die Studie sagt: Das ist der Hauptgrund für Platz 1. Kleiner Haken: Am Anfang hieß es, kein Geld für Linkaufbau. Gemeint ist: keine gekauften Links. 90 Tage Arbeit von einem bezahlten Berater kosten aber trotzdem Geld.“",
+    "f14/0": "„Und so läuft’s laut Studie: Nach drei Monaten Seite 1, erst auf Platz 4 bis 10. Nach fünf Monaten Platz 1. Nach einem halben Jahr gut 20.000 Seitenaufrufe über Google; laut Studie kam damit gut ein Fünftel des ganzen Website-Traffics über diesen einen Artikel. Dann macht UAV Coach das Gleiche mit weiteren Artikeln, und über 18 Monate kommen laut Text gut 150.000 Besuche zusammen. Aber Achtung: zwei verschiedene Größen, Aufrufe eines Artikels und Besuche mehrerer Artikel.“",
+    "f14/1": "„Stand 2018 ist die Website in den USA bei über 3.000 Keywords unter den ersten drei. Das war Teil 1, die Geschichte, so wie sie erzählt wird. Und jetzt schauen wir mal genauer hin.“",
+    "t2/g": "„Teil 2: Stimmt das alles?“",
+    "f15/g": "„Ich stell der Fallstudie sechs Fragen. Passen die Zahlen zusammen? Ist belegt, dass die Methode der Grund für den Erfolg war? Wer verdient daran? Gilt das heute noch? Rechnet sich das? Und, damit’s fair bleibt: Kann man das Vorgehen nachvollziehen? Das lehnt sich an die Gütekriterien an, die man auch an wissenschaftliche Fallstudien legt, zum Beispiel nach Yin: Gültigkeit und Zuverlässigkeit.“",
+    "f16/g": "„Erste Frage: Passen die Zahlen? Nicht mal untereinander. Im Titel: 150.732 Besuche. In der Einleitung: 152.732. Im Text mal sechs, mal 18 Monate, im Screenshot dazu neun Monate, Februar bis November 2015. Entsprechend beim Wachstum: im Text 11.065 Prozent, im Screenshot 12.134 Prozent. Der Artikel hat mal 4.400, mal 4.774 Wörter. Beim Suchvolumen werden Werte aus 2015 und 2018 gemischt. Und ‚ohne Geld für Linkaufbau‘ heißt praktisch: keine gekauften Links, aber 90 Tage Arbeit von einem bezahlten Berater. Einzeln sind das Kleinigkeiten. Zusammen heißt das: Da hat offenbar keiner die Zahlen abgeglichen. Und prüfen können wir keine davon.“",
+    "f17/0": "„Jetzt der wichtigste Beleg: der Google-Analytics-Screenshot ganz oben in der Studie. Der vergleicht zwei Zeiträume von je neun Monaten. Gezählt sind Besuche über die Suche, für die ganze Website, nicht nur für den einen Artikel. Der Artikel selbst kam in sechs Monaten auf gut 20.000 Seitenaufrufe.“",
+    "f17/1": "„Oben die Zeiträume: Februar bis November 2015 gegen Mai 2014 bis Februar 2015. Unten die Zahl: 150.732 gegen 1.232 Sitzungen.“",
+    "f17/2": "„Heißt: Vorher kamen gerade mal rund 137 Besuche im Monat über die Suche. Bei Google war die Seite praktisch unsichtbar. Und wenn man fast bei null anfängt, sieht jedes Wachstum in Prozent gigantisch aus. Basiseffekt nennt man das. Die 12.000 Prozent im Screenshot, genauso wie die 11.065 im Text, sagen deshalb wenig über die Methode. Sie sagen vor allem was über den Startpunkt.“",
+    "f18/g": "„Zweite Frage: Ist belegt, dass die sechs Schritte der Grund waren? Nein. Das ist ein Einzelfall: ein Artikel, eine Nische, eine Phase im Jahr 2015. Kein Vergleich. Wir wissen also nicht, welcher Schritt gewirkt hat, oder ob der Artikel auch ohne Quora und Linkaufbau gestiegen wäre. Die Studie stützt sich auf Ranking-Studien von Ahrefs und SEMrush, aber die messen nur Zusammenhänge, keine Ursachen. Und dann der Survivorship Bias: Man schaut nur auf die, die’s geschafft haben. Über den Gewinner schreibt man eine Fallstudie. Die Studie sagt am Ende sogar selbst: Nicht jeder Artikel landet auf Platz 1. Wie viele nicht, erfahren wir nicht.“",
+    "f19/0": "„Kleines Detail am Rand: ‚Wir haben Mashable überholt‘ – klingt nach David gegen Goliath. Nur: Welcher Mashable-Treffer das war, steht nirgends.“",
+    "f19/1": "„Der einzige Beleg ist dieser Screenshot: eine Kategorie-Seite mit Drohnen-News. Kein Ratgeber zur Frage ‚Wie fliege ich eine Drohne?‘. Nach den Regeln aus Schritt 1 ist das der falsche Inhaltstyp. Gegen einen guten Ratgeber hat so eine Seite kaum eine Chance.“",
+    "f19/2": "„Und Karp schreibt selbst: Bei den Links war die Konkurrenz ziemlich schwach. Auf Seite 1 standen vor allem kleine Drohnen-Blogs. Der Erfolg hat also auch mit einer günstigen Nische zu tun, nicht nur mit der Methode.“",
+    "f20/0": "„Dritte Frage: Wer verdient daran? Ich hab nachgezählt. Im Artikel stecken 15 verschiedene Links mit Partner- oder Affiliate-Kennung, zu genau den Tools, die er empfiehlt. Richards sagt selbst: Wer über solche Links kauft, bringt ihm Provision. Dazu 15 Einschübe vom Herausgeber. Die meisten verlinken eigene Artikel, mehrere werben für seinen bezahlten SEO-Kurs. Fünfmal wird auf den Kurs verlinkt, zweimal bietet er Beratung an.“",
+    "f20/1": "„Das ist alles offen angegeben und völlig legal. Aber es heißt halt: Die Fallstudie ist Content-Marketing für Content-Marketing. Sie soll uns dazu bringen, Tools, Kurs oder Beratung zu kaufen. Ein neutraler Beleg ist sie damit nicht.“",
+    "f21/0": "„Vierte Frage: Gilt das noch? Auf der Studie steht 2020. Erschienen ist sie aber schon im November 2015, die Kommentare darunter sind von damals. Die Daten sind von 2014 und 2015, die Screenshots wurden 2018 getauscht. Seitdem ist viel passiert. 2022 kam das Helpful-Content-Update. Das wertet Websites ab, die vor allem für Suchmaschinen statt für Menschen schreiben. Und seit 2024, in Deutschland seit März 2025, antwortet Google auf viele Fragen direkt mit einer KI-Übersicht. Genau da, wo auf Folie 3 noch die Antwortbox war.“",
+    "f21/1": "„Und was macht das? Das Pew Research Center hat’s gemessen: Ohne KI-Übersicht klicken Leute bei 15 Prozent der Aufrufe einer Suchseite auf ein normales Ergebnis. Mit KI-Übersicht nur bei 8 Prozent. Und genau Ratgeber-Fragen wie ‚Wie fliege ich eine Drohne?‘ kann eine KI direkt beantworten. Platz 1 ist bei solchen Fragen heute also weniger wert als damals.“",
+    "f22/0": "„Fünfte Frage, für ein Unternehmen eigentlich die wichtigste: Rechnet sich das? Den Aufwand kann man zum Teil ablesen. Drei Tage Schreiben, in der ersten Woche jeden Tag ein, zwei Stunden Quora, dazu Foren. Dann 90 Tage Linkaufbau, mehrere Tools, die Geld kosten, und das Honorar für den Berater.“",
+    "f22/1": "„Und auf der Ertragsseite? Genau eine Zahl: gut 2.300 E-Mail-Adressen. Wie viele davon einen Kurs gekauft haben? Wie viel Umsatz rauskam? Ob sich’s gerechnet hat? Kein Wort. Besuche, Verweildauer, E-Mail-Adressen, das sind alles Zwischenziele. Für eine echte Entscheidung im KMU bräuchte man die Kosten pro Kunde und den Umsatz.“",
+    "f23/g": "„Damit’s nicht nur Kritik ist: Was ist gut? Die Methode selbst ist plausibel. Erst zu schauen, was für Inhalte Google bei einer Suche zeigt, ist heute Standard. Ein Thema gründlich beantworten statt zehn dünne Artikel, das passt sogar besser zu Googles heutigen Regeln als damals. Gut ist auch, dass die Studie nicht bei Klicks stehen bleibt, sondern Kontakte sammelt. Und man kann alles nachvollziehen: über hundert Screenshots, Vorlagen und Mustermails. Jeden Schritt kann man nachmachen.“",
+    "f24/g": "„Unterm Strich: Bei Zahlen, Ursache, Unabhängigkeit und Wirtschaftlichkeit ist die Studie schwach. Aktualität: gemischt. Das Prinzip gilt noch, viele Tricks und vor allem die Klickzahlen nicht mehr. Stark ist, wie gut das Vorgehen dokumentiert ist, auch wenn man die Ergebnisse nicht prüfen kann. Mein Urteil: gutes Handwerk, schwache Beweisführung. Man lernt aus der Studie, wie man’s macht. Aber nicht, dass es so gut funktioniert, wie sie behauptet.“",
+    "t3/g": "„Teil 3: Und was heißt das jetzt für ein KMU?“",
+    "f25/0": "„Behalten würde ich drei Sachen. Erstens die Nische: Gegen Konzerne gewinnt ein KMU nicht bei den großen Begriffen, aber mit Fachwissen bei konkreten Fragen. Zweitens: vor dem Schreiben schauen, was Google bei der Suche zeigt. Drittens: Kontakte sammeln, etwa mit einer Checkliste gegen die E-Mail-Adresse. Das Double-Opt-in behält man: Für Werbe-Mails braucht man eine Einwilligung, die man nachweisen kann.“",
+    "f25/1": "„Anpassen würde ich das Ziel: nicht Besuche zählen, sondern Anfragen und Aufträge. Drei bis sechs Monate Anlauf plant man fest ein, das zeigt auch die Fallstudie. Und wer in der Region verkauft, braucht das Google-Unternehmensprofil und regionale Begriffe.“",
+    "f25/2": "„Streichen würde ich die Wortzahl als Ziel, Google zählt keine Wörter. Forensignaturen und Scoop.it bringen heute kaum noch was. Und ein Pop-up nach zwölf Sekunden nervt einfach.“",
+    "f26/0": "„Wie sieht das konkret aus? Ausgedachtes Beispiel: ein Heizungsbauer mit zwölf Leuten. Schritt 1: Keyword ‚Wärmepumpe im Altbau‘, dazu die Fragen, die Kunden am Telefon stellen. Schritt 2: ein Ratgeber mit eigenen Fotos und echten Kosten aus der Region, das kann eine KI-Übersicht kaum ersetzen. Schritt 3: Ort in den Titel und ein gepflegtes Google-Unternehmensprofil. Schritt 4: eine Förder-Checkliste als PDF, danach ein Beratungstermin. Schritt 5: Newsletter, Kundengespräche, Lokalzeitung. Schritt 6: Links von Innung, Herstellern, Vereinen und der Handwerkskammer.“",
+    "f26/1": "„Und gemessen wird nicht in Besuchen, sondern in Beratungsterminen pro Monat. Genau die Zahl bleibt uns die Fallstudie schuldig.“",
+    "f27/g": "„Mein Fazit in drei Punkten. Eins: Die sechs Schritte sind solides Handwerk, und gerade KMU mit Fachwissen in einer Nische können damit gut arbeiten. Zwei: Als Beweis taugt die Studie wenig. Die Zahlen passen nicht zusammen, es ist ein Einzelfall von 2015, und der Herausgeber verdient an den empfohlenen Tools und am eigenen Kurs. Drei: Wer’s nachmacht, sollte Anfragen und Umsatz messen, nicht Besuche, und damit rechnen, dass KI-Antworten heute einen Teil der Klicks wegnehmen. In einem Satz: Die Methode taugt, der Beweis nicht.“",
+    "f28/g": "„Und jetzt sind Sie dran. Drei Fragen: Würden Sie einem KMU raten, 2026 noch in Ratgeber-Artikel zu investieren, wenn Google viele Fragen selbst beantwortet? Wie viel Vertrauen verdient eine Fallstudie von jemandem, der an ihr verdient? Und welche Zahl hätten Sie statt der Besuche veröffentlicht? Danke schön, wir sind gespannt.“"
+  },
+  "kuerzung": {
+    "regel": "An jeder Zwischenzeit (Seite {seite:ueberblick}) auf die Uhr sehen. Mehr als 30 Sekunden hinter dem Plan: ab sofort Stufe 1; reicht sie laut Spalte „noch kürzbar“ nicht, zusätzlich Stufe 2. Ab der Bewertung bringen beide Stufen nur noch {rest:f15}; Fazit und Diskussion bleiben ungekürzt. Im Sprechtext stehen die Sätze grau in eckigen Klammern; die Ziffer nennt die Stufe. Reicht auch das nicht: Folien 08, 12 und 19 überspringen (zusammen 2:20).",
+    "stufen": [
+      {
+        "name": "Stufe 1",
+        "ziel": "ca. −45 s",
+        "saetze": [
+          {
+            "folie": "f03",
+            "text": "Ganz oben sind oft Anzeigen, da zahlt man pro Klick."
+          },
+          {
+            "folie": "f07",
+            "text": "Gefunden hat Karp die Begriffe mit Tools wie SEMrush, AnswerThePublic und den Fragen, die Google unter ‚Nutzer fragen auch‘ zeigt."
+          },
+          {
+            "folie": "f09",
+            "text": "Dazu Bilder, Videos, eine Checkliste vor dem Start und Übungen vom Anfänger bis zum Profi."
+          },
+          {
+            "folie": "f12",
+            "text": "In Foren diskutiert man mit und hat den Link in der Signatur."
+          },
+          {
+            "folie": "f14",
+            "text": "Stand 2018 ist die Website in den USA bei über 3.000 Keywords unter den ersten drei."
+          },
+          {
+            "folie": "f21",
+            "text": "Das wertet Websites ab, die vor allem für Suchmaschinen statt für Menschen schreiben."
+          },
+          {
+            "folie": "f26",
+            "text": "Schritt 5: Newsletter, Kundengespräche, Lokalzeitung."
+          }
+        ]
+      },
+      {
+        "name": "Stufe 2",
+        "ziel": "zusätzlich, zusammen ca. −80 s",
+        "saetze": [
+          {
+            "folie": "f04",
+            "text": "Gründer Alan Perlman will mehr Besucher und mehr Kontakte."
+          },
+          {
+            "folie": "f08",
+            "text": "Bei den Drohnen sah’s gut aus: schwach verlinkt, und der bisherige Platz 1 hatte gerade mal 303 Wörter."
+          },
+          {
+            "folie": "f10",
+            "text": "Die Nebenkeywords stehen in den Zwischenüberschriften."
+          },
+          {
+            "folie": "f13",
+            "text": "Drei: Blogs mit wöchentlichen Linksammlungen."
+          },
+          {
+            "folie": "f18",
+            "text": "Die Studie stützt sich auf Ranking-Studien von Ahrefs und SEMrush, aber die messen nur Zusammenhänge, keine Ursachen."
+          },
+          {
+            "folie": "f20",
+            "text": "Die meisten verlinken eigene Artikel, mehrere werben für seinen bezahlten SEO-Kurs."
+          },
+          {
+            "folie": "f23",
+            "text": "Gut ist auch, dass die Studie nicht bei Klicks stehen bleibt, sondern Kontakte sammelt."
+          }
+        ]
+      }
+    ]
+  }
+}

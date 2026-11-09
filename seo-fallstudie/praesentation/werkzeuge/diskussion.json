@@ -1,0 +1,48 @@
+{
+  "_hinweis": "Beispielantworten für die Diskussion (Folie 28) im Redeskript (werkzeuge/redeskript.mjs). Zahlen nur aus den geprüften Befunden (LIESMICH.md). Die Fragen müssen wortgleich zu Folie 28 sein.",
+  "vorab": [
+    "Vorher absprechen, wer moderiert und wer mitschreibt. Erst zuhören, dann einordnen; nicht jede Antwort sofort bewerten.",
+    "Gute Moderationssätze: „Wer sieht das anders?“ · „Woran würden Sie das festmachen?“ · „Kennen Sie ein Beispiel aus einem Betrieb?“"
+  ],
+  "fragen": [
+    {
+      "frage": "Würden Sie einem KMU raten, 2026 noch in Ratgeber-Artikel zu investieren?",
+      "einstieg": "„Kurz per Handzeichen: Wer würde ja sagen? Und wer eher nein?“ Dann zuerst eine Stimme aus der kleineren Gruppe holen.",
+      "antworten": [
+        { "publikum": "„Nein, das bringt nichts mehr, die KI beantwortet doch alles.“", "reaktion": "„Für einfache Wissensfragen stimmt das zum Teil: Mit KI-Übersicht wird laut Pew nur bei 8 statt 15 Prozent der Suchseiten-Aufrufe geklickt. Aber in der Studie hatten nur rund 18 Prozent der Suchen überhaupt eine KI-Übersicht. Und bei Fragen mit Preis, Ort oder Vertrauen will man am Ende doch mit einem Betrieb sprechen.“" },
+        { "publikum": "„Ja, auf jeden Fall, Inhalte sind immer gut.“", "reaktion": "„Woran würden Sie den Erfolg messen? Die Fallstudie zeigt, wie viel Arbeit drinsteckt: drei Tage Schreiben, 90 Tage Linkaufbau. Für ein KMU mit wenig Zeit muss sich das in Anfragen rechnen, nicht in Besuchen.“" },
+        { "publikum": "„Kommt drauf an.“", "reaktion": "„Genau, aber worauf? Vorschlag für Kriterien: Hat der Betrieb Wissen, das sonst keiner hat? Braucht das Produkt Beratung? Verkauft er regional? Und hat er jemanden, der das regelmäßig pflegt?“" }
+      ],
+      "position": "Ja, aber anders als 2015: weniger, dafür mit eigener Erfahrung (Fotos, echte Preise, Fälle aus der Region), die eine KI nicht hat. Ausgerichtet auf Anfragen, nicht auf Besuche. Und mehrfach nutzen: Ein guter Ratgeber hilft auch im Newsletter, im Verkaufsgespräch und bei der Schulung neuer Leute, auch wenn Google weniger Klicks schickt.",
+      "nachfrage": "„Wenn Sie selbst eine Wärmepumpe kaufen würden: Würden Sie so einen Ratgeber lesen, oder fragen Sie lieber eine KI?“"
+    },
+    {
+      "frage": "Wie viel Vertrauen verdient eine Fallstudie von jemandem, der daran verdient?",
+      "einstieg": "„Stellen Sie sich vor, Ihr Chef legt Ihnen diese Fallstudie hin und sagt: Das machen wir jetzt auch. Was würden Sie antworten?“",
+      "antworten": [
+        { "publikum": "„Gar keins, das ist doch nur Werbung.“", "reaktion": "„Das ist mir zu pauschal. Ein Interessenkonflikt heißt nicht, dass alles falsch ist. Die Methode ist ja plausibel, und der Affiliate-Hinweis steht offen im Text. Man muss nur genauer prüfen, statt einfach zu glauben.“" },
+        { "publikum": "„Schon viel, da sind doch über hundert Screenshots drin.“", "reaktion": "„Screenshots zeigen nur Ausschnitte, die der Autor selbst ausgewählt hat. Rohdaten gibt es nicht, und wir haben gesehen, dass sich die Zahlen schon untereinander widersprechen. Viele Belege sind nicht dasselbe wie prüfbare Belege.“" },
+        { "publikum": "„Kommt drauf an, wie transparent das ist.“", "reaktion": "„Genau. Woran würde man Transparenz erkennen? Zum Beispiel: Offenlegung der Interessen, prüfbare Daten, Kosten und Umsatz, auch Misserfolge, und am besten jemand Unabhängiges, der es bestätigt. Hier ist nur der erste Punkt erfüllt.“" }
+      ],
+      "position": "Begrenztes Vertrauen in die Methode, wenig Vertrauen in die Zahlen. Faustregel: Je größer das Versprechen und je größer das Eigeninteresse, desto mehr prüfbare Belege braucht es. Auch wissenschaftliche Studien müssen ihre Interessenkonflikte und Finanzierung offenlegen; das allein macht sie noch nicht falsch, aber es ist ein Grund, genauer hinzuschauen.",
+      "nachfrage": "„Woran merken Sie im Alltag, ob ein Testbericht oder eine Kundenreferenz unabhängig ist?“"
+    },
+    {
+      "frage": "Welche Zahl hätten Sie statt „Besuche“ veröffentlicht?",
+      "einstieg": "„Eine Zahl, mehr nicht: Welche hätte Sie als Unternehmen überzeugt?“ Antworten kurz an der Tafel oder im Kopf sammeln.",
+      "antworten": [
+        { "publikum": "„Den Umsatz.“", "reaktion": "„Das wäre ideal. Unternehmen veröffentlichen ihren Umsatz aber ungern. Ein Kompromiss wäre der Anteil am Umsatz, der über die organische Suche kommt, oder wenigstens die Zahl der Kurse, die über die E-Mail-Liste verkauft wurden.“" },
+        { "publikum": "„Wie viele Leute am Ende gekauft haben.“", "reaktion": "„Sehr gut, also die Umwandlung von Kontakt zu Kunde. Von den gut 2.300 E-Mail-Adressen wissen wir genau das nicht. Noch besser: Kosten pro gewonnenem Kunden, dann kann man es mit Werbung vergleichen.“" },
+        { "publikum": "„Den ROI, also was unterm Strich rauskommt.“", "reaktion": "„Für eine Investitionsentscheidung die beste Zahl: Ertrag minus Kosten, geteilt durch die Kosten. Dafür bräuchte man aber auch die Kosten: Arbeitszeit, Tools, Berater. Die nennt die Fallstudie nicht.“" },
+        { "publikum": "„Die Platzierung, also Platz 1.“", "reaktion": "„Platz 1 ist wie die Besuche ein Zwischenziel. Er sagt, dass man gefunden wird, aber nicht, ob jemand kauft. Und mit KI-Übersichten ist Platz 1 heute weniger wert als 2015.“" }
+      ],
+      "position": "Für ein KMU: Anfragen oder Beratungstermine pro Monat aus der organischen Suche und die Kosten pro Anfrage. Diese Zahl kann auch ein kleiner Betrieb ohne teure Tools erheben, zum Beispiel mit der Frage „Wie sind Sie auf uns gekommen?“ am Telefon, und sie lässt sich direkt mit dem Aufwand vergleichen.",
+      "nachfrage": "„Welche Zahl würde Ihre eigene Chefin oder Ihr eigener Chef sehen wollen, bevor sie oder er dafür Geld freigibt?“"
+    }
+  ],
+  "stockt": [
+    "Mit Frage 3 beginnen; sie ist am leichtesten zu beantworten. Selbst einen Vorschlag machen (Anfragen pro Monat) und fragen, wer etwas Besseres hat.",
+    "An das Beispiel Heizungsbauer (Folie 26) anknüpfen: „Wenn Sie dort Geschäftsführer wären: Ratgeber schreiben oder lieber Anzeigen schalten?“",
+    "Persönlich fragen: „Haben Sie selbst schon mal etwas gekauft, weil Sie einen guten Ratgeber gelesen haben?“"
+  ]
+}
