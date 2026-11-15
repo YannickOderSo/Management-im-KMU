@@ -49,15 +49,17 @@ D Führung im Mittelstand · E Wandel · F Vertiefung je Unternehmen · G Selbst
 | Klassifizierer zum Mitnehmen (Handy) | ✅ | [`ki-compliance/praesentation/klassifizierer.html`](ki-compliance/praesentation/klassifizierer.html) |
 | Go-Live-Checkliste (Generalprobe, Raum-Check, Spickzettel, Kürzungsplan, Go/No-Go) | 📋 abzuhaken bis 9.11.2026 | [`ki-compliance/GO-LIVE.md`](ki-compliance/GO-LIVE.md) |
 
-## Vortrag „SEO-Fallstudie unter der Lupe“
+## Vortrag „SEO-Fallstudie unter der Lupe“ (Modul Strategisches Marketing)
+
+Elias Knauber und Yannick Heisler · Prof. Dr. Christine Arend-Fuchs · seit 15.11.2026 auf Strategisches Marketing ausgerichtet (Teil 3: strategische Einordnung)
 
 | Teil | Stand | Ort |
 |---|---|---|
-| HTML-Präsentation: Vorstellung und kritische Bewertung der Fallstudie [robbierichards.com/seo/case-study](https://www.robbierichards.com/seo/case-study/) (28 Folien + 3 Trennfolien + 2 Backup, Sollzeit 23:00, Sprechtext in der Referentenansicht, 11 Belege aus der Studie, eigene Diagramme) | ✅ Prüfung 0 Fehler (hell und dunkel), Notfall-PDF; Fakten von vier unabhängigen Prüfungen gegengeprüft (05.11.2026) | [`seo-fallstudie/praesentation/`](seo-fallstudie/praesentation/) |
-| Präsentationsskript (24 Seiten, Aufbau wie bei den anderen Vorträgen: Sprechtext je Klick, Zwischenzeiten, 15 Rückfragen, Kürzungsplan, Plan B) | ✅ `export/praesentationsskript.pdf` | neu: `node seo-fallstudie/praesentation/werkzeuge/praesentationsskript.mjs` (im Ordner `praesentation/`, Zusatzdaten in `werkzeuge/skript-zusatz.json`) |
+| HTML-Präsentation: Vorstellung und kritische Bewertung der Fallstudie [robbierichards.com/seo/case-study](https://www.robbierichards.com/seo/case-study/) (25 Folien + 3 Trennfolien + 5 Backup, Sollzeit 20:15, Sprechtext in der Referentenansicht, 11 Belege aus der Studie, eigene Diagramme) | ✅ Prüfung 0 Fehler (hell und dunkel), Notfall-PDF; Fakten von vier unabhängigen Prüfungen gegengeprüft (05.11.2026) | [`seo-fallstudie/praesentation/`](seo-fallstudie/praesentation/) |
+| Präsentationsskript (24 Seiten, Aufbau wie bei den anderen Vorträgen: Sprechtext je Klick, Zwischenzeiten, 17 Rückfragen, Kürzungsplan, Plan B) | ✅ `export/praesentationsskript.pdf` | neu: `node seo-fallstudie/praesentation/werkzeuge/praesentationsskript.mjs` (im Ordner `praesentation/`, Zusatzdaten in `werkzeuge/skript-zusatz.json`) |
 | Präsentationsskript, locker formuliert (24 Seiten, gleicher Aufbau, Sprechtext in Alltagssprache) | ✅ `export/praesentationsskript-locker.pdf` | Texte in `werkzeuge/skript-locker.json`, Aufruf mit `SKRIPT_TEXTE=werkzeuge/skript-locker.json` |
 | Präsentationsskript, frei gesprochen, und Redeskript (13 Seiten) mit Beispielantworten für die Diskussion | ✅ `export/praesentationsskript-frei.pdf`, `export/redeskript.pdf` | Texte in `werkzeuge/skript-frei.json`, Diskussion in `werkzeuge/diskussion.json`; `node werkzeuge/redeskript.mjs` |
-| Handout (2 Seiten A4): Fall, sechs Schritte, Bewertung mit Ampel, KMU-Übertragung, die drei Diskussionsfragen von Folie 28 | ✅ `handout.pdf` | [`seo-fallstudie/handout/`](seo-fallstudie/handout/) · neu: `node seo-fallstudie/handout/pdf.mjs` |
+| Handout (2 Seiten A4): Fall, sechs Schritte, Bewertung mit Ampel, strategische Einordnung, die drei Diskussionsfragen von Folie 25 | ✅ `handout.pdf` | [`seo-fallstudie/handout/`](seo-fallstudie/handout/) · neu: `node seo-fallstudie/handout/pdf.mjs` |
 
 ## Online (GitHub Pages)
 

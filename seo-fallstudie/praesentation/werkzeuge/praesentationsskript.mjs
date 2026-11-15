@@ -536,7 +536,7 @@ const anzahlBloecke = teile.filter((x) => x.block).length;
 const anzahlSprecher = new Set(teile.map((x) => x.sprecher)).size;
 
 const titelseite = `<section class="titelseite" data-abschnitt="titel">
-  <div class="ts-kopf"><span class="ts-art">${esc(zusatz.art || 'Recap')}</span><span>Management im KMU</span></div>
+  <div class="ts-kopf"><span class="ts-art">${esc(zusatz.art || 'Recap')}</span><span>${esc(zusatz.modul || 'Management im KMU')}</span></div>
   <div class="ts-mitte">
     <p class="ts-kicker">${esc((fassung && fassung.kicker) || 'Präsentationsskript')}</p>
     <h1 class="ts-titel">${titelZeilen.length ? `${fadenZeile(webe(titelZeilen[0], true))}<span class="ts-zeile2">${esc(titelZeilen.slice(1).join(' '))}</span>` : fadenZeile(webe(titel, true))}</h1>

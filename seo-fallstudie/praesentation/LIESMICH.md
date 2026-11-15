@@ -1,10 +1,13 @@
 # Präsentation „SEO-Fallstudie unter der Lupe“
 
-Web-Präsentation (HTML) für das Modul Management im KMU (Hochschule Kaiserslautern, Campus
-Zweibrücken): Vorstellung und kritische Bewertung der Fallstudie
+Web-Präsentation (HTML) für das Modul Strategisches Marketing (Prof. Dr. Christine Arend-Fuchs,
+Hochschule Kaiserslautern, Campus Zweibrücken): Vorstellung und kritische Bewertung der Fallstudie
 [„SEO Case Study: 6-Step Process That Generated 150,732 Visits“](https://www.robbierichards.com/seo/case-study/)
 von Robbie Richards (Gastbeitrag Michael Karp, Kunde UAV Coach). Vortrag: Elias Knauber und Yannick Heisler.
-28 Folien, 3 Trennfolien und 2 Backup-Folien, Sollzeit 23:00 (Summe `data-zeit`).
+25 Folien, 3 Trennfolien und 5 Backup-Folien, Sollzeit 20:15 (Summe `data-zeit`). Umgestellt am
+15.11.2026 vom Modul Management im KMU auf Strategisches Marketing: Teil 3 ordnet die Fallstudie
+strategisch ein (Pull-Strategie, Customer Journey, Zielgruppe, Positionierung, Fokusstrategie,
+Paid/Owned/Earned Media); drei Folien wanderten ins Backup.
 
 **Öffnen:** `index.html` in Chrome oder Edge. Läuft offline per Doppelklick und auf GitHub Pages,
 ohne Anfragen ins Internet. Immer den ganzen Ordner `praesentation/` mitnehmen.
@@ -16,7 +19,7 @@ ohne Anfragen ins Internet. Immer den ganzen Ordner `praesentation/` mitnehmen.
 | → / ↓ / Leertaste / Enter / Clicker | weiter, auch Schritte innerhalb einer Folie |
 | ← / ↑ / Rücktaste | zurück |
 | Ziffern + Enter | Sprung zur Folie, z. B. `17 Enter` |
-| P | Referentenansicht im zweiten Fenster: Sprechtext, Uhr, Plan „von 23:00“, nächste Folie |
+| P | Referentenansicht im zweiten Fenster: Sprechtext, Uhr, Plan „von 20:15“, nächste Folie |
 | O | Übersicht aller Folien |
 | F | Vollbild |
 | B oder . | Schwarzbild |
@@ -27,7 +30,7 @@ ohne Anfragen ins Internet. Immer den ganzen Ordner `praesentation/` mitnehmen.
 
 Zwei Stimmen ziehen sich durch die ganze Präsentation: **Blau** ist, was die Fallstudie
 behauptet, **Orange**, was die Prüfung findet. Teil 1 (Vorstellung) ist blau, Teil 2 (Bewertung)
-orange, Teil 3 (KMU) bringt beide zusammen; der farbige Punkt vor der Rubrik oben rechts zeigt
+orange, Teil 3 (Strategie) bringt beide zusammen; der farbige Punkt vor der Rubrik oben rechts zeigt
 den Teil. Screenshots aus der Fallstudie stehen als „Belege“ in einem schlichten Browserrahmen,
 eigene Markierungen sind orange (Befund) oder blau (Behauptung). Alle Diagramme (Suchergebnis,
 Eisberg, Trichter, Netz, Zeitstrahl, Waage, Punktraster) sind eigene Zeichnungen in SVG/CSS.
@@ -40,48 +43,48 @@ Schriften: Bricolage Grotesque (Titel, Zahlen) und Inter (Text), beide lokal in 
 | 01 | Titel: 150.732 Besuche – was steckt dahinter? | 0:25 |
 | 02 | Fahrplan und Leitfrage | 0:40 |
 | 03 | SEO in einer Minute (Skizze Suchergebnisseite, vier Begriffe) | 0:50 |
-| 04 | Der Fall: UAV Coach, Karp, Richards | 0:50 |
-| 05 | Das Versprechen: sechs Kennzahlen | 0:50 |
+| 04 | Der Fall: UAV Coach, Karp, Richards | 0:45 |
+| 05 | Das Versprechen: sechs Kennzahlen | 0:45 |
 | T1 | Teil 1: Die Methode | 0:05 |
 | 06 | Sechs Schritte im Überblick | 0:40 |
 | 07 | Schritt 1: Keywords (Eisberg, 1.331 Keywords) | 0:55 |
-| 08 | Schritt 1: Konkurrenz prüfen (Inhaltstyp, 366 vs. 9.565) | 0:50 |
-| 09 | Schritt 2: Inhalt (303 vs. 4.774 Wörter) | 0:50 |
-| 10 | Schritt 3: On-Page (Seitenskizze) | 0:50 |
-| 11 | Schritt 4: Leads (Trichter, 2.335 E-Mails) | 0:55 |
-| 12 | Schritt 5: Promotion | 0:45 |
-| 13 | Schritt 6: Backlinks | 0:50 |
-| 14 | Verlauf: Monat 0 bis 18 | 0:55 |
+| 08 | Schritt 2: Inhalt (303 vs. 4.774 Wörter) | 0:50 |
+| 09 | Schritt 3: On-Page (Seitenskizze) | 0:50 |
+| 10 | Schritt 4: Leads (Trichter, 2.335 E-Mails) | 0:55 |
+| 11 | Schritt 5: Promotion | 0:45 |
+| 12 | Schritt 6: Backlinks | 0:50 |
+| 13 | Verlauf: Monat 0 bis 18 | 0:55 |
 | T2 | Teil 2: Kritische Bewertung | 0:05 |
-| 15 | Prüfraster: sechs Fragen | 0:40 |
-| 16 | Widersprüchliche Zahlen | 0:55 |
-| 17 | Basiseffekt: 1.232 → 150.732 organische Sitzungen | 1:00 |
-| 18 | Kausalität: Einzelfall, Survivorship Bias | 0:55 |
-| 19 | „Vor Mashable“ – welcher Treffer, bleibt offen | 0:45 |
-| 20 | Interessenkonflikte: 15 Partnerlinks, Kurs, Beratung | 0:55 |
-| 21 | Aktualität: erschienen 2015, KI-Übersichten (Pew 2025) | 1:05 |
-| 22 | Wirtschaftlichkeit: Waage | 0:50 |
-| 23 | Was trägt | 0:45 |
-| 24 | Gesamturteil (Ampel) | 0:45 |
-| T3 | Teil 3: Was heißt das für KMU? | 0:05 |
-| 25 | Behalten, anpassen, streichen | 1:00 |
-| 26 | Beispiel Heizungsbauer (fiktiv) | 0:50 |
-| 27 | Fazit | 0:45 |
-| 28 | Diskussion | 0:30 |
+| 14 | Prüfraster: sechs Fragen | 0:35 |
+| 15 | Widersprüchliche Zahlen | 0:50 |
+| 16 | Basiseffekt: 1.232 → 150.732 organische Sitzungen | 1:00 |
+| 17 | Kausalität: Einzelfall, Survivorship Bias, „vor Mashable“ | 1:00 |
+| 18 | Interessenkonflikte: 15 Partnerlinks, Kurs, Beratung | 0:50 |
+| 19 | Aktualität: erschienen 2015, KI-Übersichten (Pew 2025) | 1:00 |
+| 20 | Wirtschaftlichkeit: Waage | 0:50 |
+| 21 | Gesamturteil (Ampel) | 0:45 |
+| T3 | Teil 3: Strategische Einordnung | 0:05 |
+| 22 | Pull-Strategie entlang der Customer Journey: gemessen nur bis zum Lead | 0:55 |
+| 23 | Zielgruppe, Positionierung, Fokusstrategie; Paid/Owned/Earned Media | 0:55 |
+| 24 | Fazit | 0:45 |
+| 25 | Diskussion | 0:30 |
 | B1 | Quellen (Backup) | – |
 | B2 | Belege zu den Widersprüchen (Backup) | – |
+| B3 | Schritt 1: Konkurrenz prüfen, Inhaltstyp (Backup, früher Folie 08) | – |
+| B4 | „Vor Mashable“ im Detail (Backup, früher Folie 19) | – |
+| B5 | Was trägt: Stärken der Methode (Backup, früher Folie 23) | – |
 
 Sprechtext steht je Folie in `aside.notizen` (`p.gesprochen` je Schritt, Absätze ohne Klasse sind
 Hintergrund für Rückfragen) und erscheint in der Referentenansicht (Taste P). Zum Kürzen auf
-ca. 21 Minuten eignen sich die Folien 08, 12 und 19 (zusammen 2:20).
+ca. 18,5 Minuten eignen sich die Folien 03 und 11 (zusammen 1:35).
 
 ## Präsentationsskript
 
 `export/praesentationsskript.pdf` (A4, 24 Seiten, druckfest in Schwarz-Weiß) ist das Skript zum
 Vortragen, Aufbau wie in `fuehrung/` und `recap/`: Titelseite mit Ablauf, Überblick mit
 Zwischenzeiten, je Teil jede Folie mit Vorschaubild, Startzeit, Sprechtext je Klick und
-Randnotizen „Bei Rückfragen“; Anhang mit 15 Rückfragen samt Antworten, Quellen als Text,
-Kürzungsplan in zwei Stufen (−45 s, zusammen −80 s; Sätze stehen wortgleich im Sprechtext) und
+Randnotizen „Bei Rückfragen“; Anhang mit 17 Rückfragen samt Antworten, Quellen als Text,
+Kürzungsplan in zwei Stufen (ca. −45 s, zusammen ca. −65 s; Sätze stehen wortgleich im Sprechtext) und
 Plan B. Sprechtext, Notizen und Zeiten kommen immer frisch aus `index.html`, alles Übrige aus
 `werkzeuge/skript-zusatz.json`. Erzeugen im Ordner `praesentation/`:
 
@@ -96,7 +99,7 @@ Neu erzeugen nach jeder Änderung an Sprechtext, Notizen, `data-zeit` oder `skri
 **Locker formulierte Fassung:** `export/praesentationsskript-locker.pdf`, gleicher Aufbau, Sprechtext
 in Alltagssprache aus `werkzeuge/skript-locker.json` (Schlüssel „f07/0“ = Folie f07, Schritt 0;
 „f04/g“ = Absatz ohne Schritt). Zahlen nur gerundet, wo die genaue Zahl nicht der Punkt ist; auf
-den Folien 16 und 17 bleiben sie exakt. Eigener Kürzungsplan mit Sätzen aus dieser Fassung.
+den Folien 15 und 16 bleiben sie exakt. Eigener Kürzungsplan mit Sätzen aus dieser Fassung.
 Erzeugen wie oben, mit `SKRIPT_TEXTE=werkzeuge/skript-locker.json` vor dem Aufruf. Bei
 Änderungen am Sprechtext in `index.html` die lockere Fassung inhaltlich mitziehen.
 Die Trennfolien tragen dafür `data-block="1…3"`.
@@ -109,12 +112,12 @@ Die Trennfolien tragen dafür `data-block="1…3"`.
   (`SKRIPT_TEXTE=werkzeuge/skript-frei.json node werkzeuge/praesentationsskript.mjs`).
 - **Redeskript** `export/redeskript.pdf` (13 Seiten, schlichte Leseversion wie in `fuehrung/`):
   frei gesprochener Sprechtext je Folie mit Zeiten und Klicks, Kürzungssätze grau in Klammern,
-  dann **Diskussion: Beispielantworten** zu den drei Fragen von Folie 28 (Einstieg, typische
+  dann **Diskussion: Beispielantworten** zu den drei Fragen von Folie 25 (Einstieg, typische
   Antworten aus dem Publikum mit Reaktion, eigene Position, Nachfrage, „Wenn die Diskussion
-  stockt“; Daten in `werkzeuge/diskussion.json`) und die 15 Rückfragen. Erzeugen im Ordner
+  stockt“; Daten in `werkzeuge/diskussion.json`) und die 17 Rückfragen. Erzeugen im Ordner
   `praesentation/` (gleiche Umgebungsvariablen wie oben): `node werkzeuge/redeskript.mjs`.
   Bricht ab, wenn ein Absatz ohne freie Fassung bleibt, ein Kürzungssatz fehlt oder die
-  Diskussionsfragen nicht wortgleich zu Folie 28 sind.
+  Diskussionsfragen nicht wortgleich zu Folie 25 sind.
 
 ## Geprüfte Befunde (Stand 05.11.2026, von vier Prüfungen gegengeprüft)
 
@@ -155,5 +158,5 @@ PLAYWRIGHT_CORE=/opt/node-tools/node_modules/playwright-core \
 node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte --druck export/seo-fallstudie-notfall.pdf
 ```
 
-Stand 05.11.2026: 0 Fehler, hell und dunkel; 7 Warnungen zum Wortbudget (Folien 02, 08, 12, 20,
-21, 24, 25 mit 42–58 sichtbaren Wörtern). Notfall-PDF mit 33 Seiten (alle Folien im Endzustand).
+Stand 15.11.2026: 0 Fehler, hell und dunkel; 5 Warnungen zum Wortbudget (Folien 11, 18, 19, 21,
+23 mit 42–52 sichtbaren Wörtern). Notfall-PDF mit 33 Seiten (alle Folien im Endzustand).

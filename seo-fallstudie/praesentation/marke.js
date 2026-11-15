@@ -32,13 +32,13 @@ window.MARKE = {
   /* 4. ANGABEN ZUR PRÄSENTATION */
   titel: 'SEO-Fallstudie',
   fallstudie: 'Fallstudie',
-  veranstaltung: 'Management im KMU',
+  veranstaltung: 'Strategisches Marketing',
   dozent: 'Prof. Dr. Christine Arend-Fuchs',
   hochschule: 'Hochschule Kaiserslautern',
   unternehmen: 'UAV Coach',
   gruppe: ['Elias Knauber', 'Yannick Heisler'],
   datum: '',
-  dauerMinuten: 23,               // Summe data-zeit 1380 s = 23:00
+  dauerMinuten: 20.25,            // Summe data-zeit 1215 s = 20:15
   anrede: 'Sie',
 
   /* 5./6. LIVE-UMFRAGE, WORTWOLKEN – nicht genutzt */

@@ -180,7 +180,7 @@ const html = `<!doctype html>
   @media print { :root { --text: #15171C; --leise: #555A64; --akzent: #B23C0A; --blau: #1F4FD8; --linie: #D3D3CE; --flaeche: #F5F4F0; --papier: #fff; } main { padding: 0; max-width: none; } }
 </style></head><body><main>
 <h1>Redeskript: 150.732 Besuche – was steckt dahinter?</h1>
-<p class="unter">Elias Knauber und Yannick Heisler · Management im KMU · ${folien.length} Folien, Sollzeit ${mmss(uhr)} Min. · frei gesprochene Fassung</p>
+<p class="unter">Elias Knauber und Yannick Heisler · Strategisches Marketing · ${folien.length} Folien, Sollzeit ${mmss(uhr)} Min. · frei gesprochene Fassung</p>
 <p class="legende">Normal gesetzt: sprechen. Kursiv: Regie. „Klick“: nächster Schritt auf der Folie. Grau in [eckigen Klammern]: kann bei Zeitnot wegfallen (¹ zuerst, ² danach). Am Ende: Beispielantworten für die Diskussion und mögliche Rückfragen.</p>
 ${bloecke.join('\n')}
 ${diskussionHtml}
