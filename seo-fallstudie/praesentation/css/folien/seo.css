@@ -319,6 +319,13 @@ html[data-modus="dunkel"] .s-mark-text { color: #14161B; }
 /* 3i2. Inhalt senkrecht mittig (Folien mit wenig Inhalt) */
 .folie.s-mittig > .folie-inhalt { justify-content: center; padding-bottom: 40px; }
 
+/* 3i3. Zusammenfassung (Folie 14): größere Karten */
+.s-zusammenfassung .s-karte { padding: 36px 36px 40px; min-height: 330px; }
+.s-zusammenfassung .s-karte-titel { font-size: 46px; }
+.s-zusammenfassung .s-karte-text { font-size: 32px; margin-top: 16px; }
+.s-zusammenfassung .s-etikett--neutral { background: var(--s-papier); }
+.s-zusammenfassung .s-kern { font-size: 44px; }
+
 /* 3j. SVG-Grafiken: Grundstile (eigene Zeichnungen) */
 .s-svg { display: block; width: 100%; height: auto; overflow: visible; }
 .s-svg text { font-family: var(--schrift-text); fill: var(--s-schrift); }

@@ -38,7 +38,7 @@ window.MARKE = {
   unternehmen: 'UAV Coach',
   gruppe: ['Elias Knauber', 'Yannick Heisler'],
   datum: '',
-  dauerMinuten: 20.25,            // Summe data-zeit 1215 s = 20:15
+  dauerMinuten: 20.917,           // Summe data-zeit 1255 s = 20:55 (floor(20.917 · 60) = 1255)
   anrede: 'Sie',
 
   /* 5./6. LIVE-UMFRAGE, WORTWOLKEN – nicht genutzt */

@@ -1,7 +1,7 @@
 {
   "_hinweis": "Zusatzdaten für das Präsentationsskript (werkzeuge/praesentationsskript.mjs, übernommen aus fuehrung/praesentation). Sprechtext, Zeiten und Randnotizen kommen immer frisch aus index.html. Kürzungssätze müssen wörtlich im Sprechtext stehen. Rückfragen und Antworten entsprechen den gegengeprüften Befunden in LIESMICH.md. Nach jeder Änderung hier oder in den Notizen neu erzeugen.",
   "stand": "5.11.2026",
-  "sollzeit": 1215,
+  "sollzeit": 1255,
   "woerterProMinute": 130,
   "art": "Fallstudie",
   "titelZeilen": [
@@ -52,7 +52,8 @@
         "f10",
         "f11",
         "f12",
-        "f13"
+        "f13",
+        "f14"
       ],
       "sprecher": "yannick"
     },
@@ -62,14 +63,14 @@
       "zusatz": "Sechs Prüffragen an die Fallstudie",
       "folien": [
         "t2",
-        "f14",
         "f15",
         "f16",
         "f17",
         "f18",
         "f19",
         "f20",
-        "f21"
+        "f21",
+        "f22"
       ],
       "sprecher": "yannick"
     },
@@ -79,8 +80,8 @@
       "zusatz": "Pull-Strategie, Customer Journey, Zielgruppe, Positionierung, Plattformrisiko",
       "folien": [
         "t3",
-        "f22",
-        "f23"
+        "f23",
+        "f24"
       ],
       "sprecher": "yannick"
     },
@@ -88,8 +89,8 @@
       "name": "Schluss",
       "zusatz": "Fazit und Diskussion",
       "folien": [
-        "f24",
-        "f25"
+        "f25",
+        "f26"
       ],
       "sprecher": "yannick",
       "neueSeite": false
@@ -132,40 +133,40 @@
     {
       "folie": "f12",
       "frage": "Stand Platz 1 wirklich wegen der Backlinks?",
-      "antwort": "Das behauptet die Studie („the main reason why the guide ranks in the top spot“). Belegt ist nur ein Zusammenhang: 2018 hatte der Artikel mit 96 verweisenden Domains mehr als jeder Konkurrent. Die Ursache lässt sich so nicht nachweisen (Folie 17)."
+      "antwort": "Das behauptet die Studie („the main reason why the guide ranks in the top spot“). Belegt ist nur ein Zusammenhang: 2018 hatte der Artikel mit 96 verweisenden Domains mehr als jeder Konkurrent. Die Ursache lässt sich so nicht nachweisen (Folie 18)."
     },
     {
-      "folie": "f15",
+      "folie": "f16",
       "frage": "Sind das nicht nur Tippfehler?",
       "antwort": "Einzeln ja, teilweise auch erklärbar (andere Zeiträume, Daten aus verschiedenen Jahren). Zusammen zeigen sie, dass die Zahlen nicht abgeglichen wurden, und keine lässt sich unabhängig prüfen. Belege auf B2."
     },
     {
-      "folie": "f16",
+      "folie": "f17",
       "frage": "Woher wissen Sie, dass es organische Sitzungen sind?",
       "antwort": "Der Bericht ist nach „Keyword“ gegliedert, die Bilddatei heißt „Organic-traffic-increase-in-Google-Analytics“, und die Einleitung spricht von „organic traffic“. Sicher ist: Es sind alle Seiten der Website, nicht nur der Ratgeber, der selbst 20.314 Seitenaufrufe über Google in sechs Monaten brachte."
     },
     {
-      "folie": "f17",
+      "folie": "f18",
       "frage": "Hat UAV Coach Mashable nun überholt oder nicht?",
       "antwort": "Das lässt sich nicht prüfen. Die Studie zeigt nur eine Mashable-Kategorie-Seite ohne Bezug zu einem bestimmten Keyword. In den Top 10 von 2018 steht kein Mashable, wohl aber WIRED auf Platz 10."
     },
     {
-      "folie": "f18",
+      "folie": "f19",
       "frage": "Woher stammen die Zahlen 15, 15, 5 und 2?",
       "antwort": "Eigene Zählung im Artikeltext (ohne Seitenleiste), am 5.11.2026 von einer zweiten Prüfung nachgezählt: 15 eindeutige Links mit Partner- oder Affiliate-Kennung (23 Vorkommen), 15 „Editor’s notes“, 5 Links auf den Kurs „The SEO Playbook“, 2 Beratungsangebote."
     },
     {
-      "folie": "f18",
+      "folie": "f19",
       "frage": "Ist Affiliate-Marketing nicht völlig normal?",
       "antwort": "Ja, und es ist hier auch offengelegt. Es geht nicht um einen Vorwurf, sondern um die Frage, wie viel Beweiskraft eine Fallstudie hat, deren Herausgeber an den empfohlenen Tools und am eigenen Kurs verdient."
     },
     {
-      "folie": "f19",
+      "folie": "f20",
       "frage": "Woher wissen Sie, dass die Studie von 2015 ist?",
       "antwort": "Die Kommentare unter dem Artikel beginnen im November 2015 (59 im November, 17 im Dezember), der Analytics-Zeitraum endet am 11.11.2015. Im Quelltext steht als Datum der 2.8.2020, letzte Änderung 22.11.2022."
     },
     {
-      "folie": "f19",
+      "folie": "f20",
       "frage": "Gelten die Pew-Zahlen auch für Deutschland?",
       "antwort": "Nein, Pew hat 900 US-Erwachsene mit 68.879 Suchen im März 2025 ausgewertet. Gezählt sind Aufrufe von Google-Suchseiten, nach denen auf ein normales Ergebnis geklickt wurde: 8 % mit, 15 % ohne KI-Übersicht. In Deutschland gibt es die KI-Übersichten seit 26.3.2025."
     },
@@ -175,23 +176,23 @@
       "antwort": "Nicht als Verfahren. Für Werbe-E-Mails braucht man eine vorherige ausdrückliche Einwilligung (§ 7 Abs. 2 Nr. 2 UWG) und muss sie nachweisen können (Art. 7 Abs. 1 DSGVO). Double-Opt-in ist der übliche Weg für diesen Nachweis."
     },
     {
-      "folie": "f22",
+      "folie": "f23",
       "frage": "Ist SEO nicht eher operativ als strategisch?",
       "antwort": "Die einzelnen Maßnahmen (Title-Tag, Links, Posts) sind operativ. Strategisch sind die Entscheidungen dahinter: auf Pull statt Push setzen, welche Zielgruppe, welche Positionierung, welche Nische, wie viel Budget langfristig in eigene Inhalte statt in Anzeigen fließt und woran man den Erfolg misst."
     },
     {
-      "folie": "f23",
+      "folie": "f24",
       "frage": "Warum zählen Rankings als Earned und nicht als Owned Media?",
       "antwort": "Die Inhalte gehören dem Unternehmen (Owned), die Platzierung bei Google aber nicht: Sie wird von Google vergeben und kann sich mit jedem Update ändern, ähnlich wie Erwähnungen oder Links von Dritten. Deshalb ist die E-Mail-Liste strategisch wertvoller als ein Platz 1."
     },
     {
-      "folie": "f23",
+      "folie": "f24",
       "frage": "Ist eine Nische nicht zu klein für Wachstum?",
       "antwort": "Die Fokusstrategie nach Porter nimmt bewusst einen kleineren Markt in Kauf, um ihn besser zu bedienen. UAV Coach hat das Muster laut Studie auf weitere Artikel übertragen, also viele kleine Nischen statt einer großen."
     }
   ],
   "kuerzung": {
-    "regel": "An jeder Zwischenzeit (Seite {seite:ueberblick}) auf die Uhr sehen. Mehr als 30 Sekunden hinter dem Plan: ab sofort Stufe 1; reicht sie laut Spalte „noch kürzbar“ nicht, zusätzlich Stufe 2. Ab der Bewertung bringen beide Stufen nur noch {rest:f14}; Strategie, Fazit und Diskussion bleiben ungekürzt. Im Sprechtext stehen die Sätze grau in eckigen Klammern; die Ziffer nennt die Stufe. Reicht auch das nicht: Folien 03 und 11 überspringen (zusammen 1:35).",
+    "regel": "An jeder Zwischenzeit (Seite {seite:ueberblick}) auf die Uhr sehen. Mehr als 30 Sekunden hinter dem Plan: ab sofort Stufe 1; reicht sie laut Spalte „noch kürzbar“ nicht, zusätzlich Stufe 2. Ab der Bewertung bringen beide Stufen nur noch {rest:f15}; Strategie, Fazit und Diskussion bleiben ungekürzt. Im Sprechtext stehen die Sätze grau in eckigen Klammern; die Ziffer nennt die Stufe. Reicht auch das nicht: Folien 03 und 11 überspringen (zusammen 1:35).",
     "stufen": [
       {
         "name": "Stufe 1",
@@ -218,7 +219,7 @@
             "text": "Zum Stand der Studie, also 2018, steht die Website in den USA für über 3.000 Keywords unter den ersten drei."
           },
           {
-            "folie": "f19",
+            "folie": "f20",
             "text": "Es wertet Websites ab, deren Inhalte vor allem für Suchmaschinen statt für Menschen geschrieben sind."
           }
         ]
@@ -240,11 +241,11 @@
             "text": "Drittens Blogs mit wöchentlichen Linksammlungen."
           },
           {
-            "folie": "f17",
+            "folie": "f18",
             "text": "Die Studie stützt sich auf Ranking-Studien von Ahrefs und SEMrush, aber die messen nur Zusammenhänge, keine Ursachen."
           },
           {
-            "folie": "f18",
+            "folie": "f19",
             "text": "Die meisten verlinken eigene Artikel, mehrere werben für seinen bezahlten SEO-Kurs."
           }
         ]
@@ -270,7 +271,7 @@
     },
     {
       "fall": "Diskussion kommt nicht in Gang",
-      "tun": "Mit Frage 3 beginnen („Welche Zahl hätten Sie statt ‚Besuche‘ veröffentlicht?“) und selbst einen Vorschlag machen: Kunden oder Kosten pro Kunde. Danach Frage 1 mit Folie 23 als Anker: Rankings sind geliehen, die E-Mail-Liste gehört dem Unternehmen. Beispielantworten im Redeskript."
+      "tun": "Mit Frage 3 beginnen („Welche Zahl hätten Sie statt ‚Besuche‘ veröffentlicht?“) und selbst einen Vorschlag machen: Kunden oder Kosten pro Kunde. Danach Frage 1 mit Folie 24 als Anker: Rankings sind geliehen, die E-Mail-Liste gehört dem Unternehmen. Beispielantworten im Redeskript."
     }
   ],
   "modul": "Strategisches Marketing"
