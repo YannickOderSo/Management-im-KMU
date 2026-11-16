@@ -82,3 +82,7 @@ Folie 14 ohne Fallkarten, Sprechtexte gekürzt, Nummern fortlaufend, Sollzeiten 
     python3 werkzeuge/fassung-25.py
     node werkzeuge/pruefen.mjs index-25.html --ausgabe _test/pruefung-25 --schritte --druck export/praesentation-25-notfall.pdf
     SKRIPT_DECK=index-25.html SKRIPT_ZUSATZ=werkzeuge/skript-zusatz-25.json node werkzeuge/praesentationsskript.mjs
+
+Lockere 25-Minuten-Fassung: `python3 werkzeuge/locker-25.py` (baut `skript-locker-25.json` aus `skript-locker.json`), dann
+`SKRIPT_DECK=index-25.html SKRIPT_ZUSATZ=werkzeuge/skript-zusatz-25.json SKRIPT_TEXTE=werkzeuge/skript-locker-25.json node werkzeuge/praesentationsskript.mjs`
+→ `export/praesentationsskript-25-locker.pdf`.
