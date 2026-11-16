@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Erzeugt index-25.html: die 25-Minuten-Fassung der Präsentation aus index.html (35 Minuten).
 
-- Folien 13 (Delegation), 17 (Gründergeist und Tradition) und 19 (Pflegedienst) wandern als B7 bis B9 in den Backup.
+- Folien 13 (Delegation) und 19 (Pflegedienst) wandern als B7 und B8 in den Backup; Folie 17 (Gründergeist und Tradition) bleibt, gekürzt.
 - Folie 14 ohne die drei Betriebe; Sprechtexte auf 03, 05, 07, 09, 10, 11, 14, 15, 18, 20 gekürzt.
 - Foliennummern fortlaufend über data-nummer (die IDs bleiben, weil js/folien/fuehrung.js daran hängt).
 - Sollzeiten aus der Wortzahl neu verteilt, zusammen 25:00; marke.js-Dauer auf 25 Minuten.
@@ -53,7 +53,7 @@ notiz('f05', 1, '„Im Mittelstand schieben sich die Rollen übereinander. Genau
 notiz('f07', 0, '„So sieht Führung im Lehrbuch oft aus: ein Organigramm mit vielen Ebenen.“')
 notiz('f09', 0, '„Führungsstile kann man auf einer Linie ordnen, je nachdem, wer entscheidet: links die Führungskraft allein, rechts das Team. Für den Mittelstand besonders spannend ist die Stufe patriarchalisch: Der Chef entscheidet allein, sorgt aber für seine Leute und erwartet dafür Loyalität. Das Modell ist vereinfacht, eine Landkarte, keine Wahrheit.“')
 notiz('f09', 2, '„Es gibt aber auch das Gegenbild: Wo das Team die nötigen Kompetenzen hat, führen manche Inhaber eher kooperativ. Gerade die überschaubare Größe macht das möglich.“')
-notiz('f10', 0, '„Wie führt man konkret? Dafür gibt es Werkzeuge. Ich greife fünf heraus. Erstens das Mitarbeitergespräch, regelmäßig oder bei Bedarf. Zweitens die Zielvereinbarung, bekannt als Management by Objectives. Die moderne Variante heißt OKR, mit Zielen für jedes Quartal; im KMU ist das nach Einschätzung von Fachleuten noch selten. Drittens die Delegation: Aufgaben samt Verantwortung abgeben. Der Gründer von SimpleAct schreibt selbst, er würde ‚am liebsten alles selbst machen‘. Viertens Feedback, einer der stärksten Hebel, um Ziele zu erreichen. Und fünftens Führungsgrundsätze, oft als Leitbild: gemeinsame Regeln dafür, wie man zusammenarbeitet.“')
+notiz('f10', 0, '„Wie führt man konkret? Dafür gibt es Werkzeuge. Ich greife fünf heraus. Erstens das Mitarbeitergespräch, regelmäßig oder bei Bedarf. Zweitens die Zielvereinbarung, bekannt als Management by Objectives. Die moderne Variante heißt OKR, mit Zielen für jedes Quartal; im KMU ist das nach Einschätzung von Fachleuten noch selten. Drittens die Delegation: Aufgaben samt Verantwortung abgeben. Viertens Feedback, einer der stärksten Hebel, um Ziele zu erreichen. Und fünftens Führungsgrundsätze, oft als Leitbild: gemeinsame Regeln dafür, wie man zusammenarbeitet.“')
 notiz('f10', 1, '„In Großunternehmen ist für die Personalarbeit meist eine Personalabteilung zuständig. Im KMU ist die spannende Frage: Wer setzt diese Werkzeuge ein, und hat er oder sie dafür überhaupt Zeit? Das schauen wir uns jetzt an.“')
 notiz('f11', 0, '„Wer kümmert sich um Personal? 2020 lag in 91 Prozent der Unternehmen mit weniger als 50 Beschäftigten die Personalarbeit bei der Geschäftsführung, nur in 7,2 Prozent bei einer eigenen Personalabteilung. Ab 250 Beschäftigten ist es umgekehrt: In drei Vierteln kümmert sich die Personalabteilung. Im kleinen Betrieb ist Personal also Chefsache.“')
 notiz('f11', 2, '„Das zeigt sich auch bei der Entwicklung von Führungskräften: Nur 15 Prozent der Unternehmen mit bis zu 49 Beschäftigten setzen auf Führungsschulungen, um den Zusammenhalt zu stärken. Bei Großunternehmen ab 500 Beschäftigten sind es 64 Prozent.“')
@@ -61,7 +61,6 @@ for schritt in (1, 2, 3):
     notiz('f14', schritt, None)
 ersetze('<p data-schritt="4">„Aber Vorsicht vor Romantik.', '<p data-schritt="1">„Aber Vorsicht vor Romantik.')
 notiz('f15', 0, '„Genug Zahlen, jetzt wird es persönlich. Ich habe zwei Führungskräfte mit demselben Fragebogen schriftlich befragt. Kamill Jarzebowski hat im Mai 2026 SimpleAct gegründet, ein Software-Unternehmen für Compliance nach dem EU AI Act und der DSGVO, vier Personen, inhabergeführt. Jörg Heisler leitet bei TLT-Turbo in Zweibrücken das Vertrags- und Lizenzmanagement. TLT baut Industrieventilatoren, hat rund 300 Beschäftigte weltweit und gehört zu einem chinesischen Konzern. Streng genommen also kein KMU, und genau das macht den Vergleich interessant.“')
-notiz('f15', 3, '„Gemeinsam ist beiden der Rat an neue Führungskräfte, fast wortgleich: Sag klar, was du erwartest, und frag nach. Und beide setzen auf Ergebnisse statt auf Anwesenheit. Kamill Jarzebowski: ‚Ich vertraue auf Ergebnisse statt auf Anwesenheit‘; Jörg Heisler beschreibt den Weg ‚weg von der klassischen Präsenzkontrolle hin zu ergebnisorientiertem Vertrauen‘, in der Produktion bleibt bei ihm aber die Führung vor Ort wichtig. Und beide bauen um, nur in entgegengesetzter Richtung: SimpleAct führt schon jetzt feste Regeln ein, etwa CRM und Code-Review, bevor das Wachstum sie erzwingt. TLT mit seiner fast 150-jährigen Ingenieurstradition bricht dagegen starre Wege auf, damit Teams schnell Probleme lösen können. Zwei Geschichten zeigen, wie das im Alltag aussieht.“')
 notiz('f18', 1, '„Erstens Bindung: 77 Prozent der Beschäftigten in Deutschland haben nur eine geringe emotionale Bindung an ihren Arbeitgeber. Der Leiter der Studie bringt es auf den Punkt: ‚Das ist weniger ein Einstellungs- als vielmehr ein Führungsproblem.‘“')
 notiz('f18', 2, '„Zweitens Fachkräfte: 92 Prozent der Mittelständler mit 20 bis 999 Beschäftigten erwarten negative Folgen des Fachkräftemangels. Wer Leute halten will, muss gut führen.“')
 notiz('f18', 3, '„Drittens Nachfolge: 569.000 Inhaberinnen und Inhaber streben bis Ende 2029 nach ihrem Rückzug keine Fortführung ihres Unternehmens an, oft wegen des Rentenalters oder weil in der Familie das Interesse fehlt. Wenn Führung an einer Person hängt, hängt auch das Unternehmen an ihr.“')
@@ -77,12 +76,25 @@ ersetze('und erwirtschafteten 41,3 Prozent der Wertschöpfung. Und Ende 2024', '
 ersetze(' In 62 Prozent der kleinen Firmen werden Fehler offen angesprochen, in 28 Prozent der großen.', '')
 ersetze(' Bei einem Compliance-Produkt ist genau das heikel, denn ein kleiner Fehler kann das Vertrauen ins ganze Produkt kosten.', '')
 ersetze(' Wie Gespräch und Vereinbarung zusammenkommen, zeige ich Ihnen später an einem Beispiel aus meiner Befragung.', '')
+# Folie 17 (Gründergeist und Tradition) gekürzt
+ersetze(' Er ist gleichzeitig Verkäufer, Entwickler und Chef. Trotzdem hat er feste Regeln', ' Trotzdem hat er feste Regeln')
+ersetze('Und KI verändert seine Führung schon heute. Ein kleines Team schafft, wofür man früher deutlich mehr Leute gebraucht hätte. Führen heißt für ihn deshalb:', 'Und mit KI heißt Führen für ihn:')
+ersetze(' Außerdem unterscheidet er: In Produktion und Technik wird vor Ort geführt, mit Schichtübergaben und Runden direkt in der Halle; im Büro über Ergebnisse, Gleitzeit und Homeoffice.', '')
+# Weitere Kürzungen, damit B8 in 25 Minuten passt
+ersetze(' Darunter liegen kleine Unternehmen mit weniger als 50 und Kleinstunternehmen mit weniger als 10 Beschäftigten.', '')
+ersetze(' Und der Trend geht weg vom Formular: Schriftliche Zielvereinbarungen sind in diesen Betrieben zwischen 2012 und 2023 von 60 auf 50 Prozent zurückgegangen.', '')
+ersetze(' Und selbst im Engineering gilt: Probleme lassen sich nicht rein von oben herab diktieren, man braucht den schnellen, unbürokratischen Austausch im Team.', '')
+ersetze(' Seine Begründung: Wenn ein Unternehmen schnell wächst, fehlt später die Zeit, Strukturen nachträglich einzuziehen.', '')
+ersetze(' Er holt Meinungen ein und entscheidet dann.', '')
+ersetze(' Das Team entscheidet im vorgegebenen Rahmen.', '')
+ersetze(' Strategie, Preise und alles Rechtliche entscheidet er selbst, in ihren eigenen Bereichen entscheiden die Teammitglieder.', '')
+ersetze(' Ein schriftliches Leitbild gibt es noch nicht.', '')
+ersetze(' Danach hat er getrennt: Was kann man beeinflussen, und was ist von außen vorgegeben, etwa die Unternehmensziele?', '')
+ersetze(' Sie gilt für jedes Unternehmen, vom Start-up bis zum Konzern.', '')
 # Fahrplan ohne Fälle
 ersetze('<span class="f-weg-text">Befragung, Zahlen, Fälle</span>', '<span class="f-weg-text">Befragung und Zahlen</span>')
 ersetze('und ich habe Zahlen und Geschichten aus echten Betrieben mitgebracht.', 'und ich habe Zahlen zu den großen Herausforderungen mitgebracht.')
 # Brücke zu den Herausforderungen (stand auf Folie 17); Backup-Texte für den Sprung aus der Fragerunde
-ersetze('Und beide nennen dieselben Treiber: KI und Jüngere, die Sinn und Freiraum erwarten. Das zeigt sich auch in den Zahlen.“', 'Und beide nennen dieselben Treiber: KI und Jüngere, die Sinn und Freiraum erwarten.“')
-ersetze('Nur kommen sie hier aus echten Situationen.“', 'Nur kommen sie hier aus echten Situationen. Und beide nennen dieselben Treiber des Wandels: KI und Jüngere, die Sinn und Freiraum erwarten. Das zeigt sich auch in den Zahlen.“')
 ersetze('„Wie das im wachsenden Betrieb konkret aussieht, zeigt der ambulante Pflegedienst Jahnke in Niedersachsen, ein Familienunternehmen.', '„Ein Beispiel für einen wachsenden Betrieb ist der ambulante Pflegedienst Jahnke in Niedersachsen, ein Familienunternehmen.')
 # Notizen, die auf Gestrichenes verweisen
 ersetze('Belege Erweiterung: B-07, B-12; Befragung Frage 6 (Managen/Führen) und Fragen 1–3 (Aufgaben des Gründers), auswertung.md.', 'Belege Erweiterung: B-07, B-12.')
@@ -101,9 +113,9 @@ ersetze(' · [37][39][61] INQA</p>', '</p>')
 # ohne die Fallkarten: Vergleiche und „Aber“ senkrecht verteilen, Zahlen etwas größer
 ersetze('</head>', '<style>/* 25-Minuten-Fassung: Folie 14 ohne Fallkarten */\n#f14 .folie-inhalt { display: flex; flex-direction: column; justify-content: center; gap: 72px; }\n#f14 .f-vergleich-zahlen b { font-size: 1.25em; }\n#f14 .f-beteil-aber { font-size: 1.15em; padding-block: 28px; }\n</style>\n</head>')
 
-# ---- 3. Folien 13, 17, 19 als Backup B7 bis B9 ans Ende ---------------------
+# ---- 3. Folien 13 und 19 als Backup B7 und B8 ans Ende ----------------------
 ans_ende = []
-for sid, nr in (('f13', 'B7'), ('f17', 'B8'), ('f19', 'B9')):
+for sid, nr in (('f13', 'B7'), ('f19', 'B8')):
     a, e = abschnitt(sid)
     teil = s[a:e]
     s = s[:a] + s[e:]
@@ -121,8 +133,8 @@ for i, sid in enumerate(haupt, 1):
 nummer = {sid: '%02d' % i for i, sid in enumerate(haupt, 1)}
 ersetze('Gallup weist keine Werte nach Größe aus (Folie 18, Fußzeile).', 'Gallup weist keine Werte nach Größe aus (Folie %s, Fußzeile).' % nummer['f18'])
 ersetze('(inhabergeführt, 4 Personen, Folie 15).', '(inhabergeführt, 4 Personen, Folie %s).' % nummer['f15'])
-ersetze('Rückfrage „Woher stammt Zahl X?“ zu den Folien 10–14 und 18.', 'Rückfrage „Woher stammt Zahl X?“ zu den Folien %s–%s, %s und B7; INQA-Fälle [37][39][59][60][61] nur im Backup B6 bis B9.' % (nummer['f10'], nummer['f14'], nummer['f18']))
-ersetze('B6 Sechs Betriebe (INQA).', 'B6 Sechs Betriebe (INQA), B7 Delegation, B8 Gründergeist und Tradition, B9 Pflegedienst Jahnke.')
+ersetze('Rückfrage „Woher stammt Zahl X?“ zu den Folien 10–14 und 18.', 'Rückfrage „Woher stammt Zahl X?“ zu den Folien %s–%s, %s und B7; INQA-Fälle [37][39][59][60][61] nur im Backup B6 bis B8.' % (nummer['f10'], nummer['f14'], nummer['f18']))
+ersetze('B6 Sechs Betriebe (INQA).', 'B6 Sechs Betriebe (INQA), B7 Delegation, B8 Pflegedienst Jahnke.')
 ersetze('<title>Führung im KMU</title>', '<title>Führung im KMU (25 Minuten)</title>')
 ersetze('<script src="marke.js"></script>', '<script src="marke.js"></script>\n<script>window.MARKE.dauerMinuten = 25;   /* 25-Minuten-Fassung, erzeugt von werkzeuge/fassung-25.py */</script>')
 s = s.replace('<!doctype html>', '<!doctype html>\n<!-- 25-Minuten-Fassung: NICHT von Hand ändern, sondern index.html ändern und werkzeuge/fassung-25.py ausführen. -->', 1)

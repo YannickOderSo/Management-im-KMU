@@ -14,7 +14,7 @@ Aufgabe: Den Begriff **Führung** im Kontext des Moduls definieren. Dazu gehöre
 | Quellennachweis (welche Quelle wofür und warum, 9 Seiten) | ✅ aus Dossier erzeugt | [`fuehrung/quellennachweis/`](fuehrung/quellennachweis/) · neu: `python3 fuehrung/quellennachweis/erzeugen.py && node fuehrung/quellennachweis/pdf.mjs` |
 | Präsentationsskript (30 Seiten, Aufbau wie Recap-Skript) | ✅ `fuehrung/praesentation/export/praesentationsskript.pdf` | neu: `node fuehrung/praesentation/werkzeuge/praesentationsskript.mjs` (Zusatzdaten in `werkzeuge/skript-zusatz.json`) |
 | Präsentationsskript, locker formuliert (29 Seiten) | ✅ `fuehrung/praesentation/export/praesentationsskript-locker.pdf` | Texte in `werkzeuge/skript-locker.json`, Aufruf mit `SKRIPT_TEXTE=werkzeuge/skript-locker.json` |
-| 25-Minuten-Fassung (18 Folien + 9 Backup) | ✅ `fuehrung/praesentation/index-25.html`, Skript `export/praesentationsskript-25.pdf`, Notfall-PDF `export/praesentation-25-notfall.pdf` | erzeugt aus index.html: `python3 fuehrung/praesentation/werkzeuge/fassung-25.py` |
+| 25-Minuten-Fassung (19 Folien + 8 Backup) | ✅ `fuehrung/praesentation/index-25.html`, Skript `export/praesentationsskript-25.pdf`, Notfall-PDF `export/praesentation-25-notfall.pdf` | erzeugt aus index.html: `python3 fuehrung/praesentation/werkzeuge/fassung-25.py` |
 
 ## Schriftliche Befragung
 

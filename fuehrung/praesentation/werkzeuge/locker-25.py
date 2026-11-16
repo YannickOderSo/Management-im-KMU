@@ -26,12 +26,11 @@ T.update({
  'f07/0': '„So sieht Führung im Lehrbuch oft aus: ein Organigramm mit ganz vielen Ebenen.“',
  'f09/0': '„Führungsstile kann man auf so einer Linie sortieren, je nachdem, wer entscheidet: ganz links der Chef allein, ganz rechts das Team. Für den Mittelstand besonders spannend ist die Stufe patriarchalisch: Der Chef entscheidet allein, kümmert sich aber um seine Leute und erwartet dafür Loyalität. Klar, das Modell ist vereinfacht, eher eine Landkarte als die Wahrheit.“',
  'f09/2': '„Es gibt aber auch das Gegenteil: Wo das Team das nötige Know-how hat, führen manche Inhaber eher kooperativ. Gerade weil der Betrieb so überschaubar ist.“',
- 'f10/0': '„Wie führt man denn jetzt konkret? Dafür gibt’s Werkzeuge, ich hab fünf rausgepickt. Erstens das Mitarbeitergespräch, regelmäßig oder wenn’s gerade nötig ist. Zweitens die Zielvereinbarung, bekannt als Management by Objectives. Die moderne Variante heißt OKR, mit Zielen für jedes Quartal; im KMU ist das nach Einschätzung von Fachleuten aber noch selten. Drittens Delegation: Aufgaben abgeben, und zwar mitsamt der Verantwortung. Der Gründer von SimpleAct schreibt selbst, er würde ‚am liebsten alles selbst machen‘. Viertens Feedback, einer der stärksten Hebel überhaupt, um Ziele zu erreichen. Und fünftens Führungsgrundsätze, oft als Leitbild: gemeinsame Regeln, wie man miteinander arbeitet.“',
+ 'f10/0': '„Wie führt man denn jetzt konkret? Dafür gibt’s Werkzeuge, ich hab fünf rausgepickt. Erstens das Mitarbeitergespräch, regelmäßig oder wenn’s gerade nötig ist. Zweitens die Zielvereinbarung, bekannt als Management by Objectives. Die moderne Variante heißt OKR, mit Zielen für jedes Quartal; im KMU ist das nach Einschätzung von Fachleuten aber noch selten. Drittens Delegation: Aufgaben abgeben, und zwar mitsamt der Verantwortung. Viertens Feedback, einer der stärksten Hebel überhaupt, um Ziele zu erreichen. Und fünftens Führungsgrundsätze, oft als Leitbild: gemeinsame Regeln, wie man miteinander arbeitet.“',
  'f10/1': '„In großen Unternehmen ist für die Personalarbeit meistens eine Personalabteilung zuständig. Im KMU ist die spannende Frage: Wer macht das eigentlich, und hat der dafür überhaupt Zeit? Das schauen wir uns jetzt an.“',
  'f11/0': '„Wer kümmert sich um Personal? 2020 hat das in 91 Prozent der Firmen mit unter 50 Beschäftigten die Geschäftsführung gemacht, nur in gut 7 Prozent eine eigene Personalabteilung. Ab 250 Beschäftigten dreht sich das um: In drei Vierteln kümmert sich die Personalabteilung. Im kleinen Betrieb ist Personal also Chefsache.“',
  'f11/2': '„Das sieht man auch bei der Entwicklung von Führungskräften: Nur 15 Prozent der Firmen mit bis zu 49 Leuten setzen auf Führungsschulungen, um den Zusammenhalt zu stärken. Bei den Großen ab 500 sind es 64 Prozent.“',
  'f15/0': '„Genug Zahlen, jetzt wird’s persönlich. Ich habe zwei Führungskräfte schriftlich befragt, mit demselben Fragebogen. Kamill Jarzebowski hat im Mai 2026 SimpleAct gegründet, eine Softwarefirma für Compliance nach dem EU AI Act und beim Datenschutz, vier Leute, inhabergeführt. Jörg Heisler leitet bei TLT-Turbo in Zweibrücken das Vertrags- und Lizenzmanagement. TLT baut Industrieventilatoren, hat rund 300 Beschäftigte weltweit und gehört zu einem chinesischen Konzern. Streng genommen also gar kein KMU. Aber genau das macht den Vergleich spannend.“',
- 'f15/3': '„Was beide gemeinsam haben: ihr Rat an neue Führungskräfte, fast wortgleich. Sag klar, was du erwartest, und frag nach. Und beide setzen auf Ergebnisse statt auf Anwesenheit. Kamill Jarzebowski: ‚Ich vertraue auf Ergebnisse statt auf Anwesenheit‘. Jörg Heisler spricht von einem Weg ‚weg von der klassischen Präsenzkontrolle hin zu ergebnisorientiertem Vertrauen‘, in der Produktion bleibt bei ihm aber die Führung vor Ort wichtig. Und beide bauen um, nur genau andersrum: SimpleAct führt schon jetzt feste Regeln ein, etwa CRM und Code-Review, bevor das Wachstum sie erzwingt. TLT mit seiner fast 150-jährigen Ingenieurstradition bricht dagegen starre Wege auf, damit Teams schnell Probleme lösen können. Zwei Geschichten zeigen, wie das im Alltag aussieht.“',
  'f18/1': '„Erstens Bindung: 77 Prozent der Beschäftigten in Deutschland fühlen sich ihrem Arbeitgeber kaum verbunden. Der Leiter der Studie sagt dazu: ‚Das ist weniger ein Einstellungs- als vielmehr ein Führungsproblem.‘“',
  'f18/2': '„Zweitens Fachkräfte: 92 Prozent der Mittelständler mit 20 bis 999 Beschäftigten rechnen mit negativen Folgen durch den Fachkräftemangel. Wer seine Leute halten will, muss also gut führen.“',
  'f18/3': '„Drittens Nachfolge: Rund 570.000 Inhaberinnen und Inhaber wollen ihre Firma nach ihrem Rückzug bis Ende 2029 nicht weiterführen lassen, manche fest, andere als ernsthafte Option, oft wegen der Rente oder weil in der Familie keiner Interesse hat. Wenn die Führung an einer Person hängt, hängt eben auch die ganze Firma an ihr.“',
@@ -44,10 +43,24 @@ for k, alt, neu in [
     ('f07/2', 'Kamill Jarzebowski von SimpleAct sagt:', 'Kamill Jarzebowski, einer meiner zwei Befragten, sagt:'),
     ('f07/3', 'Jörg Heisler bringt’s auf den Punkt:', 'Mein zweiter Befragter, Jörg Heisler von TLT, bringt’s auf den Punkt:'),
     ('f02/g', 'und ein paar Zahlen und Geschichten aus echten Betrieben mitgebracht.', 'und ein paar Zahlen zu den großen Herausforderungen mitgebracht.'),
-    ('f17/3', ' Und das sieht man auch in den Zahlen.', ''),
-    ('f16/3', 'Nur eben aus echten Situationen.“', 'Nur eben aus echten Situationen. Und beide nennen dieselben Treiber: KI und Jüngere, die Sinn und Freiraum erwarten. Und das sieht man auch in den Zahlen.“'),
     ('f19/0', '„Wie das in einem wachsenden Betrieb konkret aussieht, zeigt der ambulante Pflegedienst Jahnke', '„Ein Beispiel für einen wachsenden Betrieb ist der ambulante Pflegedienst Jahnke'),
     # Kürzungen für 25 Minuten
+    ('f06/1', ' Darunter gibt’s noch die kleinen Unternehmen mit unter 50 und die Kleinstunternehmen mit unter 10 Leuten.', ''),
+    ('f12/1', ' Und der Trend geht weg vom Formular: Schriftliche Zielvereinbarungen sind in diesen Betrieben von 2012 bis 2023 von 60 auf 50 Prozent gefallen.', ''),
+    ('f17/2', ' Und selbst im Engineering gilt: Probleme kann man nicht einfach von oben herab diktieren, da braucht’s den schnellen, unkomplizierten Austausch im Team.', ''),
+    ('f17/1', ' Seine Begründung: Wenn eine Firma schnell wächst, fehlt später die Zeit, Strukturen nachträglich einzuziehen.', ''),
+    ('f09/4', ' Das Team entscheidet in einem vorgegebenen Rahmen.', ''),
+    ('f09/4', ' Strategie, Preise und alles Rechtliche macht er selbst, in ihren eigenen Bereichen entscheiden die Teammitglieder.', ''),
+    ('f15/1', ' Ein schriftliches Leitbild gibt’s noch nicht.', ''),
+    ('f16/2', ' Danach haben sie sortiert: Was kann man beeinflussen, und was ist von außen vorgegeben, zum Beispiel die Unternehmensziele?', ''),
+    ('f15/0', ' Aber genau das macht den Vergleich spannend.', ''),
+    ('f14/0', ' Ein paar Zahlen dazu.', ''),
+    ('f16/3', ' Nur eben aus echten Situationen.', ''),
+    ('f17/1', '„Bei SimpleAct prägt der Gründer die Führung selbst. ', '„'),
+    ('f10/1', ' Das schauen wir uns jetzt an.', ''),
+    ('f17/1', ' Er ist gleichzeitig Verkäufer, Entwickler und Chef. Trotzdem', ' Trotzdem'),
+    ('f17/1', 'Und KI verändert seine Führung schon heute. Ein kleines Team schafft, wofür man früher deutlich mehr Leute gebraucht hätte. Führen heißt für ihn deshalb:', 'Und mit KI heißt Führen für ihn:'),
+    ('f17/2', ' Außerdem unterscheidet er: In Produktion und Technik wird vor Ort geführt, mit Schichtübergaben und Runden direkt in der Halle; im Büro über Ergebnisse, Gleitzeit und Homeoffice.', ''),
     ('f06/2', ', und die erwirtschaften gut 40 Prozent der Wertschöpfung', ''),
     ('f14/0', ' In 62 Prozent der kleinen Firmen werden Fehler offen angesprochen, in 28 Prozent der großen.', ''),
     ('f16/1', ' Bei einem Compliance-Produkt ist genau das heikel, ein kleiner Fehler kann das Vertrauen ins ganze Produkt kosten.', ''),
@@ -62,16 +75,15 @@ K = {
  'regel': basis['kuerzung']['regel'],
  'stufen': [
   {'name': 'Stufe 1', 'ziel': 'ca. −1 min', 'saetze': [
-   {'folie': 'f06', 'text': 'Darunter gibt’s noch die kleinen Unternehmen mit unter 50 und die Kleinstunternehmen mit unter 10 Leuten.'},
+   {'folie': 'f05', 'text': 'Den Aktionären gehört die Firma, der Vorstand leitet sie, und die Teamleitungen führen die Leute.'},
    {'folie': 'f10', 'text': 'Die moderne Variante heißt OKR, mit Zielen für jedes Quartal; im KMU ist das nach Einschätzung von Fachleuten aber noch selten.'},
-   {'folie': 'f12', 'text': 'Und der Trend geht weg vom Formular: Schriftliche Zielvereinbarungen sind in diesen Betrieben von 2012 bis 2023 von 60 auf 50 Prozent gefallen.'},
-   {'folie': 'f15', 'text': 'Und beide bauen um, nur genau andersrum: SimpleAct führt schon jetzt feste Regeln ein, etwa CRM und Code-Review, bevor das Wachstum sie erzwingt. TLT mit seiner fast 150-jährigen Ingenieurstradition bricht dagegen starre Wege auf, damit Teams schnell Probleme lösen können.'}]},
+   {'folie': 'f17', 'text': 'Und beide nennen dieselben Treiber: KI und Jüngere, die Sinn und Freiraum erwarten.'}]},
   {'name': 'Stufe 2', 'ziel': 'zusätzlich, zusammen ca. −2 min', 'saetze': [
    {'folie': 'f07', 'text': 'Meine Deutung: Wer mit dem eigenen Geld drinhängt, entscheidet anders.'},
    {'folie': 'f09', 'text': 'Aber es passt ins Bild: Wo Eigentum und Leitung in einer Hand liegen, laufen die Entscheidungen beim Inhaber zusammen.'},
    {'folie': 'f14', 'text': 'Als Chance zum Lernen sehen die Großen Fehler häufiger als die Kleinen, 19 zu 5 Prozent.'},
-   {'folie': 'f15', 'text': 'Ein schriftliches Leitbild gibt’s noch nicht.'},
-   {'folie': 'f16', 'text': 'Heute würde er die Erwartungen früher klarmachen, mit einer gemeinsamen Checkliste vor jeder Veröffentlichung.'}]}]}
+   {'folie': 'f16', 'text': 'Heute würde er die Erwartungen früher klarmachen, mit einer gemeinsamen Checkliste vor jeder Veröffentlichung.'},
+   {'folie': 'f17', 'text': 'Viele sind seit 25 Jahren oder länger im Betrieb, Jörg Heisler nennt das ein ‚familiäres Wir-Gefühl‘.'}]}]}
 
 fehler = []
 for k, v in T.items():

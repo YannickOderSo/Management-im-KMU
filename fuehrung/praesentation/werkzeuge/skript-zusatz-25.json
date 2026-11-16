@@ -86,6 +86,7 @@
       "folien": [
         "f15",
         "f16",
+        "f17",
         "f18"
       ],
       "sprecher": "yannick"
@@ -192,7 +193,7 @@
     {
       "folie": "b6",
       "frage": "Sind die Praxisfälle im Backup repräsentativ?",
-      "antwort": "Nein. Alle sechs (B6 bis B9) stammen aus dem Förderprogramm INQA-Coaching und sind Erfolgsberichte. Beim Pflegedienst stellt die Quelle auch keinen ursächlichen Zusammenhang zwischen Leitfaden und Nachfolge her."
+      "antwort": "Nein. Alle sechs (B6 bis B8) stammen aus dem Förderprogramm INQA-Coaching und sind Erfolgsberichte. Beim Pflegedienst stellt die Quelle auch keinen ursächlichen Zusammenhang zwischen Leitfaden und Nachfolge her."
     }
   ],
   "kuerzung": {
@@ -203,20 +204,16 @@
         "ziel": "ca. −1 min",
         "saetze": [
           {
-            "folie": "f06",
-            "text": "Darunter liegen kleine Unternehmen mit weniger als 50 und Kleinstunternehmen mit weniger als 10 Beschäftigten."
+            "folie": "f05",
+            "text": "Den Aktionären gehört das Unternehmen, der Vorstand leitet es, und die Teamleitungen führen die Menschen."
           },
           {
             "folie": "f10",
             "text": "Die moderne Variante heißt OKR, mit Zielen für jedes Quartal; im KMU ist das nach Einschätzung von Fachleuten noch selten."
           },
           {
-            "folie": "f12",
-            "text": "Und der Trend geht weg vom Formular: Schriftliche Zielvereinbarungen sind in diesen Betrieben zwischen 2012 und 2023 von 60 auf 50 Prozent zurückgegangen."
-          },
-          {
-            "folie": "f15",
-            "text": "Und beide bauen um, nur in entgegengesetzter Richtung: SimpleAct führt schon jetzt feste Regeln ein, etwa CRM und Code-Review, bevor das Wachstum sie erzwingt. TLT mit seiner fast 150-jährigen Ingenieurstradition bricht dagegen starre Wege auf, damit Teams schnell Probleme lösen können."
+            "folie": "f17",
+            "text": "Und beide nennen dieselben Treiber: KI und Jüngere, die Sinn und Freiraum erwarten."
           }
         ]
       },
@@ -237,12 +234,12 @@
             "text": "Als Lernchance sehen Großunternehmen Fehler häufiger als kleine, 19 gegenüber 5 Prozent."
           },
           {
-            "folie": "f15",
-            "text": "Ein schriftliches Leitbild gibt es noch nicht."
-          },
-          {
             "folie": "f16",
             "text": "Heute würde er die Erwartungen früher festlegen, mit einer gemeinsamen Checkliste vor jeder Veröffentlichung."
+          },
+          {
+            "folie": "f17",
+            "text": "Viele sind seit 25 Jahren und mehr im Betrieb, Jörg Heisler nennt das ein ‚familiäres Wir-Gefühl‘."
           }
         ]
       }

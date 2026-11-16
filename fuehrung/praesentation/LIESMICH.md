@@ -76,7 +76,7 @@ Zahlen gerundet, Zitate wörtlich): `SKRIPT_TEXTE=werkzeuge/skript-locker.json n
 
 ## 25-Minuten-Fassung
 
-`index-25.html` wird aus `index.html` erzeugt (nicht von Hand ändern): Folien 13, 17 und 19 als B7 bis B9 im Backup,
+`index-25.html` wird aus `index.html` erzeugt (nicht von Hand ändern): Folien 13 und 19 als B7 und B8 im Backup, Folie 17 gekürzt,
 Folie 14 ohne Fallkarten, Sprechtexte gekürzt, Nummern fortlaufend, Sollzeiten zusammen 25:00.
 
     python3 werkzeuge/fassung-25.py

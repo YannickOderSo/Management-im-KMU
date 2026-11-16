@@ -378,7 +378,7 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
 .f-kern-folie .f-kern-zusatz b { color: var(--f-akzent); }
 
 /* ---------- Folie 14: Diskussion (je Klick eine Frage im Fokus) ---------- */
-.f-disk .f-disk-raster { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--abstand-6); align-items: center; margin: auto 0; }
+.f-disk .f-disk-raster { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--abstand-6); align-items: center; margin: auto 0; }   /* ohne QR-Code (seit 16.11.2026) */
 .f-disk .f-disk-liste { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--abstand-4); }
 .f-disk .f-disk-liste .karte { flex-direction: row; align-items: center; gap: var(--abstand-5); }
 .f-disk .f-disk-nr {
@@ -387,7 +387,6 @@ html.druckmodus .f-titel .f-titel-speichen path, html.aufnahme .f-titel .f-titel
   font-family: var(--schrift-zahl); font-size: 40px; font-weight: var(--gewicht-zahl);
 }
 .f-disk .f-disk-text { font-size: var(--groesse-gross); line-height: 1.3; }
-.f-disk .f-disk-qr { margin: 0; }
 
 /* ---------- Backup ---------- */
 .f-backup .f-quellen {
