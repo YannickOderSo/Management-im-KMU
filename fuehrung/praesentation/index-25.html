@@ -1,0 +1,1293 @@
+<!doctype html>
+<!-- 25-Minuten-Fassung: NICHT von Hand ändern, sondern index.html ändern und werkzeuge/fassung-25.py ausführen. -->
+<html lang="de" data-thema="editorial" data-modus="hell">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2230%22 fill=%22%230B4F6C%22/%3E%3Ctext x=%2232%22 y=%2242%22 font-family=%22Georgia,serif%22 font-size=%2230%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23ffffff%22%3EF%3C/text%3E%3C/svg%3E">
+<title>Führung im KMU (25 Minuten)</title>
+<!--
+  ════════════════════════════════════════════════════════════════════════════
+  index.html – DIE PRÄSENTATION (alle Folien in Vortragsreihenfolge)
+  ════════════════════════════════════════════════════════════════════════════
+  Referat „Führung – Begriff und Bedeutung im KMU“ · Modul Management im KMU
+  Prof. Dr. Christine Arend-Fuchs · Hochschule Kaiserslautern · Yannick Heisler
+
+  Engine (js/deck.js, js/komponenten.js, css/tokens.css, deck.css, komponenten.css)
+  unverändert aus dem Modul Unternehmenskommunikation übernommen – Bedienung und
+  Bausteine wie dort (AUTOREN.md im Repository Unternehmens-Kommunikation).
+  Eigene Gestaltung: css/folien/fuehrung.css · eigenes Verhalten: js/folien/fuehrung.js
+  Angaben (Datum, Umfrage, Farben): marke.js · Belege: ../../recherche/literaturbasis.md
+  (Nummern [n] in den Fußzeilen = Nummern dort).
+
+  Bedienung: → / Leertaste / Clicker = weiter · ← = zurück · O = Übersicht ·
+  P = Referentenansicht (zweites Fenster) · T = Thema · D = hell/dunkel · ? = Hilfe
+  Prüfen: node werkzeuge/pruefen.mjs index.html --ausgabe _test/pruefung --schritte
+-->
+<script src="marke.js"></script>
+<script>window.MARKE.dauerMinuten = 25;   /* 25-Minuten-Fassung, erzeugt von werkzeuge/fassung-25.py */</script>
+<script>
+(function () {
+  var h = document.documentElement, p = new URLSearchParams(location.search), m = window.MARKE || {};
+  var k = 'deck:' + location.pathname + ':';
+  var s = function (n) { try { return sessionStorage.getItem(k + n); } catch (e) { return null; } };
+  var t = p.get('thema') || s('thema') || m.standardThema || 'editorial';
+  var d = p.get('modus') || s('modus') || m.standardModus || 'hell';
+  if (['editorial', 'bento', 'keynote'].indexOf(t) < 0) t = 'editorial';
+  if (['hell', 'dunkel'].indexOf(d) < 0) d = 'hell';
+  h.setAttribute('data-thema', t);
+  h.setAttribute('data-modus', d);
+  var f = m.farben || {};
+  ['primaer', 'sekundaer'].forEach(function (n) {
+    var w = p.get(n) || s('farbe-' + n) || f[n] || '';
+    if (/^[0-9a-f]{3}([0-9a-f]{3})?$/i.test(w)) w = '#' + w;
+    if (/^#[0-9a-f]{3}([0-9a-f]{3})?$/i.test(w)) h.style.setProperty('--marke-' + n, w);
+  });
+  if (p.has('referent')) h.classList.add('referent');
+  if (p.has('druck')) h.classList.add('druckmodus');
+  window.DECK_BASIS = '';
+})();
+</script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/deck.css">
+<link rel="stylesheet" href="css/komponenten.css">
+<link rel="stylesheet" href="css/folien/fuehrung.css">
+<style>/* 25-Minuten-Fassung: Folie 14 ohne Fallkarten */
+#f14 .folie-inhalt { display: flex; flex-direction: column; justify-content: center; gap: 72px; }
+#f14 .f-vergleich-zahlen b { font-size: 1.25em; }
+#f14 .f-beteil-aber { font-size: 1.15em; padding-block: 28px; }
+</style>
+</head>
+<body>
+<div class="nur-ohne-css" role="alert" style="max-width:46em;margin:24px auto;padding:16px 20px;border:4px solid #B00020;background:#FFF4F4;color:#1A1A1A;font:18px/1.5 Arial,sans-serif">
+  <strong>Präsentation unvollständig geöffnet.</strong> Neben <code>index.html</code> fehlen die Ordner
+  <code>css/</code> und <code>js/</code>. ZIP-Datei zuerst vollständig entpacken und dann
+  <code>praesentation/index.html</code> öffnen (Chrome oder Edge).
+</div>
+
+<!-- Icon-Satz (aus dem Modul Unternehmenskommunikation): <svg class="icon"><use href="#i-name"/></svg> -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-pfeil-rechts" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-pfeil-links" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+    <symbol id="i-pfeil-hoch" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+    <symbol id="i-pfeil-runter" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-raster" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-referent" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4M6 8h7M6 11.5h4"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><circle cx="9" cy="10" r="6"/><circle cx="15" cy="14" r="6"/></symbol>
+    <symbol id="i-mond" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></symbol>
+    <symbol id="i-sonne" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></symbol>
+    <symbol id="i-vollbild" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></symbol>
+    <symbol id="i-hilfe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1.1.9-1.1 1.7v.6M12 17.2h.01"/></symbol>
+    <symbol id="i-steuerrad" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></symbol>
+    <symbol id="i-schliessen" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-start" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></symbol>
+    <symbol id="i-zuruecksetzen" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4.5h4.5"/></symbol>
+    <symbol id="i-schwarz" viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4M4 5l16 11"/></symbol>
+    <symbol id="i-extern" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-stift" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13.5 6.5l4 4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="i-loeschen" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v6M14 11v6"/></symbol>
+    <symbol id="i-haken" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.6h.01"/></symbol>
+    <symbol id="i-lupe" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+    <symbol id="i-uebergabe" viewBox="0 0 24 24"><path d="M4 9h12M12 5l4 4-4 4M20 15H8M12 11l-4 4 4 4"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M10 10h4v4h-4zM9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></symbol>
+    <symbol id="i-gruppe" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 13.6A5 5 0 0 1 21.5 19"/></symbol>
+    <symbol id="i-leiter" viewBox="0 0 24 24"><path d="M8 3v18M16 3v18M8 7h8M8 12h8M8 17h8"/></symbol>
+    <symbol id="i-tabelle" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9.5h18M3 14.5h18M9 4v16M15 4v16"/></symbol>
+    <symbol id="i-vergleich" viewBox="0 0 24 24"><circle cx="8.5" cy="12" r="5.5"/><circle cx="15.5" cy="12" r="5.5"/></symbol>
+    <symbol id="i-sprechblase" viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H10l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-megafon" viewBox="0 0 24 24"><path d="M3 10v4h3l8 5V5L6 10H3zM18 9a4 4 0 0 1 0 6"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></symbol>
+    <symbol id="i-bild" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></symbol>
+    <symbol id="i-daten" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></symbol>
+    <symbol id="i-diagramm" viewBox="0 0 24 24"><path d="M4 20h16M7 16v-5M12 16V7M17 16v-8"/></symbol>
+    <symbol id="i-ziel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12h.01"/></symbol>
+    <symbol id="i-kompass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></symbol>
+    <symbol id="i-herz" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></symbol>
+    <symbol id="i-stern" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.7-4.4 4 1.2 5.8L12 16.5l-5.3 2.9 1.2-5.8-4.4-4 5.9-.7z"/></symbol>
+    <symbol id="i-zitat" viewBox="0 0 24 24"><path d="M10 7c-3 .8-5 3-5 6.5V17h4.5v-4.5H6.5M19 7c-3 .8-5 3-5 6.5V17h4.5v-4.5h-3"/></symbol>
+    <symbol id="i-uhr" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+    <symbol id="i-qr" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><path d="M14 14h2v2h-2zM18 18h2v2M14 18.5V20M18.5 14H20"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></symbol>
+    <symbol id="i-lampe" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.3.3.5.7.5 1.1V16h6v-1c0-.4.2-.8.5-1.1A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-blatt" viewBox="0 0 24 24"><path d="M5 19c0-8 5-14 15-14 0 10-6 15-14 15M5 19l7-7"/></symbol>
+    <symbol id="i-dokument" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h6"/></symbol>
+    <symbol id="i-annahme" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1.1.9-1.1 1.7v.6M12 17.2h.01"/></symbol>
+  </defs>
+</svg>
+
+<div class="deck" id="deck">
+  <main class="buehne" id="buehne" aria-roledescription="Präsentation">
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 01 · Titel · 40 s
+     Einstieg mit einer Frage an das Publikum, dann Thema nennen.
+     Motiv rechts: Inhaber/in im Zentrum, das Team drumherum (zeichnet sich).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-titel" id="f01" data-nummer="01" data-titel="Titel" data-feld="leer" data-zeit="45" data-buendel="alle" data-layout="titel" data-modus="dunkel">
+  <header class="folie-kopf">
+    <p class="kicker">Referat · <span data-veranstaltung>Management im KMU</span></p>
+    <h1 class="titel">Führung im <em>KMU</em></h1>
+    <p class="lead">Begriff, Besonderheiten und Praxis, wenn Eigentum und Leitung in einer Hand liegen</p>
+  </header>
+  <div class="folie-inhalt">
+    <div class="angaben">
+      <div><span class="angaben-titel" data-meta>Referent</span><span class="angaben-wert" data-gruppe>Yannick Heisler</span></div>
+      <div><span class="angaben-titel" data-meta>Dozentin</span><span class="angaben-wert" data-dozent>Prof. Dr. Christine Arend-Fuchs</span></div>
+      <div><span class="angaben-titel" data-meta>Termin</span><span class="angaben-wert" data-datum="lang"></span></div>
+    </div>
+    <svg class="f-titel-motiv" viewBox="0 0 600 600" aria-hidden="true">
+      <circle class="f-titel-ring" cx="300" cy="300" r="210"/>
+      <g class="f-titel-speichen">
+        <path d="M300 300 L300 90"/><path d="M300 300 L482 195"/><path d="M300 300 L482 405"/>
+        <path d="M300 300 L300 510"/><path d="M300 300 L118 405"/><path d="M300 300 L118 195"/>
+      </g>
+      <g class="f-titel-team">
+        <circle cx="300" cy="90" r="30" style="--i:0;--dx:-140px;--dy:-60px"/>
+        <circle cx="482" cy="195" r="30" style="--i:1;--dx:90px;--dy:-120px"/>
+        <circle cx="482" cy="405" r="30" style="--i:2;--dx:60px;--dy:150px"/>
+        <circle cx="300" cy="510" r="30" style="--i:3;--dx:-170px;--dy:60px"/>
+        <circle cx="118" cy="405" r="30" style="--i:4;--dx:-60px;--dy:170px"/>
+        <circle cx="118" cy="195" r="30" style="--i:5;--dx:-90px;--dy:-150px"/>
+      </g>
+      <circle class="f-titel-kern" cx="300" cy="300" r="62"/>
+    </svg>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle"><span data-hochschule>Hochschule Kaiserslautern</span> · Campus Zweibrücken · Mittelstandsökonomie</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0"><b>Einstieg (ca. 25 s):</b> „Denken Sie kurz an die beste Chefin oder den besten Chef, den Sie je hatten. Was hat diese Person anders gemacht?“ 3 bis 5 Sekunden Pause, ein, zwei Zurufe aufgreifen. „Genau darum geht es heute: Was ist Führung, und warum ist sie im Mittelstand etwas Besonderes?“</p>
+    <p class="gesprochen"><b>Thema (ca. 10 s):</b> „Mein Name ist Yannick Heisler, mein Thema ist Führung im KMU: Begriff, Besonderheiten und Praxis.“</p>
+    <p>Motiv rechts: Eine Person im Zentrum, das Team drumherum. Das ist das Bild für „Führung hängt an einer Person“ (Folie 07).</p>
+    <p>Begriff: KMU: kleine und mittlere Unternehmen. Nach EU-Definition weniger als 250 Beschäftigte und höchstens 50 Mio. € Umsatz oder 43 Mio. € Bilanzsumme (Folie 06).</p>
+    <p>Begriff: Mittelstand: Unternehmen, bei denen Eigentum und Leitung in einer Hand liegen (Definition des IfM Bonn). Meint also die Art der Führung, nicht nur die Größe.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 02 · Fahrplan · 30 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-plan" id="f02" data-nummer="02" data-titel="Fahrplan" data-feld="leer" data-rubrik="Fahrplan" data-zeit="40" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">Fahrplan</p>
+    <h2 class="titel">Fünf Fragen führen durch das Referat</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-weg">
+      <span class="f-weg-linie" data-animation="zeichnen" data-dauer="1400" aria-hidden="true"></span>
+      <ol class="f-weg-stationen" data-staffel="160" data-animation="hoch">
+        <li><span class="f-weg-punkt">1</span><span class="f-weg-titel">Was ist Führung?</span><span class="f-weg-text">Definitionen und Arbeitsdefinition</span></li>
+        <li><span class="f-weg-punkt">2</span><span class="f-weg-titel">Was ist ein KMU?</span><span class="f-weg-text">Zahlen und Definitionen</span></li>
+        <li><span class="f-weg-punkt">3</span><span class="f-weg-titel">Was ist dort anders?</span><span class="f-weg-text">Besonderheiten und Live-Umfrage</span></li>
+        <li><span class="f-weg-punkt">4</span><span class="f-weg-titel">Womit führt man?</span><span class="f-weg-text">Führungsinstrumente im KMU</span></li>
+        <li><span class="f-weg-punkt">5</span><span class="f-weg-titel">Was zeigt die Praxis?</span><span class="f-weg-text">Befragung, Zahlen, Fälle</span></li>
+      </ol>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Belege: Recherche-Dossier mit Quellen [1]–[82], gegengeprüft am 28.10.2026; Nummern [n] in den Fußzeilen</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">„Ich gehe in fünf Schritten vor. Erst klären wir, was Führung überhaupt ist, und ich baue daraus eine Arbeitsdefinition. Dann schauen wir, was ein KMU ausmacht. Drittens, was Führung dort anders macht. Da sind Sie per Handy gefragt, halten Sie es also schon bereit. Viertens: Mit welchen Werkzeugen wird im KMU geführt? Und zum Schluss, was die Praxis zeigt. Dafür habe ich zwei Führungskräfte befragt, und ich habe Zahlen und Geschichten aus echten Betrieben mitgebracht. Danach diskutieren wir.“</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 03 · Definitionen · 75 s
+     Drei Definitionen; pro Schritt wird ein gemeinsames Kernelement markiert
+     und erscheint als Chip unten. Die Chips gleiten (data-morph) in Folie 04.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-def" id="f03" data-nummer="03" data-titel="Definitionen" data-feld="leer" data-station="1" data-zeit="90" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">1 · Was ist Führung?</p>
+    <h2 class="titel">Drei Definitionen, ein gemeinsamer Kern</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-def-karten" data-staffel="120" data-animation="hoch">
+      <blockquote class="karte f-def-karte">
+        <span class="karte-kicker" data-meta>Gabler: Führung [1]</span>
+        <p class="f-def-text">„durch <mark class="f-kern f-kern--interaktion" data-schritt="3" data-animation="hervorheben">Interaktion</mark> vermittelte <mark class="f-kern f-kern--einfluss" data-schritt="2" data-animation="hervorheben">Ausrichtung des Handelns</mark> … auf die Verwirklichung vorgegebener <mark class="f-kern f-kern--ziel" data-schritt="1" data-animation="hervorheben">Ziele</mark>; beinhaltet … <mark class="f-kern f-kern--organisation" data-schritt="4" data-animation="hervorheben">Über- und Unterordnung</mark>“</p>
+      </blockquote>
+      <blockquote class="karte f-def-karte">
+        <span class="karte-kicker" data-meta>Gabler: Personalführung [2]</span>
+        <p class="f-def-text">„<mark class="f-kern f-kern--ziel" data-schritt="1" data-animation="hervorheben">zielgerichtetes</mark> <mark class="f-kern f-kern--interaktion" data-schritt="3" data-animation="hervorheben">soziales</mark> <mark class="f-kern f-kern--einfluss" data-schritt="2" data-animation="hervorheben">Einflusshandeln</mark> im Rahmen von Profit- oder Non-Profit-<mark class="f-kern f-kern--organisation" data-schritt="4" data-animation="hervorheben">Organisationen</mark> …“</p>
+      </blockquote>
+      <blockquote class="karte f-def-karte">
+        <span class="karte-kicker" data-meta>v. Rosenstiel: Mitarbeiterführung [5]</span>
+        <p class="f-def-text">„<mark class="f-kern f-kern--interaktion" data-schritt="3" data-animation="hervorheben">unmittelbare</mark>, <mark class="f-kern f-kern--einfluss" data-schritt="2" data-animation="hervorheben">absichtliche</mark> und <mark class="f-kern f-kern--ziel" data-schritt="1" data-animation="hervorheben">zielbezogene</mark> <mark class="f-kern f-kern--einfluss" data-schritt="2" data-animation="hervorheben">Einflußnahme</mark> … in <mark class="f-kern f-kern--organisation" data-schritt="4" data-animation="hervorheben">Organisationen</mark>“</p>
+      </blockquote>
+    </div>
+    <svg class="f-def-linien" aria-hidden="true"></svg>
+    <ul class="f-chips" aria-label="Gemeinsame Kernelemente">
+      <li class="f-chip f-chip--ziel" data-morph="kern-ziel" data-schritt="1" data-animation="hoch">Ziel</li>
+      <li class="f-chip f-chip--einfluss" data-morph="kern-einfluss" data-schritt="2" data-animation="hoch">Einfluss</li>
+      <li class="f-chip f-chip--interaktion" data-morph="kern-interaktion" data-schritt="3" data-animation="hoch">Interaktion</li>
+      <li class="f-chip f-chip--organisation" data-morph="kern-organisation" data-schritt="4" data-animation="hoch">Organisation</li>
+    </ul>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[1] Gabler Wirtschaftslexikon „Führung“ · [2] Gabler „Personalführung“ · [5] v. Rosenstiel (2000), Lexikon der Psychologie, gekürzt (…)</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Führung ist ein Alltagswort. Jeder hat eine Vorstellung davon, aber eine einheitliche Definition gibt es nicht. Ich habe Ihnen drei mitgebracht. Die erste sagt: Führung ist die durch Interaktion vermittelte Ausrichtung des Handelns auf vorgegebene Ziele. Die beiden anderen sprechen von zielgerichtetem Einflusshandeln in Organisationen und von unmittelbarer, absichtlicher und zielbezogener Einflussnahme durch Vorgesetzte. Legt man die drei nebeneinander, fällt auf: Sie teilen vier Bausteine.“</p>
+    <p data-schritt="1">„Erstens: ein Ziel. Führung ist nie Selbstzweck. In allen drei Sätzen steckt es: vorgegebene Ziele, zielgerichtet, zielbezogen.“</p>
+    <p data-schritt="2">„Zweitens: <b>Einfluss</b>. Jemand richtet das Handeln anderer aus, und zwar absichtlich. Bei der dritten Definition steht das Wort sogar direkt drin.“</p>
+    <p data-schritt="3">„Drittens: Interaktion. Führung passiert zwischen Menschen, im Gespräch, im Alltag, nicht per Organigramm. In der dritten Definition steckt das im Wort ‚unmittelbar‘: direkt von Mensch zu Mensch.“</p>
+    <p data-schritt="4">„Und viertens: Sie findet in einer Organisation statt, mit Über- und Unterordnung. Das steht so sogar in der ersten Definition. Einer hat das Sagen, die anderen folgen, zumindest auf dem Papier. Aus diesen vier Bausteinen baue ich jetzt eine Arbeitsdefinition.“</p>
+    <p>Hintergrund: Gabler „Leadership“ [3]: Leadership „bezeichnet nicht einheitlich definiert …“. Wunderer wird bewusst nicht zitiert (kein frei zugänglicher Originalwortlaut, siehe Literaturbasis). Wortlaut vollständig: Backup B2.</p>
+    <p>Mögliche Rückfragen: „Ist ‚Interaktion‘ bei Gabler wirklich gemeint?“ Ja, wörtlich „durch Interaktion vermittelte Ausrichtung“; dazu „asymmetrische soziale Beziehungen der Über- und Unterordnung“ (Organisation).</p>
+    <p>Belege Erweiterung: B-01, B-02, B-03 (Wortlaute paraphrasiert; vollständig in B2).</p>
+    <p>Website: Gabler Wirtschaftslexikon (wirtschaftslexikon.gabler.de): frei zugängliches Online-Lexikon des Fachverlags Springer Gabler; die Stichwörter schreiben Professorinnen und Professoren mit Namen. Standard-Nachschlagewerk der BWL.</p>
+    <p>Website: Lexikon der Psychologie (spektrum.de): Online-Ausgabe des Fachlexikons von Spektrum der Wissenschaft (2000), frei lesbar; Artikel von Fachautoren mit Kürzel.</p>
+    <p>Begriff: Lutz von Rosenstiel: bekannter deutscher Organisations- und Wirtschaftspsychologe, lange Professor an der LMU München; schrieb den Lexikonartikel „Führung“.</p>
+    <p>Begriff: Leadership: der auf Menschen bezogene Teil der Führung (motivieren, Richtung geben), im Unterschied zum Management von Abläufen und Zahlen.</p>
+    <p>Begriff: unmittelbare Einflussnahme: direkt von Person zu Person, also im Gespräch und im Alltag. Gegenstück ist die mittelbare Führung über Strukturen, Regeln und Anreize. Deshalb steht „unmittelbare“ für den Baustein Interaktion.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 04 · Arbeitsdefinition · 45 s
+     Die vier Chips kommen per Morph aus Folie 03 und rahmen den Satz.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-arbeit" id="f04" data-nummer="04" data-titel="Arbeitsdefinition" data-feld="leer" data-station="1" data-zeit="40" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">1 · Was ist Führung?</p>
+    <h2 class="titel">Arbeitsdefinition für dieses Referat</h2>
+  </header>
+  <div class="folie-inhalt">
+    <p class="f-arbeit-satz" data-morph="arbeitsdefinition">
+      Führung ist die <span class="f-wort f-wort--ziel" data-morph="kern-ziel">zielbezogene</span>, <span class="f-wort f-wort--einfluss" data-morph="kern-einfluss">absichtliche Einflussnahme</span> auf das Handeln anderer, vermittelt durch <span class="f-wort f-wort--interaktion" data-morph="kern-interaktion">Interaktion</span> in einer <span class="f-wort f-wort--organisation" data-morph="kern-organisation">Organisation</span>.
+    </p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Eigene Synthese aus [1], [2], [5]</p>
+  </footer>
+  <aside class="notizen">
+    <p class="gesprochen">Satz einmal ruhig vorlesen. „Das ist meine Arbeitsdefinition: Führung ist die zielbezogene, absichtliche Einflussnahme auf das Handeln anderer, vermittelt durch Interaktion in einer Organisation. Sie fasst einfach die drei Definitionen zusammen, die Sie gerade gesehen haben. Zwei Wörter sind mir dabei wichtig. ‚Absichtlich‘: Wer nur zufällig Vorbild ist, führt in diesem Sinne noch nicht. Und ‚in einer Organisation‘: Es gibt eine Ordnung mit Führenden und Geführten. Merken Sie sich den Satz. Am Ende kommt er zurück, mit einem Zusatz für das KMU.“</p>
+    <p>Rückfragen: „Warum nicht Wunderer?“ Seine Definition ist in Lehrbüchern verbreitet, ihr Wortlaut aber nicht frei zugänglich belegt. Ich arbeite deshalb nur mit Quellen, die jeder nachprüfen kann (Dossier B-11).</p>
+    <p>Begriff: Arbeitsdefinition: eine Definition, die für dieses Referat festgelegt wird, damit alle vom Gleichen sprechen. Sie ist eine eigene Zusammenfassung der drei Definitionen, kein Lehrbuchzitat.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 05 · Zwei Ebenen · 60 s
+     Schritt 1: Die Kreise „Unternehmensführung“ und „Mitarbeiterführung“
+     schieben sich zusammen; in der Schnittmenge steht „Inhaber/in“.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-ebenen" id="f05" data-nummer="05" data-titel="Drei Rollen" data-feld="leer" data-station="1" data-zeit="60" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">1 · Was ist Führung?</p>
+    <h2 class="titel">Drei Rollen, im Mittelstand in einer Hand</h2>
+  </header>
+  <div class="folie-inhalt">
+    <span class="f-ebenen-zustand" data-schritt="1" data-animation="zustand" aria-hidden="true"></span>
+    <!-- Schritt 0: drei getrennte Kreise (Konzern). Schritt 1: Die Kreise schieben sich
+         übereinander, die Beschriftungen wandern nach außen, in der Mitte „Inhaber/in“.
+         Positionen: --x0/--y0 (getrennt) und --x1/--y1 (überlagert), relativ zur Mitte. -->
+    <div class="f-ebenen-buehne">
+      <div class="f-rolle f-rolle--eigentum" style="--x0:-560px;--y0:0px;--x1:-110px;--y1:-60px"></div>
+      <div class="f-rolle f-rolle--unternehmen" style="--x0:0px;--y0:0px;--x1:110px;--y1:-60px"></div>
+      <div class="f-rolle f-rolle--mitarbeiter" style="--x0:560px;--y0:0px;--x1:0px;--y1:130px"></div>
+      <div class="f-rolle-text" style="--x0:-560px;--y0:-10px;--x1:-470px;--y1:-110px;--ausrichtung:end">
+        <span class="f-rolle-titel">Eigentum</span>
+        <span class="f-rolle-person" data-meta><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg>Aktionäre</span>
+      </div>
+      <div class="f-rolle-text" style="--x0:0px;--y0:-10px;--x1:470px;--y1:-110px;--ausrichtung:start">
+        <span class="f-rolle-titel">Unternehmens­führung</span>
+        <span class="f-rolle-person" data-meta><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg>Vorstand</span>
+      </div>
+      <div class="f-rolle-text" style="--x0:560px;--y0:-10px;--x1:400px;--y1:200px;--ausrichtung:start">
+        <span class="f-rolle-titel">Mitarbeiter­führung</span>
+        <span class="f-rolle-person" data-meta><svg class="icon" aria-hidden="true"><use href="#i-person"/></svg>Teamleitung</span>
+      </div>
+      <div class="f-ebenen-mitte" data-schritt="1" data-animation="zoom" data-verzoegerung="800">
+        <svg class="icon" aria-hidden="true"><use href="#i-person"/></svg>
+        <span>Inhaber/in</span>
+      </div>
+    </div>
+    <p class="f-ebenen-satz" data-schritt="1" data-animation="hoch" data-verzoegerung="1000">Im Konzern getrennt, im Mittelstand in einer Hand.</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[10] IfM Bonn: Mittelstand = „Einheit von Eigentum und Leitung“ · [4] Gabler „Management“ · [5] v. Rosenstiel (2000) · Grafik und Rollenbeispiele: eigene Darstellung</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Führung ist aber nicht dasselbe wie Management. Man kann zwei Ebenen unterscheiden: die Unternehmensführung, also das Management mit Zielen, Planung, Organisation und Kontrolle, und die Mitarbeiterführung, also den Umgang mit den einzelnen Menschen. Für das KMU kommt eine dritte Rolle hinzu: das Eigentum. Im Konzern sind die drei Rollen getrennt. Den Aktionären gehört das Unternehmen, der Vorstand leitet es, und die Teamleitungen führen die Menschen.“</p>
+    <p data-schritt="1">„Im Mittelstand schieben sich die Rollen übereinander. Genau daran erkennt man den Mittelstand: Eigentum und Leitung liegen in einer Hand. Höchstens zwei Personen oder ihre Familien halten mindestens die Hälfte der Anteile und sitzen selbst in der Geschäftsführung. Das ist der Schlüssel für alles, was jetzt kommt.“</p>
+    <p>Belege: B-04, B-06, B-07, K-04 (Dossier). Gabler „Management“ [4]: Management bezeichnet „in funktionaler Perspektive – die Tätigkeit der Unternehmensführung“ (B-12). Die Rollen Aktionäre/Vorstand/Teamleitung sind ein eigenes, vereinfachtes Beispiel, keine Quellenaussage.</p>
+    <p>Belege Erweiterung: B-07, B-12; Befragung Frage 6 (Managen/Führen) und Frage 1–3 (Aufgaben des Gründers), auswertung.md.</p>
+    <p>Begriff: Management: im funktionalen Sinn die Tätigkeit der Unternehmensführung (planen, entscheiden, organisieren, kontrollieren), im institutionellen Sinn die Gruppe der leitenden Personen.</p>
+    <p>Begriff: Unternehmensführung und Mitarbeiterführung: Unternehmensführung steuert das ganze Unternehmen (Ziele, Strategie, Organisation); Mitarbeiterführung ist der Umgang mit den einzelnen Menschen.</p>
+    <p>Website: IfM Bonn (ifm-bonn.org): Institut für Mittelstandsforschung Bonn, eine von Bund und Land Nordrhein-Westfalen getragene Stiftung; forscht zum Mittelstand und liefert die bekannteste Mittelstandsdefinition.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 06 · KMU und Mittelstand · 60 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-kmu" id="f06" data-nummer="06" data-titel="KMU und Mittelstand" data-feld="leer" data-station="2" data-zeit="90" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">2 · Was ist ein KMU?</p>
+    <h2 class="titel">Mittelstand heißt: Eigentum und Leitung in einer Hand</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-kmu-raster">
+      <div class="f-kmu-def">
+        <article class="karte karte--akzent f-kmu-kern" data-animation="hoch">
+          <span class="karte-kicker" data-meta>IfM Bonn: qualitativ [10]</span>
+          <span class="karte-titel">„Einheit von Eigentum und Leitung“</span>
+        </article>
+        <div class="f-kmu-grenzen" data-schritt="1" data-staffel="100" data-animation="hoch">
+          <p class="f-grenze"><span class="chip chip--rahmen">EU</span><span>unter 250 Beschäftigte, bis 50 Mio. € Umsatz oder 43 Mio. € Bilanzsumme [8]</span></p>
+          <p class="f-grenze"><span class="chip chip--rahmen">IfM</span><span>unter 500 Beschäftigte, bis 50 Mio. € Umsatz [9]</span></p>
+        </div>
+      </div>
+      <div class="f-kmu-zahlen" data-schritt="2" data-animation="einblenden">
+        <div class="f-waffel-block">
+          <div class="f-waffel" data-waffel="99.3" role="img" aria-label="Von 100 Unternehmen sind 99,3 KMU"></div>
+          <div class="kennzahl">
+            <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="99.3" data-dezimalen="1" data-einheit=" %">99,3 %</span>
+            <span class="kennzahl-text">aller Unternehmen sind KMU</span>
+          </div>
+        </div>
+        <div class="f-balken-zeile"><span class="f-balken-wert">53,7 %</span><span class="f-balken"><span class="f-balken-fuell" style="--wert:53.7" data-animation="zeichnen" data-verzoegerung="700"></span></span><span class="f-balken-text">der tätigen Personen</span></div>
+        <div class="f-balken-zeile"><span class="f-balken-wert">68,4 %</span><span class="f-balken"><span class="f-balken-fuell" style="--wert:68.4" data-animation="zeichnen" data-verzoegerung="900"></span></span><span class="f-balken-text">der Auszubildenden</span></div>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">KMU-Anteile 2024 (EU-Definition): Destatis [12] · Auszubildende Ende 2024 (Betriebe &lt; 250 SV-Beschäftigte): IfM Bonn [11] · [8][79] EU-Kommission · [9][10] IfM Bonn</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Was ist eigentlich ein KMU? Überraschenderweise gibt es dafür keine allgemein anerkannten Zahlenkriterien. Entscheidend ist etwas anderes, und das kennen Sie schon: Wem das Unternehmen gehört, der führt es auch. Diese Einheit von Eigentum und Leitung macht den Mittelstand aus, und für das Thema Führung ist das die wichtigste Definition.“</p>
+    <p data-schritt="1">„Natürlich gibt es trotzdem Größengrenzen. Die EU zieht die Linie bei 250 Beschäftigten und 50 Millionen Euro Umsatz oder 43 Millionen Bilanzsumme. Darunter liegen kleine Unternehmen mit weniger als 50 und Kleinstunternehmen mit weniger als 10 Beschäftigten. In Deutschland wird die Grenze oft weiter gezogen, bei 500 Beschäftigten.“</p>
+    <p data-schritt="2">„Und wie wichtig sind diese Unternehmen? 2024 waren 99,3 Prozent aller Unternehmen in Deutschland KMU. Sie stellten 53,7 Prozent der tätigen Personen und erwirtschafteten 41,3 Prozent der Wertschöpfung. Und mehr als zwei Drittel aller Auszubildenden, 68,4 Prozent, lernten in Betrieben mit weniger als 250 Beschäftigten. Wenn wir über Führung im KMU reden, reden wir also über den Arbeitsplatz von gut der Hälfte der Menschen und über die Ausbildung der meisten Auszubildenden.“</p>
+    <p>Definitionseffekt (Backup B3): KMU nach EU-Definition stellen 53,7 % der tätigen Personen (Destatis) bzw. 54,4 % der abhängig Beschäftigten (IfM-Auswertung), beides 2024; der Mittelstand nach KfW-Definition (bis 500 Mio. € Umsatz) 71,6 % der Erwerbstätigen (2024) [11][12][13]. Das IfM betont, dass die qualitativen Merkmale „aus den amtlichen Statistiken nicht ablesbar“ sind. Belege: K-01, K-03, K-04, Z-01–Z-04, Z-06.</p>
+    <p>Rückfragen: „Ist TLT ein KMU?“ Formal nein: laut Fragebogen (Frage 2) ca. 300 Beschäftigte weltweit (EU-Grenze 250) und Teil des Konzerns POWERCHINA; Eigentum und Leitung fallen nicht zusammen, nach IfM also kein Mittelstand [10]. Gerade deshalb ist TLT in der Befragung der Kontrast zu SimpleAct (inhabergeführt, 4 Personen, Folie 15).</p>
+    <p>Belege Erweiterung: K-05 (Gabler „Mittelstand“), K-01 (Klein-/Kleinstunternehmen), K-03, Z-01 (41,3 % Bruttowertschöpfung, Destatis 2024).</p>
+    <p>Website: Europäische Kommission (single-market-economy.ec.europa.eu): legt die KMU-Definition der EU fest (Empfehlung von 2003); sie gilt z. B. für Fördergelder.</p>
+    <p>Website: Destatis (destatis.de): Statistisches Bundesamt in Wiesbaden, die amtliche Statistik Deutschlands.</p>
+    <p>Begriff: Bilanzsumme: Summe aller Vermögenswerte eines Unternehmens am Bilanzstichtag; Maß für die Größe neben dem Umsatz.</p>
+    <p>Begriff: Bruttowertschöpfung: was ein Unternehmen an Wert neu schafft, also Umsatz abzüglich eingekaufter Vorleistungen.</p>
+    <p>Begriff: tätige Personen: alle, die im Unternehmen arbeiten, auch Inhaber und mithelfende Familienangehörige, nicht nur Angestellte.</p>
+    <p>Begriff: sozialversicherungspflichtig Beschäftigte: Angestellte mit Beiträgen zur Renten-, Kranken- und Arbeitslosenversicherung; ohne Selbstständige und Minijobs.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 07 · Besonderheiten · 75 s
+     Schritt 1: Das Konzern-Organigramm schrumpft zur flachen Struktur mit der
+     Inhaberin/dem Inhaber in der Mitte (js/folien/fuehrung.js setzt nur die
+     Klasse, die Bewegung macht CSS). Schritte 2–5: vier Besonderheiten.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-bes" id="f07" data-nummer="07" data-titel="Besonderheiten im KMU" data-feld="leer" data-station="3" data-zeit="100" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">3 · Was ist im KMU anders?</p>
+    <h2 class="titel">Im Mittelstand ist Führung persönlich</h2>
+  </header>
+  <div class="folie-inhalt">
+    <span class="f-bes-zustand" data-schritt="1" data-animation="zustand" aria-hidden="true"></span>
+    <div class="f-bes-raster">
+      <figure class="f-org" aria-label="Organigramm: Konzern mit vier Ebenen wird zur flachen Struktur mit der Inhaberin oder dem Inhaber in der Mitte">
+        <svg viewBox="0 0 640 520" aria-hidden="true">
+          <g class="f-org-linien-konzern">
+            <path d="M320 70 V130 M170 130 H470 M170 130 V190 M470 130 V190 M170 230 V290 M90 290 H250 M90 290 V350 M250 290 V350 M470 230 V290 M390 290 H550 M390 290 V350 M550 290 V350"/>
+          </g>
+          <g class="f-org-linien-kmu">
+            <path d="M320 260 L320 110 M320 260 L462 200 M320 260 L462 340 M320 260 L320 420 M320 260 L178 340 M320 260 L178 200"/>
+          </g>
+          <g class="f-org-beschriftung f-org-beschriftung--konzern">
+            <text x="276" y="58" text-anchor="end">Vorstand</text>
+            <text x="134" y="218" text-anchor="end">Bereiche</text>
+            <text x="320" y="430" text-anchor="middle">Teams</text>
+          </g>
+          <g class="f-org-beschriftung f-org-beschriftung--kmu">
+            <text x="392" y="270">Inhaber/in</text>
+          </g>
+          <g class="f-org-knoten">
+            <circle class="f-org-chef" style="--x0:320px;--y0:50px;--x1:320px;--y1:260px" r="30"/>
+            <circle style="--x0:170px;--y0:210px;--x1:320px;--y1:110px" r="22"/>
+            <circle style="--x0:470px;--y0:210px;--x1:462px;--y1:200px" r="22"/>
+            <circle style="--x0:90px;--y0:370px;--x1:462px;--y1:340px" r="18"/>
+            <circle style="--x0:250px;--y0:370px;--x1:320px;--y1:420px" r="18"/>
+            <circle style="--x0:390px;--y0:370px;--x1:178px;--y1:340px" r="18"/>
+            <circle style="--x0:550px;--y0:370px;--x1:178px;--y1:200px" r="18"/>
+          </g>
+        </svg>
+        <figcaption class="f-org-text" data-meta><span class="f-org-text-konzern">Konzern: viele Ebenen</span><span class="f-org-text-kmu">Inhabergeführt: eine zentrale Beziehung</span></figcaption>
+      </figure>
+      <div class="f-bes-rechts">
+        <blockquote class="zitat f-bes-zitat" data-schritt="1" data-animation="hoch" data-verzoegerung="600">
+          <p class="zitat-text" data-woerter>„Letztlich gibt es nur eine wirklich wichtige Führungsbeziehung und das ist die <span class="f-stift f-stift--linie">zum Inhaber …“<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true" data-schritt="1" data-animation="zeichnen" data-verzoegerung="2300" data-dauer="700"><path d="M3 13 C 45 7, 110 16, 197 8"/></svg></span></p>
+          <cite class="zitat-quelle">Wimmer (2021) [14]</cite>
+        </blockquote>
+        <ul class="liste f-bes-liste">
+          <li data-schritt="2" data-animation="hoch"><b>Nähe:</b> kurze Entscheidungswege, flache Hierarchien</li>
+          <li data-schritt="3" data-animation="hoch"><b>Informell:</b> Aufgaben folgen Personen</li>
+          <li data-schritt="4" data-animation="hoch"><b>Generalisten:</b> Führungsaufgaben weniger spezialisiert</li>
+          <li data-schritt="5" data-animation="hoch"><b>Risiko:</b> oft persönliche Haftung</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[14] Wimmer (2021), Gruppe. Interaktion. Organisation 52(4), Open Access · [15] Bijedić u. a. (2018), IfM-Materialien 272, gedr. S. 5, 8 · Grafik: eigene Darstellung</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„So sieht Führung im Lehrbuch oft aus: ein Organigramm mit vielen Ebenen.“</p>
+    <p data-schritt="1">„In inhabergeführten Unternehmen klappt das Organigramm zusammen. Eigentum, Führung und Familie sind in einer Hand vereint, und das gibt dem Inhaber eine außergewöhnliche Autorität. Zugespitzt heißt das: Letztlich gibt es nur eine wirklich wichtige Führungsbeziehung, nämlich die zur Inhaberin oder zum Inhaber an der Spitze. Wie stark das gilt, hängt natürlich von der Größe des Unternehmens ab.“</p>
+    <p data-schritt="2">„Daraus folgen vier Besonderheiten. Erstens Nähe: Flache Hierarchien sind der Normalfall, die Entscheidungswege sind kurz. Kamill Jarzebowski von SimpleAct beschreibt es so: Entscheidungen dauern bei ihm Minuten statt Wochen. Der Preis dafür: wenig Puffer.“</p>
+    <p data-schritt="3">„Zweitens: Es ist informell. Feste Organigramme gibt es meist nicht. Die Aufgaben folgen den Personen und nicht umgekehrt. Jörg Heisler bringt den Unterschied auf den Punkt: im KMU Persönlichkeit, Direktheit und Pragmatismus, im Konzern Strukturen, Richtlinien und lange Wege.“</p>
+    <p data-schritt="4">„Drittens: Die Unternehmerpersönlichkeit steht im Zentrum. Gerade in kleineren Betrieben sind Führungsaufgaben weniger spezialisiert als im Großunternehmen. Der Chef macht vieles selbst.“</p>
+    <p data-schritt="5">„Und viertens: Viele Mittelständler haften persönlich für ihre Kredite. Kein Wunder, dass sie Risiken eher scheuen als Unternehmen, die nicht in Familienhand sind.“</p>
+    <p>Belege: S-01–S-03, S-07, S-08 (Dossier). Wimmer [14] vollständig: „Letztlich gibt es nur eine wirklich wichtige Führungsbeziehung und das ist die zum Inhaber, zur Inhaberin an der Unternehmensspitze, auch wenn es da in der Praxis je nach Unternehmensgröße natürlich große Abstufungen gibt.“ Kurze Entscheidungswege: Wimmer [14] zu den Leistungsvorteilen der Einheit von Eigentum und Führung (S-12). IfM [15]: gedr. S. 8 (Spezialisierungsgrad) und S. 5 (Haftung).</p>
+    <p>Belege Erweiterung: S-06 (Abstract), S-02; Befragung Frage 11 (SimpleAct: kurze Wege, „Minuten“ statt „Wochen“, wenig Puffer; TLT: Persönlichkeit, Direktheit, Pragmatismus vs. Strukturen, Richtlinien, lange Wege), sinngemäß wiedergegeben.</p>
+    <p>Begriff: Rudolf Wimmer: Organisationsforscher und Berater, Professor an der Universität Witten/Herdecke, die sich besonders mit Familienunternehmen befasst.</p>
+    <p>Website: PubMed Central (pmc.ncbi.nlm.nih.gov): frei zugängliches Archiv wissenschaftlicher Fachartikel; dort liegt Wimmers Artikel aus der Fachzeitschrift „Gruppe. Interaktion. Organisation.“ (Open Access).</p>
+    <p>Begriff: Organigramm: Schaubild, das die Abteilungen, Stellen und Hierarchieebenen eines Unternehmens zeigt.</p>
+    <p>Begriff: Risikoaversion: die Neigung, Risiken zu meiden und lieber sicherere, kleinere Erträge zu wählen.</p>
+    <p>Website: EconStor (econstor.eu): frei zugänglicher Publikationsserver für Wirtschaftsforschung der ZBW, dem Leibniz-Informationszentrum Wirtschaft; dort liegt die IfM-Studie.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 08 · Live-Umfrage · 70 s
+     Baustein .umfrage (js/komponenten.js), Daten: marke.js → umfragen.fuehrung.
+     Schritt 1: Aussagezahl „x % von Ihnen werden an Entscheidungen beteiligt“.
+     Plan B ohne Netz: Handzeichen, Klick auf eine Antwort = +1.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-umfrage" id="f08" data-nummer="08" data-titel="Live-Umfrage: Wie werden Sie geführt?" data-feld="leer" data-station="3" data-zeit="85" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">3 · Live-Umfrage</p>
+    <h2 class="titel" data-umfrage-frage="fuehrung">Wie werden Sie in Ihrem (Neben-)Job geführt?</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="umfrage" data-umfrage="fuehrung" data-aufloesung="aus" data-aussage="1" data-qr-groesse="400"></div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Anonym · Antworten von links nach rechts = mehr Entscheidungsspielraum für das Team (vereinfacht nach Tannenbaum/Schmidt [6])</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Jetzt sind Sie dran: Wie werden Sie in Ihrem Job oder Nebenjob geführt? Scannen Sie den QR-Code, anonym, ohne Anmeldung. Entscheidet Ihr Chef allein, erklärt er, fragt er vorher, oder entscheidet das Team?“ Ca. 40 Sekunden laufen lassen. Währenddessen: „Es gibt keine richtige Antwort. Mich interessiert, wie Führung bei Ihnen tatsächlich aussieht, nicht wie sie aussehen sollte.“ Ergebnis kommentieren.</p>
+    <p data-schritt="1">„Das heißt: [Zahl] Prozent von Ihnen werden an Entscheidungen beteiligt. Mal sehen, ob das zum typischen Bild im KMU passt.“</p>
+    <p>Technik: Ergebnis aktualisiert sich alle 2 s. Ohne Netz: Handzeichen, Klick auf eine Antwort = +1, Umschalt+Klick = −1, Ziffern 1–5. Runde in marke.js steht auf 'vortrag-2026-11-02'; Teststimmen, die älter als 30 Minuten sind, erscheinen nicht. Voraussetzung für den QR-Code: GitHub Pages ist für das Repository eingeschaltet.</p>
+    <p>Website: Abstimmseite (yannickoderso.github.io/Management-im-KMU): eigene Seite auf GitHub Pages; die Stimmen sind anonym und werden über ein Google Apps Script gezählt, ohne Anmeldung und ohne Namen.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 09 · Führungsstil-Kontinuum · 60 s
+     Sieben Stufen nach Tannenbaum/Schmidt; die Fläche zeigt, wie der
+     Entscheidungsspielraum von der Führungskraft zum Team wandert.
+     Marker: Schritt 1 Wimmer, Schritt 2 IfM, Schritt 3 Stärke/Risiko.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-stil" id="f09" data-nummer="09" data-titel="Führungsstil im KMU" data-feld="leer" data-station="3" data-zeit="145" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">3 · Was ist im KMU anders?</p>
+    <h2 class="titel">Patriarchalisch oder kooperativ?</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-stil-skala">
+      <svg class="f-stil-flaeche" viewBox="0 0 1680 120" preserveAspectRatio="none" aria-hidden="true" data-animation="zeichnen" data-dauer="1200">
+        <path class="f-stil-fk" d="M0 0 H1680 L0 120 Z"/>
+        <path class="f-stil-team" d="M1680 0 V120 H0 Z"/>
+      </svg>
+      <p class="f-stil-achse" data-meta><span>Entscheidungsspielraum der Führungskraft</span><span>des Teams</span></p>
+      <ol class="f-stil-stufen" data-staffel="60" data-animation="hoch">
+        <li>autoritär</li><li>patriarchalisch</li><li>informierend</li><li>beratend</li><li>kooperativ</li><li>delegativ</li><li>autonom</li>
+      </ol>
+      <!-- Spuren: --pos = Stufe 1–7 (Mitte der Stufe). In der Grafik stehen nur Namen; Einschränkungen
+           (Einschätzung, Interviews, Selbsteinschätzung) stehen in der Fußzeile und im Sprechtext.
+           Publikum: js/folien/fuehrung.js aus der Live-Umfrage (Folie 08); SimpleAct/TLT: JSON „befragte“ unten. -->
+      <div class="f-stil-spuren">
+        <div class="f-stil-spur" style="--spur:0">
+          <div class="f-stil-marker f-stil-marker--literatur" style="--pos:2" data-schritt="1" data-animation="hoch">
+            <span class="f-stil-pin" aria-hidden="true"></span>
+            <p><b>Wimmer</b></p>
+          </div>
+          <div class="f-stil-marker f-stil-marker--literatur" style="--pos:5" data-schritt="2" data-animation="hoch">
+            <span class="f-stil-pin" aria-hidden="true"></span>
+            <p><b>IfM</b></p>
+          </div>
+        </div>
+        <div class="f-stil-spur f-stil-spur--gross" style="--spur:1">
+          <div class="f-stil-punkte" data-publikum-punkte data-schritt="3" data-animation="einblenden" aria-hidden="true"></div>
+          <div class="f-stil-marker f-stil-marker--publikum" style="--pos:4" data-schritt="3" data-animation="hoch" data-publikum>
+            <span class="f-stil-pin" aria-hidden="true"></span>
+            <p><b>Sie</b> <span data-publikum-text></span></p>
+          </div>
+        </div>
+        <div class="f-stil-spur" style="--spur:2">
+          <div class="f-stil-marker f-stil-marker--praxis" style="--pos:4" data-schritt="4" data-animation="hoch" data-befragter="0">
+            <span class="f-stil-pin" aria-hidden="true"></span>
+            <p><b data-befragter-name>SimpleAct</b></p>
+          </div>
+          <div class="f-stil-marker f-stil-marker--praxis ist-links" style="--pos:6" data-schritt="4" data-animation="hoch" data-befragter="1">
+            <span class="f-stil-pin" aria-hidden="true"></span>
+            <p><b data-befragter-name>TLT</b></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="f-stil-bilanz" data-schritt="5" data-staffel="120" data-animation="hoch">
+      <p class="f-plus"><b>Stärke:</b> kurze Entscheidungswege, hohe Umsetzungsgeschwindigkeit</p>
+      <p class="f-minus"><b>Risiko:</b> kann bei Wachstum „in eine Existenzgefährdung umschlagen“</p>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Stufen: eigene Bezeichnungen in Anlehnung an Tannenbaum/Schmidt (1958) [6][32] · [14] Wimmer (2021) · [15] Bijedić u. a. (2018), gedr. S. 20 · [17] Gabler · Wimmer: Einschätzung · IfM: ein Führungstyp, Interviews · Sie: Live-Umfrage Folie 08 (Durchschnitt) · SimpleAct, TLT: Selbsteinschätzung, n = 2 (B4)</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Führungsstile kann man auf einer Linie ordnen, je nachdem, wer entscheidet: links die Führungskraft allein, rechts das Team. Für den Mittelstand besonders spannend ist die Stufe patriarchalisch: Der Chef entscheidet allein, sorgt aber für seine Leute und erwartet dafür Loyalität.“</p>
+    <p data-schritt="1">„Schätzungen gehen davon aus, dass dieser patriarchale Stil noch in mehr als zwei Dritteln der kleineren und mittelgroßen Familienunternehmen zu finden ist. Und das ist ausdrücklich nicht abwertend gemeint.“</p>
+    <p data-schritt="2">„Es gibt aber auch das Gegenbild: Wo das Team die nötigen Kompetenzen hat, führen manche Inhaber eher kooperativ. Gerade die überschaubare Größe macht das möglich.“</p>
+    <p data-schritt="3">„Und hier landen Sie: Jeder Punkt ist eine Stimme aus der Umfrage, die Linie zeigt den Durchschnitt.“ Position kommentieren: Liegt der Schnitt eher auf der Chef- oder auf der Teamseite? Welche Stufe ist das?</p>
+    <p data-schritt="4">„Und so schätzen sich meine beiden Befragten selbst ein: Kamill Jarzebowski, Gründer von SimpleAct, sieht sich auf Stufe 4, beratend. Er holt Meinungen ein und entscheidet dann. Strategie, Preise und alles Rechtliche entscheidet er selbst, in ihren Bereichen entscheidet das Team. Jörg Heisler, Abteilungsleiter bei TLT, sieht sich auf Stufe 6, delegativ. Das Team entscheidet im vorgegebenen Rahmen. Der Gründer des Vier-Personen-Start-ups steht also näher an der Chefseite als die Führungskraft im Industrieunternehmen. Bei zwei Befragten ist das natürlich kein Beweis, aber es passt ins Bild: Wo Eigentum und Leitung in einer Hand liegen, laufen die Entscheidungen beim Inhaber zusammen.“</p>
+    <p data-schritt="5">„Beides kann stimmen. Die Stärke dieser Nähe sind kurze Entscheidungswege und Tempo bei der Umsetzung. Das Risiko: Was lange erfolgreich war, kann unter neuen Bedingungen zur Gefahr für die Existenz werden, gerade wenn ein Unternehmen schnell wächst.“</p>
+    <p>Publikum: Jeder Punkt ist eine Stimme aus Folie 08. Die 5 Antworten liegen auf den Stufen 1 (Chef entscheidet allein), 2,5 (… und erklärt), 4 (fragt vorher nach), 5 (Team schlägt vor) und 6,5 (Team entscheidet selbst); der Marker mit Linie zeigt den Durchschnitt („Sie Ø 3,5“). Sind es noch Beispielwerte, steht dahinter „(Beispiel)“; ohne Stimmen steht nur „Sie“.</p>
+    <p>Belege: L-01, S-04, S-05, S-09, S-10, S-12 (Dossier). IfM [15, gedr. S. 20]: „Sind jedoch entsprechende Kompetenzen im Unternehmen vorhanden, ist der Führungsstil durch die Einbindung der Mitarbeiter eher als partizipativ bzw. kooperativ anzusehen“; Typ „Interaktive“, 11 Telefoninterviews, nicht für KMU allgemein.</p>
+    <p>Befragung (Frage 17/18): Selbstbild SimpleAct 4, TLT 6. Fremdbild, wie sie es vermuten: Kamill Jarzebowski „Teilweise 1, zum größten Teil 4/5“, Jörg Heisler 5. Jörg Heisler nennt sein Vorgehen in Frage 9 selbst „kooperative Führung“ (= Stufe 5). Rückfrage „Warum sieht sich der Gründer weiter links?“: Er nennt sich in Frage 16 „gleichzeitig Verkäufer, Entwickler und Chef“ und will „am liebsten alles selbst machen“.</p>
+    <p>Beleg Erweiterung: L-02 (Gabler „Führungsstil“, Kritik an den frühen Stilmodellen).</p>
+    <p>Begriff: Führungsstil-Kontinuum: Modell von Robert Tannenbaum und Warren Schmidt (Harvard Business Review, 1958). Ordnet Führungsstile danach, wie viel die Führungskraft allein entscheidet und wie viel das Team.</p>
+    <p>Begriff: Die sieben Stufen: autoritär (Chef entscheidet und ordnet an), patriarchalisch (entscheidet allein, sorgt aber für seine Leute), informierend (entscheidet und erklärt), beratend (fragt vorher, entscheidet dann), kooperativ (Team schlägt vor, Chef wählt aus), delegativ (Team entscheidet im Rahmen), autonom (Team entscheidet selbst).</p>
+    <p>Begriff: Familienunternehmen: Unternehmen, das maßgeblich einer Familie gehört und von ihr geprägt wird; die meisten Mittelständler sind Familienunternehmen.</p>
+  </aside>
+  <!-- „stufe“ = Antwort auf Frage 17 im Fragebogen (1–7), „anzeige“ = Name laut Einverständnis
+       (Rücklauf: SimpleAct 29.10.2026, TLT 28.10.2026; Auswertung: ../befragung/auswertung.md) -->
+  <script type="application/json" class="daten">{
+    "publikumStufen": [1, 2.5, 4, 5, 6.5],
+    "befragte": [
+      { "anzeige": "SimpleAct", "stufe": 4 },
+      { "anzeige": "TLT", "stufe": 6 }
+    ]
+  }</script>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     ABSCHNITT 4 · FÜHRUNGSINSTRUMENTE (Belege [41]–[62]: recherche/literaturbasis-instrumente.md)
+     FOLIE · Werkzeugkasten · 100 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-werkzeug" id="f10" data-nummer="10" data-titel="Fünf Führungsinstrumente" data-feld="leer" data-station="4" data-zeit="60" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">4 · Womit führt man?</p>
+    <h2 class="titel">Fünf Werkzeuge der Mitarbeiterführung</h2>
+  </header>
+  <div class="folie-inhalt">
+    <ul class="f-werkzeug-liste" data-staffel="120" data-animation="hoch">
+      <li class="karte"><svg class="icon" aria-hidden="true"><use href="#i-sprechblase"/></svg><span class="karte-titel">Mitarbeiter­gespräch</span><span class="karte-text">geplant oder ungeplant, zwischen Führungskraft und Mitarbeiter</span><span class="f-werkzeug-quelle" data-meta>[42]</span></li>
+      <li class="karte"><svg class="icon" aria-hidden="true"><use href="#i-ziel"/></svg><span class="karte-titel">Ziel­vereinbarung</span><span class="karte-text">„Führung durch Ziel­vereinbarung“, heute auch OKR</span><span class="f-werkzeug-quelle" data-meta>[43][48]</span></li>
+      <li class="karte"><svg class="icon" aria-hidden="true"><use href="#i-uebergabe"/></svg><span class="karte-titel">Delegation</span><span class="karte-text">Kompetenz und Verantwortung übertragen</span><span class="f-werkzeug-quelle" data-meta>[44]</span></li>
+      <li class="karte"><svg class="icon" aria-hidden="true"><use href="#i-zuruecksetzen"/></svg><span class="karte-titel">Feedback</span><span class="karte-text">Rückmeldung, die Ziele erreichbar macht</span><span class="f-werkzeug-quelle" data-meta>[49]</span></li>
+      <li class="karte"><svg class="icon" aria-hidden="true"><use href="#i-dokument"/></svg><span class="karte-titel">Führungs­grundsätze</span><span class="karte-text">Leitbild für die Zusammenarbeit</span><span class="f-werkzeug-quelle" data-meta>[46]</span></li>
+    </ul>
+    <p class="f-werkzeug-frage" data-schritt="1" data-animation="hoch">Im KMU entscheidend: <b>Wer setzt sie ein, und wer hat dafür Zeit?</b></p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[42] Gabler „Mitarbeitergespräch“ · [43] „Management by Objectives“ · [44] „Delegation“ · [46] „Führungsgrundsätze“ · [48] „OKR“ · [49] Lexikon der Psychologie „Rückmeldung“</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Wie führt man konkret? Dafür gibt es Werkzeuge. Ich greife fünf heraus. Erstens das Mitarbeitergespräch, regelmäßig oder bei Bedarf. Zweitens die Zielvereinbarung, bekannt als Management by Objectives. Die moderne Variante heißt OKR, mit Zielen für jedes Quartal; im KMU ist das noch selten. Drittens die Delegation: Aufgaben samt Verantwortung abgeben. Das fällt gerade Inhabern schwer, die alles selbst aufgebaut haben. Viertens Feedback, einer der stärksten Hebel, um Ziele zu erreichen. Und fünftens Führungsgrundsätze, oft als Leitbild: gemeinsame Regeln dafür, wie man zusammenarbeitet.“</p>
+    <p data-schritt="1">„In Großunternehmen kümmert sich darum meist eine Personalabteilung. Im KMU ist die spannende Frage: Wer setzt diese Werkzeuge ein, und hat er oder sie dafür überhaupt Zeit? Genau das schauen wir uns jetzt an, Werkzeug für Werkzeug.“</p>
+    <p>Belege: B-10, I-01–I-06, I-16 (Dossier). Die Auswahl der fünf Werkzeuge ist eine eigene. OKR im KMU: FIR (2021): „kaum ein KMU“ arbeite damit; Einschätzung ohne Datenbasis [57].</p>
+    <p>Belege Erweiterung: I-01, I-02 (Drucker 1954), I-05 (OKR), I-16 (selten im KMU, Einschätzung FIR).</p>
+    <p>Begriff: Führungsinstrumente (Führungstechniken): Werkzeuge, mit denen Führungskräfte im Alltag führen, etwa Gespräche, Ziele, Delegation, Feedback und Leitlinien.</p>
+    <p>Begriff: Management by Objectives (MbO): Führen über Ziele, die Führungskraft und Mitarbeiter gemeinsam vereinbaren; geht auf Peter Drucker (1954) zurück, einen der bekanntesten Managementdenker.</p>
+    <p>Begriff: OKR (Objectives and Key Results): moderne Form der Zielvereinbarung; ein Ziel (Objective) wird mit messbaren Ergebnissen (Key Results) hinterlegt und meist pro Quartal festgelegt. Bekannt geworden durch Intel und Google.</p>
+    <p>Begriff: Delegation: Aufgaben samt Entscheidungsbefugnis und Verantwortung an Mitarbeitende abgeben.</p>
+    <p>Begriff: Führungsgrundsätze / Leitbild: schriftliche Regeln, wie im Unternehmen geführt und zusammengearbeitet wird.</p>
+    <p>Website: FIR an der RWTH Aachen (fir.rwth-aachen.de): Forschungsinstitut für Rationalisierung, ein Institut an der Technischen Hochschule Aachen, das zu Unternehmensorganisation und Digitalisierung forscht.</p>
+  </aside>
+</section>
+
+<!-- FOLIE · Personalarbeit liegt beim Chef · 90 s -->
+<section class="folie f-hr" id="f11" data-nummer="11" data-titel="Personalarbeit im KMU" data-feld="leer" data-station="4" data-zeit="70" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">4 · Womit führt man?</p>
+    <h2 class="titel">Im kleinen Betrieb ist der Chef die Personalabteilung</h2>
+  </header>
+  <div class="folie-inhalt">
+    <p class="f-hr-legende" data-meta><span class="f-hr-farbe f-hr-farbe--gf"></span>Geschäftsführung <span class="f-hr-farbe f-hr-farbe--hr"></span>Personalabteilung <span class="f-hr-farbe f-hr-farbe--sonst"></span>anderer Bereich</p>
+    <div class="f-hr-balken" data-staffel="200" data-animation="einblenden">
+      <div class="f-hr-zeile"><span class="f-hr-name">1–49 Beschäftigte</span><span class="f-hr-spur" data-animation="zeichnen"><span class="f-hr-teil f-hr-teil--gf" style="--w:91.0" >91 %</span><span class="f-hr-teil f-hr-teil--hr" style="--w:7.2"></span><span class="f-hr-teil f-hr-teil--sonst" style="--w:1.8"></span></span><span class="f-hr-wert">7,2 % Personal­abteilung</span></div>
+      <div class="f-hr-zeile"><span class="f-hr-name">50–249</span><span class="f-hr-spur" data-animation="zeichnen"><span class="f-hr-teil f-hr-teil--gf" style="--w:61.9" >62 %</span><span class="f-hr-teil f-hr-teil--hr" style="--w:36.4">36 %</span><span class="f-hr-teil f-hr-teil--sonst" style="--w:1.7"></span></span><span class="f-hr-wert">36,4 % Personal­abteilung</span></div>
+      <div class="f-hr-zeile"><span class="f-hr-name">ab 250</span><span class="f-hr-spur" data-animation="zeichnen"><span class="f-hr-teil f-hr-teil--gf" style="--w:23.1" >23 %</span><span class="f-hr-teil f-hr-teil--hr" style="--w:74.5">75 %</span><span class="f-hr-teil f-hr-teil--sonst" style="--w:2.4"></span></span><span class="f-hr-wert">74,5 % Personal­abteilung</span></div>
+    </div>
+    <div class="f-hr-unten">
+    <blockquote class="zitat f-hr-zitat" data-schritt="1" data-animation="hoch">
+      <p class="zitat-text" data-woerter>„… häufig fehlt es an Zeit und an spezifischem Know-how …“</p>
+      <cite class="zitat-quelle">KOFA-Studie 4/2021, IW Köln [54]</cite>
+    </blockquote>
+    <div class="f-hr-schulung" data-schritt="2" data-animation="hoch">
+      <span class="f-hr-schulung-zahlen"><b>15 %</b> <span class="f-gegen">vs. 64 %</span></span>
+      <span class="f-hr-schulung-text">setzen auf Führungsschulungen: bis 49 vs. ab 500 Beschäftigte <span class="f-klein" data-meta>(HR-Angaben) [70]</span></span>
+    </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Frage: „Wer ist in Ihrem Unternehmen federführend für die Personalarbeit zuständig?“ IW-Personalpanel 2020, N = 1.431 [54] · [70] Randstad-ifo-Personalleiterbefragung Q1/2025, n = 615</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Wer kümmert sich um Personal? In 91 Prozent der Unternehmen mit weniger als 50 Beschäftigten liegt die Personalarbeit bei der Geschäftsführung. Nur 7,2 Prozent haben eine eigene Personalabteilung. Ab 250 Beschäftigten ist es umgekehrt: Drei Viertel haben eine Personalabteilung. Im kleinen Betrieb ist Personal also Chefsache.“</p>
+    <p data-schritt="1">„Und für die Geschäftsführung ist Personalarbeit eine von vielen Aufgaben, die sie im Alltag nebenher stemmen muss. Häufig fehlt es an Zeit und an Know-how. Bei SimpleAct sieht man das deutlich: Der Gründer verantwortet Produkt, Strategie, Vertrieb und Finanzen und entwickelt selbst mit. Das ist der Engpass: nicht das Werkzeug, sondern die Person, die es einsetzen muss.“</p>
+    <p data-schritt="2">„Das zeigt sich auch bei der Entwicklung von Führungskräften: Nur 15 Prozent der Unternehmen bis 49 Beschäftigte setzen auf Führungsschulungen, um den Zusammenhalt zu stärken. Bei Großunternehmen ab 500 Beschäftigten sind es 64 Prozent.“</p>
+    <p>Belege: I-07, I-08, I-14, I-15, S-11 (Dossier). [54] Abb. 1: „Wer ist in Ihrem Unternehmen federführend für die Personalarbeit zuständig?“, IW-Personalpanel 2020, N = 1.431 (Geschäftsführung / Personalabteilung: 91,0 / 7,2 · 61,9 / 36,4 · 23,1 / 74,5; Rest „anderer Bereich“, auf der Folie ohne Zahl). [70] S. 7: abgefragt als Maßnahme, um das Gemeinschaftsgefühl zu stärken. CVTS 2020 [72] nur als Hintergrund: Rangfolge der Kursstunden, nicht Angebot. Sachsen-Anhalt 2022: nur 13 % der Kleinstbetriebe mit zweiter Führungsebene [56].</p>
+    <p>Belege Erweiterung: I-07 (50–249: 61,9 % GF / 36,4 % Personalabteilung; N = 1.431), S-11 ⚠ (nur Sachsen-Anhalt 2022); Befragung Frage 1–3.</p>
+    <p>Website: IW Köln (iwkoeln.de): Institut der deutschen Wirtschaft, ein von Wirtschaftsverbänden und Unternehmen getragenes Forschungsinstitut; das IW-Personalpanel ist seine regelmäßige Unternehmensbefragung.</p>
+    <p>Website: KOFA (kofa.de): Kompetenzzentrum Fachkräftesicherung im IW, vom Bundeswirtschaftsministerium gefördert; berät KMU bei Personalfragen und veröffentlicht die KOFA-Studien.</p>
+    <p>Website: Randstad-ifo-Personalleiterbefragung: regelmäßige Befragung von Personalverantwortlichen durch den Personaldienstleister Randstad und das ifo Institut, ein Wirtschaftsforschungsinstitut in München.</p>
+    <p>Begriff: IAB-Betriebspanel: jährliche große Befragung von Betrieben durch das IAB; einzelne Bundesländer lassen eigene Auswertungen erstellen, hier Sachsen-Anhalt.</p>
+    <p>Begriff: zweite Führungsebene: Führungskräfte unterhalb der Geschäftsführung, z. B. Team- oder Abteilungsleitungen.</p>
+  </aside>
+</section>
+
+<!-- FOLIE · Gespräche und Zielvereinbarungen · 110 s -->
+<section class="folie f-gespraech" id="f12" data-nummer="12" data-titel="Gespräche und Zielvereinbarungen" data-feld="leer" data-station="4" data-zeit="80" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">4 · Womit führt man?</p>
+    <h2 class="titel">Gespräche ja, Formulare weniger</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-gespraech-raster">
+      <div class="f-gespraech-block">
+        <p class="f-gespraech-kopf"><svg class="icon" aria-hidden="true"><use href="#i-sprechblase"/></svg>Regelmäßige Mitarbeitergespräche <span class="f-klein" data-meta>(2020, [54])</span></p>
+        <div class="f-saeulen" data-staffel="150" data-animation="einblenden">
+          <div class="f-saeule" style="--w:74.3"><span class="f-saeule-wert">74 %</span><span class="f-saeule-balken" data-animation="zeichnen"></span><span class="f-saeule-name" data-meta>1–49</span></div>
+          <div class="f-saeule" style="--w:81.0"><span class="f-saeule-wert">81 %</span><span class="f-saeule-balken" data-animation="zeichnen"></span><span class="f-saeule-name" data-meta>50–249</span></div>
+          <div class="f-saeule" style="--w:82.3"><span class="f-saeule-wert">82 %</span><span class="f-saeule-balken" data-animation="zeichnen"></span><span class="f-saeule-name" data-meta>ab 250</span></div>
+        </div>
+        <p class="f-gespraech-notiz">2024: <b>82 %</b> aller Unternehmen, Größen­unterschiede kleiner <span class="f-klein" data-meta>[55]</span></p>
+      </div>
+      <div class="f-gespraech-block" data-schritt="1" data-animation="hoch">
+        <p class="f-gespraech-kopf"><svg class="icon" aria-hidden="true"><use href="#i-ziel"/></svg>Zielvereinbarungen <span class="f-klein" data-meta>(Betriebe ab 50, [50][53])</span></p>
+        <div class="f-ziel-vergleich">
+          <div><span class="f-ziel-zahl">57 %</span><span class="f-ziel-text">50–99 Beschäftigte</span></div>
+          <div><span class="f-ziel-zahl">9 von 10</span><span class="f-ziel-text">ab 500 Beschäftigten</span></div>
+        </div>
+        <p class="f-gespraech-notiz">Schriftlich fixiert: <b>60 % → 50 %</b> (2012 → 2023)</p>
+      </div>
+    </div>
+    <p class="f-gespraech-kern" data-schritt="2" data-animation="hoch"><b>Schon Gespräche ohne formale Ziele</b> gehen mit mehr Zufriedenheit und Engagement einher <span class="f-klein" data-meta>(Betriebe ab 50)</span>.</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[54] IW-Personalpanel 2020 (Unternehmen) · [55] KOFA-Studie 4/2025 · [50] LPP 2014, BMAS-FB 469 · [53] IAB-Kurzbericht 11/2025 (LPP, nur Betriebe ab 50 Beschäftigten)</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Fangen wir beim wichtigsten Werkzeug an, dem Gespräch. Und das gibt es auch im Kleinen: 2020 führten 74 Prozent der Unternehmen mit 1 bis 49 Beschäftigten regelmäßig Mitarbeitergespräche, bei großen waren es 82 Prozent. 2024 waren es über alle Größen 82 Prozent, und die Unterschiede nach Größe sind weiter geschrumpft. Auch meine Befragten setzen darauf: Bei TLT gibt es jährliche Mitarbeitergespräche und wöchentliche Regeltermine, bei SimpleAct ein Weekly im Team.“</p>
+    <p data-schritt="1">„Anders bei formalen Zielvereinbarungen. Unter den Betrieben ab 50 Beschäftigten hatten sie 2014 57 Prozent der Betriebe mit 50 bis 99 Beschäftigten, aber neun von zehn Großbetrieben. Und der Trend geht weg vom Formular: Schriftliche Zielvereinbarungen sind zwischen 2012 und 2023 von 60 auf 50 Prozent zurückgegangen.“</p>
+    <p data-schritt="2">„Spannend ist: Schon regelmäßige Gespräche ohne formale Zielvereinbarung gehen mit mehr Zufriedenheit und Engagement einher. Ein gutes, regelmäßiges Gespräch kann also schon viel bewirken. Wie Gespräch und Vereinbarung zusammenkommen, zeige ich Ihnen gleich an einem Beispiel aus meiner Befragung.“</p>
+    <p>Belege: I-09–I-13 (Dossier). LPP [50][53] = privatwirtschaftliche Betriebe ab 50 sozialversicherungspflichtig Beschäftigten. Frage 2024 [55] leicht anders formuliert als 2020. IAB [53, S. 5]: „Selbst, wenn diese ohne formale Zielvereinbarung stattfinden, lassen sich positive Veränderungen der Arbeits- und Lohnzufriedenheit sowie des Engagements der Beschäftigten beobachten.“ (Panelanalyse, nicht streng kausal.)</p>
+    <p>Beleg Erweiterung: Befragung Frage 8 (TLT: jährliche Mitarbeitergespräche, wöchentliche Regeltermine; SimpleAct: Weeklys).</p>
+    <p>Website: IAB (iab.de): Institut für Arbeitsmarkt- und Berufsforschung, das Forschungsinstitut der Bundesagentur für Arbeit.</p>
+    <p>Begriff: LPP (Linked Personnel Panel): Befragung von Betrieben ab 50 Beschäftigten und ihren Beschäftigten, vom IAB mit Forschungspartnern im Auftrag des Bundesarbeitsministeriums (BMAS).</p>
+    <p>Begriff: Mitarbeitergespräch: geplantes Gespräch zwischen Führungskraft und Mitarbeiter über Arbeit, Ziele und Entwicklung, oft jährlich.</p>
+    <p>Begriff: Weekly: kurzes wöchentliches Teammeeting zum Abstimmen der Aufgaben.</p>
+  </aside>
+</section>
+
+
+<!-- FOLIE · Feedback und Beteiligung · 110 s -->
+<section class="folie f-beteil" id="f14" data-nummer="13" data-titel="Feedback und Beteiligung" data-feld="leer" data-station="4" data-zeit="100" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">4 · Womit führt man?</p>
+    <h2 class="titel">Feedback und Beteiligung: Nähe als Vorteil nutzen</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-beteil-vergleiche" data-staffel="140" data-animation="hoch">
+      <div class="f-vergleich"><span class="f-vergleich-zahlen"><b>47,8 %</b> <span class="f-vergleich-gegen">vs. 28,9 %</span></span><span class="f-vergleich-text">Einbindung bei Veränderungen „besonders erfolgreich“</span><span class="f-vergleich-quelle" data-meta>kleine vs. große, unter Nutzern · [55]</span></div>
+      <div class="f-vergleich"><span class="f-vergleich-zahlen"><b>53 %</b> <span class="f-vergleich-gegen">vs. 20 %</span></span><span class="f-vergleich-text">Verhältnis zu Führungskräften „offen und vertrauensvoll“</span><span class="f-vergleich-quelle" data-meta>bis 49 vs. ab 500 Beschäftigte · HR-Angaben · [71]</span></div>
+      <div class="f-vergleich"><span class="f-vergleich-zahlen"><b>90,8 %</b> <span class="f-vergleich-gegen">vs. 55,2 %</span></span><span class="f-vergleich-text">„Beschäftigte geben sich gegenseitig Feedback“: Zustimmung</span><span class="f-vergleich-quelle" data-meta>weiterbildungsaktive KMU vs. große · [74]</span></div>
+    </div>
+    <p class="f-beteil-aber" data-schritt="1" data-animation="hoch"><b>Aber:</b> Wenig Wertschätzung durch Vorgesetzte erleben bei 20–49 Beschäftigten <b>32 %</b> (unter 20: 25 %) <span class="f-klein" data-meta>[66]</span></p>
+    </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[55] KOFA 4/2025 · [71] Randstad-ifo Q3/2026 · [74] KOFA 1/2024 · [66] DGB-Index 2025 (Beschäftigte, 2022–2025)</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Ob Feedback ankommt, hängt stark davon ab, wie glaubwürdig und wie nah einem die Person ist, die es gibt. Und Nähe ist, wie wir gesehen haben, die Stärke kleiner Betriebe. Meine Vermutung: Hier haben sie einen Heimvorteil. Drei Zahlen passen dazu: 47,8 Prozent der kleinen Unternehmen, die ihre Leute bei Veränderungen einbinden, halten das für besonders erfolgreich, bei großen 28,9 Prozent. In Firmen bis 49 Beschäftigte beschreiben die Personalverantwortlichen das Verhältnis zu den Führungskräften zu 53 Prozent als offen und vertrauensvoll, ab 500 Beschäftigten nur zu 20 Prozent. Fehler werden in den kleinen zu 62 Prozent offen angesprochen, in den großen zu 28 Prozent. Und 90,8 Prozent der KMU, die in Weiterbildung investieren, sagen, dass sich ihre Beschäftigten gegenseitig Feedback geben, bei großen Unternehmen 55,2 Prozent.“</p>
+    <p data-schritt="1">„Aber Vorsicht vor Romantik. Als Lernchance sehen Großunternehmen Fehler häufiger als kleine, 19 gegenüber 5 Prozent. Und fragt man die Beschäftigten selbst, erleben in Betrieben mit 20 bis 49 Beschäftigten 32 Prozent wenig oder keine Wertschätzung durch Vorgesetzte, genauso viele wie in Betrieben mit 50 bis 199. Unter 20 Beschäftigten sind es 25 Prozent. Nähe ist eine Chance, kein Automatismus.“</p>
+    <p>Belege: I-06, C-01–C-05, P-02–P-04 (Dossier). Der „Heimvorteil“ ist eine eigene Deutung, kein empirischer Befund aus [49]. Gegenbefund zu C-03: Großunternehmen sehen Fehler häufiger als Lernchance (19 % vs. 5 %) [71]. DGB-Werte [66]: rollierender Mittelwert 2022–2025, Beschäftigtensicht.</p>
+    <p>Beleg Erweiterung: C-03 mit Gegenbefund (HR-Angaben, n = 469).</p>
+    <p>Website: DGB-Index Gute Arbeit (index-gute-arbeit.dgb.de): jährliche Befragung von Beschäftigten zur Qualität ihrer Arbeit, herausgegeben vom Deutschen Gewerkschaftsbund (DGB).</p>
+    <p>Begriff: Scrum: agile Arbeitsmethode aus der Softwareentwicklung; ein Team arbeitet in kurzen Abschnitten (Sprints) und bespricht regelmäßig Ergebnisse und nächste Schritte.</p>
+    <p>Begriff: Kick-off: Auftakttreffen zu Beginn eines Projekts mit allen Beteiligten.</p>
+    <p>Begriff: weiterbildungsaktive Unternehmen: Unternehmen, die ihre Beschäftigten im betrachteten Zeitraum weitergebildet haben.</p>
+    <p>Begriff: Personaler / Personalverantwortliche: die Personen, die im Unternehmen für Personal zuständig sind; in kleinen Firmen oft die Geschäftsführung selbst.</p>
+  </aside>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 15 · Praxisstimmen (Befragung) · 180 s
+     Antworten aus den Fragebögen (Auswertung: ../befragung/auswertung.md):
+     Zitate = Frage 5 („Führung ist …“) wörtlich, Ausfall der GF = Frage 12,
+     Mitte = Gemeinsamkeit aus Fragen 13, 15 (SimpleAct) und 19.
+     Einverständnis: beide mit Name, Funktion und Unternehmen; Zitate ohne
+     Vorabprüfung (SimpleAct telefonisch bestätigt, 30.10.2026).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-stimmen" id="f15" data-nummer="14" data-titel="Praxisstimmen: Befragung" data-feld="leer" data-station="5" data-zeit="165" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">5 · Befragung · n = 2</p>
+    <h2 class="titel">Zwei Unternehmen, zwei Blicke auf Führung</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-venn">
+      <span class="f-venn-kreis f-venn-kreis--links" aria-hidden="true"></span>
+      <span class="f-venn-kreis f-venn-kreis--rechts" aria-hidden="true"></span>
+      <div class="f-venn-seite f-venn-seite--links" data-schritt="1" data-animation="hoch">
+        <span class="karte-kicker" data-meta>Gründer · Software</span>
+        <span class="f-venn-name">SimpleAct</span>
+        <p class="f-venn-zitat" data-woerter>„Führung ist, ein Ziel klar zu machen und den Leuten den Raum … zu geben, es selbst zu erreichen.“</p>
+        <p class="f-venn-punkt"><b>GF 3 Monate weg:</b> Verträge, Preise, Strategie bleiben liegen</p>
+      </div>
+      <div class="f-venn-seite f-venn-seite--rechts" data-schritt="2" data-animation="hoch">
+        <span class="karte-kicker" data-meta>Abteilungsleiter · Industrie</span>
+        <span class="f-venn-name">TLT</span>
+        <p class="f-venn-zitat" data-woerter>„Führung ist … die zielgerichtete, bewusste Einflussnahme auf das Verhalten von Mitarbeitenden&nbsp;…“</p>
+        <p class="f-venn-punkt"><b>GF 3 Monate weg:</b> Doppelspitze, Prokuristen, Konzern fangen ab</p>
+      </div>
+      <div class="f-venn-mitte" data-schritt="3" data-animation="zoom">
+        <span class="karte-kicker" data-meta>Gemeinsam</span>
+        <p>Klar sagen, was man erwartet</p>
+        <p>Ergebnisse statt Anwesenheit</p>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Schriftliche Befragung (Fragebogen, 20 Fragen): Kamill Jarzebowski, SimpleAct UG, 29.10.2026 · Jörg Heisler, TLT-Turbo GmbH, 28.10.2026 · n = 2, Selbstauskunft, nicht repräsentativ · Methode: B4</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Genug Zahlen, jetzt wird es persönlich. Ich habe zwei Führungskräfte mit demselben Fragebogen schriftlich befragt. Kamill Jarzebowski hat im Mai 2026 SimpleAct gegründet, ein Software-Unternehmen mit vier Personen, inhabergeführt. Jörg Heisler leitet bei TLT-Turbo in Zweibrücken das Vertrags- und Lizenzmanagement. TLT baut Industrieventilatoren, hat rund 300 Beschäftigte und gehört zu einem chinesischen Konzern. Streng genommen also kein KMU, und genau das macht den Vergleich interessant.“</p>
+    <p data-schritt="1">„Kamill Jarzebowski schreibt: ‚Führung ist, ein Ziel klar zu machen und den Leuten den Raum und die Werkzeuge zu geben, es selbst zu erreichen. Und dann dafür geradezustehen, wenn etwas schiefgeht.‘ Dieser zweite Satz, die Verantwortung, kommt in keiner der drei Definitionen vom Anfang vor. Und der Ausfalltest: Fiele er drei Monate aus, liefen Vertrieb und Betrieb weiter, aber neue Verträge, Preise und strategische Entscheidungen blieben liegen. Die Führung hängt, so wörtlich, ‚sehr stark, vor allem an mir‘. Ein schriftliches Leitbild gibt es noch nicht.“</p>
+    <p data-schritt="2">„Jörg Heisler: ‚Führung ist im betriebswirtschaftlichen Sinne die zielgerichtete, bewusste Einflussnahme auf das Verhalten von Mitarbeitenden, um gemeinsam die Ziele einer Organisation zu erreichen.‘ Das ist fast wörtlich unsere Arbeitsdefinition: Ziel, Einfluss, Organisation. Beim Ausfalltest das Gegenbild: Die Geschäftsführung ist eine Doppelspitze, dazu kommen Prokuristen, ein Management-Team und die Konzernmutter. Ein Ausfall würde ‚nahtlos abgefedert‘. Hier sind die drei Rollen von Folie 05 getrennt.“</p>
+    <p data-schritt="3">„Gemeinsam ist beiden der Rat an neue Führungskräfte, fast wortgleich: Sag klar, was du erwartest, und frag nach. Und beide führen über Ergebnisse statt über Anwesenheit. Kamill Jarzebowski: ‚Ich vertraue auf Ergebnisse statt auf Anwesenheit‘; Jörg Heisler beschreibt den Weg ‚weg von der klassischen Präsenzkontrolle hin zu ergebnisorientiertem Vertrauen‘. Und beide bauen um, nur in entgegengesetzter Richtung: Das junge Unternehmen baut Struktur auf, bevor es sie braucht. Das traditionsreiche bricht starre Wege auf, damit Teams schnell Probleme lösen können. Wie Führung im Alltag aussieht, zeigen zwei Geschichten aus den Fragebögen.“</p>
+    <p>Wortlaut Frage 19: Jarzebowski „Sag klar, was du erwartest, und frag öfter nach, als du denkst.“ · Heisler „Sag deutlich, was du von jedem Einzelnen erwartest, und frage aktiv nach, ob das auch so verstanden wurde.“ Kurzfassungen auf der Folie mit „…“ gekürzt, sonst wörtlich. TLT: Eigentümer laut Fragebogen PCCC/POWERCHINA, Standorte u. a. Zweibrücken (Hauptsitz), Bad Hersfeld, Essen, Maxdorf; Jörg Heisler führt 4 Mitarbeitende fachlich und disziplinarisch, Führungsverantwortung seit 1998.</p>
+    <p>Einverständnis: Beide dürfen mit Name, Funktion und Unternehmen genannt werden, wörtliche Zitate ohne Vorabprüfung (Kamill Jarzebowski telefonisch bestätigt am 30.10.2026).</p>
+    <p>Website: SimpleAct (simpleact.de): Software-Start-up aus Recklinghausen (UG, gegründet 2026), das Unternehmen bei Compliance nach EU AI Act und DSGVO unterstützt.</p>
+    <p>Begriff: EU AI Act: EU-Verordnung über künstliche Intelligenz, seit 2024 in Kraft und stufenweise anwendbar; teilt KI-Systeme nach Risiko ein und stellt Pflichten für Anbieter und Nutzer auf.</p>
+    <p>Begriff: DSGVO: Datenschutz-Grundverordnung der EU, regelt den Umgang mit personenbezogenen Daten.</p>
+    <p>Begriff: Compliance: Einhaltung von Gesetzen und Regeln im Unternehmen.</p>
+    <p>Begriff: UG (haftungsbeschränkt): kleine Form der GmbH, die man mit sehr wenig Stammkapital gründen kann.</p>
+    <p>Begriff: TLT-Turbo / POWERCHINA: TLT-Turbo GmbH in Zweibrücken baut Industrieventilatoren; Eigentümer ist der chinesische Staatskonzern POWERCHINA (Bau und Energie).</p>
+    <p>Begriff: Doppelspitze: Geschäftsführung aus zwei gleichberechtigten Personen.</p>
+    <p>Begriff: Prokurist: Angestellter mit Prokura, einer im Handelsregister eingetragenen, sehr weitgehenden Vollmacht, das Unternehmen zu vertreten.</p>
+    <p>Begriff: Konzernmutter: die Gesellschaft, der das Unternehmen gehört und die den Konzern steuert.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 16 · Befragung: schwierige Situationen (Frage 10) · 110 s
+     Links SimpleAct (Blau), rechts TLT (Braun) wie auf Folie 15.
+     Auf der Folie nur Stichworte, die Geschichten stehen im Sprechtext.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-praxis" id="f16" data-nummer="15" data-titel="Befragung: wenn es schwierig wird" data-feld="leer" data-station="5" data-zeit="135" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">5 · Befragung · Praxisbericht</p>
+    <h2 class="titel">Wenn es schwierig wird: erst reden, dann regeln</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-praxis-raster">
+      <div class="f-praxis-spalte" data-schritt="1" data-animation="hoch">
+        <span class="karte-kicker" data-meta>SimpleAct · Kamill Jarzebowski</span>
+        <ol class="f-praxis-weg">
+          <li><span class="f-praxis-marke" data-meta>Anlass</span>Software läuft, aber Texte, Darstellung und Sonderfälle passen nicht</li>
+          <li><span class="f-praxis-marke" data-meta>Vorgehen</span>Hinsetzen, Beispiele durchgehen: Was sieht der Kunde?</li>
+          <li><span class="f-praxis-marke" data-meta>Heute</span>Checkliste vor jeder Veröffentlichung</li>
+        </ol>
+      </div>
+      <div class="f-praxis-spalte f-praxis-spalte--tlt" data-schritt="2" data-animation="hoch">
+        <span class="karte-kicker" data-meta>TLT · Jörg Heisler</span>
+        <ol class="f-praxis-weg">
+          <li><span class="f-praxis-marke" data-meta>Anlass</span>Ein Mitarbeiter wirkt demotiviert</li>
+          <li><span class="f-praxis-marke" data-meta>Vorgehen</span>Beobachtungen sammeln, Vier-Augen-Gespräch, erst zuhören</li>
+          <li><span class="f-praxis-marke" data-meta>Ergebnis</span>Ein erster Punkt, schriftlich vereinbart, mit Folgeterminen</li>
+        </ol>
+      </div>
+    </div>
+    <p class="f-praxis-fazit" data-schritt="3" data-animation="hoch">Beide: erst das Gespräch, danach eine feste Regel</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Schriftliche Befragung, Frage 10 („Beschreib eine Situation, in der Führung für dich besonders schwierig war“) · Kamill Jarzebowski, SimpleAct UG · Jörg Heisler, TLT-Turbo GmbH · Selbstauskunft</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Ich habe beide auch gefragt: Beschreib eine Situation, in der Führung für dich besonders schwierig war. Die Antworten zeigen, wie Führung im Alltag wirklich aussieht.“</p>
+    <p data-schritt="1">„Kamill Jarzebowski erzählt aus der Entwicklung bei SimpleAct: Die Software hat fachlich funktioniert, aber Details wie Texte, Darstellung oder Sonderfälle passten nicht. Bei einem Compliance-Produkt ist genau das heikel, denn ein kleiner Fehler kann das Vertrauen ins ganze Produkt kosten. Schwierig war, das anzusprechen, ohne die Arbeit kleinzureden, denn die Person hatte viel und gut gearbeitet. Er hat sich mit ihr hingesetzt und konkrete Beispiele durchgesprochen: Was sieht der Kunde, und was denkt er in dem Moment über uns? Heute würde er die Erwartungen früher festlegen, mit einer gemeinsamen Checkliste vor jeder Veröffentlichung. Wörtlich: ‚Dann ist Qualität ein fester Teil des Ablaufs und nicht etwas, das ich im Nachhinein einfordern muss.‘“</p>
+    <p data-schritt="2">„Jörg Heisler beschreibt die Führung eines demotivierten Mitarbeiters. Bevor er das Gespräch gesucht hat, hat er Beobachtungen aus dem Tagesgeschäft gesammelt, ausdrücklich ohne Pauschalurteile. Im Vier-Augen-Gespräch hat er erst erklärt, warum er eingeladen hat, und dann zugehört, ohne zu unterbrechen. Danach hat er getrennt: Was kann man beeinflussen, und was ist von außen vorgegeben, etwa die Unternehmensziele? Gemeinsam haben sie sich auf einen ersten Punkt geeinigt und eine Verhaltensänderung schriftlich vereinbart, mit konkreten Maßnahmen und Folgeterminen.“</p>
+    <p data-schritt="3">„Beide Geschichten folgen demselben Muster: Erst kommt das Gespräch, mit konkreten Beispielen statt Vorwürfen. Danach kommt eine feste Regel: die Checkliste, die schriftliche Vereinbarung. Das sind genau die Werkzeuge von vorhin, Feedback, Mitarbeitergespräch und Zielvereinbarung. Nur kommen sie hier aus echten Situationen.“</p>
+    <p>Wortlaut Frage 10: Jarzebowski „Schwierig war, das anzusprechen, ohne die Arbeit kleinzureden, denn die Person hatte viel und gut gearbeitet.“ · Heisler „Erst einmal hörte ich dem Mitarbeiter zu, ohne ihn zu unterbrechen und machte mir Notizen zu seinen Ausführungen (zwischenmenschliche Konflikt, Überforderungen, private Belastungen etc.).“ Auswertung: ../befragung/auswertung.md.</p>
+    <p>Begriff: Vier-Augen-Gespräch: Gespräch nur zwischen Führungskraft und Mitarbeiter, ohne weitere Personen.</p>
+    <p>Begriff: Folgetermin: vereinbarter späterer Termin, an dem geprüft wird, ob die Vereinbarung eingehalten wurde.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 17 · Befragung: Gründergeist und Tradition (Fragen 13 bis 16) · 110 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 11 · Herausforderungen · 70 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-zahlen" id="f18" data-nummer="16" data-titel="Herausforderungen" data-feld="leer" data-station="5" data-zeit="80" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">5 · Was zeigt die Praxis?</p>
+    <h2 class="titel">Bindung, Fachkräfte, Nachfolge, KI: alles Führungsthemen</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-zahlen-raster">
+      <div class="kennzahl f-zahl" data-schritt="1" data-animation="hoch">
+        <svg class="icon f-zahl-icon" aria-hidden="true"><use href="#i-herz"/></svg>
+        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="77" data-einheit=" %">77 %</span>
+        <span class="kennzahl-text">der Beschäftigten mit nur geringer Bindung</span>
+        <span class="f-zahl-quelle" data-meta>Gallup 2025 [21]</span>
+      </div>
+      <div class="kennzahl f-zahl" data-schritt="2" data-animation="hoch">
+        <svg class="icon f-zahl-icon" aria-hidden="true"><use href="#i-gruppe"/></svg>
+        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="92" data-einheit=" %">92 %</span>
+        <span class="kennzahl-text">der Mittelständler erwarten Folgen des Fachkräfte­mangels</span>
+        <span class="f-zahl-quelle" data-meta>DIHK 2025, 20–999 Beschäftigte [19]</span>
+      </div>
+      <div class="kennzahl f-zahl f-zahl--held" data-schritt="3" data-animation="hoch">
+        <svg class="icon f-zahl-icon" aria-hidden="true"><use href="#i-uebergabe"/></svg>
+        <span class="f-stift f-stift--kreis"><span class="kennzahl-wert" data-animation="zaehlen" data-ziel="569000" data-start="0">569.000</span><svg viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true" data-schritt="3" data-animation="zeichnen" data-verzoegerung="1500" data-dauer="900"><path d="M70 20 C 170 2, 330 4, 382 40 C 406 72, 384 120, 262 132 C 150 142, 18 130, 8 84 C 0 44, 48 18, 140 10"/></svg></span>
+        <span class="kennzahl-text">Inhaber streben bis Ende 2029 keine Fortführung an</span>
+        <span class="f-zahl-quelle" data-meta>KfW 2026 [24]</span>
+      </div>
+      <div class="kennzahl f-zahl" data-schritt="4" data-animation="hoch">
+        <svg class="icon f-zahl-icon" aria-hidden="true"><use href="#i-chip"/></svg>
+        <span class="kennzahl-wert" data-animation="zaehlen" data-ziel="21" data-einheit=" %">21 %</span>
+        <span class="kennzahl-text">sehen ihre Führungskraft voll hinter dem KI-Einsatz (in Firmen mit KI)</span>
+        <span class="f-zahl-quelle" data-meta>Gallup 2025 [21]</span>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[21][22] Gallup, Engagement Index Deutschland 2025 (keine KMU-Werte) · [19] DIHK-Fachkräftereport 2025/2026 · [24] KfW Research, Nachfolge-Monitoring Mittelstand 2025</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Warum ist das alles so wichtig? Weil die großen Herausforderungen der nächsten Jahre im Kern Führungsthemen sind. Ich zeige Ihnen vier Zahlen, und bei jeder lohnt es sich, kurz an Ihren eigenen Betrieb zu denken.“</p>
+    <p data-schritt="1">„Erstens Bindung: 77 Prozent der Beschäftigten in Deutschland haben nur eine geringe emotionale Bindung an ihren Arbeitgeber. Der Leiter der Studie bringt es auf den Punkt: ‚Das ist weniger ein Einstellungs- als vielmehr ein Führungsproblem.‘“</p>
+    <p data-schritt="2">„Zweitens Fachkräfte: 92 Prozent der Mittelständler mit 20 bis 999 Beschäftigten erwarten negative Folgen des Fachkräftemangels. Wer Leute halten will, muss gut führen.“</p>
+    <p data-schritt="3">„Drittens Nachfolge: 569.000 Inhaberinnen und Inhaber streben bis Ende 2029 nach ihrem Rückzug keine Fortführung ihres Unternehmens an. Wenn Führung an einer Person hängt, hängt auch das Unternehmen an ihr.“</p>
+    <p data-schritt="4">„Und viertens KI: Von den Beschäftigten in Unternehmen, die KI nutzen, stimmen nur 21 Prozent voll zu, dass ihre Führungskraft den Einsatz aktiv unterstützt. Neue Technik braucht jemanden, der sie vorlebt.“</p>
+    <p>Belege: H-01–H-09 (Dossier). Nink-Zitat aus dem Bericht [22, S. 4]; die Kernaussage der Pressemitteilung lautet „Geringe emotionale Bindung ist kein Einstellungs-, sondern ein Führungsproblem“ [21]. 569.000 [24]: einschließlich Fällen, in denen die Stilllegung ernsthaft erwogen wird; Gründe (Mehrfachnennung): Rentenalter 52 %, fehlendes Familieninteresse 47 %. Weitere Zahlen: Inhaber im Schnitt über 54 Jahre (2003: 45) [24]; nur 40 % der Führungskräfte hatten im letzten Jahr ein Coaching [22].</p>
+    <p>Belege Erweiterung: H-05 (Coaching 40 %), H-06 (alle: 83 %), H-07 (KMU-Definition des Barometers ≠ EU), H-08 (Gründe, Mehrfachnennung), H-09, H-11, H-12 (Regressionsanalyse); Befragung Frage 13/14 (Heisler: „Wissensverteiler“ → Coach; Bindung der Jüngeren).</p>
+    <p>Website: Gallup (gallup.com/de): US-Umfrage- und Beratungsunternehmen; der Engagement Index misst seit 2001 jedes Jahr, wie emotional verbunden sich Beschäftigte in Deutschland mit ihrem Arbeitgeber fühlen.</p>
+    <p>Begriff: emotionale Bindung: wie sehr sich jemand seinem Arbeitgeber innerlich verbunden fühlt; wer gering gebunden ist, macht Dienst nach Vorschrift.</p>
+    <p>Website: DIHK (dihk.de): Deutsche Industrie- und Handelskammer, die Dachorganisation der IHKs; befragt regelmäßig Tausende Unternehmen.</p>
+    <p>Website: KfW Research (kfw.de): Forschungsabteilung der staatlichen Förderbank KfW; veröffentlicht u. a. das Mittelstandspanel, das Nachfolge-Monitoring und mit dem ifo Institut das Fachkräftebarometer.</p>
+    <p>Begriff: Fortführung / Stilllegung: Fortführung heißt, ein Nachfolger übernimmt den Betrieb; Stilllegung heißt, der Betrieb wird geschlossen.</p>
+    <p>Begriff: Digitalisierungsgrad: wie stark ein Unternehmen digitale Technik in seinen Abläufen schon nutzt.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 12 · Fallbeispiel · 45 s
+     ═══════════════════════════════════════════════════════════════════════ -->
+
+
+<!-- FOLIE · Sechs Betriebe, ein Muster · 100 s -->
+
+
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 13 · Kernbotschaft · 40 s
+     Die Arbeitsdefinition kommt per Morph aus Folie 04 zurück; Schritt 1 ergänzt
+     sie um den KMU-Zusatz.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-kern-folie" id="f20" data-nummer="17" data-titel="Kernbotschaft" data-feld="leer" data-rubrik="Kernbotschaft" data-zeit="75" data-buendel="alle" data-modus="dunkel">
+  <header class="folie-kopf">
+    <p class="kicker">Kernbotschaft</p>
+    <h2 class="titel">Von der Person zur Struktur, ohne die Nähe zu verlieren</h2>
+  </header>
+  <div class="folie-inhalt">
+    <p class="f-arbeit-satz f-arbeit-satz--klein" data-morph="arbeitsdefinition">
+      Führung ist die <span class="f-wort f-wort--ziel" data-morph="kern-ziel">zielbezogene</span>, <span class="f-wort f-wort--einfluss" data-morph="kern-einfluss">absichtliche Einflussnahme</span> auf das Handeln anderer, vermittelt durch <span class="f-wort f-wort--interaktion" data-morph="kern-interaktion">Interaktion</span> in einer <span class="f-wort f-wort--organisation" data-morph="kern-organisation">Organisation</span>.<span class="f-kern-zusatz" data-schritt="1" data-animation="einblenden" data-dauer="900"> <b class="f-stift f-stift--linie">Im Mittelstand<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true" data-schritt="1" data-animation="zeichnen" data-verzoegerung="1000" data-dauer="600"><path d="M3 12 C 50 6, 120 15, 197 9"/></svg></b> liegt sie oft bei der Person, der das Unternehmen gehört: Nähe und Tempo. Aber Fachkräfte, Nachfolge und KI verlangen Struktur.</span>
+    </p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Eigene Synthese aus [1][5][10][14][19][21][24]</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Zum Schluss möchte ich noch einmal an den Anfang zurück. Erinnern Sie sich an die Arbeitsdefinition? Führung ist die zielbezogene, absichtliche Einflussnahme auf das Handeln anderer, vermittelt durch Interaktion in einer Organisation. Sie gilt für jedes Unternehmen, vom Start-up bis zum Konzern.“</p>
+    <p data-schritt="1">„Im Mittelstand kommt etwas dazu: Führung liegt oft bei der Person, der das Unternehmen gehört. Das zeigen die Zahlen, und das zeigt der Ausfalltest aus meiner Befragung: Bei SimpleAct hängt die Führung, so der Gründer, ‚sehr stark, vor allem an mir‘; bei TLT würde ein Ausfall ‚nahtlos abgefedert‘. Die Nähe ist eine Stärke: kurze Entscheidungswege, Tempo. Aber Fachkräftemangel, Nachfolge und KI verlangen, Führung stärker von dieser einen Person zu lösen: mehr Struktur, Delegation, Feedback. Die Befragung zeigt, dass das geht: eine Checkliste bei SimpleAct, eine schriftliche Vereinbarung bei TLT. Die Kunst ist, dabei die Nähe nicht zu verlieren. Denn genau die macht den Mittelstand stark.“</p>
+    <p>Eigene Synthese (B-09 plus K-04, S-01, S-12, H-01–H-08).</p>
+    <p>Belege Erweiterung: Befragung Frage 12 (Ausfalltest), P-06, P-01, Befragung Frage 10 (Checkliste).</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     FOLIE 14 · Diskussion · 30 s (+ Diskussion)
+     Fragen wie im Handout (fuehrung/diskussionspapier).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-disk" id="f21" data-nummer="18" data-titel="Diskussion" data-feld="leer" data-rubrik="Diskussion" data-zeit="40" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">Diskussion · Danke für Ihre Aufmerksamkeit</p>
+    <h2 class="titel">Was meinen Sie?</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-disk-raster">
+      <ol class="f-disk-liste" data-dimmen>
+        <li class="karte" data-schritt="1" data-animation="hervorheben" data-hervor="aktuell" data-hervor-stil="rahmen"><span class="f-disk-nr">1</span><span class="f-disk-text">Ist der patriarchalische Inhaberstil eine Stärke oder ein Risiko, sobald der Betrieb wächst?</span></li>
+        <li class="karte" data-schritt="2" data-animation="hervorheben" data-hervor="aktuell" data-hervor-stil="rahmen"><span class="f-disk-nr">2</span><span class="f-disk-text">Ersetzt die Nähe im KMU eine professionelle Führungskräfte­entwicklung?</span></li>
+        <li class="karte" data-schritt="3" data-animation="hervorheben" data-hervor="aktuell" data-hervor-stil="rahmen"><span class="f-disk-nr">3</span><span class="f-disk-text">569.000 Inhaber ohne Fortführungsabsicht: Versagt hier die Führung, oder ist das rational?</span></li>
+      </ol>
+      <figure class="f-disk-qr">
+        <div class="qr" data-qr="https://yannickoderso.github.io/Management-im-KMU/fuehrung/diskussionspapier/" data-kurz="Handout" data-groesse="280"></div>
+      </figure>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">QR-Code: Handout zum Vortrag mit den Diskussionsfragen (yannickoderso.github.io/Management-im-KMU) · Belege [14][21][24]</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Vielen Dank für Ihre Aufmerksamkeit! Ich habe drei Fragen für die Diskussion mitgebracht. Das Handout mit Kernbotschaft und diesen Fragen finden Sie über den QR-Code. Sie können aber auch gern mit eigenen Fragen oder Erfahrungen aus Ihren Jobs einsteigen.“</p>
+    <p data-schritt="1">Frage 1 hervorgehoben.</p>
+    <p data-schritt="2">Frage 2 hervorgehoben.</p>
+    <p data-schritt="3">Frage 3 hervorgehoben.</p>
+    <p class="gesprochen">Je Klick tritt eine Frage nach vorn. Mit der Frage beginnen, die zur Live-Umfrage passt: „Viele von Ihnen erleben Beteiligung, aber der typische Inhaberstil wird auf patriarchalisch geschätzt. Wie passt das zusammen?“</p>
+    <p class="sprechzettel">Sprünge für Rückfragen: Ziffern + Enter (z. B. „7 Enter“ = Besonderheiten, „12 Enter“ = Gespräche/Zielvereinbarungen), O = Übersicht. Backup: B1 Quellen, B2 Definitionen im Wortlaut, B3 Definitionseffekt KMU, B4 Methode der Befragung, B5 Quellen Instrumente und Fälle, B6 Sechs Betriebe (INQA), B7 Delegation, B8 Gründergeist und Tradition, B9 Pflegedienst Jahnke.</p>
+    <p>Mögliche Rückfragen: „Gilt Gallup auch für KMU?“ Gallup weist keine Werte nach Größe aus (Folie 16, Fußzeile). „Warum Stilllegung?“ Hauptgründe: Rentenalter (52 %), fehlendes Familieninteresse (47 %) [24].</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B1 · Quellen
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-backup" id="b1" data-titel="Backup: Quellen" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup">
+  <header class="folie-kopf">
+    <p class="kicker">Backup</p>
+    <h2 class="titel">Quellen der Folien (alle frei zugänglich, Abruf 27.10.2026)</h2>
+  </header>
+  <div class="folie-inhalt">
+    <ol class="f-quellen">
+      <li><b>[1]</b> Maier/Bartscher/Nissen: „Führung“, Gabler Wirtschaftslexikon</li>
+      <li><b>[2]</b> Bartscher/Nissen: „Personalführung“, Gabler</li>
+      <li><b>[4]</b> Haric: „Management“, Gabler</li>
+      <li><b>[5]</b> v. Rosenstiel (2000): „Führung“, Lexikon der Psychologie</li>
+      <li><b>[6]</b> Maier/Bartscher/Nissen: „Führungsstil“, Gabler</li>
+      <li><b>[8]</b> EU-Kommission: SME definition</li>
+      <li><b>[9][10][11]</b> IfM Bonn: KMU-/Mittelstandsdefinition, Bedeutung der KMU</li>
+      <li><b>[12]</b> Destatis: KMU-Anteile 2024</li>
+      <li><b>[13]</b> KfW-Mittelstandspanel 2025</li>
+      <li><b>[14]</b> Wimmer (2021): Leadership in and of Family Companies, GIO 52(4)</li>
+      <li><b>[15]</b> Bijedić u. a. (2018): IfM-Materialien Nr. 272</li>
+      <li><b>[17]</b> Bartscher/Nissen: „Patriarchalischer Führungsstil“, Gabler</li>
+      <li><b>[19]</b> DIHK-Fachkräftereport 2025/2026</li>
+      <li><b>[21]</b> Gallup: Engagement Index Deutschland 2025</li>
+      <li><b>[24]</b> KfW Research: Nachfolge-Monitoring Mittelstand 2025</li>
+      <li><b>[32]</b> Wikipedia: „Führungskontinuum“ (nur Hilfsbeleg)</li>
+      <li><b>[36]</b> INQA (2025): Pflegedienst Jahnke</li>
+    </ol>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Vollständige Angaben mit Adressen: recherche/literaturbasis.md (Quellenverzeichnis, Nummern identisch)</p>
+  </footer>
+  <aside class="notizen">
+    <p>Bei Rückfrage „Woher stammt Zahl X?“: Nummer auf der Folie nennen, hier zeigen. Adressen und Seitenzahlen in der Literaturbasis.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B2 · Definitionen im Wortlaut
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-backup" id="b2" data-titel="Backup: Definitionen im Wortlaut" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup">
+  <header class="folie-kopf">
+    <p class="kicker">Backup</p>
+    <h2 class="titel">Definitionen im Wortlaut</h2>
+  </header>
+  <div class="folie-inhalt">
+    <dl class="f-wortlaut">
+      <dt>Führung (Gabler) [1]</dt>
+      <dd>„durch Interaktion vermittelte Ausrichtung des Handelns von Individuen und Gruppen auf die Verwirklichung vorgegebener Ziele; beinhaltet asymmetrische soziale Beziehungen der Über- und Unterordnung.“</dd>
+      <dt>Personalführung (Gabler) [2]</dt>
+      <dd>„zielgerichtetes soziales Einflusshandeln im Rahmen von Profit- oder Non-Profit-Organisationen. Beteiligte sind neben einer Führungskraft mind. ein dieser weisungsmäßig unterstellter Mitarbeiter“</dd>
+      <dt>Mitarbeiterführung (v. Rosenstiel) [5]</dt>
+      <dd>„eine unmittelbare, absichtliche und zielbezogene Einflußnahme von bestimmten Personen – in der Regel Vorgesetzte – auf andere Personen – in der Regel Untergebene – in Organisationen“</dd>
+      <dt>Mittelstand (IfM Bonn) [10]</dt>
+      <dd>„Das IfM Bonn definiert Mittelstand durch die Einheit von Eigentum und Leitung.“ Bis zu zwei natürliche Personen oder ihre Familien halten mind. 50 % der Anteile und gehören der Geschäftsführung an.</dd>
+    </dl>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[1][2] Gabler Wirtschaftslexikon online · [5] Lexikon der Psychologie, Spektrum (2000) · [10] IfM Bonn</p>
+  </footer>
+  <aside class="notizen">
+    <p>Für Rückfragen zum Wortlaut der Definitionen (Folie 03/04/06).</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B3 · Definitionseffekt
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-backup" id="b3" data-titel="Backup: Definitionseffekt KMU" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup">
+  <header class="folie-kopf">
+    <p class="kicker">Backup</p>
+    <h2 class="titel">Die Definition bestimmt die Zahl und die Bezugsgröße</h2>
+  </header>
+  <div class="folie-inhalt">
+    <table class="tabelle f-tabelle">
+      <thead><tr><th>Abgrenzung</th><th>Grenze</th><th class="zahl">Unternehmen</th><th class="zahl">Beschäftigte</th><th>Jahr · Quelle</th></tr></thead>
+      <tbody>
+        <tr><td>KMU (EU)</td><td>&lt; 250 Beschäftigte</td><td class="zahl">99,3 %</td><td class="zahl">53,7 % der tätigen Personen</td><td>2024 · Destatis [12]</td></tr>
+        <tr><td>KMU (EU), IfM-Auswertung</td><td>&lt; 250 Beschäftigte</td><td class="zahl">99,2 %</td><td class="zahl">54,4 % der abhängig Beschäftigten</td><td>2024 · IfM [11]</td></tr>
+        <tr class="ist-markiert"><td>Mittelstand (KfW)</td><td>≤ 500 Mio. € Umsatz</td><td class="zahl">99,95 %</td><td class="zahl">71,6 % der Erwerbstätigen</td><td>2024 · KfW [13]</td></tr>
+      </tbody>
+    </table>
+    <p class="f-backup-text">Die qualitativen Merkmale (Einheit von Eigentum und Leitung) sind „aus den amtlichen Statistiken nicht ablesbar“ [11].</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[11] IfM Bonn · [12] Destatis (Stand 12.08.2026) · [13] KfW-Mittelstandspanel 2025, S. 1, 28</p>
+  </footer>
+  <aside class="notizen">
+    <p>Für Rückfragen zu Folie 06: Wer „Mittelstand“ sagt, sollte die Abgrenzung nennen. Aktualisierung: KfW-Mittelstandspanel 2026 [78] (Bezugsjahr 2025): 3,94 Mio. Mittelständler (99,96 %), rund 33,4 Mio. Beschäftigungsverhältnisse; wegen neuer Zählweise nicht direkt mit 2024 vergleichbar.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B4 · Methode der Befragung
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-backup" id="b4" data-titel="Backup: Methode der Befragung" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup">
+  <header class="folie-kopf">
+    <p class="kicker">Backup</p>
+    <h2 class="titel">Methode: schriftliche Befragung, n = 2</h2>
+  </header>
+  <div class="folie-inhalt">
+    <ul class="liste f-methode">
+      <li><b>Instrument:</b> Fragebogen mit 20 offenen und geschlossenen Fragen (Word), selbst ausgefüllt</li>
+      <li><b>Aufbau:</b> Person/Unternehmen · Begriff · Alltag · Mittelstand · Wandel · Vertiefung · Selbsteinschätzung (Kontinuum 1–7)</li>
+      <li><b>Befragte:</b> Kamill Jarzebowski, Gründer und GF der SimpleAct UG (Software, 4 Personen, inhabergeführt) · Jörg Heisler, Leiter Vertrags- und Lizenzmanagement der TLT-Turbo GmbH (Maschinenbau, ca. 300 Beschäftigte, Teil eines Konzerns)</li>
+      <li><b>Rücklauf:</b> 2 von 2, vollständig (28. und 29.10.2026)</li>
+      <li><b>Grenzen:</b> nicht repräsentativ, Selbstauskunft, persönliche Nähe zum Befragenden; TLT ist nach EU- und IfM-Definition formal kein KMU</li>
+    </ul>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Fragebögen: fuehrung/befragung/ · Auswertung: fuehrung/befragung/auswertung.md</p>
+  </footer>
+  <aside class="notizen">
+    <p>Offen ansprechen: Beide Befragte stehen mir persönlich nahe (Arbeitgeber, Vater). Das erleichtert den Zugang, kann aber Antworten färben.</p>
+    <p>Warum TLT trotzdem? Als Gegenbild: Jörg Heisler kennt Konzern (TLT gehörte früher zu Siemens) und heutige Struktur und beschreibt in Frage 11 selbst den Unterschied zwischen Mittelstand und Konzern. Einverständnis: beide mit Name, Funktion und Unternehmen, Zitate ohne Vorabprüfung.</p>
+  </aside>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     BACKUP B5 · Quellen zu Instrumenten und Fällen (recherche/literaturbasis-instrumente.md)
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section class="folie f-backup" id="b5" data-titel="Backup: Quellen Instrumente und Fälle" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup data-layout="backup">
+  <header class="folie-kopf">
+    <p class="kicker">Backup</p>
+    <h2 class="titel">Quellen zu Instrumenten und Praxisfällen</h2>
+  </header>
+  <div class="folie-inhalt">
+    <ol class="f-quellen">
+      <li><b>[37]</b> INQA (2025): Malerbetrieb Eck</li>
+      <li><b>[39]</b> INQA (o. J.): Möbelmanufaktur Wöhlke</li>
+      <li><b>[42]</b> Gabler: „Mitarbeitergespräch“</li>
+      <li><b>[43]</b> Gabler: „Management by Objectives“</li>
+      <li><b>[44]</b> Gabler: „Delegation“</li>
+      <li><b>[46]</b> Gabler: „Führungsgrundsätze“</li>
+      <li><b>[48]</b> Gabler: „Objectives and Key Results“</li>
+      <li><b>[49]</b> Lexikon der Psychologie: „Rückmeldung“</li>
+      <li><b>[50]</b> BMAS-Forschungsbericht 469 (2016), LPP</li>
+      <li><b>[53]</b> IAB-Kurzbericht 11/2025, LPP</li>
+      <li><b>[54]</b> KOFA-Studie 4/2021, IW Köln</li>
+      <li><b>[55]</b> KOFA-Studie 4/2025, IW Köln</li>
+      <li><b>[59]</b> INQA (o. J.): ELBS</li>
+      <li><b>[60]</b> INQA (o. J.): veloCenter Kiel</li>
+      <li><b>[61]</b> INQA (2025): Steuerhaus Kiel</li>
+      <li><b>[66]</b> DGB-Index Gute Arbeit, Jahresbericht 2025</li>
+      <li><b>[70]</b> Randstad-ifo-Personalleiterbefragung Q1/2025</li>
+      <li><b>[71]</b> Randstad-ifo-HR-Befragung Q3/2026</li>
+      <li><b>[74]</b> KOFA-Studie 1/2024: Weiterbildungskultur in KMU</li>
+      <li><b>[78]</b> KfW-Mittelstandspanel 2026</li>
+    </ol>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Vollständige Angaben: recherche/dossier-fakten.md, Anhang A ([1]–[82])</p>
+  </footer>
+  <aside class="notizen">
+    <p>Rückfrage „Woher stammt Zahl X?“ zu den Folien 10–14 und 18. Wichtig: LPP-Werte gelten nur für Betriebe ab 50 Beschäftigten; Werte unter 50 nur aus dem IW-Personalpanel.</p>
+  </aside>
+</section>
+
+<section class="folie f-muster" id="b6" data-titel="Sechs Betriebe, ein Muster" data-feld="leer" data-zeit="0" data-buendel="alle" data-backup>
+  <header class="folie-kopf">
+    <p class="kicker">Backup</p>
+    <h2 class="titel">Sechs Betriebe, ein Muster</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-muster-raster" data-staffel="90" data-animation="hoch">
+      <article class="f-fallkarte"><span class="f-fallkarte-name">Pflegedienst Jahnke</span><span class="f-fallkarte-info" data-meta>18 → 43 · Wachstum</span><span class="chip chip--rahmen">Leitfaden Feedback</span></article>
+      <article class="f-fallkarte"><span class="f-fallkarte-name">Malerbetrieb Eck</span><span class="f-fallkarte-info" data-meta>knapp 40 · Wissen sichern</span><span class="chip chip--rahmen">Feedback-System</span></article>
+      <article class="f-fallkarte"><span class="f-fallkarte-name">veloCenter Kiel</span><span class="f-fallkarte-info" data-meta>19 · Überlastung</span><span class="chip chip--rahmen">Delegation</span></article>
+      <article class="f-fallkarte"><span class="f-fallkarte-name">ELBS</span><span class="f-fallkarte-info" data-meta>Handwerk · Wunsch nach Verantwortung</span><span class="chip chip--rahmen">Delegation</span></article>
+      <article class="f-fallkarte"><span class="f-fallkarte-name">Möbel Wöhlke</span><span class="f-fallkarte-info" data-meta>25 · KI-Einführung</span><span class="chip chip--rahmen">Arbeitsgruppen</span></article>
+      <article class="f-fallkarte"><span class="f-fallkarte-name">Steuerhaus Kiel</span><span class="f-fallkarte-info" data-meta>14 · Fusion</span><span class="chip chip--rahmen">Leitbild</span></article>
+    </div>
+    <ol class="f-muster-kette" data-schritt="1" data-staffel="220" data-animation="hoch">
+      <li><span data-meta>Engpass</span>oft der Inhaber</li>
+      <li><span data-meta>Hebel</span>Struktur + Beteiligung</li>
+      <li><span data-meta>Ergebnis</span>Entlastung (laut Betrieben)</li>
+    </ol>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">INQA-Coaching-Praxisbeispiele [36][37][39][59][60][61]: Erfolgsberichte eines Förderprogramms, Angaben der Betriebe, keine unabhängigen Fallstudien</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Schauen wir auf alle sechs Betriebe zusammen: ein Pflegedienst, ein Malerbetrieb, ein Fahrradhandel, ein Handwerksbetrieb, eine Möbelmanufaktur und eine Steuerkanzlei. Fünf davon mit Angaben zwischen 14 und 43 Beschäftigten. Die Auslöser sind verschieden: Wachstum, Wissenssicherung, Überlastung, der Wunsch der Beschäftigten nach Verantwortung, KI, eine Fusion.“</p>
+    <p data-schritt="1">„In mehreren Fällen ist der Engpass die Inhaberin oder der Inhaber selbst: beim Fahrradhandel, im Handwerksbetrieb, beim Malerbetrieb. Der Hebel ist fast immer Struktur plus Beteiligung: ein Leitfaden, eine Teamleitung, ein gemeinsames Leitbild. Und das Ergebnis ist laut den Betrieben vor allem Entlastung.“</p>
+    <p>Einordnung: Alle Fälle stammen aus dem Förderprogramm INQA-Coaching und sind Erfolgsdarstellungen; Misserfolge tauchen dort nicht auf (Auswahlverzerrung). Engpass „Inhaber“ belegt bei veloCenter (P-06), ELBS (P-07), eingeschränkt Eck (P-02); bei Jahnke, Wöhlke und Steuerhaus lagen die Auslöser woanders. ELBS ohne Beschäftigtenzahl.</p>
+  </aside>
+</section>
+
+<!-- In der 25-Minuten-Fassung im Backup (B7) -->
+<!-- FOLIE · Delegation · 110 s -->
+<section class="folie f-deleg" id="f13" data-backup data-nummer="B7" data-titel="Backup: Delegation" data-feld="leer" data-station="4" data-zeit="0" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">4 · Womit führt man? · Fall veloCenter Kiel</p>
+    <h2 class="titel">Delegation heißt: loslassen lernen</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-deleg-raster">
+      <ol class="f-deleg-weg">
+        <li data-animation="hoch"><span class="f-deleg-marke" data-meta>Vorher</span>Fahrradhandel, 19 Beschäftigte: ein Geschäftsführer zu stark im operativen Geschäft</li>
+        <li data-schritt="1" data-animation="hoch"><span class="f-deleg-marke" data-meta>Folge</span>Überlastung: Er fiel ein halbes Jahr aus</li>
+        <li data-schritt="2" data-animation="hoch"><span class="f-deleg-marke" data-meta>Lösung</span>neue Werkstatt- und Teamleitung, Feedback­runden</li>
+      </ol>
+      <div class="f-deleg-zitate">
+        <blockquote class="zitat" data-schritt="1" data-animation="hoch">
+          <p class="zitat-text" data-woerter>„Ich habe immer gedacht, ich muss überall mitmachen und dabei sein“</p>
+          <cite class="zitat-quelle">Philipp Mikloweit, veloCenter Kiel [60]</cite>
+        </blockquote>
+        <blockquote class="zitat" data-schritt="3" data-animation="hoch">
+          <p class="zitat-text" data-woerter>„Ich musste mich damit beschäftigen und <span class="f-stift f-stift--linie">loslassen lernen“<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true" data-schritt="3" data-animation="zeichnen" data-verzoegerung="1500" data-dauer="600"><path d="M3 12 C 50 6, 120 15, 197 9"/></svg></span></p>
+          <cite class="zitat-quelle">Rocco Funke, ELBS Leckortung, Handwerk [59]</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[44] Gabler „Delegation“ · [60] INQA: veloCenter Kiel · [59] INQA: ELBS · Erfolgsberichte eines Förderprogramms (Selbstauskünfte)</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Delegation heißt: Aufgaben samt Verantwortung abgeben, an jemanden, der das kann und will. Klingt einfach. In der Praxis ist es oft das Schwerste, gerade für jemanden, der den Betrieb selbst aufgebaut hat. Ein Beispiel: das veloCenter in Kiel, ein Fahrradhandel mit 19 Beschäftigten und zwei Geschäftsführern. Einer von ihnen, Philipp Mikloweit, war zu stark ins operative Geschäft eingebunden.“</p>
+    <p data-schritt="1">„Er sagt selbst: ‚Ich habe immer gedacht, ich muss überall mitmachen und dabei sein.‘ Das führte zu Mehrarbeit und schließlich zu persönlicher Überlastung. Er fiel ein halbes Jahr aus.“</p>
+    <p data-schritt="2">„Die Lösung: Die beiden Geschäftsführer führten eine Werkstatt- und Teamleitung ein, Führungsaufgaben wurden im Team verteilt, dazu regelmäßige Feedbackrunden. Mikloweit sagt: Er konnte viele Aufgaben abgeben, und für die Beschäftigten sei es leichter geworden, weil er nicht mehr dazwischenfunke.“</p>
+    <p data-schritt="3">„Ein Handwerksbetrieb aus Thüringen, ein Leckortungs- und Bautrocknungsservice, hat das ebenfalls erlebt. Geschäftsführer Rocco Funke: ‚Während des Coachings kam heraus: Meine Mitarbeiter*innen möchten mehr Verantwortung, sie möchten sich einbringen, sie haben Ideen und Talente. Ich musste mich damit beschäftigen und loslassen lernen.‘ Das Team wollte also mehr übernehmen, als der Chef abgegeben hat. Mein Schluss aus beiden Fällen: Delegation ist im KMU vor allem eine Frage der Haltung an der Spitze.“</p>
+    <p>Belege: I-03, P-06, P-07 (Dossier). [60] wörtlich: „Philipp Mikloweit, einer der beiden Geschäftsführer“, „Dies führte zu Mehrarbeit und schließlich zu persönlicher Überlastung: Mikloweit fiel ein halbes Jahr aus.“, „Mikloweit und Bahtke führten eine Werkstatt- und Teamleitung ein. Dadurch wurden die Führungsaufgaben im Team verteilt und die Geschäftsführer entlastet.“ „Regelmäßige Feedbackrunden …“ ist Redaktionstext. ELBS [59]: Umsatzangaben widersprüchlich und durch Vier-Tage-Woche überlagert. Nicht verwenden.</p>
+    <p>Beleg Erweiterung: P-07 (vollständiges Funke-Zitat).</p>
+    <p>Website: INQA (inqa.de): Initiative Neue Qualität der Arbeit des Bundesarbeitsministeriums. Das INQA-Coaching ist ein gefördertes Beratungsprogramm für KMU; auf der Website stehen Erfolgsberichte der beratenen Betriebe.</p>
+    <p>Begriff: operatives Geschäft: das Tagesgeschäft, also die laufende Arbeit mit Kunden, Aufträgen und Werkstatt, im Gegensatz zur strategischen Führung.</p>
+    <p>Begriff: Leckortung und Bautrocknung: Handwerk, das Wasserschäden in Gebäuden aufspürt und die Bauteile anschließend trocknet.</p>
+  </aside>
+</section>
+
+<!-- In der 25-Minuten-Fassung im Backup (B8) -->
+<section class="folie f-praxis" id="f17" data-backup data-nummer="B8" data-titel="Backup: Befragung: Gründergeist und Tradition" data-feld="leer" data-station="5" data-zeit="0" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">5 · Befragung · Was prägt die Führung?</p>
+    <h2 class="titel">Gründergeist trifft Ingenieurstradition</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-praxis-raster">
+      <div class="f-praxis-spalte" data-schritt="1" data-animation="hoch">
+        <span class="karte-kicker" data-meta>SimpleAct · gegründet 2026</span>
+        <blockquote class="zitat">
+          <p class="zitat-text" data-woerter>„Als Gründer will ich schnell sein und am liebsten alles selbst machen.“</p>
+        </blockquote>
+        <ul class="f-praxis-weg">
+          <li>Feste Regeln ab Tag eins: CRM, Code-Review</li>
+          <li>KI: weniger verteilen, mehr Prioritäten setzen</li>
+        </ul>
+      </div>
+      <div class="f-praxis-spalte f-praxis-spalte--tlt" data-schritt="2" data-animation="hoch">
+        <span class="karte-kicker" data-meta>TLT · fast 150 Jahre Tradition</span>
+        <blockquote class="zitat">
+          <p class="zitat-text" data-woerter>„Probleme im Engineering lassen sich nicht rein ‚von oben herab‘ diktieren.“</p>
+        </blockquote>
+        <ul class="f-praxis-weg">
+          <li>Viele seit 25 Jahren und mehr im Betrieb</li>
+          <li>Jüngere wechseln schneller: Bindung wird Chefsache</li>
+        </ul>
+      </div>
+    </div>
+    <p class="f-praxis-fazit" data-schritt="3" data-animation="hoch">Das Start-up baut Struktur auf, das Traditionsunternehmen bricht starre Wege auf</p>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">Schriftliche Befragung, Fragen 13 bis 16 (Wandel, Wachstum bzw. Tradition, Gründerrolle bzw. Produktion und Büro) · Kamill Jarzebowski, SimpleAct UG · Jörg Heisler, TLT-Turbo GmbH · Selbstauskunft</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Und ich wollte wissen, was die Führung im jeweiligen Unternehmen prägt. Da könnten die beiden kaum unterschiedlicher sein.“</p>
+    <p data-schritt="1">„Bei SimpleAct prägt der Gründer selbst die Führung. Kamill Jarzebowski schreibt: ‚Als Gründer will ich schnell sein und am liebsten alles selbst machen. Als Führungskraft muss ich abgeben und auch akzeptieren, dass jemand etwas anders löst als ich.‘ Er ist gleichzeitig Verkäufer, Entwickler und Chef. Trotzdem hat er feste Regeln vom ersten Tag an eingeführt: Alles zu Kunden läuft über das CRM, Code kommt nur nach einem Review ins Produkt. Seine Begründung: Wenn ein Unternehmen schnell wächst, fehlt später die Zeit, Strukturen nachträglich einzuziehen. Und KI verändert seine Führung schon heute. Ein kleines Team schafft, wofür man früher deutlich mehr Leute gebraucht hätte. Führen heißt für ihn deshalb: weniger Aufgaben verteilen, mehr Prioritäten setzen und Ergebnisse prüfen.“</p>
+    <p data-schritt="2">„Bei TLT treffen aktuelle Trends auf eine fast 150-jährige Ingenieurstradition. Führungskräfte wurden dort oft wegen ihrer technischen Expertise ausgewählt, nach dem Motto ‚Der Chef weiß, wovon er redet‘. Viele sind seit 25 Jahren und mehr im Betrieb, Jörg Heisler spricht von einem ‚familiären Wir-Gefühl‘. Jetzt rücken jüngere, mobilere Fachkräfte nach, und niemand kann sich mehr darauf verlassen, dass sie bis zur Rente bleiben. Außerdem unterscheidet er: In Produktion und Technik wird vor Ort geführt, mit Schichtübergaben und Runden direkt in der Halle; im Büro über Ergebnisse, Gleitzeit und Homeoffice. Und selbst im Engineering gilt: Probleme lassen sich nicht rein von oben herab diktieren, man braucht den schnellen, unbürokratischen Austausch im Team.“</p>
+    <p data-schritt="3">„Das ist fast ein Spiegelbild: Das junge Unternehmen baut Struktur auf, bevor es sie braucht. Das traditionsreiche bricht starre Wege auf, damit Teams schnell Probleme lösen können. Und beide nennen dieselben Treiber: KI und Jüngere, die Sinn und Freiraum erwarten. Das zeigt sich auch in den Zahlen.“</p>
+    <p>Wortlaut: Jarzebowski Frage 14 „Wenn ein Unternehmen schnell wächst, fehlt später die Zeit, Strukturen nachträglich einzuziehen, und schlechte Gewohnheiten sind dann schon eingeschliffen.“ · Frage 13 „weniger Aufgaben verteilen, mehr Prioritäten setzen und Ergebnisse prüfen“ · Heisler Frage 14 „Der Chef weiß, wovon er redet“, „familiäres Wir-Gefühl“ · Frage 15 „Probleme im Engineering lassen sich nicht rein „von oben herab“ diktieren.“ · Frage 16 Produktion: „tägliche Shopfloor-Runden oder Schichtübergaben direkt in der Halle“.</p>
+    <p>Begriff: CRM: Customer-Relationship-Management, eine Software, in der alle Kundenkontakte, Angebote und Verkaufschancen gespeichert werden.</p>
+    <p>Begriff: Code-Review: neuer Programmcode wird von einer zweiten Person geprüft, bevor er ins Produkt kommt.</p>
+    <p>Begriff: Engineering: Ingenieurarbeit, also Konstruktion und technische Auslegung der Produkte.</p>
+    <p>Begriff: Schichtübergabe / Shopfloor-Runde: kurze Besprechung direkt in der Produktion, beim Wechsel der Schicht oder täglich vor Ort.</p>
+  </aside>
+</section>
+
+<!-- In der 25-Minuten-Fassung im Backup (B9) -->
+<section class="folie f-fall" id="f19" data-backup data-nummer="B9" data-titel="Backup: Fallbeispiel Pflegedienst" data-feld="leer" data-station="5" data-zeit="0" data-buendel="alle">
+  <header class="folie-kopf">
+    <p class="kicker">5 · Fallbeispiel · Pflegedienst Jahnke, Neuenhaus</p>
+    <h2 class="titel">Wachstum zwingt zu Struktur</h2>
+  </header>
+  <div class="folie-inhalt">
+    <div class="f-fall-raster">
+      <div class="f-fall-zahl">
+        <p class="f-fall-zahlen"><span class="f-fall-alt">18</span><svg class="icon f-fall-pfeil" aria-hidden="true"><use href="#i-pfeil-rechts"/></svg><span class="kennzahl-wert" data-animation="zaehlen" data-start="18" data-ziel="43" data-verzoegerung="300">43</span></p>
+        <div class="f-personen" data-personen="18/43" role="img" aria-label="18 Beschäftigte wachsen auf 43"></div>
+        <span class="kennzahl-text">Beschäftigte nach der Betriebserweiterung</span>
+      </div>
+      <ol class="f-fall-weg">
+        <li data-schritt="1" data-animation="hoch"><span class="f-fall-marke" data-meta>Problem</span>neue Teamleitungen, schwierige anlassbezogene Gespräche, höhere Fluktuation</li>
+        <li data-schritt="2" data-animation="hoch"><span class="f-fall-marke" data-meta>Lösung</span>gemeinsamer Leitfaden für Feedbackgespräche, Notfallkette</li>
+        <li data-schritt="3" data-animation="hoch"><span class="f-fall-marke" data-meta>Nachfolge</span>der Sohn hat das operative Geschäft übernommen</li>
+      </ol>
+    </div>
+    <blockquote class="zitat f-fall-zitat" data-schritt="1" data-animation="einblenden" data-verzoegerung="400">
+      <p class="zitat-text" data-woerter>„Wie führe ich? Das war eine der zentralen Fragen …“</p>
+      <cite class="zitat-quelle">Inhaberin Gabriele Jahnke [36]</cite>
+    </blockquote>
+  </div>
+  <footer class="folie-fuss">
+    <p class="quelle">[36] INQA (04.02.2025): Gute Personalführung und digitale Tools für den Pflegedienst Jahnke · Darstellung eines Förderprogramms, keine unabhängige Fallstudie</p>
+  </footer>
+  <aside class="notizen">
+    <p data-schritt="0">„Wie das im wachsenden Betrieb konkret aussieht, zeigt der ambulante Pflegedienst Jahnke in Niedersachsen, ein Familienunternehmen. Mit einer Betriebserweiterung wuchs das Personal von 18 auf 43 Beschäftigte. Schnell war klar: Der Betrieb braucht eine längerfristige Beratung.“</p>
+    <p data-schritt="1">„Es entstanden neue Teams mit neuen Teamleitungen, und die taten sich schwer mit anlassbezogenen Gesprächen, etwa bei Konflikten; zudem war die Fluktuation höher als früher. Die Inhaberin sagt: ‚Wie führe ich? Das war eine der zentralen Fragen, vor allem für die, die auf einmal Personalverantwortung hatten.‘“</p>
+    <p data-schritt="2">„Die Lösung im Coaching: Struktur für die neuen Teamleitungen. Das Projektteam hat mit agilen Methoden einen Leitfaden für Feedbackgespräche entwickelt. Er gibt den neuen Führungskräften eine klare Struktur, und selbst der Inhaberin fielen die Gespräche damit wesentlich leichter. Dazu kam eine Notfallkette für Ausfälle. Seitdem heißt es dort: ‚Wir geraten nun nicht mehr in Panik, sondern haben eine Strategie.‘“</p>
+    <p data-schritt="3">„Und die Nachfolge: Dass der Sohn Schritt für Schritt das operative Geschäft übernehmen sollte, war schon vor dem Coaching geplant. Inzwischen hat er es komplett übernommen. Natürlich ist das eine Erfolgsgeschichte; gescheiterte Projekte landen selten in solchen Berichten.“</p>
+    <p>Belege: P-01 (Dossier). [36] wörtlich: „das Personal von 18 auf 43 Mitarbeitende aufgestockt“, „die neuen Teamleads Probleme mit anlassbezogenen Gesprächen hatten, zum Beispiel bei Konflikten im Team“, „eine höhere Personal-Fluktuation als noch vor wenigen Jahren“, „Mit agilen Methoden entwickelte das Projektteam einen passgenauen Leitfaden für die Feedbackgespräche“; „Außerdem sollte der Sohn von Gabriele Jahnke Schritt für Schritt das operative Geschäft übernehmen.“ Einen ursächlichen Zusammenhang zwischen Leitfaden und Nachfolge stellt die Quelle nicht her.</p>
+    <p>Belege Erweiterung: P-01; [36] wörtlich: „war schnell klar, dass das Unternehmen eine längerfristige Beratung braucht“, „Der Leitfaden bietet den neuen Führungskräften eine klare Struktur“, „aber auch ihr fielen sie mit dem Leitfaden wesentlich leichter“, „Wir geraten nun nicht mehr in Panik, sondern haben eine Strategie.“ (Sprecher im Bericht nicht eindeutig, daher „im Bericht heißt es“); P-09 (Auswahlverzerrung).</p>
+    <p>Begriff: ambulanter Pflegedienst: pflegt Menschen bei ihnen zu Hause, nicht im Heim.</p>
+    <p>Begriff: Fluktuation: wie viele Beschäftigte ein Unternehmen in einem Zeitraum verlassen und ersetzt werden müssen.</p>
+    <p>Begriff: anlassbezogenes Gespräch: Gespräch aus einem bestimmten Grund, z. B. bei einem Konflikt, im Unterschied zum regelmäßigen Mitarbeitergespräch.</p>
+    <p>Begriff: agile Methoden: Arbeitsweisen in kurzen Schritten mit häufiger Abstimmung im Team, statt alles im Voraus durchzuplanen.</p>
+    <p>Begriff: Notfallkette: festgelegte Reihenfolge, wer bei einem Ausfall angerufen wird und einspringt.</p>
+  </aside>
+</section>
+
+
+  </main>
+</div>
+
+<noscript>
+  <p style="position:fixed;inset:auto 0 0 0;padding:16px;background:#fff;color:#111;font:20px/1.4 sans-serif">
+    Diese Präsentation braucht JavaScript. Bitte in Chrome, Edge, Firefox oder Safari öffnen.
+  </p>
+</noscript>
+
+<script src="js/vendor/qrcode-generator.js"></script>
+<script src="js/deck.js"></script>
+<script src="js/komponenten.js"></script>
+<script src="js/folien/fuehrung.js"></script>
+</body>
+</html>

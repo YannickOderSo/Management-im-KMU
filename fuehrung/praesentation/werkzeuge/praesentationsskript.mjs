@@ -54,14 +54,16 @@ const zielArbeit = eigenesZiel || path.join(ordner, '_test', 'skript');
 const bilderOrdner = path.join(zielArbeit, 'skript-bilder');
 fs.mkdirSync(zielPdf, { recursive: true });
 fs.mkdirSync(bilderOrdner, { recursive: true });
-const zusatz = JSON.parse(fs.readFileSync(path.join(ordner, 'werkzeuge', 'skript-zusatz.json'), 'utf8'));
+/* Andere Fassung des Decks (z. B. SKRIPT_DECK=index-25.html SKRIPT_ZUSATZ=werkzeuge/skript-zusatz-25.json) */
+const deckDatei = process.env.SKRIPT_DECK || 'index.html';
+const zusatz = JSON.parse(fs.readFileSync(path.resolve(ordner, process.env.SKRIPT_ZUSATZ || 'werkzeuge/skript-zusatz.json'), 'utf8'));
 /* Zweite Fassung (z. B. locker formuliert): SKRIPT_TEXTE=werkzeuge/skript-locker.json ersetzt den
    Sprechtext je Absatz („f03/0“ = data-schritt 0, „f04/g“ = p.gesprochen ohne Schritt), dazu
    optional „kicker“, „datei“ (Name des PDF ohne Endung) und „kuerzung“. Folien, Zeiten und
    Randnotizen bleiben wie in index.html. */
 const fassung = process.env.SKRIPT_TEXTE ? JSON.parse(fs.readFileSync(path.resolve(ordner, process.env.SKRIPT_TEXTE), 'utf8')) : null;
 if (fassung && fassung.kuerzung) zusatz.kuerzung = fassung.kuerzung;
-const dateiName = (fassung && fassung.datei) || 'praesentationsskript';
+const dateiName = (fassung && fassung.datei) || zusatz.datei || 'praesentationsskript';
 const schrift = (datei) => pathToFileURL(path.join(ordner, 'schriften', datei)).href;
 
 const fehler = [];
@@ -75,7 +77,7 @@ const browser = await playwright.chromium.launch({
   args: ['--no-sandbox', '--allow-file-access-from-files']
 });
 const deck = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 0.5, reducedMotion: 'reduce' });
-await deck.goto(pathToFileURL(path.join(ordner, 'index.html')).href + '?aufnahme', { waitUntil: 'load' });
+await deck.goto(pathToFileURL(path.join(ordner, deckDatei)).href + '?aufnahme', { waitUntil: 'load' });
 await deck.waitForFunction(() => window.Deck && window.Deck.istBereit, null, { timeout: 20000 });
 await deck.evaluate(() => document.fonts && document.fonts.ready);
 await deck.evaluate(() => window.Deck.testmodus(true));
@@ -543,7 +545,7 @@ const anzahlSprecher = new Set(teile.map((x) => x.sprecher)).size;
 const titelseite = `<section class="titelseite" data-abschnitt="titel">
   <div class="ts-kopf"><span class="ts-art">${esc(zusatz.art || 'Recap')}</span><span>Management im KMU</span></div>
   <div class="ts-mitte">
-    <p class="ts-kicker">${esc((fassung && fassung.kicker) || 'Präsentationsskript')}</p>
+    <p class="ts-kicker">${esc((fassung && fassung.kicker) || zusatz.kicker || 'Präsentationsskript')}</p>
     <h1 class="ts-titel">${titelZeilen.length ? `${fadenZeile(webe(titelZeilen[0], true))}<span class="ts-zeile2">${esc(titelZeilen.slice(1).join(' '))}</span>` : fadenZeile(webe(titel, true))}</h1>
     <p class="ts-unter">${t(untertitel)}</p>
   </div>

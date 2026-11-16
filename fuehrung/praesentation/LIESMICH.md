@@ -73,3 +73,12 @@ liegt in `_test/skript/pruefung.json` (Kürzungssätze müssen wörtlich im Spre
 Locker formulierte Fassung (gleiche Folien, Zeiten und Randnotizen, Sprechtext aus `werkzeuge/skript-locker.json`,
 Zahlen gerundet, Zitate wörtlich): `SKRIPT_TEXTE=werkzeuge/skript-locker.json node werkzeuge/praesentationsskript.mjs`
 → `export/praesentationsskript-locker.pdf`.
+
+## 25-Minuten-Fassung
+
+`index-25.html` wird aus `index.html` erzeugt (nicht von Hand ändern): Folien 13, 17 und 19 als B7 bis B9 im Backup,
+Folie 14 ohne Fallkarten, Sprechtexte gekürzt, Nummern fortlaufend, Sollzeiten zusammen 25:00.
+
+    python3 werkzeuge/fassung-25.py
+    node werkzeuge/pruefen.mjs index-25.html --ausgabe _test/pruefung-25 --schritte --druck export/praesentation-25-notfall.pdf
+    SKRIPT_DECK=index-25.html SKRIPT_ZUSATZ=werkzeuge/skript-zusatz-25.json node werkzeuge/praesentationsskript.mjs
