@@ -521,7 +521,7 @@ function zeitleiste() {
        nach dem Laden geprüft, siehe „zeitleiste“ im Prüfbericht) */
     for (const teil of l.teile) {
       const t0 = x(teil.start), t1 = x(teil.ende), n = teil.nummern;
-      const nr = t1 - t0 < 11 ? `ab ${n[0]}`.slice(t1 - t0 < 8 ? 3 : 0) : n.length <= 2 ? n.join(', ') : `${n[0]} bis ${n.at(-1)}`;
+      const nr = t1 - t0 < 13 ? `ab ${n[0]}`.slice(t1 - t0 < 10.5 ? 3 : 0) : n.length <= 2 ? n.join(', ') : `${n[0]} bis ${n.at(-1)}`;
       svg += `<text x="${((t0 + t1) / 2).toFixed(2)}" y="${(yBalken + h / 2 + 1.05).toFixed(2)}" text-anchor="middle" class="zl-nr ${gefuellt ? 'zl-nr-voll' : 'zl-nr-leer'}" data-von="${t0.toFixed(2)}" data-bis="${t1.toFixed(2)}">${esc(nr)}</text>`;
     }
     svg += `<line x1="${x0.toFixed(2)}" y1="${yBalken + h + 0.8}" x2="${x0.toFixed(2)}" y2="${yBalken + h + 2.6}" class="zl-tick"/>`;

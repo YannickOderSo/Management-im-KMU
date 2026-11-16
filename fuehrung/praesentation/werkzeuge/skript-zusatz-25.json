@@ -103,9 +103,9 @@
   ],
   "aufteilungTitel": "Vor dem Start",
   "aufteilung": [
-    "Präsentation im Browser öffnen, P drückt die Referentenansicht auf, F den Vollbildmodus. Die Umfrage-Runde steht schon auf dem Vortragstag.",
-    "QR-Code auf Folie 08 einmal mit dem eigenen Handy testen und die Probestimme danach nicht mehr beachten: Stimmen älter als 30 Minuten erscheinen nicht.",
-    "Notfall-PDF (export/praesentation-notfall.pdf) auf dem Laptop und einem Stick bereithalten, dieses Skript ausgedruckt daneben."
+    "Präsentation im Browser öffnen, P öffnet die Referentenansicht, F schaltet den Vollbildmodus ein. Die Umfrage-Runde ist bereits auf den Vortragstag eingestellt.",
+    "QR-Code auf Folie 08 mindestens 30 Minuten vor Beginn mit dem eigenen Handy testen; die Probestimme erscheint dann im Vortrag nicht mehr.",
+    "Notfall-PDF (export/praesentation-25-notfall.pdf) auf dem Laptop und einem Stick bereithalten, dieses Skript ausgedruckt daneben."
   ],
   "uebergaben": [],
   "rueckfragen": [
@@ -116,8 +116,8 @@
     },
     {
       "folie": "f03",
-      "frage": "Warum steht ‚unmittelbare‘ für Interaktion?",
-      "antwort": "Unmittelbar heißt: direkt von Person zu Person, im Gespräch und im Alltag. Das Gegenstück ist die mittelbare Führung über Strukturen, Regeln und Anreize. ‚Absichtliche‘ gehört zum Baustein Einfluss, ‚Über- und Unterordnung‘ aus der ersten Definition zum Baustein Organisation."
+      "frage": "Warum steht „unmittelbare“ für Interaktion?",
+      "antwort": "Unmittelbar heißt: direkt von Person zu Person, im Gespräch und im Alltag. Das Gegenstück ist die mittelbare Führung über Strukturen, Regeln und Anreize. „Absichtliche“ gehört zum Baustein Einfluss, „Über- und Unterordnung“ aus der ersten Definition zum Baustein Organisation."
     },
     {
       "folie": "f06",
@@ -131,7 +131,7 @@
     },
     {
       "folie": "f09",
-      "frage": "Woher stammen die zwei Drittel patriarchal geführter Familienunternehmen?",
+      "frage": "Woher stammen die zwei Drittel patriarchalisch geführter Familienunternehmen?",
       "antwort": "Aus einem Übersichtsartikel des Organisationsforschers Rudolf Wimmer (2021). Es ist seine Einschätzung, keine Erhebung, und ausdrücklich nicht abwertend gemeint."
     },
     {
@@ -146,8 +146,8 @@
     },
     {
       "folie": "f09",
-      "frage": "Warum sieht sich der Gründer weiter auf der Chefseite als der Abteilungsleiter?",
-      "antwort": "Er ist ‚gleichzeitig Verkäufer, Entwickler und Chef‘ und würde ‚am liebsten alles selbst machen‘. Strategie, Preise und Rechtliches entscheidet er selbst. Sein Team sähe ihn nach seiner Vermutung ‚teilweise 1, zum größten Teil 4/5‘, Jörg Heisler vermutet bei sich Stufe 5."
+      "frage": "Warum sieht sich der Gründer näher an der Chefseite als der Abteilungsleiter?",
+      "antwort": "Er ist „gleichzeitig Verkäufer, Entwickler und Chef“ und würde „am liebsten alles selbst machen“. Strategie, Preise und Rechtliches entscheidet er selbst. Sein Team sähe ihn nach seiner Vermutung „teilweise 1, zum größten Teil 4/5“; Jörg Heisler vermutet bei sich Stufe 5."
     },
     {
       "folie": "f11",
@@ -157,7 +157,7 @@
     {
       "folie": "f11",
       "frage": "Bieten wirklich nur 15 Prozent der kleinen Firmen Führungsschulungen an?",
-      "antwort": "Gefragt wurde, mit welchen Maßnahmen Unternehmen den Zusammenhalt stärken; 15 % der Unternehmen bis 49 Beschäftigte nennen Führungsschulungen, 64 % ab 500. Angaben von Personalverantwortlichen (Randstad-ifo, 2025)."
+      "antwort": "Gefragt wurde, mit welchen Maßnahmen Unternehmen den Zusammenhalt stärken; 15 % der Unternehmen mit bis zu 49 Beschäftigten nennen Führungsschulungen, 64 % ab 500. Angaben von Personalverantwortlichen (Randstad-ifo, 2025)."
     },
     {
       "folie": "f12",
@@ -166,13 +166,13 @@
     },
     {
       "folie": "f13",
-      "frage": "Warum nennen Sie bei ELBS keine Erfolgszahlen?",
-      "antwort": "Die Angaben sind Selbstauskunft und widersprechen sich (Teaser ‚100 Prozent mehr Umsatz‘, im Text ‚bis zu 50 Prozent‘), außerdem überlagert durch eine Vier-Tage-Woche."
+      "frage": "(Nur falls Backup B7 gezeigt wird) Warum nennen Sie bei ELBS keine Erfolgszahlen?",
+      "antwort": "Die Angaben sind Selbstauskunft und widersprechen sich (Teaser „100 Prozent mehr Umsatz“, im Text „bis zu 50 Prozent“), außerdem überlagert durch eine Vier-Tage-Woche."
     },
     {
       "folie": "f14",
       "frage": "Sind die guten Zahlen der kleinen Betriebe nicht geschönt?",
-      "antwort": "Teilweise sind es Angaben der Personalverantwortlichen, deshalb steht die Beschäftigtensicht daneben: 32 % der Beschäftigten in Betrieben mit 20 bis 49 erleben wenig oder keine Wertschätzung (DGB-Index, Mittel 2022 bis 2025). Die 90,8 % gelten nur für KMU, die in Weiterbildung investieren."
+      "antwort": "Teilweise sind es Angaben der Personalverantwortlichen, deshalb steht die Beschäftigtensicht daneben: 32 % der Beschäftigten in Betrieben mit 20 bis 49 Beschäftigten erleben wenig oder keine Wertschätzung (DGB-Index, Mittel 2022 bis 2025). Die 90,8 % gelten nur für KMU, die in Weiterbildung investieren."
     },
     {
       "folie": "f15",
@@ -190,9 +190,9 @@
       "antwort": "Sie streben bis Ende 2029 nach ihrem Rückzug keine Fortführung an; ernsthaft erwogene Stilllegungen sind eingerechnet. Häufigste Gründe: Rentenalter 52 %, fehlendes Interesse in der Familie 47 % (KfW Nachfolge-Monitoring, Mehrfachnennung)."
     },
     {
-      "folie": "f19",
-      "frage": "Sind die Praxisfälle repräsentativ?",
-      "antwort": "Nein. Alle stammen aus dem Förderprogramm INQA-Coaching und sind Erfolgsberichte. Beim Pflegedienst stellt die Quelle auch keinen ursächlichen Zusammenhang zwischen Leitfaden und Nachfolge her."
+      "folie": "b6",
+      "frage": "Sind die Praxisfälle im Backup repräsentativ?",
+      "antwort": "Nein. Alle sechs (B6 bis B9) stammen aus dem Förderprogramm INQA-Coaching und sind Erfolgsberichte. Beim Pflegedienst stellt die Quelle auch keinen ursächlichen Zusammenhang zwischen Leitfaden und Nachfolge her."
     }
   ],
   "kuerzung": {
@@ -208,19 +208,15 @@
           },
           {
             "folie": "f10",
-            "text": "Die moderne Variante heißt OKR, mit Zielen für jedes Quartal; im KMU ist das noch selten."
+            "text": "Die moderne Variante heißt OKR, mit Zielen für jedes Quartal; im KMU ist das nach Einschätzung von Fachleuten noch selten."
           },
           {
             "folie": "f12",
-            "text": "Und der Trend geht weg vom Formular: Schriftliche Zielvereinbarungen sind zwischen 2012 und 2023 von 60 auf 50 Prozent zurückgegangen."
-          },
-          {
-            "folie": "f14",
-            "text": "Fehler werden in den kleinen zu 62 Prozent offen angesprochen, in den großen zu 28 Prozent."
+            "text": "Und der Trend geht weg vom Formular: Schriftliche Zielvereinbarungen sind in diesen Betrieben zwischen 2012 und 2023 von 60 auf 50 Prozent zurückgegangen."
           },
           {
             "folie": "f15",
-            "text": "Und beide bauen um, nur in entgegengesetzter Richtung: Das junge Unternehmen baut Struktur auf, bevor es sie braucht. Das traditionsreiche bricht starre Wege auf, damit Teams schnell Probleme lösen können."
+            "text": "Und beide bauen um, nur in entgegengesetzter Richtung: SimpleAct führt schon jetzt feste Regeln ein, etwa CRM und Code-Review, bevor das Wachstum sie erzwingt. TLT mit seiner fast 150-jährigen Ingenieurstradition bricht dagegen starre Wege auf, damit Teams schnell Probleme lösen können."
           }
         ]
       },
@@ -230,11 +226,11 @@
         "saetze": [
           {
             "folie": "f07",
-            "text": "Kein Wunder, dass sie Risiken eher scheuen als Unternehmen, die nicht in Familienhand sind."
+            "text": "Meine Deutung: Wer mit dem eigenen Geld haftet, entscheidet anders."
           },
           {
             "folie": "f09",
-            "text": "Bei zwei Befragten ist das natürlich kein Beweis, aber es passt ins Bild: Wo Eigentum und Leitung in einer Hand liegen, laufen die Entscheidungen beim Inhaber zusammen."
+            "text": "Aber es passt ins Bild: Wo Eigentum und Leitung in einer Hand liegen, laufen die Entscheidungen beim Inhaber zusammen."
           },
           {
             "folie": "f14",
@@ -246,7 +242,7 @@
           },
           {
             "folie": "f16",
-            "text": "Bei einem Compliance-Produkt ist genau das heikel, denn ein kleiner Fehler kann das Vertrauen ins ganze Produkt kosten."
+            "text": "Heute würde er die Erwartungen früher festlegen, mit einer gemeinsamen Checkliste vor jeder Veröffentlichung."
           }
         ]
       }
@@ -263,7 +259,7 @@
     },
     {
       "fall": "Referentenansicht fällt aus",
-      "tun": "Mit diesem ausgedruckten Skript weitermachen: Startzeit und Klicks stehen je Folie. Die Präsentation läuft mit Pfeiltaste oder Clicker weiter; Ziffern und Enter springen zu einer Folie, z. B. 12 Enter (Folie 12), O zeigt die Übersicht."
+      "tun": "Mit diesem ausgedruckten Skript weitermachen: Startzeit und Klicks stehen je Folie. Die Präsentation läuft mit Pfeiltaste oder Clicker weiter; Ziffern und Enter springen zu einer Folie, (z. B. 12 Enter = Folie 12); O zeigt die Übersicht."
     },
     {
       "fall": "Zeit läuft über",
@@ -271,7 +267,7 @@
     },
     {
       "fall": "Diskussion kommt nicht in Gang",
-      "tun": "Mit Frage 1 beginnen und an das eigene Umfrageergebnis anknüpfen: Viele im Raum erleben Beteiligung, der typische Inhaberstil wird aber auf patriarchalisch geschätzt. Danach Frage 3 (Nachfolge)."
+      "tun": "Mit Frage 1 beginnen und an das eigene Umfrageergebnis anknüpfen: Viele im Raum erleben Beteiligung, für Familienunternehmen wird ein patriarchalischer Stil aber als verbreitet eingeschätzt. Danach Frage 3 (Nachfolge)."
     }
   ],
   "datei": "praesentationsskript-25",
