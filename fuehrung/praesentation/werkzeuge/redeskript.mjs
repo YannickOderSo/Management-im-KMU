@@ -60,13 +60,16 @@ const rueckfragen = [];
 const bloecke = folien.map((f, i) => {
   const start = uhr; uhr += f.zeit;
   const teileHtml = [];
+  const erklaert = [];
   f.absaetze.forEach((a) => {
     if (/^(Mögliche )?Rückfragen/.test(a.text)) { rueckfragen.push({ nr: i + 1, titel: f.titel, text: a.text.replace(/^(Mögliche )?Rückfragen:?\s*/, '') }); return; }
+    if (/^(Website|Begriff):/.test(a.text)) { erklaert.push(a.text.replace(/^(Website|Begriff):\s*/, '')); return; }
     if (a.schritt === null && !a.gesprochen) return;
     if (a.schritt > 0) teileHtml.push('<p class="klick">Klick</p>');
     teileHtml.push(teile(a.text).map((t) => `<p class="${t.art}">${esc(t.text)}</p>`).join(''));
   });
-  return `<section><h2><span class="nr">${String(i + 1).padStart(2, '0')}</span> ${esc(f.titel)}<span class="zeit">${mmss(start)} bis ${mmss(uhr)}</span></h2>${teileHtml.join('')}</section>`;
+  const web = erklaert.length ? `<div class="web"><p class="web-titel">Kurz erklärt</p>${erklaert.map((x) => { const k = x.indexOf(': '); return `<p>${k > 0 ? `<b>${esc(x.slice(0, k))}</b>: ${esc(x.slice(k + 2))}` : esc(x)}</p>`; }).join('')}</div>` : '';
+  return `<section><h2><span class="nr">${String(i + 1).padStart(2, '0')}</span> ${esc(f.titel)}<span class="zeit">${mmss(start)} bis ${mmss(uhr)}</span></h2>${web}${teileHtml.join('')}</section>`;
 });
 
 const html = `<!doctype html>
@@ -92,6 +95,12 @@ const html = `<!doctype html>
   .regie { font-style: italic; color: var(--leise); font-size: 10pt; }
   .klick { font-size: 8pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--akzent); margin: 8px 0 3px; }
   .klick::before { content: "▸ "; }
+  .web { float: left; width: 50mm; margin: 2px 12px 8px 0; padding: 6px 8px; border-left: 3px solid var(--akzent); background: #f1f5f7; font-size: 8pt; line-height: 1.35; color: var(--leise); }
+  .web p { margin: 0 0 4px; }
+  .web b { color: var(--text); }
+  .web-titel { font-weight: 700; font-size: 7.5pt; letter-spacing: .05em; text-transform: uppercase; color: var(--akzent); }
+  section::after { content: ""; display: block; clear: both; }
+  section { break-inside: auto; }
   .anhang p { font-size: 10pt; }
   .anhang b { color: var(--akzent); }
   @page { size: A4; margin: 15mm 18mm 14mm 18mm; }
