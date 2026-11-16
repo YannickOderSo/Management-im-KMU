@@ -1,6 +1,6 @@
 {
   "_hinweis": "Zusatzdaten für das Präsentationsskript der 25-Minuten-Fassung (index-25.html, erzeugt von werkzeuge/fassung-25.py). Aufruf: SKRIPT_DECK=index-25.html SKRIPT_ZUSATZ=werkzeuge/skript-zusatz-25.json node werkzeuge/praesentationsskript.mjs",
-  "stand": "1.11.2026",
+  "stand": "16.11.2026",
   "sollzeit": 1500,
   "woerterProMinute": 120,
   "art": "Referat",
@@ -16,7 +16,7 @@
   "leisteTitel": "Ablauf",
   "akzent": "#0B4F6C",
   "fusszeile": [
-    "Vortrag am 2.11.2026",
+    "Vortrag am 16.11.2026",
     "Modul Management im KMU, Hochschule Kaiserslautern"
   ],
   "sprecher": {

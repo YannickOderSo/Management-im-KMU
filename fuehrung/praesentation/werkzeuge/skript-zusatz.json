@@ -1,6 +1,6 @@
 {
   "_hinweis": "Zusatzdaten für das Präsentationsskript (werkzeuge/praesentationsskript.mjs, Aufbau wie das Skript der Recap). Sprechtext, Zeiten und Randnotizen kommen immer frisch aus index.html; Belegnotizen (Belege …) bleiben draußen. Kürzungssätze müssen wörtlich im Sprechtext stehen. Nach jeder Änderung hier oder in den Notizen neu erzeugen.",
-  "stand": "1.11.2026",
+  "stand": "16.11.2026",
   "sollzeit": 2100,
   "woerterProMinute": 120,
   "art": "Referat",
@@ -16,7 +16,7 @@
   "leisteTitel": "Ablauf",
   "akzent": "#0B4F6C",
   "fusszeile": [
-    "Vortrag am 2.11.2026",
+    "Vortrag am 16.11.2026",
     "Modul Management im KMU, Hochschule Kaiserslautern"
   ],
   "sprecher": {

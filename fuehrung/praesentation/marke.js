@@ -37,7 +37,7 @@ window.MARKE = {
   hochschule: 'Hochschule Kaiserslautern',
   unternehmen: '',
   gruppe: ['Yannick Heisler'],
-  datum: '2026-11-02',            // Vortrag Mo, 2. November 2026 (Yannick, 27.10.2026)
+  datum: '2026-11-16',            // Vortrag Mo, 16. November 2026 (Yannick, 16.11.2026; ursprünglich 2.11.)
   dauerMinuten: 35,               // Vortrag 35 Min. + 10 Min. Diskussion (Yannick, 27.10.2026); Sollzeiten der Folien ca. 32:30
   anrede: 'Sie',
 
@@ -49,7 +49,7 @@ window.MARKE = {
      VORAUSSETZUNG: GitHub Pages für dieses Repository ist eingeschaltet und
      der Ordner liegt auf dem veröffentlichten Branch – sonst öffnet der QR-Code
      eine 404-Seite (dann Plan B: Handzeichen, Klick auf die Balken zählt).
-     runde: 'probe' für Tests, am Vortragstag 'vortrag-2026-11-02'.
+     runde: 'probe' für Tests, am Vortragstag 'vortrag-2026-11-16'.
      Antwort 1 = Chef entscheidet allein … Antwort 5 = Team entscheidet
      (Führungsstil-Kontinuum nach Tannenbaum/Schmidt, vereinfacht auf 5 Stufen). */
   umfragen: {
@@ -66,7 +66,7 @@ window.MARKE = {
       kurzLink: '',
       ergebnisLink: '',
       liveQuelle: 'https://script.google.com/macros/s/AKfycbwnr4wXtKVNg9rlUtVv1u0xBAIf98oJdLkMvbmb7elTK7KR3fz1TnU5rqzYSQdISpuxxw/exec',
-      runde: 'vortrag-2026-11-02',   // Vortragsrunde (30.10.2026); Stimmen älter als gueltigMinuten erscheinen nicht
+      runde: 'vortrag-2026-11-16',   // Vortragsrunde (umgestellt 16.11.2026); Stimmen älter als gueltigMinuten erscheinen nicht
       gueltigMinuten: 30,
       // „Beteiligt“ = Antworten 3–5 (Chef fragt vorher, Team schlägt vor, Team entscheidet)
       unsereAntwort: ['Chef fragt vorher nach', 'Team schlägt vor, Chef wählt', 'Team entscheidet selbst'],

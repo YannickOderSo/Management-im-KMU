@@ -50,7 +50,7 @@ Belege: Die Nummern `[n]` in den Fußzeilen entsprechen den Quellenverzeichnisse
 
 ## Vor dem Vortrag
 
-1. ✅ `marke.js`: `datum` 2026-11-02, `dauerMinuten` 35, `runde` steht auf `'vortrag-2026-11-02'`. Eine Teststimme vom Handy
+1. ✅ `marke.js`: `datum` 2026-11-16, `dauerMinuten` 35, `runde` steht auf `'vortrag-2026-11-16'`. Eine Teststimme vom Handy
    zählt nur, wenn sie jünger als 30 Minuten ist (`gueltigMinuten`) – also spätestens eine halbe Stunde vor dem Vortrag testen.
 2. ✅ Befragung eingetragen (Folie 09: Stufen im JSON „befragte“, Folien 15 bis 17, B4; Beleg: `../befragung/auswertung.md`).
 3. ✅ GitHub Pages ist eingeschaltet (Branch `claude/exciting-meitner-w27zwy`), QR-Codes auf Folie 08 und 21 führen dorthin.

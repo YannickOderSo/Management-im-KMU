@@ -107,7 +107,7 @@ const html = `<!doctype html>
   @media print { :root { --text: #1d1d1b; --leise: #6b6b66; --akzent: #0b4f6c; --linie: #d8d4cb; --papier: #fff; } main { padding: 0; max-width: none; } }
 </style></head><body><main>
 <h1>Redeskript: Führung im KMU</h1>
-<p class="unter">Yannick Heisler · Vortrag am 2. November 2026 · ${folien.length} Folien, Sollzeit ${mmss(uhr)} Min. · Normal gesetzt: sprechen. Kursiv: Regie. „Klick“: nächster Schritt.</p>
+<p class="unter">Yannick Heisler · Vortrag am 16. November 2026 · ${folien.length} Folien, Sollzeit ${mmss(uhr)} Min. · Normal gesetzt: sprechen. Kursiv: Regie. „Klick“: nächster Schritt.</p>
 ${bloecke.join('\n')}
 <section class="anhang"><h2>Mögliche Rückfragen</h2>
 ${rueckfragen.map((r) => `<p><b>Folie ${String(r.nr).padStart(2, '0')}:</b> ${esc(r.text)}</p>`).join('\n')}
