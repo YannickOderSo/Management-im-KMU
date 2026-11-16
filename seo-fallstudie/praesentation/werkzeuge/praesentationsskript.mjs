@@ -180,6 +180,7 @@ const redeText = (text) => (text.includes('„') ? zerlegen(text).filter((x) => 
 function notizArt(text) {
   if (/^Sprecherwechsel\s*:/.test(text)) return { art: 'wechsel', text: idsLesbar(text) };
   if (/^Trennfolie\s*:/.test(text)) return { art: 'regie', text: ersterGross(text.replace(/^Trennfolie\s*:\s*/, '')) };
+  if (/^Website\s*:/.test(text)) return { art: 'web', text: text.replace(/^Website\s*:\s*/, '') };
   return { art: 'hintergrund', text: ersterGross(text.replace(/^(Hintergrund|Bei Rückfragen)\s*:\s*/, '')) };
 }
 
@@ -412,6 +413,11 @@ function folieHtml(f) {
     ? `<ul class="quellen-liste">${f.liste.map((q) => `<li>${q.kopf ? `<b>${t(q.kopf)}</b> ` : ''}${t(q.rest)}</li>`).join('')}</ul>`
     : '';
   const notizHaupt = f.backup;
+  /* Websites auf der Folie: links am Rand unter dem Vorschaubild, Name fett (Text vor dem ersten „: “) */
+  const web = f.notizen.filter((x) => x.art === 'web');
+  const webHtml = web.length
+    ? `<div class="web"><p class="hg-titel">Websites auf der Folie</p>${web.map((n) => { const i = n.text.indexOf(': '); return `<p>${i > 0 ? `<b>${t(n.text.slice(0, i))}</b>: ${t(n.text.slice(i + 2))}` : t(n.text)}</p>`; }).join('')}</div>`
+    : '';
   const hintergrund = hg.length
     ? `<div class="hintergrund${notizHaupt ? ' hintergrund--haupt' : ''}"><p class="hg-titel">Bei Rückfragen <span>(nicht vortragen)</span></p>${hg.map((n) => `<p>${t(n.text)}</p>`).join('')}</div>`
     : '';
@@ -426,6 +432,7 @@ function folieHtml(f) {
     <p class="f-nr">${esc(f.nummer)}</p>
     ${wer}
     ${zeit}
+    ${webHtml}
     ${notizHaupt ? '' : hintergrund}
   </div>
   <div class="f-rechts">
@@ -894,6 +901,9 @@ ${teile.map((x) => `.teil[data-abschnitt="${x.abschnitt}"] { page: ${x.seitennam
 .kurz-stufe { font-size: 0.62em; font-weight: 700; vertical-align: 0.42em; margin: 0 0.12em 0 0.05em; color: var(--tinte); }
 .wechsel, .teil-ende--wechsel { display: grid; grid-template-columns: var(--marke-spalte) 1fr; column-gap: var(--marke-rinne); align-items: center; margin: 0 0 3.4mm; padding: 2mm 0; border-top: 1.4pt solid var(--tinte); border-bottom: 0.6pt solid var(--tinte); font-weight: 650; font-size: 10pt; line-height: 1.35; break-inside: avoid; }
 .wechsel-zeichen { width: 6mm; height: 4.6mm; color: var(--tinte); display: block; }
+.web { margin-top: 4mm; padding: 1.8mm 2mm 2mm; border-left: 1.2pt solid var(--karmin); background: #F6F5F1; font-size: 7.3pt; line-height: 1.32; color: var(--schiefer); hyphens: auto; break-inside: avoid; }
+.web p + p { margin-top: 1.1mm; }
+.web b { color: var(--tinte); font-weight: 650; }
 .hintergrund { margin-top: 4mm; padding-top: 1.8mm; border-top: 0.6pt solid var(--nebel); font-size: 7.5pt; line-height: 1.33; color: var(--schiefer); hyphens: auto; }
 .hintergrund p + p { margin-top: 1mm; }
 .hg-titel { font-weight: 650; font-size: 7.4pt; color: var(--tinte); margin-bottom: 0.8mm; }

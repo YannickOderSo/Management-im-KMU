@@ -43,13 +43,14 @@ const folien = await seite.evaluate(() => [...document.querySelectorAll('section
   .filter((f) => !f.hasAttribute('data-backup'))
   .map((f) => {
     const titel = (f.querySelector('.titel, .s-trenner-name') || {}).textContent || f.getAttribute('data-titel') || '';
+    const websites = [...f.querySelectorAll(':scope > aside.notizen > p:not(.gesprochen)')].map((p) => p.textContent.replace(/\s+/g, ' ').trim()).filter((x) => /^Website:/.test(x)).map((x) => x.replace(/^Website:\s*/, ''));
     const absaetze = [...f.querySelectorAll(':scope > aside.notizen > p.gesprochen')].map((p) => ({
       schritt: p.hasAttribute('data-schritt') ? Number(p.getAttribute('data-schritt')) : null,
       text: p.textContent.replace(/\s+/g, ' ').trim()
     }));
     const fragen = [...f.querySelectorAll('.s-fragen-text')].map((p) => p.textContent.replace(/\s+/g, ' ').trim());
     return { id: f.id, titel: titel.replace(/\s+/g, ' ').trim(), nummer: f.getAttribute('data-nummer') || f.id.replace(/^f/, ''),
-      zeit: Number(f.getAttribute('data-zeit')) || 0, absaetze, fragen };
+      zeit: Number(f.getAttribute('data-zeit')) || 0, absaetze, fragen, websites };
   }));
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -104,7 +105,8 @@ const bloecke = folien.map((f) => {
   woerterGesamt += w;
   const knapp = w / 130 * 60 > f.zeit * 1.1 ? ' <span class="warn">knapp</span>' : '';
   const nr = /^T\d/.test(f.nummer) ? f.nummer : String(f.nummer).padStart(2, '0');
-  return `<section class="${/^t\d/.test(f.id) ? 'trenner' : ''}"><h2><span class="nr">${esc(nr)}</span> ${esc(f.titel)}<span class="zeit">${mmss(start)} bis ${mmss(uhr)} · ${f.zeit} s${knapp}</span></h2>${teileHtml.join('')}</section>`;
+  const web = f.websites.length ? `<div class="web"><p class="web-titel">Websites auf der Folie</p>${f.websites.map((x) => { const i = x.indexOf(': '); return `<p>${i > 0 ? `<b>${esc(x.slice(0, i))}</b>: ${esc(x.slice(i + 2))}` : esc(x)}</p>`; }).join('')}</div>` : '';
+  return `<section class="${/^t\d/.test(f.id) ? 'trenner' : ''}"><h2><span class="nr">${esc(nr)}</span> ${esc(f.titel)}<span class="zeit">${mmss(start)} bis ${mmss(uhr)} · ${f.zeit} s${knapp}</span></h2>${web}${teileHtml.join('')}</section>`;
 });
 for (const [id, liste] of Object.entries(kurz)) for (const k of liste) if (!kurzGefunden.has(id + '|' + k.text)) fehler.push(`Kürzungssatz fehlt in ${id}: ${k.text}`);
 for (const k of Object.keys(fassung.texte)) if (!benutzt.has(k)) fehler.push(`Fassung: Schlüssel ${k} passt zu keinem Sprechtext-Absatz.`);
@@ -161,6 +163,11 @@ const html = `<!doctype html>
   .klick { font-size: 8pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--akzent); margin: 8px 0 3px; }
   .klick::before { content: "▸ "; }
   .kurz { color: var(--leise); }
+  .web { float: left; width: 46mm; margin: 2px 12px 8px 0; padding: 6px 8px; border-left: 3px solid var(--akzent); background: var(--flaeche); font-size: 8pt; line-height: 1.35; color: var(--leise); }
+  .web p { margin: 0 0 4px; }
+  .web b { color: var(--text); }
+  .web-titel { font-weight: 700; font-size: 7.5pt; letter-spacing: .05em; text-transform: uppercase; color: var(--akzent); }
+  section::after { content: ""; display: block; clear: both; }
   .kurz sup { font-size: 7pt; font-weight: 700; color: var(--akzent); margin-right: 1px; }
   .anhang { break-before: page; break-inside: auto; }
   .anhang p { font-size: 10pt; }

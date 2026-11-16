@@ -81,7 +81,7 @@ ca. 18,5 Minuten eignen sich die Folien 03 und 11 (zusammen 1:35) oder statt Fol
 
 ## Präsentationsskript
 
-`export/praesentationsskript.pdf` (A4, 25 Seiten, druckfest in Schwarz-Weiß) ist das Skript zum
+`export/praesentationsskript.pdf` (A4, 26 Seiten, druckfest in Schwarz-Weiß) ist das Skript zum
 Vortragen, Aufbau wie in `fuehrung/` und `recap/`: Titelseite mit Ablauf, Überblick mit
 Zwischenzeiten, je Teil jede Folie mit Vorschaubild, Startzeit, Sprechtext je Klick und
 Randnotizen „Bei Rückfragen“; Anhang mit 17 Rückfragen samt Antworten, Quellen als Text,
@@ -96,6 +96,14 @@ node werkzeuge/praesentationsskript.mjs
 ```
 
 Neu erzeugen nach jeder Änderung an Sprechtext, Notizen, `data-zeit` oder `skript-zusatz.json`.
+
+**Websites auf der Folie:** Notiz-Absätze, die mit „Website:“ beginnen (z. B. `<p>Website: Quora
+(quora.com): …</p>` in `aside.notizen`), erklären kurz, was eine gezeigte oder genannte Website bzw.
+ein Tool ist und macht. Sie stehen in allen drei Präsentationsskripten links am Rand unter dem
+Folienbild („Websites auf der Folie“) und im Redeskript als Kasten links neben dem Sprechtext;
+nicht vortragen, zum Nachlesen und für Rückfragen. 25 Einträge auf 14 Folien (u. a.
+robbierichards.com, uavcoach.com, Mashable, SEMrush, Ahrefs, Quora, Scoop.it, Sumo, Google
+Analytics, Pew Research Center).
 
 **Locker formulierte Fassung:** `export/praesentationsskript-locker.pdf`, gleicher Aufbau, Sprechtext
 in Alltagssprache aus `werkzeuge/skript-locker.json` (Schlüssel „f07/0“ = Folie f07, Schritt 0;
