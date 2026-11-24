@@ -62,6 +62,14 @@ Elias Knauber und Yannick Heisler · Prof. Dr. Christine Arend-Fuchs · seit 15.
 | Präsentationsskript, frei gesprochen, und Redeskript (13 Seiten) mit Beispielantworten für die Diskussion | ✅ `export/praesentationsskript-frei.pdf`, `export/redeskript.pdf` | Texte in `werkzeuge/skript-frei.json`, Diskussion in `werkzeuge/diskussion.json`; `node werkzeuge/redeskript.mjs` |
 | Handout (2 Seiten A4): Fall, sechs Schritte, Bewertung mit Ampel, strategische Einordnung, die drei Diskussionsfragen von Folie 26 | ✅ `handout.pdf` | [`seo-fallstudie/handout/`](seo-fallstudie/handout/) · neu: `node seo-fallstudie/handout/pdf.mjs` |
 
+## Abgabe: Portfolio-PDFs
+
+Für die Portfolio-Prüfung setzt `abgabe/bauen.py` zwei PDFs zusammen (Yannick Heisler und Elias Knauber), je eines für
+Strategisches Marketing und Management im KMU: Deckblatt im Auftritt der Hochschule, anklickbares Inhaltsverzeichnis,
+Zwischenblatt je Leistung, Lesezeichen, durchlaufende Seitenzahlen. Die Reihenfolge folgt je Modul der Folie
+„Zeitinvest und Portfolio Prüfung“ der Dozentin. Die fertigen PDFs und die Unterlagen von außen (Präsentationen von
+Elias Knauber, Recap Dunkin’) liegen nicht im Repo. Einzelheiten: [`abgabe/LIESMICH.md`](abgabe/LIESMICH.md).
+
 ## Online (GitHub Pages)
 
 Startseite: https://yannickoderso.github.io/Management-im-KMU/ (nach dem Einschalten unter Settings → Pages)

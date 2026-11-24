@@ -1,0 +1,6 @@
+# Unterlagen von außen (Präsentationen von Elias Knauber, Recap Dunkin’) und die fertigen PDFs
+# bleiben lokal: das Repo ist öffentlich.
+extern/
+ausgabe/
+_cache/
+__pycache__/
